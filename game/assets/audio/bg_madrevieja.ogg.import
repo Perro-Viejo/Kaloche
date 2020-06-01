@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bg_madrevieja.ogg-15a57458773809d7373c2da19a105320.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bg_madrevieja.ogg"
+dest_files=[ "res://.import/bg_madrevieja.ogg-15a57458773809d7373c2da19a105320.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

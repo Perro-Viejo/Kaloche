@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/test_beep.ogg-d3f5087f88077f7da762da298d19a0bd.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/test_beep.ogg"
+dest_files=[ "res://.import/test_beep.ogg-d3f5087f88077f7da762da298d19a0bd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

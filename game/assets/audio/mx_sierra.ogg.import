@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_sierra.ogg-5f9d3891a5aa86e42c518f76086faaad.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/mx_sierra.ogg"
+dest_files=[ "res://.import/mx_sierra.ogg-5f9d3891a5aa86e42c518f76086faaad.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

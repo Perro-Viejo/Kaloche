@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_zoomin.ogg-6a7a77905486386387e63e3e8dacb914.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_zoomin.ogg"
+dest_files=[ "res://.import/sfx_zoomin.ogg-6a7a77905486386387e63e3e8dacb914.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

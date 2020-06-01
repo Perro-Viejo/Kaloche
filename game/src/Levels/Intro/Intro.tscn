@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/images/world/world.png" type="Texture" id=1]
+[ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Levels/Intro/Intro.gd" type="Script" id=3]
+[ext_resource path="res://src/Characters/Demon/Demon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/world/toucan.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=7]
+
+
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "black"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 48, 168, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 3 )
+First_Level = "res://src/Levels/World.tscn"
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dream" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 458767, 0, 0, 458777, 0, 0, 524303, 0, 0, 524313, 0, 0, 589839, 0, 0, 589849, 0, 0, 655375, 0, 0, 655385, 0, 0, 720911, 0, 0, 720921, 0, 0, 786447, 0, 0, 786457, 0, 0, 851983, 0, 0, 851993, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0 )
+
+[node name="Pickable" parent="." instance=ExtResource( 5 )]
+position = Vector2( 186, 103 )
+img = ExtResource( 6 )
+tr_code = "TOUCAN"
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 164, 103 )
+
+[node name="Camera2D" parent="Player" index="3"]
+position = Vector2( 1, -32 )
+zoom = Vector2( 0.5, 0.5 )
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+
+[node name="Demon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 164, 71 )
+in_intro = true
+
+[node name="InteractionArea" parent="Demon" index="0"]
+visible = false
+
+[node name="AnimatedSprite" parent="Demon" index="1"]
+frame = 0
+
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="ColorRect" parent="OverlayLayer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OverlayLayer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+text = "K A L O C H E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Player"]
+
+[editable path="Demon"]

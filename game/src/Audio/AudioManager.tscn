@@ -1,0 +1,150 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://src/audio/AudioManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx_demon_burn.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx_demon_grow.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx_demon_idle.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx_demon_ignite.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx_demon_eat.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx_drop.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sfx_grab.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/ui_gen_button.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx_zoomout.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/ui_zone.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/ui_dialogue.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/sfx_zoomin.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/audio/fs/fs_water_01.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/audio/fs/fs_rock_01.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/fs/fs_grass_01.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/fs/fs_grass_03.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/fs/fs_dirt_02.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/fs/fs_water_02.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/fs/fs_water_03.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/fs/fs_dirt_03.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/fs/fs_rock_02.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/audio/fs/fs_dirt_01.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/fs/fs_rock_03.ogg" type="AudioStream" id=25]
+[ext_resource path="res://src/audio/RandomTool.gd" type="Script" id=26]
+[ext_resource path="res://assets/audio/ui_note_dialogue_01.ogg" type="AudioStream" id=27]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Grab" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 9 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 8 )
+
+[node name="FS_Dirt" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+Volume = -4.0
+minVolume = -3.0
+RandomPitch = true
+minPitch = -2.0
+maxPitch = 4.0
+
+[node name="FS_Dirt" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+stream = ExtResource( 24 )
+
+[node name="FS_Dirt2" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+stream = ExtResource( 19 )
+
+[node name="FS_Dirt3" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+stream = ExtResource( 22 )
+
+[node name="fs_grass" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+Volume = -4.0
+minVolume = -3.0
+
+[node name="fs_grass" type="AudioStreamPlayer" parent="Player/fs_grass"]
+stream = ExtResource( 17 )
+
+[node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/fs_grass"]
+stream = ExtResource( 2 )
+
+[node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/fs_grass"]
+stream = ExtResource( 18 )
+
+[node name="FS_Rock" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+Volume = -4.0
+minVolume = -3.0
+
+[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+stream = ExtResource( 16 )
+
+[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+stream = ExtResource( 23 )
+
+[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+stream = ExtResource( 25 )
+
+[node name="FS_Water" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+Volume = -8.0
+minVolume = -3.0
+
+[node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water"]
+stream = ExtResource( 15 )
+
+[node name="FS_Water2" type="AudioStreamPlayer" parent="Player/FS_Water"]
+stream = ExtResource( 20 )
+
+[node name="FS_Water3" type="AudioStreamPlayer" parent="Player/FS_Water"]
+stream = ExtResource( 21 )
+
+[node name="Demon" type="Node2D" parent="."]
+
+[node name="Burn" type="AudioStreamPlayer" parent="Demon"]
+stream = ExtResource( 3 )
+volume_db = -12.0
+
+[node name="Eat" type="AudioStreamPlayer" parent="Demon"]
+stream = ExtResource( 7 )
+volume_db = -12.0
+
+[node name="Grow" type="AudioStreamPlayer" parent="Demon"]
+stream = ExtResource( 4 )
+volume_db = -12.0
+
+[node name="Idle" type="AudioStreamPlayer" parent="Demon"]
+stream = ExtResource( 5 )
+
+[node name="Ignite" type="AudioStreamPlayer" parent="Demon"]
+stream = ExtResource( 6 )
+volume_db = -12.0
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="ZoomIn" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 14 )
+volume_db = -7.0
+
+[node name="ZoomOut" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 11 )
+volume_db = -10.0
+
+[node name="Dialogue" type="Node2D" parent="UI"]
+script = ExtResource( 26 )
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="UI/Dialogue"]
+stream = ExtResource( 27 )
+volume_db = -9.0
+
+[node name="Dialogue2" type="AudioStreamPlayer" parent="UI/Dialogue"]
+stream = ExtResource( 13 )
+volume_db = -9.0
+
+[node name="Zone" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 12 )
+volume_db = -17.0
+
+[node name="Gen_Button" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 10 )
+volume_db = -12.0
+pitch_scale = 3.0

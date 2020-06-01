@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_demon_idle.ogg-5c113b1969c07e719e4767f0fc08157a.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_demon_idle.ogg"
+dest_files=[ "res://.import/sfx_demon_idle.ogg-5c113b1969c07e719e4767f0fc08157a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
