@@ -22,12 +22,14 @@ func _ready() -> void:
 	Event.connect('zone_entered', self, 'update_zone_name')
 	$Tween.connect('tween_all_completed', self, 'update_zone_name')
 	Event.connect('intro_shown', self, 'show_intro_msg')
-#	_continue.connect('pressed', self, 'next_intro')
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if _continue.is_visible() and event.is_action('ui_accept'):
-		next_intro()
+	if event.is_action_pressed('ui_accept'):
+		if _continue.is_visible():
+			next_intro()
+		else:
+			skip_intro()
 
 
 func update_zone_name(name: String = '') -> void:
@@ -81,22 +83,27 @@ func show_continue(wait: int = 5) -> void:
 	_continue.show()
 
 
-func show_intro_msg(msg: String) -> void:
-	_intro.text = msg
+func show_intro_msg(msg := '') -> void:
+	if msg:
+		_intro.text = msg
 
-	$Tween.interpolate_property(
-		_intro,
-		'modulate:a',
-		0,
-		1,
-		0.8,
-		Tween.TRANS_SINE,
-		Tween.EASE_OUT,
-		0.8
-	)
-	$Tween.start()
+		$Tween.interpolate_property(
+			_intro,
+			'modulate:a',
+			0,
+			1,
+			0.8,
+			Tween.TRANS_SINE,
+			Tween.EASE_OUT,
+			0.8
+		)
+		$Tween.start()
 
-	show_continue(3)
+		show_continue(3)
+	elif $Tween.is_active():
+		$Tween.remove_all()
+		_intro.modulate.a = 1.0
+		show_continue(0)
 
 
 func next_intro() -> void:
@@ -119,3 +126,7 @@ func next_intro() -> void:
 		yield($Tween, 'tween_completed')
 
 	Event.emit_signal('intro_continued')
+
+
+func skip_intro() -> void:
+	Event.emit_signal('intro_skipped')

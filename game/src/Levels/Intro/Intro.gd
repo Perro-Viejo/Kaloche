@@ -6,23 +6,33 @@ export (String, FILE, "*.tscn") var First_Level: String
 
 onready var _overlay: ColorRect = $OverlayLayer/Overlay
 
-var _count: int = 0
-var _in_intro: bool = true
-var _demon_count: int = 1
-var _teo_count: int = 1
+var _count := 0
+var _in_intro := true
+var _demon_count := 1
+var _teo_count := 1
+var _waiting_sacrifice := false
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	_overlay.show()
 	$Pickable.hide()
 
 	Event.connect('intro_continued', self, '_show_intro')
+	Event.connect('intro_skipped', self, '_skip')
 
 	_show_intro()
 
+
+# Esta función se llama cuando en el HUD se registró la presionada de la acción
+# 'ui_accept'
 func _show_intro() -> void:
 	if _count < 0:
 		Event.emit_signal('character_spoke', '', '')
 		Event.emit_signal("ChangeScene", First_Level)
+		return
+
+	if _waiting_sacrifice:
+		# TODO: Que el fuego diga algo para recordarle al jugador que tiene
+		# que agarrar el tucán y sacrificarlo
 		return
 
 	if _in_intro and _count < intro_messages:
@@ -35,13 +45,12 @@ func _show_intro() -> void:
 
 		_show_dialogue_msg()
 	elif _count == dialogue_messages + 1:
-		# Esperar a que el jugador sacrifique el venao
-		_count += 1
+		# Activar la agarración del tucán y esperar a que el jugador lo
+		# sacrifique
+		_waiting_sacrifice = true
 		$Pickable.toggle_collision()
+		$Pickable.connect('tree_exited', self, '_sacrifice_done')
 		Event.emit_signal('character_spoke', '', '')
-	else:
-		_show_dialogue_msg()
-		_count = -1
 
 func _get_intro_msg() -> String:
 	_count += 1
@@ -63,3 +72,18 @@ func _show_dialogue_msg() -> void:
 			)
 			_teo_count += 1
 	_count += 1
+
+
+func _skip() -> void:
+	if _in_intro:
+		Event.emit_signal('intro_shown')
+	else:
+		# Emitir la señal para saltarse el Fade in de los mensajes de introducción
+		Event.emit_signal('dialog_skipped')
+
+
+func _sacrifice_done() -> void:
+	_waiting_sacrifice = false
+	_count += 1
+	_show_dialogue_msg()
+	_count = -1
