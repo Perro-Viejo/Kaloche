@@ -14,7 +14,8 @@ func _ready() -> void:
 	# Conectar señales de las zonas del mundo pokémon
 	_zones.connect('area_shape_entered', self, '_zone_entered', [ true ])
 	_zones.connect('area_shape_exited', self, '_zone_entered', [ false ])
-
+	
+	Event.emit_signal('world_entered')
 	# Establecer valores por defecto
 	self._current_zone = ''
 

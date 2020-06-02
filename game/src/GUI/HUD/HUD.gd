@@ -3,6 +3,7 @@ extends CanvasLayer
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 var _current_zone: = ''
 var in_dialogue: bool = false
+var world_entered: bool = false
 
 onready var _zone_name: Label = $Control/ZoneName
 onready var _dflt_pos: = {
@@ -24,6 +25,7 @@ func _ready() -> void:
 	Event.connect('zone_entered', self, 'update_zone_name')
 	$Tween.connect('tween_all_completed', self, 'update_zone_name')
 	Event.connect('intro_shown', self, 'show_intro_msg')
+	Event.connect('world_entered', self, '_on_world_entered')
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -33,7 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			skip_intro()
 	elif event.is_action_pressed('Journal'):
-		toggle_journal()
+		if world_entered:
+			toggle_journal()
 
 
 func update_zone_name(name: String = '') -> void:
@@ -135,6 +138,8 @@ func next_intro() -> void:
 func skip_intro() -> void:
 	Event.emit_signal('intro_skipped')
 
+func _on_world_entered():
+	world_entered = true
 
 func toggle_journal() -> void:
 	if not _journal.visible:
