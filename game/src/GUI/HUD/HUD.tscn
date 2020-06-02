@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/m5x7_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/HUD/HUD.gd" type="Script" id=2]
 [ext_resource path="res://src/GUI/HUD/Dialogue.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/gui/dialogue.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/gui/paper_sheet.png" type="Texture" id=6]
 [ext_resource path="res://src/GUI/HUD/Journal.gd" type="Script" id=7]
 
@@ -29,11 +28,6 @@ font_path = "res://assets/fonts/m5x7.ttf"
 [sub_resource type="DynamicFont" id=4]
 size = 15
 font_data = SubResource( 3 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 12
-use_mipmaps = true
-font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFontData" id=6]
 font_path = "res://assets/fonts/m5x7.ttf"
@@ -88,31 +82,6 @@ animation_time = 0.1
 
 [node name="Timer" type="Timer" parent="Control/Dialogue"]
 wait_time = 0.3
-
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Intro" type="Label" parent="Control/CenterContainer"]
-margin_left = 32.0
-margin_top = 85.0
-margin_right = 288.0
-margin_bottom = 95.0
-rect_min_size = Vector2( 256, 0 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_fonts/font = SubResource( 5 )
-text = "INTRO_01"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Continue" type="TextureButton" parent="Control"]
 anchor_right = 1.0

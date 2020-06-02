@@ -10,10 +10,16 @@ func enter(msg: Dictionary = {}) -> void:
 		_state_machine.transition_to(_owner.STATES.IDLE)
 		return
 
+	var picked: Pickable = _owner.can_grab as Pickable
+	_owner.grabbing = true
+	picked.being_grabbed = true
+	# Retroalimentación { ======================================================
+	# NOTA: si el jugador no se está moviendo, sí estaría bueno que se espere a
+	# que la animación termine para hacer esto
+	Event.emit_signal('play_requested', 'Player', 'Grab')
+	# ======================================================================== }
+
 	_owner.play_animation(_owner.STATES.GRAB)
 	yield(_owner.sprite, 'animation_finished')
 
-	_owner.can_grab.z_index = _owner.z_index + 1
-	_owner.grabbing = true
-	(_owner.can_grab as Pickable).being_grabbed = true
-	Event.emit_signal('play_requested', 'Player', 'Grab')
+	picked.z_index = _owner.z_index + 1

@@ -23,6 +23,7 @@ signal intro_continued
 signal intro_skipped
 signal dialog_skipped
 signal world_entered
+signal continue_requested
 
 signal play_requested(source, sound, position)
 signal stop_requested(source, sound)

@@ -10,16 +10,13 @@ onready var _calc_speed: float = speed * 60
 onready var _owner: Player = owner as Player
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action('Grab'):
+	if event.is_action_pressed('Grab'):
 		if _owner.can_grab and not _owner.grabbing:
 			_state_machine.transition_to(_owner.STATES.GRAB)
-	elif event.is_action('Drop') and _owner.can_grab and _owner.grabbing:
-			_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
+	elif event.is_action_pressed('Drop') and _owner.can_grab and _owner.grabbing:
+		_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
 
 func _physics_process(delta) -> void:
-#	for body in _owner.foot_area.get_overlapping_bodies():
-#		_owner.toggle_on_ground(body, true)
-
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 

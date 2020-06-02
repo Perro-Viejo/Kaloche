@@ -1,7 +1,9 @@
 extends CanvasLayer
-
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export (String, FILE, "*.tscn") var First_Level: String
-
+export (String, FILE, "*.tscn") var intro_scn: String
+export(bool) var show_intro = true
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
 	Event.MainMenu = true
 	guiBrain.gui_collect_focusgroup()
@@ -20,7 +22,10 @@ func _exit_tree()->void:
 
 func _on_NewGame_pressed()->void:
 	Event.emit_signal("NewGame")
-	Event.emit_signal("ChangeScene", First_Level)
+	if show_intro:
+		Event.emit_signal("ChangeScene", intro_scn)
+	else:
+		Event.emit_signal("ChangeScene", First_Level)
 
 func _on_Options_pressed()->void:
 	Event.Options = true

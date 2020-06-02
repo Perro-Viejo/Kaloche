@@ -4,18 +4,29 @@ export(int) var intro_messages = 4
 export(int) var dialogue_messages = 9
 export (String, FILE, "*.tscn") var First_Level: String
 
-onready var _overlay: ColorRect = $OverlayLayer/Overlay
-
 var _count := 0
 var _in_intro := true
 var _demon_count := 1
 var _teo_count := 1
 var _waiting_sacrifice := false
+var _fading_in := false
+var _skipped := false
+var _current_msg := ''
+
+onready var _overlay: ColorRect = $OverlayLayer/Overlay
+onready var _intro_label: Label = $OverlayLayer/LabelContainer/Label
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
+	_intro_label.modulate = Color(1, 1, 1, 0)
+	_intro_label.text = ''
+
 	_overlay.show()
 	$Pickable.hide()
 
+	# Conectar escuchadores de eventos locales
+#	$Tween.connect('tween_all_completed', self, 'update_zone_name')
+
+	# Conectar escuchadores de eventos globales
 	Event.connect('intro_continued', self, '_show_intro')
 	Event.connect('intro_skipped', self, '_skip')
 
@@ -36,10 +47,14 @@ func _show_intro() -> void:
 		return
 
 	if _in_intro and _count < intro_messages:
-		Event.emit_signal('intro_shown', _get_intro_msg())
+		_current_msg = _get_intro_msg()
+		_show_intro_msg(_current_msg)
 	elif _count <= dialogue_messages:
 		if _in_intro and _count == intro_messages:
 			_in_intro = false
+			yield(_next_intro(), 'completed')
+			_intro_label.text = ''
+			_intro_label.modulate.a = 0.0
 			_overlay.hide()
 			_count = 1
 
@@ -75,10 +90,18 @@ func _show_dialogue_msg() -> void:
 
 
 func _skip() -> void:
+	_skipped = true
+
 	if _in_intro:
-		Event.emit_signal('intro_shown')
+		$Tween.remove_all()
+
+		if _fading_in:
+			_show_intro_msg('')
+		else:
+			_intro_label.modulate.a = 0
+			_show_intro_msg('')
 	else:
-		# Emitir la señal para saltarse el Fade in de los mensajes de introducción
+		# Emitir la señal para que el HUD corte la animación del diálogo
 		Event.emit_signal('dialog_skipped')
 
 
@@ -87,3 +110,53 @@ func _sacrifice_done() -> void:
 	_count += 1
 	_show_dialogue_msg()
 	_count = -1
+
+
+func _next_intro() -> void:
+	# Ocultar el texto de la introducción que se está mostrando para que se
+	# muestre el siguiente
+	_fading_in = false
+
+	$Tween.interpolate_property(
+		_intro_label,
+		'modulate:a',
+		1,
+		0,
+		0.5,
+		Tween.TRANS_SINE,
+		Tween.EASE_OUT
+	)
+	$Tween.start()
+	yield($Tween, 'tween_completed')
+
+
+func _show_intro_msg(msg := '', fade_in_time := 0.8) -> void:
+	var wait := 3
+
+	if msg:
+		if _intro_label.text and _intro_label.modulate.a > 0:
+			yield(_next_intro(), 'completed')
+			if _skipped: return
+
+		_intro_label.text = msg
+		_fading_in = true
+
+		$Tween.interpolate_property(
+			_intro_label,
+			'modulate:a',
+			0,
+			1,
+			fade_in_time,
+			Tween.TRANS_SINE,
+			Tween.EASE_OUT
+		)
+		$Tween.start()
+	else:
+		wait = 0
+		_intro_label.text = _current_msg
+		_intro_label.modulate.a = 1.0
+
+	yield(get_tree().create_timer(wait), 'timeout')
+
+	_skipped = false
+	Event.emit_signal('continue_requested')
