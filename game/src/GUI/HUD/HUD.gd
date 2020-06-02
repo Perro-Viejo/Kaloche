@@ -10,11 +10,13 @@ onready var _dflt_pos: = {
 }
 onready var _intro: Label = $Control/CenterContainer/Intro
 onready var _continue: Label = $Control/Continue
+onready var _journal: Control = $Control/Journal
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	_zone_name.text = ''
 	_zone_name.rect_position.y = _dflt_pos.zone_name.y + 128
 	_continue.hide()
+	_journal.hide()
 
 	_intro.modulate = Color(1, 1, 1, 0)
 
@@ -30,6 +32,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			next_intro()
 		else:
 			skip_intro()
+	elif event.is_action_pressed('Journal'):
+		toggle_journal()
 
 
 func update_zone_name(name: String = '') -> void:
@@ -130,3 +134,10 @@ func next_intro() -> void:
 
 func skip_intro() -> void:
 	Event.emit_signal('intro_skipped')
+
+
+func toggle_journal() -> void:
+	if not _journal.visible:
+		_journal.show()
+	else:
+		_journal.hide()

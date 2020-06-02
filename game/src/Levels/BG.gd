@@ -14,12 +14,13 @@ func _ready():
 	$Area2D.connect('area_entered', self, '_on_area_entered')
 	
 func _process(delta):
-	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	if listener:
 		distance_to_center = listener.get_global_position().distance_to(area_center)
-		if distance_to_center <= max_distance:
-			$BG.set_global_position(listener.get_global_position())
+		if distance_to_center <= 360 and distance_to_center >= 280:
+			if $BG.get_volume_db() <= 0:
+				$BG.set_volume_db(280 - distance_to_center)
+		elif distance_to_center <= 280:
+			$BG.set_volume_db(0)
 func _on_area_entered(other):
 	if active:
 		if other.get_name() == 'PlayerArea':
