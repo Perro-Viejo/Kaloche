@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=2]
+[gd_scene load_steps=245 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Levels/World.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/audio/bg_madrevieja.ogg" type="AudioStream" id=23]
 [ext_resource path="res://assets/audio/bg_pinalito.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/audio/mx_madrevieja.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/images/world/dog.png" type="Texture" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -2248,7 +2249,7 @@ tile_data = PoolIntArray( -5832864, 14, 65540, -5832863, 14, 65540, -5832862, 14
 position = Vector2( 725.419, -308.532 )
 
 [node name="Player" parent="WorldLayer" instance=ExtResource( 1 )]
-position = Vector2( -1059, 568 )
+position = Vector2( 733.483, -91.9531 )
 collision_mask = 0
 
 [node name="Zones" type="Area2D" parent="WorldLayer"]
@@ -2511,6 +2512,94 @@ carbs = 2
 img = ExtResource( 12 )
 on_free = ""
 tr_code = ""
+
+[node name="Perrito" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 785.042, -320.924 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Perrito2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 792.791, -298.26 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Perrito3" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 673.685, -197.581 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Perrito4" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 641.288, -292.114 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Perrito5" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 638.708, -223.116 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Perrito6" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 685.151, -286.808 )
+is_good = true
+carbs = 2
+img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+
+[node name="Roquita" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 757.169, -247.964 )
+is_good = true
+carbs = 2
+img = ExtResource( 15 )
+on_free = ""
+tr_code = "Rock"
+
+[node name="Roquita2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 705.02, -324.996 )
+is_good = true
+carbs = 2
+img = ExtResource( 15 )
+on_free = ""
+tr_code = "Rock"
+
+[node name="Roquita3" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 825.259, -245.019 )
+is_good = true
+carbs = 2
+img = ExtResource( 15 )
+on_free = ""
+tr_code = "Rock"
+
+[node name="Roquita4" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 777.78, -196.252 )
+is_good = true
+carbs = 2
+img = ExtResource( 15 )
+on_free = ""
+tr_code = "Rock"
+
+[node name="Roquita5" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+position = Vector2( 840.717, -305.748 )
+is_good = true
+carbs = 2
+img = ExtResource( 15 )
+on_free = ""
+tr_code = "Rock"
 
 [node name="RiverRocks" type="Node2D" parent="WorldLayer/Objects"]
 
