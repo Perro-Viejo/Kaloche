@@ -33,6 +33,7 @@ func _on_area_entered(other):
 		else:
 			speak(tr("Saludos, me alimentas o me muero :("))
 			$Timer.start()
+			first_visit = false
 
 func _on_area_exited(other):
 	if other.get_name() == 'PlayerArea':
@@ -65,7 +66,7 @@ func eat(is_good: bool, carbs: int = 1):
 			health -= 3
 
 func speak(text):
-#	Event.emit_signal('character_spoke', 'Demon', text)
+	Event.emit_signal('character_spoke', 'Demon', text)
 	yield(get_tree().create_timer(2), 'timeout')
 
 
