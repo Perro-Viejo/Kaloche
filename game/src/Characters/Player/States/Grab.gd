@@ -20,6 +20,12 @@ func enter(msg: Dictionary = {}) -> void:
 	# ======================================================================== }
 
 	_owner.play_animation(_owner.STATES.GRAB)
-	yield(_owner.sprite, 'animation_finished')
+#	yield(_owner.sprite, 'animation_finished')
 
 	picked.z_index = _owner.z_index + 1
+
+	_state_machine.transition_to(_owner.STATES.IDLE)
+
+
+func exit() -> void:
+	_owner.play_animation()

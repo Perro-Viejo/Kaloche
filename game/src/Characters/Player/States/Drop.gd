@@ -21,7 +21,7 @@ func enter(msg: Dictionary = {}) -> void:
 	# ======================================================================== }
 
 	_owner.play_animation(_owner.STATES.DROP)
-	yield(_owner.sprite, 'animation_finished')
+#	yield(_owner.sprite, 'animation_finished')
 
 	picked = null
 	_owner.can_grab = null

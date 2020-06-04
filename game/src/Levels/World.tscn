@@ -2238,7 +2238,6 @@ __meta__ = {
 }
 
 [node name="TileMap" type="TileMap" parent="WorldLayer"]
-rotation = 0.00141194
 tile_set = SubResource( 121 )
 cell_size = Vector2( 8, 8 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
@@ -2251,11 +2250,10 @@ position = Vector2( 739.331, -424.034 )
 immortal = false
 
 [node name="Player" parent="WorldLayer" instance=ExtResource( 1 )]
-position = Vector2( 735.924, 425.92 )
+position = Vector2( 735.652, -169.278 )
 collision_mask = 0
 
 [node name="Zones" type="Area2D" parent="WorldLayer"]
-visible = false
 angular_damp = 0.0
 priority = 1.0
 collision_layer = 2
@@ -2565,7 +2563,7 @@ on_free = ""
 tr_code = ""
 
 [node name="Roquita" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 757.169, -247.964 )
+position = Vector2( 756.81, 160.354 )
 is_good = false
 carbs = 2
 img = ExtResource( 15 )
@@ -2573,7 +2571,7 @@ on_free = ""
 tr_code = "Rock"
 
 [node name="Roquita2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 705.02, -324.996 )
+position = Vector2( 712.548, 189.076 )
 is_good = false
 carbs = 2
 img = ExtResource( 15 )
@@ -2686,6 +2684,7 @@ tr_code = "Rock"
 z_index = -1
 tile_set = SubResource( 218 )
 cell_size = Vector2( 8, 8 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 collision_friction = 0.0
 collision_layer = 16
 collision_mask = 0

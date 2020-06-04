@@ -7,11 +7,10 @@ export(int) var health = 20
 const MAGIC_FIRE = preload("res://src/Particles/MagicFireParticle.tscn")
 
 var eaten_items = 0
-var max_health 
+var max_health
 var max_size = 1
 
 var first_visit = true
-
 
 onready var _feed_shape: RectangleShape2D = $FeedArea/CollisionShape2D.shape
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
@@ -20,7 +19,7 @@ func _ready():
 	$InteractionArea.connect('area_exited', self, '_on_area_exited')
 	$FeedArea.connect('area_entered', self, '_check_food')
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
-	
+
 	max_health = health
 
 func _process(delta):
@@ -99,7 +98,7 @@ func _check_food(body: Node) -> void:
 			'Hen':
 				speak(tr("¡Deliciosa gallina! Nada sagrada por cierto... -.-"))
 			'Mico':
-				speak(tr("Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"))	
+				speak(tr("Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"))
 			_:
 				if pickable.is_good:
 					speak(tr("Demon_Eat_pos"))

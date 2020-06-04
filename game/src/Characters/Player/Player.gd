@@ -91,13 +91,13 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 	else:
 		fs_id = 'FS_Dirt'
 
-func _on_frame_changed() -> void:
 
+func _on_frame_changed() -> void:
 	if $AnimatedSprite.animation == 'Run' or $AnimatedSprite.animation == 'RunGrab':
 		match $AnimatedSprite.frame:
 			0,3:
 				play_fs(fs_id)
 
+
 func play_fs(id):
 	Event.emit_signal('play_requested', "Player", id)
-
