@@ -42,8 +42,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func update_zone_name(name: String = '') -> void:
-	_zone_name.show()
 	Event.emit_signal('play_requested', 'UI', 'Zone')
+	_zone_name.show()
 	if name == '':
 		_zone_name.text = ''
 		return

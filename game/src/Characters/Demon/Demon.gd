@@ -13,7 +13,7 @@ var max_size = 1
 
 var first_visit = true
 
-onready var _feed_shape: RectangleShape2D = $FeedArea/CollisionShape2D.shape
+#onready var _feed_shape: RectangleShape2D = $FeedArea/CollisionShape2D.shape
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	$InteractionArea.connect('area_entered', self, '_on_area_entered')
@@ -28,6 +28,7 @@ func _process(delta):
 
 
 func eat(is_good: bool, carbs: int = 1):
+	eaten_items += 1
 	Event.emit_signal('play_requested','Demon', 'Eat')
 
 	if in_intro:
@@ -37,16 +38,15 @@ func eat(is_good: bool, carbs: int = 1):
 	if is_good:
 		if health < max_health:
 			health += 10
-		eaten_items += carbs
+#		Todavia no se si quitar este
+#		eaten_items += carbs
 
-#		$AnimatedSprite.scale += Vector2.ONE * carbs
-		_feed_shape.extents.x += carbs * 5
+#		_feed_shape.extents.x += carbs * 5
 
 		yield(get_tree().create_timer(0.2), 'timeout')
 		Event.emit_signal('play_requested','Demon', 'Grow')
 	else:
-#		$AnimatedSprite.scale -= Vector2.ONE * carbs
-		_feed_shape.extents.x -= carbs * 5
+#		_feed_shape.extents.x -= carbs * 5
 
 		if eaten_items > 0:
 			eaten_items -= carbs
