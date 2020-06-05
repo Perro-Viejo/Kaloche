@@ -29,6 +29,7 @@ signal play_requested(source, sound, position)
 signal stop_requested(source, sound)
 signal pause_requested(source, sound)
 signal stream_finished(source, sound)
+signal change_volume(source, sound, volume)
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 #For section tracking

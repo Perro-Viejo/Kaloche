@@ -67,7 +67,6 @@ func eat(is_good: bool, carbs: int = 1):
 
 func speak(text):
 	Event.emit_signal('character_spoke', 'Demon', text)
-	yield(get_tree().create_timer(2), 'timeout')
 
 
 func _check_food(body: Node) -> void:

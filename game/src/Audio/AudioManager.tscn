@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/audio/fs/fs_rock_03.ogg" type="AudioStream" id=25]
 [ext_resource path="res://src/audio/RandomTool.gd" type="Script" id=26]
 [ext_resource path="res://assets/audio/ui_note_dialogue_01.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/audio/bg_sierra.ogg" type="AudioStream" id=28]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -41,6 +42,7 @@ stream = ExtResource( 8 )
 
 [node name="FS_Dirt" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
+volume = -6.0
 
 [node name="FS_Dirt" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
 stream = ExtResource( 24 )
@@ -53,6 +55,7 @@ stream = ExtResource( 22 )
 
 [node name="fs_grass" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
+volume = -4.0
 
 [node name="fs_grass" type="AudioStreamPlayer" parent="Player/fs_grass"]
 stream = ExtResource( 17 )
@@ -65,6 +68,7 @@ stream = ExtResource( 18 )
 
 [node name="FS_Rock" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
+volume = -6.0
 
 [node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 16 )
@@ -77,6 +81,7 @@ stream = ExtResource( 25 )
 
 [node name="FS_Water" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
+volume = -6.0
 
 [node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water"]
 stream = ExtResource( 15 )
@@ -137,3 +142,8 @@ volume_db = -17.0
 stream = ExtResource( 10 )
 volume_db = -12.0
 pitch_scale = 3.0
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Sierra" type="AudioStreamPlayer" parent="BG"]
+stream = ExtResource( 28 )

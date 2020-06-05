@@ -42,6 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func update_zone_name(name: String = '') -> void:
+	_zone_name.show()
 	Event.emit_signal('play_requested', 'UI', 'Zone')
 	if name == '':
 		_zone_name.text = ''
@@ -85,11 +86,11 @@ func update_zone_name(name: String = '') -> void:
 
 func show_continue(wait: int = 0) -> void:
 #	yield(get_tree().create_timer(wait), 'timeout')
-	_zone_name.rect_position = _dflt_pos.zone_name
-	_zone_name.text = tr('CLICK_CONTINUE')
-
-	_zone_name.show()
-	_continue.show()
+	if not world_entered:
+		_zone_name.rect_position = _dflt_pos.zone_name
+		_zone_name.text = tr('CLICK_CONTINUE')
+		_zone_name.show()
+		_continue.show()
 
 
 func toggle_journal() -> void:

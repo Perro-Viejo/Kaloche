@@ -5,7 +5,7 @@ export(float) var animation_time = 0.01
 export(int) var character_speed = 2
 export(bool) var animate_on_set_text = true
 export(bool) var animate_on_start = false
-export(bool) var canPlay = true
+export(bool) var typing = true
 export(float) var disappear_wait = 3.0
 
 var default_position
@@ -34,6 +34,9 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	if not _hud:
+		_hud = (get_node('../../') as Hud)
+	
 	if _forced_update:
 		_forced_update = false
 		rect_position.x = 160 - (rect_size.x / 2)
@@ -42,6 +45,7 @@ func _process(delta: float) -> void:
 
 func start_animation():
 	if has_node('Timer'): $Timer.start()
+	typing = true
 
 
 func set_text(text):
@@ -55,6 +59,7 @@ func set_text(text):
 			.set_text(text)
 	else:
 		_text = ''
+		_count = 0
 
 
 func set_defaults():
@@ -69,7 +74,7 @@ func stop(auto_complete: bool = true) -> void:
 	if text == _text: return
 
 	_finish()
-
+	
 	if auto_complete:
 		text = _text
 		_forced_update = true
@@ -93,14 +98,18 @@ func _on_timer_timeout():
 			# haga desaparecer
 			_hud.show_continue(0)
 			return
-		_current_disappear = 0.0
-		hide()
-		set_text('')
+		if not typing:
+			_current_disappear = 0.0
+			hide()
+			set_text('')
 
 
 func _on_character_spoke(
 		character: String, message: String, time_to_disappear: float = 0.0
 	):
+	if typing:
+		stop()
+		yield(get_tree().create_timer(.3), 'timeout')
 	match character:
 		'Demon':
 			add_color_override("font_color", Color('#e35f58'))
@@ -117,16 +126,18 @@ func _on_character_spoke(
 		_current_disappear = time_to_disappear
 
 		if time_to_disappear < 0:
-			if not _hud:
-				_hud = (get_node('../../') as Hud)
 			_hud.in_dialogue = true
 	else:
 		hide()
+		_count = 0
+		set_text('')
 
 
 # Detiene el temporizador y resetea el contador de caracteres escritos a cero
 # pues el texto ya se está mostrando completo.
 func _finish() -> void:
 	_count = 0
-
+	if typing:
+		text = _text
+		typing = false
 	$Timer.stop()

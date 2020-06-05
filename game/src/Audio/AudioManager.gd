@@ -10,6 +10,7 @@ func _ready():
 	Event.connect('play_requested', self, 'play_sound')
 	Event.connect('stop_requested', self, 'stop_sound')
 	Event.connect('pause_requested', self, 'pause_sound')
+	Event.connect('change_volume', self, 'set_volume')
 
 
 
@@ -45,6 +46,9 @@ func pause_sound(source: String, sound: String) -> void:
 	if not audio.get('stream_paused'):
 		audio.stream_paused = true
 
-func _on_finished(source, sound):
+func _on_finished(source: String, sound: String):
 	Event.emit_signal('stream_finished', source, sound)
+
+func set_volume(source, sound, volume):
+	_get_audio(source, sound).set_volume_db(volume)
 

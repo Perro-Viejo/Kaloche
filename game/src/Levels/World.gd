@@ -16,6 +16,7 @@ func _ready() -> void:
 	_zones.connect('area_shape_exited', self, '_zone_entered', [ false ])
 
 	Event.emit_signal('world_entered')
+	Event.emit_signal('play_requested', 'BG', 'Sierra')
 	# Establecer valores por defecto
 	self._current_zone = ''
 
