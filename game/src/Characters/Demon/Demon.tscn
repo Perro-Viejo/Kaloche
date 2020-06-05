@@ -5,11 +5,11 @@
 [ext_resource path="res://assets/audio/sfx_demon_idle.ogg" type="AudioStream" id=3]
 [ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CircleShape2D" id=32]
+[sub_resource type="CircleShape2D" id=1]
 radius = 30.4657
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 48
+radius = 48.0
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -143,7 +143,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeedArea"]
 position = Vector2( 0, 14.1886 )
-shape = SubResource( 32 )
+shape = SubResource( 1 )
 
 [node name="Feed" type="Sprite" parent="FeedArea/CollisionShape2D"]
 
@@ -155,7 +155,7 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 31 )
-frame = 20
+frame = 4
 playing = true
 offset = Vector2( 0, -6 )
 

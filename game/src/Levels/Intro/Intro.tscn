@@ -60,7 +60,7 @@ format = 1
 tile_data = PoolIntArray( 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 458767, 0, 0, 458777, 0, 0, 524303, 0, 0, 524313, 0, 0, 589839, 0, 0, 589849, 0, 0, 655375, 0, 0, 655385, 0, 0, 720911, 0, 0, 720921, 0, 0, 786447, 0, 0, 786457, 0, 0, 851983, 0, 0, 851993, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0 )
 
 [node name="Pickable" parent="." instance=ExtResource( 5 )]
-position = Vector2( 186, 103 )
+position = Vector2( 201.035, 103 )
 img = ExtResource( 6 )
 tr_code = "TOUCAN"
 
@@ -79,15 +79,16 @@ drag_margin_bottom = 1.0
 position = Vector2( 164, 71 )
 in_intro = true
 
-[node name="InteractionArea" parent="Demon" index="0"]
+[node name="InteractionArea" parent="Demon" index="1"]
 visible = false
 
-[node name="AnimatedSprite" parent="Demon" index="1"]
-frame = 23
+[node name="AnimatedSprite" parent="Demon" index="2"]
+frame = 20
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 
 [node name="Overlay" type="ColorRect" parent="OverlayLayer"]
+visible = false
 margin_right = 320.0
 margin_bottom = 180.0
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
