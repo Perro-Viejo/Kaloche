@@ -75,6 +75,7 @@ SceneLoader="*res://src/Autoload/SceneLoader.gd"
 preLoad="*res://src/Autoload/preLoad.gd"
 Settings="*res://src/Autoload/Settings.gd"
 guiBrain="*res://src/Autoload/guiBrain.gd"
+Data="*res://src/Autoload/Data.gd"
 
 [debug]
 

@@ -61,10 +61,7 @@ tile_data = PoolIntArray( 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0
 
 [node name="Pickable" parent="." instance=ExtResource( 5 )]
 position = Vector2( 186, 103 )
-is_good = true
-carbs = 2
 img = ExtResource( 6 )
-on_free = ""
 tr_code = "TOUCAN"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -86,7 +83,7 @@ in_intro = true
 visible = false
 
 [node name="AnimatedSprite" parent="Demon" index="1"]
-frame = 10
+frame = 23
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 

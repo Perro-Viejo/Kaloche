@@ -55,7 +55,7 @@ func set_being_grabbed(new_val: bool) -> void:
 		dup.visible = true
 		dup.toggle_collision()
 		if dup.on_free != '':
-			Event.emit_signal('character_spoke', 'Pickable', tr(dup.on_free))
+			Event.emit_signal('character_spoke', self, tr(dup.on_free))
 
 		get_parent().call_deferred('add_child', dup)
 

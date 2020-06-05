@@ -1,5 +1,6 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
+[ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
@@ -15,87 +16,87 @@ region = Rect2( 104, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 8, 8 )
+region = Rect2( 112, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 96, 0, 8, 8 )
+region = Rect2( 120, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 104, 0, 8, 8 )
+region = Rect2( 128, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 136, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 8, 0, 8, 8 )
+region = Rect2( 144, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 16, 0, 8, 8 )
+region = Rect2( 152, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 24, 0, 8, 8 )
+region = Rect2( 32, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
-region = Rect2( 160, 0, 8, 8 )
+region = Rect2( 40, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 9 )
-region = Rect2( 176, 0, 8, 8 )
+region = Rect2( 48, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
-region = Rect2( 112, 0, 8, 8 )
+region = Rect2( 56, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 0, 8, 8 )
+region = Rect2( 64, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 9 )
-region = Rect2( 128, 0, 8, 8 )
+region = Rect2( 72, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
-region = Rect2( 136, 0, 8, 8 )
+region = Rect2( 80, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 144, 0, 8, 8 )
+region = Rect2( 96, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 152, 0, 8, 8 )
+region = Rect2( 104, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 9 )
-region = Rect2( 32, 0, 8, 8 )
+region = Rect2( 160, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 8, 8 )
+region = Rect2( 176, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 9 )
-region = Rect2( 48, 0, 8, 8 )
+region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 9 )
-region = Rect2( 56, 0, 8, 8 )
+region = Rect2( 8, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
-region = Rect2( 64, 0, 8, 8 )
+region = Rect2( 16, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 9 )
-region = Rect2( 72, 0, 8, 8 )
+region = Rect2( 24, 0, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
@@ -104,29 +105,29 @@ animations = [ {
 "name": "IdleGrab",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": false,
-"name": "Grab",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
-"loop": false,
-"name": "Drop",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "RunGrab",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Run",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": false,
+"name": "Grab",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "Drop",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 10.0
 } ]
 
@@ -143,6 +144,7 @@ extents = Vector2( 1, 0.5 )
 z_index = 5
 collision_mask = 4
 script = ExtResource( 2 )
+dialog_color = Color( 0.729412, 0.380392, 0.337255, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -199,3 +201,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )
 shape = SubResource( 26 )
+
+[node name="TalkingBubble" parent="." instance=ExtResource( 1 )]
+visible = false

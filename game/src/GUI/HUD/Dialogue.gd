@@ -17,6 +17,7 @@ var _count: = 0
 var _text: String
 var _hud: Hud
 var _forced_update := false
+var _current_character: Node2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	hide()
@@ -36,7 +37,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if not _hud:
 		_hud = (get_node('../../') as Hud)
-	
+
 	if _forced_update:
 		_forced_update = false
 		rect_position.x = 160 - (rect_size.x / 2)
@@ -74,7 +75,7 @@ func stop(auto_complete: bool = true) -> void:
 	if text == _text: return
 
 	_finish()
-	
+
 	if auto_complete:
 		text = _text
 		_forced_update = true
@@ -87,6 +88,7 @@ func _on_timer_timeout():
 		# Reposicionar el elemento porque el texto va creciendo
 		rect_position.x = 160 - (rect_size.x / 2)
 	else:
+		# El texto ya tiene todos los caracteres
 		_finish()
 
 		if _current_disappear > 0:
@@ -100,25 +102,28 @@ func _on_timer_timeout():
 			return
 		if not typing:
 			_current_disappear = 0.0
+			self.text = ''
 			hide()
-			set_text('')
 
 
 func _on_character_spoke(
-		character: String, message: String, time_to_disappear: float = 0.0
+		character: Node2D = null, message := '', time_to_disappear := 0.0
 	):
 	if typing:
 		stop()
 		yield(get_tree().create_timer(.3), 'timeout')
-	match character:
-		'Demon':
-			add_color_override("font_color", Color('#e35f58'))
-		'Teo':
-			add_color_override("font_color", Color('#3d6e70'))
-		_:
-			add_color_override("font_color", Color('#222323'))
+
+	# Definir el color del texto
+	var text_color: Color = Color('#222323')
+	if character and character.get('dialog_color'):
+			text_color = character.dialog_color
+	add_color_override("font_color", text_color)
+
+	if _current_character and  _current_character.has_method('spoke'):
+		_current_character.spoke()
 
 	if message != '':
+		_current_character = character
 		show()
 		Event.emit_signal('play_requested', 'UI', 'Dialogue')
 		set_text(message)
@@ -128,16 +133,17 @@ func _on_character_spoke(
 		if time_to_disappear < 0:
 			_hud.in_dialogue = true
 	else:
-		hide()
-		_count = 0
+		_current_character = null
+		_finish()
 		set_text('')
+		hide()
 
 
 # Detiene el temporizador y resetea el contador de caracteres escritos a cero
 # pues el texto ya se está mostrando completo.
 func _finish() -> void:
 	_count = 0
-	if typing:
-		text = _text
-		typing = false
 	$Timer.stop()
+
+	if typing:
+		typing = false

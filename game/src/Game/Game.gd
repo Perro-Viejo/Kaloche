@@ -10,6 +10,8 @@ var NextScene
 var FadeState:int = IDLE
 
 func _ready()->void:
+	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
+
 	Event.connect("Options",	self, "on_Options")
 	Event.connect("Exit",		self, "on_Exit")
 	Event.connect("ChangeScene",self, "on_ChangeScene")
@@ -53,13 +55,13 @@ func on_scene_loaded(Loaded)->void:
 func change_scene()->void: #handle actual scene change
 	if NextScene == null:
 		return
-	print("change_scene: ", NextScene) #ERROR InputMouseButton something
 	yield(get_tree(), "idle_frame") #continue on idle frame
 	CurrentSceneInstance.free()
 	CurrentScene = NextScene
 	NextScene = null
 	CurrentSceneInstance = CurrentScene.instance()
 	$Levels.add_child(CurrentSceneInstance)
+	Data.set_data(Data.CURRENT_SCENE, CurrentSceneInstance.name)
 
 func restart_scene():
 	if FadeState != IDLE:

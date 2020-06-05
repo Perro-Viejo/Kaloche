@@ -3,6 +3,7 @@ extends Node2D
 export(bool) var in_intro = false
 export(bool) var immortal = false
 export(int) var health = 20
+export(Color) var dialog_color
 
 const MAGIC_FIRE = preload("res://src/Particles/MagicFireParticle.tscn")
 
@@ -25,18 +26,6 @@ func _ready():
 func _process(delta):
 	$AnimatedSprite.scale = Vector2.ONE * range_lerp(health, 0, max_health, 0, max_size)
 
-func _on_area_entered(other):
-	if other.get_name() == 'PlayerArea':
-		if not first_visit:
-			speak(tr("Demon_Greet"))
-		else:
-			speak(tr("Saludos, me alimentas o me muero :("))
-			$Timer.start()
-			first_visit = false
-
-func _on_area_exited(other):
-	if other.get_name() == 'PlayerArea':
-		speak(tr("Demon_Goodbye"))
 
 func eat(is_good: bool, carbs: int = 1):
 	Event.emit_signal('play_requested','Demon', 'Eat')
@@ -64,8 +53,34 @@ func eat(is_good: bool, carbs: int = 1):
 		if health > 0:
 			health -= 3
 
-func speak(text):
-	Event.emit_signal('character_spoke', 'Demon', text)
+
+func speak(text := '', time_to_disappear := 0):
+	Event.emit_signal('character_spoke', self, text, time_to_disappear)
+	$TalkingBubble.appear()
+
+
+# Sirve para disparar comportamientos cuando se ha completado un diálogo
+func spoke():
+	$TalkingBubble.appear(false)
+
+
+func _on_area_entered(other):
+	if Data.get_data(Data.CURRENT_SCENE) != 'World': return
+
+	if other.get_name() == 'PlayerArea':
+		if not first_visit:
+			speak(tr("Demon_Greet"))
+		else:
+			speak(tr("Saludos, me alimentas o me muero :("))
+			$Timer.start()
+			first_visit = false
+
+
+func _on_area_exited(other):
+	if Data.get_data(Data.CURRENT_SCENE) != 'World': return
+
+	if other.get_name() == 'PlayerArea':
+		speak(tr("Demon_Goodbye"))
 
 
 func _check_food(body: Node) -> void:
@@ -109,6 +124,7 @@ func _check_food(body: Node) -> void:
 		eat(pickable.is_good, pickable.carbs)
 		pickable.queue_free()
 		particle.queue_free()
+
 
 func _on_Timer_timeout():
 	if not immortal:

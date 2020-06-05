@@ -37,7 +37,7 @@ func _ready() -> void:
 # 'ui_accept'
 func _show_intro() -> void:
 	if _count < 0:
-		Event.emit_signal('character_spoke', '', '')
+		Event.emit_signal('character_spoke')
 		Event.emit_signal("ChangeScene", First_Level)
 		return
 
@@ -65,7 +65,7 @@ func _show_intro() -> void:
 		_waiting_sacrifice = true
 		$Pickable.toggle_collision()
 		$Pickable.connect('tree_exited', self, '_sacrifice_done')
-		Event.emit_signal('character_spoke', '', '')
+		Event.emit_signal('character_spoke')
 
 func _get_intro_msg() -> String:
 	_count += 1
@@ -74,17 +74,13 @@ func _get_intro_msg() -> String:
 func _show_dialogue_msg() -> void:
 	match _count:
 		1, 3, 5, 7, 9, 10, 11:
-			Event.emit_signal(
-				'character_spoke', 'Demon', tr('DEMON_0%d' % _demon_count), -1
-			)
+			$Demon.speak(tr('DEMON_0%d' % _demon_count), -1)
 			if _demon_count == 5:
 				$Pickable.show()
 				$Pickable.toggle_collision(false)
 			_demon_count += 1
 		2, 4, 6, 8:
-			Event.emit_signal(
-				'character_spoke', 'Teo', tr('TEO_0%d' % _teo_count), -1
-			)
+			$Player.speak(tr('TEO_0%d' % _teo_count), -1)
 			_teo_count += 1
 	_count += 1
 
@@ -159,4 +155,5 @@ func _show_intro_msg(msg := '', fade_in_time := 0.8) -> void:
 	yield(get_tree().create_timer(wait), 'timeout')
 
 	_skipped = false
-	Event.emit_signal('continue_requested')
+
+	if _in_intro: Event.emit_signal('continue_requested')

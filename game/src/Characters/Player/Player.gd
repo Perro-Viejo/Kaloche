@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+export(Color) var dialog_color
+
 const STATES = {
 	WALK = 'Walk',
 	IDLE = 'Idle',
@@ -101,3 +103,13 @@ func _on_frame_changed() -> void:
 
 func play_fs(id):
 	Event.emit_signal('play_requested', "Player", id)
+
+
+func speak(text := '', time_to_disappear := 0):
+	Event.emit_signal('character_spoke', self, text, time_to_disappear)
+	$TalkingBubble.appear()
+
+
+# Sirve para disparar comportamientos cuando se ha completado un diálogo
+func spoke():
+	$TalkingBubble.appear(false)
