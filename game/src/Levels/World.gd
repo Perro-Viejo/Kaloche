@@ -11,14 +11,15 @@ onready var _player: Player = $WorldLayer/Player
 onready var _tween: Tween = $WorldLayer/Tween
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
+	# Establecer valores por defecto
+	self._current_zone = ''
+
 	# Conectar señales de las zonas del mundo pokémon
 	_zones.connect('area_shape_entered', self, '_zone_entered', [ true ])
 	_zones.connect('area_shape_exited', self, '_zone_entered', [ false ])
 
 	Event.emit_signal('world_entered')
 	Event.emit_signal('play_requested', 'BG', 'Sierra')
-	# Establecer valores por defecto
-	self._current_zone = ''
 
 	# Verificar si el personaje está dentro de una zona
 	yield(get_tree().create_timer(0.2), 'timeout')
@@ -41,6 +42,9 @@ func _zone_entered(
 		self_shape: int,
 		entered: bool
 	) -> void:
+	# Resuelve error de zoom de cámara al iniciar el juego --------------------
+	if area.get_parent().name != 'Player': return
+	# -------------------------------------------------------------------------
 
 	var zone: Zone = _zones.get_child(self_shape) as Zone
 

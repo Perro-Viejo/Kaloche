@@ -16,7 +16,7 @@ func _ready():
 	area_center = $Center.get_global_position()
 	$Area2D.connect('area_entered', self, '_on_area_entered')
 	$Area2D.connect('area_exited', self, '_on_area_exited')
-	
+
 func _process(delta):
 	if listener:
 		distance_to_center = listener.get_global_position().distance_to(area_center)

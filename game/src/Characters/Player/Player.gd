@@ -38,7 +38,8 @@ func change_zoom(out: bool = true) -> void:
 		Event.emit_signal('play_requested', 'UI', 'ZoomOut')
 	else:
 		Event.emit_signal('play_requested', 'UI', 'ZoomIn')
-	# Hacer que camine más rápido si está afuera
+
+	$Tween.remove_all()
 	$Tween.interpolate_property(
 		cam,
 		'zoom',

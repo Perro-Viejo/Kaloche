@@ -30,9 +30,6 @@ func _ready():
 	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
 
-	if animate_on_start:
-		start_animation()
-
 
 func _process(delta: float) -> void:
 	if not _hud:
@@ -45,6 +42,7 @@ func _process(delta: float) -> void:
 
 
 func start_animation():
+	if not is_inside_tree(): return
 	if has_node('Timer'): $Timer.start()
 	typing = true
 
@@ -104,6 +102,7 @@ func _on_timer_timeout():
 			_current_disappear = 0.0
 			self.text = ''
 			hide()
+			_current_character = null
 
 
 func _on_character_spoke(
@@ -111,15 +110,18 @@ func _on_character_spoke(
 	):
 	if typing:
 		stop()
+		if not is_inside_tree(): return
 		yield(get_tree().create_timer(.3), 'timeout')
 
 	# Definir el color del texto
 	var text_color: Color = Color('#222323')
 	if character and character.get('dialog_color'):
-			text_color = character.dialog_color
+		text_color = character.dialog_color
 	add_color_override("font_color", text_color)
 
-	if _current_character and  _current_character.has_method('spoke'):
+	if _current_character \
+		and _current_character.is_inside_tree() \
+		and _current_character.has_method('spoke'):
 		_current_character.spoke()
 
 	if message != '':

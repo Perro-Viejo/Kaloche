@@ -2,17 +2,24 @@ extends Node2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export(float) var y_offset := 16.0
 
+var _wave := '[wave amp=14 freq=8].[/wave][wave amp=14 freq=9].[/wave][wave amp=14 freq=10].[/wave]'
+
 onready var _dflt_pos := self.position
 onready var _trgt_pos := Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	modulate.a = 0
+
+	# Conectarse a señales de hijos
+	$Tween.connect('tween_completed', self, '_on_Tween_completed')
+
 	hide()
 
 
 func appear(_show := true) -> void:
 	if not visible:
 		show()
+		$RichTextLabel.append_bbcode(_wave)
 
 	$Tween.interpolate_property(
 		self,
@@ -33,3 +40,9 @@ func appear(_show := true) -> void:
 		Tween.EASE_OUT
 	)
 	$Tween.start()
+
+
+func _on_Tween_completed(obj: Object, key: NodePath) -> void:
+	if self.modulate.a == 0.0:
+		$RichTextLabel.clear()
+		hide()
