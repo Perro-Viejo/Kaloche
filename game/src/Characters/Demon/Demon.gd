@@ -12,8 +12,8 @@ var max_health
 var max_size = 1
 
 var first_visit = true
-
-#onready var _feed_shape: RectangleShape2D = $FeedArea/CollisionShape2D.shape
+#
+onready var _feed_shape: CircleShape2D = $FeedArea/CollisionShape2D.shape
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	$InteractionArea.connect('area_entered', self, '_on_area_entered')
@@ -25,6 +25,8 @@ func _ready():
 
 func _process(delta):
 	$AnimatedSprite.scale = Vector2.ONE * range_lerp(health, 0, max_health, 0, max_size)
+	$FeedArea/CollisionShape2D/Feed.scale = $AnimatedSprite.scale
+	_feed_shape.radius = lerp(1, 14, $AnimatedSprite.scale.y)
 
 
 func eat(is_good: bool, carbs: int = 1):
@@ -40,8 +42,6 @@ func eat(is_good: bool, carbs: int = 1):
 			health += 10
 #		Todavia no se si quitar este
 #		eaten_items += carbs
-
-#		_feed_shape.extents.x += carbs * 5
 
 		yield(get_tree().create_timer(0.2), 'timeout')
 		Event.emit_signal('play_requested','Demon', 'Grow')
@@ -134,4 +134,4 @@ func _on_Timer_timeout():
 			print('memori')
 			queue_free()
 			$Timer.stop()
-		print(health)
+#		print(health)

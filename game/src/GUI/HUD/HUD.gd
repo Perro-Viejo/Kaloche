@@ -42,7 +42,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func update_zone_name(name: String = '') -> void:
-	Event.emit_signal('play_requested', 'UI', 'Zone')
 	_zone_name.show()
 	if name == '':
 		_zone_name.text = ''
@@ -58,6 +57,7 @@ func update_zone_name(name: String = '') -> void:
 		_zone_name.rect_position.y = _dflt_pos.zone_name.y
 
 	_zone_name.text = name
+	Event.emit_signal('play_requested', 'UI', 'Zone')
 
 	if appear_anim:
 		$Tween.interpolate_property(
@@ -82,6 +82,7 @@ func update_zone_name(name: String = '') -> void:
 	)
 
 	$Tween.start()
+	
 
 
 func show_continue(wait: int = 0) -> void:

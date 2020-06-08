@@ -2247,7 +2247,6 @@ tile_data = PoolIntArray( -5832864, 14, 65540, -5832863, 14, 65540, -5832862, 14
 
 [node name="Demon" parent="WorldLayer" instance=ExtResource( 5 )]
 position = Vector2( 739.331, -424.034 )
-immortal = false
 
 [node name="Player" parent="WorldLayer" instance=ExtResource( 1 )]
 position = Vector2( 735.652, -169.278 )
@@ -2365,7 +2364,7 @@ __meta__ = {
 }
 max_distance = 450.0
 min_distance = 280.0
-max_volume = -2.0
+max_volume = -6.0
 
 [node name="BG" type="AudioStreamPlayer" parent="WorldLayer/Zones/River/BG_Area2"]
 stream = ExtResource( 22 )
@@ -2404,7 +2403,7 @@ __meta__ = {
 }
 max_distance = 220.0
 min_distance = 120.0
-max_volume = -2.0
+max_volume = -8.0
 
 [node name="BG" type="AudioStreamPlayer" parent="WorldLayer/Zones/River/BG_Area4"]
 stream = ExtResource( 22 )
@@ -2449,6 +2448,7 @@ __meta__ = {
 }
 max_distance = 110.0
 min_distance = 70.0
+max_volume = -7.0
 
 [node name="BG" type="AudioStreamPlayer" parent="WorldLayer/Zones/Lake/BG_Area3"]
 stream = ExtResource( 22 )
@@ -2499,7 +2499,7 @@ position = Vector2( -487, -316 )
 img = ExtResource( 12 )
 
 [node name="Perrito" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 785.042, -320.924 )
+position = Vector2( 775.638, -431.403 )
 img = ExtResource( 26 )
 
 [node name="Perrito2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
@@ -2507,19 +2507,19 @@ position = Vector2( 792.791, -298.26 )
 img = ExtResource( 26 )
 
 [node name="Perrito3" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 673.685, -197.581 )
+position = Vector2( 681.475, -257.308 )
 img = ExtResource( 26 )
 
 [node name="Perrito4" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 641.288, -292.114 )
+position = Vector2( 700.819, -422.837 )
 img = ExtResource( 26 )
 
 [node name="Perrito5" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 638.708, -223.116 )
+position = Vector2( 773.617, -387.252 )
 img = ExtResource( 26 )
 
 [node name="Perrito6" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-position = Vector2( 685.151, -286.808 )
+position = Vector2( 705.86, -393.528 )
 img = ExtResource( 26 )
 
 [node name="Roquita" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
