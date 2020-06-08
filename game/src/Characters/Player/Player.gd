@@ -56,10 +56,6 @@ func change_zoom(out: bool = true) -> void:
 
 func play_animation(state: String = '') -> void:
 	match state:
-		STATES.GRAB:
-			sprite.play('Grab')
-		STATES.DROP:
-			sprite.play('Drop')
 		STATES.WALK:
 			if not grabbing:
 				sprite.play('Run')

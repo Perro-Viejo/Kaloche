@@ -41,7 +41,7 @@ func _physics_process(delta) -> void:
 
 	if _owner.grabbing and _owner.can_grab:
 		_owner.can_grab.global_position = _owner.global_position
-		_owner.can_grab.position.y -= 8
+		_owner.can_grab.position.y -= 7
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
