@@ -23,7 +23,7 @@ func _process(delta):
 		if distance_to_center <= max_distance and distance_to_center >= min_distance:
 			if $BG.get_volume_db() <= 0:
 				$BG.set_volume_db(range_lerp((max_distance - distance_to_center), 0, (max_distance - min_distance), -60, max_volume))
-				Event.emit_signal('change_volume', 'BG', 'Sierra', range_lerp($BG.get_volume_db(), -60, 0, 0, -18))
+				Event.emit_signal('change_volume', 'BG', 'Sierra', range_lerp($BG.get_volume_db(), -60, 0, -5, -18))
 		elif distance_to_center <= min_distance:
 			$BG.set_volume_db(0)
 func _on_area_entered(other):

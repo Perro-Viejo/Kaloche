@@ -10,6 +10,7 @@ const MAGIC_FIRE = preload("res://src/Particles/MagicFireParticle.tscn")
 var eaten_items = 0
 var max_health
 var max_size = 1
+var previous_text = ''
 
 var first_visit = true
 #
@@ -29,14 +30,15 @@ func _process(delta):
 	_feed_shape.radius = lerp(1, 14, $AnimatedSprite.scale.y)
 
 
-func eat(is_good: bool, carbs: int = 1):
+func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false):
 	eaten_items += 1
 	Event.emit_signal('play_requested','Demon', 'Eat')
 
 	if in_intro:
 		Event.emit_signal('intro_continued')
 		return
-
+	
+	
 	if is_good:
 		if health < max_health:
 			health += 10
@@ -45,18 +47,40 @@ func eat(is_good: bool, carbs: int = 1):
 
 		yield(get_tree().create_timer(0.2), 'timeout')
 		Event.emit_signal('play_requested','Demon', 'Grow')
+		if sacred:
+			max_size = max_size * 2
+			max_health = max_health * 2
+			health = max_health
+		match name:
+			'Iguana':
+				speak(tr("Mmm... sabrosa y protectora Teyú"))
+			'Jaguar':
+				speak(tr("Yum Yum... puedo saborear los misterios ocultos del Jaguar"))
+			'Cricket':
+				speak(tr("No tuviste suerte esta vez Grillito"))
+			'Hen':
+				speak(tr("¡Deliciosa gallina! Nada sagrada por cierto... -.-"))
+			'Mico':
+				speak(tr("Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"))
+			_:
+				speak(tr("Demon_Eat_pos"))
+		$Timer.set_paused(false)
 	else:
-#		_feed_shape.extents.x -= carbs * 5
-
 		if eaten_items > 0:
 			eaten_items -= carbs
 		if health > 0:
 			health -= 3
+		speak(tr("Demon_Eat_neg"))
 
 
 func speak(text := '', time_to_disappear := 0):
-	Event.emit_signal('character_spoke', self, text, time_to_disappear)
-	$TalkingBubble.appear()
+	
+	if text == previous_text:
+		return
+	else:
+		previous_text = text
+		Event.emit_signal('character_spoke', self, text, time_to_disappear)
+		$TalkingBubble.appear()
 
 
 # Sirve para disparar comportamientos cuando se ha completado un diálogo
@@ -84,9 +108,11 @@ func _on_area_exited(other):
 
 
 func _check_food(body: Node) -> void:
+	$Timer.set_paused(true)
 	if body.is_in_group('Pickable') and not (body as Pickable).being_grabbed:
 		var pickable: Pickable = body as Pickable
 		var particle = MAGIC_FIRE.instance()
+		var sacred = false
 		add_child(particle)
 		particle.set_global_position(pickable.get_position())
 		particle.scale = scale
@@ -94,34 +120,11 @@ func _check_food(body: Node) -> void:
 		Event.emit_signal('play_requested','Demon', 'Ignite')
 		pickable.set_z_index(-1)
 		pickable.set_monitoring(false)
-		match pickable.name:
-			'Iguana':
-				speak(tr("Mmm... sabrosa y protectora Teyú"))
-				max_size = max_size * 2
-				max_health = max_health * 2
-				health = max_health
-			'Jaguar':
-				speak(tr("Yum Yum... puedo saborear los misterios ocultos del Jaguar"))
-				max_size = max_size * 2
-				max_health = max_health * 2
-				health = max_health
-			'Cricket':
-				speak(tr("No tuviste suerte esta vez Grillito"))
-				max_size = max_size * 2
-				max_health = max_health * 2
-				health = max_health
-			'Hen':
-				speak(tr("¡Deliciosa gallina! Nada sagrada por cierto... -.-"))
-			'Mico':
-				speak(tr("Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"))
-			_:
-				if pickable.is_good:
-					speak(tr("Demon_Eat_pos"))
-				else:
-					speak(tr("Demon_Eat_neg"))
 		yield(get_tree().create_timer(3), 'timeout')
+		if pickable.is_in_group('Sacred'):
+			sacred = true
 		Event.emit_signal('stop_requested','Demon', 'Burn')
-		eat(pickable.is_good, pickable.carbs)
+		eat(pickable.is_good, pickable.carbs, pickable.name, sacred)
 		pickable.queue_free()
 		particle.queue_free()
 
@@ -134,4 +137,4 @@ func _on_Timer_timeout():
 			print('memori')
 			queue_free()
 			$Timer.stop()
-#		print(health)
+		print(health)

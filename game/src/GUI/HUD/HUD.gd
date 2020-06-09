@@ -57,7 +57,8 @@ func update_zone_name(name: String = '') -> void:
 		_zone_name.rect_position.y = _dflt_pos.zone_name.y
 
 	_zone_name.text = name
-	Event.emit_signal('play_requested', 'UI', 'Zone')
+#	Dejare este sonido comentado hasta ver por que genera el clicks
+#	Event.emit_signal('play_requested', 'UI', 'Zone')
 
 	if appear_anim:
 		$Tween.interpolate_property(

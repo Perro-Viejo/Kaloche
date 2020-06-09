@@ -2549,11 +2549,15 @@ position = Vector2( 0, -1 )
 position = Vector2( 703.065, -244.583 )
 img = ExtResource( 4 )
 
-[node name="Iguana" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+[node name="Iguana" parent="WorldLayer/Objects" groups=[
+"Sacred",
+] instance=ExtResource( 6 )]
 position = Vector2( 742.304, -250.914 )
 img = ExtResource( 11 )
 
-[node name="Jaguar" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
+[node name="Jaguar" parent="WorldLayer/Objects" groups=[
+"Sacred",
+] instance=ExtResource( 6 )]
 position = Vector2( 786.218, -243.802 )
 img = ExtResource( 7 )
 
@@ -2622,7 +2626,9 @@ position = Vector2( -1021, 564 )
 img = ExtResource( 16 )
 tr_code = "Rock"
 
-[node name="Cricket" parent="WorldLayer/Objects/RiverRocks/Rock1" instance=ExtResource( 6 )]
+[node name="Cricket" parent="WorldLayer/Objects/RiverRocks/Rock1" groups=[
+"Sacred",
+] instance=ExtResource( 6 )]
 visible = false
 img = ExtResource( 14 )
 on_free = "F_CRICKET_GOD"

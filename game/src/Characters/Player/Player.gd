@@ -94,7 +94,7 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 func _on_frame_changed() -> void:
 	if $AnimatedSprite.animation == 'Run' or $AnimatedSprite.animation == 'RunGrab':
 		match $AnimatedSprite.frame:
-			0,3:
+			0,2:
 				play_fs(fs_id)
 
 

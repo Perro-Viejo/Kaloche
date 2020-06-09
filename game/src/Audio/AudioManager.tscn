@@ -43,6 +43,11 @@ stream = ExtResource( 8 )
 [node name="FS_Dirt" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -6.0
+random_volume = true
+min_volume = -5.0
+random_pitch = true
+min_pitch = -5.0
+max_pitch = 4.0
 
 [node name="FS_Dirt" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
 stream = ExtResource( 24 )
@@ -55,7 +60,13 @@ stream = ExtResource( 22 )
 
 [node name="fs_grass" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
-volume = -4.0
+volume = -8.0
+random_volume = true
+min_volume = -5.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 2.0
 
 [node name="fs_grass" type="AudioStreamPlayer" parent="Player/fs_grass"]
 stream = ExtResource( 17 )
@@ -68,7 +79,12 @@ stream = ExtResource( 18 )
 
 [node name="FS_Rock" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
-volume = -6.0
+volume = -8.0
+random_volume = true
+min_volume = -3.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 1.0
 
 [node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 16 )
@@ -81,7 +97,12 @@ stream = ExtResource( 25 )
 
 [node name="FS_Water" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
-volume = -6.0
+volume = -10.0
+min_volume = -6.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -5.0
+max_pitch = 4.0
 
 [node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water"]
 stream = ExtResource( 15 )
@@ -147,3 +168,4 @@ pitch_scale = 3.0
 
 [node name="Sierra" type="AudioStreamPlayer" parent="BG"]
 stream = ExtResource( 28 )
+volume_db = -5.0

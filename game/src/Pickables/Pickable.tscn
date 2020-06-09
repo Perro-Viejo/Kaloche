@@ -6,8 +6,6 @@
 [ext_resource path="res://assets/images/gui/bubble.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/outline.png" type="Texture" id=5]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 5 )
 
@@ -45,9 +43,9 @@ texture = ExtResource( 1 )
 visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = -14.0
+margin_left = -31.0
 margin_top = -18.0
-margin_right = 14.0
+margin_right = 3.0
 margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +59,7 @@ size_flags_vertical = 3
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.133333, 0.137255, 0.137255, 1 )
-text = "P_Pickable"
+text = "P_PICKABLE"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
