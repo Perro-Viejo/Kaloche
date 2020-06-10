@@ -37,8 +37,8 @@ func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false)
 	if in_intro:
 		Event.emit_signal('intro_continued')
 		return
-	
-	
+
+
 	if is_good:
 		if health < max_health:
 			health += 10
@@ -74,7 +74,7 @@ func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false)
 
 
 func speak(text := '', time_to_disappear := 0):
-	
+
 	if text == previous_text:
 		return
 	else:

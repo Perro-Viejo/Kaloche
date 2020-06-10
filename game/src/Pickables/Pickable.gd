@@ -14,7 +14,6 @@ var _hides: Pickable
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
-	$Bubble.rect_position.x -= ($Bubble.rect_size / 2).x
 
 	connect('area_entered', self, '_check_collision', [ true ])
 	connect('area_exited', self, '_check_collision')

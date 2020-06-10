@@ -83,7 +83,7 @@ func update_zone_name(name: String = '') -> void:
 	)
 
 	$Tween.start()
-	
+
 
 
 func show_continue(wait: int = 0) -> void:
