@@ -14,8 +14,13 @@ signal Exit
 signal Refocus
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Perro Viejo ░░░░
-signal zone_entered(name)
+
+#Para el dialogo
 signal character_spoke(character, message, time_to_disappear)
+signal dialog_sequence(messages)
+signal dialog_event(playing, countdown, duration)
+
+signal zone_entered(name)
 signal music_requested(stream) # Sólo mientras tanto
 signal music_stoped() # Sólo mientras tanto
 signal intro_shown(msg)

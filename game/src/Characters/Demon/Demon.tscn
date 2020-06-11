@@ -10,7 +10,7 @@
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 48.0
+radius = 114.619
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -153,11 +153,12 @@ texture = ExtResource( 5 )
 collision_layer = 4
 
 [node name="Area" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2( 0, 30 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 31 )
-frame = 11
+frame = 17
 playing = true
 offset = Vector2( 0, -6 )
 

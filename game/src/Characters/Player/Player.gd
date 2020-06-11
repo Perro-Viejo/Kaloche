@@ -16,6 +16,7 @@ var can_grab: Area2D = null
 var grabbing: bool = false
 var on_ground: bool = false
 var fs_id: String = 'FS_Dirt'
+var foot = 'L'
 
 onready var cam: Camera2D = $Camera2D
 onready var sprite: AnimatedSprite = $AnimatedSprite
@@ -96,6 +97,16 @@ func _on_frame_changed() -> void:
 		match $AnimatedSprite.frame:
 			0,2:
 				play_fs(fs_id)
+				if fs_id == 'FS_Water':
+					match foot:
+						'L':
+							$Splash_L.set_emitting(true)
+							$Splash_R.restart()
+							foot = 'R'
+						'R':
+							$Splash_R.set_emitting(true)
+							$Splash_L.restart()
+							foot = 'L'
 
 
 func play_fs(id):

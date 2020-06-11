@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -12,35 +12,35 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 10, 9 )
+region = Rect2( 120, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 10, 0, 10, 9 )
+region = Rect2( 130, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 20, 0, 10, 9 )
+region = Rect2( 140, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 0, 10, 9 )
+region = Rect2( 150, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 10, 9 )
+region = Rect2( 0, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 90, 0, 10, 9 )
+region = Rect2( 10, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 100, 0, 10, 9 )
+region = Rect2( 20, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 110, 0, 10, 9 )
+region = Rect2( 30, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
@@ -60,30 +60,30 @@ region = Rect2( 70, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 0, 10, 9 )
+region = Rect2( 80, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
-region = Rect2( 130, 0, 10, 9 )
+region = Rect2( 90, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 140, 0, 10, 9 )
+region = Rect2( 100, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 0, 10, 9 )
+region = Rect2( 110, 0, 10, 9 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "Idle",
+"name": "RunGrab",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "Run",
+"name": "Idle",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
@@ -93,7 +93,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
-"name": "RunGrab",
+"name": "Run",
 "speed": 10.0
 } ]
 
@@ -105,6 +105,12 @@ radius = 3.06255
 
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 1, 0.5 )
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.19548, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=22]
+colors = PoolColorArray( 0.239216, 0.431373, 0.439216, 1, 0.364706, 0.870588, 0.529412, 1 )
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 5
@@ -171,3 +177,47 @@ shape = SubResource( 20 )
 [node name="TalkingBubble" parent="." instance=ExtResource( 1 )]
 visible = false
 y_offset = 12.0
+
+[node name="Splash_L" type="CPUParticles2D" parent="."]
+position = Vector2( -0.813303, 0 )
+z_index = -1
+emitting = false
+amount = 12
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.3
+explosiveness = 0.72
+randomness = 0.54
+lifetime_randomness = 0.55
+local_coords = false
+emission_shape = 4
+emission_points = PoolVector2Array( 0, 5.6, 2, 5.6, -2, 5.6, 0, 5.6 )
+emission_normals = PoolVector2Array( -12, -32, 6, -20, -8, -12, 11, -18 )
+emission_colors = PoolColorArray(  )
+spread = 35.0
+gravity = Vector2( 0, 100 )
+scale_amount = 0.8
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )
+
+[node name="Splash_R" type="CPUParticles2D" parent="."]
+position = Vector2( 0.739365, 0 )
+z_index = -1
+emitting = false
+amount = 12
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.3
+explosiveness = 0.72
+randomness = 0.54
+lifetime_randomness = 0.55
+local_coords = false
+emission_shape = 4
+emission_points = PoolVector2Array( 0, 5.6, 2, 5.6, -2, 5.6, 0, 5.6 )
+emission_normals = PoolVector2Array( -12, -32, 6, -20, -8, -12, 11, -18 )
+emission_colors = PoolColorArray(  )
+spread = 35.0
+gravity = Vector2( 0, 100 )
+scale_amount = 0.8
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )

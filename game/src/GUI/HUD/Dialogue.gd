@@ -18,6 +18,8 @@ var _text: String
 var _hud: Hud
 var _forced_update := false
 var _current_character: Node2D
+var _dialog_sequence := []
+var _sequence_step := 0
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	hide()
@@ -27,6 +29,7 @@ func _ready():
 
 	Event.connect('character_spoke', self, '_on_character_spoke')
 	Event.connect('dialog_skipped', self, 'stop')
+	Event.connect('dialog_sequence', self, '_format_sequence')
 	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
 
@@ -45,9 +48,9 @@ func start_animation():
 	if not is_inside_tree(): return
 	if has_node('Timer'): $Timer.start()
 	typing = true
-
-
+	
 func set_text(text):
+	Event.emit_signal('play_requested', 'UI', 'Dialogue')
 	set_defaults()
 
 	if text != '':
@@ -104,16 +107,20 @@ func _on_timer_timeout():
 			hide()
 			_current_character = null
 
+func _format_sequence(messages: Array) -> void:
+	_on_character_spoke(null, PoolStringArray(messages).join(','))
 
 func _on_character_spoke(
-		character: Node2D = null, message := '', time_to_disappear := 0.0
+		character: Node2D = null, message :String = '', time_to_disappear := 0.0
 	):
 	if typing:
 		stop()
 		if not is_inside_tree(): return
 		yield(get_tree().create_timer(.3), 'timeout')
-
+	
 	# Definir el color del texto
+	if character:
+		print (character.get_name().to_upper())
 	var text_color: Color = Color('#222323')
 	if character and character.get('dialog_color'):
 		text_color = character.dialog_color
@@ -123,11 +130,17 @@ func _on_character_spoke(
 		and _current_character.is_inside_tree() \
 		and _current_character.has_method('spoke'):
 		_current_character.spoke()
-
+	
+	if message.find(',') > -1:
+			_sequence_step = 0
+			_dialog_sequence = message.split(',')
+			show()
+			set_text(_dialog_sequence[_sequence_step])
+			return
+	
 	if message != '':
 		_current_character = character
 		show()
-		Event.emit_signal('play_requested', 'UI', 'Dialogue')
 		set_text(message)
 
 		_current_disappear = time_to_disappear
@@ -141,11 +154,21 @@ func _on_character_spoke(
 		hide()
 
 
+
 # Detiene el temporizador y resetea el contador de caracteres escritos a cero
 # pues el texto ya se está mostrando completo.
 func _finish() -> void:
 	_count = 0
 	$Timer.stop()
+	if _sequence_step < _dialog_sequence.size() - 1:
+			if.is_inside_tree():
+				yield(get_tree().create_timer(.4), 'timeout')
+			_sequence_step += 1
+			set_text(_dialog_sequence[_sequence_step])
+			return
+	
+	_dialog_sequence.clear()
+	_sequence_step = 0
 
 	if typing:
 		typing = false

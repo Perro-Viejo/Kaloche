@@ -95,7 +95,13 @@ func _on_area_entered(other):
 		if not first_visit:
 			speak(tr("Demon_Greet"))
 		else:
-			speak(tr("Saludos, me alimentas o me muero :("))
+			Event.emit_signal('dialog_event', true, 2, 7)
+			Event.emit_signal('dialog_sequence', [
+			'Hola Teotriste',
+			'Siente la emoción de conocer mi nombre...',
+			'^^^Kaloches^^^'
+			])
+#			speak(tr("Saludos, me alimentas o me muero :("))
 			$Timer.start()
 			first_visit = false
 
@@ -116,13 +122,16 @@ func _check_food(body: Node) -> void:
 		add_child(particle)
 		particle.set_global_position(pickable.get_position())
 		particle.scale = scale
+		if pickable.is_in_group('Sacred'):
+			Event.emit_signal('dialog_event', true, .3, 3)
+			sacred = true
+		else:
+			Event.emit_signal('dialog_event', true, .5 , 2.1)
 		Event.emit_signal('play_requested','Demon', 'Burn')
 		Event.emit_signal('play_requested','Demon', 'Ignite')
 		pickable.set_z_index(-1)
 		pickable.set_monitoring(false)
 		yield(get_tree().create_timer(3), 'timeout')
-		if pickable.is_in_group('Sacred'):
-			sacred = true
 		Event.emit_signal('stop_requested','Demon', 'Burn')
 		eat(pickable.is_good, pickable.carbs, pickable.name, sacred)
 		pickable.queue_free()
