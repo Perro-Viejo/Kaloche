@@ -9,10 +9,13 @@ var _current_zone: String setget _set_current_zone
 onready var _zones: Area2D = $WorldLayer/Zones
 onready var _player: Player = $WorldLayer/Player
 onready var _tween: Tween = $WorldLayer/Tween
+onready var _demon: Node2D = find_node('Demon')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	# Establecer valores por defecto
 	self._current_zone = ''
+	_player.show()
+	_demon.show()
 
 	# Conectar señales de las zonas del mundo pokémon
 	_zones.connect('area_shape_entered', self, '_zone_entered', [ true ])

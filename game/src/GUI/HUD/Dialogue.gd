@@ -48,7 +48,7 @@ func start_animation():
 	if not is_inside_tree(): return
 	if has_node('Timer'): $Timer.start()
 	typing = true
-	
+
 func set_text(text):
 	Event.emit_signal('play_requested', 'UI', 'Dialogue')
 	set_defaults()
@@ -122,7 +122,7 @@ func _on_character_spoke(
 		stop()
 		if not is_inside_tree(): return
 		yield(get_tree().create_timer(.3), 'timeout')
-	
+
 	# Definir el color del texto
 	if character:
 		print (character.get_name().to_upper())
@@ -135,7 +135,7 @@ func _on_character_spoke(
 		and _current_character.is_inside_tree() \
 		and _current_character.has_method('spoke'):
 		_current_character.spoke()
-	
+
 	if message != '':
 		_current_character = character
 		show()
@@ -164,7 +164,7 @@ func _finish() -> void:
 			_sequence_step += 1
 			set_text(_dialog_sequence[_sequence_step])
 			return
-	
+
 	_dialog_sequence.clear()
 	_sequence_step = 0
 
