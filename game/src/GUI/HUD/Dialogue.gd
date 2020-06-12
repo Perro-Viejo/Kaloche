@@ -29,7 +29,7 @@ func _ready():
 
 	Event.connect('character_spoke', self, '_on_character_spoke')
 	Event.connect('dialog_skipped', self, 'stop')
-	Event.connect('dialog_sequence', self, '_format_sequence')
+	Event.connect('dialog_sequence', self, '_display_sequence')
 	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
 
@@ -107,8 +107,13 @@ func _on_timer_timeout():
 			hide()
 			_current_character = null
 
-func _format_sequence(messages: Array) -> void:
-	_on_character_spoke(null, PoolStringArray(messages).join(','))
+func _display_sequence(messages: Array) -> void:
+	var message = PoolStringArray(messages).join(',')
+	if message.find(',') > -1:
+			_sequence_step = 0
+			_dialog_sequence = message.split(',')
+			show()
+			set_text(_dialog_sequence[_sequence_step])
 
 func _on_character_spoke(
 		character: Node2D = null, message :String = '', time_to_disappear := 0.0
@@ -130,13 +135,6 @@ func _on_character_spoke(
 		and _current_character.is_inside_tree() \
 		and _current_character.has_method('spoke'):
 		_current_character.spoke()
-	
-	if message.find(',') > -1:
-			_sequence_step = 0
-			_dialog_sequence = message.split(',')
-			show()
-			set_text(_dialog_sequence[_sequence_step])
-			return
 	
 	if message != '':
 		_current_character = character
