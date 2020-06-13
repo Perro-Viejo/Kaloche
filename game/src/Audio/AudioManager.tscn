@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://src/audio/AudioManager.gd" type="Script" id=1]
+[ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/audio/sfx_demon_burn.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sfx_demon_grow.ogg" type="AudioStream" id=4]
@@ -25,7 +25,7 @@
 [ext_resource path="res://assets/audio/fs/fs_rock_02.ogg" type="AudioStream" id=23]
 [ext_resource path="res://assets/audio/fs/fs_dirt_01.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/audio/fs/fs_rock_03.ogg" type="AudioStream" id=25]
-[ext_resource path="res://src/audio/RandomTool.gd" type="Script" id=26]
+[ext_resource path="res://src/Audio/RandomTool.gd" type="Script" id=26]
 [ext_resource path="res://assets/audio/ui_note_dialogue_01.ogg" type="AudioStream" id=27]
 [ext_resource path="res://assets/audio/bg_sierra.ogg" type="AudioStream" id=28]
 
