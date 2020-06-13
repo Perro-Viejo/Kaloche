@@ -165,7 +165,7 @@ func _finish() -> void:
 			set_text(_dialog_sequence[_sequence_step])
 			return
 
-	_dialog_sequence.clear()
+	_dialog_sequence = []
 	_sequence_step = 0
 
 	if typing:
