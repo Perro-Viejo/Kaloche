@@ -53,24 +53,24 @@ func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false)
 			health = max_health
 		match name:
 			'Iguana':
-				speak(tr("Mmm... sabrosa y protectora Teyú"))
+				speak(tr("DEMON_EAT_IGUANA"))
 			'Jaguar':
-				speak(tr("Yum Yum... puedo saborear los misterios ocultos del Jaguar"))
+				speak(tr("DEMON_EAT_JAGUAR"))
 			'Cricket':
-				speak(tr("No tuviste suerte esta vez Grillito"))
+				speak(tr("DEMON_EAT_CRICKET"))
 			'Hen':
-				speak(tr("¡Deliciosa gallina! Nada sagrada por cierto... -.-"))
+				speak(tr("DEMON_EAT_HEN"))
 			'Mico':
-				speak(tr("Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"))
+				speak(tr("DEMON_EAT_MONKEY"))
 			_:
-				speak(tr("Demon_Eat_pos"))
+				speak(tr("DEMON_EAT_POS"))
 		$Timer.set_paused(false)
 	else:
 		if eaten_items > 0:
 			eaten_items -= carbs
 		if health > 0:
 			health -= 3
-		speak(tr("Demon_Eat_neg"))
+		speak(tr("DEMON_EAT_NEG"))
 
 
 func speak(text := '', time_to_disappear := 0):
@@ -93,13 +93,13 @@ func _on_area_entered(other):
 
 	if other.get_name() == 'PlayerArea':
 		if not first_visit:
-			speak(tr("Demon_Greet"))
+			speak(tr("DEMON_GREET"))
 		else:
 			Event.emit_signal('dialog_event', true, 2, 7)
 			Event.emit_signal('dialog_sequence', [
-			'Hola Teotriste',
-			'Siente la emoción de conocer mi nombre...',
-			'^^^Kaloches^^^'
+			'DEMON_SALUTE_01',
+			'DEMON_SALUTE_02',
+			'DEMON_SALUTE_03'
 			])
 #			speak(tr("Saludos, me alimentas o me muero :("))
 			$Timer.start()
@@ -110,7 +110,7 @@ func _on_area_exited(other):
 	if Data.get_data(Data.CURRENT_SCENE) != 'World': return
 
 	if other.get_name() == 'PlayerArea':
-		speak(tr("Demon_Goodbye"))
+		speak(tr("DEMON_GOODBYE"))
 
 
 func _check_food(body: Node) -> void:

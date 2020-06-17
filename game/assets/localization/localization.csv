@@ -31,10 +31,18 @@ DEFAULT,Default,Defecto
 USE_NEW_CONTROLS,Use new control!,Usar nuevos controles!
 CANCEL,Cancel,Cancelar
 LANGUAGES,Languages,Idiomas
-Demon_Greet,Hi Bitchy Boy,Hola mi pex
-Demon_Goodbye,Bai Bai,Chau
-Demon_Eat_pos,Yum Yum,Rico rico :3!!
-Demon_Eat_neg,Nein,In nomine patris T-T!!!
+DEMON_SALUTE_01,Hi Teosad,Hola Teotriste
+DEMON_SALUTE_02,Fear me for I am...,Siente la emoción de conocer mi nombre...
+DEMON_SALUTE_03,^^^Kaloching^^^,^^^Kaloches^^^
+DEMON_GREET,Hi Bitchy Boy,Hola mi pex
+DEMON_GOODBYE,Bai Bai,Chau
+DEMON_EAT_POS,Yum Yum,Rico rico :3!!
+DEMON_EAT_NEG,Nein,In nomine patris T-T!!!
+DEMON_EAT_IGUANA,Nicy lizardo,Mmm... sabrosa y protectora Teyú
+DEMON_EAT_JAGUAR,Yum Yum... tasty cat,Yum Yum... puedo saborear los misterios ocultos del Jaguar
+DEMON_EAT_CRICKET,No luck for pity cricker,No tuviste suerte esta vez Grillito
+DEMON_EAT_HEN,Kentucky fried chicken,¡Deliciosa gallina! Nada sagrada por cierto... -.-
+DEMON_EAT_MONKEY,I'm a eat the ape!,"Es muy sabio el viejo macaco, pero eso no lo hace sagrado... -.-"
 P_ROCK,Rock,Piedra
 P_MICO,Mico,Macaco
 P_TABLE,Table,Mesa
