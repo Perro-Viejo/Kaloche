@@ -20,6 +20,16 @@ var _forced_update := false
 var _current_character: Node2D
 var _dialog_sequence := []
 var _sequence_step := 0
+# Cosas del Godot Dialog System ---- {
+var _story_reader_class := load('res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd')
+var _stories_es := load('res://assets/stories/baked_stories_es.tres')
+var _did := 0
+var _nid := 0
+var _final_nid := 0
+# } ----
+var _wait := false
+
+onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	hide()
@@ -27,9 +37,16 @@ func _ready():
 	default_position = get_position()
 	default_size = get_size()
 
+	match TranslationServer.get_locale():
+		_:
+			_story_reader.read(_stories_es)
+
 	Event.connect('character_spoke', self, '_on_character_spoke')
 	Event.connect('dialog_skipped', self, 'stop')
 	Event.connect('dialog_sequence', self, '_display_sequence')
+	Event.connect('dialog_requested', self, '_play_dialog')
+	Event.connect('dialog_continued', self, '_continue_dialog')
+
 	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
 
@@ -124,8 +141,6 @@ func _on_character_spoke(
 		yield(get_tree().create_timer(.3), 'timeout')
 
 	# Definir el color del texto
-	if character:
-		print (character.get_name().to_upper())
 	var text_color: Color = Color('#222323')
 	if character and character.get('dialog_color'):
 		text_color = character.dialog_color
@@ -134,6 +149,7 @@ func _on_character_spoke(
 	if _current_character \
 		and _current_character.is_inside_tree() \
 		and _current_character.has_method('spoke'):
+		# Notificar al personaje que ya terminó de hablar
 		_current_character.spoke()
 
 	if message != '':
@@ -158,15 +174,58 @@ func _on_character_spoke(
 func _finish() -> void:
 	_count = 0
 	$Timer.stop()
+
+	if typing:
+		typing = false
+
+	if _wait:
+		_wait = false
+		Event.emit_signal('dialog_paused')
+
 	if _sequence_step < _dialog_sequence.size() - 1:
-			if.is_inside_tree():
-				yield(get_tree().create_timer(.4), 'timeout')
-			_sequence_step += 1
-			set_text(_dialog_sequence[_sequence_step])
-			return
+		if .is_inside_tree():
+			yield(get_tree().create_timer(.4), 'timeout')
+		_sequence_step += 1
+		set_text(_dialog_sequence[_sequence_step])
+		return
 
 	_dialog_sequence = []
 	_sequence_step = 0
 
-	if typing:
-		typing = false
+
+func _play_dialog(dialog_name: String) -> void:
+	_did = _story_reader.get_did_via_record_name(dialog_name)
+	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
+	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
+	_continue_dialog()
+
+
+func _continue_dialog() -> void:
+	_next_dialog_line()
+
+	if _nid == _final_nid:
+		Event.emit_signal('dialog_finished')
+	else:
+		_play_dialog_line()
+
+
+func _next_dialog_line() -> void:
+	_nid = _story_reader.get_nid_from_slot(_did, _nid, 0)
+
+
+func _play_dialog_line() -> void:
+	var line_txt := _story_reader.get_text(_did, _nid)
+	var line_dic: Dictionary = JSON.parse(line_txt).result
+
+	_wait = false
+	if line_dic.has('wait'):
+		_wait = true
+
+	if line_dic.has('on_start'):
+		Event.emit_signal(line_dic.on_start)
+
+	Event.emit_signal(
+		'line_triggered',
+		(line_dic.actor as String).to_lower(),
+		line_dic.line as String
+	)

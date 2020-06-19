@@ -1,0 +1,120 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "start"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"La luna es oscura, Teotriste.\"
+}"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Nuestros cultivos ya no florecen, los animales\\nmueren en la soledad. Por favor, oh Dios Kuarevachú,\\nayúdame a volver la luz al mundo.\"
+}"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Estoy al borde de la muerte y sin embargo,\\nte atreves a pedirme algo casi imposible.\"
+}"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Mantendré tu fuego vivo, cueste lo que cueste.\\nCruzaré esta Sierra si es necesario.\"
+}"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"No será tan fácil, Teotriste,\\nTendrás que superar mis acertijos y\\ntraer como ofrenda la encomienda que te pido.\"
+}"
+},
+7: {
+"links": {
+0: 8
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Así será.\"
+}"
+},
+8: {
+"links": {
+0: 9
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Pero me lastimarás hasta mi fuego extinguir\\nsi arrojas a mis llamas un objeto prohibido\\n... y no podré cumplir tu petición.\"
+}"
+},
+9: {
+"links": {
+0: 10
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"...\"
+}"
+},
+10: {
+"links": {
+0: 11
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"¿Ves ese pequeño tucán?\\nPuedes levantarlo con la tecla Z.\\nPara arrojarlo a mi presiona la tecla X.\",
+\"wait\": true,
+\"on_start\": \"pickable_requested\"
+}"
+},
+11: {
+"links": {
+0: 12
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Perfecto. Resuelve el primer acertijo\\ny camina por la Sierra hasta encontrarlo.\"
+}"
+},
+12: {
+"links": {
+
+},
+"text": "end"
+}
+}
+}
+}
+names = {
+"Dream": 1
+}

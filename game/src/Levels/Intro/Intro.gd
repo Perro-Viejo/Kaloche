@@ -12,6 +12,7 @@ var _waiting_sacrifice := false
 var _fading_in := false
 var _skipped := false
 var _current_msg := ''
+var _started := false
 
 onready var _overlay: ColorRect = $OverlayLayer/Overlay
 onready var _intro_label: Label = $OverlayLayer/LabelContainer/Label
@@ -29,6 +30,9 @@ func _ready() -> void:
 	# Conectar escuchadores de eventos globales
 	Event.connect('intro_continued', self, '_show_intro')
 	Event.connect('intro_skipped', self, '_skip')
+	Event.connect('dialog_finished', self, '_go_to_world')
+	Event.connect('pickable_requested', self, '_show_pickable')
+	Event.connect('dialog_paused', self, '_enable_pickable')
 
 	_show_intro()
 
@@ -37,19 +41,19 @@ func _ready() -> void:
 # 'ui_accept'
 func _show_intro() -> void:
 	if _count < 0:
-		Event.emit_signal('character_spoke')
-		Event.emit_signal("ChangeScene", First_Level)
+		_go_to_world()
 		return
 
 	if _waiting_sacrifice:
 		# TODO: Que el fuego diga algo para recordarle al jugador que tiene
 		# que agarrar el tucán y sacrificarlo
+		Event.emit_signal('character_spoke')
 		return
 
 	if _in_intro and _count < intro_messages:
 		_current_msg = _get_intro_msg()
 		_show_intro_msg(_current_msg)
-	elif _count <= dialogue_messages:
+	else:
 		if _in_intro and _count == intro_messages:
 			_in_intro = false
 			yield(_next_intro(), 'completed')
@@ -58,14 +62,11 @@ func _show_intro() -> void:
 			_overlay.hide()
 			_count = 1
 
-		_show_dialogue_msg()
-	elif _count == dialogue_messages + 1:
-		# Activar la agarración del tucán y esperar a que el jugador lo
-		# sacrifique
-		_waiting_sacrifice = true
-		$Pickable.toggle_collision()
-		$Pickable.connect('tree_exited', self, '_sacrifice_done')
-		Event.emit_signal('character_spoke')
+		if not _started:
+			_started = true
+			Event.emit_signal('dialog_requested', 'Dream')
+		else:
+			Event.emit_signal('dialog_continued')
 
 func _get_intro_msg() -> String:
 	_count += 1
@@ -104,7 +105,7 @@ func _skip() -> void:
 func _sacrifice_done() -> void:
 	_waiting_sacrifice = false
 	_count += 1
-	_show_dialogue_msg()
+	_show_intro()
 	_count = -1
 
 
@@ -157,3 +158,21 @@ func _show_intro_msg(msg := '', fade_in_time := 0.8) -> void:
 	_skipped = false
 
 	if _in_intro: Event.emit_signal('continue_requested')
+
+
+func _go_to_world() -> void:
+	Event.emit_signal('character_spoke')
+	Event.emit_signal("ChangeScene", First_Level)
+
+
+func _show_pickable() -> void:
+	$Pickable.show()
+	$Pickable.toggle_collision(false)
+
+
+func _enable_pickable() -> void:
+	# Activar la agarración del tucán y esperar a que el jugador lo
+	# sacrifique
+	_waiting_sacrifice = true
+	$Pickable.toggle_collision()
+	$Pickable.connect('tree_exited', self, '_sacrifice_done')

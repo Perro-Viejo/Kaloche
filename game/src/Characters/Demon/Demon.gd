@@ -17,10 +17,13 @@ var first_visit = true
 onready var _feed_shape: CircleShape2D = $FeedArea/CollisionShape2D.shape
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
+	# Conectarse a eventos de los hijos
 	$InteractionArea.connect('area_entered', self, '_on_area_entered')
 	$InteractionArea.connect('area_exited', self, '_on_area_exited')
 	$FeedArea.connect('area_entered', self, '_check_food')
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
+	# Conectarse a eventos del universo
+	Event.connect('line_triggered', self, '_should_speak')
 
 	max_health = health
 
@@ -74,7 +77,6 @@ func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false)
 
 
 func speak(text := '', time_to_disappear := 0):
-
 	if text == previous_text:
 		return
 	else:
@@ -143,7 +145,10 @@ func _on_Timer_timeout():
 		if health > 0:
 			health -= 1
 		else:
-			print('memori')
 			queue_free()
 			$Timer.stop()
-		print(health)
+
+
+func _should_speak(character_name, text) -> void:
+	if name.to_lower() == character_name:
+		speak(text, -1)

@@ -27,6 +27,8 @@ func _ready() -> void:
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('body_exited', self, 'toggle_on_ground')
 	$AnimatedSprite.connect('frame_changed', self, '_on_frame_changed')
+	# Conectarse a eventos del universo
+	Event.connect('line_triggered', self, '_should_speak')
 
 	# Definir estado por defecto
 	play_animation()
@@ -121,3 +123,8 @@ func speak(text := '', time_to_disappear := 0):
 # Sirve para disparar comportamientos cuando se ha completado un diálogo
 func spoke():
 	$TalkingBubble.appear(false)
+
+
+func _should_speak(character_name, text) -> void:
+	if name.to_lower() == character_name:
+		speak(text, -1)

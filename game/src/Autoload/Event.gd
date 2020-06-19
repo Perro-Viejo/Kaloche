@@ -19,6 +19,14 @@ signal Refocus
 signal character_spoke(character, message, time_to_disappear)
 signal dialog_sequence(messages)
 signal dialog_event(playing, countdown, duration)
+signal dialog_requested(dialog_name)
+signal dialog_continued
+signal dialog_skipped
+signal dialog_finished
+signal dialog_paused
+signal line_triggered(character_name, text)
+
+signal pickable_requested
 
 signal zone_entered(name)
 signal music_requested(stream) # Sólo mientras tanto
@@ -26,7 +34,6 @@ signal music_stoped() # Sólo mientras tanto
 signal intro_shown(msg)
 signal intro_continued
 signal intro_skipped
-signal dialog_skipped
 signal world_entered
 signal continue_requested
 
