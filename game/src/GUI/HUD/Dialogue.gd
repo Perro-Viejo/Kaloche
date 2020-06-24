@@ -18,8 +18,7 @@ var _text: String
 var _hud: Hud
 var _forced_update := false
 var _current_character: Node2D
-var _dialog_sequence := []
-var _sequence_step := 0
+
 # Cosas del Godot Dialog System ---- {
 var _story_reader_class := load('res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd')
 var _stories_es := load('res://assets/stories/baked_stories_es.tres')
@@ -43,9 +42,9 @@ func _ready():
 
 	Event.connect('character_spoke', self, '_on_character_spoke')
 	Event.connect('dialog_skipped', self, 'stop')
-	Event.connect('dialog_sequence', self, '_display_sequence')
 	Event.connect('dialog_requested', self, '_play_dialog')
 	Event.connect('dialog_continued', self, '_continue_dialog')
+	Event.connect('dialog_option_clicked', self, 'option_clicked')
 
 	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
@@ -66,12 +65,13 @@ func start_animation():
 	if has_node('Timer'): $Timer.start()
 	typing = true
 
+
 func set_text(text):
-	Event.emit_signal('play_requested', 'UI', 'Dialogue')
 	set_defaults()
 
 	if text != '':
 		_text = text
+		Event.emit_signal('play_requested', 'UI', 'Dialogue')
 		if animate_on_set_text:
 			start_animation()
 		else:
@@ -79,6 +79,8 @@ func set_text(text):
 	else:
 		_text = ''
 		_count = 0
+
+		hide()
 
 
 func set_defaults():
@@ -97,6 +99,10 @@ func stop(auto_complete: bool = true) -> void:
 	if auto_complete:
 		text = _text
 		_forced_update = true
+
+
+func option_clicked(opt: Dictionary) -> void:
+	_continue_dialog(opt.id)
 
 
 func _on_timer_timeout():
@@ -119,18 +125,17 @@ func _on_timer_timeout():
 			_hud.show_continue(0)
 			return
 		if not typing:
-			_current_disappear = 0.0
-			self.text = ''
-			hide()
-			_current_character = null
+			set_text('')
 
-func _display_sequence(messages: Array) -> void:
-	var message = PoolStringArray(messages).join(',')
-	if message.find(',') > -1:
-			_sequence_step = 0
-			_dialog_sequence = message.split(',')
-			show()
-			set_text(_dialog_sequence[_sequence_step])
+			_current_disappear = 0.0
+			_continue_dialog()
+
+			if _current_character:
+				var coco = _current_character
+				_current_character = null
+				coco.spoke()
+				coco = null
+
 
 func _on_character_spoke(
 		character: Node2D = null, message :String = '', time_to_disappear := 0.0
@@ -182,16 +187,6 @@ func _finish() -> void:
 		_wait = false
 		Event.emit_signal('dialog_paused')
 
-	if _sequence_step < _dialog_sequence.size() - 1:
-		if .is_inside_tree():
-			yield(get_tree().create_timer(.4), 'timeout')
-		_sequence_step += 1
-		set_text(_dialog_sequence[_sequence_step])
-		return
-
-	_dialog_sequence = []
-	_sequence_step = 0
-
 
 func _play_dialog(dialog_name: String) -> void:
 	_did = _story_reader.get_did_via_record_name(dialog_name)
@@ -200,8 +195,8 @@ func _play_dialog(dialog_name: String) -> void:
 	_continue_dialog()
 
 
-func _continue_dialog() -> void:
-	_next_dialog_line()
+func _continue_dialog(slot := 0) -> void:
+	_next_dialog_line(slot)
 
 	if _nid == _final_nid:
 		Event.emit_signal('dialog_finished')
@@ -209,8 +204,8 @@ func _continue_dialog() -> void:
 		_play_dialog_line()
 
 
-func _next_dialog_line() -> void:
-	_nid = _story_reader.get_nid_from_slot(_did, _nid, 0)
+func _next_dialog_line(slot := 0) -> void:
+	_nid = _story_reader.get_nid_from_slot(_did, _nid, slot)
 
 
 func _play_dialog_line() -> void:
@@ -221,11 +216,27 @@ func _play_dialog_line() -> void:
 	if line_dic.has('wait'):
 		_wait = true
 
+	# Por defecto se asume que el diálogo continuará con base en una acción del
+	# jugador
+	var time_to_disappear := -1.0
+	if line_dic.has('time'):
+		time_to_disappear = line_dic.time as float
+
 	if line_dic.has('on_start'):
 		Event.emit_signal(line_dic.on_start)
 
-	Event.emit_signal(
-		'line_triggered',
-		(line_dic.actor as String).to_lower(),
-		line_dic.line as String
-	)
+	if line_dic.has('options'):
+		var id := 0
+		for opt in line_dic.options:
+			opt.id = id
+			id += 1
+
+		Event.emit_signal('dialog_menu_requested', line_dic.options)
+
+	if line_dic.has('line'):
+		Event.emit_signal(
+			'line_triggered',
+			(line_dic.actor as String).to_lower(),
+			line_dic.line as String,
+			time_to_disappear
+		)

@@ -125,6 +125,6 @@ func spoke():
 	$TalkingBubble.appear(false)
 
 
-func _should_speak(character_name, text) -> void:
+func _should_speak(character_name, text, time) -> void:
 	if name.to_lower() == character_name:
-		speak(text, -1)
+		speak(text, time)

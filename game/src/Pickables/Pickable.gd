@@ -7,6 +7,7 @@ export(int) var carbs = 2
 export(Texture) var img setget set_sprite_texture
 export(String) var on_free = ''
 export(String) var tr_code = ''
+export(String) var character = ''
 
 var being_grabbed: bool = false setget set_being_grabbed
 
@@ -53,8 +54,7 @@ func set_being_grabbed(new_val: bool) -> void:
 		dup.global_position = global_position
 		dup.visible = true
 		dup.toggle_collision()
-		if dup.on_free != '':
-			Event.emit_signal('character_spoke', self, tr(dup.on_free))
+		dup.connect('ready', self, '_hidden_in_tree', [dup])
 
 		get_parent().call_deferred('add_child', dup)
 
@@ -82,3 +82,20 @@ func _check_collision(area: Node2D, grab: bool = false) -> void:
 		player.can_grab = null
 		$Bubble.hide()
 		$Outline.hide()
+
+
+func _should_speak(character_name, text, time) -> void:
+	if character.to_lower() == character_name:
+		$TalkingBubble.appear()
+		Event.emit_signal('character_spoke', self, text, time)
+
+
+func spoke():
+	$TalkingBubble.appear(false)
+
+
+func _hidden_in_tree(dup: Pickable) -> void:
+	if dup.character != '':
+		Event.connect('line_triggered', dup, '_should_speak')
+	if dup.on_free != '':
+		Event.emit_signal('dialog_requested', dup.on_free)

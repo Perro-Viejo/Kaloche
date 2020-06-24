@@ -6,12 +6,14 @@
 script = ExtResource( 1 )
 TYPE = "EXP_Story_editor"
 names = {
-"Dream": 1
+"Dream": 1,
+"Options": 3,
+"Salute": 2
 }
 story = {
 1: {
 "available_nid": [  ],
-"groups": [  ],
+"groups": [ "Kaloche" ],
 "human_readable_description": "Diálogo entre Kaloche y Teotriste en el primer sueño",
 "name": "Dream",
 "nodes": {
@@ -168,7 +170,172 @@ story = {
 "type": "line"
 }
 }
+},
+2: {
+"available_nid": [  ],
+"groups": [ "Kaloche" ],
+"human_readable_description": "El saludo de Kaloche cuando ve por primera vez a Teotriste en el templo",
+"name": "Salute",
+"nodes": {
+1: {
+"graph_offset": Vector2( 0, 0 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "start",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 200, 200 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Hola Teotriste\",
+\"time\": 3
+}",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 400, 400 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Siente la emoción de conocer mi nombre...\",
+\"time\": 6
+}",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 600, 600 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"^^^Kaloches^^^\",
+\"time\": 3
+}",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 800, 800 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "end",
+"type": "line"
+}
+}
+},
+3: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "Prueba de un diálogo con opciones de selección",
+"name": "Options",
+"nodes": {
+1: {
+"graph_offset": Vector2( 0, 0 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "start",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 200, 200 ),
+"links": {
+0: 4,
+1: 5,
+2: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 3,
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Hola humano\",
+\"options\": [
+	{
+		\"line\": \"Hola...tú\"
+	},
+	{
+		\"line\": \"¿Cómo putas es que está hablando?\"
+	},
+	{
+		\"line\": \"No vuelvo a meter esa mierda\"
+	}
+]
+}",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 800, 600 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "end",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 800, 0 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Soy el dios del sexo, y voy a meterme en tu recto\"
+}",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 800, 200 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Hablo porque soy un dios... ¡pedazo de mierda!\",
+\"time\": 5
+}",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 1400, 200 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Pobre hijueputa\",
+\"time\": 3
+}",
+"type": "line"
+}
+}
 }
 }
 available_dids = [  ]
-groups = [  ]
+groups = [ "Teotriste", "Narrator", "Kaloche" ]

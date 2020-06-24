@@ -3,11 +3,13 @@ extends Node2D
 export(float) var y_offset := 16.0
 
 var _wave := '[wave amp=14 freq=8].[/wave][wave amp=14 freq=9].[/wave][wave amp=14 freq=10].[/wave]'
-
-onready var _dflt_pos := self.position
-onready var _trgt_pos := Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
+var _showing := false
+var _dflt_pos: Vector2
+var _trgt_pos: Vector2
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
+	_dflt_pos = self.position
+	_trgt_pos = Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
 	modulate.a = 0
 
 	# Conectarse a señales de hijos
@@ -17,6 +19,7 @@ func _ready() -> void:
 
 
 func appear(_show := true) -> void:
+	_showing = _show
 	if not visible:
 		show()
 		$RichTextLabel.append_bbcode(_wave)
@@ -43,6 +46,6 @@ func appear(_show := true) -> void:
 
 
 func _on_Tween_completed(obj: Object, key: NodePath) -> void:
-	if self.modulate.a == 0.0:
+	if not _showing and modulate.a == 0.0:
 		$RichTextLabel.clear()
 		hide()

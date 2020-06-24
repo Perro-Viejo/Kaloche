@@ -11,12 +11,14 @@ onready var _dflt_pos: = {
 }
 onready var _continue: Label = $Control/Continue
 onready var _journal: Control = $Control/Journal
+onready var _dialog_menu: DialogMenu = find_node('DialogMenu') as DialogMenu
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	_zone_name.text = ''
 	_zone_name.rect_position.y = _dflt_pos.zone_name.y + 128
 	_continue.hide()
 	_journal.hide()
+	_dialog_menu.hide()
 
 	# Conectarse a eventos paganos
 	$Tween.connect('tween_all_completed', self, 'update_zone_name')
@@ -86,7 +88,6 @@ func update_zone_name(name: String = '') -> void:
 
 
 func show_continue(wait: int = 0) -> void:
-#	yield(get_tree().create_timer(wait), 'timeout')
 	if not world_entered:
 		_zone_name.rect_position = _dflt_pos.zone_name
 		_zone_name.text = tr('CLICK_CONTINUE')

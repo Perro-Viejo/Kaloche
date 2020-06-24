@@ -113,8 +113,123 @@ story = {
 "text": "end"
 }
 }
+},
+2: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "start"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Hola Teotriste\",
+\"time\": 3
+}"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"Siente la emoción de conocer mi nombre...\",
+\"time\": 6
+}"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "{
+\"actor\": \"Demon\",
+\"line\": \"^^^Kaloches^^^\",
+\"time\": 3
+}"
+},
+5: {
+"links": {
+
+},
+"text": "end"
+}
+}
+},
+3: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "start"
+},
+2: {
+"links": {
+0: 4,
+1: 5,
+2: 3
+},
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Hola humano\",
+\"options\": [
+	{
+		\"line\": \"Hola...tú\"
+	},
+	{
+		\"line\": \"¿Cómo putas es que está hablando?\"
+	},
+	{
+		\"line\": \"No vuelvo a meter esa mierda\"
+	}
+]
+}"
+},
+3: {
+"links": {
+
+},
+"text": "end"
+},
+4: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Soy el dios del sexo, y voy a meterme en tu recto\"
+}"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Hablo porque soy un dios... ¡pedazo de mierda!\",
+\"time\": 5
+}"
+},
+6: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Pobre hijueputa\",
+\"time\": 3
+}"
+}
+}
 }
 }
 names = {
-"Dream": 1
+"Dream": 1,
+"Options": 3,
+"Salute": 2
 }

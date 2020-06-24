@@ -11,9 +11,10 @@ var eaten_items = 0
 var max_health
 var max_size = 1
 var previous_text = ''
-
 var first_visit = true
-#
+
+var _in_dialog := false
+
 onready var _feed_shape: CircleShape2D = $FeedArea/CollisionShape2D.shape
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
@@ -81,13 +82,16 @@ func speak(text := '', time_to_disappear := 0):
 		return
 	else:
 		previous_text = text
-		Event.emit_signal('character_spoke', self, text, time_to_disappear)
 		$TalkingBubble.appear()
+		Event.emit_signal('character_spoke', self, text, time_to_disappear)
 
 
 # Sirve para disparar comportamientos cuando se ha completado un diálogo
 func spoke():
 	$TalkingBubble.appear(false)
+
+	if _in_dialog:
+		Event.emit_signal('dialog_continued')
 
 
 func _on_area_entered(other):
@@ -97,15 +101,14 @@ func _on_area_entered(other):
 		if not first_visit:
 			speak(tr("DEMON_GREET"))
 		else:
-			Event.emit_signal('dialog_event', true, 2, 7)
-			Event.emit_signal('dialog_sequence', [
-			'DEMON_SALUTE_01',
-			'DEMON_SALUTE_02',
-			'DEMON_SALUTE_03'
-			])
-#			speak(tr("Saludos, me alimentas o me muero :("))
-			$Timer.start()
 			first_visit = false
+			_in_dialog = true
+
+			Event.connect('dialog_finished', self, '_dialog_finished')
+			Event.emit_signal('dialog_event', true, 2, 7)
+			Event.emit_signal('dialog_requested', 'Salute')
+			# Iniciar a quitarle vida al Kaloche
+			$Timer.start()
 
 
 func _on_area_exited(other):
@@ -145,10 +148,15 @@ func _on_Timer_timeout():
 		if health > 0:
 			health -= 1
 		else:
-			queue_free()
 			$Timer.stop()
+			queue_free()
 
 
-func _should_speak(character_name, text) -> void:
+func _should_speak(character_name, text, time) -> void:
 	if name.to_lower() == character_name:
-		speak(text, -1)
+		speak(text, time)
+
+
+func _dialog_finished() -> void:
+	_in_dialog = false
+	spoke()

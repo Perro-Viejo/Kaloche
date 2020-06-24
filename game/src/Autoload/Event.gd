@@ -15,16 +15,17 @@ signal Refocus
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Perro Viejo ░░░░
 
-#Para el dialogo
+#Para el diálogo y todo lo que tenga que ver con diálogos para dialogar
 signal character_spoke(character, message, time_to_disappear)
-signal dialog_sequence(messages)
 signal dialog_event(playing, countdown, duration)
 signal dialog_requested(dialog_name)
 signal dialog_continued
 signal dialog_skipped
 signal dialog_finished
 signal dialog_paused
-signal line_triggered(character_name, text)
+signal line_triggered(character_name, text, time)
+signal dialog_menu_requested(options)
+signal dialog_option_clicked(option_dic)
 
 signal pickable_requested
 
