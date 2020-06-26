@@ -35,7 +35,7 @@ layer = 128
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-volume_db = -80.0
+volume_db = -4.0
 bus = "Music"
 
 [node name="sounds" type="AudioStreamPlayer" parent="."]

@@ -21,6 +21,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to(_owner.STATES.GRAB)
 	elif event.is_action_pressed('Drop') and _owner.can_grab and _owner.grabbing:
 		_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
+	if event.is_action_pressed('Fish'):
+		if _owner.fishing:
+			_state_machine.transition_to(_owner.STATES.IDLE)
+		else:
+			_state_machine.transition_to(owner.STATES.FISH)
+		
 
 func _physics_process(delta) -> void:
 	if not can_move:
@@ -33,10 +39,20 @@ func _physics_process(delta) -> void:
 		_last_dir.y = 0
 
 		_owner.sprite.flip_h = dir.x < 0
+		if dir.x < 0:
+			_owner.fishing_spot.set_position(Vector2(-10, 1))
+		else:
+			_owner.fishing_spot.set_position(Vector2(7, 1))
+
 	elif dir.y != 0:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
-
+		
+		if dir.y < 0:
+			_owner.fishing_spot.set_position(Vector2(-2, -10))
+		else:
+			_owner.fishing_spot.set_position(Vector2(-2, 8))
+	
 	if not _owner.is_out:
 		_owner.move_and_collide(dir * _calc_speed * delta)
 	else:
@@ -55,8 +71,14 @@ func _on_dialog_event(playing, countdown, duration):
 	if playing:
 		yield(get_tree().create_timer(countdown), 'timeout')
 		_state_machine.transition_to(_owner.STATES.IDLE)
-		can_move = false
+		toggle_movement()
 		yield(get_tree().create_timer(duration), 'timeout')
+		toggle_movement()
+
+func toggle_movement():
+	if can_move:
+		can_move = false
+	else:
 		can_move = true
 
 func enter(msg: Dictionary = {}) -> void:

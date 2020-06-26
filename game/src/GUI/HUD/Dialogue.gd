@@ -27,6 +27,7 @@ var _nid := 0
 var _final_nid := 0
 # } ----
 var _wait := false
+var _in_dialog := false
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
@@ -128,7 +129,8 @@ func _on_timer_timeout():
 			set_text('')
 
 			_current_disappear = 0.0
-			_continue_dialog()
+			if _in_dialog:
+				_continue_dialog()
 
 			if _current_character:
 				var coco = _current_character
@@ -189,6 +191,7 @@ func _finish() -> void:
 
 
 func _play_dialog(dialog_name: String) -> void:
+	_in_dialog = true
 	_did = _story_reader.get_did_via_record_name(dialog_name)
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
 	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
@@ -199,6 +202,7 @@ func _continue_dialog(slot := 0) -> void:
 	_next_dialog_line(slot)
 
 	if _nid == _final_nid:
+		_in_dialog = false
 		Event.emit_signal('dialog_finished')
 	else:
 		_play_dialog_line()

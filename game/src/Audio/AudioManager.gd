@@ -52,3 +52,6 @@ func _on_finished(source: String, sound: String):
 func set_volume(source, sound, volume):
 	_get_audio(source, sound).set_volume_db(volume)
 
+func set_pitch(source, sound, pitch):
+	_get_audio(source, sound).set_pitch_scale(pitch)
+

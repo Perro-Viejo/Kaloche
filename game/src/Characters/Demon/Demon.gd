@@ -32,6 +32,8 @@ func _process(delta):
 	$AnimatedSprite.scale = Vector2.ONE * range_lerp(health, 0, max_health, 0, max_size)
 	$FeedArea/CollisionShape2D/Feed.scale = $AnimatedSprite.scale
 	_feed_shape.radius = lerp(1, 14, $AnimatedSprite.scale.y)
+#	$Idle.set_pitch_scale(range_lerp(health, 0, max_health, 3, 1))
+#	$InteractionArea/Area.shape.radius = lerp(1, 20, $AnimatedSprite.scale.y)
 
 
 func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false):
