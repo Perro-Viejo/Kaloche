@@ -21,10 +21,9 @@ func create_options(options := []) -> void:
 
 
 func remove_options() -> void:
-	var btn: Button
 	for btn in get_children():
-		remove_child(btn)
-		btn.queue_free()
+		remove_child(btn as Button)
+		(btn as Button).queue_free()
 	hide()
 
 

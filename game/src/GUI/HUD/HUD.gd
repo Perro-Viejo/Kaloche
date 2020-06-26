@@ -9,7 +9,7 @@ onready var _zone_name: Label = $Control/ZoneName
 onready var _dflt_pos: = {
 	zone_name = _zone_name.rect_position
 }
-onready var _continue: Label = $Control/Continue
+onready var _continue: TextureButton = find_node('Continue')
 onready var _journal: Control = $Control/Journal
 onready var _dialog_menu: DialogMenu = find_node('DialogMenu') as DialogMenu
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
