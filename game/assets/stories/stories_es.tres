@@ -271,10 +271,15 @@ story = {
 \"line\": \"Hola humano\",
 \"options\": [
 	{
-		\"line\": \"Hola...tú\"
+		\"line\": \"Hola...tú\",
+		\"say\": true
 	},
 	{
 		\"line\": \"¿Cómo putas es que está hablando?\"
+	},
+	{
+		\"line\": \"¿Qué quieres que haga?\",
+		\"show\": false
 	},
 	{
 		\"line\": \"No vuelvo a meter esa mierda\"

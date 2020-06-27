@@ -28,6 +28,7 @@ var _final_nid := 0
 # } ----
 var _wait := false
 var _in_dialog := false
+var _selected_slot := 0
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
@@ -103,7 +104,16 @@ func stop(auto_complete: bool = true) -> void:
 
 
 func option_clicked(opt: Dictionary) -> void:
-	_continue_dialog(opt.id)
+	_selected_slot = opt.id
+	if opt.has('say') and opt.say:
+		Event.emit_signal(
+			'line_triggered',
+			(opt.actor as String).to_lower(),
+			opt.line as String,
+			opt.time
+		)
+	else:
+		_continue_dialog(_selected_slot)
 
 
 func _on_timer_timeout():
@@ -130,7 +140,7 @@ func _on_timer_timeout():
 
 			_current_disappear = 0.0
 			if _in_dialog:
-				_continue_dialog()
+				_continue_dialog(_selected_slot)
 
 			if _current_character:
 				var coco = _current_character
@@ -199,6 +209,7 @@ func _play_dialog(dialog_name: String) -> void:
 
 
 func _continue_dialog(slot := 0) -> void:
+	_selected_slot = 0
 	_next_dialog_line(slot)
 
 	if _nid == _final_nid:
@@ -233,6 +244,12 @@ func _play_dialog_line() -> void:
 		var id := 0
 		for opt in line_dic.options:
 			opt.id = id
+
+			if not opt.has('actor'):
+				opt.actor = 'Player'
+			if not opt.has('time'):
+				opt.time = 3
+
 			id += 1
 
 		Event.emit_signal('dialog_menu_requested', line_dic.options)

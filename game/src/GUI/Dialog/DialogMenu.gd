@@ -12,10 +12,11 @@ func create_options(options := []) -> void:
 	if options.empty(): return
 
 	for opt in options:
-		var btn: Button = option.instance() as Button
-		btn.text = opt.line
-		btn.connect('pressed', self, '_on_option_clicked', [opt])
-		add_child(btn)
+		if not opt.has('show') or (opt.has('show') and opt.show):
+			var btn: Button = option.instance() as Button
+			btn.text = opt.line
+			btn.connect('pressed', self, '_on_option_clicked', [opt])
+			add_child(btn)
 
 	show()
 

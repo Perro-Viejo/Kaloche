@@ -20,8 +20,9 @@ func _ready() -> void:
 
 func appear(_show := true) -> void:
 	_showing = _show
-	if not visible:
+	if _show:
 		show()
+		$Tween.remove_all()
 		$RichTextLabel.append_bbcode(_wave)
 
 	$Tween.interpolate_property(
