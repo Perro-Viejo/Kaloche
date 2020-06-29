@@ -17,6 +17,8 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('Grab'):
+		if _owner.fishing:
+			_owner.fishing_spot.pull_fish()
 		if _owner.can_grab and not _owner.grabbing:
 			_state_machine.transition_to(_owner.STATES.GRAB)
 	elif event.is_action_pressed('Drop') and _owner.can_grab and _owner.grabbing:
