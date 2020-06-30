@@ -14,6 +14,7 @@ onready var _owner: Player = owner as Player
 
 func _ready():
 	Event.connect('dialog_event', self, '_on_dialog_event')
+	Event.connect('movement_toggled', self, 'toggle_movement')
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('Grab'):
@@ -28,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to(_owner.STATES.IDLE)
 		else:
 			_state_machine.transition_to(owner.STATES.FISH)
-		
+
 
 func _physics_process(delta) -> void:
 	if not can_move:
@@ -49,12 +50,12 @@ func _physics_process(delta) -> void:
 	elif dir.y != 0:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
-		
+
 		if dir.y < 0:
 			_owner.fishing_spot.set_position(Vector2(-2, -10))
 		else:
 			_owner.fishing_spot.set_position(Vector2(-2, 8))
-	
+
 	if not _owner.is_out:
 		_owner.move_and_collide(dir * _calc_speed * delta)
 	else:

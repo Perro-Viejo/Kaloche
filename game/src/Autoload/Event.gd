@@ -15,7 +15,7 @@ signal Refocus
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Perro Viejo ░░░░
 
-#Para el diálogo y todo lo que tenga que ver con diálogos para dialogar
+# Para el diálogo y todo lo que tenga que ver con diálogos para dialogar
 signal character_spoke(character, message, time_to_disappear)
 signal dialog_event(playing, countdown, duration)
 signal dialog_requested(dialog_name)
@@ -26,6 +26,7 @@ signal dialog_paused
 signal line_triggered(character_name, text, time)
 signal dialog_menu_requested(options)
 signal dialog_option_clicked(option_dic)
+signal dialog_menu_updated(cfg)
 
 signal pickable_requested
 
@@ -43,6 +44,9 @@ signal stop_requested(source, sound)
 signal pause_requested(source, sound)
 signal stream_finished(source, sound)
 signal change_volume(source, sound, volume)
+
+# Para todo lo que tenga que ver con el personaje jugable
+signal movement_toggled
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 #For section tracking

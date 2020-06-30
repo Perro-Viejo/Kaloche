@@ -172,7 +172,8 @@ story = {
 "links": {
 0: 4,
 1: 5,
-2: 3
+2: 9,
+3: 3
 },
 "text": "{
 \"actor\": \"Cricket\",
@@ -190,7 +191,7 @@ story = {
 		\"show\": false
 	},
 	{
-		\"line\": \"No vuelvo a meter esa mierda\"
+		\"line\": \"No vuelvo a meter esa mierda. Chao.\"
 	}
 ]
 }"
@@ -203,11 +204,13 @@ story = {
 },
 4: {
 "links": {
-0: 3
+0: 7
 },
 "text": "{
 \"actor\": \"Cricket\",
-\"line\": \"Soy el dios del sexo, y voy a meterme en tu recto\"
+\"line\": \"Soy el dios del sexo, y voy a meterme en tu recto\",
+\"time\": 5,
+\"off\": [0]
 }"
 },
 5: {
@@ -217,18 +220,48 @@ story = {
 "text": "{
 \"actor\": \"Cricket\",
 \"line\": \"Hablo porque soy un dios... ¡pedazo de mierda!\",
-\"time\": 5
+\"time\": 5,
+\"off\": [1],
+\"on\": [2]
 }"
 },
 6: {
 "links": {
-0: 3
+0: 8
 },
 "text": "{
 \"actor\": \"Player\",
 \"line\": \"Pobre hijueputa\",
 \"time\": 3
 }"
+},
+7: {
+"links": {
+
+},
+"text": "return"
+},
+8: {
+"links": {
+
+},
+"text": "return"
+},
+9: {
+"links": {
+0: 10
+},
+"text": "{
+\"actor\": \"Cricket\",
+\"line\": \"Que me entregues tu amor\",
+\"time\": 4
+}"
+},
+10: {
+"links": {
+
+},
+"text": "return"
 }
 }
 }

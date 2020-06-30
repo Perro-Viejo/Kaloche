@@ -25,9 +25,10 @@ var _stories_es := load('res://assets/stories/baked_stories_es.tres')
 var _did := 0
 var _nid := 0
 var _final_nid := 0
+var _options_nid := 0
+var _in_dialog := false
 # } ----
 var _wait := false
-var _in_dialog := false
 var _selected_slot := 0
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
@@ -205,6 +206,8 @@ func _play_dialog(dialog_name: String) -> void:
 	_did = _story_reader.get_did_via_record_name(dialog_name)
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
 	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
+
+	Event.emit_signal('movement_toggled')
 	_continue_dialog()
 
 
@@ -213,7 +216,10 @@ func _continue_dialog(slot := 0) -> void:
 	_next_dialog_line(slot)
 
 	if _nid == _final_nid:
+		_options_nid = 0
 		_in_dialog = false
+
+		Event.emit_signal('movement_toggled')
 		Event.emit_signal('dialog_finished')
 	else:
 		_play_dialog_line()
@@ -225,6 +231,15 @@ func _next_dialog_line(slot := 0) -> void:
 
 func _play_dialog_line() -> void:
 	var line_txt := _story_reader.get_text(_did, _nid)
+
+	if _in_dialog:
+		# Verificar si el texto del nodo es la palabra clave para volver al menú
+		# de opciones activo
+		if line_txt == 'return':
+			_nid = _options_nid
+			Event.emit_signal('dialog_menu_requested')
+			return
+
 	var line_dic: Dictionary = JSON.parse(line_txt).result
 
 	_wait = false
@@ -241,6 +256,7 @@ func _play_dialog_line() -> void:
 		Event.emit_signal(line_dic.on_start)
 
 	if line_dic.has('options'):
+		_options_nid = _nid
 		var id := 0
 		for opt in line_dic.options:
 			opt.id = id
@@ -254,6 +270,21 @@ func _play_dialog_line() -> void:
 
 		Event.emit_signal('dialog_menu_requested', line_dic.options)
 
+	if line_dic.has('off') or line_dic.has('on'):
+		# En este nodo se apagarán opciones
+		var cfg := {}
+
+		if line_dic.has('off'):
+			for opt in line_dic.off:
+				cfg[String(opt)] = false
+
+		if line_dic.has('on'):
+			for opt in line_dic.on:
+				cfg[String(opt)] = true
+
+		Event.emit_signal('dialog_menu_updated', cfg)
+
+	# Lo último que se hace es disparar la línea de diálogo
 	if line_dic.has('line'):
 		Event.emit_signal(
 			'line_triggered',
