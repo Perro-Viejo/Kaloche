@@ -4,41 +4,72 @@ onready var _timer: Timer = $Timer
 
 var counter = 0
 var fishing_started = false
-var bite_chance_fq 
+var bite_check
+var hooked
+var chance = 50
+
+const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
 func _ready():
-	bite_chance_fq = rand_range(5, 15)
+	bite_check = rand_range(5, 15)
 	_timer.connect('timeout', self, '_on_timer_timeout')
 
 func _process(delta):
-	if counter >= bite_chance_fq:
-		fish_bite()
+	if not fishing_started:
+		if counter == 4:
+			fish()
+			fishing_started = true
+	else:
+		if counter >= bite_check:
+			fish_bite()
+
+func start_fishing():
+	show()
+	hooked = false
+	_timer.start()
+	
 
 func fish():
-	show()
-	_timer.start()
-	print('toy pescando')
 	color = 'eb564b'
+	counter = 0
+	print('toy pescando')
 
 func stop():
 	hide()
-	print('me aburri')
 	color = 'ffffeb'
+	fishing_started = false
 	counter = 0
+	hooked = false
 	_timer.stop()
 
 func fish_bite():
 	print('mordiooo')
-	color = '5dde87'
 	counter = 0
+	hooked = true
+	color = '5dde87'
 	yield(get_tree().create_timer(rand_range(0.1, 0.9)),'timeout')
+	hooked = false
 	fish()
-	bite_chance_fq = rand_range(5, 15) 
+	bite_check = rand_range(5, 15) 
 
 func pull_fish():
-	if color == Color('5dde87'):
-		print('agarre el hp')
+	randomize()
+	if hooked:
+		if randi()%100 <= chance:
+			catch_fish()
+		else:
+			print ('se me jue')
 	else:
-		print('se volo el perro')
+		print('nada que jalar')
+	counter = 0
+
+func catch_fish():
+	var fish = FISH.instance()
+	get_node('../..').add_child(fish)
+	fish.set_global_position(get_global_position())
+	fish.jump(get_position())
+	hooked = false
+	
+
 func _on_timer_timeout():
 	counter += 1

@@ -5,7 +5,7 @@ onready var _owner: Player = owner as Player
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func enter(msg: Dictionary = {}) -> void:
 	_owner.fishing = true
-	_owner.fishing_spot.fish()
+	_owner.fishing_spot.start_fishing()
 	
 
 func exit() -> void:
