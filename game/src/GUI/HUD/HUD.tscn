@@ -1,34 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/m5x7_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/HUD/HUD.gd" type="Script" id=2]
-[ext_resource path="res://src/GUI/HUD/Dialogue.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/gui/dialogue.png" type="Texture" id=4]
-[ext_resource path="res://src/GUI/Dialog/DialogMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/Dialog/Dialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/gui/paper_sheet.png" type="Texture" id=6]
 [ext_resource path="res://src/GUI/HUD/Journal.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.709804, 0.709804, 1 )
 expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-content_margin_left = 6.0
-content_margin_right = 4.0
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 12 )
-margin_left = 2.82727
-margin_right = 3.08429
-margin_top = 3.2128
-margin_bottom = 3.2128
-
-[sub_resource type="DynamicFontData" id=3]
-antialiased = false
-font_path = "res://assets/fonts/m5x7.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-size = 15
-font_data = SubResource( 3 )
 
 [sub_resource type="DynamicFontData" id=5]
 font_path = "res://assets/fonts/m5x7.ttf"
@@ -50,6 +30,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Dialog" parent="Control" instance=ExtResource( 3 )]
+
 [node name="ZoneName" type="Label" parent="Control"]
 visible = false
 anchor_top = 1.0
@@ -66,35 +48,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dialogue" type="Label" parent="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_top = 4.0
-margin_right = 10.0
-margin_bottom = 22.4256
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-align = 1
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-animation_time = 0.1
-
-[node name="Timer" type="Timer" parent="Control/Dialogue"]
-wait_time = 0.3
-
 [node name="Continue" type="TextureButton" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="DialogMenu" parent="Control" instance=ExtResource( 5 )]
-anchor_top = 1.0
-margin_top = -11.0
 
 [node name="Journal" type="Control" parent="Control"]
 visible = false

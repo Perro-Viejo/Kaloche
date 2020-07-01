@@ -19,6 +19,7 @@ var on_ground: bool = false
 var fishing: bool = false
 var fs_id: String = 'FS_Dirt'
 var foot = 'L'
+var is_paused := false
 
 onready var cam: Camera2D = $Camera2D
 onready var sprite: AnimatedSprite = $AnimatedSprite
@@ -26,12 +27,14 @@ onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
-	# Escuchar area
+	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('body_exited', self, 'toggle_on_ground')
 	$AnimatedSprite.connect('frame_changed', self, '_on_frame_changed')
+
 	# Conectarse a eventos del universo
 	Event.connect('line_triggered', self, '_should_speak')
+	Event.connect('control_toggled', self, '_toggle_control')
 
 	# Definir estado por defecto
 	play_animation()
@@ -97,7 +100,8 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 
 
 func _on_frame_changed() -> void:
-	if $AnimatedSprite.animation == 'Run' or $AnimatedSprite.animation == 'RunGrab':
+	if $AnimatedSprite.animation == 'Run' \
+		or $AnimatedSprite.animation == 'RunGrab':
 		match $AnimatedSprite.frame:
 			0,2:
 				play_fs(fs_id)
@@ -130,3 +134,7 @@ func spoke():
 func _should_speak(character_name, text, time) -> void:
 	if name.to_lower() == character_name:
 		speak(text, time)
+
+
+func _toggle_control() -> void:
+	is_paused = !is_paused

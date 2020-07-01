@@ -11,14 +11,14 @@ onready var _dflt_pos: = {
 }
 onready var _continue: TextureButton = find_node('Continue')
 onready var _journal: Control = $Control/Journal
-onready var _dialog_menu: DialogMenu = find_node('DialogMenu') as DialogMenu
+onready var _dialog: Dialog = find_node('Dialog')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	_zone_name.text = ''
 	_zone_name.rect_position.y = _dflt_pos.zone_name.y + 128
+
 	_continue.hide()
 	_journal.hide()
-	_dialog_menu.hide()
 
 	# Conectarse a eventos paganos
 	$Tween.connect('tween_all_completed', self, 'update_zone_name')

@@ -3,20 +3,20 @@ extends "res://src/StateMachine/State.gd"
 export(float) var speed = 2
 
 var dir:Vector2 = Vector2.ZERO
+var can_move = true
 
 var _last_dir: Vector2 = Vector2.ZERO
-
-var can_move = true
 
 onready var _calc_speed: float = speed * 60
 onready var _owner: Player = owner as Player
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
-
 func _ready():
 	Event.connect('dialog_event', self, '_on_dialog_event')
-	Event.connect('movement_toggled', self, 'toggle_movement')
+
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _owner.is_paused: return
+
 	if event.is_action_pressed('Grab'):
 		if _owner.fishing:
 			_owner.fishing_spot.pull_fish()
@@ -24,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to(_owner.STATES.GRAB)
 	elif event.is_action_pressed('Drop') and _owner.can_grab and _owner.grabbing:
 		_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
+
 	if event.is_action_pressed('Fish'):
 		if _owner.fishing:
 			_state_machine.transition_to(_owner.STATES.IDLE)
@@ -32,8 +33,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta) -> void:
-	if not can_move:
+	if not can_move or _owner.is_paused:
 		return
+
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 
@@ -79,10 +81,7 @@ func _on_dialog_event(playing, countdown, duration):
 		toggle_movement()
 
 func toggle_movement():
-	if can_move:
-		can_move = false
-	else:
-		can_move = true
+	can_move = !can_move
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)

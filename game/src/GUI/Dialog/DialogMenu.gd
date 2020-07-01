@@ -6,9 +6,7 @@ export(PackedScene) var option
 var _current_options := []
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
-	Event.connect('dialog_menu_requested', self, 'create_options')
-	Event.connect('dialog_finished', self, 'remove_options')
-	Event.connect('dialog_menu_updated', self, 'update_options')
+	hide()
 
 
 func create_options(options := []) -> void:
@@ -31,12 +29,13 @@ func create_options(options := []) -> void:
 
 
 func remove_options() -> void:
-	_current_options.empty()
+	if not _current_options.empty():
+		_current_options.clear()
 
-	for btn in get_children():
-		remove_child(btn as Button)
-		(btn as Button).queue_free()
-	hide()
+		for btn in get_children():
+			remove_child(btn as Button)
+			(btn as Button).queue_free()
+		hide()
 
 
 func update_options(updates_cfg := {}) -> void:

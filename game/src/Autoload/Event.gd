@@ -46,7 +46,7 @@ signal stream_finished(source, sound)
 signal change_volume(source, sound, volume)
 
 # Para todo lo que tenga que ver con el personaje jugable
-signal movement_toggled
+signal control_toggled
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 #For section tracking

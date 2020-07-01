@@ -178,17 +178,20 @@ story = {
 "text": "{
 \"actor\": \"Cricket\",
 \"line\": \"Hola humano\",
+\"time\": 3,
 \"options\": [
 	{
 		\"line\": \"Hola...tú\",
 		\"say\": true
 	},
 	{
-		\"line\": \"¿Cómo putas es que está hablando?\"
+		\"line\": \"¿Cómo putas es que está hablando?\",
+		\"say\": true
 	},
 	{
 		\"line\": \"¿Qué quieres que haga?\",
-		\"show\": false
+		\"show\": false,
+		\"say\": true
 	},
 	{
 		\"line\": \"No vuelvo a meter esa mierda. Chao.\"
@@ -208,7 +211,7 @@ story = {
 },
 "text": "{
 \"actor\": \"Cricket\",
-\"line\": \"Soy el dios del sexo, y voy a meterme en tu recto\",
+\"line\": \"Soy el dios del sexo\",
 \"time\": 5,
 \"off\": [0]
 }"
@@ -219,9 +222,9 @@ story = {
 },
 "text": "{
 \"actor\": \"Cricket\",
-\"line\": \"Hablo porque soy un dios... ¡pedazo de mierda!\",
+\"line\": \"No hablo, imbécil. Se llama telepatita.\",
 \"time\": 5,
-\"off\": [1],
+\"off\": [0, 1],
 \"on\": [2]
 }"
 },
@@ -253,7 +256,7 @@ story = {
 },
 "text": "{
 \"actor\": \"Cricket\",
-\"line\": \"Que me entregues tu amor\",
+\"line\": \"Que me entregues tu amor \\\\ . )3 ) /\",
 \"time\": 4
 }"
 },
