@@ -3,8 +3,8 @@
 [ext_resource path="res://assets/images/gui/bubble.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/outline.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/world/fish_gen.png" type="Texture" id=4]
 [ext_resource path="res://src/Pickables/Fish_Pickable.gd" type="Script" id=5]
-[ext_resource path="res://assets/images/world/gen_fish.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 5 )
@@ -25,20 +25,19 @@ size = 8
 use_mipmaps = true
 font_data = ExtResource( 3 )
 
-[node name="Pickable" type="Area2D" groups=[
+[node name="Fish" type="Area2D" groups=[
 "Pickable",
 ]]
 input_pickable = false
 collision_layer = 4
 script = ExtResource( 5 )
-img = ExtResource( 6 )
-character = "Fish"
+img = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 
 [node name="Bubble" type="GridContainer" parent="."]
 visible = false

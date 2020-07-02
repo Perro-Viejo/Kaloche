@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gen_fish.png-3c8337f615768f8da5822311b4ead3fb.stex"
+path="res://.import/fish_piranha.png-d96597cd199270c19e59d690bad1419b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/gen_fish.png"
-dest_files=[ "res://.import/gen_fish.png-3c8337f615768f8da5822311b4ead3fb.stex" ]
+source_file="res://assets/images/world/fish_piranha.png"
+dest_files=[ "res://.import/fish_piranha.png-d96597cd199270c19e59d690bad1419b.stex" ]
 
 [params]
 

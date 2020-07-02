@@ -1,22 +1,29 @@
 extends ColorRect
 
+enum BAITS {NADA, GUSANO, SANGRE}
+export (BAITS) var bait
+
 onready var _timer: Timer = $Timer
 
 var counter = 0
 var fishing_started = false
 var bite_check
 var hooked
-var chance = 50
 
+export (float) var min_bite_freq = 5
+export (float) var max_bite_freq = 15
+export (int) var chance = 100
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
 func _ready():
-	bite_check = rand_range(5, 15)
+	print(bait)
+	bite_check = rand_range(min_bite_freq, max_bite_freq)
 	_timer.connect('timeout', self, '_on_timer_timeout')
 
 func _process(delta):
 	if not fishing_started:
 		if counter == 4:
+			counter = 0
 			fish()
 			fishing_started = true
 	else:
@@ -31,7 +38,6 @@ func start_fishing():
 
 func fish():
 	color = 'eb564b'
-	counter = 0
 	print('toy pescando')
 
 func stop():
@@ -47,10 +53,10 @@ func fish_bite():
 	counter = 0
 	hooked = true
 	color = '5dde87'
-	yield(get_tree().create_timer(rand_range(0.1, 0.9)),'timeout')
+	yield(get_tree().create_timer(rand_range(1, 2)),'timeout')
 	hooked = false
 	fish()
-	bite_check = rand_range(5, 15) 
+	bite_check = rand_range(min_bite_freq, max_bite_freq) 
 
 func pull_fish():
 	randomize()
@@ -58,17 +64,17 @@ func pull_fish():
 		if randi()%100 <= chance:
 			catch_fish()
 		else:
-			print ('se me jue')
+			stop()
 	else:
-		print('nada que jalar')
-	counter = 0
+		stop()
 
 func catch_fish():
+	stop()
 	var fish = FISH.instance()
 	get_node('../..').add_child(fish)
 	fish.set_global_position(get_global_position())
+	fish.check_bait(bait)
 	fish.jump(get_position())
-	hooked = false
 	
 
 func _on_timer_timeout():
