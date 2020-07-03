@@ -34,8 +34,7 @@ signal zone_entered(name)
 signal music_requested(stream) # Sólo mientras tanto
 signal music_stoped() # Sólo mientras tanto
 signal intro_shown(msg)
-signal intro_continued
-signal intro_skipped
+signal hud_accept_pressed
 signal world_entered
 signal continue_requested
 

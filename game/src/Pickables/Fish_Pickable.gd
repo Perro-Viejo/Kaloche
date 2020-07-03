@@ -38,7 +38,7 @@ func check_bait(bait):
 	tr_code = selected_fish
 	set_sprite_texture(load("res://assets/images/world/fish_"+ selected_fish + ".png"))
 	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
-#	
+#
 
 
 

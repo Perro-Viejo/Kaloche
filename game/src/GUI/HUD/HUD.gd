@@ -2,7 +2,6 @@ class_name Hud
 extends CanvasLayer
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 var _current_zone: = ''
-var in_dialogue: bool = false
 var world_entered: bool = false
 
 onready var _zone_name: Label = $Control/ZoneName
@@ -31,13 +30,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('ui_accept'):
-		if _continue.is_visible():
-			Event.emit_signal('intro_continued')
-		else:
-			Event.emit_signal('intro_skipped')
-
 		_zone_name.hide()
 		_continue.hide()
+		Event.emit_signal('hud_accept_pressed')
 	elif event.is_action_pressed('Journal'):
 		if world_entered:
 			toggle_journal()
@@ -87,7 +82,7 @@ func update_zone_name(name: String = '') -> void:
 
 
 
-func show_continue(wait: int = 0) -> void:
+func show_continue() -> void:
 	if not world_entered:
 		_zone_name.rect_position = _dflt_pos.zone_name
 		_zone_name.text = tr('CLICK_CONTINUE')

@@ -54,6 +54,7 @@ func set_text(text):
 	else:
 		_text = ''
 		_count = 0
+		_current_disappear = 0.0
 
 		hide()
 
@@ -67,7 +68,11 @@ func set_defaults():
 
 func stop(auto_complete: bool = true) -> void:
 	# Ignorar el skip si el texto ya está en su estado final
-	if text == _text: return
+	if not visible: return
+
+	if text == _text:
+		_hide_and_emit()
+		return
 
 	_finish()
 
@@ -75,7 +80,7 @@ func stop(auto_complete: bool = true) -> void:
 		text = _text
 		_forced_update = true
 
-	emit_signal('fill_done')
+	_disappear()
 
 
 func set_disappear_time(time := 0.0) -> void:
@@ -88,8 +93,7 @@ func set_text_color(color: Color) -> void:
 
 func finish_and_hide() -> void:
 	_finish()
-	set_text('')
-	hide()
+	_hide()
 
 
 func _on_timer_timeout():
@@ -101,22 +105,7 @@ func _on_timer_timeout():
 	else:
 		# El texto ya tiene todos los caracteres
 		_finish()
-
-		if _current_disappear > 0:
-			yield(get_tree().create_timer(_current_disappear), 'timeout')
-		elif _current_disappear == 0.0:
-			yield(get_tree().create_timer(disappear_wait), 'timeout')
-		else:
-			# El texto no desaparecerá sólo, sino que se espera una señal que lo
-			# haga desaparecer
-#			_hud.show_continue(0)
-			return
-		if not typing:
-			set_text('')
-
-			_current_disappear = 0.0
-
-			emit_signal('fill_done')
+		_disappear()
 
 
 # Detiene el temporizador y resetea el contador de caracteres escritos a cero
@@ -127,3 +116,26 @@ func _finish() -> void:
 
 	if typing:
 		typing = false
+
+
+func _disappear(forced_wait := 0.0) -> void:
+	if _current_disappear > 0:
+		yield(get_tree().create_timer(_current_disappear), 'timeout')
+	elif _current_disappear == 0.0:
+		yield(get_tree().create_timer(disappear_wait), 'timeout')
+	else:
+		# El texto no desaparecerá sólo, sino que se espera una señal que lo
+		# haga desaparecer
+		Event.emit_signal('continue_requested')
+		return
+	if visible and not typing:
+		_hide_and_emit()
+
+
+func _hide() -> void:
+	set_text('')
+
+
+func _hide_and_emit() -> void:
+	_hide()
+	emit_signal('fill_done')

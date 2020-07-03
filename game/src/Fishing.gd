@@ -34,7 +34,7 @@ func start_fishing():
 	show()
 	hooked = false
 	_timer.start()
-	
+
 
 func fish():
 	color = 'eb564b'
@@ -56,7 +56,7 @@ func fish_bite():
 	yield(get_tree().create_timer(rand_range(1, 2)),'timeout')
 	hooked = false
 	fish()
-	bite_check = rand_range(min_bite_freq, max_bite_freq) 
+	bite_check = rand_range(min_bite_freq, max_bite_freq)
 
 func pull_fish():
 	randomize()
@@ -75,7 +75,7 @@ func catch_fish():
 	fish.set_global_position(get_global_position())
 	fish.check_bait(bait)
 	fish.jump(get_position())
-	
+
 
 func _on_timer_timeout():
 	counter += 1

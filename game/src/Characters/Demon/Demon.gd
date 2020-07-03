@@ -41,7 +41,6 @@ func eat(is_good: bool, carbs: int = 1, name: String = '', sacred: bool = false)
 	Event.emit_signal('play_requested','Demon', 'Eat')
 
 	if in_intro:
-		Event.emit_signal('intro_continued')
 		return
 
 

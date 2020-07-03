@@ -30,11 +30,11 @@ func _ready() -> void:
 	_autofill.connect('fill_done', self, '_autofill_completed')
 
 	# Conectarse a eventos de la vida real
-	Event.connect('dialog_skipped', _autofill, 'stop')
 	Event.connect('dialog_requested', self, '_play_dialog')
 	Event.connect('dialog_continued', self, '_continue_dialog')
 	Event.connect('dialog_option_clicked', self, 'option_clicked')
 	Event.connect('character_spoke', self, '_on_character_spoke')
+	Event.connect('hud_accept_pressed', _autofill, 'stop')
 
 
 func option_clicked(opt: Dictionary) -> void:
@@ -68,6 +68,7 @@ func _continue_dialog(slot := 0) -> void:
 		_in_dialog_with_options = false
 
 		Event.emit_signal('control_toggled')
+		Event.emit_signal('dialog_finished')
 		_dialog_menu.remove_options()
 	else:
 		_play_dialog_line()
@@ -169,9 +170,6 @@ func _on_character_spoke(
 	if message != '':
 		_current_character = character
 
-#		if time_to_disappear < 0:
-#			_hud_ref.in_dialogue = true
-
 		_autofill.set_text(message)
 		_autofill.set_disappear_time(time_to_disappear)
 		_autofill.show()
@@ -186,6 +184,14 @@ func _autofill_completed() -> void:
 		_current_character = null
 		character_copy.spoke()
 		character_copy = null
+
+	if _wait:
+		# TODO: Puede haber una mejor manera de hacer esto, cosa que la alternación
+		# del control del PC suceda en un único lugar dentro del código de esta
+		# clase
+		Event.emit_signal('control_toggled')
+		Event.emit_signal('dialog_paused')
+		return
 
 	if not _dialog_menu.visible:
 		_continue_dialog(_selected_slot)

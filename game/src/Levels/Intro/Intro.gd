@@ -22,8 +22,7 @@ func _ready() -> void:
 	$Pickable.hide()
 
 	# Conectar escuchadores de eventos globales
-	Event.connect('intro_continued', self, '_continue')
-	Event.connect('intro_skipped', self, '_skip')
+	Event.connect('hud_accept_pressed', self, '_handle_accept')
 	Event.connect('dialog_finished', self, '_go_to_world')
 	Event.connect('pickable_requested', self, '_show_pickable')
 	Event.connect('dialog_paused', self, '_enable_pickable')
@@ -33,6 +32,13 @@ func _ready() -> void:
 
 # Esta función se llama cuando en el HUD se registró la presionada de la acción
 # 'ui_accept'
+func _handle_accept() -> void:
+	if _intro_label.modulate.a == 1.0:
+		_continue()
+	else:
+		_skip()
+
+
 func _continue() -> void:
 	if _count < 0:
 		_go_to_world()
@@ -61,10 +67,6 @@ func _continue() -> void:
 		else:
 			Event.emit_signal('dialog_continued')
 
-func _get_intro_msg() -> String:
-	_count += 1
-	return tr('INTRO_0%d' % _count)
-
 
 func _skip() -> void:
 	_skipped = true
@@ -77,9 +79,11 @@ func _skip() -> void:
 		else:
 			_intro_label.modulate.a = 0
 			_show_text('')
-	else:
-		# Emitir la señal para que el HUD corte la animación del diálogo
-		Event.emit_signal('dialog_skipped')
+
+
+func _get_intro_msg() -> String:
+	_count += 1
+	return tr('INTRO_0%d' % _count)
 
 
 func _sacrifice_done() -> void:
@@ -108,7 +112,7 @@ func _next() -> void:
 
 
 func _show_text(msg := '', fade_in_time := 0.8) -> void:
-	var wait := 3
+	var wait := 2
 
 	if msg:
 		if _intro_label.text and _intro_label.modulate.a > 0:
@@ -129,7 +133,7 @@ func _show_text(msg := '', fade_in_time := 0.8) -> void:
 		)
 		$Tween.start()
 	else:
-		wait = 0
+		wait = 0.1
 		_intro_label.text = _current_msg
 		_intro_label.modulate.a = 1.0
 
