@@ -6,6 +6,7 @@ onready var _owner: Player = owner as Player
 func enter(msg: Dictionary = {}) -> void:
 	_owner.fishing = true
 	_owner.fishing_spot.start_fishing()
+	_owner.play_animation(_owner.STATES.IDLE)
 	
 
 func exit() -> void:

@@ -29,7 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _owner.fishing:
 			_state_machine.transition_to(_owner.STATES.IDLE)
 		else:
-			_state_machine.transition_to(owner.STATES.FISH)
+			if not _owner.grabbing and not _owner.is_moving:
+				_state_machine.transition_to(owner.STATES.FISH)
 
 
 func _physics_process(delta) -> void:

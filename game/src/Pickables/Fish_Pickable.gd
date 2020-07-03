@@ -9,7 +9,7 @@ var fish_type = ['apuy', 'bocachico', 'cachama', 'chanchita', 'piranha']
 
 func jump(origin):
 	_tween.interpolate_property(self, "position",
-		position, position + (origin*-1)*rand_range(2, 4) , 1.6,
+		position, position + (origin*-1)*rand_range(2.5, 4.5) , 1.6,
 		Tween.TRANS_EXPO, Tween.EASE_OUT)
 	_tween.start()
 
