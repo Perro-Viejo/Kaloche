@@ -56,20 +56,26 @@ func _play_dialog(dialog_name: String) -> void:
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
 	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
 
-	Event.emit_signal('control_toggled')
+	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
+		_in_dialog_with_options = true
+		Event.emit_signal('control_toggled')
+
 	_continue_dialog()
 
 
 func _continue_dialog(slot := 0) -> void:
+	# Para la forma de diálogo anterior al plugin ------------------------------
+	if _did == 0:
+		_finish_dialog()
+		return
+	# --------------------------------------------------------------------------
+
+	if _autofill.is_visible(): return
+
 	_next_dialog_line(max(0, slot))
 
 	if _nid == _final_nid:
-		_options_nid = 0
-		_in_dialog_with_options = false
-
-		Event.emit_signal('control_toggled')
-		Event.emit_signal('dialog_finished')
-		_dialog_menu.remove_options()
+		_finish_dialog()
 	else:
 		_play_dialog_line()
 
@@ -80,6 +86,10 @@ func _next_dialog_line(slot := 0) -> void:
 
 func _play_dialog_line() -> void:
 	var line_txt := _story_reader.get_text(_did, _nid)
+
+	if _nid == _final_nid:
+		_finish_dialog()
+		return
 
 	if _in_dialog_with_options:
 		# Verificar si el texto del nodo es la palabra clave para volver al menú
@@ -107,7 +117,6 @@ func _play_dialog_line() -> void:
 
 	if line_dic.has('options'):
 		_options_nid = _nid
-		_in_dialog_with_options = true
 		_selected_slot = -1
 
 		var id := 0
@@ -185,6 +194,8 @@ func _autofill_completed() -> void:
 		character_copy.spoke()
 		character_copy = null
 
+
+
 	if _wait:
 		# TODO: Puede haber una mejor manera de hacer esto, cosa que la alternación
 		# del control del PC suceda en un único lugar dentro del código de esta
@@ -193,5 +204,23 @@ func _autofill_completed() -> void:
 		Event.emit_signal('dialog_paused')
 		return
 
-	if not _dialog_menu.visible:
+	if _in_dialog_with_options and not _dialog_menu.visible:
 		_continue_dialog(_selected_slot)
+
+
+func _finish_dialog() -> void:
+	# Para la forma de diálogo anterior al plugin ------------------------------
+	if _final_nid == 0: return
+	# --------------------------------------------------------------------------
+
+	_did = 0
+	_nid = 0
+	_final_nid = 0
+
+	if _in_dialog_with_options:
+		_options_nid = 0
+		_in_dialog_with_options = false
+		_dialog_menu.remove_options()
+		Event.emit_signal('control_toggled')
+
+	Event.emit_signal('dialog_finished')

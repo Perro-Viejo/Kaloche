@@ -34,12 +34,14 @@ func on_Options(options) -> void:
 func on_ChangeScene(scene):
 	if FadeState != IDLE:
 		return
-	#print("on_ChangeScene: ", scene)
+
 	if Settings.HTML5:
 		NextScene = load(scene)
 	else:
 		SceneLoader.load_scene(scene, {scene="Level"})
+
 	FadeState = FADEOUT
+
 	$FadeLayer/FadeTween.interpolate_property($FadeLayer, "percent", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.0)
 	$FadeLayer/FadeTween.start()
 

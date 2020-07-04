@@ -29,7 +29,8 @@ func _ready():
 	max_health = health
 
 func _process(delta):
-	$AnimatedSprite.scale = Vector2.ONE * range_lerp(health, 0, max_health, 0, max_size)
+	$AnimatedSprite.scale = Vector2.ONE \
+		* range_lerp(health, 0, max_health, 0, max_size)
 	$FeedArea/CollisionShape2D/Feed.scale = $AnimatedSprite.scale
 	_feed_shape.radius = lerp(1, 14, $AnimatedSprite.scale.y)
 #	$Idle.set_pitch_scale(range_lerp(health, 0, max_health, 3, 1))
@@ -105,8 +106,8 @@ func _on_area_entered(other):
 			first_visit = false
 			_in_dialog = true
 
+			Event.emit_signal('control_toggled')
 			Event.connect('dialog_finished', self, '_dialog_finished')
-			Event.emit_signal('dialog_event', true, 2, 7)
 			Event.emit_signal('dialog_requested', 'Salute')
 			# Iniciar a quitarle vida al Kaloche
 			$Timer.start()
@@ -159,5 +160,5 @@ func _should_speak(character_name, text, time) -> void:
 
 
 func _dialog_finished() -> void:
-	_in_dialog = false
-	spoke()
+	Event.disconnect('dialog_finished', self, '_dialog_finished')
+	Event.emit_signal('control_toggled')

@@ -18,6 +18,8 @@ var _chars: = []
 var _count: = 0
 var _text: String
 var _forced_update := false
+var _is_disappearing := false
+var _time_to_dissapear := 0.0
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	hide()
@@ -25,14 +27,19 @@ func _ready():
 	default_position = get_position()
 	default_size = get_size()
 
-	$Timer.connect('timeout', self, '_on_timer_timeout')
 	$Timer.set_wait_time(animation_time)
+	$Timer.connect('timeout', self, '_write_character')
 
 
 func _process(delta: float) -> void:
 	if _forced_update:
 		_forced_update = false
 		rect_position.x = 160 - (rect_size.x / 2)
+
+	if _is_disappearing:
+		_time_to_dissapear -= delta
+		if _time_to_dissapear < 0:
+			_hide_and_emit()
 
 
 func start_animation():
@@ -55,6 +62,8 @@ func set_text(text):
 		_text = ''
 		_count = 0
 		_current_disappear = 0.0
+		_is_disappearing = false
+		_time_to_dissapear = 0.0
 
 		hide()
 
@@ -62,6 +71,8 @@ func set_text(text):
 func set_defaults():
 	self.text = ''
 	rect_size = default_size
+	_is_disappearing = false
+	_time_to_dissapear = 0.0
 
 	$Timer.stop()
 
@@ -71,15 +82,16 @@ func stop(auto_complete: bool = true) -> void:
 	if not visible: return
 
 	if text == _text:
+		print('se va, se va')
 		_hide_and_emit()
 		return
 
-	_finish()
-
+	print('se completa, se completa')
 	if auto_complete:
 		text = _text
 		_forced_update = true
 
+	_finish()
 	_disappear()
 
 
@@ -96,7 +108,7 @@ func finish_and_hide() -> void:
 	_hide()
 
 
-func _on_timer_timeout():
+func _write_character():
 	if text.length() < _text.length():
 		text += _text[_count]
 		_count += 1
@@ -120,16 +132,16 @@ func _finish() -> void:
 
 func _disappear(forced_wait := 0.0) -> void:
 	if _current_disappear > 0:
-		yield(get_tree().create_timer(_current_disappear), 'timeout')
+		_time_to_dissapear = _current_disappear
 	elif _current_disappear == 0.0:
-		yield(get_tree().create_timer(disappear_wait), 'timeout')
+		_time_to_dissapear = disappear_wait
 	else:
 		# El texto no desaparecerá sólo, sino que se espera una señal que lo
 		# haga desaparecer
 		Event.emit_signal('continue_requested')
 		return
-	if visible and not typing:
-		_hide_and_emit()
+
+	_is_disappearing = true
 
 
 func _hide() -> void:
@@ -137,5 +149,6 @@ func _hide() -> void:
 
 
 func _hide_and_emit() -> void:
-	_hide()
-	emit_signal('fill_done')
+	if visible and not typing:
+		_hide()
+		emit_signal('fill_done')
