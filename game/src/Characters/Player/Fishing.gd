@@ -1,7 +1,13 @@
+class_name Fishing
 extends ColorRect
 
 enum BAITS {NADA, GUSANO, SANGRE}
 export (BAITS) var bait
+export (float) var min_bite_freq = 5
+export (float) var max_bite_freq = 15
+export (int) var chance = 100
+export (float) var min_fish_size = 0.3
+export (float) var max_fish_size = 1.2
 
 onready var _timer: Timer = $Timer
 onready var _tween: Tween = get_node("../Tween")
@@ -13,11 +19,6 @@ var hooked
 var original_pos
 var end_pos = Vector2(0,0)
 
-export (float) var min_bite_freq = 5
-export (float) var max_bite_freq = 15
-export (int) var chance = 100
-export (float) var min_fish_size = 0.3
-export (float) var max_fish_size = 1.2
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
 func _ready():

@@ -3,6 +3,8 @@ extends Node
 const DEV_MODE := 'dev_mode'
 const CURRENT_SCENE := 'current_scene'
 
+enum BAITS {NADA, GUSANO, SANGRE}
+
 var _data := {}
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func get_data(key: String):
