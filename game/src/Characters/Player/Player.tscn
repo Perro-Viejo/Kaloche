@@ -10,7 +10,9 @@
 [ext_resource path="res://src/Characters/Player/States/Drop.gd" type="Script" id=8]
 [ext_resource path="res://assets/images/characters/teotriste.png" type="Texture" id=9]
 [ext_resource path="res://src/Characters/Player/States/Fish.gd" type="Script" id=10]
-[ext_resource path="res://src/Fishing.gd" type="Script" id=11]
+[ext_resource path="res://src/Characters/Player/Fishing.gd" type="Script" id=11]
+
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
