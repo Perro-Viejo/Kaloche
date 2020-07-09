@@ -8,10 +8,11 @@ export(Texture) var img setget set_sprite_texture
 export(String) var on_free = ''
 export(String) var tr_code = ''
 export(String) var character = ''
+export(String) var dialog = ''
 
 var being_grabbed: bool = false setget set_being_grabbed
 
-var _hides: Pickable
+var _hides: Area2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
@@ -28,8 +29,7 @@ func _ready() -> void:
 			_hides.hide() # ja!
 			_hides.toggle_collision(false)
 
-	$Outline.hide()
-	$Bubble.hide()
+	hide_interaction()
 
 
 func set_sprite_texture(tex: Texture) -> void:
@@ -45,8 +45,7 @@ func set_being_grabbed(new_val: bool) -> void:
 	# del objeto y se lo comerá
 	monitorable = !new_val
 
-	$Outline.hide()
-	$Bubble.hide()
+	hide_interaction()
 
 	# Sacar el objeto ocultiño
 	if _hides:
@@ -70,18 +69,14 @@ func toggle_collision(enable: bool = true) -> void:
 func _check_collision(area: Node2D, grab: bool = false) -> void:
 	if area.name != 'PlayerArea': return
 
-	var player: Player = area.get_parent() as Player
+	var player = area.get_parent()
 
 	if player.grabbing: return
 
 	if grab:
-		player.can_grab = self
-		$Bubble.show()
-		$Outline.show()
+		player.node_to_interact = self
 	else:
-		player.can_grab = null
-		$Bubble.hide()
-		$Outline.hide()
+		player.node_to_interact = null
 
 
 func _should_speak(character_name, text, time) -> void:
@@ -99,3 +94,13 @@ func _hidden_in_tree(dup: Pickable) -> void:
 		Event.connect('line_triggered', dup, '_should_speak')
 	if dup.on_free != '':
 		Event.emit_signal('dialog_requested', dup.on_free)
+
+
+func hide_interaction() -> void:
+	$Bubble.hide()
+	$Outline.hide()
+
+
+func show_interaction() -> void:
+	$Bubble.show()
+	$Outline.show()

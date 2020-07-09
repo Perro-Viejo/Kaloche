@@ -1,12 +1,12 @@
 # D R O P    S T A T E
 extends "res://src/StateMachine/State.gd"
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-onready var _owner: Player = owner as Player
+onready var _owner: Player = owner
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func enter(msg: Dictionary = {}) -> void:
 	_owner.grabbing = false
 
-	var picked: Pickable = _owner.can_grab as Pickable
+	var picked: Pickable = _owner.node_to_interact as Pickable
 	picked.being_grabbed = false
 	picked.z_index = 0
 
@@ -24,7 +24,7 @@ func enter(msg: Dictionary = {}) -> void:
 #	yield(_owner.sprite, 'animation_finished')
 
 	picked = null
-	_owner.can_grab = null
+	_owner.node_to_interact = null
 
 	_state_machine.transition_to(_owner.STATES.IDLE)
 

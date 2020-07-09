@@ -3,14 +3,14 @@ extends "res://src/StateMachine/State.gd"
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export(float) var grab_cooldown = 0.5
 
-onready var _owner: Player = owner as Player
+onready var _owner: Player = owner
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func enter(msg: Dictionary = {}) -> void:
-	if not _owner.can_grab:
+	if not _owner.node_to_interact:
 		_state_machine.transition_to(_owner.STATES.IDLE)
 		return
 
-	var picked: Pickable = _owner.can_grab as Pickable
+	var picked: Pickable = _owner.node_to_interact as Pickable
 	_owner.grabbing = true
 	picked.being_grabbed = true
 	# Retroalimentación { ======================================================

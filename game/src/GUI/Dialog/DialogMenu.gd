@@ -15,17 +15,24 @@ func create_options(options := []) -> void:
 			show_options()
 		return
 
+	var dflt := false
 	_current_options = options
 	for opt in options:
 		var btn: Button = option.instance() as Button
 		btn.text = opt.line
 		btn.connect('pressed', self, '_on_option_clicked', [opt])
+		if not dflt:
+			dflt = true
+			btn.add_to_group('FocusGroup')
+			btn.add_to_group('DialogMenu')
 
 		add_child(btn)
 
 		if opt.has('show') and not opt.show:
 			btn.hide()
-	show()
+
+	guiBrain.gui_collect_focusgroup()
+	show_options()
 
 
 func remove_options() -> void:
@@ -51,6 +58,8 @@ func update_options(updates_cfg := {}) -> void:
 
 
 func show_options() -> void:
+	Event.dialog = true
+#	guiBrain.gui_collect_focusgroup()
 	show()
 
 

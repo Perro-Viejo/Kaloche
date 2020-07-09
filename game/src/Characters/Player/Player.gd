@@ -13,7 +13,7 @@ const STATES = {
 
 var is_moving = false
 var is_out: bool = false
-var can_grab: Area2D = null
+var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing: bool = false
 var on_ground: bool = false
 var fishing: bool = false
@@ -138,3 +138,11 @@ func _should_speak(character_name, text, time) -> void:
 
 func _toggle_control() -> void:
 	is_paused = !is_paused
+
+
+func _set_node_to_interact(new_node: Pickable) -> void:
+	if new_node and new_node.is_in_group('Pickable'):
+		new_node.show_interaction()
+	if node_to_interact:
+		node_to_interact.hide_interaction()
+	node_to_interact = new_node

@@ -1,7 +1,7 @@
 # F I S H    S T A T E
 extends "res://src/StateMachine/State.gd"
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-onready var _owner: Player = owner as Player
+onready var _owner: Player = owner
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func enter(msg: Dictionary = {}) -> void:
 	_owner.fishing = true

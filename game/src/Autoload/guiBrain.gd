@@ -28,6 +28,8 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 			ButtonsSections["OptionsMain"] = btn
 		if groups.has("OptionsControls"):
 			ButtonsSections["OptionsControls"] = btn
+		if groups.has("DialogMenu"):
+			ButtonsSections["DialogMenu"] = btn
 
 func _unhandled_input(event)->void:
 	if event.is_action_pressed("ui_cancel"):
@@ -66,5 +68,7 @@ func force_focus():
 		else:
 			if Event.Paused:
 				btn = ButtonsSections.Pause
+			elif Event.dialog:
+				btn = ButtonsSections.DialogMenu
 	if btn != null:
 		btn.grab_focus()

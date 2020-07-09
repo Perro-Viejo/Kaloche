@@ -1,6 +1,6 @@
 extends "res://src/StateMachine/State.gd"
 
-onready var _owner: Player = owner as Player
+onready var _owner: Player = owner
 
 func enter(msg: Dictionary = {}) -> void:
 	_owner.is_moving = true
