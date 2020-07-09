@@ -45,19 +45,12 @@ func _physics_process(delta) -> void:
 		_last_dir.y = 0
 
 		_owner.sprite.flip_h = dir.x < 0
-		if dir.x < 0:
-			_owner.fishing_spot.set_position(Vector2(-10, 1))
-		else:
-			_owner.fishing_spot.set_position(Vector2(7, 1))
+#		
 
 	elif dir.y != 0:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
-
-		if dir.y < 0:
-			_owner.fishing_spot.set_position(Vector2(-2, -10))
-		else:
-			_owner.fishing_spot.set_position(Vector2(-2, 8))
+		
 
 	if not _owner.is_out:
 		_owner.move_and_collide(dir * _calc_speed * delta)

@@ -11,13 +11,14 @@ export (float) var max_fish_size = 1.2
 
 onready var _timer: Timer = $Timer
 onready var _tween: Tween = get_node("../Tween")
+onready var _move: Node = get_node("../StateMachine/Move")
 
 var counter = 0
 var fishing_started = false
 var bite_check
 var hooked
 var original_pos
-var end_pos = Vector2(0,0)
+var end_pos = Vector2(12,12)
 
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
@@ -37,22 +38,32 @@ func _process(delta):
 
 func start_fishing():
 	#se alista y lanza el anzuelo
+	#pone el anzuelo en la dirección correcta
+	if _move._last_dir.y == 0:
+		if _move._last_dir.x < 0:
+			rect_position = Vector2(-10, 1)
+		else:
+			rect_position = Vector2(7, 1)
+	elif _move._last_dir.x == 0:
+		if _move._last_dir.y < 0:
+			rect_position = Vector2(-2, -10)
+		else:
+			rect_position = Vector2(-2, 8)
 	show()
 	hooked = false
 	_timer.start()
 	
-	original_pos = rect_position
 	#ver donde esta mirando la caña 
 	if rect_position.y > 1:
 		end_pos = Vector2(0, rand_range(8,15))
 	elif rect_position.y < 1:
 		end_pos = Vector2(0, rand_range(-8,-15))
-	
+
 	if rect_position.x > 0 and rect_position.y == 1:
 		end_pos = Vector2(rand_range(8,15), 0)
 	elif rect_position.x < 0 and rect_position.y == 1:
 		end_pos = Vector2(rand_range(-8,-15), 0)
-		
+#
 	_tween.interpolate_property(
 		self, "rect_position",
 		rect_position, rect_position + end_pos , 1.2,
@@ -67,7 +78,6 @@ func fish():
 
 func stop():
 	hide()
-	rect_position = original_pos
 	color = 'ffffeb'
 	fishing_started = false
 	counter = 0
