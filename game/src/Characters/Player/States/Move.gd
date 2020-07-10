@@ -22,11 +22,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			_owner.fishing_spot.pull_fish()
 		if _owner.node_to_interact and not _owner.grabbing:
 			_state_machine.transition_to(_owner.STATES.GRAB)
-	elif event.is_action_pressed('Drop') and _owner.node_to_interact:
-		if _owner.grabbing:
-			_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
-		elif _owner.node_to_interact.dialog:
-			Event.emit_signal('dialog_requested', _owner.node_to_interact.dialog)
+	elif event.is_action_pressed('Drop'):
+		if _owner.node_to_interact:
+			if _owner.grabbing:
+				_state_machine.transition_to(_owner.STATES.DROP, { dir = _last_dir })
+			elif _owner.node_to_interact.dialog:
+				Event.emit_signal('dialog_requested', _owner.node_to_interact.dialog)
+		else:
+			if _owner.fishing:
+				_owner.fishing_spot.switch_bait()
 
 	if event.is_action_pressed('Fish'):
 		if _owner.fishing:

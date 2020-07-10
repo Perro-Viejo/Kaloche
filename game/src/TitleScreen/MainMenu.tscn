@@ -1,11 +1,161 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/menu/_perro_viejo_logo.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=5]
+[ext_resource path="res://src/TitleScreen/Credits.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/m5x7.ttf"
+
+[sub_resource type="DynamicFont" id=35]
+size = 12
+use_mipmaps = true
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 10
+use_mipmaps = true
+font_data = SubResource( 2 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 25, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 50, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 75, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 100, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 125, 0, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 25, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 50, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 75, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 100, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 125, 30, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 25, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 5 )
+region = Rect2( 50, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 5 )
+region = Rect2( 75, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 100, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 125, 60, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 25, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 5 )
+region = Rect2( 50, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 5 )
+region = Rect2( 75, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 5 )
+region = Rect2( 100, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 5 )
+region = Rect2( 125, 90, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 120, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 25, 120, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 50, 120, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 75, 120, 25, 30 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="DynamicFont" id=33]
+size = 12
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=34]
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+use_mipmaps = true
+extra_spacing_top = -1
+extra_spacing_bottom = -3
+font_data = SubResource( 2 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -27,6 +177,9 @@ custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
 custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxMain" type="VBoxContainer" parent="BG/MarginContainer"]
 margin_left = 16.0
@@ -84,6 +237,118 @@ margin_right = 288.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Credits" type="TextureButton" parent="BG"]
+margin_left = 255.983
+margin_top = 145.233
+margin_right = 295.983
+margin_bottom = 165.233
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BG/Credits"]
+margin_left = -1.82835
+margin_top = 15.6677
+margin_right = 45.1716
+margin_bottom = 29.6677
+custom_fonts/font = SubResource( 35 )
+text = "Perro Viejo"
+
+[node name="Label2" type="Label" parent="BG/Credits"]
+margin_left = 1.44917
+margin_top = -7.45663
+margin_right = 41.4492
+margin_bottom = 6.54337
+custom_fonts/font = SubResource( 36 )
+text = "Créditos"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Memoria" type="Control" parent="BG/Credits"]
+visible = false
+margin_left = -140.723
+margin_top = -101.719
+margin_right = -100.723
+margin_bottom = -61.7193
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fuego" type="AnimatedSprite" parent="BG/Credits/Memoria"]
+position = Vector2( -19, 3 )
+frames = SubResource( 32 )
+frame = 21
+speed_scale = 0.6
+playing = true
+offset = Vector2( 0, -6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Fuego2" type="AnimatedSprite" parent="BG/Credits/Memoria"]
+position = Vector2( 145, 3 )
+frames = SubResource( 32 )
+frame = 15
+speed_scale = 0.6
+playing = true
+offset = Vector2( 0, -6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="BG/Credits/Memoria"]
+margin_left = -0.235962
+margin_top = -8.88776
+margin_right = 125.764
+margin_bottom = 5.11224
+custom_fonts/font = SubResource( 33 )
+text = "A la memoria de"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="BG/Credits/Memoria"]
+margin_left = -11.0905
+margin_top = -0.943871
+margin_right = 137.909
+margin_bottom = 13.0561
+custom_fonts/font = SubResource( 34 )
+text = "Raúl Alberto Galindo Morales"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Devs" type="Label" parent="BG/Credits"]
+visible = false
+margin_left = -161.187
+margin_top = -79.5448
+margin_right = 2.81268
+margin_bottom = 16.4552
+custom_fonts/font = SubResource( 3 )
+text = "Mateo \"Carenalga\" Robayo Rodríguez
+Gráficas y Programación
+
+Itzel \"Noisy Panda\" González Estrada
+Audio y Narrativa
+
+Juan \"Quiet Gecko\" Carlos García Ángel
+Audio y Programación
+
+José Miguel Romero 
+Apoyo Moral"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/Exit" to="." method="_on_Exit_pressed"]

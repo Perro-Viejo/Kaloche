@@ -6,127 +6,127 @@
 [ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/world/circle.png" type="Texture" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=33]
 radius = 14.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=34]
 radius = 19.8211
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 25, 0, 25, 30 )
+region = Rect2( 0, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 0, 25, 30 )
+region = Rect2( 25, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 75, 0, 25, 30 )
+region = Rect2( 50, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 0, 25, 30 )
+region = Rect2( 75, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 125, 0, 25, 30 )
+region = Rect2( 100, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 30, 25, 30 )
+region = Rect2( 125, 0, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 25, 30, 25, 30 )
+region = Rect2( 0, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 30, 25, 30 )
+region = Rect2( 25, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 75, 30, 25, 30 )
+region = Rect2( 50, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 30, 25, 30 )
+region = Rect2( 75, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 125, 30, 25, 30 )
+region = Rect2( 100, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 60, 25, 30 )
+region = Rect2( 125, 30, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 25, 60, 25, 30 )
+region = Rect2( 0, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 60, 25, 30 )
+region = Rect2( 25, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
-region = Rect2( 75, 60, 25, 30 )
+region = Rect2( 50, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 60, 25, 30 )
+region = Rect2( 75, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 1 )
-region = Rect2( 125, 60, 25, 30 )
+region = Rect2( 100, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 90, 25, 30 )
+region = Rect2( 125, 60, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
-region = Rect2( 25, 90, 25, 30 )
+region = Rect2( 0, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 90, 25, 30 )
+region = Rect2( 25, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 1 )
-region = Rect2( 75, 90, 25, 30 )
+region = Rect2( 50, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 90, 25, 30 )
+region = Rect2( 75, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 1 )
-region = Rect2( 125, 90, 25, 30 )
+region = Rect2( 100, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 120, 25, 30 )
+region = Rect2( 125, 90, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 1 )
-region = Rect2( 25, 120, 25, 30 )
+region = Rect2( 0, 120, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 120, 25, 30 )
+region = Rect2( 25, 120, 25, 30 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 1 )
+region = Rect2( 50, 120, 25, 30 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
 region = Rect2( 75, 120, 25, 30 )
 
-[sub_resource type="SpriteFrames" id=31]
+[sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "default",
 "speed": 24.0
@@ -143,7 +143,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeedArea"]
 position = Vector2( 0, -4 )
-shape = SubResource( 1 )
+shape = SubResource( 33 )
 
 [node name="Feed" type="Sprite" parent="FeedArea/CollisionShape2D"]
 modulate = Color( 1, 0.894118, 0.470588, 0.101961 )
@@ -154,11 +154,11 @@ collision_layer = 4
 
 [node name="Area" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( 0, 8.32307 )
-shape = SubResource( 2 )
+shape = SubResource( 34 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 31 )
-frame = 8
+frames = SubResource( 32 )
+frame = 2
 playing = true
 offset = Vector2( 0, -6 )
 

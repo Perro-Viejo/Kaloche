@@ -190,7 +190,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-bait = 2
 
 [node name="FishingArea" type="Area2D" parent="FishingSpot"]
 position = Vector2( 7.35245, -0.858543 )

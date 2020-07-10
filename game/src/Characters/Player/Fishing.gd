@@ -17,8 +17,7 @@ var counter = 0
 var fishing_started = false
 var bite_check
 var hooked
-var original_pos
-var end_pos = Vector2(12,12)
+var end_pos = Vector2.ZERO
 
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
@@ -113,6 +112,20 @@ func catch_fish():
 	fish.scale = Vector2.ONE * rand_range(min_fish_size, max_fish_size)
 	fish.jump(get_position())
 
+func switch_bait():
+	stop()
+	bait += 1
+	if bait >= BAITS.size():
+		bait = 0
+	var bait_message
+	match BAITS.keys()[bait]:
+		'NADA':
+			bait_message = "Probemos nanai a ver que sale..."
+		'GUSANO':
+			bait_message = "Gusanito pal río."
+		'SANGRE':
+			bait_message = "Sangre de mula pal pescao."
+	get_parent().speak(tr(bait_message))
 
 func _on_timer_timeout():
 	counter += 1

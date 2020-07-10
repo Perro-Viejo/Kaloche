@@ -53,7 +53,6 @@ func check_bait(bait):
 	var chance := randf()
 	var selected_fish := ''
 	var i := 0
-	
 	if bait != Data.BAITS.NADA:
 		randomize()
 		fish_type.shuffle()
