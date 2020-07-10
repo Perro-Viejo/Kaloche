@@ -15,23 +15,17 @@ func create_options(options := []) -> void:
 			show_options()
 		return
 
-	var dflt := false
 	_current_options = options
 	for opt in options:
 		var btn: Button = option.instance() as Button
 		btn.text = opt.line
 		btn.connect('pressed', self, '_on_option_clicked', [opt])
-		if not dflt:
-			dflt = true
-			btn.add_to_group('FocusGroup')
-			btn.add_to_group('DialogMenu')
 
 		add_child(btn)
 
 		if opt.has('show') and not opt.show:
 			btn.hide()
 
-	guiBrain.gui_collect_focusgroup()
 	show_options()
 
 
@@ -58,11 +52,19 @@ func update_options(updates_cfg := {}) -> void:
 
 
 func show_options() -> void:
+	# Establecer cuál será la primera opción a seleccionar cuando se presione
+	# una flecha del teclado
+	var btn: Button = get_child(0)
+	btn.add_to_group('FocusGroup')
+	btn.add_to_group('DialogMenu')
+	guiBrain.gui_collect_focusgroup()
+
 	Event.dialog = true
-#	guiBrain.gui_collect_focusgroup()
+
 	show()
 
 
 func _on_option_clicked(opt: Dictionary) -> void:
+	Event.dialog = false
 	hide()
 	Event.emit_signal('dialog_option_clicked', opt)

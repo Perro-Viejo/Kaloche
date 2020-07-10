@@ -13,9 +13,11 @@ export(String) var dialog = ''
 var being_grabbed: bool = false setget set_being_grabbed
 
 var _hides: Area2D
+
+onready var _bubble_name := tr('P_' + (tr_code if tr_code else name).to_upper())
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
-	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
+#	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
 
 	connect('area_entered', self, '_check_collision', [ true ])
 	connect('area_exited', self, '_check_collision')
@@ -97,10 +99,12 @@ func _hidden_in_tree(dup: Pickable) -> void:
 
 
 func hide_interaction() -> void:
-	$Bubble.hide()
+	Event.emit_signal('name_bubble_requested')
+#	$Bubble.hide()
 	$Outline.hide()
 
 
 func show_interaction() -> void:
-	$Bubble.show()
+	Event.emit_signal('name_bubble_requested', self, _bubble_name)
+#	$Bubble.show()
 	$Outline.show()

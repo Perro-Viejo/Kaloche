@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/m5x7_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/HUD/HUD.gd" type="Script" id=2]
 [ext_resource path="res://src/GUI/Dialog/Dialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/GUI/NameBubble/NameBubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/gui/paper_sheet.png" type="Texture" id=6]
 [ext_resource path="res://src/GUI/HUD/Journal.gd" type="Script" id=7]
 
@@ -147,5 +148,7 @@ Yo ya te lo he dicho
 "
 align = 1
 autowrap = true
+
+[node name="NameBubble" parent="Control" instance=ExtResource( 4 )]
 
 [node name="Tween" type="Tween" parent="."]

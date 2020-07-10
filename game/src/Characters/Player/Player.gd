@@ -8,7 +8,8 @@ const STATES = {
 	IDLE = 'Idle',
 	GRAB = 'Grab',
 	DROP = 'Drop',
-	FISH = 'Fish'
+	FISH = 'Fish',
+	TALK = 'Talk'
 }
 
 var is_moving = false
@@ -137,11 +138,13 @@ func _should_speak(character_name, text, time) -> void:
 
 
 func _toggle_control() -> void:
+	$StateMachine.transition_to(STATES.IDLE)
 	is_paused = !is_paused
 
 
 func _set_node_to_interact(new_node: Pickable) -> void:
 	if new_node and new_node.is_in_group('Pickable'):
+		prints('>>>', $Camera2D.get_camera_position(), $Camera2D.get_camera_screen_center())
 		new_node.show_interaction()
 	if node_to_interact:
 		node_to_interact.hide_interaction()

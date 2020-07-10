@@ -15,7 +15,7 @@ signal Refocus
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Perro Viejo ░░░░
 
-# Para el diálogo y todo lo que tenga que ver con diálogos para dialogar
+# Para el diálogo y todo lo que tenga que ver con diálogos para dialogar ▓▓▓▓▓ 
 signal character_spoke(character, message, time_to_disappear)
 signal dialog_event(playing, countdown, duration)
 signal dialog_requested(dialog_name)
@@ -27,25 +27,36 @@ signal line_triggered(character_name, text, time)
 signal dialog_menu_requested(options)
 signal dialog_option_clicked(option_dic)
 signal dialog_menu_updated(cfg)
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 
+# Chimbadas de la introducción ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 signal pickable_requested
+signal intro_shown(msg)
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 
+# Cosas del mundo rial ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 signal zone_entered(name)
+signal world_entered
+
+# Para todo lo que tenga que ver con el personaje jugable
+signal control_toggled
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
+
+# Cosas del HUDs ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
+signal hud_accept_pressed
+signal continue_requested
+signal name_bubble_requested(target, tr_code)
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
+
+# Para el audio y la música y todo lo que suena ▓▓ ♪ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 signal music_requested(stream) # Sólo mientras tanto
 signal music_stoped() # Sólo mientras tanto
-signal intro_shown(msg)
-signal hud_accept_pressed
-signal world_entered
-signal continue_requested
-
 signal play_requested(source, sound, position)
 signal stop_requested(source, sound)
 signal pause_requested(source, sound)
 signal stream_finished(source, sound)
 signal change_volume(source, sound, volume)
-
-# Para todo lo que tenga que ver con el personaje jugable
-signal control_toggled
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 #For section tracking

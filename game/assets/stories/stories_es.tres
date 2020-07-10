@@ -282,7 +282,6 @@ story = {
 	},
 	{
 		\"line\": \"¿Qué quieres que haga?\",
-		\"show\": false,
 		\"say\": true
 	},
 	{

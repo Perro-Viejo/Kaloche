@@ -26,6 +26,8 @@ func _ready()->void:
 
 	guiBrain.gui_collect_focusgroup()
 
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 
 func on_Options(options) -> void:
 	pass

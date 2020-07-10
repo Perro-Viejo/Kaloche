@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -11,38 +11,39 @@
 [ext_resource path="res://assets/images/characters/teotriste.png" type="Texture" id=9]
 [ext_resource path="res://src/Characters/Player/States/Fish.gd" type="Script" id=10]
 [ext_resource path="res://src/Characters/Player/Fishing.gd" type="Script" id=11]
+[ext_resource path="res://src/Characters/Player/States/Talk.gd" type="Script" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 10, 9 )
+region = Rect2( 0, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 10, 9 )
+region = Rect2( 10, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 60, 0, 10, 9 )
+region = Rect2( 20, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 70, 0, 10, 9 )
+region = Rect2( 30, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 0, 10, 9 )
+region = Rect2( 40, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 130, 0, 10, 9 )
+region = Rect2( 50, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 140, 0, 10, 9 )
+region = Rect2( 60, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 0, 10, 9 )
+region = Rect2( 70, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
@@ -62,30 +63,30 @@ region = Rect2( 110, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 10, 9 )
+region = Rect2( 120, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
-region = Rect2( 10, 0, 10, 9 )
+region = Rect2( 130, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 20, 0, 10, 9 )
+region = Rect2( 140, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 0, 10, 9 )
+region = Rect2( 150, 0, 10, 9 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "IdleGrab",
+"name": "Idle",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "RunGrab",
+"name": "IdleGrab",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
@@ -95,7 +96,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
-"name": "Idle",
+"name": "RunGrab",
 "speed": 10.0
 } ]
 
@@ -168,6 +169,9 @@ script = ExtResource( 8 )
 
 [node name="Fish" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
+
+[node name="Talk" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
 
 [node name="PlayerArea" type="Area2D" parent="."]
 collision_mask = 0
