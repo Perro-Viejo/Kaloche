@@ -143,9 +143,9 @@ func _toggle_control() -> void:
 
 
 func _set_node_to_interact(new_node: Pickable) -> void:
-	if new_node and new_node.is_in_group('Pickable'):
-		prints('>>>', $Camera2D.get_camera_position(), $Camera2D.get_camera_screen_center())
-		new_node.show_interaction()
 	if node_to_interact:
 		node_to_interact.hide_interaction()
+	if new_node and new_node.is_in_group('Pickable'):
+		new_node.show_interaction()
+
 	node_to_interact = new_node
