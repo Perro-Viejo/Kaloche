@@ -49,15 +49,21 @@ func update_options(updates_cfg := {}) -> void:
 					btn.hide()
 				else:
 					btn.show()
+			if btn.is_in_group('FocusGroup'):
+				btn.remove_from_group('FocusGroup')
+				btn.remove_from_group('DialogMenu')
+				guiBrain.gui_collect_focusgroup()
 
 
 func show_options() -> void:
 	# Establecer cuál será la primera opción a seleccionar cuando se presione
 	# una flecha del teclado
-	var btn: Button = get_child(0)
-	btn.add_to_group('FocusGroup')
-	btn.add_to_group('DialogMenu')
-	guiBrain.gui_collect_focusgroup()
+	for btn in get_children():
+		if btn.visible:
+			btn.add_to_group('FocusGroup')
+			btn.add_to_group('DialogMenu')
+			guiBrain.gui_collect_focusgroup()
+			break
 
 	Event.dialog = true
 
