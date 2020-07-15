@@ -2,10 +2,12 @@ class_name Fishing
 extends ColorRect
 
 enum BAITS {NADA, GUSANO, SANGRE}
+enum RODS {SHORT, MED, LONG}
 export (BAITS) var bait
+export (RODS) var current_rod
+export (int) var chance = 100
 export (float) var min_bite_freq = 5
 export (float) var max_bite_freq = 15
-export (int) var chance = 100
 export (float) var min_fish_size = 0.3
 export (float) var max_fish_size = 1.2
 
@@ -15,15 +17,27 @@ onready var _move: Node = get_node("../StateMachine/Move")
 
 var counter = 0
 var fishing_started = false
+var fish_size
 var bite_check
+var hooked_time
 var hooked
+var line_length
+var max_line_length = 8
+var min_line_length = 15
 var end_pos = Vector2.ZERO
+var _fish_splash
 
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
 func _ready():
+	hooked_time = rand_range(18, 50)
 	bite_check = rand_range(min_bite_freq, max_bite_freq)
 	_timer.connect('timeout', self, '_on_timer_timeout')
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed('Testiar'):
+		switch_rod()
+	
 
 func _process(delta):
 	if not fishing_started:
@@ -34,9 +48,19 @@ func _process(delta):
 	else:
 		if counter >= bite_check:
 			fish_bite()
+	
+	if hooked:
+		hooked_time -= 1
+		if hooked_time <= 0:
+			hooked = false
+			hooked_time = rand_range(18, 50)
+			fish()
+			bite_check = rand_range(min_bite_freq, max_bite_freq)
 
 func start_fishing():
-	#se alista y lanza el anzuelo
+	randomize()
+	fish_size = rand_range(min_fish_size, max_fish_size)
+	line_length = rand_range(min_line_length, max_line_length)
 	#pone el anzuelo en la dirección correcta
 	if _move._last_dir.y == 0:
 		if _move._last_dir.x < 0:
@@ -54,14 +78,14 @@ func start_fishing():
 	
 	#ver donde esta mirando la caña 
 	if rect_position.y > 1:
-		end_pos = Vector2(0, rand_range(8,15))
+		end_pos = Vector2(0, line_length)
 	elif rect_position.y < 1:
-		end_pos = Vector2(0, rand_range(-8,-15))
+		end_pos = Vector2(0, line_length * -1)
 
 	if rect_position.x > 0 and rect_position.y == 1:
-		end_pos = Vector2(rand_range(8,15), 0)
+		end_pos = Vector2(line_length, 0)
 	elif rect_position.x < 0 and rect_position.y == 1:
-		end_pos = Vector2(rand_range(-8,-15), 0)
+		end_pos = Vector2(line_length * -1, 0)
 #
 	_tween.interpolate_property(
 		self, "rect_position",
@@ -88,10 +112,6 @@ func fish_bite():
 	counter = 0
 	hooked = true
 	color = '5dde87'
-	yield(get_tree().create_timer(rand_range(1, 2)),'timeout')
-	hooked = false
-	fish()
-	bite_check = rand_range(min_bite_freq, max_bite_freq)
 
 func pull_fish():
 	randomize()
@@ -104,6 +124,8 @@ func pull_fish():
 		stop()
 
 func catch_fish():
+	_fish_splash.position = get_position()
+	_fish_splash.set_emitting(true)
 	stop()
 	var fish = FISH.instance()
 	get_node('../..').add_child(fish)
@@ -118,14 +140,38 @@ func switch_bait():
 	if bait >= BAITS.size():
 		bait = 0
 	var bait_message
+	
 	match BAITS.keys()[bait]:
 		'NADA':
 			bait_message = "Probemos nanai a ver que sale..."
 		'GUSANO':
-			bait_message = "Gusanito pal río."
+			bait_message = "Gusanito en la caña pal río."
 		'SANGRE':
-			bait_message = "Sangre de mula pal pescao."
+			bait_message = "Sangre de mula en un ganchito pal pescao."
 	get_parent().speak(tr(bait_message))
+
+func switch_rod():
+	current_rod += 1
+	if current_rod >= RODS.size():
+		current_rod = 0
+	
+	match RODS.keys()[current_rod]:
+		'SHORT':
+			min_line_length = 8
+			max_line_length = 15
+			min_fish_size = 0.2
+			max_fish_size = 0.5
+		'MED':
+			min_line_length = 20
+			max_line_length = 35
+			min_fish_size = 0.6
+			max_fish_size = 0.9
+		'LONG':
+			min_line_length = 40
+			max_line_length = 55
+			min_fish_size = 0.9
+			max_fish_size = 1.3
+	get_parent().speak(tr("saque la caña " + RODS.keys()[current_rod]))
 
 func _on_timer_timeout():
 	counter += 1

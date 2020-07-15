@@ -28,6 +28,9 @@ onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
+	
+	fishing_spot._fish_splash = $FishSplash
+	
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('body_exited', self, 'toggle_on_ground')
