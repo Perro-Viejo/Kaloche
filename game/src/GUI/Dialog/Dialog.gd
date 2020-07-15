@@ -32,23 +32,9 @@ func _ready() -> void:
 	# Conectarse a eventos de la vida real
 	Event.connect('dialog_requested', self, '_play_dialog')
 	Event.connect('dialog_continued', self, '_continue_dialog')
-	Event.connect('dialog_option_clicked', self, 'option_clicked')
+	Event.connect('dialog_option_clicked', self, '_option_clicked')
 	Event.connect('character_spoke', self, '_on_character_spoke')
 	Event.connect('hud_accept_pressed', _autofill, 'stop')
-
-
-func option_clicked(opt: Dictionary) -> void:
-	_selected_slot = opt.id
-
-	if opt.has('say') and opt.say:
-		Event.emit_signal(
-			'line_triggered',
-			(opt.actor as String).to_lower(),
-			opt.line as String,
-			opt.time
-		)
-	else:
-		_continue_dialog(_selected_slot)
 
 
 func _play_dialog(dialog_name: String) -> void:
@@ -72,12 +58,32 @@ func _continue_dialog(slot := 0) -> void:
 
 	if _autofill.is_visible(): return
 
+	if _selected_slot < 0 and _nid == _options_nid:
+		# Para mostrar el menú de opciones de diálogo al final de la línea
+		# que este posiblemente dispare
+		_dialog_menu.show_options()
+		return
+
 	_next_dialog_line(max(0, slot))
 
 	if _nid == _final_nid:
 		_finish_dialog()
 	else:
 		_play_dialog_line()
+
+
+func _option_clicked(opt: Dictionary) -> void:
+	_selected_slot = opt.id
+
+	if opt.has('say') and opt.say:
+		Event.emit_signal(
+			'line_triggered',
+			(opt.actor as String).to_lower(),
+			opt.line as String,
+			opt.time
+		)
+	else:
+		_continue_dialog(_selected_slot)
 
 
 func _next_dialog_line(slot := 0) -> void:
@@ -182,19 +188,23 @@ func _on_character_spoke(
 		_autofill.set_text(message)
 		_autofill.set_disappear_time(time_to_disappear)
 		_autofill.show()
+		Event.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
 		_autofill.finish_and_hide()
+		Event.emit_signal('talking_bubble_requested')
 
 
 func _autofill_completed() -> void:
 	if _current_character:
+		Event.emit_signal('talking_bubble_requested')
+
 		var character_copy = _current_character
 		_current_character = null
-		character_copy.spoke()
+
+		if character_copy.has_method('spoke'):
+			character_copy.spoke()
 		character_copy = null
-
-
 
 	if _wait:
 		# TODO: Puede haber una mejor manera de hacer esto, cosa que la alternación
@@ -205,7 +215,7 @@ func _autofill_completed() -> void:
 		return
 
 	if _in_dialog_with_options and not _dialog_menu.visible:
-		_continue_dialog(_selected_slot)
+			_continue_dialog(_selected_slot)
 
 
 func _finish_dialog() -> void:

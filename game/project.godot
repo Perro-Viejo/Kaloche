@@ -100,6 +100,7 @@ preLoad="*res://src/Autoload/preLoad.gd"
 Settings="*res://src/Autoload/Settings.gd"
 guiBrain="*res://src/Autoload/guiBrain.gd"
 Data="*res://src/Autoload/Data.gd"
+Utils="*res://src/Autoload/Utils.gd"
 
 [debug]
 

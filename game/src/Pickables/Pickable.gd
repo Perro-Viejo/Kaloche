@@ -83,12 +83,7 @@ func _check_collision(area: Node2D, grab: bool = false) -> void:
 
 func _should_speak(character_name, text, time) -> void:
 	if character.to_lower() == character_name:
-		$TalkingBubble.appear()
 		Event.emit_signal('character_spoke', self, text, time)
-
-
-func spoke():
-	$TalkingBubble.appear(false)
 
 
 func _hidden_in_tree(dup: Pickable) -> void:

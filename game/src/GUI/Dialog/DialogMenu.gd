@@ -9,7 +9,7 @@ func _ready() -> void:
 	hide()
 
 
-func create_options(options := []) -> void:
+func create_options(options := [], autoshow := false) -> void:
 	if options.empty():
 		if not _current_options.empty():
 			show_options()
@@ -26,7 +26,7 @@ func create_options(options := []) -> void:
 		if opt.has('show') and not opt.show:
 			btn.hide()
 
-	show_options()
+	if autoshow: show_options()
 
 
 func remove_options() -> void:
@@ -58,14 +58,13 @@ func update_options(updates_cfg := {}) -> void:
 func show_options() -> void:
 	# Establecer cuál será la primera opción a seleccionar cuando se presione
 	# una flecha del teclado
+	Event.dialog = true
 	for btn in get_children():
 		if btn.visible:
 			btn.add_to_group('FocusGroup')
 			btn.add_to_group('DialogMenu')
 			guiBrain.gui_collect_focusgroup()
 			break
-
-	Event.dialog = true
 
 	show()
 

@@ -82,11 +82,9 @@ func stop(auto_complete: bool = true) -> void:
 	if not visible: return
 
 	if text == _text:
-		print('se va, se va')
 		_hide_and_emit()
 		return
 
-	print('se completa, se completa')
 	if auto_complete:
 		text = _text
 		_forced_update = true

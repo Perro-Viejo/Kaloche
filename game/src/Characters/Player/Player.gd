@@ -124,12 +124,11 @@ func play_fs(id):
 
 func speak(text := '', time_to_disappear := 0):
 	Event.emit_signal('character_spoke', self, text, time_to_disappear)
-	$TalkingBubble.appear()
 
 
 # Sirve para disparar comportamientos cuando se ha completado un diálogo
-func spoke():
-	$TalkingBubble.appear(false)
+#func spoke():
+#	pass
 
 
 func _should_speak(character_name, text, time) -> void:

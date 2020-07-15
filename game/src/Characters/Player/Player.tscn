@@ -1,6 +1,5 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
@@ -15,51 +14,51 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 10, 9 )
+region = Rect2( 40, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 90, 0, 10, 9 )
+region = Rect2( 50, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 100, 0, 10, 9 )
+region = Rect2( 60, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 110, 0, 10, 9 )
+region = Rect2( 70, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 10, 9 )
+region = Rect2( 80, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 10, 0, 10, 9 )
+region = Rect2( 90, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 20, 0, 10, 9 )
+region = Rect2( 100, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 0, 10, 9 )
+region = Rect2( 110, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 10, 9 )
+region = Rect2( 0, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 10, 9 )
+region = Rect2( 10, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
-region = Rect2( 60, 0, 10, 9 )
+region = Rect2( 20, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
-region = Rect2( 70, 0, 10, 9 )
+region = Rect2( 30, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 9 )
@@ -81,17 +80,17 @@ region = Rect2( 150, 0, 10, 9 )
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "Run",
+"name": "IdleGrab",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Run",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "IdleGrab",
+"name": "Idle",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
@@ -208,10 +207,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )
 shape = SubResource( 21 )
-
-[node name="TalkingBubble" parent="." instance=ExtResource( 1 )]
-visible = false
-y_offset = 12.0
 
 [node name="Splash_L" type="CPUParticles2D" parent="."]
 position = Vector2( -0.813303, 0 )

@@ -8,23 +8,31 @@
 size = 22
 font_data = ExtResource( 3 )
 
-[node name="TalkingBubble" type="Node2D"]
+[node name="TalkingBubble" type="Control"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="TextureRect" parent="."]
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = -2.5
-margin_top = -14.0
-margin_right = 24.5
-margin_bottom = 4.00002
+margin_left = 4.0
+margin_top = -6.0
+margin_right = 13.0
+margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.133333, 0.137255, 0.137255, 1 )
 bbcode_enabled = true
+bbcode_text = "[wave amp=14 freq=8].[/wave][wave amp=14 freq=9].[/wave][wave amp=14 freq=10].[/wave]"
 meta_underlined = false
+text = "..."
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

@@ -30,6 +30,9 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 			ButtonsSections["OptionsControls"] = btn
 		if groups.has("DialogMenu"):
 			ButtonsSections["DialogMenu"] = btn
+	# Para que por defecto se seleccione la primera opción de cualquier menú que
+	# se abra por aquí
+	force_focus()
 
 func _unhandled_input(event)->void:
 	if event.is_action_pressed("ui_cancel"):
@@ -51,6 +54,8 @@ func _unhandled_input(event)->void:
 
 func force_focus():
 	var btn:Button
+	
+	# TODO: Cambiar esta mierda por un match
 	if Event.MainMenu:
 		if Event.Options:
 			if Event.Controls:

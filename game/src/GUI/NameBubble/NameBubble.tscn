@@ -33,7 +33,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_right = 36.0
-margin_bottom = 12.3132
+margin_bottom = 13.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/normal = SubResource( 1 )

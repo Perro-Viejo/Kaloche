@@ -84,14 +84,11 @@ func speak(text := '', time_to_disappear := 0):
 		return
 	else:
 		previous_text = text
-		$TalkingBubble.appear()
 		Event.emit_signal('character_spoke', self, text, time_to_disappear)
 
 
 # Sirve para disparar comportamientos cuando se ha completado un diálogo
 func spoke():
-	$TalkingBubble.appear(false)
-
 	if _in_dialog:
 		Event.emit_signal('dialog_continued')
 
