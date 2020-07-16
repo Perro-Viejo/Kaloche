@@ -119,7 +119,8 @@ func _play_dialog_line() -> void:
 		time_to_disappear = line_dic.time as float
 
 	if line_dic.has('on_start'):
-		Event.emit_signal(line_dic.on_start)
+		var splitted = line_dic.on_start.split(",")
+		Event.emit_signal(splitted[0],splitted[1])
 
 	if line_dic.has('options'):
 		_options_nid = _nid

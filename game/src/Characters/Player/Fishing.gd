@@ -33,11 +33,8 @@ func _ready():
 	hooked_time = rand_range(18, 50)
 	bite_check = rand_range(min_bite_freq, max_bite_freq)
 	_timer.connect('timeout', self, '_on_timer_timeout')
+	Event.connect('rod_selected', self, 'switch_rod')
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('Testiar'):
-		switch_rod()
-	
 
 func _process(delta):
 	if not fishing_started:
@@ -150,10 +147,8 @@ func switch_bait():
 			bait_message = "Sangre de mula en un ganchito pal pescao."
 	get_parent().speak(tr(bait_message))
 
-func switch_rod():
-	current_rod += 1
-	if current_rod >= RODS.size():
-		current_rod = 0
+func switch_rod(rod):
+	current_rod = int(rod)
 	
 	match RODS.keys()[current_rod]:
 		'SHORT':

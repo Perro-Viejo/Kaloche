@@ -8,6 +8,7 @@ TYPE = "EXP_Story_editor"
 names = {
 "Dream": 1,
 "Options": 3,
+"RodStore": 4,
 "Salute": 2
 }
 story = {
@@ -383,6 +384,120 @@ story = {
 },
 10: {
 "graph_offset": Vector2( 1400, 400 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "return",
+"type": "line"
+}
+}
+},
+4: {
+"available_nid": [ 8, 9, 10 ],
+"groups": [  ],
+"human_readable_description": "Diálogo distribuidor de cañas",
+"name": "RodStore",
+"nodes": {
+1: {
+"graph_offset": Vector2( 0, -300 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "start",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1020, 200 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "end",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 500, -300 ),
+"links": {
+0: 4,
+1: 5,
+2: 6,
+3: 2
+},
+"rect_size": Vector2( 441, 161 ),
+"slot_amount": 4,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"A la orden\",
+\"time\": 3,
+\"options\": [
+	{
+		\"line\": \"Deme la caña corta\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Deme la caña medianga\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Deme la caña grandota\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Mejor ya nada. Chao.\"
+	}
+]
+}",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1040, -420 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la caña chiquita\",
+\"on_start\": \"rod_selected,0\"
+}",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 1040, -260 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la caña mediana\",
+\"on_start\": \"rod_selected,1\"
+}",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 1040, -100 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la cañanorrea\",
+\"on_start\": \"rod_selected,2\"
+}",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 1580, -420 ),
 "links": {
 
 },

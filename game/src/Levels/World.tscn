@@ -3245,9 +3245,11 @@ img = ExtResource( 17 )
 tr_code = "Rock"
 
 [node name="Rock8" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
-position = Vector2( -1031, 554 )
+position = Vector2( -1166.72, 561.937 )
 img = ExtResource( 15 )
 tr_code = "Rock"
+character = "Rocberto"
+dialog = "RodStore"
 
 [node name="Tween" type="Tween" parent="WorldLayer"]
 

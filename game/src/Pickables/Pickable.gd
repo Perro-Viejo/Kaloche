@@ -21,6 +21,9 @@ func _ready() -> void:
 
 	connect('area_entered', self, '_check_collision', [ true ])
 	connect('area_exited', self, '_check_collision')
+	
+	if character:
+		Event.connect('line_triggered', self, '_should_speak')
 
 	# Si el objeto tiene otro Pickable por dentro, ocultarlo. La idea es que ese
 	# que es el hijo sólo se haga visible cuando el jugador agarre el contenedor
@@ -88,7 +91,7 @@ func _should_speak(character_name, text, time) -> void:
 
 func _hidden_in_tree(dup: Pickable) -> void:
 	if dup.character != '':
-		Event.connect('line_triggered', dup, '_should_speak')
+		pass
 	if dup.on_free != '':
 		Event.emit_signal('dialog_requested', dup.on_free)
 

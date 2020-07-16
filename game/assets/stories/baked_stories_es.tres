@@ -267,10 +267,93 @@ story = {
 "text": "return"
 }
 }
+},
+4: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "start"
+},
+2: {
+"links": {
+
+},
+"text": "end"
+},
+3: {
+"links": {
+0: 4,
+1: 5,
+2: 6,
+3: 2
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"A la orden\",
+\"time\": 3,
+\"options\": [
+	{
+		\"line\": \"Deme la caña corta\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Deme la caña medianga\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Deme la caña grandota\",
+		\"say\": true
+	},
+	{
+		\"line\": \"Mejor ya nada. Chao.\"
+	}
+]
+}"
+},
+4: {
+"links": {
+0: 7
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la caña chiquita\",
+\"on_start\": \"rod_selected,0\"
+}"
+},
+5: {
+"links": {
+0: 7
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la caña mediana\",
+\"on_start\": \"rod_selected,1\"
+}"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Tenga la cañanorrea\",
+\"on_start\": \"rod_selected,2\"
+}"
+},
+7: {
+"links": {
+
+},
+"text": "return"
+}
+}
 }
 }
 names = {
 "Dream": 1,
 "Options": 3,
+"RodStore": 4,
 "Salute": 2
 }

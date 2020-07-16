@@ -37,6 +37,7 @@ signal intro_shown(msg)
 # Cosas del mundo rial ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 signal zone_entered(name)
 signal world_entered
+signal rod_selected(rod)
 
 # Para todo lo que tenga que ver con el personaje jugable
 signal control_toggled
