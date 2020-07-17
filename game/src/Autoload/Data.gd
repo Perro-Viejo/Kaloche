@@ -1,7 +1,8 @@
 extends Node
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-const DEV_MODE := 'dev_mode'
-const CURRENT_SCENE := 'current_scene'
+const DEV_MODE := 'DEV_MODE'
+const CURRENT_SCENE := 'CURRENT_SCENE'
+const DIALOGS := 'DIALOGS'
 
 enum BAITS {NADA, GUSANO, SANGRE}
 

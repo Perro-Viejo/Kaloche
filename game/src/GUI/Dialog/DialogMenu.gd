@@ -3,7 +3,7 @@ extends VBoxContainer
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export(PackedScene) var option
 
-var _current_options := []
+var current_options := []
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	hide()
@@ -11,11 +11,11 @@ func _ready() -> void:
 
 func create_options(options := [], autoshow := false) -> void:
 	if options.empty():
-		if not _current_options.empty():
+		if not current_options.empty():
 			show_options()
 		return
 
-	_current_options = options
+	current_options = options
 	for opt in options:
 		var btn: Button = option.instance() as Button
 		btn.text = opt.line
@@ -24,14 +24,17 @@ func create_options(options := [], autoshow := false) -> void:
 		add_child(btn)
 
 		if opt.has('show') and not opt.show:
+			opt.show = false
 			btn.hide()
+		else:
+			opt.show = true
 
 	if autoshow: show_options()
 
 
 func remove_options() -> void:
-	if not _current_options.empty():
-		_current_options.clear()
+	if not current_options.empty():
+		current_options.clear()
 
 		for btn in get_children():
 			remove_child(btn as Button)
@@ -41,18 +44,22 @@ func remove_options() -> void:
 
 func update_options(updates_cfg := {}) -> void:
 	if not updates_cfg.empty():
+		var idx := 0
 		for btn in get_children():
 			btn = (btn as Button)
 			var id := String(btn.get_index())
 			if updates_cfg.has(id):
 				if not updates_cfg[id]:
+					current_options[idx].show = false
 					btn.hide()
 				else:
+					current_options[idx].show = true
 					btn.show()
 			if btn.is_in_group('FocusGroup'):
 				btn.remove_from_group('FocusGroup')
 				btn.remove_from_group('DialogMenu')
 				guiBrain.gui_collect_focusgroup()
+			idx+= 1
 
 
 func show_options() -> void:

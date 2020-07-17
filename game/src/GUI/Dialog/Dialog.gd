@@ -13,6 +13,7 @@ var _options_nid := 0
 var _in_dialog_with_options := false
 var _wait := false
 var _selected_slot := -1
+var _current_options := ''
 # } ----
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
@@ -20,6 +21,11 @@ onready var _dialog_menu: DialogMenu = find_node('DialogMenu')
 onready var _autofill: Autofill = find_node('Autofill')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
+	# Configurar el Data manager para que vaya guardando información de los
+	# diálogos (eventualmente esto se guardará en un archivo así como se guardan
+	# las opciones de configuración)
+	Data.set_data(Data.DIALOGS, {})
+	
 	_dialog_menu.hide()
 
 	match TranslationServer.get_locale():
@@ -32,8 +38,8 @@ func _ready() -> void:
 	# Conectarse a eventos de la vida real
 	Event.connect('dialog_requested', self, '_play_dialog')
 	Event.connect('dialog_continued', self, '_continue_dialog')
-	Event.connect('dialog_option_clicked', self, '_option_clicked')
 	Event.connect('character_spoke', self, '_on_character_spoke')
+	Event.connect('dialog_option_clicked', self, '_option_clicked')
 	Event.connect('hud_accept_pressed', _autofill, 'stop')
 
 
@@ -72,20 +78,6 @@ func _continue_dialog(slot := 0) -> void:
 		_play_dialog_line()
 
 
-func _option_clicked(opt: Dictionary) -> void:
-	_selected_slot = opt.id
-
-	if opt.has('say') and opt.say:
-		Event.emit_signal(
-			'line_triggered',
-			(opt.actor as String).to_lower(),
-			opt.line as String,
-			opt.time
-		)
-	else:
-		_continue_dialog(_selected_slot)
-
-
 func _next_dialog_line(slot := 0) -> void:
 	_nid = _story_reader.get_nid_from_slot(_did, _nid, slot)
 
@@ -118,17 +110,27 @@ func _play_dialog_line() -> void:
 	if line_dic.has('time'):
 		time_to_disappear = line_dic.time as float
 
+	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ ON START (event) ▮▮▮▮
 	if line_dic.has('on_start'):
 		var splitted = line_dic.on_start.split(",")
-		Event.emit_signal(splitted[0],splitted[1])
+		Event.emit_signal(splitted[0], splitted[1])
 
+	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ OPCIONES ▮▮▮▮
 	if line_dic.has('options'):
 		_options_nid = _nid
 		_selected_slot = -1
 
+		var options_state := {}
+		var dialogs_state: Dictionary = Data.get_data(Data.DIALOGS)
+		if dialogs_state.has(_get_options_id()):
+			options_state = dialogs_state[_get_options_id()]
+
 		var id := 0
 		for opt in line_dic.options:
 			opt.id = id
+			
+			if options_state:
+				opt.show = options_state[opt.id]
 
 			if not opt.has('actor'):
 				opt.actor = 'Player'
@@ -139,6 +141,7 @@ func _play_dialog_line() -> void:
 
 		_dialog_menu.create_options(line_dic.options)
 
+	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ APAGAR OPCIONES ▮▮▮▮
 	if line_dic.has('off') or line_dic.has('on'):
 		# En este nodo se apagarán opciones
 		var cfg := {}
@@ -196,6 +199,20 @@ func _on_character_spoke(
 		Event.emit_signal('talking_bubble_requested')
 
 
+func _option_clicked(opt: Dictionary) -> void:
+	_selected_slot = opt.id
+
+	if opt.has('say') and opt.say:
+		Event.emit_signal(
+			'line_triggered',
+			(opt.actor as String).to_lower(),
+			opt.line as String,
+			opt.time
+		)
+	else:
+		_continue_dialog(_selected_slot)
+
+
 func _autofill_completed() -> void:
 	if _current_character:
 		Event.emit_signal('talking_bubble_requested')
@@ -223,6 +240,20 @@ func _finish_dialog() -> void:
 	# Para la forma de diálogo anterior al plugin ------------------------------
 	if _final_nid == 0: return
 	# --------------------------------------------------------------------------
+	
+	if _in_dialog_with_options:
+		var options_id := _get_options_id()
+		var dialogs_state: Dictionary = Data.get_data(Data.DIALOGS)
+		var options_state := {}
+
+		if dialogs_state.has(options_id):
+			options_state = dialogs_state[options_id]
+
+		for opt in _dialog_menu.current_options:
+			options_state[opt.id] = opt.show
+		
+		dialogs_state[options_id] = options_state
+		Data.set_data(Data.DIALOGS, dialogs_state)
 
 	_did = 0
 	_nid = 0
@@ -235,3 +266,7 @@ func _finish_dialog() -> void:
 		Event.emit_signal('control_toggled')
 
 	Event.emit_signal('dialog_finished')
+
+
+func _get_options_id() -> String:
+	return '%s-%s' % [_did, _options_nid]
