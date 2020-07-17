@@ -19,7 +19,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 787.0
 margin_bottom = 20.0
 
 [node name="Close_BTN" type="Button" parent="VBoxContainer/HBoxContainer"]
@@ -37,7 +37,7 @@ margin_left = 59.0
 margin_right = 103.0
 margin_bottom = 20.0
 text = "Story"
-items = [ "New Story", null, 0, false, false, 0, 0, null, "", false, "Load Story", null, 0, false, false, 1, 0, null, "", false, "Save Story As", null, 0, false, false, 2, 0, null, "", false, "Bake Story As", null, 0, false, false, 3, 0, null, "", false, "Save CSV As", null, 0, false, false, 4, 0, null, "", false, "Load CSV", null, 0, false, false, 5, 0, null, "", false ]
+items = [ "New Story", null, 0, false, false, 0, 0, null, "", false, "Load Story", null, 0, false, false, 1, 0, null, "", false, "Save Story As", null, 0, false, false, 2, 0, null, "", false, "Bake Story As", null, 0, false, false, 3, 0, null, "", false, "Save CSV As", null, 0, false, false, 4, 0, null, "", false, "Load CSV", null, 0, false, false, 5, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Save i18ln CSV", null, 0, false, false, 6, 0, null, "", false ]
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 margin_left = 107.0
@@ -132,14 +132,14 @@ margin_bottom = 20.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 24.0
-margin_right = 1024.0
-margin_bottom = 572.0
+margin_right = 787.0
+margin_bottom = 228.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 1024.0
-margin_bottom = 548.0
+margin_right = 787.0
+margin_bottom = 204.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -153,8 +153,8 @@ __meta__ = {
 }
 
 [node name="Dialog_Record_Root" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3/Panel/VScrollBar"]
-margin_right = 1024.0
-margin_bottom = 548.0
+margin_right = 787.0
+margin_bottom = 204.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -164,9 +164,9 @@ __meta__ = {
 
 [node name="Group_Manager" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3"]
 visible = false
-margin_left = 824.0
-margin_right = 1080.0
-margin_bottom = 716.0
+margin_left = 531.0
+margin_right = 787.0
+margin_bottom = 204.0
 rect_min_size = Vector2( 256, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -202,13 +202,13 @@ text = "Delete"
 [node name="Group_ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer3/Group_Manager"]
 margin_top = 28.0
 margin_right = 256.0
-margin_bottom = 716.0
+margin_bottom = 204.0
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 576.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 232.0
+margin_right = 787.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 0, 24 )
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
@@ -222,7 +222,7 @@ margin_left = 69.0
 margin_right = 233.0
 margin_bottom = 24.0
 text = "Human Readable LBL"
-items = [ "Human Readable LBL", null, false, 0, null, "DID", null, false, 1, null ]
+items = [ "Human Readable LBL", null, false, 0, null, "DID", null, false, 1, null, "Record Name", null, false, 2, null ]
 selected = 0
 
 [node name="Search_LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]

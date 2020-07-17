@@ -262,7 +262,7 @@ Testiar={
 
 test="es"
 fallback="es"
-translations=PoolStringArray( "res://assets/localization/localization.en.translation", "res://assets/localization/localization.es.translation" )
+translations=PoolStringArray( "res://assets/localization/localization.en.translation", "res://assets/localization/localization.es.translation", "res://assets/localization/dialogings.es.translation", "res://assets/localization/dialogings.en.translation" )
 
 [rendering]
 

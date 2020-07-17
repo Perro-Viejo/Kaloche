@@ -18,7 +18,8 @@ func create_options(options := [], autoshow := false) -> void:
 	current_options = options
 	for opt in options:
 		var btn: Button = option.instance() as Button
-		btn.text = opt.line
+		# btn.text = opt.line
+		btn.text = tr(opt.tr_code.to_upper())
 		btn.connect('pressed', self, '_on_option_clicked', [opt])
 
 		add_child(btn)

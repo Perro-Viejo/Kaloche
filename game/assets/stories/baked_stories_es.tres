@@ -20,7 +20,8 @@ story = {
 },
 "text": "{
 \"actor\": \"Demon\",
-\"line\": \"La luna es oscura, Teotriste.\"
+\"line\": \"La luna es oscura, Teotriste.\",
+\"on_start\": \"control_toggled\"
 }"
 },
 3: {

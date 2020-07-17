@@ -34,6 +34,10 @@ var _Save_CSV_As : EditorFileDialog
 var _Save_Story_As : EditorFileDialog
 var _story : Dictionary
 
+# ░▒▓█▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+var _Save_i18n_CSV : EditorFileDialog
+# ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬█▓▒░
+
 #Virtual Methods
 
 func _ready():
@@ -281,6 +285,56 @@ func _on_Save_CVS_As_file_selected(filepath : String):
 	csv_file.close()
 
 
+# ░▒▓█▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+func _on_Save_i18n_CSV_BTN_pressed():
+	self._Save_i18n_CSV.popup_centered_ratio(0.7)
+
+func _on_Save_i18n_CSV_file_selected(filepath : String):
+	var csv_file = File.new()
+	var status = csv_file.open(filepath, File.WRITE)
+	
+	if not status == OK:
+		print_debug("EXP_Story_Editor: Error saving csv file \"" + filepath + "\".")
+		return
+	
+	csv_file.store_csv_line(["keys", "es", "en"], ",")
+	
+	for did in self._story.keys():
+		for nid in self._story[did]["nodes"].keys():
+			var dialog: String = self._story[did]["nodes"][nid]["text"]
+			
+			if dialog == 'start' or dialog == 'end' or dialog == 'return':
+				continue
+
+			var dialog_dic: Dictionary = JSON.parse(dialog).result
+
+			# ----[ el actor ]--------------------------------------------------
+			# El actor por defecto será el player
+			var actor := 'player'
+			if dialog_dic.has('actor'):
+				actor = dialog_dic.actor as String
+
+			# ----[ la línea ]--------------------------------------------------
+			# Se llega a venir un diálogo con opciones, mejor primero poner
+			# la línea de saludo y luego las opciones
+			if dialog_dic.has('line'):
+				var line: String = dialog_dic.line
+				var key := 'dlg_%d_%d_%s' % [did, nid, actor]
+				csv_file.store_csv_line([key.to_upper(), line, line], ",")
+
+			# ----[ las opciones ]----------------------------------------------
+			if dialog_dic.has('options'):
+				var idx := 0
+				for opt in dialog_dic.options:
+					var key := 'dlg_%d_%d_%s_opt_%d' % [did, nid, actor, idx]
+					var line: String = opt.line
+					csv_file.store_csv_line([key.to_upper(), line, line], ",")
+					idx += 1
+
+	csv_file.close()
+# ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬█▓▒░
+
+
 func _on_Save_Story_As_file_selected(filename : String):
 	self._save_data_to(filename)
 	self._Filename_LBL.text = filename.get_file()
@@ -312,6 +366,8 @@ func _on_story_menu_option_pressed(id):
 			self._on_Save_CSV_BTN_pressed()
 		5:
 			self._on_Load_CSV_BTN_pressed()
+		6:
+			self._on_Save_i18n_CSV_BTN_pressed()
 
 
 func _on_Uncheck_All_BTN_pressed():
@@ -595,6 +651,12 @@ func _populate_story_menu():
 	self._Story_Menu.get_popup().add_item("Bake Story As", 3)
 	self._Story_Menu.get_popup().add_item("Save CSV As", 4)
 	self._Story_Menu.get_popup().add_item("Load CSV", 5)
+
+# ░▒▓█▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+	self._Story_Menu.get_popup().add_separator()
+	self._Story_Menu.get_popup().add_item('Save i18n CSV', 6)
+# ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬█▓▒░
+	
 	self._Story_Menu.get_popup().connect("id_pressed", self, "_on_story_menu_option_pressed")
 
 
@@ -687,6 +749,17 @@ func _setup_dialogs():
 	self._Load_CSV .current_dir = "res://"
 	self._Load_CSV .connect("file_selected", self, "_on_Load_CSV_file_selected")
 	self.add_child(self._Load_CSV)
+	
+# ░▒▓█▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+	self._Save_i18n_CSV = EditorFileDialog.new()
+	self._Save_i18n_CSV.mode = EditorFileDialog.MODE_SAVE_FILE
+	self._Save_i18n_CSV.add_filter("*.csv ; CSV files")
+	self._Save_i18n_CSV.resizable = true
+	self._Save_i18n_CSV.access = EditorFileDialog.ACCESS_FILESYSTEM
+	self._Save_i18n_CSV.current_dir = "res://"
+	self._Save_i18n_CSV.connect("file_selected", self, "_on_Save_i18n_CSV_file_selected")
+	self.add_child(self._Save_i18n_CSV)
+# ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬█▓▒░
 
 
 func _update_filter():

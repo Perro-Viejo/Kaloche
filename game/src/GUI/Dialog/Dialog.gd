@@ -100,6 +100,17 @@ func _play_dialog_line() -> void:
 
 	var line_dic: Dictionary = JSON.parse(line_txt).result
 
+	# ----[ el actor ]----------------------------------------------------------
+	# El actor por defecto será el player
+	var actor := 'player'
+	if line_dic.has('actor'):
+		actor = line_dic.actor as String
+
+	# ----[ la línea ]----------------------------------------------------------
+	var line := ''
+	if line_dic.has('line'):
+		line = tr(('dlg_%d_%d_%s' % [_did, _nid, actor]).to_upper())
+
 	_wait = false
 	if line_dic.has('wait'):
 		_wait = true
@@ -113,7 +124,10 @@ func _play_dialog_line() -> void:
 	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ ON START (event) ▮▮▮▮
 	if line_dic.has('on_start'):
 		var splitted = line_dic.on_start.split(",")
-		Event.emit_signal(splitted[0], splitted[1])
+		if splitted.size() > 1:
+			Event.emit_signal(splitted[0], splitted[1])
+		else:
+			Event.emit_signal(splitted[0])
 
 	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ OPCIONES ▮▮▮▮
 	if line_dic.has('options'):
@@ -128,12 +142,13 @@ func _play_dialog_line() -> void:
 		var id := 0
 		for opt in line_dic.options:
 			opt.id = id
-			
+			opt.tr_code = 'dlg_%d_%d_%s_opt_%d' % [_did, _nid, actor, id]
+
 			if options_state:
 				opt.show = options_state[opt.id]
 
 			if not opt.has('actor'):
-				opt.actor = 'Player'
+				opt.actor = 'player'
 			if not opt.has('time'):
 				opt.time = 3
 
@@ -157,11 +172,12 @@ func _play_dialog_line() -> void:
 		_dialog_menu.update_options(cfg)
 
 	# Lo último que se hace es disparar la línea de diálogo
-	if line_dic.has('line'):
+	
+	if line:
 		Event.emit_signal(
 			'line_triggered',
-			(line_dic.actor as String).to_lower(),
-			line_dic.line as String,
+			actor.to_lower(),
+			line,
 			time_to_disappear
 		)
 
@@ -232,8 +248,10 @@ func _autofill_completed() -> void:
 		Event.emit_signal('dialog_paused')
 		return
 
-	if _in_dialog_with_options and not _dialog_menu.visible:
-			_continue_dialog(_selected_slot)
+	if not _in_dialog_with_options:
+		_continue_dialog(_selected_slot)
+	elif not _dialog_menu.visible:
+		_continue_dialog(_selected_slot)
 
 
 func _finish_dialog() -> void:
