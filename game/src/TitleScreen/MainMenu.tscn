@@ -1,25 +1,30 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/ubuntu_condensed.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/menu/_perro_viejo_logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=5]
-[ext_resource path="res://src/TitleScreen/Credits.gd" type="Script" id=6]
+[ext_resource path="res://assets/resources/style_box_flat/button_focus.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/resources/style_box_flat/button_normal.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/fonts/nunito_sans_black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 30
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 8
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/m5x7.ttf"
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
-use_mipmaps = true
-font_data = SubResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 10
 use_mipmaps = true
 font_data = SubResource( 2 )
 
@@ -188,57 +193,104 @@ margin_right = 304.0
 margin_bottom = 164.0
 size_flags_vertical = 3
 
-[node name="CenterLogo" type="CenterContainer" parent="BG/MarginContainer/VBoxMain"]
+[node name="NameContainer" type="VBoxContainer" parent="BG/MarginContainer/VBoxMain"]
+margin_left = 175.0
 margin_right = 288.0
-margin_bottom = 64.0
+margin_bottom = 72.0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+custom_constants/separation = -10
 
-[node name="Logo" type="TextureRect" parent="BG/MarginContainer/VBoxMain/CenterLogo"]
-margin_left = 112.0
-margin_right = 176.0
-margin_bottom = 64.0
-texture = ExtResource( 2 )
+[node name="Kaloche" type="Label" parent="BG/MarginContainer/VBoxMain/NameContainer"]
+margin_right = 113.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 37 )
+custom_colors/font_color = Color( 0.921569, 0.337255, 0.294118, 1 )
+text = "Kaloche"
+align = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxMain"]
-margin_top = 68.0
+[node name="Version" type="Label" parent="BG/MarginContainer/VBoxMain/NameContainer"]
+margin_top = 32.0
+margin_right = 113.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 0.364706, 0.870588, 0.529412, 1 )
+text = "v0.3.0 - Saperoco"
+align = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxMain"]
+margin_top = 76.0
 margin_right = 288.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ButtonContainer" type="VBoxContainer" parent="BG/MarginContainer/VBoxMain/HBoxContainer"]
-margin_right = 55.0
-margin_bottom = 80.0
-size_flags_vertical = 3
-custom_constants/separation = 1
+[node name="ButtonContainer" type="VBoxContainer" parent="BG/MarginContainer/VBoxMain/ButtonsContainer"]
+margin_top = 10.0
+margin_right = 63.0
+margin_bottom = 72.0
+size_flags_vertical = 8
+custom_constants/separation = 2
 
-[node name="NewGame" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" groups=[
+[node name="NewGame" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" groups=[
 "FocusGroup",
 "MainMenu",
 ] instance=ExtResource( 3 )]
-margin_right = 55.0
+margin_right = 63.0
 margin_bottom = 14.0
-text = "New Game"
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Nuevo juego"
+align = 0
 
-[node name="Options" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" instance=ExtResource( 3 )]
-margin_top = 15.0
-margin_right = 55.0
-margin_bottom = 29.0
-text = "Options"
+[node name="Options" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
+margin_top = 16.0
+margin_right = 63.0
+margin_bottom = 30.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Opciones"
+align = 0
 
-[node name="Exit" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" instance=ExtResource( 3 )]
-margin_top = 30.0
-margin_right = 55.0
-margin_bottom = 44.0
-text = "Exit"
+[node name="Credits" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
+margin_top = 32.0
+margin_right = 63.0
+margin_bottom = 46.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Créditos"
+align = 0
 
-[node name="RightMargin" type="Control" parent="BG/MarginContainer/VBoxMain/HBoxContainer"]
-margin_left = 59.0
-margin_right = 288.0
-margin_bottom = 80.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Exit" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 62.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Salir"
+align = 0
 
-[node name="Credits" type="TextureButton" parent="BG"]
+[node name="CreditsContainer" type="TextureButton" parent="BG"]
 margin_left = 255.983
 margin_top = 145.233
 margin_right = 295.983
@@ -247,12 +299,11 @@ rect_scale = Vector2( 1.2, 1.2 )
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BG/Credits"]
+[node name="PerroViejo" type="Label" parent="BG/CreditsContainer"]
 margin_left = -1.82835
 margin_top = 15.6677
 margin_right = 45.1716
@@ -260,19 +311,7 @@ margin_bottom = 29.6677
 custom_fonts/font = SubResource( 3 )
 text = "Perro Viejo"
 
-[node name="Label2" type="Label" parent="BG/Credits"]
-margin_left = 1.44917
-margin_top = -7.45663
-margin_right = 41.4492
-margin_bottom = 6.54337
-custom_fonts/font = SubResource( 4 )
-text = "Créditos"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Memoria" type="Control" parent="BG/Credits"]
+[node name="InMemory" type="Control" parent="BG/CreditsContainer"]
 visible = false
 margin_left = -140.723
 margin_top = -101.719
@@ -282,10 +321,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fuego" type="AnimatedSprite" parent="BG/Credits/Memoria"]
+[node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 33 )
-frame = 26
+frame = 6
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -293,10 +332,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Fuego2" type="AnimatedSprite" parent="BG/Credits/Memoria"]
+[node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 33 )
-frame = 20
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -304,7 +342,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Label" type="Label" parent="BG/Credits/Memoria"]
+[node name="Label" type="Label" parent="BG/CreditsContainer/InMemory"]
 margin_left = -0.235962
 margin_top = -8.88776
 margin_right = 125.764
@@ -316,7 +354,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="BG/Credits/Memoria"]
+[node name="Label2" type="Label" parent="BG/CreditsContainer/InMemory"]
 margin_left = -11.0905
 margin_top = -0.943871
 margin_right = 137.909
@@ -327,7 +365,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Devs" type="Label" parent="BG/Credits"]
+[node name="Devs" type="Label" parent="BG/CreditsContainer"]
 visible = false
 margin_left = -161.187
 margin_top = -79.5448
@@ -349,6 +387,3 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/Exit" to="." method="_on_Exit_pressed"]
