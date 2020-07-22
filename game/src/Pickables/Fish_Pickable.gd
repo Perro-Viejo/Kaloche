@@ -45,7 +45,7 @@ var fish_type := [
 
 func jump(origin):
 	_tween.interpolate_property(self, "position",
-		position, position + (origin*-1)*rand_range(2.5, 4.5) , 1.6,
+		position, position + (origin*-1)*rand_range(1.5, 2.5) , 1.6,
 		Tween.TRANS_EXPO, Tween.EASE_OUT)
 	_tween.start()
 

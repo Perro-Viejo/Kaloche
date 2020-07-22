@@ -5,11 +5,11 @@ enum BAITS {NADA, GUSANO, SANGRE}
 enum RODS {SHORT, MED, LONG}
 export (BAITS) var bait
 export (RODS) var current_rod
-export (int) var chance = 100
-export (float) var min_bite_freq = 5
-export (float) var max_bite_freq = 15
-export (float) var min_fish_size = 0.3
-export (float) var max_fish_size = 1.2
+export (int) var chance = 55
+export (float) var min_bite_freq = 15
+export (float) var max_bite_freq = 30
+export (float) var min_fish_size = 0.2
+export (float) var max_fish_size = 1.3
 
 onready var _timer: Timer = $Timer
 onready var _tween: Tween = get_node("../Tween")
@@ -21,16 +21,21 @@ var fish_size
 var bite_check
 var hooked_time
 var hooked
+var fish_pull = Vector2(0, 1) 
+var pull_cooldown = 0
 var line_length
+var rod_strength = 0.6
 var max_line_length = 8
 var min_line_length = 15
+var original_pos
 var end_pos = Vector2.ZERO
 var _fish_splash
 
 const FISH = preload("res://src/Pickables/Fish_Pickable.tscn")
 
 func _ready():
-	hooked_time = rand_range(18, 50)
+	fish_pull = Vector2(rand_range(-3, 3), rand_range(-3, 3))
+	hooked_time = rand_range(120, 600)
 	bite_check = rand_range(min_bite_freq, max_bite_freq)
 	_timer.connect('timeout', self, '_on_timer_timeout')
 	Event.connect('rod_selected', self, 'switch_rod')
@@ -47,10 +52,21 @@ func _process(delta):
 			fish_bite()
 	
 	if hooked:
+		
+		#Aquí el pez se mueve para pelear
+		pull_cooldown += 1
+		if pull_cooldown >= rand_range(5, 60):
+			rect_position += fish_pull
+			pull_cooldown = 0
+			fish_pull = Vector2(rand_range(-3, 3), rand_range(-3, 3))
+		#Aquí se ve ek tiempo que dura enganchado el pez
 		hooked_time -= 1
 		if hooked_time <= 0:
+			get_parent().speak(tr("Se voló el bagrese..."))
+			_timer.set_pause_mode(false)
 			hooked = false
-			hooked_time = rand_range(18, 50)
+			hooked_time = rand_range(120, 600)
+			rect_position = original_pos
 			fish()
 			bite_check = rand_range(min_bite_freq, max_bite_freq)
 
@@ -106,19 +122,27 @@ func stop():
 
 func fish_bite():
 	print('mordiooo')
+	_timer.set_pause_mode(true)
+	original_pos = rect_position
 	counter = 0
 	hooked = true
-	color = '5dde87'
+	color = 'ff96d7'
+#	color = '5dde87'
 
 func pull_fish():
-	randomize()
-	if hooked:
-		if randi()%100 <= chance:
-			catch_fish()
+	if fishing_started:
+		randomize()
+		if hooked:
+			if randi()%100 <= chance:
+				if fish_size <= rod_strength:
+					catch_fish()
+				else:
+					get_parent().speak(tr("Ta muy gordo este hp"))
+					fish_size = rand_range(min_fish_size, max_fish_size)
+					stop()
 		else:
 			stop()
-	else:
-		stop()
+			get_parent().speak(tr("Sin afán, sin afán..."))
 
 func catch_fish():
 	_fish_splash.position = get_position()
@@ -128,7 +152,7 @@ func catch_fish():
 	get_node('../..').add_child(fish)
 	fish.set_global_position(get_global_position())
 	fish.check_bait(bait)
-	fish.scale = Vector2.ONE * rand_range(min_fish_size, max_fish_size)
+	fish.scale = Vector2.ONE * fish_size
 	fish.jump(get_position())
 
 func switch_bait():
@@ -152,20 +176,20 @@ func switch_rod(rod):
 	
 	match RODS.keys()[current_rod]:
 		'SHORT':
+			chance = 55
 			min_line_length = 8
 			max_line_length = 15
-			min_fish_size = 0.2
-			max_fish_size = 0.5
+			rod_strength = 0.6
 		'MED':
+			chance = 75
 			min_line_length = 20
 			max_line_length = 35
-			min_fish_size = 0.6
-			max_fish_size = 0.9
+			rod_strength = 0.9
 		'LONG':
+			chance = 90
 			min_line_length = 40
 			max_line_length = 55
-			min_fish_size = 0.9
-			max_fish_size = 1.3
+			rod_strength = 1.3
 	get_parent().speak(tr("saque la caña " + RODS.keys()[current_rod]))
 
 func _on_timer_timeout():
