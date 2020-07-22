@@ -1,5 +1,5 @@
 extends Node2D
-
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 signal SceneIsLoaded
 
 enum {IDLE, FADEOUT, FADEIN}
@@ -8,7 +8,7 @@ onready var CurrentScene = null
 onready var CurrentSceneInstance = $Levels.get_child($Levels.get_child_count() - 1)
 var NextScene
 var FadeState:int = IDLE
-
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
 
@@ -30,7 +30,7 @@ func _ready()->void:
 
 
 func on_Options(options) -> void:
-	pass
+	guiBrain.gui_collect_focusgroup()
 
 
 func on_ChangeScene(scene):

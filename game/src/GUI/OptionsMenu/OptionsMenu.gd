@@ -1,8 +1,8 @@
 extends CanvasLayer
-
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
 	#show main section and hide controls
-	Event.connect("Options", self, "on_show_options")
+	Event.connect('Options', self, 'on_show_options')
 	Event.Controls = false
 
 func on_show_options(value:bool)->void:

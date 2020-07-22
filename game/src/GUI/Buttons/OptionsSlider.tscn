@@ -1,84 +1,55 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/fonts/m5x7_16.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/images/gui/slider_grabber_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/slider_grabber_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/slider1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/slider2.png" type="Texture" id=5]
+[ext_resource path="res://assets/resources/dynamic_fonts/menu_button_12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/images/gui/slider_grabber-normal.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/slider_grabber-disabled.png" type="Texture" id=3]
 
+[sub_resource type="StyleBoxLine" id=1]
+color = Color( 0.376471, 0.376471, 0.439216, 1 )
+grow_begin = 0.0
+grow_end = 0.0
 
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 1, 1, 0.921569, 1 )
+grow_begin = 0.0
+grow_end = 0.0
 
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0.494118, 0.494118, 0.560784, 1 )
+grow_begin = 0.0
+grow_end = 0.0
 
-
-
-
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 7, 6 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 2.0
-margin_bottom = 2.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 7, 6 )
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 7, 6 )
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 7, 6 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 2.0
-margin_bottom = 2.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 7, 6 )
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="Master" type="HBoxContainer"]
+[node name="Master" type="VBoxContainer"]
 margin_right = 47.0
 margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScaleName" type="Label" parent="."]
-margin_right = 36.0
-margin_bottom = 13.0
+margin_right = 47.0
+margin_bottom = 10.0
 rect_min_size = Vector2( 36, 0 )
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.494118, 0.494118, 0.560784, 1 )
 text = "Master"
+align = 1
+valign = 1
 
 [node name="HSlider" type="HSlider" parent="."]
-margin_left = 40.0
-margin_top = 3.0
+margin_top = 14.0
 margin_right = 47.0
-margin_bottom = 9.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_icons/tick = ExtResource( 2 )
-custom_icons/grabber_disabled = ExtResource( 2 )
-custom_icons/grabber_highlight = ExtResource( 3 )
-custom_icons/grabber = ExtResource( 2 )
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 2 )
+custom_icons/grabber = ExtResource( 3 )
 custom_styles/slider = SubResource( 1 )
-custom_styles/grabber_disabled = SubResource( 2 )
-custom_styles/grabber_highlight = SubResource( 3 )
-custom_styles/grabber_area = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
 value = 50.0
 ticks_on_borders = true
 

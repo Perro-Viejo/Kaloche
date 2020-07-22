@@ -31,7 +31,7 @@ func _ready()->void:
 	_exit.connect('pressed', self, '_on_Exit_pressed')
 
 	# Conectarse a señales del universo pokémon
-	Settings.connect('ReTranslate', self, 'retranslate')
+	Settings.connect('ReTranslate', self, 'retranslate') # Localización
 
 	retranslate()
 
