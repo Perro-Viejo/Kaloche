@@ -1,13 +1,10 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ubuntu_condensed.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/menu/_perro_viejo_logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=5]
-[ext_resource path="res://assets/resources/dynamic_fonts/menu_button_12.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/resources/style_box_flat/button_focus.tres" type="StyleBox" id=7]
-[ext_resource path="res://assets/resources/style_box_flat/button_normal.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/fonts/nunito_sans_black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -239,11 +236,7 @@ custom_constants/separation = 2
 ] instance=ExtResource( 3 )]
 margin_right = 52.0
 margin_bottom = 11.0
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-custom_fonts/font = ExtResource( 6 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -252,13 +245,8 @@ align = 0
 
 [node name="Options" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
 margin_top = 13.0
-margin_right = 52.0
 margin_bottom = 24.0
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-custom_fonts/font = ExtResource( 6 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -267,13 +255,9 @@ align = 0
 
 [node name="Credits" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
 margin_top = 26.0
-margin_right = 52.0
+margin_right = 35.0
 margin_bottom = 37.0
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-custom_fonts/font = ExtResource( 6 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -282,13 +266,9 @@ align = 0
 
 [node name="Exit" parent="BG/MarginContainer/VBoxMain/ButtonsContainer/ButtonContainer" instance=ExtResource( 3 )]
 margin_top = 39.0
-margin_right = 52.0
+margin_right = 18.0
 margin_bottom = 50.0
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/focus = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-custom_fonts/font = ExtResource( 6 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -329,7 +309,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 10
+frame = 21
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -340,7 +320,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 4
+frame = 15
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )

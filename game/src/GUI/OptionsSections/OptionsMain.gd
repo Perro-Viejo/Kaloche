@@ -4,22 +4,27 @@ enum OPT { RESOLUTION, AUDIO, LANGUAGE, CONTROLS, BACK }
 
 var SetUp:bool = true #need to disable playing sound on initiating faders
 
+var _close_panel_btn: Button = null
+var _last_focus_owner: Control = null
+
 # Las opciones
 onready var _resolution_option: Button = find_node('Resolution')
 onready var _audio_option: Button = find_node('Audio')
+onready var _language_option: Button = find_node('Languages')
 # Los paneles
-onready var _audio_panel:Panel = find_node('AudioPanel')
-onready var _resolution_panel:Panel = find_node('Panel')
-onready var Master:HSlider = find_node('Master').get_node('HSlider')
-onready var Music:HSlider = find_node('Music').get_node('HSlider')
-onready var SFX:HSlider = find_node('SFX').get_node('HSlider')
-onready var Language_panel:Panel = find_node('Panel3')
+onready var _panels := {
+	audio = find_node('AudioPanel') as Panel,
+	resolution = find_node('ResolutionPanel') as Panel,
+	language = find_node('LanguagePanel') as Panel,
+}
+onready var Master: HSlider = find_node('Master').get_node('HSlider')
+onready var Music: HSlider = find_node('Music').get_node('HSlider')
+onready var SFX: HSlider = find_node('SFX').get_node('HSlider')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
 	# Esconder los paneles por si alguno se quedó visible durante la edición en
 	# el editor
-	_resolution_panel.hide()
-	_audio_panel.hide()
+	_hide_panels()
 	
 	#Set up toggles and sliders
 	if Settings.HTML5:
@@ -32,12 +37,15 @@ func _ready()->void:
 	SetUp = false #Finished fader setup
 
 	# Conectarse a señales de los hijos de su mamá
-	_resolution_option.connect('pressed', self, '_on_option_pressed', [ OPT.RESOLUTION ])
+	_resolution_option.connect(
+		'pressed', self, '_on_option_pressed', [ OPT.RESOLUTION ]
+	)
 	_audio_option.connect('pressed', self, '_on_option_pressed', [ OPT.AUDIO ])
+	_language_option.connect('pressed', self, '_on_option_pressed', [ OPT.LANGUAGE ])
 
 	# Conectarse a señales del mundo pokémon
-	Event.connect('Controls', self, 'on_show_controls')
-	Event.connect('Languages', self, 'on_show_languages')
+#	Event.connect('Controls', self, '_on_option_pressed', [ OPT.CONTROLS ])
+#	Event.connect('Languages', self, '_on_option_pressed', [ OPT.LANGUAGE ])
 	Settings.connect('Resized', self, '_on_Resized')
 	Settings.connect('ReTranslate', self, 'retranslate') # Localización
 
@@ -53,19 +61,50 @@ func set_volume_sliders()->void: #Initialize volume sliders
 	Music.value = Settings.VolumeMusic * 100
 	SFX.value = Settings.VolumeSFX * 100
 
-# ██████████████████████████████████████████████████████████████████████████████
+# ⋐▒▒▒ CONTROL DE PANELES ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⋑
 func _on_option_pressed(id := -1) -> void:
 	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 	_hide_panels()
+	
+	_last_focus_owner = guiBrain.FocusDetect.get_focus_owner()
 	match id:
 		OPT.RESOLUTION:
-			_resolution_panel.visible = true
+			_panels.resolution.visible = true
+			find_node('Fullscreen').grab_focus()
 		OPT.AUDIO:
-			_audio_panel.visible = true
+			_panels.audio.visible = true
+			# TODO: Encontrar una forma menos manual de hacer esta mierda
+			find_node('Master').get_node('HSlider').grab_focus()
+		OPT.LANGUAGE:
+			_panels.language.visible = true
+			# TODO: Encontrar una forma menos manual de hacer esta mierda
+			_panels.language.find_node('LanguageOptions').get_child(0).grab_focus()
+	
+	_close_panel_btn = _get_current_panel().find_node('Close')
+	if _close_panel_btn and \
+		not _close_panel_btn.is_connected('pressed', self, '_close_panel'):
+		_close_panel_btn.connect('pressed', self, '_close_panel')
 
 func _hide_panels() -> void:
-	_resolution_panel.hide()
-	_audio_panel.hide()
+	for p in _panels:
+		_panels[p].hide()
+
+func _get_current_panel() -> Panel:
+	var current: Panel = null
+	for p in _panels:
+		if _panels[p].visible:
+			current = _panels[p]
+			break
+	return current
+
+func _close_panel() -> void:
+	for p in _panels:
+		if _panels[p].visible:
+			_panels[p].hide()
+			break
+	_last_focus_owner.grab_focus()
+	_last_focus_owner = null
+# ⋐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ CONTROL DE PANELES ▒▒▒▒⋑
 
 #### BUTTON SIGNALS ####
 func _on_Master_value_changed(value):
@@ -116,10 +155,6 @@ func _on_Resized()->void:
 	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 	set_resolution()
 
-func _on_Resolution_pressed() -> void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	_resolution_panel.visible = true
-
 func _on_Languages_pressed():
 	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 	Event.Languages = !Event.Languages
@@ -137,21 +172,11 @@ func _on_Back_pressed():
 	Settings.save_settings()
 	Event.Options = false
 
-#EVENT SIGNALS
-func on_show_controls(value:bool)->void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	visible = !value 	#because showing controls
-
-func on_show_languages(value:bool)->void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	_resolution_panel.visible = !value
-	_audio_panel.visible = !value
-
 #localization
 func retranslate()->void:
 	find_node('Resolution').text = tr('RESOLUTION')
 	find_node('Volume').text = tr('VOLUME')
-	get_node('PanelsContainer/Panel3/VBoxContainer/Languages').text = tr('LANGUAGES')
+	get_node('PanelsContainer/LanguagePanel/VBoxContainer/Languages').text = tr('LANGUAGES')
 	find_node('Fullscreen').text = tr('FULLSCREEN')
 	find_node('Borderless').text = tr('BORDERLESS')
 	find_node('Scale').text = tr('SCALE')
@@ -164,3 +189,4 @@ func retranslate()->void:
 
 func set_node_in_focus()->void:
 	var FocusGroup:Array = get_groups()
+	print(FocusGroup)

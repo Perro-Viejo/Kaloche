@@ -34,7 +34,7 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 	# se abra por aquí
 	force_focus()
 
-func _unhandled_input(event)->void:
+func _unhandled_input(event: InputEvent)->void:
 	if event.is_action_pressed("ui_cancel"):
 		if !Event.MainMenu:			#not in main menu
 			if !Event.Paused:

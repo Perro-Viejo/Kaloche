@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/GUI/OptionsSections/OptionsMain.gd" type="Script" id=1]
 [ext_resource path="res://assets/resources/style_box_flat/bordered_box.tres" type="StyleBox" id=2]
 [ext_resource path="res://src/GUI/Buttons/OptionsToggle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GUI/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/resources/dynamic_fonts/m5x7_16.tres" type="DynamicFont" id=6]
 [ext_resource path="res://src/GUI/Buttons/OptionsSlider.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/GUI/OptionsSections/Languages.gd" type="Script" id=8]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/resources/style_box_flat/button_normal.tres" type="StyleBox" id=10]
-[ext_resource path="res://assets/resources/style_box_flat/button_focus.tres" type="StyleBox" id=11]
 [ext_resource path="res://assets/resources/dynamic_fonts/menu_button_12.tres" type="DynamicFont" id=12]
 
 [node name="Main" type="HBoxContainer"]
@@ -40,11 +37,9 @@ custom_constants/separation = 2
 [node name="Resolution" parent="OptionsContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_right = 43.0
 margin_bottom = 11.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 11 )
-custom_styles/focus = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 12 )
+focus_neighbour_top = NodePath("../Back")
+focus_previous = NodePath("../Back")
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -53,13 +48,9 @@ align = 0
 
 [node name="Audio" parent="OptionsContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_top = 13.0
-margin_right = 43.0
+margin_right = 22.0
 margin_bottom = 24.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 11 )
-custom_styles/focus = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 12 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -68,13 +59,9 @@ align = 0
 
 [node name="Languages" parent="OptionsContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_top = 26.0
-margin_right = 43.0
+margin_right = 40.0
 margin_bottom = 37.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 11 )
-custom_styles/focus = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 12 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -83,13 +70,9 @@ align = 0
 
 [node name="Controls" parent="OptionsContainer/VBoxContainer" instance=ExtResource( 9 )]
 margin_top = 39.0
-margin_right = 43.0
+margin_right = 35.0
 margin_bottom = 50.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 11 )
-custom_styles/focus = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 12 )
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -101,13 +84,11 @@ align = 0
 "OptionsMain",
 ] instance=ExtResource( 9 )]
 margin_top = 52.0
-margin_right = 43.0
+margin_right = 39.0
 margin_bottom = 63.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 11 )
-custom_styles/focus = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 12 )
+focus_neighbour_bottom = NodePath("../Resolution")
+focus_next = NodePath("../Resolution")
+size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
@@ -122,99 +103,99 @@ margin_bottom = 164.0
 rect_min_size = Vector2( 0, 106 )
 size_flags_horizontal = 7
 size_flags_vertical = 8
-alignment = 1
+alignment = 2
 
-[node name="Panel" type="Panel" parent="PanelsContainer"]
-visible = false
+[node name="ResolutionPanel" type="Panel" parent="PanelsContainer"]
 margin_right = 101.0
 margin_bottom = 106.0
 size_flags_horizontal = 3
-size_flags_vertical = 9
 custom_styles/panel = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/Panel"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionPanel"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -45.5
-margin_top = -70.0
-margin_right = 46.5
 size_flags_horizontal = 0
-size_flags_vertical = 8
-alignment = 2
+size_flags_vertical = 0
+custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="Resolution" type="Label" parent="PanelsContainer/Panel/VBoxContainer"]
-margin_right = 92.0
-margin_bottom = 10.0
+[node name="Resolution" type="Label" parent="PanelsContainer/ResolutionPanel/VBoxContainer"]
+margin_right = 101.0
+margin_bottom = 12.0
 size_flags_horizontal = 5
 size_flags_vertical = 1
+custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 12 )
 text = "Resolution"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/Panel/VBoxContainer"]
-margin_top = 14.0
-margin_right = 92.0
-margin_bottom = 70.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer"]
+margin_left = 6.0
+margin_top = 16.0
+margin_right = 94.0
+margin_bottom = 75.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer"]
 margin_right = 88.0
-margin_bottom = 56.0
+margin_bottom = 59.0
 size_flags_vertical = 3
 
-[node name="Fullscreen" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Fullscreen" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_right = 88.0
-margin_bottom = 16.0
+margin_bottom = 10.0
 
-[node name="Borderless" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 20.0
+[node name="Borderless" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 14.0
 margin_right = 88.0
-margin_bottom = 36.0
 text = "Borderless"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 28.0
 margin_right = 88.0
-margin_bottom = 56.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScaleDown" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+[node name="ScaleDown" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
 margin_right = 16.0
 margin_bottom = 16.0
 
-[node name="Scale" type="Label" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Scale" type="Label" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 20.0
-margin_top = 1.0
+margin_top = 3.0
 margin_right = 68.0
-margin_bottom = 14.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 48, 0 )
 size_flags_horizontal = 6
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 12 )
 text = "Scale"
 align = 1
 
-[node name="ScaleUp" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+[node name="ScaleUp" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
 margin_left = 72.0
 margin_right = 88.0
 margin_bottom = 16.0
 
-[node name="Margin" type="Control" parent="PanelsContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 92.0
-margin_right = 92.0
-margin_bottom = 56.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Close" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 9 )]
+margin_left = 20.0
+margin_top = 48.0
+margin_right = 68.0
+margin_bottom = 59.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath("../Master/HSlider")
+focus_next = NodePath("../Master/HSlider")
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Cerrar [ X ]"
 
 [node name="AudioPanel" type="Panel" parent="PanelsContainer"]
 visible = false
@@ -248,7 +229,7 @@ align = 1
 [node name="MarginContainer" type="MarginContainer" parent="PanelsContainer/AudioPanel/VBoxContainer"]
 margin_top = 16.0
 margin_right = 101.0
-margin_bottom = 84.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_constants/margin_right = 4
@@ -257,93 +238,119 @@ custom_constants/margin_left = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer"]
 margin_left = 5.0
 margin_right = 97.0
-margin_bottom = 68.0
+margin_bottom = 86.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="AudioOptions" type="VBoxContainer" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer"]
 margin_right = 92.0
-margin_bottom = 68.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+custom_constants/separation = 4
+
+[node name="Master" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
+margin_right = 92.0
+margin_bottom = 21.0
 size_flags_horizontal = 3
 
-[node name="Master" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="ScaleName" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master" index="0"]
 margin_right = 92.0
-margin_bottom = 20.0
+
+[node name="HSlider" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master" index="1"]
+margin_right = 92.0
+focus_neighbour_top = NodePath("../../Close")
+focus_previous = NodePath("../../Close")
+
+[node name="Music" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
+margin_top = 25.0
+margin_right = 92.0
+margin_bottom = 46.0
 size_flags_horizontal = 3
 
-[node name="Music" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 24.0
+[node name="SFX" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
+margin_top = 50.0
 margin_right = 92.0
-margin_bottom = 44.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 
-[node name="SFX" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 48.0
-margin_right = 92.0
-margin_bottom = 68.0
-size_flags_horizontal = 3
+[node name="Close" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 9 )]
+margin_left = 22.0
+margin_top = 75.0
+margin_right = 70.0
+margin_bottom = 86.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath("../Master/HSlider")
+focus_next = NodePath("../Master/HSlider")
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Cerrar [ X ]"
 
-[node name="Panel3" type="Panel" parent="PanelsContainer"]
+[node name="LanguagePanel" type="Panel" parent="PanelsContainer"]
 visible = false
 margin_right = 101.0
 margin_bottom = 106.0
 size_flags_horizontal = 3
-size_flags_vertical = 9
 custom_styles/panel = ExtResource( 2 )
 script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/Panel3"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/LanguagePanel"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -131.0
-margin_top = -22.0
-margin_right = 132.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
-alignment = 2
+custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="Languages" type="Label" parent="PanelsContainer/Panel3/VBoxContainer"]
-margin_right = 263.0
-margin_bottom = 10.0
+[node name="Languages" type="Label" parent="PanelsContainer/LanguagePanel/VBoxContainer"]
+margin_right = 101.0
+margin_bottom = 12.0
 size_flags_horizontal = 5
 size_flags_vertical = 1
+custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 12 )
 text = "Languages"
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelsContainer/Panel3/VBoxContainer"]
-margin_top = 14.0
-margin_right = 263.0
-margin_bottom = 22.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelsContainer/LanguagePanel/VBoxContainer"]
+margin_top = 16.0
+margin_right = 101.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 custom_constants/margin_right = 4
-custom_constants/margin_top = 4
 custom_constants/margin_left = 5
-custom_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/Panel3/VBoxContainer/MarginContainer"]
+[node name="LanguageOptions" type="VBoxContainer" parent="PanelsContainer/LanguagePanel/VBoxContainer/MarginContainer"]
 margin_left = 5.0
-margin_top = 4.0
-margin_right = 259.0
-margin_bottom = 4.0
+margin_right = 97.0
+margin_bottom = 11.0
+grow_vertical = 0
+
+[node name="Close" parent="PanelsContainer/LanguagePanel/VBoxContainer/MarginContainer/LanguageOptions" instance=ExtResource( 9 )]
+margin_left = 22.0
+margin_right = 70.0
+margin_bottom = 11.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath("../Master/HSlider")
+focus_next = NodePath("../Master/HSlider")
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
+text = "Cerrar [ X ]"
 
 [node name="EmptySpace" type="MarginContainer" parent="."]
 margin_left = 202.0
 margin_right = 304.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
-[connection signal="pressed" from="OptionsContainer/VBoxContainer/Languages" to="." method="_on_Languages_pressed"]
-[connection signal="pressed" from="OptionsContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="OptionsContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
-[connection signal="pressed" from="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
-[connection signal="pressed" from="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleDown" to="." method="_on_ScaleDown_pressed"]
-[connection signal="pressed" from="PanelsContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleUp" to="." method="_on_ScaleUp_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleDown" to="." method="_on_ScaleDown_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleUp" to="." method="_on_ScaleUp_pressed"]
+
+[editable path="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master"]
