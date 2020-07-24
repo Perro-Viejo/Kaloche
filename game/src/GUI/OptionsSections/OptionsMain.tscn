@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/GUI/OptionsSections/OptionsMain.gd" type="Script" id=1]
 [ext_resource path="res://assets/resources/style_box_flat/bordered_box.tres" type="StyleBox" id=2]
+[ext_resource path="res://src/GUI/OptionsSections/ResolutionMenu.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/Buttons/OptionsToggle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GUI/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/GUI/Buttons/OptionsSlider.tscn" type="PackedScene" id=7]
@@ -21,7 +22,7 @@ __meta__ = {
 }
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]
-margin_top = 101.0
+margin_top = 114.0
 margin_right = 101.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
@@ -29,7 +30,7 @@ size_flags_vertical = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer"]
 margin_right = 43.0
-margin_bottom = 63.0
+margin_bottom = 50.0
 size_flags_horizontal = 0
 size_flags_vertical = 3
 custom_constants/separation = 2
@@ -41,8 +42,6 @@ focus_neighbour_top = NodePath("../Back")
 focus_previous = NodePath("../Back")
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Resolution"
 align = 0
 
@@ -52,8 +51,6 @@ margin_right = 22.0
 margin_bottom = 24.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Audio"
 align = 0
 
@@ -63,19 +60,16 @@ margin_right = 40.0
 margin_bottom = 37.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Language"
 align = 0
 
 [node name="Controls" parent="OptionsContainer/VBoxContainer" instance=ExtResource( 9 )]
+visible = false
 margin_top = 39.0
 margin_right = 35.0
 margin_bottom = 50.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Controls"
 align = 0
 
@@ -83,15 +77,13 @@ align = 0
 "FocusGroup",
 "OptionsMain",
 ] instance=ExtResource( 9 )]
-margin_top = 52.0
+margin_top = 39.0
 margin_right = 39.0
-margin_bottom = 63.0
+margin_bottom = 50.0
 focus_neighbour_bottom = NodePath("../Resolution")
 focus_next = NodePath("../Resolution")
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Back [ x ]"
 align = 0
 
@@ -105,16 +97,18 @@ size_flags_horizontal = 7
 size_flags_vertical = 8
 alignment = 2
 
-[node name="ResolutionPanel" type="Panel" parent="PanelsContainer"]
+[node name="ResolutionMenu" type="Panel" parent="PanelsContainer"]
 margin_right = 101.0
 margin_bottom = 106.0
 size_flags_horizontal = 3
 custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
+highlight = Color( 1, 1, 0.921569, 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 0
@@ -125,7 +119,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Resolution" type="Label" parent="PanelsContainer/ResolutionPanel/VBoxContainer"]
+[node name="Resolution" type="Label" parent="PanelsContainer/ResolutionMenu/VBoxContainer"]
 margin_right = 101.0
 margin_bottom = 12.0
 size_flags_horizontal = 5
@@ -135,66 +129,70 @@ custom_fonts/font = ExtResource( 12 )
 text = "Resolution"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer"]
-margin_left = 6.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionMenu/VBoxContainer"]
+margin_left = 12.0
 margin_top = 16.0
-margin_right = 94.0
-margin_bottom = 75.0
+margin_right = 88.0
+margin_bottom = 69.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer"]
-margin_right = 88.0
-margin_bottom = 59.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 53.0
 size_flags_vertical = 3
 
-[node name="Fullscreen" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_right = 88.0
+[node name="Fullscreen" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_right = 76.0
 margin_bottom = 10.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Close")
+focus_previous = NodePath("../Close")
 
-[node name="Borderless" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Borderless" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 14.0
-margin_right = 88.0
+margin_right = 76.0
+focus_neighbour_left = NodePath(".")
 text = "Borderless"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 28.0
-margin_right = 88.0
-margin_bottom = 44.0
+margin_right = 76.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScaleDown" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
-margin_right = 16.0
-margin_bottom = 16.0
+[node name="ScaleDown" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath("../ScaleUp")
 
-[node name="Scale" type="Label" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 20.0
-margin_top = 3.0
-margin_right = 68.0
-margin_bottom = 13.0
+[node name="Scale" type="Label" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 14.0
+margin_right = 62.0
+margin_bottom = 10.0
 rect_min_size = Vector2( 48, 0 )
 size_flags_horizontal = 6
 custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.494118, 0.494118, 0.560784, 1 )
 text = "Scale"
 align = 1
 
-[node name="ScaleUp" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
-margin_left = 72.0
-margin_right = 88.0
-margin_bottom = 16.0
+[node name="ScaleUp" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 66.0
+margin_right = 76.0
+focus_neighbour_left = NodePath("../ScaleDown")
 
-[node name="Close" parent="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 9 )]
-margin_left = 20.0
-margin_top = 48.0
-margin_right = 68.0
-margin_bottom = 59.0
+[node name="Close" parent="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 9 )]
+margin_left = 14.0
+margin_top = 42.0
+margin_right = 62.0
+margin_bottom = 53.0
 focus_neighbour_left = NodePath(".")
-focus_neighbour_bottom = NodePath("../Master/HSlider")
-focus_next = NodePath("../Master/HSlider")
+focus_neighbour_top = NodePath("../HBoxContainer/ScaleUp")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Fullscreen")
+focus_next = NodePath("../Fullscreen")
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Cerrar [ X ]"
 
 [node name="AudioPanel" type="Panel" parent="PanelsContainer"]
@@ -280,8 +278,6 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_bottom = NodePath("../Master/HSlider")
 focus_next = NodePath("../Master/HSlider")
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Cerrar [ X ]"
 
 [node name="LanguagePanel" type="Panel" parent="PanelsContainer"]
@@ -339,8 +335,6 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_bottom = NodePath("../Master/HSlider")
 focus_next = NodePath("../Master/HSlider")
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Cerrar [ X ]"
 
 [node name="EmptySpace" type="MarginContainer" parent="."]
@@ -348,9 +342,7 @@ margin_left = 202.0
 margin_right = 304.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
-[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
-[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
-[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleDown" to="." method="_on_ScaleDown_pressed"]
-[connection signal="pressed" from="PanelsContainer/ResolutionPanel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScaleUp" to="." method="_on_ScaleUp_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
 
 [editable path="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master"]

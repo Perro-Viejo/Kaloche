@@ -8,13 +8,13 @@
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="OptionsToggle" type="CheckButton"]
 margin_right = 94.0
@@ -24,10 +24,10 @@ custom_icons/off = ExtResource( 1 )
 custom_icons/on = ExtResource( 2 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/hover_pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 1, 1, 0.921569, 1 )
 custom_colors/font_color = Color( 0.494118, 0.494118, 0.560784, 1 )

@@ -11,10 +11,11 @@ var _last_focus_owner: Control = null
 onready var _resolution_option: Button = find_node('Resolution')
 onready var _audio_option: Button = find_node('Audio')
 onready var _language_option: Button = find_node('Languages')
+onready var _back_option: Button = find_node('Back')
 # Los paneles
 onready var _panels := {
 	audio = find_node('AudioPanel') as Panel,
-	resolution = find_node('ResolutionPanel') as Panel,
+	resolution = find_node('ResolutionMenu') as Panel,
 	language = find_node('LanguagePanel') as Panel,
 }
 onready var Master: HSlider = find_node('Master').get_node('HSlider')
@@ -41,7 +42,10 @@ func _ready()->void:
 		'pressed', self, '_on_option_pressed', [ OPT.RESOLUTION ]
 	)
 	_audio_option.connect('pressed', self, '_on_option_pressed', [ OPT.AUDIO ])
-	_language_option.connect('pressed', self, '_on_option_pressed', [ OPT.LANGUAGE ])
+	_language_option.connect(
+		'pressed', self, '_on_option_pressed', [ OPT.LANGUAGE ]
+	)
+	_back_option.connect('pressed', self, '_on_option_pressed', [ OPT.BACK ])
 
 	# Conectarse a señales del mundo pokémon
 #	Event.connect('Controls', self, '_on_option_pressed', [ OPT.CONTROLS ])
@@ -79,7 +83,12 @@ func _on_option_pressed(id := -1) -> void:
 			_panels.language.visible = true
 			# TODO: Encontrar una forma menos manual de hacer esta mierda
 			_panels.language.find_node('LanguageOptions').get_child(0).grab_focus()
-	
+		OPT.BACK:
+			Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+			Settings.save_settings()
+			Event.Options = false
+			return
+
 	_close_panel_btn = _get_current_panel().find_node('Close')
 	if _close_panel_btn and \
 		not _close_panel_btn.is_connected('pressed', self, '_close_panel'):
@@ -143,14 +152,6 @@ func _on_Borderless_pressed():
 		return
 	Settings.Borderless = find_node('Borderless').pressed
 
-func _on_ScaleUp_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Settings.Scale += 1
-
-func _on_ScaleDown_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Settings.Scale -= 1
-
 func _on_Resized()->void:
 	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 	set_resolution()
@@ -167,11 +168,6 @@ func _on_Controls_pressed():
 	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 	Event.Controls = true
 
-func _on_Back_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Settings.save_settings()
-	Event.Options = false
-
 #localization
 func retranslate()->void:
 	find_node('Resolution').text = tr('RESOLUTION')
@@ -179,7 +175,7 @@ func retranslate()->void:
 	get_node('PanelsContainer/LanguagePanel/VBoxContainer/Languages').text = tr('LANGUAGES')
 	find_node('Fullscreen').text = tr('FULLSCREEN')
 	find_node('Borderless').text = tr('BORDERLESS')
-	find_node('Scale').text = tr('SCALE')
+	find_node('Scale').text = '%s (x%d)' % [tr('SCALE'), Settings.Scale]
 	find_node('Master').get_node('ScaleName').text = tr('MASTER')
 	find_node('Music').get_node('ScaleName').text = tr('MUSIC')
 	find_node('SFX').get_node('ScaleName').text = tr('SFX')
