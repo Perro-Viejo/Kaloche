@@ -41,6 +41,8 @@ func _unhandled_input(event: InputEvent)->void:
 				Event.Paused = true
 			elif !Event.Options:
 				Event.Paused = false
+		else:
+			print('gonococo')
 	elif FocusDetect.get_focus_owner() != null:	#There's already button in focus
 		return
 	elif event.is_action_pressed("ui_right"):

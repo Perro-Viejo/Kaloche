@@ -82,7 +82,7 @@ func _on_option_pressed(id := -1) -> void:
 		OPT.LANGUAGE:
 			_panels.language.visible = true
 			# TODO: Encontrar una forma menos manual de hacer esta mierda
-			_panels.language.find_node('LanguageOptions').get_child(0).grab_focus()
+			_panels.language.focus_active()
 		OPT.BACK:
 			Event.emit_signal('play_requested', 'UI', 'Gen_Button')
 			Settings.save_settings()

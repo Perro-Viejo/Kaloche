@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ubuntu_condensed.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/GUI/Buttons/DefaultButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/menu/_perro_viejo_logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/vfx/fire_spark.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/nunito_sans_black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -160,8 +161,15 @@ extra_spacing_top = -1
 extra_spacing_bottom = -3
 font_data = SubResource( 4 )
 
+[sub_resource type="Gradient" id=38]
+offsets = PoolRealArray( 0, 0.754854 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.498039 )
+
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 160.218 ]
+}
 First_Level = "res://src/Levels/World.tscn"
 
 [node name="BG" type="Panel" parent="."]
@@ -238,8 +246,6 @@ margin_right = 52.0
 margin_bottom = 11.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Nuevo juego"
 align = 0
 
@@ -248,8 +254,6 @@ margin_top = 13.0
 margin_bottom = 24.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Opciones"
 align = 0
 
@@ -259,8 +263,6 @@ margin_right = 35.0
 margin_bottom = 37.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Créditos"
 align = 0
 
@@ -270,8 +272,6 @@ margin_right = 18.0
 margin_bottom = 50.0
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 0.921569, 1 )
 text = "Salir"
 align = 0
 
@@ -295,9 +295,11 @@ margin_right = 45.1716
 margin_bottom = 29.6677
 custom_fonts/font = SubResource( 5 )
 text = "Perro Viejo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InMemory" type="Control" parent="BG/CreditsContainer"]
-visible = false
 margin_left = -140.723
 margin_top = -101.719
 margin_right = -100.723
@@ -309,7 +311,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 21
+frame = 13
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -320,7 +322,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 15
+frame = 7
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -352,7 +354,6 @@ __meta__ = {
 }
 
 [node name="Devs" type="Label" parent="BG/CreditsContainer"]
-visible = false
 margin_left = -161.187
 margin_top = -79.5448
 margin_right = 2.81268
@@ -373,3 +374,44 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Back" parent="BG/CreditsContainer" instance=ExtResource( 3 )]
+margin_left = -199.986
+margin_top = 6.4725
+margin_right = -181.986
+margin_bottom = 17.4725
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.262745, 0.262745, 0.309804, 1 )
+text = "Back"
+align = 0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 0, 232 )
+amount = 220
+lifetime = 6.0
+preprocess = 12.0
+speed_scale = 1.5
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 30
+texture = ExtResource( 6 )
+emission_shape = 3
+emission_points = PoolVector2Array( 12, 0, 6, 0, -6, 0 )
+emission_colors = PoolColorArray( 0.921569, 0.337255, 0.294118, 1, 1, 0.894118, 0.470588, 1, 0.94902, 0.65098, 0.368627, 1 )
+direction = Vector2( 320, -20 )
+spread = 0.0
+gravity = Vector2( 10, -20 )
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+angular_velocity = 32.0
+angular_velocity_random = 1.0
+linear_accel = 8.0
+linear_accel_random = 1.0
+radial_accel = 32.0
+radial_accel_random = 1.0
+damping = 16.0
+angle_random = 1.0
+scale_amount = 1.5
+scale_amount_random = 1.0
+color_ramp = SubResource( 38 )

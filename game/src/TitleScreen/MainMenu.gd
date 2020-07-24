@@ -13,6 +13,7 @@ onready var _options: Button = find_node('Options')
 onready var _credits: Button = find_node('Credits')
 onready var _exit: Button = find_node('Exit')
 onready var _credits_container: TextureButton = find_node('CreditsContainer')
+onready var _credits_back: Button = _credits_container.get_node('Back')
 onready var _devs: Label = find_node('Devs')
 onready var _in_memory: Control = find_node('InMemory')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
@@ -20,6 +21,7 @@ func _ready()->void:
 	Event.MainMenu = true
 	guiBrain.gui_collect_focusgroup()
 	_credits_container.hide()
+	$CPUParticles2D.show()
 
 	if Settings.HTML5:
 		_exit.visible = false
@@ -64,11 +66,16 @@ func _on_Credits_pressed() -> void:
 	_in_memory.visible = _is_credits
 	_name_container.visible = !_is_credits
 	_buttons_container.visible = !_is_credits
+	if _is_credits:
+		_credits_back.connect('pressed', self, '_on_Credits_pressed')
+		_credits_back.grab_focus()
+	else:
+		_credits_back.disconnect('pressed', self, '_on_Credits_pressed')
+		_credits.grab_focus()
 
 
 func _on_Exit_pressed()->void:
 	Event.emit_signal('Exit')
-
 
 #localization
 func retranslate()->void:
@@ -76,3 +83,4 @@ func retranslate()->void:
 	_options.text = tr('OPTIONS')
 	_credits.text = tr('CREDITS')
 	_exit.text = tr('EXIT')
+	_credits_back.text = tr('BACK')
