@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Animations/Fire1.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://assets/images/world/circle.png" type="Texture" id=2]
+[ext_resource path="res://src/Objects/Switchable.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.93291, 6.48592 )
+
+[node name="Fire" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="OFF" type="Sprite" parent="."]
+position = Vector2( -0.0792425, 8.2412 )
+scale = Vector2( 0.466435, 0.450587 )
+texture = ExtResource( 2 )
+
+[node name="ON" type="AnimatedSprite" parent="."]
+position = Vector2( 0.158486, -0.475448 )
+scale = Vector2( 1.01268, 0.957737 )
+frames = ExtResource( 1 )
+frame = 7
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.158485, 8.08272 )
+shape = SubResource( 1 )

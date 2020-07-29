@@ -106,3 +106,6 @@ func show_interaction() -> void:
 	Event.emit_signal('name_bubble_requested', self, _bubble_name)
 #	$Bubble.show()
 	$Outline.show()
+
+func get_class() -> String:
+	return "Pickable"

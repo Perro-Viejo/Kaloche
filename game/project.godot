@@ -64,6 +64,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/StateMachine/StateMachine.gd"
 }, {
+"base": "Area2D",
+"class": "Switch",
+"language": "GDScript",
+"path": "res://src/Objects/Switch.gd"
+}, {
+"base": "Area2D",
+"class": "Switchable",
+"language": "GDScript",
+"path": "res://src/Objects/Switchable.gd"
+}, {
 "base": "CollisionShape2D",
 "class": "Zone",
 "language": "GDScript",
@@ -81,6 +91,8 @@ _global_script_class_icons={
 "Player": "",
 "State": "",
 "StateMachine": "",
+"Switch": "",
+"Switchable": "",
 "Zone": ""
 }
 

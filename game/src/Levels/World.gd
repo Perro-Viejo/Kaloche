@@ -36,7 +36,7 @@ func _set_current_zone(val: String) -> void:
 
 func _on_Button_pressed()->void:
 	Event.emit_signal("ChangeScene", Next_Scene)
-
+	
 
 func _zone_entered(
 		area_id: int,
