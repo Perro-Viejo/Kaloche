@@ -3130,143 +3130,249 @@ position = Vector2( -31.7628, 46.056 )
 position = Vector2( 0, -1 )
 
 [node name="Hen" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 703.065, -244.583 )
+is_good = true
+carbs = 2
 img = ExtResource( 4 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Iguana" parent="WorldLayer/Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 742.304, -250.914 )
+is_good = true
+carbs = 2
 img = ExtResource( 11 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Jaguar" parent="WorldLayer/Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 786.218, -243.802 )
+is_good = true
+carbs = 2
 img = ExtResource( 7 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Mico" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( -487, -316 )
+is_good = true
+carbs = 2
 img = ExtResource( 12 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 775.638, -431.403 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 792.791, -298.26 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito3" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 681.475, -257.308 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito4" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 700.819, -422.837 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito5" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 773.617, -387.252 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Perrito6" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 705.86, -393.528 )
+is_good = true
+carbs = 2
 img = ExtResource( 26 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Roquita" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 756.81, 160.354 )
 is_good = false
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Roquita2" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 712.548, 189.076 )
 is_good = false
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Roquita3" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 825.259, -245.019 )
 is_good = false
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Roquita4" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 777.78, -196.252 )
 is_good = false
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Roquita5" parent="WorldLayer/Objects" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 840.717, -305.748 )
 is_good = false
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="RiverRocks" type="Node2D" parent="WorldLayer/Objects"]
 
 [node name="Rock1" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1021, 564 )
+is_good = true
+carbs = 2
 img = ExtResource( 16 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Cricket" parent="WorldLayer/Objects/RiverRocks/Rock1" groups=[
 "Sacred",
 ] instance=ExtResource( 6 )]
 visible = false
+is_good = true
+carbs = 2
 img = ExtResource( 14 )
 on_free = "Options"
+tr_code = ""
 character = "Cricket"
 dialog = "Options"
 
 [node name="Rock2" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1021, 574 )
+is_good = true
+carbs = 2
 img = ExtResource( 13 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock3" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1021, 584 )
+is_good = true
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock4" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1021, 594 )
+is_good = true
+carbs = 2
 img = ExtResource( 13 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock5" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1021, 554 )
+is_good = true
+carbs = 2
 img = ExtResource( 17 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock6" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1031, 594 )
+is_good = true
+carbs = 2
 img = ExtResource( 17 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock7" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1041, 594 )
+is_good = true
+carbs = 2
 img = ExtResource( 17 )
+on_free = ""
 tr_code = "Rock"
+character = ""
+dialog = ""
 
 [node name="Rock8" parent="WorldLayer/Objects/RiverRocks" instance=ExtResource( 6 )]
 position = Vector2( -1145.43, 584.92 )
+is_good = true
+carbs = 2
 img = ExtResource( 15 )
+on_free = ""
 tr_code = "Rock"
 character = "Rocberto"
 dialog = "RodStore"
@@ -3291,8 +3397,10 @@ tile_data = PoolIntArray( -4194231, 4, 0, -4194226, 4, 0, -4194225, 4, 0, -41942
 [node name="Switch" parent="WorldLayer/Switches" instance=ExtResource( 27 )]
 position = Vector2( -1142.39, 522.257 )
 z_index = -1
+carbs = 2
 img_off = ExtResource( 29 )
 img_on = ExtResource( 28 )
+dialog = ""
 id = "testSwitch"
 
 [node name="Fire" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
@@ -3303,6 +3411,7 @@ delay = 1
 [node name="Fire3" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
 position = Vector2( -1143.73, 541.872 )
 switch_id = "testSwitch"
+delay = 0
 
 [node name="Fire4" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
 position = Vector2( -1183.93, 474.984 )

@@ -21,6 +21,9 @@ func _get_audio(source, sound) -> Node:
 func play_sound(source: String, sound: String) -> void:
 	var audio: Node = _get_audio(source, sound)
 
+	# Corrige el error de no tener un DX para el personaje que va a hablar
+	if not audio: return
+
 	if audio.get('stream_paused'):
 		audio.stream_paused = false
 	else:

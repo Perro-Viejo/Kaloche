@@ -46,6 +46,9 @@ func _ready()->void:
 		'pressed', self, '_on_option_pressed', [ OPT.LANGUAGE ]
 	)
 	_back_option.connect('pressed', self, '_on_option_pressed', [ OPT.BACK ])
+	Master.connect('value_changed', self, '_on_Master_value_changed')
+	Music.connect('value_changed', self, '_on_Music_value_changed')
+	SFX.connect('value_changed', self, '_on_SFX_value_changed')
 
 	# Conectarse a señales del mundo pokémon
 #	Event.connect('Controls', self, '_on_option_pressed', [ OPT.CONTROLS ])
@@ -107,6 +110,7 @@ func _get_current_panel() -> Panel:
 	return current
 
 func _close_panel() -> void:
+	Settings.save_settings()
 	for p in _panels:
 		if _panels[p].visible:
 			_panels[p].hide()
