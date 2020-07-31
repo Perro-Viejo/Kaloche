@@ -16,14 +16,14 @@ signal Refocus
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Perro Viejo ░░░░
 
 # Para el diálogo y todo lo que tenga que ver con diálogos para dialogar ▓▓▓▓▓ 
-signal character_spoke(character, message, time_to_disappear)
+signal character_spoke(character, message, time_to_disappear, emotion)
 signal dialog_event(playing, countdown, duration)
 signal dialog_requested(dialog_name)
 signal dialog_continued
 signal dialog_skipped
 signal dialog_finished
 signal dialog_paused
-signal line_triggered(character_name, text, time)
+signal line_triggered(character_name, text, time, emotion)
 signal dialog_menu_requested(options)
 signal dialog_option_clicked(option_dic)
 signal dialog_menu_updated(cfg)
@@ -57,6 +57,7 @@ signal talking_bubble_requested(target)
 # Para el audio y la música y todo lo que suena ▓▓ ♪ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 signal music_requested(stream) # Sólo mientras tanto
 signal music_stoped() # Sólo mientras tanto
+signal dx_requested(character, emotion)
 signal play_requested(source, sound, position)
 signal stop_requested(source, sound)
 signal pause_requested(source, sound)

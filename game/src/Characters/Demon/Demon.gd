@@ -151,9 +151,10 @@ func _on_Timer_timeout():
 			queue_free()
 
 
-func _should_speak(character_name, text, time) -> void:
+func _should_speak(character_name, text, time, emotion) -> void:
 	if name.to_lower() == character_name:
 		speak(text, time)
+		Event.emit_signal('dx_requested' , character_name, emotion)
 
 
 func _dialog_finished() -> void:

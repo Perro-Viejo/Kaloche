@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -28,6 +28,37 @@
 [ext_resource path="res://src/Audio/RandomTool.gd" type="Script" id=26]
 [ext_resource path="res://assets/audio/ui_note_dialogue_01.ogg" type="AudioStream" id=27]
 [ext_resource path="res://assets/audio/bg_sierra.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/audio/dx/teotriste/angry/vo_teo_angry_04.ogg" type="AudioStream" id=29]
+[ext_resource path="res://assets/audio/dx/teotriste/angry/vo_teo_angry_03.ogg" type="AudioStream" id=30]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_06.ogg" type="AudioStream" id=31]
+[ext_resource path="res://assets/audio/dx/teotriste/happy/vo_teo_happy_03.ogg" type="AudioStream" id=32]
+[ext_resource path="res://assets/audio/dx/teotriste/angry/vo_teo_angry_01.ogg" type="AudioStream" id=33]
+[ext_resource path="res://assets/audio/dx/teotriste/happy/vo_teo_happy_01.ogg" type="AudioStream" id=34]
+[ext_resource path="res://assets/audio/dx/teotriste/angry/vo_teo_angry_02.ogg" type="AudioStream" id=35]
+[ext_resource path="res://assets/audio/dx/teotriste/happy/vo_teo_happy_02.ogg" type="AudioStream" id=36]
+[ext_resource path="res://assets/audio/dx/rocberto/gen/vo_roc_gen_02.ogg" type="AudioStream" id=37]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_05.ogg" type="AudioStream" id=38]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_04.ogg" type="AudioStream" id=39]
+[ext_resource path="res://assets/audio/dx/teotriste/happy/vo_teo_happy_04.ogg" type="AudioStream" id=40]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_07.ogg" type="AudioStream" id=41]
+[ext_resource path="res://assets/audio/dx/rocberto/happy/vo_roc_happy_01.ogg" type="AudioStream" id=42]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_08.ogg" type="AudioStream" id=43]
+[ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_04.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/audio/dx/teotriste/happy/vo_teo_happy_05.ogg" type="AudioStream" id=45]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_02.ogg" type="AudioStream" id=46]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_03.ogg" type="AudioStream" id=47]
+[ext_resource path="res://assets/audio/dx/rocberto/happy/vo_roc_happy_02.ogg" type="AudioStream" id=48]
+[ext_resource path="res://assets/audio/dx/rocberto/sad/vo_roc_sad_01.ogg" type="AudioStream" id=49]
+[ext_resource path="res://assets/audio/dx/rocberto/sad/vo_roc_sad_02.ogg" type="AudioStream" id=50]
+[ext_resource path="res://assets/audio/dx/teotriste/gen/vo_teo_gen_01.ogg" type="AudioStream" id=51]
+[ext_resource path="res://assets/audio/dx/rocberto/gen/vo_roc_gen_01.ogg" type="AudioStream" id=52]
+[ext_resource path="res://assets/audio/dx/teotriste/surprised/vo_teo_surprised_02.ogg" type="AudioStream" id=53]
+[ext_resource path="res://assets/audio/dx/teotriste/surprised/vo_teo_surprised_01.ogg" type="AudioStream" id=54]
+[ext_resource path="res://assets/audio/dx/teotriste/surprised/vo_teo_surprised_03.ogg" type="AudioStream" id=55]
+[ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_01.ogg" type="AudioStream" id=56]
+[ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_02.ogg" type="AudioStream" id=57]
+[ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_03.ogg" type="AudioStream" id=58]
+[ext_resource path="res://assets/audio/mx_sierra.ogg" type="AudioStream" id=59]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -169,3 +200,155 @@ pitch_scale = 3.0
 [node name="Sierra" type="AudioStreamPlayer" parent="BG"]
 stream = ExtResource( 28 )
 volume_db = -5.0
+
+[node name="DX" type="Node2D" parent="."]
+
+[node name="player" type="Node2D" parent="DX"]
+
+[node name="Gen" type="Node2D" parent="DX/player"]
+script = ExtResource( 26 )
+volume = 9.0
+
+[node name="gen_01" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 51 )
+
+[node name="gen_02" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 46 )
+
+[node name="gen_03" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 47 )
+
+[node name="gen_04" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 39 )
+
+[node name="gen_05" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 38 )
+
+[node name="gen_06" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 31 )
+
+[node name="gen_07" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 41 )
+
+[node name="gen_08" type="AudioStreamPlayer" parent="DX/player/Gen"]
+stream = ExtResource( 43 )
+
+[node name="Sad" type="Node2D" parent="DX/player"]
+script = ExtResource( 26 )
+volume = 9.0
+
+[node name="sad_01" type="AudioStreamPlayer" parent="DX/player/Sad"]
+stream = ExtResource( 56 )
+volume_db = -4.0
+
+[node name="sad_02" type="AudioStreamPlayer" parent="DX/player/Sad"]
+stream = ExtResource( 57 )
+
+[node name="sad_03" type="AudioStreamPlayer" parent="DX/player/Sad"]
+stream = ExtResource( 58 )
+volume_db = -6.0
+
+[node name="sad_04" type="AudioStreamPlayer" parent="DX/player/Sad"]
+stream = ExtResource( 44 )
+volume_db = -8.0
+
+[node name="Happy" type="Node2D" parent="DX/player"]
+script = ExtResource( 26 )
+volume = 9.0
+
+[node name="happy_01" type="AudioStreamPlayer" parent="DX/player/Happy"]
+stream = ExtResource( 34 )
+
+[node name="happy_02" type="AudioStreamPlayer" parent="DX/player/Happy"]
+stream = ExtResource( 36 )
+
+[node name="happy_03" type="AudioStreamPlayer" parent="DX/player/Happy"]
+stream = ExtResource( 32 )
+
+[node name="happy_04" type="AudioStreamPlayer" parent="DX/player/Happy"]
+stream = ExtResource( 40 )
+
+[node name="happy_05" type="AudioStreamPlayer" parent="DX/player/Happy"]
+stream = ExtResource( 45 )
+
+[node name="Angry" type="Node2D" parent="DX/player"]
+script = ExtResource( 26 )
+volume = 9.0
+
+[node name="angry_01" type="AudioStreamPlayer" parent="DX/player/Angry"]
+stream = ExtResource( 33 )
+
+[node name="angry_02" type="AudioStreamPlayer" parent="DX/player/Angry"]
+stream = ExtResource( 35 )
+
+[node name="angry_03" type="AudioStreamPlayer" parent="DX/player/Angry"]
+stream = ExtResource( 30 )
+
+[node name="angry_04" type="AudioStreamPlayer" parent="DX/player/Angry"]
+stream = ExtResource( 29 )
+
+[node name="Surprised" type="Node2D" parent="DX/player"]
+script = ExtResource( 26 )
+volume = 9.0
+
+[node name="surprised_01" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+stream = ExtResource( 54 )
+
+[node name="surprised_02" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+stream = ExtResource( 53 )
+volume_db = -3.0
+
+[node name="surprised_03" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+stream = ExtResource( 55 )
+volume_db = -3.0
+
+[node name="rocberto" type="Node2D" parent="DX"]
+
+[node name="Gen" type="Node2D" parent="DX/rocberto"]
+script = ExtResource( 26 )
+
+[node name="gen_01" type="AudioStreamPlayer" parent="DX/rocberto/Gen"]
+stream = ExtResource( 52 )
+pitch_scale = 0.58
+
+[node name="gen_02" type="AudioStreamPlayer" parent="DX/rocberto/Gen"]
+stream = ExtResource( 37 )
+pitch_scale = 0.5
+
+[node name="Happy" type="Node2D" parent="DX/rocberto"]
+script = ExtResource( 26 )
+
+[node name="happy_01" type="AudioStreamPlayer" parent="DX/rocberto/Happy"]
+stream = ExtResource( 42 )
+volume_db = 3.0
+
+[node name="happy_02" type="AudioStreamPlayer" parent="DX/rocberto/Happy"]
+stream = ExtResource( 48 )
+volume_db = 3.0
+
+[node name="Sad" type="Node2D" parent="DX/rocberto"]
+script = ExtResource( 26 )
+
+[node name="sad_01" type="AudioStreamPlayer" parent="DX/rocberto/Sad"]
+stream = ExtResource( 49 )
+
+[node name="sad_02" type="AudioStreamPlayer" parent="DX/rocberto/Sad"]
+stream = ExtResource( 50 )
+
+[node name="demon" type="Node2D" parent="DX"]
+
+[node name="Gen" type="Node2D" parent="DX/demon"]
+script = ExtResource( 26 )
+
+[node name="gen_01" type="AudioStreamPlayer" parent="DX/demon/Gen"]
+stream = ExtResource( 7 )
+pitch_scale = 0.23
+
+[node name="gen_02" type="AudioStreamPlayer" parent="DX/demon/Gen"]
+stream = ExtResource( 6 )
+pitch_scale = 0.31
+
+[node name="MX" type="Node2D" parent="."]
+
+[node name="Menu" type="AudioStreamPlayer" parent="MX"]
+stream = ExtResource( 59 )

@@ -111,6 +111,11 @@ func _play_dialog_line() -> void:
 	if line_dic.has('line'):
 		line = tr(('dlg_%d_%d_%s' % [_did, _nid, actor]).to_upper())
 
+	# ----[ la emoción ]----------------------------------------------------------
+	var emotion := ''
+	if line_dic.has('emotion'):
+		emotion = line_dic.emotion as String
+
 	_wait = false
 	if line_dic.has('wait'):
 		_wait = true
@@ -151,6 +156,8 @@ func _play_dialog_line() -> void:
 				opt.actor = 'player'
 			if not opt.has('time'):
 				opt.time = 3
+			if not opt.has('emotion'):
+				opt.emotion = ''
 
 			id += 1
 
@@ -178,7 +185,8 @@ func _play_dialog_line() -> void:
 			'line_triggered',
 			actor.to_lower(),
 			line,
-			time_to_disappear
+			time_to_disappear,
+			emotion
 		)
 
 
@@ -223,7 +231,8 @@ func _option_clicked(opt: Dictionary) -> void:
 			'line_triggered',
 			(opt.actor as String).to_lower(),
 			opt.line as String,
-			opt.time
+			opt.time,
+			opt.emotion as String
 		)
 	else:
 		_continue_dialog(_selected_slot)

@@ -438,7 +438,8 @@ story = {
 \"options\": [
 	{
 		\"line\": \"Deme la caña corta\",
-		\"say\": true
+		\"say\": true,
+		\"emotion\": \"Sad\"
 	},
 	{
 		\"line\": \"Deme la caña medianga\",
@@ -446,10 +447,13 @@ story = {
 	},
 	{
 		\"line\": \"Deme la caña grandota\",
-		\"say\": true
+		\"say\": true,
+		\"emotion\": \"Surprised\"
 	},
 	{
-		\"line\": \"Mejor ya nada. Chao.\"
+		\"line\": \"Mejor ya nada. Chao.\",
+		\"say\": true,
+		\"emotion\": \"Angry\"
 	}
 ]
 }",
@@ -465,7 +469,8 @@ story = {
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"Tenga la caña chiquita\",
-\"on_start\": \"rod_selected,0\"
+\"on_start\": \"rod_selected,0\",
+\"emotion\": \"Sad\"
 }",
 "type": "line"
 },
@@ -493,7 +498,8 @@ story = {
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"Tenga la cañanorrea\",
-\"on_start\": \"rod_selected,2\"
+\"on_start\": \"rod_selected,2\",
+\"emotion\": \"Happy\"
 }",
 "type": "line"
 },

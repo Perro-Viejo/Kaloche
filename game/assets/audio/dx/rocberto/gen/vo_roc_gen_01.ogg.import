@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_roc_gen_01.ogg-bb7933006bbcffd86f6e096162f93cbf.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/rocberto/gen/vo_roc_gen_01.ogg"
+dest_files=[ "res://.import/vo_roc_gen_01.ogg-bb7933006bbcffd86f6e096162f93cbf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

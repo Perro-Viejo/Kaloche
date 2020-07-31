@@ -84,9 +84,10 @@ func _check_collision(area: Node2D, grab: bool = false) -> void:
 		player.node_to_interact = null
 
 
-func _should_speak(character_name, text, time) -> void:
+func _should_speak(character_name, text, time, emotion) -> void:
 	if character.to_lower() == character_name:
 		Event.emit_signal('character_spoke', self, text, time)
+		Event.emit_signal('dx_requested' , character_name, emotion)
 
 
 func _hidden_in_tree(dup: Pickable) -> void:

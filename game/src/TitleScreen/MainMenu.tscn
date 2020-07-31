@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/TitleScreen/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ubuntu_condensed.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/menu/_perro_viejo_logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/vfx/fire_spark.png" type="Texture" id=6]
+[ext_resource path="res://assets/audio/mx_sierra.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/fonts/nunito_sans_black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -311,7 +312,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 3
+frame = 19
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -322,7 +323,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 25
+frame = 13
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -415,3 +416,7 @@ angle_random = 1.0
 scale_amount = 1.5
 scale_amount_random = 1.0
 color_ramp = SubResource( 38 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
