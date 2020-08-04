@@ -20,15 +20,16 @@ func _get_audio(source, sound) -> Node:
 
 func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160, 90)) -> void:
 	var audio: Node = _get_audio(source, sound)
-
 	# Corrige el error de no tener un DX para el personaje que va a hablar
 	if not audio: return
-
+	
+	# recibe el parametro de posicion de quien esta llamando el sonido
+	if audio is AudioStreamPlayer2D:
+		audio.set_position(_position)
+	
 	if audio.get('stream_paused'):
 		audio.stream_paused = false
 	else:
-		if audio is AudioStreamPlayer2D:
-			audio.set_position(_position)
 		audio.play()
 		if audio is AudioStreamPlayer or audio is AudioStreamPlayer2D:
 			if audio.is_connected('finished', self, '_on_finished'):

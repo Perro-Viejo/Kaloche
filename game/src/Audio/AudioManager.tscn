@@ -362,7 +362,7 @@ stream = ExtResource( 59 )
 
 [node name="Fishing" type="Node2D" parent="."]
 
-[node name="rod_fall_small" type="AudioStreamPlayer2D" parent="Fishing"]
+[node name="rod_fall_short" type="AudioStreamPlayer2D" parent="Fishing"]
 position = Vector2( -383.077, 177.774 )
 stream = ExtResource( 66 )
 
@@ -383,6 +383,7 @@ pitch_scale = 2.63
 
 [node name="pull_fish_small" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 60 )
+pitch_scale = 1.39
 
 [node name="pull_fish_med" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 61 )

@@ -70,6 +70,7 @@ func _process(delta):
 		hooked_time -= 1
 		if hooked_time <= 0:
 			get_parent().speak(tr("Se voló el bagrese..."))
+			Event.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
 			_timer.set_pause_mode(false)
 			hooked = false
 			hooked_time = rand_range(hooked_time_range[0], hooked_time_range[1]) * rod_multiplier
@@ -103,7 +104,6 @@ func start_fishing():
 		else:
 			rect_position = Vector2(-2, 8)
 	show()
-	Event.emit_signal("play_requested", "Fishing", "rod_throw")
 	hooked = false
 	_timer.start()
 	
@@ -123,13 +123,16 @@ func start_fishing():
 		rect_position, rect_position + end_pos , 1.2,
 		Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	_tween.start()
+	Event.emit_signal("play_requested", "Fishing", "rod_throw")
 	
 
 func fish():
 	#Cae el anzuelo y empieza a pescar
 	color = 'eb564b'
 	print('toy pescando')
-	Event.emit_signal("play_requested", "Fishing", "rod_fall_small", get_parent().position + (rect_position + end_pos))
+	var rod_sound
+	rod_sound = RODS.keys()[current_rod].to_lower()
+	Event.emit_signal("play_requested", "Fishing", "rod_fall_"+ rod_sound, get_parent().position + (rect_position + end_pos))
 
 func stop():
 	hide()
@@ -138,6 +141,7 @@ func stop():
 	counter = 0
 	hooked = false
 	_timer.stop()
+	Event.emit_signal("stop_requested", "Fishing", "rod_throw")
 
 func fish_bite():
 	
@@ -158,7 +162,6 @@ func fish_bite():
 	color = 'ff96d7'
 
 func pull_fish():
-	print(pull_points)
 	if fishing_started:
 		randomize()
 		if hooked:
@@ -171,6 +174,7 @@ func pull_fish():
 					else:
 						if pull_points < 1:
 							get_parent().speak(tr("Ta muy gordo este hp"))
+							Event.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
 							fish_size = rand_range(min_fish_size, max_fish_size)
 							stop()
 				else:
@@ -185,6 +189,16 @@ func catch_fish():
 	hooked = false
 	_fish_splash.position = get_position()
 	_fish_splash.set_emitting(true)
+	var fish_size_sfx
+	if fish_size <= 0.5:
+		fish_size_sfx = "small"
+	elif fish_size >= 0.6 and fish_size <= 0.9:
+		fish_size_sfx = "med"
+	else: 
+		fish_size_sfx = "large"
+	print (fish_size_sfx)
+	Event.emit_signal("play_requested", "Fishing", "pull_fish_"+ fish_size_sfx, get_parent().position + (rect_position + end_pos))
+	
 	stop()
 	var fish = FISH.instance()
 	get_node('../..').add_child(fish)
