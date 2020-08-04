@@ -49,7 +49,7 @@ func _ready():
 
 func _process(delta):
 	if not fishing_started:
-		if counter == 4:
+		if counter == 2:
 			counter = 0
 			fish()
 			fishing_started = true
@@ -103,6 +103,7 @@ func start_fishing():
 		else:
 			rect_position = Vector2(-2, 8)
 	show()
+	Event.emit_signal("play_requested", "Fishing", "rod_throw")
 	hooked = false
 	_timer.start()
 	
@@ -116,7 +117,7 @@ func start_fishing():
 		end_pos = Vector2(line_length, 0)
 	elif rect_position.x < 0 and rect_position.y == 1:
 		end_pos = Vector2(line_length * -1, 0)
-#
+		
 	_tween.interpolate_property(
 		self, "rect_position",
 		rect_position, rect_position + end_pos , 1.2,
@@ -128,6 +129,7 @@ func fish():
 	#Cae el anzuelo y empieza a pescar
 	color = 'eb564b'
 	print('toy pescando')
+	Event.emit_signal("play_requested", "Fishing", "rod_fall_small", get_parent().position + (rect_position + end_pos))
 
 func stop():
 	hide()

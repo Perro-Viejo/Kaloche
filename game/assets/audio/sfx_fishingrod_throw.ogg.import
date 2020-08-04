@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_fishingrod_throw.ogg-8c5cde4087fcf3fd67e8805aa46812f4.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_fishingrod_throw.ogg"
+dest_files=[ "res://.import/sfx_fishingrod_throw.ogg-8c5cde4087fcf3fd67e8805aa46812f4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

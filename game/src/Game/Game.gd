@@ -27,6 +27,8 @@ func _ready()->void:
 	guiBrain.gui_collect_focusgroup()
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	Event.emit_signal("play_requested", "MX", "Menu")
 
 
 func on_Options(options) -> void:

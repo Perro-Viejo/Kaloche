@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -59,6 +59,13 @@
 [ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_02.ogg" type="AudioStream" id=57]
 [ext_resource path="res://assets/audio/dx/teotriste/sad/vo_teo_sad_03.ogg" type="AudioStream" id=58]
 [ext_resource path="res://assets/audio/mx_sierra.ogg" type="AudioStream" id=59]
+[ext_resource path="res://assets/audio/sfx_fish_pull_small.ogg" type="AudioStream" id=60]
+[ext_resource path="res://assets/audio/sfx_fish_pull_med.ogg" type="AudioStream" id=61]
+[ext_resource path="res://assets/audio/sfx_fish_pull_large.ogg" type="AudioStream" id=62]
+[ext_resource path="res://assets/audio/sfx_fishingrod_throw.ogg" type="AudioStream" id=63]
+[ext_resource path="res://assets/audio/sfx_fishingrod_long.ogg" type="AudioStream" id=64]
+[ext_resource path="res://assets/audio/sfx_fishingrod_med.ogg" type="AudioStream" id=65]
+[ext_resource path="res://assets/audio/sfx_fishingrod_small.ogg" type="AudioStream" id=66]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -352,3 +359,33 @@ pitch_scale = 0.31
 
 [node name="Menu" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 59 )
+
+[node name="Fishing" type="Node2D" parent="."]
+
+[node name="rod_fall_small" type="AudioStreamPlayer2D" parent="Fishing"]
+position = Vector2( -383.077, 177.774 )
+stream = ExtResource( 66 )
+
+[node name="rod_fall_med" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 65 )
+
+[node name="rod_fall_long" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 64 )
+
+[node name="rod_throw" type="AudioStreamPlayer" parent="Fishing"]
+stream = ExtResource( 63 )
+volume_db = -5.0
+pitch_scale = 0.1
+
+[node name="pull_fish_none" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 60 )
+pitch_scale = 2.63
+
+[node name="pull_fish_small" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 60 )
+
+[node name="pull_fish_med" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 61 )
+
+[node name="pull_fish_large" type="AudioStreamPlayer2D" parent="Fishing"]
+stream = ExtResource( 62 )

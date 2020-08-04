@@ -43,6 +43,7 @@ func _process(delta):
 
 
 func _exit_tree()->void:
+	Event.emit_signal("stop_requested", "MX", "Menu")
 	Event.MainMenu = false				#switch bool for easier pause menu detection and more
 	guiBrain.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
