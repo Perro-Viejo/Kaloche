@@ -12,6 +12,7 @@ func _ready():
 	Event.connect('stop_requested', self, 'stop_sound')
 	Event.connect('pause_requested', self, 'pause_sound')
 	Event.connect('change_volume', self, 'set_volume')
+	Event.connect('position_amb', self, 'set_amb_position')
 
 
 
@@ -65,4 +66,7 @@ func set_volume(source, sound, volume):
 
 func set_pitch(source, sound, pitch):
 	_get_audio(source, sound).set_pitch_scale(pitch)
+
+func set_amb_position(source, sound, _position):
+	_get_audio(source, sound).set_position(_position)
 

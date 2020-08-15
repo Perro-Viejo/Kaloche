@@ -22,7 +22,7 @@ func _ready() -> void:
 	_zones.connect('area_shape_exited', self, '_zone_entered', [ false ])
 
 	Event.emit_signal('world_entered')
-	Event.emit_signal('play_requested', 'BG', 'Sierra')
+#	Event.emit_signal('play_requested', 'BG', 'Sierra')
 
 	# Verificar si el personaje está dentro de una zona
 	yield(get_tree().create_timer(0.2), 'timeout')
