@@ -7,7 +7,7 @@ onready var _label: Label = find_node('Label')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	hide()
-	Event.connect('name_bubble_requested', self, '_place_bubble')
+	HudEvent.connect('name_bubble_requested', self, '_place_bubble')
 
 
 func _process(delta):

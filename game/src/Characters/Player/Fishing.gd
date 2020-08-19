@@ -44,7 +44,7 @@ func _ready():
 	oportunity_cooldown = rand_range(5, 60)
 	bite_check = rand_range(min_bite_freq, max_bite_freq)
 	_timer.connect('timeout', self, '_on_timer_timeout')
-	Event.connect('rod_selected', self, 'switch_rod')
+	WorldEvent.connect('rod_selected', self, 'switch_rod')
 
 
 func _process(delta):

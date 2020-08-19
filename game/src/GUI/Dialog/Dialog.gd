@@ -36,11 +36,11 @@ func _ready() -> void:
 	_autofill.connect('fill_done', self, '_autofill_completed')
 
 	# Conectarse a eventos de la vida real
-	Event.connect('dialog_requested', self, '_play_dialog')
-	Event.connect('dialog_continued', self, '_continue_dialog')
-	Event.connect('character_spoke', self, '_on_character_spoke')
-	Event.connect('dialog_option_clicked', self, '_option_clicked')
-	Event.connect('hud_accept_pressed', _autofill, 'stop')
+	DialogEvent.connect('dialog_requested', self, '_play_dialog')
+	DialogEvent.connect('dialog_continued', self, '_continue_dialog')
+	DialogEvent.connect('character_spoke', self, '_on_character_spoke')
+	DialogEvent.connect('dialog_option_clicked', self, '_option_clicked')
+	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
 
 
 func _play_dialog(dialog_name: String) -> void:
@@ -50,7 +50,7 @@ func _play_dialog(dialog_name: String) -> void:
 
 	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
 		_in_dialog_with_options = true
-		Event.emit_signal('control_toggled')
+		PlayerEvent.emit_signal('control_toggled')
 
 	_continue_dialog()
 
@@ -80,7 +80,6 @@ func _continue_dialog(slot := 0) -> void:
 
 func _next_dialog_line(slot := 0) -> void:
 	_nid = _story_reader.get_nid_from_slot(_did, _nid, slot)
-
 
 func _play_dialog_line() -> void:
 	var line_txt := _story_reader.get_text(_did, _nid)
@@ -128,11 +127,11 @@ func _play_dialog_line() -> void:
 
 	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ ON START (event) ▮▮▮▮
 	if line_dic.has('on_start'):
-		var splitted = line_dic.on_start.split(",")
-		if splitted.size() > 1:
-			Event.emit_signal(splitted[0], splitted[1])
+		var on_start_dict = line_dic.on_start
+		if on_start_dict.params.size() == 1:
+			get_node("/root/"+on_start_dict.type).emit_signal(on_start_dict.event, on_start_dict.params[0])
 		else:
-			Event.emit_signal(splitted[0])
+			get_node("/root/"+on_start_dict.type).emit_signal(on_start_dict.event)
 
 	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ OPCIONES ▮▮▮▮
 	if line_dic.has('options'):
@@ -181,7 +180,7 @@ func _play_dialog_line() -> void:
 	# Lo último que se hace es disparar la línea de diálogo
 	
 	if line:
-		Event.emit_signal(
+		DialogEvent.emit_signal(
 			'line_triggered',
 			actor.to_lower(),
 			line,
@@ -216,18 +215,18 @@ func _on_character_spoke(
 		_autofill.set_text(message)
 		_autofill.set_disappear_time(time_to_disappear)
 		_autofill.show()
-		Event.emit_signal('talking_bubble_requested', _current_character)
+		HudEvent.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
 		_autofill.finish_and_hide()
-		Event.emit_signal('talking_bubble_requested')
+		HudEvent.emit_signal('talking_bubble_requested')
 
 
 func _option_clicked(opt: Dictionary) -> void:
 	_selected_slot = opt.id
 
 	if opt.has('say') and opt.say:
-		Event.emit_signal(
+		DialogEvent.emit_signal(
 			'line_triggered',
 			(opt.actor as String).to_lower(),
 			opt.line as String,
@@ -240,7 +239,7 @@ func _option_clicked(opt: Dictionary) -> void:
 
 func _autofill_completed() -> void:
 	if _current_character:
-		Event.emit_signal('talking_bubble_requested')
+		HudEvent.emit_signal('talking_bubble_requested')
 
 		var character_copy = _current_character
 		_current_character = null
@@ -253,8 +252,8 @@ func _autofill_completed() -> void:
 		# TODO: Puede haber una mejor manera de hacer esto, cosa que la alternación
 		# del control del PC suceda en un único lugar dentro del código de esta
 		# clase
-		Event.emit_signal('control_toggled')
-		Event.emit_signal('dialog_paused')
+		PlayerEvent.emit_signal('control_toggled')
+		DialogEvent.emit_signal('dialog_paused')
 		return
 
 	if not _in_dialog_with_options:
@@ -290,9 +289,9 @@ func _finish_dialog() -> void:
 		_options_nid = 0
 		_in_dialog_with_options = false
 		_dialog_menu.remove_options()
-		Event.emit_signal('control_toggled')
+		PlayerEvent.emit_signal('control_toggled')
 
-	Event.emit_signal('dialog_finished')
+	DialogEvent.emit_signal('dialog_finished')
 
 
 func _get_options_id() -> String:

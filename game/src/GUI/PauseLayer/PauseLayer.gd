@@ -3,9 +3,9 @@ extends CanvasLayer
 export (String, FILE, "*.tscn") var Main_Menu: String
 
 func _ready()->void:
-	Event.connect("Paused", self, "on_show_paused")
-	Event.connect("Options", self, "on_show_options")
-	Event.Paused = false
+	GuiEvent.connect("Paused", self, "on_show_paused")
+	GuiEvent.connect("Options", self, "on_show_options")
+	SectionEvent.Paused = false
 	#localization
 	Settings.connect("ReTranslate", self, "retranslate")
 
@@ -15,31 +15,31 @@ func on_show_paused(value:bool)->void:
 	get_tree().paused = value
 
 func on_show_options(value:bool)->void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	if !Event.MainMenu:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	if !GuiEvent.MainMenu:
 		$Control.visible = !value
 
 func _on_Resume_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.Paused = false #setget triggers signal and responding to it hide GUI
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
 func _on_Restart_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.emit_signal("Restart")
-	Event.Paused = false #setget triggers signal and responding to it hide GUI
+	GuiEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	GuiEvent.emit_signal("Restart")
+	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
 func _on_Options_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.Options = true
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	SectionEvent.Options = true
 
 func _on_MainMenu_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.emit_signal("ChangeScene", Main_Menu)
-	Event.Paused = false
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	GuiEvent.emit_signal("ChangeScene", Main_Menu)
+	SectionEvent.Paused = false
 
 func _on_Exit_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.emit_signal("Exit")
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	GuiEvent.emit_signal("Exit")
 
 func retranslate()->void:
 	find_node("Resume").text = tr("RESUME")

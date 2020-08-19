@@ -25,10 +25,10 @@ func _check_collision_in(area: Node2D, grab: bool = false) -> void:
 	if area.get_class() != 'Pickable': return
 	$ON.visible = true
 	$OFF.visible = false
-	Event.emit_signal('switch_on', self.id)
+	SwitchEvent.emit_signal('switch_on', self.id)
 	
 func _check_collision_out(area: Node2D, grab: bool = false) -> void:
 	if area.get_class() != 'Pickable': return
 	$ON.visible = false
 	$OFF.visible = true
-	Event.emit_signal('switch_off', self.id)
+	SwitchEvent.emit_signal('switch_off', self.id)

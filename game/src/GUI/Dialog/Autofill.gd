@@ -53,7 +53,7 @@ func set_text(text):
 
 	if text != '':
 		_text = text
-		Event.emit_signal('play_requested', 'UI', 'Dialogue')
+		AudioEvent.emit_signal('play_requested', 'UI', 'Dialogue')
 		if animate_on_set_text:
 			start_animation()
 		else:
@@ -136,7 +136,7 @@ func _disappear(forced_wait := 0.0) -> void:
 	else:
 		# El texto no desaparecerá sólo, sino que se espera una señal que lo
 		# haga desaparecer
-		Event.emit_signal('continue_requested')
+		HudEvent.emit_signal('continue_requested')
 		return
 
 	_is_disappearing = true

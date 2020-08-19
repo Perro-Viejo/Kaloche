@@ -33,7 +33,7 @@ func _ready()->void:
 		find_node('Scale').visible = false
 	set_resolution()
 	set_volume_sliders()
-	Event.Languages = false #just in case project saved with visible Languages
+	SectionEvent.Languages = false #just in case project saved with visible Languages
 
 	SetUp = false #Finished fader setup
 
@@ -70,7 +70,7 @@ func set_volume_sliders()->void: #Initialize volume sliders
 
 # ⋐▒▒▒ CONTROL DE PANELES ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⋑
 func _on_option_pressed(id := -1) -> void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	_hide_panels()
 	
 	_last_focus_owner = guiBrain.FocusDetect.get_focus_owner()
@@ -87,9 +87,9 @@ func _on_option_pressed(id := -1) -> void:
 			# TODO: Encontrar una forma menos manual de hacer esta mierda
 			_panels.language.focus_active()
 		OPT.BACK:
-			Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+			AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 			Settings.save_settings()
-			Event.Options = false
+			SectionEvent.Options = false
 			return
 
 	_close_panel_btn = _get_current_panel().find_node('Close')
@@ -145,32 +145,32 @@ func _on_SFX_value_changed(value):
 	player.play()
 
 func _on_Fullscreen_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	if SetUp:
 		return
 	Settings.Fullscreen = find_node('Fullscreen').pressed
 
 func _on_Borderless_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	if SetUp:
 		return
 	Settings.Borderless = find_node('Borderless').pressed
 
 func _on_Resized()->void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	set_resolution()
 
 func _on_Languages_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.Languages = !Event.Languages
-	if !Event.Languages:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	SectionEvent.Languages = !SectionEvent.Languages
+	if !SectionEvent.Languages:
 		return
 	yield(Settings, 'ReTranslate') #After choosing language it will trigger ReTranslate
-	Event.Languages = !Event.Languages
+	SectionEvent.Languages = !SectionEvent.Languages
 
 func _on_Controls_pressed():
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
-	Event.Controls = true
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	SectionEvent.Controls = true
 
 #localization
 func retranslate()->void:

@@ -22,10 +22,10 @@ func _ready() -> void:
 	$Pickable.hide()
 
 	# Conectar escuchadores de eventos globales
-	Event.connect('hud_accept_pressed', self, '_handle_accept')
-	Event.connect('dialog_finished', self, '_go_to_world')
-	Event.connect('pickable_requested', self, '_show_pickable')
-	Event.connect('dialog_paused', self, '_enable_pickable')
+	HudEvent.connect('hud_accept_pressed', self, '_handle_accept')
+	DialogEvent.connect('dialog_finished', self, '_go_to_world')
+	IntroductionEvent.connect('pickable_requested', self, '_show_pickable')
+	DialogEvent.connect('dialog_paused', self, '_enable_pickable')
 
 	_continue()
 
@@ -47,7 +47,7 @@ func _continue() -> void:
 	if _waiting_sacrifice:
 		# TODO: Que el fuego diga algo para recordarle al jugador que tiene
 		# que agarrar el tucán y sacrificarlo
-		Event.emit_signal('character_spoke')
+		DialogEvent.emit_signal('character_spoke')
 		return
 
 	if _in_intro and _count < intro_messages:
@@ -62,10 +62,10 @@ func _continue() -> void:
 			_overlay.hide()
 
 		if not _in_dialog:
-			Event.emit_signal('dialog_requested', 'Dream')
+			DialogEvent.emit_signal('dialog_requested', 'Dream')
 			_in_dialog = true
 		else:
-			Event.emit_signal('dialog_continued')
+			DialogEvent.emit_signal('dialog_continued')
 
 
 func _skip() -> void:
@@ -141,12 +141,12 @@ func _show_text(msg := '', fade_in_time := 0.8) -> void:
 
 	_skipped = false
 
-	if _in_intro: Event.emit_signal('continue_requested')
+	if _in_intro: HudEvent.emit_signal('continue_requested')
 
 
 func _go_to_world() -> void:
-	Event.emit_signal('character_spoke')
-	Event.emit_signal("ChangeScene", First_Level)
+	DialogEvent.emit_signal('character_spoke')
+	GuiEvent.emit_signal("ChangeScene", First_Level)
 
 
 func _show_pickable() -> void:

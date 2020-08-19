@@ -30,7 +30,7 @@ func _ready():
 	)
 
 func _change_scale(dir := 1) -> void:
-	Event.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	Settings.Scale += dir
 	_scale_text.text = '%s (x%d)' % [tr('SCALE'), Settings.Scale]
 

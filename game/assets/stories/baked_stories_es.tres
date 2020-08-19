@@ -21,7 +21,10 @@ story = {
 "text": "{
 \"actor\": \"Demon\",
 \"line\": \"La luna es oscura, Teotriste.\",
-\"on_start\": \"control_toggled\"
+\"on_start\":  {
+	\"type\": \"PlayerEvent\",
+	\"event\": \"control_toggled\",
+	\"params\": []
 }"
 },
 3: {
@@ -95,7 +98,10 @@ story = {
 \"actor\": \"Demon\",
 \"line\": \"¿Ves ese pequeño tucán?\\nPuedes levantarlo con la tecla Z.\\nPara arrojarlo a mi presiona la tecla X.\",
 \"wait\": true,
-\"on_start\": \"pickable_requested\"
+\"on_start\":  {
+	\"type\": \"IntroductionEvent\",
+	\"event\": \"pickable_requested\",
+	\"params\": []
 }"
 },
 11: {
@@ -324,7 +330,11 @@ story = {
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"Tenga la caña chiquita\",
-\"on_start\": \"rod_selected,0\",
+\"on_start\": {
+	\"type\": \"WorldEvent\",
+	\"event\": \"rod_selected\",
+	\"params\": [0]
+},
 \"emotion\": \"Sad\"
 }"
 },
@@ -335,7 +345,11 @@ story = {
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"Tenga la caña mediana\",
-\"on_start\": \"rod_selected,1\"
+\"on_start\":  {
+	\"type\": \"WorldEvent\",
+	\"event\": \"rod_selected\",
+	\"params\": [1]
+}
 }"
 },
 6: {
@@ -345,7 +359,11 @@ story = {
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"Tenga la cañanorrea\",
-\"on_start\": \"rod_selected,2\",
+\"on_start\": {
+	\"type\": \"WorldEvent\",
+	\"event\": \"rod_selected\",
+	\"params\": [2]
+},
 \"emotion\": \"Happy\"
 }"
 },

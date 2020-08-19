@@ -23,16 +23,16 @@ func _ready() -> void:
 	$Tween.connect('tween_all_completed', self, 'update_zone_name')
 
 	# Conectarse a los eventos del señor
-	Event.connect('zone_entered', self, 'update_zone_name')
-	Event.connect('world_entered', self, '_on_world_entered')
-	Event.connect('continue_requested', self, 'show_continue')
+	WorldEvent.connect('zone_entered', self, 'update_zone_name')
+	WorldEvent.connect('world_entered', self, '_on_world_entered')
+	HudEvent.connect('continue_requested', self, 'show_continue')
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('ui_accept'):
 		_zone_name.hide()
 		_continue.hide()
-		Event.emit_signal('hud_accept_pressed')
+		HudEvent.emit_signal('hud_accept_pressed')
 	elif event.is_action_pressed('Journal'):
 		if world_entered:
 			toggle_journal()
@@ -54,7 +54,7 @@ func update_zone_name(name: String = '') -> void:
 		_zone_name.rect_position.y = _dflt_pos.zone_name.y
 
 	_zone_name.text = name
-	Event.emit_signal('play_requested', 'UI', 'Zone')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Zone')
 
 	if appear_anim:
 		$Tween.interpolate_property(

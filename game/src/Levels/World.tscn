@@ -3260,10 +3260,8 @@ tile_data = PoolIntArray( -4194231, 4, 0, -4194226, 4, 0, -4194225, 4, 0, -41942
 [node name="Switch" parent="WorldLayer/Switches" instance=ExtResource( 27 )]
 position = Vector2( -1142.39, 522.257 )
 z_index = -1
-carbs = 2
 img_off = ExtResource( 29 )
 img_on = ExtResource( 28 )
-dialog = ""
 id = "testSwitch"
 
 [node name="Fire" parent="WorldLayer/Switches" instance=ExtResource( 30 )]

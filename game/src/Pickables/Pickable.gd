@@ -23,7 +23,7 @@ func _ready() -> void:
 	connect('area_exited', self, '_check_collision')
 	
 	if character:
-		Event.connect('line_triggered', self, '_should_speak')
+		DialogEvent.connect('line_triggered', self, '_should_speak')
 
 	# Si el objeto tiene otro Pickable por dentro, ocultarlo. La idea es que ese
 	# que es el hijo sólo se haga visible cuando el jugador agarre el contenedor
@@ -86,25 +86,25 @@ func _check_collision(area: Node2D, grab: bool = false) -> void:
 
 func _should_speak(character_name, text, time, emotion) -> void:
 	if character.to_lower() == character_name:
-		Event.emit_signal('character_spoke', self, text, time)
-		Event.emit_signal('dx_requested' , character_name, emotion)
+		DialogEvent.emit_signal('character_spoke', self, text, time)
+		AudioEvent.emit_signal('dx_requested' , character_name, emotion)
 
 
 func _hidden_in_tree(dup: Pickable) -> void:
 	if dup.character != '':
 		pass
 	if dup.on_free != '':
-		Event.emit_signal('dialog_requested', dup.on_free)
+		DialogEvent.emit_signal('dialog_requested', dup.on_free)
 
 
 func hide_interaction() -> void:
-	Event.emit_signal('name_bubble_requested')
+	HudEvent.emit_signal('name_bubble_requested')
 #	$Bubble.hide()
 	$Outline.hide()
 
 
 func show_interaction() -> void:
-	Event.emit_signal('name_bubble_requested', self, _bubble_name)
+	HudEvent.emit_signal('name_bubble_requested', self, _bubble_name)
 #	$Bubble.show()
 	$Outline.show()
 

@@ -21,8 +21,8 @@ func _ready() -> void:
 	_zones.connect('area_shape_entered', self, '_zone_entered', [ true ])
 	_zones.connect('area_shape_exited', self, '_zone_entered', [ false ])
 
-	Event.emit_signal('world_entered')
-#	Event.emit_signal('play_requested', 'BG', 'Sierra')
+	WorldEvent.emit_signal('world_entered')
+	AudioEvent.emit_signal('play_requested', 'BG', 'Sierra')
 
 	# Verificar si el personaje está dentro de una zona
 	yield(get_tree().create_timer(0.2), 'timeout')
@@ -35,7 +35,7 @@ func _set_current_zone(val: String) -> void:
 
 
 func _on_Button_pressed()->void:
-	Event.emit_signal("ChangeScene", Next_Scene)
+	GuiEvent.emit_signal("ChangeScene", Next_Scene)
 	
 
 func _zone_entered(
@@ -57,10 +57,10 @@ func _zone_entered(
 		self._current_zone = ''
 
 	yield(_player.change_zoom(!entered), 'completed')
-	Event.emit_signal('zone_entered', _current_zone)
+	WorldEvent.emit_signal('zone_entered', _current_zone)
 
 	if zone.music:
 		if entered:
-			Event.emit_signal('music_requested', zone.music)
+			AudioEvent.emit_signal('music_requested', zone.music)
 		else:
-			Event.emit_signal('music_stoped')
+			AudioEvent.emit_signal('music_stoped')

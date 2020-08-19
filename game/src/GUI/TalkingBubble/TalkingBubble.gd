@@ -17,7 +17,7 @@ func _ready() -> void:
 	$Tween.connect('tween_completed', self, '_on_Tween_completed')
 	
 	# Conectarse a señales del cielo de las señales
-	Event.connect('talking_bubble_requested', self, '_place_bubble')
+	HudEvent.connect('talking_bubble_requested', self, '_place_bubble')
 
 	hide()
 

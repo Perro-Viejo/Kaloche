@@ -1,15 +1,17 @@
 extends "res://src/StateMachine/State.gd"
 
-onready var _owner: Player = owner
-
 func enter(msg: Dictionary = {}) -> void:
-	_owner.is_moving = true
-
-	_owner.play_animation(_owner.STATES.WALK)
-
+	_parent.is_moving = true
 	.enter(msg)
 
+func play_animation() -> bool:
+	if _parent.grabbing:
+		sprite.play('WalkGrab')
+	else:
+		sprite.play('Walk')
+	return true
+	
 func exit() -> void:
-	_owner.is_moving = false
+	_parent.is_moving = false
 	.exit()
 

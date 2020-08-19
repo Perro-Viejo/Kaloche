@@ -7,12 +7,11 @@ func _ready():
 	for src in get_children():
 		_sources.append(src.name)
 
-	Event.connect('play_requested', self, 'play_sound')
-	Event.connect('dx_requested', self, 'play_dx')
-	Event.connect('stop_requested', self, 'stop_sound')
-	Event.connect('pause_requested', self, 'pause_sound')
-	Event.connect('change_volume', self, 'set_volume')
-	Event.connect('position_amb', self, 'set_amb_position')
+	AudioEvent.connect('play_requested', self, 'play_sound')
+	AudioEvent.connect('dx_requested', self, 'play_dx')
+	AudioEvent.connect('stop_requested', self, 'stop_sound')
+	AudioEvent.connect('pause_requested', self, 'pause_sound')
+	AudioEvent.connect('change_volume', self, 'set_volume')
 
 
 
@@ -62,7 +61,7 @@ func pause_sound(source: String, sound: String) -> void:
 		audio.stream_paused = true
 
 func _on_finished(source: String, sound: String):
-	Event.emit_signal('stream_finished', source, sound)
+	AudioEvent.emit_signal('stream_finished', source, sound)
 
 func set_volume(source, sound, volume):
 	_get_audio(source, sound).set_volume_db(volume)

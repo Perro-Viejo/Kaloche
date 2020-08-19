@@ -13,7 +13,7 @@ func _ready()->void:
 	
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_process_unhandled_key_input(true)
-	Event.connect("Refocus", self, "force_focus")
+	GuiEvent.connect("Refocus", self, "force_focus")
 
 func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 	FocusGroup.clear()
@@ -36,46 +36,46 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 
 func _unhandled_input(event: InputEvent)->void:
 	if event.is_action_pressed("ui_cancel"):
-		if !Event.MainMenu:			#not in main menu
-			if !Event.Paused:
-				Event.Paused = true
-			elif !Event.Options:
-				Event.Paused = false
+		if !SectionEvent.MainMenu:			#not in main menu
+			if !SectionEvent.Paused:
+				SectionEvent.Paused = true
+			elif !SectionEvent.Options:
+				SectionEvent.Paused = false
 		else:
 			print('gonococo')
 	elif FocusDetect.get_focus_owner() != null:	#There's already button in focus
 		return
 	elif event.is_action_pressed("ui_right"):
-		Event.emit_signal("Refocus")
+		GuiEvent.emit_signal("Refocus")
 	elif event.is_action_pressed("ui_left"):
-		Event.emit_signal("Refocus")
+		GuiEvent.emit_signal("Refocus")
 	elif event.is_action_pressed("ui_up"):
-		Event.emit_signal("Refocus")
+		GuiEvent.emit_signal("Refocus")
 	elif event.is_action_pressed("ui_down"):
-		Event.emit_signal("Refocus")
+		GuiEvent.emit_signal("Refocus")
 
 func force_focus():
 	var btn:Button
 	
 	# TODO: Cambiar esta mierda por un match
-	if Event.MainMenu:
-		if Event.Options:
-			if Event.Controls:
+	if SectionEvent.MainMenu:
+		if SectionEvent.Options:
+			if SectionEvent.Controls:
 				btn = ButtonsSections.OptionsControls
 			else:
 				btn = ButtonsSections.OptionsMain
 		else:
 			btn = ButtonsSections.MainMenu
 	else:
-		if Event.Options:
-			if Event.Controls:
+		if SectionEvent.Options:
+			if SectionEvent.Controls:
 				btn = ButtonsSections.OptionsControls
 			else:
 				btn = ButtonsSections.OptionsMain
 		else:
-			if Event.Paused:
+			if SectionEvent.Paused:
 				btn = ButtonsSections.Pause
-			elif Event.dialog:
+			elif SectionEvent.dialog:
 				btn = ButtonsSections.DialogMenu
 	if btn != null:
 		btn.grab_focus()

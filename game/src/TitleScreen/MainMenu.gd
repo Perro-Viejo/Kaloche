@@ -18,7 +18,7 @@ onready var _devs: Label = find_node('Devs')
 onready var _in_memory: Control = find_node('InMemory')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
-	Event.MainMenu = true
+	SectionEvent.MainMenu = true
 	guiBrain.gui_collect_focusgroup()
 	_credits_container.hide()
 	$CPUParticles2D.show()
@@ -39,25 +39,24 @@ func _ready()->void:
 
 
 func _process(delta):
-	$BG.visible = !Event.Options
+	$BG.visible = !SectionEvent.Options
 
 
 func _exit_tree()->void:
-	Event.emit_signal("stop_requested", "MX", "Menu")
-	Event.MainMenu = false				#switch bool for easier pause menu detection and more
+	SectionEvent.MainMenu = false				#switch bool for easier pause menu detection and more
 	guiBrain.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
 
 func _on_NewGame_pressed()->void:
-	Event.emit_signal('NewGame')
+	GuiEvent.emit_signal('NewGame')
 	if show_intro:
-		Event.emit_signal('ChangeScene', intro_scn)
+		GuiEvent.emit_signal('ChangeScene', intro_scn)
 	else:
-		Event.emit_signal('ChangeScene', First_Level)
+		GuiEvent.emit_signal('ChangeScene', First_Level)
 
 
 func _on_Options_pressed()->void:
-	Event.Options = true
+	SectionEvent.Options = true
 
 
 func _on_Credits_pressed() -> void:
@@ -76,7 +75,7 @@ func _on_Credits_pressed() -> void:
 
 
 func _on_Exit_pressed()->void:
-	Event.emit_signal('Exit')
+	GuiEvent.emit_signal('Exit')
 
 #localization
 func retranslate()->void:

@@ -7,8 +7,8 @@ export(int) var delay=0
 
 # ░░░░ Funciones ░░░░
 func _ready() -> void:
-	Event.connect("switch_on", self, "_on_switch_on")
-	Event.connect("switch_off", self, "_on_switch_off")
+	SwitchEvent.connect("switch_on", self, "_on_switch_on")
+	SwitchEvent.connect("switch_off", self, "_on_switch_off")
 	$ON.visible = false
 	$OFF.visible = true
 	

@@ -1,5 +1,6 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
+[ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
@@ -12,126 +13,123 @@
 [ext_resource path="res://src/Characters/Player/Fishing.gd" type="Script" id=11]
 [ext_resource path="res://src/Characters/Player/States/Talk.gd" type="Script" id=12]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 10, 9 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.64699, 3.57263 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 10, 9 )
+region = Rect2( 40, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 60, 0, 10, 9 )
+region = Rect2( 50, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 70, 0, 10, 9 )
+region = Rect2( 60, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 0, 10, 9 )
+region = Rect2( 70, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 130, 0, 10, 9 )
+region = Rect2( 0, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 140, 0, 10, 9 )
+region = Rect2( 10, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 0, 10, 9 )
+region = Rect2( 20, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 10, 9 )
+region = Rect2( 30, 0, 10, 9 )
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 9 )
-region = Rect2( 90, 0, 10, 9 )
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "IdleGrab",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
-region = Rect2( 100, 0, 10, 9 )
+region = Rect2( 120, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
-region = Rect2( 110, 0, 10, 9 )
+region = Rect2( 130, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 10, 9 )
+region = Rect2( 140, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
-region = Rect2( 10, 0, 10, 9 )
+region = Rect2( 150, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 20, 0, 10, 9 )
+region = Rect2( 80, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 0, 10, 9 )
+region = Rect2( 90, 0, 10, 9 )
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 9 )
+region = Rect2( 100, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 9 )
+region = Rect2( 110, 0, 10, 9 )
+
+[sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
-"name": "IdleGrab",
-"speed": 10.0
+"name": "WalkGrab",
+"speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "RunGrab",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
+"name": "Walk",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 3.64699, 3.57263 )
-
-[sub_resource type="CircleShape2D" id=19]
+[sub_resource type="CircleShape2D" id=20]
 radius = 3.06255
 
-[sub_resource type="Curve" id=20]
+[sub_resource type="Curve" id=21]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.19548, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=21]
+[sub_resource type="Gradient" id=22]
 colors = PoolColorArray( 0.239216, 0.431373, 0.439216, 1, 0.364706, 0.870588, 0.529412, 1 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 2.20734, 2.00338 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 1, 0.5 )
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 5
 collision_mask = 4
 script = ExtResource( 2 )
-dialog_color = Color( 0.729412, 0.380392, 0.337255, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 17 )
-animation = "Idle"
-frame = 1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 18 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -148,13 +146,24 @@ editor_draw_drag_margin = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
-initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
+frames = SubResource( 10 )
+animation = "Idle"
+frame = 1
+
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Walk"]
+position = Vector2( 0, 0.141457 )
+frames = SubResource( 19 )
+animation = "Walk"
+frame = 1
+playing = true
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
@@ -173,12 +182,14 @@ script = ExtResource( 10 )
 script = ExtResource( 12 )
 
 [node name="PlayerArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="FishSplash" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( 8.52321, -2.31758 )
 z_index = -1
 emitting = false
@@ -197,8 +208,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 20 )
-color_ramp = SubResource( 21 )
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )
 
 [node name="FishingSpot" type="ColorRect" parent="."]
 visible = false
@@ -218,19 +229,21 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingSpot/FishingArea"]
 position = Vector2( -5.30872, 2.85854 )
-shape = SubResource( 22 )
+shape = SubResource( 23 )
 
 [node name="Timer" type="Timer" parent="FishingSpot"]
 wait_time = 0.4
 
 [node name="FootArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 
 [node name="Splash_L" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( -0.813303, 0 )
 z_index = -1
 emitting = false
@@ -249,10 +262,11 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 20 )
-color_ramp = SubResource( 21 )
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )
 
 [node name="Splash_R" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( 0.739365, 0 )
 z_index = -1
 emitting = false
@@ -271,5 +285,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 20 )
-color_ramp = SubResource( 21 )
+scale_amount_curve = SubResource( 21 )
+color_ramp = SubResource( 22 )
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( 1 )

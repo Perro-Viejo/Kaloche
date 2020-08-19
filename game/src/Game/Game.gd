@@ -12,17 +12,17 @@ var FadeState:int = IDLE
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
 
-	Event.connect("Options",	self, "on_Options")
-	Event.connect("Exit",		self, "on_Exit")
-	Event.connect("ChangeScene",self, "on_ChangeScene")
-	Event.connect("Restart", 	self, "restart_scene")
+	GuiEvent.connect("Options",	self, "on_Options")
+	GuiEvent.connect("Exit",		self, "on_Exit")
+	GuiEvent.connect("ChangeScene",self, "on_ChangeScene")
+	GuiEvent.connect("Restart", 	self, "restart_scene")
 	#Background loader
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
 	#SceneLoader.load_scene("res://Levels/TestScene.tscn", {instructions="for what reason it got loaded"})
 
 	# Perro Viejo
-	Event.connect('music_requested', self, 'play_song')
-	Event.connect('music_stoped', $Music, 'stop')
+	AudioEvent.connect('music_requested', self, 'play_song')
+	AudioEvent.connect('music_stoped', $Music, 'stop')
 
 	guiBrain.gui_collect_focusgroup()
 
