@@ -46,6 +46,8 @@ func _physics_process(delta) -> void:
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
+	_parent.dir = dir
+	
 	if dir.x != 0:
 		_last_dir.x = dir.x
 		_last_dir.y = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -32,35 +32,6 @@ region = Rect2( 20, 0, 10, 9 )
 atlas = ExtResource( 9 )
 region = Rect2( 30, 0, 10, 9 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 9 )
-region = Rect2( 60, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 9 )
-region = Rect2( 70, 0, 10, 9 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "IdleGrab",
-"speed": 8.0
-} ]
-
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
 region = Rect2( 120, 0, 10, 9 )
@@ -76,6 +47,22 @@ region = Rect2( 140, 0, 10, 9 )
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 9 )
 region = Rect2( 150, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 9 )
+region = Rect2( 40, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 9 )
+region = Rect2( 50, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 9 )
+region = Rect2( 60, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 9 )
+region = Rect2( 70, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
@@ -93,12 +80,22 @@ region = Rect2( 100, 0, 10, 9 )
 atlas = ExtResource( 9 )
 region = Rect2( 110, 0, 10, 9 )
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "WalkGrab",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "IdleGrab",
+"speed": 8.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
@@ -152,18 +149,14 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
 frames = SubResource( 10 )
-animation = "Idle"
-frame = 1
+animation = "WalkGrab"
 
 [node name="Walk" type="Node2D" parent="StateMachine"]
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Walk"]
-position = Vector2( 0, 0.141457 )
-frames = SubResource( 19 )
-animation = "Walk"
-frame = 1
-playing = true
+frames = SubResource( 10 )
+animation = "WalkGrab"
 
 [node name="Move" type="Node2D" parent="StateMachine"]
 script = ExtResource( 6 )

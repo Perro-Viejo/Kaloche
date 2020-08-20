@@ -1,6 +1,5 @@
 class_name Player
 extends "res://src/Characters/Actor.gd"
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░
 
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing: bool = false
@@ -11,6 +10,7 @@ var foot = 'L'
 var is_paused := false
 var is_out: bool = false
 var is_moving = false
+var dir = Vector2(0, 0)
 
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
@@ -61,7 +61,6 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 		var tile_set: FloorTileset = tile_map.tile_set
 		var tile_pos: Vector2 = (foot_area.global_position / 8).floor()
 		# Gono-style
-		var dir: Vector2 = $StateMachine/Move._last_dir
 		
 		tile_pos.x += dir.x
 

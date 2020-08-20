@@ -13,7 +13,7 @@ func enter(msg: Dictionary = {}) -> void:
 	# que la animación termine para hacer esto
 	picked.position.y += 8
 	# Que suelte lo que tiene agarrado en la dirección en la que está mirando --
-	picked.position.x += 12 * (-1 if sprite.flip_h else 1)
+	picked.position.x += 12 * (-1 if get_parent().state.sprite.flip_h else 1)
 	# --------------------------------------------------------------------------
 	AudioEvent.emit_signal('play_requested', 'Player', 'Drop')
 	# ======================================================================== }
@@ -21,4 +21,4 @@ func enter(msg: Dictionary = {}) -> void:
 	picked = null
 	_parent.node_to_interact = null
 
-	_state_machine.transition_to(_state_machine.STATES.IDLE)
+	_state_machine.transition_to_state(_state_machine.STATES.IDLE)

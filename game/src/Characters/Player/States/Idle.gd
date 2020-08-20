@@ -13,7 +13,6 @@ func play_animation() -> bool:
 		$AnimatedSprite.play('Idle')
 	return true
 
-
 func _on_frame_changed() -> void:
 	if $AnimatedSprite.animation == 'Run' \
 		or $AnimatedSprite.animation == 'RunGrab':
@@ -30,6 +29,6 @@ func _on_frame_changed() -> void:
 							$Splash_R.set_emitting(true)
 							$Splash_L.restart()
 							_parent.foot = 'L'
-							
+
 func exit() -> void:
 	.exit()

@@ -46,7 +46,8 @@ func play_animation() -> bool:
 	return false
 	
 func stop() -> void:
-	sprite.stop()
+	if has_node("AnimatedSprite"):
+		sprite.stop()
 	
 func _get_state_machine(node: Node) -> Node:
 	if node != null and not node.is_in_group('state_machine'):
