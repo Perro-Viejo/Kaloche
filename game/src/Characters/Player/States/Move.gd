@@ -51,14 +51,17 @@ func _physics_process(delta) -> void:
 		_last_dir.y = 0
 
 		get_parent().state.sprite.flip_h = dir.x < 0
-#		
 
 	elif dir.y != 0:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
+	
+	if not _parent.is_out:
+		_parent.move_and_collide(dir * _calc_speed * delta)
+	else:
+		_parent.move_and_collide(dir * _calc_speed * 2 * delta)
 		
-
-	if not dir == Vector2(0,0) and not _parent.is_moving:
+	if dir != Vector2(0,0) and not _parent.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.WALK)
 	elif dir == Vector2(0,0) and _parent.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.IDLE)

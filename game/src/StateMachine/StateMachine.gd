@@ -1,5 +1,5 @@
 class_name StateMachine
-extends Node
+extends Node2D
 
 onready var state: State = null
 onready var _current_state_name
@@ -15,6 +15,7 @@ func _ready() -> void:
 	
 	for child in get_children():
 		self.STATES[child.name.to_upper()] = child as State
+		
 
 	state = self.STATES["IDLE"]
 	state.enter()
@@ -43,6 +44,8 @@ func transition_to_key(target_state_path: String, msg: Dictionary = {}) -> void:
 func transition_to_state(target_state: State, msg: Dictionary = {}) -> void:
 	if target_state.has_animation:
 		state.exit()
+		state.visible = false
+		target_state.visible = true
 	_previous_state = state.name
 	self.state = target_state
 	_current_state_name = target_state.name

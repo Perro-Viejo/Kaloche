@@ -181,15 +181,15 @@ max_distance = 100.0
 position = Vector2( -0.362368, 3.98609 )
 shape = SubResource( 3 )
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
 frames = SubResource( 32 )
-frame = 27
+frame = 2
 playing = true
 offset = Vector2( 0, -6 )
 

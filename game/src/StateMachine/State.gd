@@ -1,5 +1,5 @@
 class_name State
-extends Node
+extends Node2D
 """
 State interface to use in Hierarchical State Machines.
 The lowest leaf tries to handle callbacks, and if it can't, it delegates the work to its parent.
@@ -15,7 +15,7 @@ onready var sprite: AnimatedSprite = $AnimatedSprite if has_animation else null
 func _ready() -> void:
 	yield(owner, 'ready')
 	_parent = get_parent().get_parent()
-	
+	visible = false
 	play_animation()
 	
 
@@ -29,6 +29,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	# print('%s enters %s' % [ owner.name, name ])
+	visible = true
 	play_animation()
 	pass
 
@@ -38,6 +39,7 @@ func world_tick() -> void:
 
 
 func exit() -> void:
+	visible = false
 	stop()
 
 func play_animation() -> bool:

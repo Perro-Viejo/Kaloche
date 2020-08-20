@@ -17,8 +17,6 @@ onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
 
 func _ready() -> void:
-	._ready()
-	
 	fishing_spot._fish_splash = $FishSplash
 	
 	# Escuchar eventos de los hijos de satán
@@ -64,17 +62,18 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 		var tile_pos: Vector2 = (foot_area.global_position / 8).floor()
 		# Gono-style
 		var dir: Vector2 = $StateMachine/Move._last_dir
+		
 		tile_pos.x += dir.x
 
 		if dir.y > 0:
 			tile_pos.y += 1
-
+			
 		fs_id = tile_set.get_floor_sfx(tile_map.get_cellv(tile_pos))
 	else:
 		fs_id = 'FS_Dirt'
 
 func _toggle_control() -> void:
-	$StateMachine.transition_to($StateMachine.STATES.IDLE)
+	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
 
 func _set_node_to_interact(new_node: Pickable) -> void:
