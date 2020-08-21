@@ -31,7 +31,10 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 	if audio.get('stream_paused'):
 		audio.stream_paused = false
 	else:
-		audio.play()
+		if source == "BG":
+			audio.play(rand_range(0.0, audio.stream.get_length()))
+		else:
+			audio.play()
 		if audio is AudioStreamPlayer or audio is AudioStreamPlayer2D:
 			if audio.is_connected('finished', self, '_on_finished'):
 				return
@@ -67,6 +70,6 @@ func set_volume(source, sound, volume):
 func set_pitch(source, sound, pitch):
 	_get_audio(source, sound).set_pitch_scale(pitch)
 
-func set_amb_position(source, sound, _position):
+func set_amb_position(source, sound, _position, _max_distance):
 	_get_audio(source, sound).set_position(_position)
-
+	_get_audio(source, sound).set_max_distance(_max_distance)

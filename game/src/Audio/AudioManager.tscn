@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://assets/audio/sfx_fishingrod_long.ogg" type="AudioStream" id=64]
 [ext_resource path="res://assets/audio/sfx_fishingrod_med.ogg" type="AudioStream" id=65]
 [ext_resource path="res://assets/audio/sfx_fishingrod_small.ogg" type="AudioStream" id=66]
+[ext_resource path="res://assets/audio/bg_pinalito.ogg" type="AudioStream" id=67]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -205,11 +206,34 @@ pitch_scale = 3.0
 [node name="BG" type="Node2D" parent="."]
 
 [node name="Sierra" type="AudioStreamPlayer2D" parent="BG"]
+position = Vector2( 180, 85 )
 stream = ExtResource( 28 )
-volume_db = -5.0
-max_distance = 5000.0
+volume_db = 8.0
+max_distance = 200.0
+attenuation = 1.1487
 
 [node name="Testigo" type="ColorRect" parent="BG/Sierra"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.0
+margin_top = -15.0
+margin_right = 14.0
+margin_bottom = 15.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pinalito" type="AudioStreamPlayer2D" parent="BG"]
+position = Vector2( 180, 85 )
+stream = ExtResource( 67 )
+volume_db = 8.0
+max_distance = 100.0
+attenuation = 1.1487
+
+[node name="Testigo" type="ColorRect" parent="BG/Pinalito"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -404,4 +428,5 @@ pitch_scale = 1.39
 stream = ExtResource( 61 )
 
 [node name="pull_fish_large" type="AudioStreamPlayer2D" parent="Fishing"]
+position = Vector2( 0.157486, 0.629959 )
 stream = ExtResource( 62 )

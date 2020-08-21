@@ -63,7 +63,7 @@ signal stop_requested(source, sound)
 signal pause_requested(source, sound)
 signal stream_finished(source, sound)
 signal change_volume(source, sound, volume)
-signal position_amb(source, sound, position)
+signal position_amb(source, sound, position, max_distance)
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
