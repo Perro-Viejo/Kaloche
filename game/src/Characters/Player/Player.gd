@@ -4,7 +4,7 @@ extends "res://src/Characters/Actor.gd"
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing: bool = false
 var on_ground: bool = false
-var fishing: bool = false
+var fishing: bool = false setget _set_fishing
 var fs_id: String = 'FS_Dirt'
 var foot = 'L'
 var is_paused := false
@@ -82,3 +82,8 @@ func _set_node_to_interact(new_node: Pickable) -> void:
 		new_node.show_interaction()
 
 	node_to_interact = new_node
+
+
+func _set_fishing(value: bool) -> void:
+	fishing = value
+	$StateMachine.state.play_animation()

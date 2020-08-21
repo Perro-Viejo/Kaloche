@@ -7,6 +7,8 @@ func enter(msg: Dictionary = {}) -> void:
 func play_animation() -> bool:
 	if _parent.grabbing:
 		sprite.play('WalkGrab')
+	elif _parent.fishing:
+		sprite.play('WalkFish')
 	else:
 		sprite.play('Walk')
 	return true
@@ -14,4 +16,3 @@ func play_animation() -> bool:
 func exit() -> void:
 	_parent.is_moving = false
 	.exit()
-

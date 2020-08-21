@@ -26,8 +26,8 @@ func _process(delta):
 	if _current_target:
 		_dflt_pos = Utils.get_screen_coords_for(_current_target)
 		_trgt_pos = Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
-		_trgt_pos.x -= rect_size.x / 2
-		_trgt_pos.y -= rect_size.y + 8
+		_trgt_pos.x -= (rect_size.x / 2) + 8
+		_trgt_pos.y -= rect_size.y / 2
 		rect_global_position = _trgt_pos
 
 
@@ -43,8 +43,8 @@ func appear(_show := true) -> void:
 	$Tween.interpolate_property(
 		$Sprite,
 		'rect_position:y',
-		0 if _show else 8,
-		8 if _show else 0,
+		0 if _show else -8,
+		-8 if _show else 0,
 		0.4 if _show else 0.2,
 		Tween.TRANS_ELASTIC,
 		Tween.EASE_OUT
@@ -76,7 +76,7 @@ func _place_bubble(target: Node = null) -> void:
 		_dflt_pos = rect_global_position
 		_trgt_pos = Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
 		_trgt_pos.x -= rect_size.x / 2
-		_trgt_pos.y -= rect_size.y + 8
+		_trgt_pos.y -= rect_size.y / 2
 		appear()
 	else:
 		_current_target = null

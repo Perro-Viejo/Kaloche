@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -18,37 +18,53 @@ extents = Vector2( 3.64699, 3.57263 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 10, 9 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
-region = Rect2( 10, 0, 10, 9 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
-region = Rect2( 20, 0, 10, 9 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 9 )
-region = Rect2( 30, 0, 10, 9 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
-region = Rect2( 40, 0, 10, 9 )
+region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 10, 9 )
+region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 9 )
-region = Rect2( 60, 0, 10, 9 )
+region = Rect2( 192, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 9 )
-region = Rect2( 70, 0, 10, 9 )
+region = Rect2( 224, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 9 )
+region = Rect2( 512, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 9 )
+region = Rect2( 544, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 9 )
+region = Rect2( 576, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 9 )
+region = Rect2( 608, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
@@ -59,66 +75,92 @@ animations = [ {
 "loop": true,
 "name": "IdleGrab",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "IdleFish",
+"speed": 10.0
 } ]
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 9 )
-region = Rect2( 80, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 9 )
-region = Rect2( 90, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 9 )
-region = Rect2( 100, 0, 10, 9 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 9 )
-region = Rect2( 110, 0, 10, 9 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
-region = Rect2( 120, 0, 10, 9 )
+region = Rect2( 384, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
-region = Rect2( 130, 0, 10, 9 )
+region = Rect2( 416, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 9 )
-region = Rect2( 140, 0, 10, 9 )
+region = Rect2( 448, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 9 )
-region = Rect2( 150, 0, 10, 9 )
+region = Rect2( 480, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 9 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 9 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 9 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 9 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 9 )
+region = Rect2( 640, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 9 )
+region = Rect2( 672, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 9 )
+region = Rect2( 704, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 9 )
+region = Rect2( 736, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "WalkGrab",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "WalkFish",
+"speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=28]
 radius = 3.06255
 
-[sub_resource type="Curve" id=21]
+[sub_resource type="Curve" id=29]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.19548, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=22]
+[sub_resource type="Gradient" id=30]
 colors = PoolColorArray( 0.239216, 0.431373, 0.439216, 1, 0.364706, 0.870588, 0.529412, 1 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=31]
 extents = Vector2( 2.20734, 2.00338 )
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 1, 0.5 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -152,14 +194,15 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
-frames = SubResource( 10 )
+frames = SubResource( 14 )
+animation = "Idle"
 
 [node name="Walk" type="Node2D" parent="StateMachine"]
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Walk"]
-frames = SubResource( 19 )
-animation = "WalkGrab"
+frames = SubResource( 27 )
+animation = "WalkFish"
 
 [node name="Move" type="Node2D" parent="StateMachine"]
 script = ExtResource( 6 )
@@ -182,7 +225,7 @@ visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-shape = SubResource( 20 )
+shape = SubResource( 28 )
 
 [node name="FishSplash" type="CPUParticles2D" parent="."]
 visible = false
@@ -204,8 +247,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 21 )
-color_ramp = SubResource( 22 )
+scale_amount_curve = SubResource( 29 )
+color_ramp = SubResource( 30 )
 
 [node name="FishingSpot" type="ColorRect" parent="."]
 visible = false
@@ -225,7 +268,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingSpot/FishingArea"]
 position = Vector2( -5.30872, 2.85854 )
-shape = SubResource( 23 )
+shape = SubResource( 31 )
 
 [node name="Timer" type="Timer" parent="FishingSpot"]
 wait_time = 0.4
@@ -236,7 +279,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )
-shape = SubResource( 24 )
+shape = SubResource( 32 )
 
 [node name="Splash_L" type="CPUParticles2D" parent="."]
 visible = false
@@ -258,8 +301,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 21 )
-color_ramp = SubResource( 22 )
+scale_amount_curve = SubResource( 29 )
+color_ramp = SubResource( 30 )
 
 [node name="Splash_R" type="CPUParticles2D" parent="."]
 visible = false
@@ -281,8 +324,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 21 )
-color_ramp = SubResource( 22 )
+scale_amount_curve = SubResource( 29 )
+color_ramp = SubResource( 30 )
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource( 1 )
