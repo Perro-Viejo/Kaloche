@@ -66,6 +66,7 @@ func update_options(updates_cfg := {}) -> void:
 func show_options() -> void:
 	# Establecer cuál será la primera opción a seleccionar cuando se presione
 	# una flecha del teclado
+	SectionEvent.dialog = true
 	for btn in get_children():
 		if btn.visible:
 			btn.add_to_group('FocusGroup')
@@ -77,5 +78,6 @@ func show_options() -> void:
 
 
 func _on_option_clicked(opt: Dictionary) -> void:
+	SectionEvent.dialog = false
 	hide()
 	DialogEvent.emit_signal('dialog_option_clicked', opt)

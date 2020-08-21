@@ -12,11 +12,16 @@ func _ready():
 	AudioEvent.connect('stop_requested', self, 'stop_sound')
 	AudioEvent.connect('pause_requested', self, 'pause_sound')
 	AudioEvent.connect('change_volume', self, 'set_volume')
+	AudioEvent.connect('position_amb', self, 'set_amb_position')
 
 
 
 func _get_audio(source, sound) -> Node:
-	return get_node(''+source+'/'+sound)
+	var sound_path := '%s/%s' % [source, sound]
+	var node: Node = null
+	if has_node(sound_path):
+		node = get_node(sound_path)
+	return node
 
 func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160, 90)) -> void:
 	var audio: Node = _get_audio(source, sound)

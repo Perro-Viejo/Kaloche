@@ -44,14 +44,14 @@ func _process(delta):
 			offset.y = $AmbZone.global_position.y - $AmbZone/CollisionShape2D.shape.extents.y - listener.global_position.y
 		elif target_pos.y > $AmbZone.global_position.y + $AmbZone/CollisionShape2D.shape.extents.y:
 			offset.y = $AmbZone.global_position.y + $AmbZone/CollisionShape2D.shape.extents.y - listener.global_position.y
-		Event.emit_signal("position_amb", "BG", AMBS.keys()[current_amb].capitalize(), target_pos + offset, max_distance)
+		AudioEvent.emit_signal("position_amb", "BG", AMBS.keys()[current_amb].capitalize(), target_pos + offset, max_distance)
 
 func _on_area_entered(other):	
 	if other.get_name() == 'PlayerArea':
 		listener = other
 		if not active:
 			active = true
-			Event.emit_signal("play_requested", "BG", AMBS.keys()[current_amb].capitalize())
+			AudioEvent.emit_signal("play_requested", "BG", AMBS.keys()[current_amb].capitalize())
 			follow_player = true
 			
 
@@ -61,11 +61,11 @@ func _on_area_exited(other):
 		listener = null
 		if active:
 			active = false
-			Event.emit_signal("stop_requested", "BG", AMBS.keys()[current_amb].capitalize())
+			AudioEvent.emit_signal("stop_requested", "BG", AMBS.keys()[current_amb].capitalize())
 
 func position_bg(other, inside):
 	if other.get_name() == 'PlayerArea':
 		if inside:
 #			follow_player = false
-			Event.emit_signal("position_amb", "BG", AMBS.keys()[current_amb].capitalize(), $AmbZone.global_position, 1000)
+			AudioEvent.emit_signal("position_amb", "BG", AMBS.keys()[current_amb].capitalize(), $AmbZone.global_position, 1000)
 

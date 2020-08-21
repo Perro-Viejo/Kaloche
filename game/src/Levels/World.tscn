@@ -2908,7 +2908,7 @@ tile_data = PoolIntArray( -5832863, 14, 2, -5832862, 14, 2, -5832861, 14, 2, -58
 position = Vector2( 739.331, -424.034 )
 
 [node name="Player" parent="WorldLayer" instance=ExtResource( 1 )]
-position = Vector2( 291.356, 500.965 )
+position = Vector2( -1047.69, 560.425 )
 collision_mask = 0
 
 [node name="Zones" type="Area2D" parent="WorldLayer"]

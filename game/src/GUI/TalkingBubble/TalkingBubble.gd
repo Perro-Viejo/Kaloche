@@ -1,6 +1,6 @@
 extends Control
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-export(float) var y_offset := 16.0
+export var y_offset := 16.0
 
 var _wave := '[wave amp=14 freq=8].[/wave][wave amp=14 freq=9].[/wave][wave amp=14 freq=10].[/wave]'
 var _showing := false
@@ -23,23 +23,28 @@ func _ready() -> void:
 
 
 func _process(delta):
-	if _current_target and not $Tween.is_active():
+	if _current_target:
+		_dflt_pos = Utils.get_screen_coords_for(_current_target)
+		_trgt_pos = Vector2(_dflt_pos.x, _dflt_pos.y - y_offset)
+		_trgt_pos.x -= rect_size.x / 2
+		_trgt_pos.y -= rect_size.y + 8
 		rect_global_position = _trgt_pos
 
 
 func appear(_show := true) -> void:
+	if _showing == _show: return
 	_showing = _show
 	if _show:
 		show()
 		$Tween.remove_all()
-		$RichTextLabel.clear()
-		$RichTextLabel.append_bbcode(_wave)
+		$Sprite/RichTextLabel.clear()
+		$Sprite/RichTextLabel.append_bbcode(_wave)
 
 	$Tween.interpolate_property(
-		self,
+		$Sprite,
 		'rect_position:y',
-		_dflt_pos.y if _show else _trgt_pos.y,
-		_trgt_pos.y if _show else _dflt_pos.y,
+		0 if _show else 8,
+		8 if _show else 0,
 		0.4 if _show else 0.2,
 		Tween.TRANS_ELASTIC,
 		Tween.EASE_OUT
@@ -58,12 +63,14 @@ func appear(_show := true) -> void:
 
 func _on_Tween_completed(obj: Object, key: NodePath) -> void:
 	if not _showing and modulate.a == 0.0:
-		$RichTextLabel.clear()
+		$Sprite/RichTextLabel.clear()
 		hide()
 
 
 func _place_bubble(target: Node = null) -> void:
 	if target:
+		if _showing: return
+
 		_current_target = target
 		rect_global_position = Utils.get_screen_coords_for(_current_target)
 		_dflt_pos = rect_global_position

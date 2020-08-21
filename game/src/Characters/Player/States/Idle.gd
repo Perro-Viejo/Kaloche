@@ -9,6 +9,8 @@ func enter(msg: Dictionary = {}) -> void:
 func play_animation() -> bool:
 	if _parent.grabbing:
 		$AnimatedSprite.play('IdleGrab')
+#	elif _parent.fishing:
+#		$AnimatedSprite.play('IdleFish')
 	else:
 		$AnimatedSprite.play('Idle')
 	return true
