@@ -70,7 +70,7 @@ func _process(delta):
 		hooked_time -= 1
 		if hooked_time <= 0:
 			get_parent().speak(tr("Se voló el bagrese..."))
-			Event.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
+			AudioEvent.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
 			_timer.set_pause_mode(false)
 			hooked = false
 			hooked_time = rand_range(hooked_time_range[0], hooked_time_range[1]) * rod_multiplier
@@ -123,7 +123,7 @@ func start_fishing():
 		rect_position, rect_position + end_pos , 1.2,
 		Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	_tween.start()
-	Event.emit_signal("play_requested", "Fishing", "rod_throw")
+	AudioEvent.emit_signal("play_requested", "Fishing", "rod_throw")
 	
 
 func fish():
@@ -132,7 +132,7 @@ func fish():
 	print('toy pescando')
 	var rod_sound
 	rod_sound = RODS.keys()[current_rod].to_lower()
-	Event.emit_signal("play_requested", "Fishing", "rod_fall_"+ rod_sound, get_parent().position + (rect_position + end_pos))
+	AudioEvent.emit_signal("play_requested", "Fishing", "rod_fall_"+ rod_sound, get_parent().position + (rect_position + end_pos))
 
 func stop():
 	hide()
@@ -141,7 +141,7 @@ func stop():
 	counter = 0
 	hooked = false
 	_timer.stop()
-	Event.emit_signal("stop_requested", "Fishing", "rod_throw")
+	AudioEvent.emit_signal("stop_requested", "Fishing", "rod_throw")
 
 func fish_bite():
 	
@@ -174,7 +174,7 @@ func pull_fish():
 					else:
 						if pull_points < 1:
 							get_parent().speak(tr("Ta muy gordo este hp"))
-							Event.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
+							AudioEvent.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
 							fish_size = rand_range(min_fish_size, max_fish_size)
 							stop()
 				else:
@@ -197,7 +197,7 @@ func catch_fish():
 	else: 
 		fish_size_sfx = "large"
 	print (fish_size_sfx)
-	Event.emit_signal("play_requested", "Fishing", "pull_fish_"+ fish_size_sfx, get_parent().position + (rect_position + end_pos))
+	AudioEvent.emit_signal("play_requested", "Fishing", "pull_fish_"+ fish_size_sfx, get_parent().position + (rect_position + end_pos))
 	
 	stop()
 	var fish = FISH.instance()

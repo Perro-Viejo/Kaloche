@@ -28,7 +28,7 @@ func _ready()->void:
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	Event.emit_signal("play_requested", "MX", "Menu")
+	AudioEvent.emit_signal("play_requested", "MX", "Menu")
 
 
 func on_Options(options) -> void:
