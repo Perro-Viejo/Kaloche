@@ -48,6 +48,7 @@ func _exit_tree()->void:
 
 
 func _on_NewGame_pressed()->void:
+	AudioEvent.emit_signal('stop_requested', 'MX', 'Menu')
 	GuiEvent.emit_signal('NewGame')
 	if show_intro:
 		GuiEvent.emit_signal('ChangeScene', intro_scn)
