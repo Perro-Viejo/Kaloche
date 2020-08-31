@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AsepriteImportData",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImportData.gd"
+}, {
+"base": "Node",
+"class": "AsepriteImporter",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImporter.gd"
+}, {
 "base": "Label",
 "class": "Autofill",
 "language": "GDScript",
@@ -33,6 +43,11 @@ _global_script_classes=[ {
 "class": "EXP_StoryReader",
 "language": "GDScript",
 "path": "res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd"
+}, {
+"base": "Node",
+"class": "EditorTheme",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
 }, {
 "base": "ColorRect",
 "class": "Fishing",
@@ -95,11 +110,14 @@ _global_script_classes=[ {
 "path": "res://src/Levels/Zone.gd"
 } ]
 _global_script_class_icons={
+"AsepriteImportData": "",
+"AsepriteImporter": "",
 "Autofill": "",
 "Demon": "",
 "Dialog": "",
 "DialogMenu": "",
 "EXP_StoryReader": "",
+"EditorTheme": "",
 "Fishing": "",
 "FloorTileset": "",
 "Hud": "",
@@ -161,7 +179,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "EXP-System-Dialog" )
+enabled=PoolStringArray( "EXP-System-Dialog", "aseprite_importer", "codeandweb.texturepacker" )
 
 [importer_defaults]
 

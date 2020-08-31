@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/chapter_0.1.tpsheet-a70d7c31ce90beb527927d111680ae7d.res"
+
+[deps]
+
+files=[ "res://assets/images/world/chapter_0.1.sprites/trees.tres", "res://assets/images/world/chapter_0.1.sprites/ground.tres", "res://assets/images/world/chapter_0.1.sprites/temple_walls.tres", "res://assets/images/world/chapter_0.1.sprites/temple_floor.tres", "res://assets/images/world/chapter_0.1.sprites/temple_facade.tres", "res://assets/images/world/chapter_0.1.sprites/temple_door.tres", "res://assets/images/world/chapter_0.1.sprites/lake.tres" ]
+
+source_file="res://assets/images/world/chapter_0.1.tpsheet"
+dest_files=[ "res://.import/chapter_0.1.tpsheet-a70d7c31ce90beb527927d111680ae7d.res", "res://assets/images/world/chapter_0.1.sprites/trees.tres", "res://assets/images/world/chapter_0.1.sprites/ground.tres", "res://assets/images/world/chapter_0.1.sprites/temple_walls.tres", "res://assets/images/world/chapter_0.1.sprites/temple_floor.tres", "res://assets/images/world/chapter_0.1.sprites/temple_facade.tres", "res://assets/images/world/chapter_0.1.sprites/temple_door.tres", "res://assets/images/world/chapter_0.1.sprites/lake.tres" ]
+
+[params]
+
