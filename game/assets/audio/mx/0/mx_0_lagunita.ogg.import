@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_0_lagunita.ogg-09ae689241095fa2ef6d1e4f0aea2ac6.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/mx/0/mx_0_lagunita.ogg"
+dest_files=[ "res://.import/mx_0_lagunita.ogg-09ae689241095fa2ef6d1e4f0aea2ac6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -2,6 +2,9 @@ extends Node
 
 signal music_requested(stream) # Sólo mientras tanto
 signal music_stoped() # Sólo mientras tanto
+##Lo de arriba desaparecerá pronto...
+signal mx_request(music)
+signal mx_stop(music)
 signal dx_requested(character, emotion)
 signal play_requested(source, sound, position)
 signal stop_requested(source, sound)

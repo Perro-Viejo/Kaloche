@@ -1,6 +1,6 @@
 extends Node2D
 
-enum AMBS {SIERRA, PINALITO}
+enum AMBS {SIERRA, PINALITO, AFUERA}
 
 export (AMBS) var ambience
 export (float) var max_distance = 150
