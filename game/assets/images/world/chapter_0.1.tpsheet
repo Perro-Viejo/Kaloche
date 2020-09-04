@@ -3,8 +3,8 @@
 		{
 			"image": "chapter_0.1.png",
 			"size": {
-				"w": 1362,
-				"h": 1440
+				"w": 854,
+				"h": 3846
 			},
 			"sprites": [
 				{
@@ -12,8 +12,38 @@
 					"region": {
 						"x": 1,
 						"y": 1,
-						"w": 785,
-						"h": 1241
+						"w": 800,
+						"h": 1280
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "temple_door.png",
+					"region": {
+						"x": 803,
+						"y": 1,
+						"w": 32,
+						"h": 40
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "trees_shadows.png",
+					"region": {
+						"x": 1,
+						"y": 1283,
+						"w": 800,
+						"h": 1280
 					},
 					"margin": {
 						"x": 0,
@@ -25,25 +55,10 @@
 				{
 					"filename": "ground.png",
 					"region": {
-						"x": 788,
-						"y": 1,
-						"w": 573,
-						"h": 1178
-					},
-					"margin": {
-						"x": 0,
-						"y": 0,
-						"w": 0,
-						"h": 0
-					}
-				},
-				{
-					"filename": "temple_walls.png",
-					"region": {
 						"x": 1,
-						"y": 1244,
-						"w": 272,
-						"h": 195
+						"y": 2565,
+						"w": 577,
+						"h": 1280
 					},
 					"margin": {
 						"x": 0,
@@ -55,8 +70,8 @@
 				{
 					"filename": "temple_floor.png",
 					"region": {
-						"x": 788,
-						"y": 1181,
+						"x": 580,
+						"y": 2565,
 						"w": 273,
 						"h": 256
 					},
@@ -70,8 +85,8 @@
 				{
 					"filename": "temple_facade.png",
 					"region": {
-						"x": 1063,
-						"y": 1181,
+						"x": 580,
+						"y": 2823,
 						"w": 273,
 						"h": 216
 					},
@@ -83,12 +98,12 @@
 					}
 				},
 				{
-					"filename": "temple_door.png",
+					"filename": "temple_walls.png",
 					"region": {
-						"x": 1063,
-						"y": 1399,
-						"w": 32,
-						"h": 40
+						"x": 580,
+						"y": 3041,
+						"w": 272,
+						"h": 195
 					},
 					"margin": {
 						"x": 0,
@@ -100,8 +115,8 @@
 				{
 					"filename": "lake.png",
 					"region": {
-						"x": 275,
-						"y": 1244,
+						"x": 580,
+						"y": 3238,
 						"w": 82,
 						"h": 65
 					},
@@ -118,6 +133,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:cc47656ade3320bb57ad7192428b4701:69efd4ec9dc38f39db68ec9ff0211472:d9901eeba017f13b88edbde4c4ef264e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:933a86ac18d7d499dff8c05ff59f6953:790a7a59457db6b6b27a490b8017d8b8:d9901eeba017f13b88edbde4c4ef264e$"
 	}
 }
