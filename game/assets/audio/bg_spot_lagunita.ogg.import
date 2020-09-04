@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bg_spot_lagunita.ogg-d71b63fea6d19aa8d7c60857dec16347.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bg_spot_lagunita.ogg"
+dest_files=[ "res://.import/bg_spot_lagunita.ogg-d71b63fea6d19aa8d7c60857dec16347.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

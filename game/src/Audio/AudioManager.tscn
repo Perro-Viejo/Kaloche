@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -72,6 +72,7 @@
 [ext_resource path="res://assets/audio/mx/0/mx_0_lagunita.ogg" type="AudioStream" id=70]
 [ext_resource path="res://assets/audio/mx/0/mx_0_rocberto.ogg" type="AudioStream" id=71]
 [ext_resource path="res://assets/audio/mx/0/mx_0_caminando.ogg" type="AudioStream" id=72]
+[ext_resource path="res://assets/audio/bg_spot_lagunita.ogg" type="AudioStream" id=73]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -471,3 +472,11 @@ stream = ExtResource( 71 )
 
 [node name="Lagunita" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 70 )
+
+[node name="Spot" type="Node2D" parent="."]
+
+[node name="Lagunita" type="AudioStreamPlayer2D" parent="Spot"]
+stream = ExtResource( 73 )
+volume_db = -3.0
+pitch_scale = 0.5
+max_distance = 150.0

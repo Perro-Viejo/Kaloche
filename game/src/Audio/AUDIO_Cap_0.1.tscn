@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Audio/AmbienceDevice.gd" type="Script" id=1]
 [ext_resource path="res://src/Audio/BasicAudioTrigger.gd" type="Script" id=2]
 [ext_resource path="res://src/Audio/AmbienceDevice.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 168.793
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 110.5
@@ -10,7 +13,7 @@ radius = 110.5
 [sub_resource type="CircleShape2D" id=2]
 radius = 58.4218
 
-[node name="AUDIO" type="Node2D"]
+[node name="AUDIO_Cap_01" type="Node2D"]
 position = Vector2( -23.811, 1.5874 )
 
 [node name="BG" type="Node2D" parent="."]
@@ -21,12 +24,26 @@ position = Vector2( -14.9695, 14.8181 )
 script = ExtResource( 1 )
 ambience = 2
 
+[node name="Spot" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Lagunita" type="Area2D" parent="Spot"]
+position = Vector2( 185.275, 11.1381 )
+script = ExtResource( 2 )
+asset_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spot/Lagunita"]
+position = Vector2( 1.33484, 2.00226 )
+shape = SubResource( 3 )
+
 [node name="Triggers" type="Node2D" parent="."]
+visible = false
+z_index = 1
 
 [node name="Lagunita" type="Area2D" parent="Triggers"]
-position = Vector2( 188.194, 79.0126 )
+position = Vector2( 209.928, 89.407 )
 script = ExtResource( 2 )
-mx = "Lagunita"
+asset_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Lagunita"]
 shape = SubResource( 1 )
@@ -34,7 +51,7 @@ shape = SubResource( 1 )
 [node name="Rocberto" type="Area2D" parent="Triggers"]
 position = Vector2( -204.683, 148.967 )
 script = ExtResource( 2 )
-mx = "Rocberto"
+asset_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Rocberto"]
 position = Vector2( 9.91068, 8.02295 )

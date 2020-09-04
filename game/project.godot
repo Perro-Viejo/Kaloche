@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GUI/Dialog/Autofill.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Demon",
-"language": "GDScript",
-"path": "res://src/Characters/Demon/Demon.gd"
-}, {
 "base": "Control",
 "class": "Dialog",
 "language": "GDScript",
@@ -84,12 +79,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Characters/Player/Player.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://src/StateMachine/State.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/StateMachine/StateMachine.gd"
@@ -113,7 +108,6 @@ _global_script_class_icons={
 "AsepriteImportData": "",
 "AsepriteImporter": "",
 "Autofill": "",
-"Demon": "",
 "Dialog": "",
 "DialogMenu": "",
 "EXP_StoryReader": "",
