@@ -12,6 +12,10 @@ var is_out: bool = false
 var is_moving = false
 var dir = Vector2(0, 0)
 
+var _is_camera_shaking := false
+var _camera_shake_amount := 15.0
+var _shake_timer := 0.0
+
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
@@ -26,7 +30,22 @@ func _ready() -> void:
 	# Conectarse a eventos del universo
 	DialogEvent.connect('line_triggered', self, '_should_speak')
 	PlayerEvent.connect('control_toggled', self, '_toggle_control')
-	
+	PlayerEvent.connect('camera_shaked', self, '_shake_camera')
+	PlayerEvent.connect('camera_moved', self, '_move_camera')
+
+
+func _process(delta) -> void:
+	if _is_camera_shaking:
+		_shake_timer -= delta
+		$Camera2D.offset = Vector2(
+			rand_range(-1.0, 1.0) * _camera_shake_amount,
+			rand_range(-1.0, 1.0) * _camera_shake_amount
+		)
+
+		if _shake_timer <= 0.0:
+			_is_camera_shaking = false
+			$Camera2D.offset = Vector2.ZERO
+
 
 func change_zoom(out: bool = true) -> void:
 	is_out = out
@@ -74,6 +93,22 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 func _toggle_control() -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
+
+
+func _shake_camera(props: Dictionary) -> void:
+	if props.has('strength'):
+		_camera_shake_amount = props.strength
+	if props.has('duration'):
+		_shake_timer = props.duration
+	if props.has('remove_control'):
+		_toggle_control()
+	_is_camera_shaking = true
+
+
+func _move_camera(dis = Vector2.ZERO) -> void:
+	if dis.x: cam.position.x += dis.x
+	if dis.y: cam.position.y += dis.y
+
 
 func _set_node_to_interact(new_node: Pickable) -> void:
 	if node_to_interact:

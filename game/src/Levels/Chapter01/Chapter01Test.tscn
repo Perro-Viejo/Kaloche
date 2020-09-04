@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -11,7 +11,10 @@
 [ext_resource path="res://assets/images/world/rock2.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/trees_shadows.tres" type="Texture" id=10]
 [ext_resource path="res://src/Levels/Chapter01/Chapter01Test.gd" type="Script" id=11]
-[ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Objects/TempleDoor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Objects/TempleDoorButton.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Levels/Chapter01/GroupObjects.gd" type="Script" id=14]
+[ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=15]
 
 [node name="Chapter01Test" type="Node2D"]
 script = ExtResource( 11 )
@@ -34,7 +37,7 @@ texture = ExtResource( 10 )
 
 [node name="Facade" type="CollisionPolygon2D" parent="StaticCollisions"]
 position = Vector2( 0, -544 )
-polygon = PoolVector2Array( 20.5, -107, 21.3, -100, 49.5, -100, 49.5, -97, 50.4, -59, 72.4, -59, 73.4, -27, 136.3, -27, 136.5, 60, 41.5, 60, 41.5, 104.3, 32.9, 108, 29.5, 108, 29.5, 105.3, 23.5, 106.4, 23.5, 103, 21.6, 49, 14.7, 49, 12.5, 46.8, 12.5, 3, -12.5, 2.1, -13.5, 48, -16.3, 48, -22.5, 48.8, -22.5, 105, -27.8, 105, -34.5, 104.9, -42.5, 103.7, -42.5, 61, -136.3, 61, -136.5, -26, -74.5, -27, -74.5, -57.9, -51.5, -58.9, -51.5, -98.9, -22.5, -99.9, -22.5, -108, 20.5, -108 )
+polygon = PoolVector2Array( 20.5, -107, 21.3, -100, 49.5, -100, 49.5, -97, 50.4, -59, 72.4, -59, 73.4, -27, 136.3, -27, 136, 57, 40, 57, 40, 98, 23, 98, 23, 47, 15, 47, 14, -40, -16, -40, -15, 47, -24, 47, -24, 98, -41, 98, -41, 57, -136, 57, -136.5, -26, -74.5, -27, -74.5, -57.9, -51.5, -58.9, -51.5, -98.9, -22.5, -99.9, -22.5, -108, 20.5, -108 )
 
 [node name="LeftWall" type="CollisionPolygon2D" parent="StaticCollisions"]
 position = Vector2( 0, -384 )
@@ -67,17 +70,35 @@ texture = ExtResource( 4 )
 position = Vector2( 160, 20 )
 texture = ExtResource( 7 )
 
+[node name="GroupObjects" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
+script = ExtResource( 14 )
+
+[node name="TempleDoor" parent="GroupObjects" instance=ExtResource( 12 )]
+position = Vector2( 0, -520 )
+z_index = 2
+
+[node name="TempleDoorButton" parent="GroupObjects" instance=ExtResource( 13 )]
+position = Vector2( 0, -456 )
+
 [node name="GroupCharacters" type="Node2D" parent="."]
 
 [node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
-position = Vector2( -200, 160 )
+position = Vector2( -178, 97 )
+is_good = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 8, -400 )
+position = Vector2( 192, 132 )
 z_index = 1
 
 [node name="GroupWalls" type="Node2D" parent="."]
+z_index = 2
 
 [node name="TempleFacade" type="Sprite" parent="GroupWalls"]
 position = Vector2( 0, -544 )
@@ -89,14 +110,13 @@ position = Vector2( 0, -384 )
 z_index = 1
 texture = ExtResource( 6 )
 
-[node name="AUDIO_Cap_01" parent="." instance=ExtResource( 12 )]
+[node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
 follow_viewport_enable = true
 
 [node name="ParallaxTrees" type="ParallaxLayer" parent="ParallaxForeground"]
-visible = false
 motion_scale = Vector2( 0.3, 0.3 )
 motion_offset = Vector2( -160, -160 )
 

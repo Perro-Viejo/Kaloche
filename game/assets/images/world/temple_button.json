@@ -1,0 +1,43 @@
+{ "frames": {
+   "temple_door (button) #press 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 21, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 10, "w": 21, "h": 13 },
+    "sourceSize": { "w": 42, "h": 32 },
+    "duration": 100
+   },
+   "temple_door (button) #press 1.aseprite": {
+    "frame": { "x": 21, "y": 0, "w": 21, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 10, "w": 21, "h": 13 },
+    "sourceSize": { "w": 42, "h": 32 },
+    "duration": 100
+   },
+   "temple_door (button) #press 2.aseprite": {
+    "frame": { "x": 42, "y": 0, "w": 21, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 10, "w": 21, "h": 13 },
+    "sourceSize": { "w": 42, "h": 32 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-x64",
+  "image": "temple_button.png",
+  "format": "RGBA8888",
+  "size": { "w": 63, "h": 13 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "press", "from": 0, "to": 2, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "button", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
