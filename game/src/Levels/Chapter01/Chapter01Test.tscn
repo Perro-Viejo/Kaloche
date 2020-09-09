@@ -94,7 +94,7 @@ character = ""
 dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 192, 132 )
+position = Vector2( 9, -399 )
 z_index = 1
 
 [node name="GroupWalls" type="Node2D" parent="."]
