@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "AmbienceDevice",
+"language": "GDScript",
+"path": "res://src/Audio/AmbienceDevice.gd"
+}, {
 "base": "Node",
 "class": "AsepriteImportData",
 "language": "GDScript",
@@ -23,11 +28,6 @@ _global_script_classes=[ {
 "class": "Autofill",
 "language": "GDScript",
 "path": "res://src/GUI/Dialog/Autofill.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Demon",
-"language": "GDScript",
-"path": "res://src/Characters/Demon/Demon.gd"
 }, {
 "base": "Control",
 "class": "Dialog",
@@ -84,12 +84,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Characters/Player/Player.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://src/StateMachine/State.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/StateMachine/StateMachine.gd"
@@ -110,10 +110,10 @@ _global_script_classes=[ {
 "path": "res://src/Levels/Zone.gd"
 } ]
 _global_script_class_icons={
+"AmbienceDevice": "",
 "AsepriteImportData": "",
 "AsepriteImporter": "",
 "Autofill": "",
-"Demon": "",
 "Dialog": "",
 "DialogMenu": "",
 "EXP_StoryReader": "",

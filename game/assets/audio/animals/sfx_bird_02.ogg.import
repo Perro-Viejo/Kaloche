@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_bird_02.ogg-5285d8da2c79e4f3d3e9a3369b3cebe9.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_bird_02.ogg"
+dest_files=[ "res://.import/sfx_bird_02.ogg-5285d8da2c79e4f3d3e9a3369b3cebe9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

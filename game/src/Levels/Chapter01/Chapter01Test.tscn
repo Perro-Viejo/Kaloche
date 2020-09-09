@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -14,7 +14,21 @@
 [ext_resource path="res://src/Objects/TempleDoor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Objects/TempleDoorButton.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/Levels/Chapter01/GroupObjects.gd" type="Script" id=14]
-[ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Audio/BasicAudioTrigger.gd" type="Script" id=15]
+[ext_resource path="res://src/Audio/AmbienceDevice.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/Audio/ScattererDevice.gd" type="Script" id=17]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 168.793
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 110.5
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 58.4218
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 326.814, 607.534 )
 
 [node name="Chapter01Test" type="Node2D"]
 script = ExtResource( 11 )
@@ -85,13 +99,7 @@ position = Vector2( 0, -456 )
 
 [node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
 position = Vector2( -178, 97 )
-is_good = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 position = Vector2( 192, 132 )
@@ -110,7 +118,62 @@ position = Vector2( 0, -384 )
 z_index = 1
 texture = ExtResource( 6 )
 
-[node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
+[node name="AUDIO_Cap_01" type="Node2D" parent="."]
+position = Vector2( -23.811, 1.5874 )
+
+[node name="BG" type="Node2D" parent="AUDIO_Cap_01"]
+visible = false
+
+[node name="AmbienceDevice" parent="AUDIO_Cap_01/BG" instance=ExtResource( 16 )]
+position = Vector2( -14.9695, 14.8181 )
+ambience = 2
+
+[node name="Spot" type="Node2D" parent="AUDIO_Cap_01"]
+z_index = 1
+
+[node name="Lagunita" type="Area2D" parent="AUDIO_Cap_01/Spot"]
+position = Vector2( 185.275, 11.1381 )
+script = ExtResource( 15 )
+asset_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Spot/Lagunita"]
+position = Vector2( 1.33484, 2.00226 )
+shape = SubResource( 1 )
+
+[node name="Triggers" type="Node2D" parent="AUDIO_Cap_01"]
+visible = false
+z_index = 1
+
+[node name="Lagunita" type="Area2D" parent="AUDIO_Cap_01/Triggers"]
+position = Vector2( 209.928, 89.407 )
+script = ExtResource( 15 )
+asset_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Triggers/Lagunita"]
+shape = SubResource( 2 )
+
+[node name="Rocberto" type="Area2D" parent="AUDIO_Cap_01/Triggers"]
+position = Vector2( -204.683, 148.967 )
+script = ExtResource( 15 )
+asset_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Triggers/Rocberto"]
+position = Vector2( 9.91068, 8.02295 )
+shape = SubResource( 3 )
+
+[node name="ScattererDevice" type="Node2D" parent="AUDIO_Cap_01"]
+position = Vector2( 24.8053, 354.639 )
+script = ExtResource( 17 )
+freq_range = Vector2( 5, 10 )
+
+[node name="Area2D" type="Area2D" parent="AUDIO_Cap_01/ScattererDevice"]
+position = Vector2( -15.874, -158.74 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/ScattererDevice/Area2D"]
+position = Vector2( -2.245, -96.5317 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="AUDIO_Cap_01/ScattererDevice"]
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
@@ -121,6 +184,7 @@ motion_scale = Vector2( 0.3, 0.3 )
 motion_offset = Vector2( -160, -160 )
 
 [node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
+visible = false
 position = Vector2( -8, -16 )
 texture = ExtResource( 3 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]

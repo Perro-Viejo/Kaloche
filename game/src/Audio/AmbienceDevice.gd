@@ -1,3 +1,4 @@
+class_name AmbienceDevice
 extends Node2D
 
 enum AMBS {SIERRA, PINALITO, AFUERA}

@@ -31,6 +31,8 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 	# recibe el parametro de posicion de quien esta llamando el sonido
 	if audio is AudioStreamPlayer2D:
 		audio.set_position(_position)
+	elif audio is Node2D:
+		audio._position = _position
 	
 	if audio.get('stream_paused'):
 		audio.stream_paused = false

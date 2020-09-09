@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -73,6 +73,11 @@
 [ext_resource path="res://assets/audio/mx/0/mx_0_rocberto.ogg" type="AudioStream" id=71]
 [ext_resource path="res://assets/audio/mx/0/mx_0_caminando.ogg" type="AudioStream" id=72]
 [ext_resource path="res://assets/audio/bg_spot_lagunita.ogg" type="AudioStream" id=73]
+[ext_resource path="res://assets/audio/animals/sfx_parrot_02.ogg" type="AudioStream" id=74]
+[ext_resource path="res://assets/audio/animals/sfx_bird_01.ogg" type="AudioStream" id=75]
+[ext_resource path="res://assets/audio/animals/sfx_bird_02.ogg" type="AudioStream" id=76]
+[ext_resource path="res://assets/audio/animals/sfx_parrot_01.ogg" type="AudioStream" id=77]
+[ext_resource path="res://assets/audio/animals/sfx_bird_03.ogg" type="AudioStream" id=78]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -480,3 +485,124 @@ stream = ExtResource( 73 )
 volume_db = -3.0
 pitch_scale = 0.5
 max_distance = 150.0
+
+[node name="Animals" type="Node2D" parent="."]
+
+[node name="Bird" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+
+[node name="bird_01" type="AudioStreamPlayer2D" parent="Animals/Bird"]
+stream = ExtResource( 75 )
+max_distance = 200.0
+
+[node name="Testigo" type="ColorRect" parent="Animals/Bird/bird_01"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = 70.0
+margin_right = 194.0
+margin_bottom = 100.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bird_02" type="AudioStreamPlayer2D" parent="Animals/Bird"]
+stream = ExtResource( 76 )
+max_distance = 200.0
+
+[node name="Testigo2" type="ColorRect" parent="Animals/Bird/bird_02"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = 70.0
+margin_right = 194.0
+margin_bottom = 100.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bird_03" type="AudioStreamPlayer2D" parent="Animals/Bird"]
+stream = ExtResource( 78 )
+max_distance = 200.0
+
+[node name="Testigo3" type="ColorRect" parent="Animals/Bird/bird_03"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = 70.0
+margin_right = 194.0
+margin_bottom = 100.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Parrot" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="parrot_01" type="AudioStreamPlayer2D" parent="Animals/Parrot"]
+stream = ExtResource( 77 )
+max_distance = 200.0
+
+[node name="Testigo4" type="ColorRect" parent="Animals/Parrot/parrot_01"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = 70.0
+margin_right = 194.0
+margin_bottom = 100.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="parrot_02" type="AudioStreamPlayer2D" parent="Animals/Parrot"]
+stream = ExtResource( 74 )
+max_distance = 200.0
+
+[node name="Testigo5" type="ColorRect" parent="Animals/Parrot/parrot_02"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = 70.0
+margin_right = 194.0
+margin_bottom = 100.0
+color = Color( 0.592157, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Insect" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="insect_01" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+max_distance = 200.0
+
+[node name="insect_02" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+max_distance = 200.0
+
+[node name="insect_03" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+max_distance = 200.0
