@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_rana.ogg-936dcdb789e6bf77dc5cf1029d8fa07a.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_rana.ogg"
+dest_files=[ "res://.import/sfx_rana.ogg-936dcdb789e6bf77dc5cf1029d8fa07a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

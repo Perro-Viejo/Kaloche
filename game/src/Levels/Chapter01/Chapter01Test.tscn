@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Audio/BasicAudioTrigger.gd" type="Script" id=15]
 [ext_resource path="res://src/Audio/AmbienceDevice.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Audio/ScattererDevice.gd" type="Script" id=17]
+[ext_resource path="res://src/Audio/ScattererEmitter.gd" type="Script" id=18]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 168.793
@@ -102,7 +103,7 @@ position = Vector2( -178, 97 )
 img = ExtResource( 9 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 192, 132 )
+position = Vector2( -177.753, 240.065 )
 z_index = 1
 
 [node name="GroupWalls" type="Node2D" parent="."]
@@ -174,6 +175,39 @@ position = Vector2( -2.245, -96.5317 )
 shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="AUDIO_Cap_01/ScattererDevice"]
+wait_time = 0.5
+
+[node name="Emitters" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice"]
+
+[node name="Bird" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 18 )
+source = "Animals"
+freq_range = Vector2( 3, 10 )
+weight = 0.7
+
+[node name="Insect" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 18 )
+source = "Animals"
+freq_range = Vector2( 1, 3 )
+weight = 0.6
+
+[node name="Parrot" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 18 )
+source = "Animals"
+freq_range = Vector2( 3, 20 )
+weight = 0.9
+
+[node name="Frog" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 18 )
+source = "Animals"
+freq_range = Vector2( 2, 6 )
+weight = 0.7
+
+[node name="Monkey" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 18 )
+source = "Animals"
+freq_range = Vector2( 5, 16 )
+weight = 0.5
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2

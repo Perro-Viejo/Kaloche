@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -78,6 +78,11 @@
 [ext_resource path="res://assets/audio/animals/sfx_bird_02.ogg" type="AudioStream" id=76]
 [ext_resource path="res://assets/audio/animals/sfx_parrot_01.ogg" type="AudioStream" id=77]
 [ext_resource path="res://assets/audio/animals/sfx_bird_03.ogg" type="AudioStream" id=78]
+[ext_resource path="res://assets/audio/animals/sfx_mico.ogg" type="AudioStream" id=79]
+[ext_resource path="res://assets/audio/animals/sfx_insect_02.ogg" type="AudioStream" id=80]
+[ext_resource path="res://assets/audio/animals/sfx_rana.ogg" type="AudioStream" id=81]
+[ext_resource path="res://assets/audio/animals/sfx_insect_03.ogg" type="AudioStream" id=82]
+[ext_resource path="res://assets/audio/animals/sfx_insect_01.ogg" type="AudioStream" id=83]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -490,10 +495,22 @@ max_distance = 150.0
 
 [node name="Bird" type="Node2D" parent="Animals"]
 script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+random_volume = true
+min_volume = -3.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 4.0
 
 [node name="bird_01" type="AudioStreamPlayer2D" parent="Animals/Bird"]
 stream = ExtResource( 75 )
 max_distance = 200.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Testigo" type="ColorRect" parent="Animals/Bird/bird_01"]
 visible = false
@@ -553,6 +570,11 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+random_volume = true
+min_volume = -4.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 1.0
 
 [node name="parrot_01" type="AudioStreamPlayer2D" parent="Animals/Parrot"]
 stream = ExtResource( 77 )
@@ -597,12 +619,54 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+volume = -5.0
+random_volume = true
+min_volume = -4.0
+max_volume = 2.0
+random_pitch = true
+min_pitch = -4.0
+max_pitch = 4.0
 
 [node name="insect_01" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+stream = ExtResource( 83 )
 max_distance = 200.0
 
 [node name="insect_02" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+stream = ExtResource( 80 )
 max_distance = 200.0
 
 [node name="insect_03" type="AudioStreamPlayer2D" parent="Animals/Insect"]
+stream = ExtResource( 82 )
+max_distance = 200.0
+
+[node name="Frog" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+random_volume = true
+min_volume = -3.0
+max_volume = 2.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 3.0
+
+[node name="frog_01" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 81 )
+max_distance = 200.0
+
+[node name="Monkey" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+random_volume = true
+min_volume = -3.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 3.0
+
+[node name="monkey_01" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 79 )
 max_distance = 200.0
