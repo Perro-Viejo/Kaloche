@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,75 @@
 [ext_resource path="res://src/Objects/TempleDoorButton.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/Levels/Chapter01/GroupObjects.gd" type="Script" id=14]
 [ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/images/world/chapter_0.1.sprites/mountain.tres" type="Texture" id=16]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 42.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShowRocberto"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("RocbertoCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.54, 2.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ParallaxForeground:follow_viewport_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.54, 2.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0, 4.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ParallaxForeground:scroll_base_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.54, 2.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 2, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RocbertoCamera:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.54 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -178, 97 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ParallaxForeground:scroll_base_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.54 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.2, 0.2 ) ]
+}
 
 [node name="Chapter01Test" type="Node2D"]
 script = ExtResource( 11 )
@@ -41,13 +110,16 @@ polygon = PoolVector2Array( 20.5, -107, 21.3, -100, 49.5, -100, 49.5, -97, 50.4,
 
 [node name="LeftWall" type="CollisionPolygon2D" parent="StaticCollisions"]
 position = Vector2( 0, -384 )
-polygon = PoolVector2Array( -80, -96, -80, 56, -24, 56, -24, 88, -40, 88, -40, 80, -98, 80.5, -96, -56, -136, -56, -136, -96 )
+polygon = PoolVector2Array( -80, -96, -80, 56, -24, 56, -24, 97, -40, 97, -40, 75, -97, 75, -96, -56, -136, -56, -136, -96 )
 
 [node name="RightWall" type="CollisionPolygon2D" parent="StaticCollisions"]
 position = Vector2( 0, -384 )
 polygon = PoolVector2Array( 136, -96, 136, -80, 96, -80, 96, 79.5, 24, 80, 24, 56, 48, 56, 80, 56, 80, -96 )
 
 [node name="OverlayArea" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="LeftWall" type="CollisionPolygon2D" parent="OverlayArea"]
 position = Vector2( 0, -384 )
@@ -58,12 +130,15 @@ position = Vector2( 0, -384 )
 polygon = PoolVector2Array( 136, -96, 136, -80, 96, -80, 96, 79.5, 24, 80, 24, 40, 48, 40, 80, 40, 80, -96 )
 
 [node name="GroupGround" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ground" type="Sprite" parent="GroupGround"]
 texture = ExtResource( 1 )
 
 [node name="TempleFloor" type="Sprite" parent="GroupGround"]
-position = Vector2( 0, -416 )
+position = Vector2( 0, -409 )
 texture = ExtResource( 4 )
 
 [node name="Lake" type="Sprite" parent="GroupGround"]
@@ -73,15 +148,21 @@ texture = ExtResource( 7 )
 [node name="GroupObjects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
 script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TempleDoor" parent="GroupObjects" instance=ExtResource( 12 )]
-position = Vector2( 0, -520 )
+position = Vector2( 0, -521 )
 z_index = 2
 
 [node name="TempleDoorButton" parent="GroupObjects" instance=ExtResource( 13 )]
-position = Vector2( 0, -456 )
+position = Vector2( 0.5, -457 )
 
 [node name="GroupCharacters" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
 position = Vector2( -178, 97 )
@@ -94,11 +175,28 @@ character = ""
 dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 9, -399 )
+position = Vector2( -112, 135 )
 z_index = 1
+
+[node name="RocbertoTrigger" type="Area2D" parent="GroupCharacters"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupCharacters/RocbertoTrigger"]
+position = Vector2( -178, 97 )
+shape = SubResource( 1 )
+
+[node name="RocbertoAnimations" type="AnimationPlayer" parent="GroupCharacters"]
+anims/ShowRocberto = SubResource( 2 )
+
+[node name="RocbertoCamera" type="Camera2D" parent="GroupCharacters"]
+position = Vector2( -178, 97 )
+zoom = Vector2( 0.6, 0.6 )
+smoothing_enabled = true
 
 [node name="GroupWalls" type="Node2D" parent="."]
 z_index = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TempleFacade" type="Sprite" parent="GroupWalls"]
 position = Vector2( 0, -544 )
@@ -110,13 +208,20 @@ position = Vector2( 0, -384 )
 z_index = 1
 texture = ExtResource( 6 )
 
+[node name="Mountain" type="Sprite" parent="GroupWalls"]
+position = Vector2( -16.5, -585 )
+z_index = 1
+texture = ExtResource( 16 )
+
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
 follow_viewport_enable = true
+scroll_base_scale = Vector2( 2, 2 )
 
 [node name="ParallaxTrees" type="ParallaxLayer" parent="ParallaxForeground"]
+visible = false
 motion_scale = Vector2( 0.3, 0.3 )
 motion_offset = Vector2( -160, -160 )
 

@@ -4,7 +4,7 @@
 			"image": "chapter_0.1.png",
 			"size": {
 				"w": 854,
-				"h": 3846
+				"h": 4024
 			},
 			"sprites": [
 				{
@@ -113,10 +113,25 @@
 					}
 				},
 				{
+					"filename": "mountain.png",
+					"region": {
+						"x": 1,
+						"y": 3847,
+						"w": 576,
+						"h": 176
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
 					"filename": "lake.png",
 					"region": {
-						"x": 580,
-						"y": 3238,
+						"x": 579,
+						"y": 3847,
 						"w": 82,
 						"h": 65
 					},
@@ -133,6 +148,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:933a86ac18d7d499dff8c05ff59f6953:790a7a59457db6b6b27a490b8017d8b8:d9901eeba017f13b88edbde4c4ef264e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:275a2581d3ed9f3a8e69b8b868268c5d:4fe4ccf3196ed625c245dc852fdb19e1:d9901eeba017f13b88edbde4c4ef264e$"
 	}
 }

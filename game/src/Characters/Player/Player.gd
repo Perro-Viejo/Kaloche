@@ -32,6 +32,8 @@ func _ready() -> void:
 	PlayerEvent.connect('control_toggled', self, '_toggle_control')
 	PlayerEvent.connect('camera_shaked', self, '_shake_camera')
 	PlayerEvent.connect('camera_moved', self, '_move_camera')
+	PlayerEvent.connect('camera_moved_to', self, '_move_camera_to')
+	PlayerEvent.connect('camera_disabled', self, '_disable_camera')
 
 
 func _process(delta) -> void:
@@ -90,9 +92,12 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 	else:
 		fs_id = 'FS_Dirt'
 
-func _toggle_control() -> void:
+func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
+	
+	if props.has('disable_camera'):
+		cam.current = false
 
 
 func _shake_camera(props: Dictionary) -> void:
@@ -109,6 +114,18 @@ func _move_camera(dis = Vector2.ZERO) -> void:
 	if dis.x: cam.position.x += dis.x
 	if dis.y: cam.position.y += dis.y
 
+
+func _move_camera_to(target = Vector2.ZERO) -> void:
+	cam.position = target
+
+
+func _zoom_camera(zoom: Vector2) -> void:
+	cam.zoom = zoom
+
+
+func _disable_camera(is_current: bool) -> void:
+	cam.current = !is_current
+	
 
 func _set_node_to_interact(new_node: Pickable) -> void:
 	if node_to_interact:
