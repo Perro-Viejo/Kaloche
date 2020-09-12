@@ -218,7 +218,6 @@ motion_scale = Vector2( 0.3, 0.3 )
 motion_offset = Vector2( -160, -160 )
 
 [node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
-visible = false
 position = Vector2( -8, -16 )
 texture = ExtResource( 3 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
