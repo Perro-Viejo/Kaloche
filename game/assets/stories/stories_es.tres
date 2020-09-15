@@ -8,6 +8,7 @@ TYPE = "EXP_Story_editor"
 names = {
 "Dream": 1,
 "Options": 3,
+"RocbertoIntro": 5,
 "RodStore": 4,
 "Salute": 2
 }
@@ -42,6 +43,7 @@ story = {
 	\"type\": \"PlayerEvent\",
 	\"event\": \"control_toggled\",
 	\"params\": []
+}
 }",
 "type": "line"
 },
@@ -151,6 +153,7 @@ story = {
 	\"type\": \"IntroductionEvent\",
 	\"event\": \"pickable_requested\",
 	\"params\": []
+}
 }",
 "type": "line"
 },
@@ -529,6 +532,151 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "return",
+"type": "line"
+}
+}
+},
+5: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "Cuando Rocberto es encontrado por Teotriste",
+"name": "RocbertoIntro",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 100 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "start",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 380, 320 ),
+"links": {
+0: 4,
+1: 5,
+2: 7,
+3: 3
+},
+"rect_size": Vector2( 441, 159 ),
+"slot_amount": 4,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡pssssssst!\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"¡La puta que me parió, una roca que habla!\",
+		\"say\": true,
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿¡Ah!? Creo que escuché una voz\",
+		\"say\": true,
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿Llevarlo conmigo? Me la tiene es que chupar\",
+		\"say\": true,
+		\"show\": false,
+		\"emotion\": \"Happy\"
+	},
+	{
+		\"line\": \"Chau chau adiós\"
+	}
+]
+}",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1000, 620 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "end",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1000, 60 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Soy Rocberto. Mucho gusto.\",
+\"off\": [0,1]
+}",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 1000, 240 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.\",
+\"off\": [0,1]
+}",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 1500, 60 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?\",
+\"on\": [2]
+}",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 1000, 420 ),
+"links": {
+0: 9
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.\",
+\"off\": [2]
+}",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( 1980, 60 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "return",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( 1520, 420 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Lo pensaré\"
+}",
 "type": "line"
 }
 }

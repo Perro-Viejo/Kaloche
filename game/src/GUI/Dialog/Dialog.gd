@@ -50,7 +50,7 @@ func _play_dialog(dialog_name: String) -> void:
 
 	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
 		_in_dialog_with_options = true
-		PlayerEvent.emit_signal('control_toggled')
+		PlayerEvent.emit_signal('control_toggled', { disable = true })
 
 	_continue_dialog()
 

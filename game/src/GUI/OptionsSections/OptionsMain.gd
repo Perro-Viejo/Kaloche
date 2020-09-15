@@ -18,9 +18,6 @@ onready var _panels := {
 	resolution = find_node('ResolutionMenu') as Panel,
 	language = find_node('LanguagePanel') as Panel,
 }
-onready var Master: HSlider = find_node('Master').get_node('HSlider')
-onready var Music: HSlider = find_node('Music').get_node('HSlider')
-onready var SFX: HSlider = find_node('SFX').get_node('HSlider')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready()->void:
 	# Esconder los paneles por si alguno se quedó visible durante la edición en
@@ -32,7 +29,6 @@ func _ready()->void:
 		find_node('Borderless').visible = false
 		find_node('Scale').visible = false
 	set_resolution()
-	set_volume_sliders()
 	SectionEvent.Languages = false #just in case project saved with visible Languages
 
 	SetUp = false #Finished fader setup
@@ -46,9 +42,6 @@ func _ready()->void:
 		'pressed', self, '_on_option_pressed', [ OPT.LANGUAGE ]
 	)
 	_back_option.connect('pressed', self, '_on_option_pressed', [ OPT.BACK ])
-	Master.connect('value_changed', self, '_on_Master_value_changed')
-	Music.connect('value_changed', self, '_on_Music_value_changed')
-	SFX.connect('value_changed', self, '_on_SFX_value_changed')
 
 	# Conectarse a señales del mundo pokémon
 #	Event.connect('Controls', self, '_on_option_pressed', [ OPT.CONTROLS ])
@@ -63,11 +56,6 @@ func set_resolution()->void:
 	find_node('Borderless').pressed = Settings.Borderless
 	#Your logic for scaling
 
-func set_volume_sliders()->void: #Initialize volume sliders
-	Master.value = Settings.VolumeMaster * 100
-	Music.value = Settings.VolumeMusic * 100
-	SFX.value = Settings.VolumeSFX * 100
-
 # ⋐▒▒▒ CONTROL DE PANELES ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⋑
 func _on_option_pressed(id := -1) -> void:
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
@@ -80,8 +68,6 @@ func _on_option_pressed(id := -1) -> void:
 			find_node('Fullscreen').grab_focus()
 		OPT.AUDIO:
 			_panels.audio.visible = true
-			# TODO: Encontrar una forma menos manual de hacer esta mierda
-			find_node('Master').get_node('HSlider').grab_focus()
 		OPT.LANGUAGE:
 			_panels.language.visible = true
 			# TODO: Encontrar una forma menos manual de hacer esta mierda
@@ -120,30 +106,6 @@ func _close_panel() -> void:
 # ⋐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ CONTROL DE PANELES ▒▒▒▒⋑
 
 #### BUTTON SIGNALS ####
-func _on_Master_value_changed(value):
-	if SetUp:
-		return
-	Settings.VolumeMaster = value/100
-	var player:AudioStreamPlayer = find_node('Master').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
-
-func _on_Music_value_changed(value):
-	if SetUp:
-		return
-	Settings.VolumeMusic = value/100
-	var player:AudioStreamPlayer = find_node('Music').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
-
-func _on_SFX_value_changed(value):
-	if SetUp:
-		return
-	Settings.VolumeSFX = value/100
-	var player:AudioStreamPlayer = find_node('SFX').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
-
 func _on_Fullscreen_pressed():
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	if SetUp:

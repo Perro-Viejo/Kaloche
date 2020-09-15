@@ -1,5 +1,5 @@
 keys,es,en
-DLG_1_2_DEMON,"La luna es oscura, pedazo de mierda.",Hello my friend… I love you
+DLG_1_2_DEMON,"La luna es oscura, Teotriste.","La luna es oscura, Teotriste."
 DLG_1_3_PLAYER,"Nuestros cultivos ya no florecen, los animales
 mueren en la soledad. Por favor, oh Dios Kuarevachú,
 ayúdame a volver la luz al mundo.","Nuestros cultivos ya no florecen, los animales
@@ -43,7 +43,7 @@ DLG_3_4_CRICKET,Soy el dios del sexo,Soy el dios del sexo
 DLG_3_5_CRICKET,"No hablo, imbécil. Se llama telepatita.","No hablo, imbécil. Se llama telepatita."
 DLG_3_6_PLAYER,Pobre hijueputa,Pobre hijueputa
 DLG_3_9_CRICKET,Que me entregues tu amor \ . )3 ) /,Que me entregues tu amor \ . )3 ) /
-DLG_4_3_ROCBERTO,A la orden,"At your orders, mister"
+DLG_4_3_ROCBERTO,A la orden,A la orden
 DLG_4_3_ROCBERTO_OPT_0,Deme la caña corta,Deme la caña corta
 DLG_4_3_ROCBERTO_OPT_1,Deme la caña medianga,Deme la caña medianga
 DLG_4_3_ROCBERTO_OPT_2,Deme la caña grandota,Deme la caña grandota
@@ -51,3 +51,13 @@ DLG_4_3_ROCBERTO_OPT_3,Mejor ya nada. Chao.,Mejor ya nada. Chao.
 DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita
 DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana
 DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea
+DLG_5_2_ROCBERTO,¡pssssssst!,¡pssssssst!
+DLG_5_2_ROCBERTO_OPT_0,"¡La puta que me parió, una roca que habla!","¡La puta que me parió, una roca que habla!"
+DLG_5_2_ROCBERTO_OPT_1,¿¡Ah!? Creo que escuché una voz,¿¡Ah!? Creo que escuché una voz
+DLG_5_2_ROCBERTO_OPT_2,¿Llevarlo conmigo? Me la tiene es que chupar,¿Llevarlo conmigo? Me la tiene es que chupar
+DLG_5_2_ROCBERTO_OPT_3,Chau chau adiós,Chau chau adiós
+DLG_5_4_ROCBERTO,Soy Rocberto. Mucho gusto.,Soy Rocberto. Mucho gusto.
+DLG_5_5_ROCBERTO,"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.","¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo."
+DLG_5_6_ROCBERTO,"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?","Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?"
+DLG_5_7_ROCBERTO,Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.,Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.
+DLG_5_9_PLAYER,Lo pensaré,Lo pensaré

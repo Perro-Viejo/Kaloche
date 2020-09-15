@@ -96,8 +96,11 @@ func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
 	
-	if props.has('disable_camera'):
-		cam.current = false
+	if props.has('disable'):
+		is_paused = props.disable
+
+#	if props.has('disable_camera'):
+#		cam.current = false
 
 
 func _shake_camera(props: Dictionary) -> void:

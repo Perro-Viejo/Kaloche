@@ -306,6 +306,7 @@ func _on_Save_i18n_CSV_file_selected(filepath : String):
 			if dialog == 'start' or dialog == 'end' or dialog == 'return':
 				continue
 
+			print(dialog)
 			var dialog_dic: Dictionary = JSON.parse(dialog).result
 
 			# ----[ el actor ]--------------------------------------------------

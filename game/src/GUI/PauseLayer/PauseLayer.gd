@@ -16,7 +16,7 @@ func on_show_paused(value:bool)->void:
 
 func on_show_options(value:bool)->void:
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
-	if !GuiEvent.MainMenu:
+	if !SectionEvent.MainMenu:
 		$Control.visible = !value
 
 func _on_Resume_pressed():

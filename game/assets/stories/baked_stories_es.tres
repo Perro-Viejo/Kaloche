@@ -25,6 +25,7 @@ story = {
 	\"type\": \"PlayerEvent\",
 	\"event\": \"control_toggled\",
 	\"params\": []
+}
 }"
 },
 3: {
@@ -102,6 +103,7 @@ story = {
 	\"type\": \"IntroductionEvent\",
 	\"event\": \"pickable_requested\",
 	\"params\": []
+}
 }"
 },
 11: {
@@ -374,11 +376,117 @@ story = {
 "text": "return"
 }
 }
+},
+5: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "start"
+},
+2: {
+"links": {
+0: 4,
+1: 5,
+2: 7,
+3: 3
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡pssssssst!\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"¡La puta que me parió, una roca que habla!\",
+		\"say\": true,
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿¡Ah!? Creo que escuché una voz\",
+		\"say\": true,
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿Llevarlo conmigo? Me la tiene es que chupar\",
+		\"say\": true,
+		\"show\": false,
+		\"emotion\": \"Happy\"
+	},
+	{
+		\"line\": \"Chau chau adiós\"
+	}
+]
+}"
+},
+3: {
+"links": {
+
+},
+"text": "end"
+},
+4: {
+"links": {
+0: 6
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Soy Rocberto. Mucho gusto.\",
+\"off\": [0,1]
+}"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.\",
+\"off\": [0,1]
+}"
+},
+6: {
+"links": {
+0: 8
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?\",
+\"on\": [2]
+}"
+},
+7: {
+"links": {
+0: 9
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.\",
+\"off\": [2]
+}"
+},
+8: {
+"links": {
+
+},
+"text": "return"
+},
+9: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Lo pensaré\"
+}"
+}
+}
 }
 }
 names = {
 "Dream": 1,
 "Options": 3,
+"RocbertoIntro": 5,
 "RodStore": 4,
 "Salute": 2
 }
