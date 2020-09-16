@@ -1,9 +1,11 @@
+class_name AmbienceDevice
 extends Node2D
 
 enum AMBS {SIERRA, PINALITO, AFUERA}
 
 export (AMBS) var ambience
 export (float) var max_distance = 150
+export (bool) var disabled = false
 
 var listener
 var current_amb
@@ -46,8 +48,10 @@ func _process(delta):
 			offset.y = $AmbZone.global_position.y + $AmbZone/CollisionShape2D.shape.extents.y - listener.global_position.y
 		AudioEvent.emit_signal("position_amb", "BG", AMBS.keys()[current_amb].capitalize(), target_pos + offset, max_distance)
 
-func _on_area_entered(other):	
-	if other.get_name() == 'PlayerArea':
+func _on_area_entered(other):
+	if disabled:
+		pass
+	elif other.get_name() == 'PlayerArea':
 		listener = other
 		if not active:
 			active = true

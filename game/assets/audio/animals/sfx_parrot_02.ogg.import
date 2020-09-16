@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_parrot_02.ogg-34d02b9b0ccd358f33470f5236d6aa4c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_parrot_02.ogg"
+dest_files=[ "res://.import/sfx_parrot_02.ogg-34d02b9b0ccd358f33470f5236d6aa4c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

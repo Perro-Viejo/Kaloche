@@ -311,7 +311,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 17
+frame = 11
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -322,7 +322,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 11
+frame = 5
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -369,7 +369,7 @@ Juan \"Quiet Gecko\" Carlos García Ángel
 Audio y Programación
 
 José Miguel Romero 
-Apoyo Moral"
+Programación Magistral"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

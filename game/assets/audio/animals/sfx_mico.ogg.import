@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_mico.ogg-a6d77de181a6deceaf0b82bd3f5a73a2.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_mico.ogg"
+dest_files=[ "res://.import/sfx_mico.ogg-a6d77de181a6deceaf0b82bd3f5a73a2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
