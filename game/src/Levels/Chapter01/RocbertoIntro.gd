@@ -11,7 +11,9 @@ func _ready() -> void:
 	_rocberto_trigger.connect('body_entered', self, '_rocberto_found')
 
 func focus_rocberto() -> void:
-	_rocberto_camera.position = get_parent().get_node('Rocberto').position
+	# TODO: Que esto no busque al nodo en el padre sino que lo reciba y lo tenga
+	# como propiedad pa' usarlo cuando quiera
+	_rocberto_camera.global_position = get_parent().get_node('Rocberto').global_position
 
 func focus_player() -> void:
 	PlayerEvent.emit_signal('camera_disabled', false)
@@ -28,7 +30,7 @@ func _rocberto_found(body: Node) -> void:
 		
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 		var _player_camera: Camera2D = body.get_node('Camera2D')
-		_rocberto_camera.position = _player_camera.get_camera_screen_center()
+		_rocberto_camera.global_position = _player_camera.get_camera_screen_center()
 		_rocberto_camera.zoom = _player_camera.zoom
 		_rocberto_camera.make_current()
 

@@ -20,5 +20,5 @@ func _highlight_name(on := true) -> void:
 	$ScaleName.add_color_override('font_color', highlight if on else _dflt_color)
 
 
-func _on_value_changed(value: float):
-	emit_signal('value_changed', value)
+func _on_value_changed(val: float):
+	emit_signal('value_changed', val)
