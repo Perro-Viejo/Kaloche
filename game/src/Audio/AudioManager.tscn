@@ -486,9 +486,9 @@ stream = ExtResource( 70 )
 [node name="Spot" type="Node2D" parent="."]
 
 [node name="Lagunita" type="AudioStreamPlayer2D" parent="Spot"]
+position = Vector2( 7, 0 )
 stream = ExtResource( 73 )
-volume_db = -3.0
-pitch_scale = 0.5
+volume_db = 14.0
 max_distance = 150.0
 
 [node name="Animals" type="Node2D" parent="."]
