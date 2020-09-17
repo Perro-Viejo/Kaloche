@@ -48,8 +48,9 @@ func play():
 #
 #
 	if randi()%100 <= weight:
-		if _position:
-			select_sound.position = _position
+		if select_sound is AudioStreamPlayer2D:
+			if _position:
+				select_sound.position = _position
 		select_sound.play()
 		if random_pitch == true:
 			randomizePitch(dflt_values[select_sound.name].pitch, min_pitch, max_pitch)
