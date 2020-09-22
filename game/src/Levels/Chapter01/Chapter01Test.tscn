@@ -108,6 +108,7 @@ z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -194, 200 )
+rocberto = NodePath("../Rocberto")
 
 [node name="GroupWalls" type="Node2D" parent="."]
 z_index = 2

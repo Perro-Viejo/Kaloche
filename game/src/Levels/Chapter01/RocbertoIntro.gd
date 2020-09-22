@@ -1,21 +1,32 @@
 extends Node2D
 
-var _was_played := false
+export var rocberto: NodePath
 
-onready var _rocberto_trigger: Area2D = find_node('RocbertoTrigger')
-onready var _rocberto_animations: AnimationPlayer = find_node('RocbertoAnimations')
-onready var _rocberto_camera: Camera2D = find_node('RocbertoCamera')
+var _was_played := false
+var _player_cam_cfg := {
+	pos = Vector2.ZERO,
+	zoom = Vector2.ONE
+}
+var _player_cam: Camera2D
+
+onready var _trigger: Area2D = find_node('RocbertoTrigger')
+onready var _animations: AnimationPlayer = find_node('RocbertoAnimations')
+onready var _camera: Camera2D = find_node('RocbertoCamera')
 
 func _ready() -> void:
+	_was_played = false
+	
 	# Conectarse a señales de los hijos
-	_rocberto_trigger.connect('body_entered', self, '_rocberto_found')
+	_trigger.connect('body_entered', self, '_rocberto_found')
+	_trigger.connect('body_exited', self, '_player_leaves')
 
 func focus_rocberto() -> void:
-	# TODO: Que esto no busque al nodo en el padre sino que lo reciba y lo tenga
-	# como propiedad pa' usarlo cuando quiera
-	_rocberto_camera.global_position = get_parent().get_node('Rocberto').global_position
+	_camera.global_position = get_node(rocberto).global_position
 
 func focus_player() -> void:
+	_player_cam.zoom = _camera.zoom
+	_camera.global_position = _player_cam.get_camera_screen_center()
+	yield(get_tree().create_timer(0.05), 'timeout')
 	PlayerEvent.emit_signal('camera_disabled', false)
 
 func say_hi() -> void:
@@ -27,12 +38,23 @@ func _rocberto_found(body: Node) -> void:
 	
 	if body.name == 'Player':
 		_was_played = true
-		
+
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
-		var _player_camera: Camera2D = body.get_node('Camera2D')
-		_rocberto_camera.global_position = _player_camera.get_camera_screen_center()
-		_rocberto_camera.zoom = _player_camera.zoom
-		_rocberto_camera.make_current()
+		_player_cam = body.get_node('Camera2D')
+		_player_cam_cfg.pos = _player_cam.get_camera_screen_center()
+		_player_cam_cfg.zoom = _player_cam.zoom
+		_camera.global_position = _player_cam_cfg.pos
+		_camera.zoom = _player_cam_cfg.zoom
+		_camera.make_current()
 
 		AudioEvent.emit_signal('mx_request', 'Rocberto')
-		_rocberto_animations.play('ShowRocberto')
+		_animations.play('ShowRocberto')
+
+
+func _player_leaves(body: Node) -> void:
+	$Tween.interpolate_property(
+		_player_cam, 'zoom',
+		_player_cam.zoom, Vector2.ONE,
+		0.4, Tween.TRANS_EXPO, Tween.EASE_OUT
+	)
+	$Tween.start()
