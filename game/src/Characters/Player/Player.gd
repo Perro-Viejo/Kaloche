@@ -2,15 +2,16 @@ class_name Player
 extends "res://src/Characters/Actor.gd"
 
 var node_to_interact: Pickable = null setget _set_node_to_interact
-var grabbing: bool = false
-var on_ground: bool = false
-var fishing: bool = false setget _set_fishing
-var fs_id: String = 'FS_Dirt'
-var foot = 'L'
+var grabbing := false
+var on_ground := false
+var fishing := false setget _set_fishing
+var fs_id := 'FS_Dirt'
+var foot := 'L'
 var is_paused := false
-var is_out: bool = false
-var is_moving = false
-var dir = Vector2(0, 0)
+var is_out := false
+var is_moving := false
+var dir := Vector2(0, 0)
+var surface := fs_id setget _set_surface
 
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
@@ -20,6 +21,7 @@ onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	fishing_spot._fish_splash = $FishSplash
 	
@@ -49,6 +51,7 @@ func _process(delta) -> void:
 			$Camera2D.offset = Vector2.ZERO
 
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func change_zoom(out: bool = true) -> void:
 	is_out = out
 	
@@ -92,6 +95,8 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 	else:
 		fs_id = 'FS_Dirt'
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
@@ -142,3 +147,11 @@ func _set_node_to_interact(new_node: Pickable) -> void:
 func _set_fishing(value: bool) -> void:
 	fishing = value
 	$StateMachine.state.play_animation()
+
+
+func _set_surface(id := '') -> void:
+	surface = id
+	if not id:
+		fs_id = 'FS_Dirt'
+	else:
+		fs_id = id

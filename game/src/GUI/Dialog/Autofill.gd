@@ -9,7 +9,7 @@ export(bool) var animate_on_set_text = true
 export(bool) var animate_on_start = false
 export(bool) var typing = true
 export(float) var disappear_wait = 3.0
-export var max_width := 244
+export var max_width := 244.0
 
 var default_position
 var default_size
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 	if rect_size.x > max_width:
 		rect_size.x = max_width
 		autowrap = true
-		rect_position.x = 160 - (max_width / 2)
+		rect_position.x = 160.0 - (max_width / 2)
 
 
 func start_animation():

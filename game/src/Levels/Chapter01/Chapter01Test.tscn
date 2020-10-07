@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/mountain.tres" type="Texture" id=16]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/Levels/Surface.gd" type="Script" id=19]
 
 [node name="Chapter01Test" type="Node2D"]
 script = ExtResource( 11 )
@@ -31,6 +32,7 @@ modulate = Color( 1, 1, 1, 0.494118 )
 texture = ExtResource( 10 )
 
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="Facade" type="CollisionPolygon2D" parent="StaticCollisions"]
 position = Vector2( 0, -544 )
@@ -111,6 +113,7 @@ position = Vector2( -194, 200 )
 rocberto = NodePath("../Rocberto")
 
 [node name="GroupWalls" type="Node2D" parent="."]
+visible = false
 z_index = 2
 __meta__ = {
 "_edit_lock_": true
@@ -132,13 +135,34 @@ z_index = 1
 texture = ExtResource( 16 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
+visible = false
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
 
 [node name="ParallaxTrees" type="ParallaxLayer" parent="ParallaxForeground"]
+visible = false
 
 [node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
 texture = ExtResource( 3 )
+
+[node name="Surfaces" type="Node2D" parent="."]
+
+[node name="EntranceFloor" type="Area2D" parent="Surfaces"]
+collision_layer = 4
+script = ExtResource( 19 )
+fs_name = "FS_Rock"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/EntranceFloor"]
+position = Vector2( 3, -401 )
+polygon = PoolVector2Array( 13, -96, 20, -96, 20, -89, 133, -89, 133, -64, 77, -64, 77, 72, 21, 72, 21, 120, -28, 120, -28, 72, -84, 72, -84, -64, -140, -64, -140, -89, -28, -89, -28, -96, -20, -96, -20, -117, 13, -117 )
+
+[node name="Lagunita" type="Area2D" parent="Surfaces"]
+script = ExtResource( 19 )
+fs_name = "FS_Water"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Lagunita"]
+position = Vector2( 198, 123 )
+polygon = PoolVector2Array( 4, -18.5, 8, -18.5, 8, -17.5, 11, -17.5, 11, -16.5, 12, -16.5, 12, -15.5, 15, -15.5, 15, -14.5, 16, -14.5, 16, -13.5, 18, -13.5, 18, -12.5, 22, -12.5, 22, -11.5, 25, -11.5, 25, -10.5, 28, -10.5, 28, -9.5, 31, -9.5, 31, -8.5, 32, -8.5, 32, -6.5, 33, -6.5, 33, -4.5, 34, -4.5, 34, 1.5, 33, 1.5, 33, 3.5, 32, 3.5, 32, 5.5, 31, 5.5, 31, 6.5, 30, 6.5, 30, 7.5, 29, 7.5, 29, 8.5, 28, 8.5, 28, 9.5, 27, 9.5, 27, 10.5, 26, 10.5, 26, 11.5, 24, 11.5, 24, 12.5, 23, 12.5, 23, 13.5, 22, 13.5, 22, 14.5, 17, 14.5, 17, 15.5, 15, 15.5, 15, 16.5, 12, 16.5, 12, 17.5, 9, 17.5, 9, 18.5, 5, 18.5, 5, 19.5, 0, 19.5, 0, 18.5, -5, 18.5, -5, 17.5, -6, 17.5, -6, 16.5, -9, 16.5, -9, 15.5, -12, 15.5, -12, 14.5, -17, 14.5, -17, 13.5, -20, 13.5, -20, 12.5, -22, 12.5, -22, 11.5, -24, 11.5, -24, 10.5, -26, 10.5, -26, 9.5, -28, 9.5, -28, 8.5, -29, 8.5, -29, 7.5, -30, 7.5, -30, 6.5, -31, 6.5, -31, 5.5, -32, 5.5, -32, 4.5, -33, 4.5, -33, 2.5, -34, 2.5, -34, -1.5, -33, -1.5, -33, -2.5, -32, -2.5, -32, -3.5, -31, -3.5, -31, -4.5, -30, -4.5, -30, -5.5, -29, -5.5, -29, -6.5, -28, -6.5, -28, -7.5, -25, -7.5, -25, -8.5, -24, -8.5, -24, -9.5, -23, -9.5, -23, -11.5, -22, -11.5, -22, -13.5, -21, -13.5, -21, -14.5, -20, -14.5, -20, -15.5, -18, -15.5, -18, -16.5, -14, -16.5, -14, -17.5, -10, -17.5, -10, -18.5, -5, -18.5, -5, -19.5, 4, -19.5 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
