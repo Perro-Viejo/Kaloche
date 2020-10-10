@@ -58,7 +58,6 @@ func _process(delta):
 			fish_bite()
 	
 	if hooked:
-		
 		#Aquí el pez se mueve para pelear
 		pull_cooldown += 1
 		if pull_cooldown >= rand_range(15, 60):
@@ -117,13 +116,14 @@ func start_fishing():
 		end_pos = Vector2(line_length, 0)
 	elif rect_position.x < 0 and rect_position.y == 1:
 		end_pos = Vector2(line_length * -1, 0)
-		
-	_tween.interpolate_property(
-		self, "rect_position",
-		rect_position, rect_position + end_pos , 1.2,
-		Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
-	_tween.start()
-	AudioEvent.emit_signal("play_requested", "Fishing", "rod_throw")
+	
+	# TODO: Llamar a Hook.throw
+#	_tween.interpolate_property(
+#		self, "rect_position",
+#		rect_position, rect_position + end_pos , 1.2,
+#		Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+#	_tween.start()
+#	AudioEvent.emit_signal("play_requested", "Fishing", "rod_throw")
 	
 
 func fish():

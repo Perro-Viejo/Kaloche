@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Objects/Hook/Hook.gd" type="Script" id=1]
+[ext_resource path="res://src/Objects/Hook/StateHooked.gd" type="Script" id=2]
+[ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://src/Objects/Hook/StateHold.gd" type="Script" id=4]
+[ext_resource path="res://src/Objects/Hook/StateThrow.gd" type="Script" id=5]
+[ext_resource path="res://src/Objects/Hook/StateIdle.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 2 )
+
+[node name="Hook" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Marker" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Throw" type="Node2D" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Hold" type="Node2D" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Hooked" type="Node2D" parent="StateMachine"]
+script = ExtResource( 2 )

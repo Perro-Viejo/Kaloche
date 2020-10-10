@@ -20,42 +20,42 @@
 [ext_resource path="res://assets/images/world/fish_a.png" type="Texture" id=18]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=19]
 
-[sub_resource type="Curve2D" id=9]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 28.1978, -15.8291, -28.1978, 15.8291, -12, 2, 0, 0, 0, 0, -3, 23 )
 }
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 18 )
 region = Rect2( 6, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 18 )
 region = Rect2( 12, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 18 )
 region = Rect2( 18, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 18 )
 region = Rect2( 24, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 18 )
 region = Rect2( 30, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 18 )
 region = Rect2( 36, 0, 6, 5 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
@@ -148,7 +148,7 @@ texture = ExtResource( 7 )
 
 [node name="PathA" type="Path2D" parent="GroupGround/Fishes"]
 position = Vector2( 194, 111 )
-curve = SubResource( 9 )
+curve = SubResource( 1 )
 
 [node name="PathFollow" type="PathFollow2D" parent="GroupGround/Fishes/PathA"]
 position = Vector2( -12, 2 )
@@ -157,8 +157,8 @@ cubic_interp = false
 lookahead = 10.0
 
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
-frames = SubResource( 8 )
-frame = 1
+frames = SubResource( 9 )
+frame = 3
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -171,7 +171,8 @@ loop = false
 lookahead = 10.0
 
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
-frames = SubResource( 8 )
+frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]

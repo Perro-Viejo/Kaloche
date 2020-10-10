@@ -147,6 +147,8 @@ func _set_node_to_interact(new_node: Pickable) -> void:
 func _set_fishing(value: bool) -> void:
 	fishing = value
 	$StateMachine.state.play_animation()
+	$Hook.visible = true
+	$Hook.position -= Vector2(5, 5)
 
 
 func _set_surface(id := '') -> void:
