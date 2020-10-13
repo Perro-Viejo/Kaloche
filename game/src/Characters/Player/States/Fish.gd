@@ -2,7 +2,7 @@
 extends "res://src/StateMachine/State.gd"
 
 func enter(msg: Dictionary = {}) -> void:
-	_parent.fishing = true
+	_state_machine.transition_to_key('Fish/Prepare')
 #	_parent.fishing_spot.start_fishing()
 	
 func exit() -> void:

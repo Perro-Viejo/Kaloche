@@ -6,17 +6,22 @@ The lowest leaf tries to handle callbacks, and if it can't, it delegates the wor
 It's up to the user to call the parent state's functions, e.g. `_parent.physics_process(delta)`
 Use State as a child of a StateMachine node.
 """
+export var _parent_path: NodePath
+
+var _parent: Node = null
+
 onready var _state_machine = _get_state_machine(self)
-var _parent = null
 
 onready var has_animation: bool = has_node("AnimatedSprite")
 onready var sprite: AnimatedSprite = $AnimatedSprite if has_animation else null
 
 func _ready() -> void:
 	yield(owner, 'ready')
-	_parent = get_parent().get_parent()
+	if _parent_path:
+		_parent = get_node(_parent_path)
+	else:
+		_parent = get_node('../..')
 	visible = false
-	play_animation()
 	
 
 func unhandled_input(event: InputEvent) -> void:

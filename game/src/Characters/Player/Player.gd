@@ -1,6 +1,13 @@
 class_name Player
 extends "res://src/Characters/Actor.gd"
 
+enum Tools {
+	NONE,
+	ROD,
+	STICK,
+	SHOVEL
+}
+
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing := false
 var on_ground := false
@@ -12,6 +19,7 @@ var is_out := false
 var is_moving := false
 var dir := Vector2(0, 0)
 var surface := fs_id setget _set_surface
+var current_tool: int = Tools.NONE setget _set_current_tool
 
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
@@ -20,6 +28,7 @@ var _shake_timer := 0.0
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
+onready var _hook: Node2D = $Hook
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
@@ -96,6 +105,10 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 		fs_id = 'FS_Dirt'
 
 
+func has_equiped() -> bool:
+	return current_tool != Tools.NONE
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
@@ -147,8 +160,6 @@ func _set_node_to_interact(new_node: Pickable) -> void:
 func _set_fishing(value: bool) -> void:
 	fishing = value
 	$StateMachine.state.play_animation()
-	$Hook.visible = true
-	$Hook.position -= Vector2(5, 5)
 
 
 func _set_surface(id := '') -> void:
@@ -157,3 +168,9 @@ func _set_surface(id := '') -> void:
 		fs_id = 'FS_Dirt'
 	else:
 		fs_id = id
+
+
+func _set_current_tool(tool_id: int) -> void:
+	current_tool = tool_id
+	if $StateMachine.state == $StateMachine.STATES.IDLE:
+		$StateMachine.state.on_tool_equiped(tool_id)

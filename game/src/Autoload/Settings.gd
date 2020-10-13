@@ -22,21 +22,21 @@ var VolumeMusic:float = 0.0 setget set_volume_music
 var VolumeSFX:float = 0.0 setget set_volume_sfx
 var VolumeRange:float = 24 + 80
 #CONTROLS
-var Actions:Array = ["Right", "Left", "Up", "Down", "Grab", "Drop"]
+var Actions:Array = ['Right', 'Left', 'Up', 'Down', 'Action', 'Drop']
 var ActionControls:Dictionary = {}
 #localization
 onready var Language:String = TranslationServer.get_locale() setget set_language
-var Language_dictionary:Dictionary = { EN = "en", ES = "es" }
+var Language_dictionary:Dictionary = { EN = 'en', ES = 'es' }
 var Language_list:Array = Language_dictionary.keys()
 #var Save / Load
-var CONFIG_FILE:String = "user://settings.save"
+var CONFIG_FILE:String = 'user://settings.save'
 var Settings_loaded:bool = false
 
 func _ready()->void:
-	if OS.get_name() == "HTML5":
+	if OS.get_name() == 'HTML5':
 		HTML5 = true
 	get_resolution()
-	load_settings()
+#	load_settings()
 	get_volumes()
 	get_controls()
 	# save_settings() #Call this method to trigger Settings saving
@@ -74,12 +74,12 @@ func set_scale(value:int)->void:
 		OS.window_size = GameResolution * Scale
 		OS.center_window()
 	get_resolution()
-	emit_signal("Resized")
+	emit_signal('Resized')
 #AUDIO
 func get_volumes()->void:
-	var Master:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
-	var Music:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
-	var SFX:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
+	var Master:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index('Master'))
+	var Music:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index('Music'))
+	var SFX:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index('SFX'))
 
 	VolumeMaster = ((Master +80))/ VolumeRange
 	VolumeMusic = ((Music +80))/ VolumeRange
@@ -88,17 +88,17 @@ func get_volumes()->void:
 func set_volume_master(volume:float)->void:
 	VolumeMaster = clamp(volume, 0.0, 1.0)
 	var Master = lerp(-80, 24, VolumeMaster)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Master)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('Master'), Master)
 
 func set_volume_music(volume:float)->void:
 	VolumeMusic = clamp(volume, 0.0, 1.0)
 	var Music = lerp(-80, 24, VolumeMusic)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), Music)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('Music'), Music)
 
 func set_volume_sfx(volume:float)->void:
 	VolumeSFX = clamp(volume, 0.0, 1.0)
 	var SFX = lerp(-80, 24, VolumeSFX)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), SFX)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('SFX'), SFX)
 
 #CONTROLS
 func get_controls()->void:
@@ -123,7 +123,7 @@ func print_events_list(ActionList:Array)->void:
 func set_language(value:String)->void:
 	Language = value
 	TranslationServer.set_locale(value)
-	emit_signal("ReTranslate")
+	emit_signal('ReTranslate')
 
 #Save/ Load
 #Call this method to trigger Settings saving
@@ -173,28 +173,28 @@ func get_input_data()->Dictionary:
 func get_button_data(event)->Dictionary:
 	var button_data:Dictionary = {}
 	if event is InputEventKey:
-		button_data["EventType"] = "InputEventKey"
-		button_data["scancode"] = event.scancode
+		button_data['EventType'] = 'InputEventKey'
+		button_data['scancode'] = event.scancode
 	if event is InputEventJoypadButton:
-		button_data["EventType"] = "InputEventJoypadButton"
-		button_data["device"] = event.device
-		button_data["button_index"] = event.button_index
+		button_data['EventType'] = 'InputEventJoypadButton'
+		button_data['device'] = event.device
+		button_data['button_index'] = event.button_index
 	if event is InputEventJoypadMotion:
-		button_data["EventType"] = "InputEventJoypadMotion"
-		button_data["device"] = event.device
-		button_data["axis"] = event.axis
-		button_data["axis_value"] = event.axis_value
+		button_data['EventType'] = 'InputEventJoypadMotion'
+		button_data['device'] = event.device
+		button_data['axis'] = event.axis
+		button_data['axis_value'] = event.axis_value
 	return button_data
 
 func set_save_data(save_data:Dictionary)->void:
-	if save_data.has("inputs"):
+	if save_data.has('inputs'):
 		set_ActionControlls_default()
 		set_input_data(save_data.inputs)
-	if save_data.has("resolution"):
+	if save_data.has('resolution'):
 		set_resolution_data(save_data.resolution)
-	if save_data.has("audio"):
+	if save_data.has('audio'):
 		set_audio_data(save_data.audio)
-	if save_data.has("language"):
+	if save_data.has('language'):
 		set_language(save_data.language.locale)
 
 func set_ActionControlls_default()->void:
@@ -214,14 +214,14 @@ func set_input_data(inputs:Dictionary)->void:
 
 func set_button_data(button:Dictionary)->InputEvent:
 	var NewEvent:InputEvent
-	if button.EventType == "InputEventKey":
+	if button.EventType == 'InputEventKey':
 		NewEvent = InputEventKey.new()
 		NewEvent.scancode = button.scancode
-	if button.EventType == "InputEventJoypadButton":
+	if button.EventType == 'InputEventJoypadButton':
 		NewEvent = InputEventJoypadButton.new()
 		NewEvent.device = button.device
 		NewEvent.button_index = button.button_index
-	if button.EventType == "InputEventJoypadMotion":
+	if button.EventType == 'InputEventJoypadMotion':
 		NewEvent = InputEventJoypadMotion.new()
 		NewEvent.device = button.device
 		NewEvent.axis = button.axis
@@ -236,9 +236,9 @@ func set_InputMap()->void:
 
 func get_resolution_data()->Dictionary:
 	var resolution_data:Dictionary = {}
-	resolution_data["Fullscreen"] = Fullscreen
-	resolution_data["Borderless"] = Borderless
-	resolution_data["Scale"] = Scale
+	resolution_data['Fullscreen'] = Fullscreen
+	resolution_data['Borderless'] = Borderless
+	resolution_data['Scale'] = Scale
 	return resolution_data
 
 func set_resolution_data(resolution:Dictionary)->void:
@@ -248,9 +248,9 @@ func set_resolution_data(resolution:Dictionary)->void:
 
 func get_audio_data()->Dictionary:
 	var audio_data:Dictionary = {}
-	audio_data["Master"] = VolumeMaster
-	audio_data["Music"] = VolumeMusic
-	audio_data["SFX"] = VolumeSFX
+	audio_data['Master'] = VolumeMaster
+	audio_data['Music'] = VolumeMusic
+	audio_data['SFX'] = VolumeSFX
 	return audio_data
 
 func set_audio_data(audio:Dictionary)->void:

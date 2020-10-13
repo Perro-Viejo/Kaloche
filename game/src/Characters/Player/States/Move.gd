@@ -1,5 +1,5 @@
 extends "res://src/StateMachine/State.gd"
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 export(float) var speed = 2
 
 var dir:Vector2 = Vector2.ZERO
@@ -9,34 +9,48 @@ var _last_dir: Vector2 = Vector2.ZERO
 
 onready var _calc_speed: float = speed * 60
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
 func _ready():
 	DialogEvent.connect('dialog_event', self, '_on_dialog_event')
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _parent.is_paused: return
 
-	if event.is_action_pressed('Grab'):
-		if _parent.fishing:
-			_parent.fishing_spot.pull_fish()
-		if _parent.node_to_interact and not _parent.grabbing:
+	if event.is_action_pressed('Action'):
+#		if _parent.fishing:
+#			_parent.fishing_spot.pull_fish()
+		if _parent.has_equiped():
+			match _parent.current_tool:
+				_parent.Tools.ROD:
+					# Inicia la pesca
+					_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
+		elif _parent.node_to_interact and not _parent.grabbing:
 			_state_machine.transition_to_state(_state_machine.STATES.GRAB)
-	elif event.is_action_pressed('Drop'):
-		if _parent.node_to_interact:
-			if _parent.grabbing:
-				_state_machine.transition_to_state(_state_machine.STATES.DROP, { dir = _last_dir })
-			elif _parent.node_to_interact.dialog:
-				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
-		else:
-			if _parent.fishing:
-				_parent.fishing_spot.switch_bait()
+#	elif event.is_action_pressed('Drop'):
+#		if _parent.node_to_interact:
+#			if _parent.grabbing:
+#				_state_machine.transition_to_state(
+#					_state_machine.STATES.DROP, { dir = _last_dir }
+#				)
+#			elif _parent.node_to_interact.dialog:
+#				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
+#		else:
+#			if _parent.fishing:
+#				_parent.fishing_spot.switch_bait()
 
-	if event.is_action_pressed('Fish'):
-		if _parent.fishing:
-			_state_machine.transition_to_state(_state_machine.STATES.IDLE)
+	elif event.is_action_pressed('Equip'):
+		if _parent.has_equiped():
+			_parent.current_tool = _parent.Tools.NONE
 		else:
-			if not _parent.grabbing and not _parent.is_moving:
-				_state_machine.transition_to_state(_state_machine.STATES.FISH)
+			_parent.current_tool = _parent.Tools.ROD
+		# TODO: Aquí se equipará el objeto seleccionado en el inventario. Por
+		#		ahora será la caña porque no tenemos más.
+		
+#		if _parent.fishing:
+#			_state_machine.transition_to_state(_state_machine.STATES.IDLE)
+#		else:
+#			if not _parent.grabbing and not _parent.is_moving:
+#				_state_machine.transition_to_state(_state_machine.STATES.FISH)
 
 
 func _physics_process(delta) -> void:

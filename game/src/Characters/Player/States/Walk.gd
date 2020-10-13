@@ -11,12 +11,15 @@ func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 
 func play_animation() -> bool:
-	if _parent.grabbing:
-		sprite.play('WalkGrab')
-	elif _parent.fishing:
-		sprite.play('WalkFish')
+	if _parent.has_equiped():
+		match _parent.current_tool:
+			_parent.Tools.ROD:
+				$AnimatedSprite.play('WalkRod')
 	else:
-		sprite.play('Walk')
+		if _parent.grabbing:
+			sprite.play('WalkGrab')
+		else:
+			sprite.play('Walk')
 	return true
 
 func exit() -> void:

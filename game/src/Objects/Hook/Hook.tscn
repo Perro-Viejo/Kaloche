@@ -34,12 +34,16 @@ script = ExtResource( 3 )
 
 [node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource( 6 )
+_parent_path = NodePath("../..")
 
 [node name="Throw" type="Node2D" parent="StateMachine"]
 script = ExtResource( 5 )
+_parent_path = NodePath("../..")
 
 [node name="Hold" type="Node2D" parent="StateMachine"]
 script = ExtResource( 4 )
+_parent_path = NodePath("../..")
 
 [node name="Hooked" type="Node2D" parent="StateMachine"]
 script = ExtResource( 2 )
+_parent_path = NodePath("../..")
