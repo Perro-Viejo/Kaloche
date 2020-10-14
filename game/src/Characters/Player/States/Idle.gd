@@ -7,14 +7,12 @@ func play_animation() -> bool:
 	if _parent.has_equiped():
 		match _parent.current_tool:
 			_parent.Tools.ROD:
-				$AnimatedSprite.play('IdleRod')
+				owner.play_animation('idle-rod')
 	else:
 		if _parent.grabbing:
-			$AnimatedSprite.play('IdleGrab')
-		elif _parent.fishing:
-			$AnimatedSprite.play('IdleFish')
+			owner.play_animation('idle-grab')
 		else:
-			$AnimatedSprite.play('Idle')
+			owner.play_animation('idle')
 	return true
 
 func exit() -> void:
@@ -24,6 +22,6 @@ func exit() -> void:
 func on_tool_equiped(tool_id: int) -> void:
 	match tool_id:
 		_parent.Tools.ROD:
-			$AnimatedSprite.play('IdleRod')
+			owner.play_animation('idle-rod')
 		_:
-			$AnimatedSprite.play('Idle')
+			owner.play_animation('idle')

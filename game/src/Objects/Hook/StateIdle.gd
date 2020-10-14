@@ -8,5 +8,4 @@ func enter(msg: Dictionary = {}) -> void:
 
 func physics_process(delta: float) -> void:
 	if _parent.target_pos:
-		print('Sí lo soy')
 		_state_machine.transition_to_key('Throw')

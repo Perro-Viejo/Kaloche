@@ -66,7 +66,7 @@ func _physics_process(delta) -> void:
 		_last_dir.x = dir.x
 		_last_dir.y = 0
 
-		get_parent().state.sprite.flip_h = dir.x < 0
+		owner.sprite.flip_h = dir.x < 0
 
 	elif dir.y != 0:
 		_last_dir.x = 0

@@ -28,7 +28,8 @@ var _shake_timer := 0.0
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
-onready var _hook: Node2D = $Hook
+onready var hook: Node2D = $Hook
+onready var sprite := $Sprite
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
@@ -108,6 +109,12 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 func has_equiped() -> bool:
 	return current_tool != Tools.NONE
 
+
+func play_animation(animation_name := '') -> void:
+	$AnimationPlayer.play(animation_name)
+
+func stop_animation() -> void:
+	$AnimationPlayer.stop()
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:

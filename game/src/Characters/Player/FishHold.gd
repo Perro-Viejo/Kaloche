@@ -1,5 +1,10 @@
 extends "res://src/StateMachine/State.gd"
 
-func play_animation() -> bool:
-	sprite.play('default')
-	return true
+func enter(msg: Dictionary = {}) -> void:
+	owner.is_paused = true
+	.enter(msg)
+
+
+func exit() -> void:
+	owner.is_paused = false
+	.exit()

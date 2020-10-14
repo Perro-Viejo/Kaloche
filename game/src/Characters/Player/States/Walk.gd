@@ -1,8 +1,8 @@
 extends 'res://src/StateMachine/State.gd'
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
-func _ready() -> void:
-	$AnimatedSprite.connect('frame_changed', self, '_on_frame_changed')
+#func _ready() -> void:
+#	$AnimatedSprite.connect('frame_changed', self, '_on_frame_changed')
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -14,12 +14,12 @@ func play_animation() -> bool:
 	if _parent.has_equiped():
 		match _parent.current_tool:
 			_parent.Tools.ROD:
-				$AnimatedSprite.play('WalkRod')
+				owner.play_animation('run-rod')
 	else:
 		if _parent.grabbing:
-			sprite.play('WalkGrab')
+			owner.play_animation('run-grab')
 		else:
-			sprite.play('Walk')
+			owner.play_animation('run')
 	return true
 
 func exit() -> void:

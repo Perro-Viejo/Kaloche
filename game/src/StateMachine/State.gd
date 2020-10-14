@@ -7,13 +7,11 @@ It's up to the user to call the parent state's functions, e.g. `_parent.physics_
 Use State as a child of a StateMachine node.
 """
 export var _parent_path: NodePath
+export var animation_name := ''
 
 var _parent: Node = null
 
 onready var _state_machine = _get_state_machine(self)
-
-onready var has_animation: bool = has_node("AnimatedSprite")
-onready var sprite: AnimatedSprite = $AnimatedSprite if has_animation else null
 
 func _ready() -> void:
 	yield(owner, 'ready')
@@ -48,11 +46,14 @@ func exit() -> void:
 	stop()
 
 func play_animation() -> bool:
+	if animation_name:
+		owner.play_animation(animation_name)
+		return true
 	return false
 	
 func stop() -> void:
-	if has_node("AnimatedSprite"):
-		sprite.stop()
+	if animation_name:
+		owner.stop_animation()
 	
 func _get_state_machine(node: Node) -> Node:
 	if node != null and not node.is_in_group('state_machine'):
