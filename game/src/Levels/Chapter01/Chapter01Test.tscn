@@ -66,7 +66,7 @@ _data = {
 "points": PoolVector2Array( -20.2933, -11.4445, 20.2933, 11.4445, 204, 108, 10.1466, -1.41581, -10.1466, 1.41581, 204, 135 )
 }
 
-[node name="Chapter01Test" type="Node2D"]
+[node name="World" type="Node2D"]
 script = ExtResource( 11 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
@@ -158,7 +158,7 @@ lookahead = 10.0
 
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 9 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -172,7 +172,6 @@ lookahead = 10.0
 
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 9 )
-frame = 2
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -196,13 +195,9 @@ __meta__ = {
 
 [node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
 position = Vector2( -194, 200 )
-is_good = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 position = Vector2( 145, 122 )
@@ -210,7 +205,7 @@ z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -194, 200 )
-rocberto = NodePath("../Rocberto")
+rocberto = NodePath("../../../World/GroupCharacters/Rocberto")
 
 [node name="GroupWalls" type="Node2D" parent="."]
 z_index = 2
@@ -240,6 +235,7 @@ layer = 2
 visible = false
 
 [node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
+visible = false
 texture = ExtResource( 3 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]

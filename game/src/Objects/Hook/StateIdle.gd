@@ -3,9 +3,13 @@
 extends "res://src/StateMachine/State.gd"
 
 func enter(msg: Dictionary = {}) -> void:
-	pass
+	owner.target_set = false
+
+
+func exit() -> void:
+	owner.target_set = false
 
 
 func physics_process(delta: float) -> void:
-	if _parent.target_pos:
+	if owner.target_set:
 		_state_machine.transition_to_key('Throw')

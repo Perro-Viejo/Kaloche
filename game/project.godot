@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
 }, {
+"base": "Node",
+"class": "FishData",
+"language": "GDScript",
+"path": "res://src/Animals/FishData.gd"
+}, {
+"base": "Area2D",
+"class": "FishPickable",
+"language": "GDScript",
+"path": "res://src/Pickables/Fish_Pickable.gd"
+}, {
 "base": "ColorRect",
 "class": "Fishing",
 "language": "GDScript",
@@ -63,6 +73,11 @@ _global_script_classes=[ {
 "class": "FloorTileset",
 "language": "GDScript",
 "path": "res://src/Levels/FloorTileset.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://src/Game/Game.gd"
 }, {
 "base": "Node2D",
 "class": "Hook",
@@ -129,8 +144,11 @@ _global_script_class_icons={
 "DialogMenu": "",
 "EXP_StoryReader": "",
 "EditorTheme": "",
+"FishData": "",
+"FishPickable": "",
 "Fishing": "",
 "FloorTileset": "",
+"Game": "",
 "Hook": "",
 "Hud": "",
 "Inventory": "",
@@ -169,6 +187,7 @@ PlayerEvent="*res://src/Autoload/Events/PlayerEvent.gd"
 SectionEvent="*res://src/Autoload/Events/SectionEvent.gd"
 SwitchEvent="*res://src/Autoload/Events/SwitchEvent.gd"
 WorldEvent="*res://src/Autoload/Events/WorldEvent.gd"
+FishDatabase="*res://src/Autoload/FishDatabase.tscn"
 
 [debug]
 

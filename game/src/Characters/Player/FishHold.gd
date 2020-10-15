@@ -7,4 +7,27 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	owner.is_paused = false
+	owner.fishing = false
 	.exit()
+
+
+func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed('Action'):
+		var pull_result := owner.hook.pull_done(1.3) as Dictionary
+		
+		if not pull_result: return
+		if pull_result.escaped:
+			var responses = [
+				'Pescaito berriondo...',
+				'¡Jala arrecho este bicho!',
+				'jalo, jalo, jalo...'
+			]
+			responses.shuffle()
+			owner.speak(tr(responses[0]))
+		elif pull_result.lost:
+			owner.speak(tr('Ta muy gordo este hp'))
+		elif pull_result.caught:
+			owner.speak(tr('Te atrapé pedazo de mierda'))
+			_state_machine.transition_to_key('Idle')
+		elif pull_result.fighting:
+			owner.speak(tr('GJRLkgjlerkjglerkgjelgrkj'))

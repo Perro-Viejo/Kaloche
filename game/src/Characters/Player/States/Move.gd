@@ -26,17 +26,14 @@ func _unhandled_input(event: InputEvent) -> void:
 					_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
 		elif _parent.node_to_interact and not _parent.grabbing:
 			_state_machine.transition_to_state(_state_machine.STATES.GRAB)
-#	elif event.is_action_pressed('Drop'):
-#		if _parent.node_to_interact:
-#			if _parent.grabbing:
-#				_state_machine.transition_to_state(
-#					_state_machine.STATES.DROP, { dir = _last_dir }
-#				)
-#			elif _parent.node_to_interact.dialog:
-#				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
-#		else:
-#			if _parent.fishing:
-#				_parent.fishing_spot.switch_bait()
+	elif event.is_action_pressed('Drop'):
+		if _parent.node_to_interact:
+			if _parent.grabbing:
+				_state_machine.transition_to_state(
+					_state_machine.STATES.DROP, { dir = _last_dir }
+				)
+			elif _parent.node_to_interact.dialog:
+				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
 
 	elif event.is_action_pressed('Equip'):
 		if _parent.has_equiped():

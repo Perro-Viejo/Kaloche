@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Objects/Hook/Hook.gd" type="Script" id=1]
-[ext_resource path="res://src/Objects/Hook/StateHooked.gd" type="Script" id=2]
+[ext_resource path="res://src/Objects/Hook/Hooked.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://src/Objects/Hook/StateHold.gd" type="Script" id=4]
+[ext_resource path="res://src/Objects/Hook/Hold.gd" type="Script" id=4]
 [ext_resource path="res://src/Objects/Hook/StateThrow.gd" type="Script" id=5]
 [ext_resource path="res://src/Objects/Hook/StateIdle.gd" type="Script" id=6]
 

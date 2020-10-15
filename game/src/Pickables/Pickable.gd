@@ -13,8 +13,6 @@ export(String) var dialog = ''
 var being_grabbed: bool = false setget set_being_grabbed
 
 var _hides: Area2D
-
-onready var _bubble_name := tr('P_' + (tr_code if tr_code else name).to_upper())
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 #	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
@@ -104,7 +102,11 @@ func hide_interaction() -> void:
 
 
 func show_interaction() -> void:
-	HudEvent.emit_signal('name_bubble_requested', self, _bubble_name)
+	HudEvent.emit_signal(
+		'name_bubble_requested',
+		self,
+		tr('P_' + (tr_code if tr_code else name).to_upper())
+	)
 #	$Bubble.show()
 	$Outline.show()
 
