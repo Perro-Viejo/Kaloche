@@ -7,29 +7,35 @@ enum Direction {
 	LEFT
 }
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
+var _hook: Hook = null
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var min_distance := 24.0
 var max_distance := 75.0
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
-var _current_direction: int = Direction.RIGHT setget _set_direction
+var _current_direction: int = Direction.RIGHT setget _set_current_direction
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
+	self._current_direction = Direction.RIGHT if not owner.sprite.flip_h else Direction.LEFT
+	
 	owner.is_paused = true
 	owner.fishing = true
-	owner.hook.visible = true
-	owner.hook.position -= Vector2(5, 5)
-	(owner.hook as Hook).connect(
-		'dropped', _state_machine, 'transition_to_key', ['FishHold']
-	)
+
+	_hook = owner.hook
+
+	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
+	#		debería indicar dónde se pondrá el gancho.
+	_hook.show()
+	_hook.connect('dropped', _state_machine, 'transition_to_key', ['FishHold'])
+
 	.enter(msg)
 
 func exit() -> void:
 	owner.is_paused = false
-	owner.hook.disconnect(
-		'dropped', _state_machine, 'transition_to_key'
-	)
+	_hook.disconnect('dropped', _state_machine, 'transition_to_key')
 	.exit()
 
 func unhandled_input(event: InputEvent) -> void:
@@ -61,7 +67,7 @@ func unhandled_input(event: InputEvent) -> void:
 		self._current_direction = Direction.LEFT
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
-func _set_direction(dir: int) -> void:
+func _set_current_direction(dir: int) -> void:
 	_current_direction = dir
 	
 	for color_rect in $LookingDir.get_children():

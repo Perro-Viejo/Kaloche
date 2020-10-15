@@ -8,6 +8,7 @@ enum Tools {
 	SHOVEL
 }
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing := false
 var on_ground := false
@@ -21,10 +22,12 @@ var dir := Vector2(0, 0)
 var surface := fs_id setget _set_surface
 var current_tool: int = Tools.NONE setget _set_current_tool
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
 var _shake_timer := 0.0
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables onready ▒▒▒▒
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
@@ -33,7 +36,9 @@ onready var sprite := $Sprite
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
+	# Hacer la configuración por defecto cuando el Player ya está en escena
 	fishing_spot._fish_splash = $FishSplash
+	hook.hide()
 	
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])

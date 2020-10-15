@@ -36,7 +36,7 @@ func _ready()->void:
 	if OS.get_name() == 'HTML5':
 		HTML5 = true
 	get_resolution()
-#	load_settings()
+	load_settings()
 	get_volumes()
 	get_controls()
 	# save_settings() #Call this method to trigger Settings saving

@@ -230,6 +230,30 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
+   },
+   "teotriste 29.aseprite": {
+    "frame": { "x": 928, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   "teotriste 30.aseprite": {
+    "frame": { "x": 960, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   "teotriste 31.aseprite": {
+    "frame": { "x": 992, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
    }
  },
  "meta": {
@@ -237,7 +261,7 @@
   "version": "1.2.25-x64",
   "image": "teotriste.png",
   "format": "RGBA8888",
-  "size": { "w": 928, "h": 32 },
+  "size": { "w": 1024, "h": 32 },
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 3, "direction": "forward" },
@@ -246,8 +270,8 @@
    { "name": "run", "from": 12, "to": 15, "direction": "forward" },
    { "name": "run-grab", "from": 16, "to": 19, "direction": "forward" },
    { "name": "run-rod", "from": 20, "to": 23, "direction": "forward" },
-   { "name": "fish-prepare", "from": 24, "to": 24, "direction": "forward" },
-   { "name": "fishing", "from": 25, "to": 28, "direction": "forward" }
+   { "name": "fish-prepare", "from": 24, "to": 27, "direction": "forward" },
+   { "name": "fishing", "from": 28, "to": 31, "direction": "forward" }
   ],
   "layers": [
    { "name": "teotriste", "opacity": 255, "blendMode": "normal" },
