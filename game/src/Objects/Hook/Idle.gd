@@ -4,6 +4,7 @@ extends "res://src/StateMachine/State.gd"
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.target_set = false
+	owner.position = owner.dflt_pos
 
 
 func exit() -> void:

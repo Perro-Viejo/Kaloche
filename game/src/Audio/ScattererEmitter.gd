@@ -24,7 +24,6 @@ func count_tick(target_pos):
 	
 
 func play_sfx(target_pos):
-	print(emitter)
 	randomize()
 	var offset = Vector2(rand_range(-150, 150), rand_range(-150, 150))
 	frequency = rand_range(freq_range.x, freq_range.y)

@@ -5,6 +5,7 @@ const CURRENT_SCENE := 'CURRENT_SCENE'
 const DIALOGS := 'DIALOGS'
 
 enum BAITS {NADA, GUSANO, SANGRE}
+enum SurfaceType {GROUND, WATER, ROCK, GRASS, MUD}
 
 var _data := {}
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░

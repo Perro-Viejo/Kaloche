@@ -1,6 +1,8 @@
+class_name Surface
 extends Area2D
 
 export var fs_name := ''
+export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
