@@ -19,6 +19,8 @@ func enter(msg: Dictionary = {}) -> void:
 	_fish_sprite = msg.sprite
 	_fish_name = msg.name
 	_catch_sfx = msg.catch_sfx
+	
+	owner.emit_signal('hooked')
 
 
 func pull_done(rod_strength: float) -> Dictionary:

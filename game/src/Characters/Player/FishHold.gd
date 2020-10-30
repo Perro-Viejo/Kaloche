@@ -1,13 +1,27 @@
 extends "res://src/StateMachine/State.gd"
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
+var _hook: Hook = null
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
 	owner.is_paused = true
+
+	_hook = owner.hook
+	_hook.connect('hooked', owner, 'speak', ['¡Mordió!'])
+	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
+	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
+
 	.enter(msg)
 
 
 func exit() -> void:
 	owner.is_paused = false
 	owner.fishing = false
+	_hook.disconnect('hooked', owner, 'speak')
+	_hook.disconnect('tried', owner, 'speak')
+	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')
+
 	.exit()
 
 

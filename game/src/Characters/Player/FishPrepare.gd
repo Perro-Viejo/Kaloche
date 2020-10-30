@@ -67,6 +67,8 @@ func unhandled_input(event: InputEvent) -> void:
 		self._current_direction = Direction.DOWN
 	elif event.is_action_pressed('Left'):
 		self._current_direction = Direction.LEFT
+	elif event.is_action_pressed('Equip'):
+		_state_machine.transition_to_key('Idle')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_current_direction(dir: int) -> void:
