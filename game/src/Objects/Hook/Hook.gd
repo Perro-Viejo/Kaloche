@@ -8,6 +8,10 @@ signal tried
 
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
+var bait_data := {
+	type = 'MEAT'
+}
+
 
 onready var origin_pos = position
 onready var tween := $Tween
@@ -24,6 +28,12 @@ func pull_done(rod_strength: float) -> Dictionary:
 	if $StateMachine.state.has_method('pull_done') :
 		return $StateMachine.state.pull_done(rod_strength)
 	return {}
+
+func hook_success(fish_data: FishData) -> void:
+	$StateMachine.transition_to_key('Hooked', fish_data.get_data())
+
+func hook_fail() -> void:
+	emit_signal('tried')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:
