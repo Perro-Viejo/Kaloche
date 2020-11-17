@@ -6,16 +6,18 @@ enum Type { GEN, APUY, CHANCHITA, CACHAMA, PIRANHA, BOCACHICO }
 export(Type) var type = Type.GEN
 export var icon: Texture = null
 export var sprite: Texture = null
-export var chance := {
-	none = 0.0,
-	worm = 0.0,
-	blood = 0.0
-}
+export var chances := {}
 export var size_range := { min = 0.2, max = 1.3 }
 
 var size := 0.0
 var resistance := 0
 var catch_sfx := ''
+var attracted_to := {}
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+func _ready():
+	for bait in chances:
+		attracted_to[get_node(bait).name] = chances[bait]
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_data() -> Dictionary:

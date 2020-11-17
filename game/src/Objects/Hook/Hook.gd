@@ -8,10 +8,7 @@ signal tried
 
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
-var bait_data := {
-	type = 'MEAT'
-}
-
+var bait := ''
 
 onready var origin_pos = position
 onready var tween := $Tween

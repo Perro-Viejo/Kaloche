@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Animals/FishData.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/world/fish_bocachico.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/world/fish_piranha.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/world/fish_gen.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/world/fish_apuy.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/world/fish_chanchita.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/world/fish_cachama.png" type="Texture" id=7]
+[ext_resource path="res://src/Autoload/FishingDatabase.gd" type="Script" id=8]
+[ext_resource path="res://src/Objects/BaitData.gd" type="Script" id=9]
+
+[node name="FishingDatabase" type="Node"]
+script = ExtResource( 8 )
+
+[node name="Fishes" type="Node" parent="."]
+
+[node name="Gen" parent="Fishes" instance=ExtResource( 1 )]
+icon = ExtResource( 4 )
+sprite = ExtResource( 4 )
+
+[node name="Apuy" parent="Fishes" instance=ExtResource( 1 )]
+type = 1
+icon = ExtResource( 5 )
+sprite = ExtResource( 5 )
+chances = {
+NodePath("../../Baits/Worm"): 1.0
+}
+size_range = {
+"max": 1.3,
+"min": 0.2
+}
+
+[node name="Bocachico" parent="Fishes" instance=ExtResource( 1 )]
+type = 5
+icon = ExtResource( 2 )
+sprite = ExtResource( 2 )
+chances = {
+NodePath("../../Baits/Worm"): 0.8,
+NodePath("../../Baits/Fly"): 0.15
+}
+size_range = {
+"max": 1.3,
+"min": 0.2
+}
+
+[node name="Cachama" parent="Fishes" instance=ExtResource( 1 )]
+type = 3
+icon = ExtResource( 7 )
+sprite = ExtResource( 7 )
+chances = {
+NodePath("../../Baits/Worm"): 0.3,
+NodePath("../../Baits/Fly"): 0.5
+}
+size_range = {
+"max": 1.3,
+"min": 0.2
+}
+
+[node name="Chanchita" parent="Fishes" instance=ExtResource( 1 )]
+type = 2
+icon = ExtResource( 6 )
+sprite = ExtResource( 6 )
+chances = {
+NodePath("../../Baits/Worm"): 0.5,
+NodePath("../../Baits/Fly"): 0.2
+}
+size_range = {
+"max": 1.3,
+"min": 0.2
+}
+
+[node name="Piranha" parent="Fishes" instance=ExtResource( 1 )]
+type = 4
+icon = ExtResource( 3 )
+sprite = ExtResource( 3 )
+chances = {
+NodePath("../../Baits/Worm"): 0.05,
+NodePath("../../Baits/Fly"): 1.0
+}
+size_range = {
+"max": 1.3,
+"min": 0.2
+}
+
+[node name="Baits" type="Node" parent="."]
+
+[node name="Worm" type="Node" parent="Baits"]
+script = ExtResource( 9 )
+
+[node name="Fly" type="Node" parent="Baits"]
+script = ExtResource( 9 )

@@ -19,7 +19,6 @@ func _ready()->void:
 	GuiEvent.connect("Restart", 	self, "restart_scene")
 	#Background loader
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
-	#SceneLoader.load_scene("res://Levels/TestScene.tscn", {instructions="for what reason it got loaded"})
 
 	# Perro Viejo
 	AudioEvent.connect('music_requested', self, 'play_song')
@@ -47,7 +46,11 @@ func on_ChangeScene(scene):
 
 	FadeState = FADEOUT
 
-	$FadeLayer/FadeTween.interpolate_property($FadeLayer, "percent", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.0)
+	$FadeLayer/FadeTween.interpolate_property(
+		$FadeLayer, "percent",
+		0.0, 1.0,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.0
+	)
 	$FadeLayer/FadeTween.start()
 
 func on_Exit()->void:
@@ -88,7 +91,11 @@ func _on_FadeTween_tween_completed(object, key)->void:
 				yield(self, "SceneIsLoaded")
 			change_scene()
 			FadeState = FADEIN
-			$FadeLayer/FadeTween.interpolate_property($FadeLayer, "percent", 1.0, 0.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.0)
+			$FadeLayer/FadeTween.interpolate_property(
+				$FadeLayer, "percent",
+				1.0, 0.0,
+				0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.0
+			)
 			$FadeLayer/FadeTween.start()
 		FADEIN:
 			FadeState = IDLE

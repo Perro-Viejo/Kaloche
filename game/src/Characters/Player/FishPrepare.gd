@@ -16,6 +16,7 @@ var max_distance := 90.0 # 75.0
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _current_direction: int = Direction.RIGHT setget _set_current_direction
+var _current_bait: BaitData = null
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
@@ -23,8 +24,12 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	owner.is_paused = true
 	owner.fishing = true
+	
+	# Obtener una carnada al azar por ahora
+	_current_bait = FishingDatabase.get_random_bait()
 
 	_hook = owner.hook
+	_hook.bait = _current_bait.name
 
 	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
 	#		debería indicar dónde se pondrá el gancho.
