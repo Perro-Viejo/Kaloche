@@ -28,6 +28,8 @@ func _ready() -> void:
 			12
 		)
 		tween.start()
+	
+	DebugOverlay.visible = true
 
 
 func _on_OverlayArea_body_shape_entered(body_id, body, body_shape, area_shape):

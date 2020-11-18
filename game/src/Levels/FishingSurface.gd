@@ -16,6 +16,7 @@ var _bait := ''
 var _counter := 0.0
 var _hook_check_freq := 0.0
 var _hook_ref: Hook = null
+var _hooked_monitor_id := -1
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
@@ -34,6 +35,7 @@ func _process(delta):
 		if _counter >= _hook_check_freq:
 			if _got_hooked():
 				_bait = ''
+				DebugOverlay.remove_monitor(_hooked_monitor_id)
 				_hook_ref.hook_success(_fishes[_captured_fish_idx])
 				_on_fish_bit()
 			else:
@@ -47,6 +49,14 @@ func hook_entered(hook: Hook) -> void:
 	_bait = hook.bait
 	_hook_check_freq = rand_range(bite_freq.x, bite_freq.y)
 	_counter = 0.0
+	
+	# Pal debug
+	_hooked_monitor_id = DebugOverlay.add_monitor(
+		'\nnext_check', self, '', 'get_hooked_check_time'
+	)
+
+func get_hooked_check_time() -> String:
+	return '%d s' % int(_hook_check_freq - _counter)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:

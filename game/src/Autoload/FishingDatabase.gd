@@ -5,6 +5,7 @@ var _bait_idx := 0
 onready var _fishes: Node = $Fishes
 onready var _baits: Node = $Baits
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_random_fish() -> FishData:
 	return _fishes.get_child(randi() % _fishes.get_child_count()) as FishData
 

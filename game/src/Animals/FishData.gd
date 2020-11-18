@@ -21,6 +21,7 @@ func _ready():
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_data() -> Dictionary:
+	randomize()
 	size = rand_range(size_range.min, size_range.max)
 
 	if size <= 0.5:

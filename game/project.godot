@@ -200,6 +200,7 @@ SectionEvent="*res://src/Autoload/Events/SectionEvent.gd"
 SwitchEvent="*res://src/Autoload/Events/SwitchEvent.gd"
 WorldEvent="*res://src/Autoload/Events/WorldEvent.gd"
 FishingDatabase="*res://src/Autoload/FishingDatabase.tscn"
+DebugOverlay="*res://addons/debug-overlay/DebugOverlay.tscn"
 
 [debug]
 

@@ -8,7 +8,7 @@ signal tried
 
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
-var bait := ''
+var bait := 'Nada' setget _set_bait
 
 onready var origin_pos = position
 onready var tween := $Tween
@@ -19,6 +19,7 @@ onready var dflt_pos := position
 func _ready():
 	area.monitoring = false
 	area.monitorable = false
+	DebugOverlay.add_monitor('\ncarnada', self, ':bait')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func pull_done(rod_strength: float) -> Dictionary:
@@ -37,3 +38,7 @@ func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position
 	target_pos = position + end_pos
 	target_set = true
+
+func _set_bait(new_bait := '') -> void:
+	if not new_bait: new_bait = 'Nada'
+	bait = new_bait

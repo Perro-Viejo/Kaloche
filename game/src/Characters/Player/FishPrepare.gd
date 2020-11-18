@@ -36,7 +36,6 @@ func enter(msg: Dictionary = {}) -> void:
 	_hook = owner.hook
 	
 	_hook.bait = _current_bait.name if _current_bait else ''
-	prints('La carnada actual es:', _hook.bait)
 
 	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
 	#		debería indicar dónde se pondrá el gancho.
@@ -83,7 +82,6 @@ func unhandled_input(event: InputEvent) -> void:
 		_current_bait = FishingDatabase.get_next_bait()
 		
 		_hook.bait = _current_bait.name if _current_bait else ''
-		prints('La carnada actual es:', _hook.bait)
 	elif event.is_action_pressed('Up'):
 		self._current_direction = Direction.UP
 	elif event.is_action_pressed('Right'):
