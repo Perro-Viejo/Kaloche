@@ -77,7 +77,6 @@ func _got_hooked() -> bool:
 				highest_chance = fish.attracted_to[_bait]
 				selected_fish = fish
 				selected_fish_idx = counter
-				break
 			counter += 1
 	else:
 		# TODO: Seleccionar un pescado genérico si hay

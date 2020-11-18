@@ -35,7 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif _parent.node_to_interact.dialog:
 				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
 
-	elif event.is_action_pressed('Equip'):
+	elif event.is_action_pressed('Equip') and not _parent.grabbing:
 		if _parent.has_equiped():
 			_parent.current_tool = _parent.Tools.NONE
 		else:
