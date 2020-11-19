@@ -18,6 +18,9 @@ var _hook_check_freq := 0.0
 var _hook_ref: Hook = null
 var _hooked_monitor_id := -1
 
+const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
+const FISH_SPLASH = preload("res://src/Particles/FishSplash.tscn")
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	_timer = Timer.new()
@@ -25,8 +28,10 @@ func _ready():
 	_timer.one_shot = true
 	_timer.connect('timeout', self, '_spawn_fishes')
 	add_child(_timer)
-
+	
 	_spawn_fishes()
+	
+	PlayerEvent.connect('fish_caught', self, '_fish_splash')
 
 func _process(delta):
 	if _bait:
@@ -46,6 +51,10 @@ func _process(delta):
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func hook_entered(hook: Hook) -> void:
 	_hook_ref = hook
+	var splash = HOOK_SPLASH.instance()
+	add_child(splash)
+	splash.set_global_position(hook.global_position)
+	AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_fall_long', hook.global_position)
 	_bait = hook.bait
 	_hook_check_freq = rand_range(bite_freq.x, bite_freq.y)
 	_counter = 0.0
@@ -54,6 +63,10 @@ func hook_entered(hook: Hook) -> void:
 	_hooked_monitor_id = DebugOverlay.add_monitor(
 		'\nnext_check', self, '', 'get_hooked_check_time'
 	)
+
+#TODO: conectar esta vuelta :(
+#func _pull_sfx():
+#	AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook_ref.global_position)
 
 func get_hooked_check_time() -> String:
 	return '%d s' % int(_hook_check_freq - _counter)
@@ -107,3 +120,9 @@ func _got_hooked() -> bool:
 		_captured_fish_idx = -1
 
 	return _captured_fish_idx > -1
+
+
+func _fish_splash(position):
+	var splash = FISH_SPLASH.instance()
+	add_child(splash)
+	splash.set_global_position(position)
