@@ -297,7 +297,7 @@ anims/run-rod = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 768, 0, 32, 32 )
+region_rect = Rect2( 896, 0, 32, 32 )
 
 [node name="Overlay" type="Sprite" parent="."]
 visible = false
@@ -507,3 +507,6 @@ color_ramp = SubResource( 12 )
 
 [node name="Hook" parent="." instance=ExtResource( 14 )]
 position = Vector2( -4, -7 )
+
+[node name="RodTip" type="Position2D" parent="."]
+position = Vector2( 11.5217, -2.64866 )

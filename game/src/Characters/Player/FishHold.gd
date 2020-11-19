@@ -44,4 +44,5 @@ func unhandled_input(event: InputEvent) -> void:
 			owner.speak(tr('Te atrapé pedazo de mierda'))
 			_state_machine.transition_to_key('Idle')
 		elif pull_result.fighting:
+			AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook.global_position)
 			owner.speak(tr('GJRLkgjlerkjglerkgjelgrkj'))

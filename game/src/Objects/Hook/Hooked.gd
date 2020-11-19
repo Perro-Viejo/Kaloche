@@ -65,6 +65,7 @@ func _catch_fish() -> void:
 	else:
 		get_node('/root').add_child(fish)
 	
+	PlayerEvent.emit_signal('fish_caught', global_position)
 	fish.tr_code = _fish_name
 	fish.get_node('Sprite').texture = _fish_sprite
 	fish.global_position = global_position

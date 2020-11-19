@@ -42,6 +42,7 @@ func _on_area_entered(body: Area2D) -> void:
 		owner.emit_signal('dropped')
 		body.hook_entered(owner)
 	else:
+		body._hook_ref = null
 		_sent_back()
 
 func _sent_back() -> void:

@@ -460,6 +460,12 @@ pitch_scale = 0.1
 stream = ExtResource( 60 )
 pitch_scale = 2.63
 
+[node name="pull_fish_fight" type="AudioStreamPlayer2D" parent="Fishing"]
+position = Vector2( -186.352, -2.24744 )
+stream = ExtResource( 60 )
+volume_db = 1.0
+pitch_scale = 1.7
+
 [node name="pull_fish_small" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 60 )
 pitch_scale = 1.39
