@@ -20,6 +20,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_fish_name = msg.name
 	_catch_sfx = msg.catch_sfx
 	
+	owner.play_animation('waveB')
 	owner.emit_signal('hooked')
 
 

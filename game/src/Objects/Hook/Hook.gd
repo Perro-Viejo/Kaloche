@@ -19,6 +19,10 @@ onready var dflt_pos := position
 func _ready():
 	area.monitoring = false
 	area.monitorable = false
+	# mateo: aún no sé si esto será así porque puede que queramos que se vea el
+	# gancho mientras cuelga de la caña antes de ser lanzado...
+	$Sprite.visible = false
+
 	DebugOverlay.add_monitor('\ncarnada', self, ':bait')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -32,6 +36,12 @@ func hook_success(fish_data: FishData) -> void:
 
 func hook_fail() -> void:
 	emit_signal('tried')
+
+func play_animation(animation_name := '', speed := 1.0) -> void:
+	if $AnimationPlayer.has_animation(animation_name):
+		$AnimationPlayer.play(animation_name, -1.0, speed)
+	else:
+		printerr('Soy el Hook y no tengo la animación %s' % animation_name)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:

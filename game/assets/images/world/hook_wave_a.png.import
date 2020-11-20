@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hook_wave.png-717755187819ba64725f0f4006ff0bda.stex"
+path="res://.import/hook_wave_a.png-3bb3ea34ff9250bf57055874c7fc0f10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/hook_wave.png"
-dest_files=[ "res://.import/hook_wave.png-717755187819ba64725f0f4006ff0bda.stex" ]
+source_file="res://assets/images/world/hook_wave_a.png"
+dest_files=[ "res://.import/hook_wave_a.png-3bb3ea34ff9250bf57055874c7fc0f10.stex" ]
 
 [params]
 

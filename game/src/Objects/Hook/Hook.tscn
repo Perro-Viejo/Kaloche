@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Objects/Hook/Hook.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Hook/Hooked.gd" type="Script" id=2]
@@ -6,9 +6,165 @@
 [ext_resource path="res://src/Objects/Hook/Hold.gd" type="Script" id=4]
 [ext_resource path="res://src/Objects/Hook/Throw.gd" type="Script" id=5]
 [ext_resource path="res://src/Objects/Hook/Idle.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/world/hook_hold.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "SETUP"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 29, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 29, 21 ), Rect2( 29, 0, 29, 21 ), Rect2( 58, 0, 29, 21 ), Rect2( 87, 0, 29, 21 ), Rect2( 116, 0, 29, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 145, 0, 29, 21 ), Rect2( 174, 0, 29, 21 ), Rect2( 203, 0, 29, 21 ), Rect2( 232, 0, 29, 21 ), Rect2( 261, 0, 29, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 290, 0, 29, 21 ), Rect2( 319, 0, 29, 21 ), Rect2( 348, 0, 29, 21 ), Rect2( 377, 0, 29, 21 ), Rect2( 406, 0, 29, 21 ), Rect2( 435, 0, 29, 21 ), Rect2( 464, 0, 29, 21 ), Rect2( 493, 0, 29, 21 ), Rect2( 522, 0, 29, 21 ), Rect2( 551, 0, 29, 21 ), Rect2( 580, 0, 29, 21 ), Rect2( 609, 0, 29, 21 ), Rect2( 638, 0, 29, 21 ), Rect2( 667, 0, 29, 21 ), Rect2( 696, 0, 29, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Hook" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,3 +209,15 @@ _parent_path = NodePath("../..")
 [node name="Hooked" type="Node2D" parent="StateMachine"]
 script = ExtResource( 2 )
 _parent_path = NodePath("../..")
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 2 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 29, 21 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SETUP = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/waveA = SubResource( 4 )
+anims/waveB = SubResource( 5 )
