@@ -63,6 +63,7 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('Action'):
 		# Se usa la dirección seleccionada por el jugador y se calcula la distancia
 		# a la que se lanzará el gancho
+		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 		randomize()
 		var distance := rand_range(min_distance, max_distance)
 		var hook_pos := Vector2.ZERO

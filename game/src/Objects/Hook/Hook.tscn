@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Objects/Hook/Hook.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Hook/Hooked.gd" type="Script" id=2]
@@ -7,12 +7,12 @@
 [ext_resource path="res://src/Objects/Hook/Throw.gd" type="Script" id=5]
 [ext_resource path="res://src/Objects/Hook/Idle.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/world/hook_hold.png" type="Texture" id=7]
+[ext_resource path="res://src/Objects/String.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "SETUP"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -37,18 +37,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -1.5, -2.5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -76,18 +64,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
@@ -113,18 +89,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -153,18 +117,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [node name="Hook" type="Node2D"]
 script = ExtResource( 1 )
@@ -180,16 +132,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
-
-[node name="Marker" type="ColorRect" parent="."]
-visible = false
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 1.0
-margin_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -211,6 +153,7 @@ script = ExtResource( 2 )
 _parent_path = NodePath("../..")
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 2 )
 texture = ExtResource( 7 )
 region_enabled = true
@@ -221,3 +164,11 @@ anims/SETUP = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/waveA = SubResource( 4 )
 anims/waveB = SubResource( 5 )
+
+[node name="String" parent="." instance=ExtResource( 8 )]
+visible = false
+z_as_relative = false
+length = 20.0
+constrain = 2.0
+gravity = Vector2( 0, 50 )
+end_pin = true

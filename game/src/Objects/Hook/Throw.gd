@@ -11,10 +11,11 @@ func _ready() -> void:
 func enter(msg: Dictionary = {}) -> void:
 	_tween.interpolate_property(
 		_parent, 'position',
-		_parent.position, _parent.position + _parent.target_pos , 1.2,
-		Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		_parent.position, _parent.position + _parent.target_pos , .8,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_tween.start()
-	AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
+#	get_node('../../RigidBody2D').apply_impulse(owner.position, Vector2(150, -40))
+#	get_node('../../RigidBody2D').gravity_scale = 1
 
 func _go_to_hold(obj: Object, path: NodePath) -> void:
 	# El gancho ya cayó al agua, entonces pasa al estado hold

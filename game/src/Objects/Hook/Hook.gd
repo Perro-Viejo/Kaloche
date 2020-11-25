@@ -6,6 +6,8 @@ signal sent_back
 signal hooked
 signal tried
 
+export (NodePath) var rod_tip_ref
+
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
 var bait := 'Nada' setget _set_bait
@@ -14,6 +16,7 @@ onready var origin_pos = position
 onready var tween := $Tween
 onready var area: Area2D = $Area2D
 onready var dflt_pos := position
+onready var rod_tip := get_node(rod_tip_ref)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
@@ -24,6 +27,7 @@ func _ready():
 	$Sprite.visible = false
 
 	DebugOverlay.add_monitor('\ncarnada', self, ':bait')
+
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func pull_done(rod_strength: float) -> Dictionary:
@@ -43,6 +47,10 @@ func play_animation(animation_name := '', speed := 1.0) -> void:
 	else:
 		printerr('Soy el Hook y no tengo la animación %s' % animation_name)
 
+func show_hook(value): 
+	$Sprite.visible = value
+	$String.visible = value
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position
@@ -52,3 +60,4 @@ func _set_target_pos(end_pos: Vector2) -> void:
 func _set_bait(new_bait := '') -> void:
 	if not new_bait: new_bait = 'Nada'
 	bait = new_bait
+

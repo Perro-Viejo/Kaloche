@@ -14,7 +14,7 @@ var pos_ex: PoolVector2Array
 var count: int
 
 func _ready():
-	_hook_ref = get_node('')
+	_hook_ref = get_parent()
 	count = get_count(length)
 	resize_arrays()
 	init_position()
@@ -34,13 +34,10 @@ func init_position():
 	position = Vector2.ZERO
 
 func _process(delta):
-	if Input.is_action_pressed("click"):	#Move start point
-		pos[0] = get_global_mouse_position()
-		pos_ex[0] = get_global_mouse_position()
-		#find the best feel length ratio
-		print("length ratio to distance ",length/pos[count-1].distance_to(pos[0]))
-	pos[count-1] = _hook_ref.global_position
-	pos_ex[count-1] = _hook_ref.global_position
+	pos[0] = _hook_ref.rod_tip.position - _hook_ref.position
+	pos_ex[0] = _hook_ref.rod_tip.position - _hook_ref.position
+	pos[count-1] = Vector2.ZERO
+	pos_ex[count-1] = Vector2.ZERO
 	update_points(delta)
 	update_distance()
 	#update_distance()	#Repeat to get tighter rope

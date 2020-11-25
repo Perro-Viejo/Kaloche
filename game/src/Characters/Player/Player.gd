@@ -39,7 +39,6 @@ func _ready() -> void:
 	# Hacer la configuración por defecto cuando el Player ya está en escena
 	fishing_spot._fish_splash = $FishSplash
 	hook.hide()
-	
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('body_exited', self, 'toggle_on_ground')

@@ -28,129 +28,129 @@ _data = {
 "points": PoolVector2Array( 28.1978, -15.8291, -28.1978, 15.8291, -12, 2, 0, 0, 0, 0, -3, 23 )
 }
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 21 )
-region = Rect2( 12, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 21 )
-region = Rect2( 24, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 21 )
-region = Rect2( 36, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 21 )
-region = Rect2( 48, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 21 )
-region = Rect2( 60, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 21 )
-region = Rect2( 72, 0, 12, 14 )
-
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 18 )
-region = Rect2( 6, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 18 )
-region = Rect2( 12, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 18 )
-region = Rect2( 18, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 18 )
-region = Rect2( 24, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 18 )
-region = Rect2( 30, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 18 )
-region = Rect2( 36, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 22 )
 region = Rect2( 4, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 22 )
 region = Rect2( 8, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 22 )
 region = Rect2( 12, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 22 )
 region = Rect2( 16, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 22 )
 region = Rect2( 20, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 22 )
 region = Rect2( 24, 0, 4, 3 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 21 )
+region = Rect2( 12, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 21 )
+region = Rect2( 24, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 21 )
+region = Rect2( 36, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 21 )
+region = Rect2( 48, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 21 )
+region = Rect2( 60, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 21 )
+region = Rect2( 72, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 18 )
+region = Rect2( 6, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 18 )
+region = Rect2( 12, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 18 )
+region = Rect2( 18, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 18 )
+region = Rect2( 24, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 18 )
+region = Rect2( 30, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 18 )
+region = Rect2( 36, 0, 6, 5 )
+
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "sm",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "xl",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "md",
 "speed": 12.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
-"name": "sm",
-"speed": 12.0
 } ]
 
-[sub_resource type="Curve2D" id=10]
+[sub_resource type="Curve2D" id=24]
 _data = {
 "points": PoolVector2Array( -20.2933, -11.4445, 20.2933, 11.4445, 204, 108, 10.1466, -1.41581, -10.1466, 1.41581, 204, 135 )
 }
 
 [sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "sm",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "xl",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "md",
 "speed": 12.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
-"name": "sm",
-"speed": 10.0
 } ]
 
 [sub_resource type="Curve2D" id=26]
@@ -231,13 +231,12 @@ cubic_interp = false
 lookahead = 10.0
 
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
-frames = SubResource( 9 )
+frames = SubResource( 23 )
 animation = "sm"
-frame = 5
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
-curve = SubResource( 10 )
+curve = SubResource( 24 )
 
 [node name="PathFollow" type="PathFollow2D" parent="GroupGround/Fishes/PathB"]
 position = Vector2( 204, 108 )
@@ -248,14 +247,14 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 2
+frame = 4
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
 curve = SubResource( 26 )
 
 [node name="PathFollow" type="PathFollow2D" parent="GroupGround/Fishes/PathC"]
-position = Vector2( 194.872, 108.298 )
+position = Vector2( 196.296, 107.128 )
 rotate = false
 loop = false
 lookahead = 10.0
@@ -263,7 +262,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 3
+frame = 5
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -326,6 +325,7 @@ layer = 2
 [node name="ParallaxTrees" type="ParallaxLayer" parent="ParallaxForeground"]
 
 [node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
+visible = false
 texture = ExtResource( 3 )
 
 [node name="Surfaces" type="Node2D" parent="."]
