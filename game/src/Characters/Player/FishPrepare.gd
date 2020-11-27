@@ -79,6 +79,7 @@ func unhandled_input(event: InputEvent) -> void:
 				hook_pos = Vector2(distance * -1, 12)
 
 		owner.hook.target_pos = hook_pos
+		
 	elif event.is_action_pressed('Drop'):
 		_current_bait = FishingDatabase.get_next_bait()
 		
@@ -108,6 +109,7 @@ func _set_current_direction(dir: int) -> void:
 		Direction.RIGHT:
 			$LookingDir/Right.show()
 			owner.hook.position = Vector2(-6, -6)
+			owner.rod_tip.position.x = owner.rod_tip_pos.x
 			owner.sprite.flip_h = false
 		Direction.DOWN:
 			$LookingDir/Down.show()
@@ -115,7 +117,9 @@ func _set_current_direction(dir: int) -> void:
 		Direction.LEFT:
 			$LookingDir/Left.show()
 			owner.hook.position = Vector2(6, -6)
+			owner.rod_tip.position.x = -owner.rod_tip_pos.x
 			owner.sprite.flip_h = true
+			
 
 
 func _enable_input_listening() -> void:

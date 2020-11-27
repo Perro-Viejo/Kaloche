@@ -1,5 +1,5 @@
 class_name Hook
-extends Node2D
+extends KinematicBody2D
 
 signal dropped
 signal sent_back
@@ -11,10 +11,14 @@ export (NodePath) var rod_tip_ref
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
 var bait := 'Nada' setget _set_bait
+var thrown = false
+var height = -135
+var time = 0
 
 onready var origin_pos = position
 onready var tween := $Tween
 onready var area: Area2D = $Area2D
+onready var string = $String
 onready var dflt_pos := position
 onready var rod_tip := get_node(rod_tip_ref)
 
@@ -28,6 +32,9 @@ func _ready():
 
 	DebugOverlay.add_monitor('\ncarnada', self, ':bait')
 
+func _process(delta):
+	if thrown:
+		position.y = height * (-time * time + time)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func pull_done(rod_strength: float) -> Dictionary:
@@ -50,6 +57,12 @@ func play_animation(animation_name := '', speed := 1.0) -> void:
 func show_hook(value): 
 	$Sprite.visible = value
 	$String.visible = value
+
+#no supe como poner la predicción con este testigo por que set_target_pos se 
+#llama antes
+func prepare_throw():
+	$end_pos.show()
+	$end_pos.rect_position = dflt_pos
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:

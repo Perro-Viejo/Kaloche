@@ -21,6 +21,7 @@ var is_moving := false
 var dir := Vector2(0, 0)
 var surface := fs_id setget _set_surface
 var current_tool: int = Tools.NONE setget _set_current_tool
+var rod_tip_pos
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _is_camera_shaking := false
@@ -33,12 +34,14 @@ onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
 onready var hook: Node2D = $Hook
 onready var sprite := $Sprite
+onready var rod_tip := $RodTip
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	# Hacer la configuración por defecto cuando el Player ya está en escena
 	fishing_spot._fish_splash = $FishSplash
 	hook.hide()
+	rod_tip_pos = rod_tip.position
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('body_exited', self, 'toggle_on_ground')

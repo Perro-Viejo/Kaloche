@@ -453,8 +453,8 @@ stream = ExtResource( 64 )
 
 [node name="rod_throw" type="AudioStreamPlayer" parent="Fishing"]
 stream = ExtResource( 63 )
-volume_db = -5.0
-pitch_scale = 0.1
+volume_db = -8.0
+pitch_scale = 0.17
 
 [node name="pull_fish_none" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 60 )
