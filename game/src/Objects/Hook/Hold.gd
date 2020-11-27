@@ -35,6 +35,7 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	_check_surface_counter = _check_surface_wait
 	_area_ref.connect('area_entered', self, '_on_area_entered')
+	_area_ref.connect('area_exited', self, '_on_area_exited')
 	_area_ref.monitoring = true
 	_surface_detected = false
 	owner.play_animation('idle', 1.5)
@@ -43,6 +44,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	_surface_detected = false
 	_area_ref.disconnect('area_entered', self, '_on_area_entered')
+	_area_ref.disconnect('area_exited', self, '_on_area_exited')
 	_area_ref.monitoring = false
 	.exit()
 
@@ -60,6 +62,11 @@ func _on_area_entered(body: Area2D) -> void:
 	else:
 		body._hook_ref = null
 		_sent_back()
+
+func _on_area_exited(body: Area2D) -> void:
+	var surface: Surface = body
+	if surface.type == Data.SurfaceType.WATER:
+		body.hook_exited(owner)
 
 func _sent_back() -> void:
 	_state_machine.transition_to_key('Idle')
