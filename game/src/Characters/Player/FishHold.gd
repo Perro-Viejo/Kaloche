@@ -6,7 +6,10 @@ var _hook: Hook = null
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
 	owner.is_paused = true
-
+	if owner.rod_tip.position.x < 0:
+		owner.rod_tip.position = owner.rod_tip_offset
+	else:
+		owner.rod_tip.position = Vector2(owner.rod_tip_offset.x *-1, owner.rod_tip_offset.y)
 	_hook = owner.hook
 	_hook.connect('hooked', owner, 'speak', ['¡Mordió!'])
 	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
