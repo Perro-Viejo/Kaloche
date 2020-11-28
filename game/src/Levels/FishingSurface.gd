@@ -100,6 +100,9 @@ func get_fishes_list() -> String:
 		var fish: FishData = f as FishData
 		names.append(fish.name)
 	return String(names)
+	
+func get_fish_examine_wait() -> float:
+	return stepify(_fish_examine_wait, 0.01)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:
@@ -143,7 +146,7 @@ func _got_hooked() -> bool:
 			_fish_examininig = true
 			_fish_examine_wait = _fish_examine_wait_range.x
 			_fish_examine_debug_id = DebugOverlay.add_monitor(
-				'\nexaminando carnada', self, ':_fish_examine_wait'
+				'\nexaminando carnada', self, '', 'get_fish_examine_wait'
 			)
 			# ubicar y reproducir animación de la sombra
 			_fish_shadow = FISH_SHADOW.instance()

@@ -15,6 +15,9 @@ var _oportunity_cooldown := 0
 var _can_damage_fish_debug := -1
 var _fish_pos := Vector2.ZERO
 var _fight_cooldown := 0
+var _hooked_time := 0
+var _hooked_time_range := [350.0, 450.0] # En segundos
+var _hooked_time_debug := -1
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
@@ -36,6 +39,12 @@ func _process(delta) -> void:
 		if _oportunity_cooldown <= rand_range(-30, -10):
 			_can_damage_fish = false
 			_oportunity_cooldown = rand_range(5, 60)
+	
+	# Esto determina si el pez se va por la ineptitud de Teotriste
+	_hooked_time -= 1
+	if _hooked_time <= 0:
+		owner.emit_signal('fish_fled')
+		_state_machine.transition_to_key('Idle')
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -45,11 +54,15 @@ func enter(msg: Dictionary = {}) -> void:
 	_fish_sprite = msg.sprite
 	_fish_name = msg.name
 	_catch_sfx = msg.catch_sfx
-	
+	_hooked_time = _get_hooked_time()
+
 	_can_damage_fish_debug = DebugOverlay.add_monitor(
 		'\nvulnerable', self, ':_can_damage_fish'
 	)
-	
+	_hooked_time_debug = DebugOverlay.add_monitor(
+		'\nse va', self, ':_hooked_time'
+	)
+
 	owner.play_animation('waveB')
 	owner.emit_signal('hooked')
 	
@@ -58,7 +71,9 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	DebugOverlay.remove_monitor(_can_damage_fish_debug)
+	DebugOverlay.remove_monitor(_hooked_time_debug)
 	_can_damage_fish_debug = -1
+	_hooked_time_debug = -1
 	set_process(false)
 	.exit()
 
@@ -117,3 +132,8 @@ func _catch_fish() -> void:
 		'pull_fish_' + _catch_sfx,
 		global_position
 	)
+
+
+func _get_hooked_time() -> float:
+	# TODO: Hacer que esto varíe en relación al tamaño (o propiedades) de la caña
+	return rand_range(_hooked_time_range[0], _hooked_time_range[1])

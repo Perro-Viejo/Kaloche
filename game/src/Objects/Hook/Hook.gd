@@ -5,6 +5,7 @@ signal dropped
 signal sent_back
 signal hooked
 signal tried
+signal fish_fled
 
 export (NodePath) var rod_tip_ref
 

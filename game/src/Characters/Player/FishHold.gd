@@ -14,6 +14,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_hook.connect('hooked', owner, 'speak', ['¡Mordió!'])
 	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
 	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
+	_hook.connect('fish_fled', self, '_on_fish_fled')
 
 	.enter(msg)
 
@@ -24,6 +25,7 @@ func exit() -> void:
 	_hook.disconnect('hooked', owner, 'speak')
 	_hook.disconnect('tried', owner, 'speak')
 	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')
+	_hook.disconnect('fish_fled', self, '_on_fish_fled')
 
 	.exit()
 
@@ -50,3 +52,8 @@ func unhandled_input(event: InputEvent) -> void:
 		elif pull_result.fighting:
 			AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook.global_position)
 			owner.speak(tr('GJRLkgjlerkjglerkgjelgrkj'))
+
+
+func _on_fish_fled() -> void:
+	owner.speak(tr('Se voló el bagrese...'))
+	_state_machine.transition_to_key('Idle')
