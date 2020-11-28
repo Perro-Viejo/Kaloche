@@ -52,6 +52,7 @@ func _process(delta):
 		if _counter >= _hook_check_freq:
 			if _got_hooked():
 				DebugOverlay.remove_monitor(_hooked_monitor_id)
+				_hook_ref.disconnect('sent_back', self, 'hook_exited')
 				_bait = ''
 				_on_fish_bit()
 
@@ -76,7 +77,7 @@ func hook_entered(hook: Hook) -> void:
 	
 	# Pal debug
 	_hooked_monitor_id = DebugOverlay.add_monitor(
-		'\nnext_check', self, '', 'get_hooked_check_time'
+		'\npez saldrá en', self, '', 'get_hooked_check_time'
 	)
 
 func hook_exited(hook: Hook = null) -> void:
@@ -119,22 +120,22 @@ func _got_hooked() -> bool:
 	if not _selected_fish:
 		_selected_fish = null
 		_selected_fish_idx = 0
-		
-		if _bait:
-			var highest_chance := 0.0
 
-			var counter := 0
-			for f in _fishes:
-				var fish: FishData = f as FishData
-				if fish.attracted_to.has(_bait) \
-					and fish.attracted_to[_bait] > highest_chance:
-					highest_chance = fish.attracted_to[_bait]
-					_selected_fish = fish
-					_selected_fish_idx = counter
-				counter += 1
-		else:
-			# TODO: Seleccionar un pescado genérico si hay
-			pass
+		var highest_chance := 0.0
+		var counter := 0
+		for f in _fishes:
+			var fish: FishData = f as FishData
+
+			if _bait != 'Nada' and  fish.attracted_to.has(_bait) \
+				and fish.attracted_to[_bait] > highest_chance:
+				highest_chance = fish.attracted_to[_bait]
+				_selected_fish = fish
+				_selected_fish_idx = counter
+			elif _bait == 'Nada' and fish.type == fish.Type.GEN:
+				_selected_fish = fish
+				_selected_fish_idx = counter
+
+			counter += 1
 
 	if _selected_fish:
 		if not _fish_examininig:
@@ -142,7 +143,7 @@ func _got_hooked() -> bool:
 			_fish_examininig = true
 			_fish_examine_wait = _fish_examine_wait_range.x
 			_fish_examine_debug_id = DebugOverlay.add_monitor(
-				'\nexaminando', self, ':_fish_examine_wait'
+				'\nexaminando carnada', self, ':_fish_examine_wait'
 			)
 			# ubicar y reproducir animación de la sombra
 			_fish_shadow = FISH_SHADOW.instance()
@@ -151,7 +152,7 @@ func _got_hooked() -> bool:
 			add_child(_fish_shadow)
 		else:
 			_remove_shadow()
-			
+
 			# 2. Determinar si el pez seleccionado muerde o no la carnada
 			if randf() <= _selected_fish.attracted_to[_bait]:
 				_captured_fish_idx = _selected_fish_idx

@@ -9,8 +9,34 @@ var _fish_resistance := 0.0
 var _fish_sprite: Texture = null
 var _fish_name := ''
 var _catch_sfx := ''
-var _can_damage_fish := true
+var _can_damage_fish := false
 var _catch_chance := 1.0
+var _oportunity_cooldown := 0
+var _can_damage_fish_debug := -1
+var _fish_pos := Vector2.ZERO
+var _fight_cooldown := 0
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+func _ready() -> void:
+	_fish_pos = Vector2(rand_range(-3, 3), rand_range(-3, 3))
+	set_process(false)
+
+func _process(delta) -> void:
+	# Aquí se mueve el pescado forcejeando con el Teotriste
+	_fight_cooldown += 1
+	if _fight_cooldown >= rand_range(15, 60):
+		owner.position = owner.target_pos + _fish_pos
+		_fight_cooldown = 0
+		_fish_pos = Vector2(rand_range(-3, 3), rand_range(-3, 3))
+	
+	# Esto es pa' que el jugador no pueda jalar la caña como loco
+	_oportunity_cooldown -= 1
+	if _oportunity_cooldown <= 0:
+		_can_damage_fish = true
+		if _oportunity_cooldown <= rand_range(-30, -10):
+			_can_damage_fish = false
+			_oportunity_cooldown = rand_range(5, 60)
+
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
@@ -20,8 +46,21 @@ func enter(msg: Dictionary = {}) -> void:
 	_fish_name = msg.name
 	_catch_sfx = msg.catch_sfx
 	
+	_can_damage_fish_debug = DebugOverlay.add_monitor(
+		'\nvulnerable', self, ':_can_damage_fish'
+	)
+	
 	owner.play_animation('waveB')
 	owner.emit_signal('hooked')
+	
+	set_process(true)
+
+
+func exit() -> void:
+	DebugOverlay.remove_monitor(_can_damage_fish_debug)
+	_can_damage_fish_debug = -1
+	set_process(false)
+	.exit()
 
 
 func pull_done(rod_strength: float) -> Dictionary:
@@ -31,7 +70,7 @@ func pull_done(rod_strength: float) -> Dictionary:
 		lost = false,
 		fighting = true
 	}
-	
+
 	if _can_damage_fish:
 		_fish_resistance -= 1
 		if randf() <= _catch_chance:

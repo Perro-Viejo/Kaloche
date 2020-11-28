@@ -22,3 +22,6 @@ func get_next_bait() -> BaitData:
 	_bait_idx = wrapi(_bait_idx + 1, -1, _baits.get_child_count())
 	
 	return bait
+
+func get_baits() -> Array:
+	return _baits.get_children()

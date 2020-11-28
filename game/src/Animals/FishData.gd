@@ -16,8 +16,14 @@ var attracted_to := {}
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
-	for bait in chances:
-		attracted_to[get_node(bait).name] = chances[bait]
+	yield(owner, 'ready')
+	if type == Type.GEN:
+		attracted_to['Nada'] = 1.0
+		for b in FishingDatabase.get_baits():
+			attracted_to[b.name] = 0.1
+	else:
+		for bait in chances:
+			attracted_to[get_node(bait).name] = chances[bait]
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_data() -> Dictionary:

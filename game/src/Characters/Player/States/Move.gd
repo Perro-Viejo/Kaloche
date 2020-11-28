@@ -14,50 +14,50 @@ func _ready():
 	DialogEvent.connect('dialog_event', self, '_on_dialog_event')
 
 func _unhandled_input(event: InputEvent) -> void:
-	if _parent.is_paused: return
+	if owner.is_paused: return
 
 	if event.is_action_pressed('Action'):
-#		if _parent.fishing:
-#			_parent.fishing_spot.pull_fish()
-		if _parent.has_equiped():
-			match _parent.current_tool:
-				_parent.Tools.ROD:
+#		if owner.fishing:
+#			owner.fishing_spot.pull_fish()
+		if owner.has_equiped():
+			match owner.current_tool:
+				owner.Tools.ROD:
 					# Inicia la pesca
 					_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
-		elif _parent.node_to_interact and not _parent.grabbing:
+		elif owner.node_to_interact and not owner.grabbing:
 			_state_machine.transition_to_state(_state_machine.STATES.GRAB)
 	elif event.is_action_pressed('Drop'):
-		if _parent.node_to_interact:
-			if _parent.grabbing:
+		if owner.node_to_interact:
+			if owner.grabbing:
 				_state_machine.transition_to_state(
 					_state_machine.STATES.DROP, { dir = _last_dir }
 				)
-			elif _parent.node_to_interact.dialog:
-				DialogEvent.emit_signal('dialog_requested', _parent.node_to_interact.dialog)
+			elif owner.node_to_interact.dialog:
+				DialogEvent.emit_signal('dialog_requested', owner.node_to_interact.dialog)
 
-	elif event.is_action_pressed('Equip') and not _parent.grabbing:
-		if _parent.has_equiped():
-			_parent.current_tool = _parent.Tools.NONE
+	elif event.is_action_pressed('Equip') and not owner.grabbing:
+		if owner.has_equiped():
+			owner.current_tool = owner.Tools.NONE
 		else:
-			_parent.current_tool = _parent.Tools.ROD
+			owner.current_tool = owner.Tools.ROD
 		# TODO: Aquí se equipará el objeto seleccionado en el inventario. Por
 		#		ahora será la caña porque no tenemos más.
 		
-#		if _parent.fishing:
+#		if owner.fishing:
 #			_state_machine.transition_to_state(_state_machine.STATES.IDLE)
 #		else:
-#			if not _parent.grabbing and not _parent.is_moving:
+#			if not owner.grabbing and not owner.is_moving:
 #				_state_machine.transition_to_state(_state_machine.STATES.FISH)
 
 
 func _physics_process(delta) -> void:
-	if not can_move or _parent.is_paused:
+	if not can_move or owner.is_paused:
 		return
 
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
-	_parent.dir = dir
+	owner.dir = dir
 	
 	if dir.x != 0:
 		_last_dir.x = dir.x
@@ -69,19 +69,19 @@ func _physics_process(delta) -> void:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
 	
-	if not _parent.is_out:
-		_parent.move_and_collide(dir * _calc_speed * delta)
+	if not owner.is_out:
+		owner.move_and_collide(dir * _calc_speed * delta)
 	else:
-		_parent.move_and_collide(dir * _calc_speed * 2 * delta)
+		owner.move_and_collide(dir * _calc_speed * 2 * delta)
 		
-	if dir != Vector2(0,0) and not _parent.is_moving:
+	if dir != Vector2(0,0) and not owner.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.WALK)
-	elif dir == Vector2(0,0) and _parent.is_moving:
+	elif dir == Vector2(0,0) and owner.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.IDLE)
 
-	if _parent.grabbing and _parent.node_to_interact:
-		_parent.node_to_interact.global_position = _parent.global_position
-		_parent.node_to_interact.position.y -= 7
+	if owner.grabbing and owner.node_to_interact:
+		owner.node_to_interact.global_position = owner.global_position
+		owner.node_to_interact.position.y -= 7
 
 func _on_dialog_event(playing, countdown, duration):
 	if playing:

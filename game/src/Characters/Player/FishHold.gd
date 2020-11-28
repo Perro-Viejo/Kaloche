@@ -30,6 +30,7 @@ func exit() -> void:
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('Action'):
+		# TODO: Aquí hay que enviar la fuerza de la caña dependiendo de su tipo
 		var pull_result := owner.hook.pull_done(1.3) as Dictionary
 		
 		if not pull_result: return

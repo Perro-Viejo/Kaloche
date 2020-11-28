@@ -92,7 +92,7 @@ func unhandled_input(event: InputEvent) -> void:
 		self._current_direction = Direction.DOWN
 	elif event.is_action_pressed('Left'):
 		self._current_direction = Direction.LEFT
-	elif event.is_action_pressed('Equip'):
+	elif event.is_action_pressed('Equip') and not owner.hook.thrown:
 		_state_machine.transition_to_key('Idle')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
