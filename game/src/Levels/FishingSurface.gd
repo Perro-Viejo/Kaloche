@@ -8,7 +8,6 @@ export var spawn_cooldown := 5 # En minutos
 # export var types := []
 export var bite_freq := Vector2(15.0, 30.0)
 
-
 var _timer: Timer = null
 var _fishes := []
 var _captured_fish_idx := -1
@@ -106,9 +105,30 @@ func get_fish_examine_wait() -> float:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:
+	# La posición del CollisionPolygon2D es el centro de la misma, así que las
+	# coordenadas de sus polígonos deben ser relativas al centro.
+	var ch: CollisionPolygon2D = get_child(0)
+	var vertices := ch.polygon
+
 	for c in range(max_fish_count):
 		_fishes.append(FishingDatabase.get_random_fish())
-		# TODO: llamar una función que genere las sombras de los peces nadando
+		
+		# Coger un vértice al azar y obtener un punto aleatorio entre dicho
+		# vértice y el centro del polígono.
+		randomize()
+
+		var vertex: Vector2 = vertices[randi() % vertices.size()]
+		# Gracias >>>
+		# https://math.stackexchange.com/questions/1965497/how-can-i-find-a-random-position-between-two-points
+		var u := rand_range(0.0, 0.4)
+		var spawn_point: Vector2 = (1 - u) * ch.position + u * (ch.position + vertex)
+		var shadow = FISH_SHADOW.instance()
+
+		shadow.position = spawn_point
+		shadow.get_node('AnimationPlayer').play('swim_sm')
+
+		add_child(shadow)
+
 	DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
 
 func _on_fish_bit() -> void:

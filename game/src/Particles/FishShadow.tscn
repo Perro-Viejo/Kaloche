@@ -124,6 +124,5 @@ anims/swim_xl = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-offset = Vector2( 3, 0 )
 region_enabled = true
-region_rect = Rect2( 336, 0, 16, 16 )
+region_rect = Rect2( 0, 0, 16, 16 )
