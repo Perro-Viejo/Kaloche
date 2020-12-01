@@ -59,12 +59,6 @@ func show_hook(value):
 	$Sprite.visible = value
 	$String.visible = value
 
-#no supe como poner la predicción con este testigo por que set_target_pos se 
-#llama antes
-func prepare_throw():
-	$end_pos.show()
-	$end_pos.rect_position = dflt_pos
-
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position

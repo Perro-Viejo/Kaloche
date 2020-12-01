@@ -10,6 +10,8 @@ enum Direction {
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var min_distance := 75.0 # 24.0
 var max_distance := 90.0 # 75.0
+var distance
+var hook_pos := Vector2.ZERO
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _hook: Hook = null
@@ -37,18 +39,23 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	_hook.bait = _current_bait.name if _current_bait else ''
 
+	
+	randomize()
+	distance = rand_range(min_distance, max_distance)
+	owner.hook_aim.position = Vector2(rand_range(min_distance, max_distance) + _hook.position.x,0)
+	owner.hook_aim.show()
 	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
 	#		debería indicar dónde se pondrá el gancho.
 	_hook.show()
 	_hook.connect('dropped', _state_machine, 'transition_to_key', ['FishHold'])
 	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
-	
 	_listening_input = false
 	_timer.start()
 
 	.enter(msg)
 
 func exit() -> void:
+	owner.hook_aim.hide()
 	owner.is_paused = false
 	_listening_input = false
 
@@ -64,9 +71,6 @@ func unhandled_input(event: InputEvent) -> void:
 		# Se usa la dirección seleccionada por el jugador y se calcula la distancia
 		# a la que se lanzará el gancho
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
-		randomize()
-		var distance := rand_range(min_distance, max_distance)
-		var hook_pos := Vector2.ZERO
 
 		match _current_direction:
 			Direction.UP:

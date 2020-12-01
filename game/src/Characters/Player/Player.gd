@@ -36,6 +36,7 @@ onready var foot_area: Area2D = $FootArea
 onready var hook: Node2D = $Hook
 onready var sprite := $Sprite
 onready var rod_tip := $RodTip
+onready var hook_aim : Node2D = $HookObjective
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:

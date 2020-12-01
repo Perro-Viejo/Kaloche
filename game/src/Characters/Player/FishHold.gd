@@ -36,6 +36,7 @@ func unhandled_input(event: InputEvent) -> void:
 		var pull_result := owner.hook.pull_done(1.3) as Dictionary
 		
 		if not pull_result: return
+		#Juan: ¿creo que este se puede quitar?
 		if pull_result.escaped:
 			var responses = [
 				'Pescaito berriondo...',
@@ -51,7 +52,16 @@ func unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to_key('Idle')
 		elif pull_result.fighting:
 			AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook.global_position)
-			owner.speak(tr('GJRLkgjlerkjglerkgjelgrkj'))
+			var responses = [
+				'Pescaito berriondo...',
+				'¡Jala arrecho este bicho!',
+				'jalo, jalo, jalo...'
+			]
+			responses.shuffle()
+			randomize()
+			var ran_num = randf()
+			if ran_num <= 0.2: 
+				owner.speak(tr(responses[0]))
 
 
 func _on_fish_fled() -> void:
