@@ -49,6 +49,11 @@ func _process(delta) -> void:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
+	PlayerEvent.emit_signal('camera_shaked', 
+	{
+			strength = 0.45,
+			duration = 0.18,
+		})
 	_fish_size = msg.size
 	_fish_resistance = msg.resistance
 	_fish_sprite = msg.sprite

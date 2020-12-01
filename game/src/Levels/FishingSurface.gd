@@ -168,8 +168,17 @@ func _got_hooked() -> bool:
 				'\nexaminando carnada', self, '', 'get_fish_examine_wait'
 			)
 			# ubicar y reproducir animación de la sombra
+			var vec
+			var rot
+			if _hook_ref.dflt_pos.x < 0:
+				vec = Vector2.RIGHT
+				rot = 0
+			else:
+				rot = 180
+				vec = Vector2.LEFT
 			_fish_shadow = FISH_SHADOW.instance()
-			_fish_shadow.global_position = _hook_ref.global_position + Vector2.RIGHT * 4
+			_fish_shadow.global_position = _hook_ref.global_position + vec * 4
+			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
 			add_child(_fish_shadow)
 		else:

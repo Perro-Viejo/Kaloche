@@ -18,7 +18,6 @@ func enter(msg: Dictionary = {}) -> void:
 		_parent, 'position',
 		_parent.position, _parent.position + _parent.target_pos , .4	,
 		Tween.TRANS_LINEAR, Tween.TRANS_SINE)
-	_tween.start()
 	_tween.interpolate_property(
 		_parent, 'time',
 		0, 1 , .4,

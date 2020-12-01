@@ -535,3 +535,35 @@ rod_tip_ref = NodePath("../RodTip")
 
 [node name="RodTip" type="Position2D" parent="."]
 position = Vector2( -4, -7 )
+
+[node name="HookObjective" type="Node2D" parent="."]
+visible = false
+position = Vector2( 23.1895, 3.12167 )
+
+[node name="rect" type="ColorRect" parent="HookObjective"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_top = -3.0
+margin_right = 1.0
+margin_bottom = 3.0
+color = Color( 1, 0.894118, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rect2" type="ColorRect" parent="HookObjective"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -3.0
+margin_top = -1.0
+margin_right = 3.0
+margin_bottom = 1.0
+color = Color( 1, 0.894118, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
