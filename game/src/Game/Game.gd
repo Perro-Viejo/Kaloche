@@ -17,7 +17,7 @@ func _ready()->void:
 	GuiEvent.connect("Exit",		self, "on_Exit")
 	GuiEvent.connect("ChangeScene",self, "on_ChangeScene")
 	GuiEvent.connect("Restart", 	self, "restart_scene")
-	#Background loader
+	# Background loader
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
 
 	# Perro Viejo

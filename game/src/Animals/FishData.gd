@@ -17,6 +17,7 @@ var attracted_to := {}
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	yield(owner, 'ready')
+
 	if type == Type.GEN:
 		attracted_to['Nada'] = 1.0
 		for b in FishingDatabase.get_baits():
@@ -25,11 +26,8 @@ func _ready():
 		for bait in chances:
 			attracted_to[get_node(bait).name] = chances[bait]
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
-func get_data() -> Dictionary:
-	randomize()
 	size = rand_range(size_range.min, size_range.max)
-
+	
 	if size <= 0.5:
 		resistance = rand_range(1, 3)
 		catch_sfx = 'small'
@@ -39,7 +37,11 @@ func get_data() -> Dictionary:
 	elif size > 1:
 		resistance = rand_range(7, 12)
 		catch_sfx = 'large'
-	
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func get_data() -> Dictionary:
+	randomize()
+
 	return {
 		name = 'FISH_' + Type.keys()[type],
 		size = size,

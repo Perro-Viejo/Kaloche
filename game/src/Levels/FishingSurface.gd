@@ -125,7 +125,6 @@ func _spawn_fishes() -> void:
 		var shadow = FISH_SHADOW.instance()
 
 		shadow.position = spawn_point
-		shadow.get_node('AnimationPlayer').play('swim_sm')
 
 		add_child(shadow)
 
