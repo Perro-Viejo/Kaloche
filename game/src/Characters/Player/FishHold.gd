@@ -55,7 +55,8 @@ func unhandled_input(event: InputEvent) -> void:
 			var responses = [
 				'Pescaito berriondo...',
 				'¡Jala arrecho este bicho!',
-				'jalo, jalo, jalo...'
+				'jalo, jalo, jalo...',
+				'GJRLkgjlerkjglerkgjelgrkj'
 			]
 			responses.shuffle()
 			randomize()
