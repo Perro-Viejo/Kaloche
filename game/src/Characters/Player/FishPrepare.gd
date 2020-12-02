@@ -10,6 +10,7 @@ enum Direction {
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var min_distance := 75.0 # 24.0
 var max_distance := 90.0 # 75.0
+var aim_distance
 var distance
 var hook_pos := Vector2.ZERO
 
@@ -39,11 +40,7 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	_hook.bait = _current_bait.name if _current_bait else ''
 
-	
-	randomize()
-	distance = rand_range(min_distance, max_distance)
-	owner.hook_aim.position = Vector2(rand_range(min_distance, max_distance) + _hook.position.x,0)
-	owner.hook_aim.show()
+	_prepare_hook_throw()
 	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
 	#		debería indicar dónde se pondrá el gancho.
 	_hook.show()
@@ -72,16 +69,6 @@ func unhandled_input(event: InputEvent) -> void:
 		# a la que se lanzará el gancho
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 
-		match _current_direction:
-			Direction.UP:
-				hook_pos = Vector2(0, distance * -1)
-			Direction.RIGHT:
-				hook_pos = Vector2(distance, 12)
-			Direction.DOWN:
-				hook_pos = Vector2(0, distance)
-			Direction.LEFT:
-				hook_pos = Vector2(distance * -1, 12)
-
 		owner.hook.target_pos = hook_pos
 		
 	elif event.is_action_pressed('Drop'):
@@ -103,28 +90,37 @@ func unhandled_input(event: InputEvent) -> void:
 func _set_current_direction(dir: int) -> void:
 	_current_direction = dir
 	
-	for color_rect in $LookingDir.get_children():
-		color_rect.hide()
 
 	match _current_direction:
-		Direction.UP:
-			$LookingDir/Up.show()
-			owner.hook.position = Vector2(-2, 8)
 		Direction.RIGHT:
-			$LookingDir/Right.show()
 			owner.hook.position = Vector2(-6, -6)
 			owner.rod_tip.position.x = owner.rod_tip_pos.x
 			owner.sprite.flip_h = false
-		Direction.DOWN:
-			$LookingDir/Down.show()
-			owner.hook.position = Vector2(-2, -10)
+			if distance:
+				hook_pos = Vector2(distance, 12)
+				aim_distance = Vector2(distance + _hook.position.x - 6,0)
 		Direction.LEFT:
-			$LookingDir/Left.show()
 			owner.hook.position = Vector2(6, -6)
 			owner.rod_tip.position.x = -owner.rod_tip_pos.x
 			owner.sprite.flip_h = true
-			
+			if distance:
+				hook_pos = Vector2(distance * -1, 12)
+				aim_distance = Vector2(distance * -1 - _hook.position.x + 6,0)
 
-
+func _prepare_hook_throw():
+	#Muestra la predicción del lanzamiento y realiza los cálculos para enviar
+	#al hook
+	randomize()
+	distance = rand_range(min_distance, max_distance)
+	match _current_direction:
+			Direction.RIGHT:
+				hook_pos = Vector2(distance, 12)
+				aim_distance = Vector2(distance + _hook.position.x - 6,0)
+			Direction.LEFT:
+				hook_pos = Vector2(distance * -1, 12)
+				aim_distance = Vector2(distance * -1 + _hook.position.x + 6,0)
+	owner.hook_aim.position = aim_distance
+	owner.hook_aim.show()
+	
 func _enable_input_listening() -> void:
 	_listening_input = true

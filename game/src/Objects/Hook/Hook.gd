@@ -64,7 +64,6 @@ func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position
 	target_pos = position + end_pos
 	target_set = true
-
 func _set_bait(new_bait := '') -> void:
 	if not new_bait: new_bait = 'Nada'
 	bait = new_bait

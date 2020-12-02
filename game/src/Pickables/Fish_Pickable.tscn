@@ -10,6 +10,7 @@ extents = Vector2( 5, 5 )
 [node name="Fish" type="Area2D" groups=[
 "Pickable",
 ]]
+position = Vector2( 0, 5314.4 )
 input_pickable = false
 collision_layer = 4
 script = ExtResource( 5 )

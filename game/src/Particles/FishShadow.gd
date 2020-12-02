@@ -33,10 +33,11 @@ func _enter_tree():
 func swim() -> void:
 	# Elegir un punto al cuál moverse
 	var target := Vector2(randi() % 10, randi() % 10)
-	if surface_ref.is_point_inside_polygon(target):
-		_tween.interpolate_property(
-			self, 'position',
-			position, surface_ref.position + position + target,
-			2, Tween.TRANS_SINE, Tween.EASE_OUT
-		)
-		_tween.start()
+	if surface_ref:
+		if surface_ref.is_point_inside_polygon(target):
+			_tween.interpolate_property(
+				self, 'position',
+				position, surface_ref.position + position + target,
+				2, Tween.TRANS_SINE, Tween.EASE_OUT
+			)
+			_tween.start()

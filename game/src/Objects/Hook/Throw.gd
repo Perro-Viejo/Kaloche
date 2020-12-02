@@ -11,6 +11,7 @@ func _ready() -> void:
 	_tween.connect('tween_completed', self, '_go_to_hold')
 
 func enter(msg: Dictionary = {}) -> void:
+	owner.play_animation('idle')
 	owner.thrown = true
 	gravity = owner.string.gravity
 	owner.string.gravity = -gravity

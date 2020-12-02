@@ -321,7 +321,7 @@ anims/run-rod = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 896, 0, 32, 32 )
+region_rect = Rect2( 768, 0, 32, 32 )
 
 [node name="Overlay" type="Sprite" parent="."]
 visible = false
@@ -374,43 +374,6 @@ visible = false
 script = ExtResource( 15 )
 _parent_path = NodePath("../..")
 animation_name = "fish-prepare"
-
-[node name="LookingDir" type="Control" parent="StateMachine/FishPrepare"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Up" type="ColorRect" parent="StateMachine/FishPrepare/LookingDir"]
-visible = false
-margin_top = -16.0
-margin_right = 4.0
-margin_bottom = -12.0
-color = Color( 0.364706, 0.870588, 0.529412, 1 )
-
-[node name="Right" type="ColorRect" parent="StateMachine/FishPrepare/LookingDir"]
-visible = false
-margin_left = 10.0
-margin_top = -3.0
-margin_right = 14.0
-margin_bottom = 1.0
-color = Color( 1, 0.568627, 0.4, 1 )
-
-[node name="Down" type="ColorRect" parent="StateMachine/FishPrepare/LookingDir"]
-visible = false
-margin_top = 7.0
-margin_right = 4.0
-margin_bottom = 11.0
-color = Color( 0.921569, 0.337255, 0.294118, 1 )
-
-[node name="Left" type="ColorRect" parent="StateMachine/FishPrepare/LookingDir"]
-visible = false
-margin_left = -12.0
-margin_top = -3.0
-margin_right = -8.0
-margin_bottom = 1.0
-color = Color( 1, 0.894118, 0.470588, 1 )
 
 [node name="FishHold" type="Node2D" parent="StateMachine"]
 visible = false
@@ -538,7 +501,10 @@ position = Vector2( -4, -7 )
 
 [node name="HookObjective" type="Node2D" parent="."]
 visible = false
-position = Vector2( 23.1895, 3.12167 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="rect" type="ColorRect" parent="HookObjective"]
 anchor_left = 0.5
@@ -549,7 +515,7 @@ margin_left = -1.0
 margin_top = -3.0
 margin_right = 1.0
 margin_bottom = 3.0
-color = Color( 1, 0.894118, 0.470588, 1 )
+color = Color( 0.921569, 0.337255, 0.294118, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -563,7 +529,7 @@ margin_left = -3.0
 margin_top = -1.0
 margin_right = 3.0
 margin_bottom = 1.0
-color = Color( 1, 0.894118, 0.470588, 1 )
+color = Color( 0.921569, 0.337255, 0.294118, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -42,6 +42,12 @@ func enter(msg: Dictionary = {}) -> void:
 	_timer.start()
 
 func exit() -> void:
+#	Juan: no se si debería estar esta animación por que tiene un espacio antes
+#	que le quita impacto a la mordida, puede ser quitar el espacio o hacer una 
+#	animación específica para este con el mismo sprite
+ 
+#	owner.play_animation('waveB')
+	_timer.stop()
 	_surface_detected = false
 	_area_ref.disconnect('area_entered', self, '_on_area_entered')
 	_area_ref.disconnect('area_exited', self, '_on_area_exited')
@@ -69,6 +75,7 @@ func _on_area_exited(body: Area2D) -> void:
 		body.hook_exited(owner)
 
 func _sent_back() -> void:
+	owner.play_animation('waveB')
 	_state_machine.transition_to_key('Idle')
 	owner.emit_signal('sent_back')
 

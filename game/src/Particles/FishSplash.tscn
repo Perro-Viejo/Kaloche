@@ -3,20 +3,21 @@
 [ext_resource path="res://src/Particles/Particle.gd" type="Script" id=1]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0.0344828, 1 ), 0.0, -0.229167, 0, 0, Vector2( 0.994253, 0.0276905 ), -2.15204, 0.0, 0, 0 ]
+_data = [ Vector2( 0.0344828, 1 ), 0.0, -0.229167, 0, 0, Vector2( 0.994253, 0.0276905 ), -0.951758, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.536424 )
-colors = PoolColorArray( 0.0627451, 0.647059, 0.917647, 1, 0.0627451, 0.647059, 0.917647, 1 )
+offsets = PoolRealArray( 0, 0.560117 )
+colors = PoolColorArray( 0.266667, 0.894118, 0.952941, 1, 1, 1, 0.921569, 1 )
 
 [node name="FishSplash" type="CPUParticles2D"]
-scale = Vector2( 1.3, 2.1 )
+scale = Vector2( 0.7, 1.6 )
 z_index = 1
 emitting = false
-amount = 50
+amount = 30
+lifetime = 0.9
 one_shot = true
-speed_scale = 1.1
-explosiveness = 0.7
+speed_scale = 1.44
+explosiveness = 1.0
 randomness = 0.4
 lifetime_randomness = 0.3
 local_coords = false
@@ -25,8 +26,9 @@ emission_points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 emission_normals = PoolVector2Array( -6, -38, 6, -35, -6, -12, 6, -18, -6, -26, -6, -24 )
 emission_colors = PoolColorArray(  )
 gravity = Vector2( 0, 150 )
-initial_velocity = 1.6
+initial_velocity = 1.4
 angle = -8.6
+scale_amount = 1.6
 scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 script = ExtResource( 1 )

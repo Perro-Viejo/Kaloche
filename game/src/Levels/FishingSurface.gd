@@ -23,12 +23,14 @@ var _selected_fish_idx := 0
 var _fish_examine_wait := 0.0
 var _fish_examine_wait_range := Vector2(3.0, 5.0)
 var _fish_examine_debug_id := -1
+var _lake_fishes_debug := -1
 var _fish_shadow: Node2D = null
 var _polygons := []
 var _vertices := []
 
 const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
 const FISH_SPLASH = preload("res://src/Particles/FishSplash.tscn")
+const FIGHT_SPLASH = preload("res://src/Particles/FightSplash.tscn")
 const FISH_SHADOW = preload("res://src/Particles/FishShadow.tscn")
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
@@ -144,11 +146,12 @@ func _spawn_fishes() -> void:
 
 		add_child(shadow)
 
-	DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
+	_lake_fishes_debug = DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
 
 func _on_fish_bit() -> void:
 	_fishes.remove(_captured_fish_idx)
 	if _fishes.empty():
+		DebugOverlay.remove_monitor(_lake_fishes_debug)
 		_timer.start()
 
 # Verifica si algo se enganchó al gancho o si hay que volver a esperar un rato
@@ -196,6 +199,7 @@ func _got_hooked() -> bool:
 			_fish_shadow.global_position = _hook_ref.global_position + vec * 4
 			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
+			_fish_shadow.is_examining = true
 			add_child(_fish_shadow)
 		else:
 			_remove_shadow()
@@ -213,7 +217,6 @@ func _got_hooked() -> bool:
 				_hook_ref.hook_fail()
 
 	return _captured_fish_idx > -1
-
 
 func _fish_splash(position):
 	var splash = FISH_SPLASH.instance()

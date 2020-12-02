@@ -19,18 +19,23 @@ var _hooked_time := 0
 var _hooked_time_range := [350.0, 450.0] # En segundos
 var _hooked_time_debug := -1
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
-	_fish_pos = Vector2(rand_range(-3, 3), rand_range(-3, 3))
 	set_process(false)
 
 func _process(delta) -> void:
 	# Aquí se mueve el pescado forcejeando con el Teotriste
 	_fight_cooldown += 1
-	if _fight_cooldown >= rand_range(15, 60):
+	if _fight_cooldown >= rand_range(15, 75):
 		owner.position = owner.target_pos + _fish_pos
 		_fight_cooldown = 0
-		_fish_pos = Vector2(rand_range(-3, 3), rand_range(-3, 3))
+		randomize()
+		var ran_num = randf()
+		if ran_num <= 0.2: 
+			_fish_pos = Vector2(rand_range(-5, 5), rand_range(-5, 5))
+		else:
+			_fish_pos = Vector2(rand_range(-1.5, 1.5), rand_range(-1.5, 1.5))
 	
 	# Esto es pa' que el jugador no pueda jalar la caña como loco
 	_oportunity_cooldown -= 1
@@ -68,7 +73,6 @@ func enter(msg: Dictionary = {}) -> void:
 		'\nse va', self, ':_hooked_time'
 	)
 
-	owner.play_animation('waveB')
 	owner.emit_signal('hooked')
 	
 	set_process(true)
@@ -126,10 +130,13 @@ func _catch_fish() -> void:
 		get_node('/root').add_child(fish)
 	
 	PlayerEvent.emit_signal('fish_caught', global_position)
+	var pull_dir = 1
+	if owner.position.x < 0:
+		pull_dir = -1
 	fish.tr_code = _fish_name
 	fish.get_node('Sprite').texture = _fish_sprite
 	fish.global_position = global_position
-	fish.jump(Vector2(35, position.y))
+	fish.jump(Vector2(35 * pull_dir, position.y))
 
 	AudioEvent.emit_signal(
 		'play_requested',

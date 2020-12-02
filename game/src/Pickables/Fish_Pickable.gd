@@ -51,6 +51,7 @@ func jump(origin):
 		Tween.TRANS_EXPO, Tween.EASE_OUT
 	)
 	_tween.start()
+#	Aquí debería el pez saltar por su vida cuando llegue a su posición final
 
 func check_bait(bait):
 	var chance := randf()
