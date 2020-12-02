@@ -160,7 +160,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ) ]
+"values": [ Vector2( 0.8, 0.8 ) ]
 }
 
 [node name="FishShadow" type="Node2D"]

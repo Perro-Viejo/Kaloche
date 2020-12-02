@@ -25,7 +25,7 @@ var _fish_examine_wait_range := Vector2(3.0, 5.0)
 var _fish_examine_debug_id := -1
 var _lake_fishes_debug := -1
 var _fish_shadow: Node2D = null
-var _polygons := []
+var _polygons_2d := []
 var _vertices := []
 
 const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
@@ -35,12 +35,18 @@ const FISH_SHADOW = preload("res://src/Particles/FishShadow.tscn")
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
-	# La posición del CollisionPolygon2D es el centro de la misma, así que las
-	# coordenadas de sus polígonos deben ser relativas al centro.
-	for ch in get_children():
-		if ch is CollisionPolygon2D:
-			_polygons.append(ch)
-	_vertices.append(_polygons[0].polygon)
+	for chld in get_children():
+		if chld is CollisionPolygon2D:
+			_polygons_2d.append(chld)
+	
+			# La posición del CollisionPolygon2D es su centro, así que las
+			# coordenadas de sus vértices deben ser relativas al mismo. Por
+			# eso hay que manipular el arreglo de Vector2 para que cada vértice
+			# se "traslade" en relación a ese centro.
+			var translated_vertices: PoolVector2Array = PoolVector2Array()
+			for vtx in chld.polygon:
+				translated_vertices.append(vtx + chld.position)
+			_vertices.append(translated_vertices)
 	
 	_timer = Timer.new()
 	_timer.wait_time = spawn_cooldown
@@ -125,24 +131,24 @@ func is_point_inside_polygon(point: Vector2) -> bool:
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:
 	for c in range(max_fish_count):
-		_fishes.append(FishingDatabase.get_random_fish())
+		var fish: FishData = FishingDatabase.get_random_fish()
+		_fishes.append(fish)
 		
 		# Coger un vértice al azar y obtener un punto aleatorio entre dicho
 		# vértice y el centro del polígono.
 		randomize()
 
-		var target_polygon: CollisionPolygon2D = _polygons[0]
+		var target_polygon: CollisionPolygon2D = _polygons_2d[0]
 		var vertex: Vector2 = _vertices[0][randi() % _vertices[0].size()]
 		# Gracias >>>
 		# https://math.stackexchange.com/questions/1965497/how-can-i-find-a-random-position-between-two-points
 		var u := rand_range(0.0, 0.4)
-		var spawn_point: Vector2 = (1 - u) \
-			* target_polygon.position + u \
-			* (target_polygon.position + vertex)
+		var spawn_point: Vector2 = (1 - u) * target_polygon.position + (u * vertex)
 		var shadow = FISH_SHADOW.instance()
 
 		shadow.position = spawn_point
 		shadow.surface_ref = self
+		shadow.size = fish.size_str
 
 		add_child(shadow)
 

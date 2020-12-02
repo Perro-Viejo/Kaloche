@@ -13,6 +13,7 @@ var size := 0.0
 var resistance := 0
 var catch_sfx := ''
 var attracted_to := {}
+var size_str := ''
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
@@ -31,12 +32,15 @@ func _ready():
 	if size <= 0.5:
 		resistance = rand_range(1, 3)
 		catch_sfx = 'small'
+		size_str = 'sm'
 	elif size > 0.5 and size <= 1 :
 		resistance = rand_range(3, 7)
 		catch_sfx = 'med'
+		size_str = 'md'
 	elif size > 1:
 		resistance = rand_range(7, 12)
 		catch_sfx = 'large'
+		size_str = 'xl'
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_data() -> Dictionary:
