@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Objects/Hook/Hook.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Hook/Hooked.gd" type="Script" id=2]
@@ -12,7 +12,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -39,7 +42,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1.5, -2.5 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 0
@@ -65,7 +68,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 0
@@ -91,7 +94,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 6.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -118,7 +121,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ), Vector2( -1.5, -2.5 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1.98266, 1.99053 )
 
 [node name="Hook" type="KinematicBody2D"]
@@ -156,16 +159,18 @@ script = ExtResource( 2 )
 _parent_path = NodePath("../..")
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 1024
+material = SubResource( 2 )
 position = Vector2( 0, 2 )
 texture = ExtResource( 7 )
 region_enabled = true
-region_rect = Rect2( 290, 0, 29, 21 )
+region_rect = Rect2( 0, 0, 29, 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/SETUP = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/waveA = SubResource( 4 )
-anims/waveB = SubResource( 5 )
+anims/SETUP = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/waveA = SubResource( 5 )
+anims/waveB = SubResource( 6 )
 
 [node name="String" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -175,5 +180,5 @@ gravity = Vector2( 0, 50 )
 end_pin = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 disabled = true
