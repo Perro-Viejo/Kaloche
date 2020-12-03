@@ -1,8 +1,10 @@
 class_name Hud
 extends CanvasLayer
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-var _current_zone: = ''
 var world_entered: bool = false
+
+var _current_zone: = ''
+var last_key := ''
 
 onready var _zone_name: Label = $Control/ZoneName
 onready var _dflt_pos: = {
@@ -26,9 +28,14 @@ func _ready() -> void:
 	WorldEvent.connect('zone_entered', self, 'update_zone_name')
 	WorldEvent.connect('world_entered', self, '_on_world_entered')
 	HudEvent.connect('continue_requested', self, 'show_continue')
+	
+	# DEBUG
+	DebugOverlay.add_monitor('\nse presionó', self, ':last_key')
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	last_key = event.as_text()
+
 	if event.is_action_pressed('ui_accept'):
 		_zone_name.hide()
 		_continue.hide()

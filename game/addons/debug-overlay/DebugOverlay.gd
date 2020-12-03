@@ -8,6 +8,7 @@ var visible: bool = false setget set_visible, get_visible
 
 func set_visible(value):
 	visible = value
+	$Label.visible = visible
 	if not visible:
 		$Label.text = ""
 

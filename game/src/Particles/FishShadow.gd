@@ -1,5 +1,6 @@
 # Controla el comportamiento de las sombras de los peces en las superficies
 # en las que se puede pescar
+class_name FishShadow
 extends Node2D
 
 var size := 'sm'
