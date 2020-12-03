@@ -127,6 +127,7 @@ func hook_entered(hook: Hook) -> void:
 
 func hook_exited(hook: Hook = null) -> void:
 	_reset_bait()
+	_hook_ref.disconnect('fish_fled', self, '_show_shadows')
 	_hook_ref = null
 	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
 	
@@ -299,4 +300,3 @@ func _show_shadows() -> void:
 func _reset_bait() -> void:
 	_bait = ''
 	_hook_ref.disconnect('sent_back', self, 'hook_exited')
-	_hook_ref.disconnect('fish_fled', self, '_show_shadows')
