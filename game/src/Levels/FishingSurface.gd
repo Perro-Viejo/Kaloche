@@ -79,6 +79,8 @@ func hook_entered(hook: Hook) -> void:
 	_hook_ref = hook
 	_hook_ref.connect('sent_back', self, 'hook_exited')
 	
+	_hook_ref.surface_ref = self
+	
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(hook.global_position)
@@ -100,6 +102,7 @@ func hook_entered(hook: Hook) -> void:
 
 func hook_exited(hook: Hook = null) -> void:
 	_bait = ''
+	_hook_ref.surface_ref = null
 	_hook_ref.disconnect('sent_back', self, 'hook_exited')
 	_hook_ref = null
 	_remove_shadow()
@@ -226,6 +229,11 @@ func _got_hooked() -> bool:
 
 func _fish_splash(position):
 	var splash = FISH_SPLASH.instance()
+	add_child(splash)
+	splash.set_global_position(position)
+
+func _fight_splash(position):
+	var splash = FIGHT_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(position)
 

@@ -18,6 +18,7 @@ var _fight_cooldown := 0
 var _hooked_time := 0
 var _hooked_time_range := [350.0, 450.0] # En segundos
 var _hooked_time_debug := -1
+var _next_position := Vector2.ZERO
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
@@ -27,16 +28,13 @@ func _ready() -> void:
 func _process(delta) -> void:
 	# Aquí se mueve el pescado forcejeando con el Teotriste
 	_fight_cooldown += 1
+	_get_next_position()
 	if _fight_cooldown >= rand_range(15, 75):
-		owner.position = owner.target_pos + _fish_pos
+		owner.position = _next_position
 		_fight_cooldown = 0
-		randomize()
 		var ran_num = randf()
-		if ran_num <= 0.2: 
-			_fish_pos = Vector2(rand_range(-5, 5), rand_range(-5, 5))
-		else:
-			_fish_pos = Vector2(rand_range(-1.5, 1.5), rand_range(-1.5, 1.5))
-	
+		if ran_num <= 0.4:
+			owner.surface_ref._fight_splash(owner.global_position + _fish_pos)
 	# Esto es pa' que el jugador no pueda jalar la caña como loco
 	_oportunity_cooldown -= 1
 	if _oportunity_cooldown <= 0:
@@ -149,3 +147,15 @@ func _catch_fish() -> void:
 func _get_hooked_time() -> float:
 	# TODO: Hacer que esto varíe en relación al tamaño (o propiedades) de la caña
 	return rand_range(_hooked_time_range[0], _hooked_time_range[1])
+
+func _get_next_position():
+	randomize()
+	var ran_num = randf()
+	if ran_num <= 0.2: 
+		_fish_pos = Vector2(rand_range(-5, 5), rand_range(-5, 5))
+	else:
+		_fish_pos = Vector2(rand_range(-1.5, 1.5), rand_range(-1.5, 1.5))
+	if owner.surface_ref.is_point_inside_polygon(owner.global_position + _fish_pos):
+		_next_position = owner.position + _fish_pos
+	else:
+		_get_next_position()

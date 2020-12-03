@@ -38,7 +38,6 @@ func enter(msg: Dictionary = {}) -> void:
 	_area_ref.connect('area_exited', self, '_on_area_exited')
 	_area_ref.monitoring = true
 	_surface_detected = false
-	owner.play_animation('idle', 1.5)
 	_timer.start()
 
 func exit() -> void:
@@ -63,6 +62,7 @@ func _on_area_entered(body: Area2D) -> void:
 	_surface_detected = true
 	var surface: Surface = body
 	if surface.type == Data.SurfaceType.WATER:
+		owner.play_animation('waveB')
 		owner.emit_signal('dropped')
 		body.hook_entered(owner)
 	else:

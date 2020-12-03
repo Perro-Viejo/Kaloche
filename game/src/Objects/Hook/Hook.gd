@@ -15,6 +15,7 @@ var bait := 'Nada' setget _set_bait
 var thrown = false
 var height = -135
 var time = 0
+var surface_ref: Area2D = null
 
 onready var origin_pos = position
 onready var tween := $Tween
