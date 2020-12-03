@@ -70,7 +70,7 @@ func unhandled_input(event: InputEvent) -> void:
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 
 		owner.hook.target_pos = hook_pos
-		
+		_listening_input = false
 	elif event.is_action_pressed('Drop'):
 		_current_bait = FishingDatabase.get_next_bait()
 		

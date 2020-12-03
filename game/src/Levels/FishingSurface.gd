@@ -1,6 +1,22 @@
 class_name FishingSurface
 extends "res://src/Levels/Surface.gd"
 
+"""
+El orden de las variables:
+signals
+enums
+constants
+exported variables
+public variables
+private variables
+onready variables
+"""
+
+const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
+const FISH_SPLASH = preload("res://src/Particles/FishSplash.tscn")
+const FIGHT_SPLASH = preload("res://src/Particles/FightSplash.tscn")
+const FISH_SHADOW = preload("res://src/Particles/FishShadow.tscn")
+
 export var has_fishes := true
 export var max_fish_count := 5
 # Cuando ya no queden peces en el agua, tras completarse este tiempo, volverán a
@@ -28,13 +44,13 @@ var _fish_shadow: Node2D = null
 var _polygons_2d := []
 var _vertices := []
 
-const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
-const FISH_SPLASH = preload("res://src/Particles/FishSplash.tscn")
-const FIGHT_SPLASH = preload("res://src/Particles/FightSplash.tscn")
-const FISH_SHADOW = preload("res://src/Particles/FishShadow.tscn")
+onready var _shadows := Node2D.new() # Para agrupar los nodos de las sombras
+onready var _tween := Tween.new()
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
+	_shadows.name = 'Shadows'
+	
 	for chld in get_children():
 		if chld is CollisionPolygon2D:
 			_polygons_2d.append(chld)
@@ -54,7 +70,9 @@ func _ready():
 	_timer.connect('timeout', self, '_spawn_fishes')
 
 	add_child(_timer)
-	
+	add_child(_shadows)
+	add_child(_tween)
+
 	_spawn_fishes()
 	
 	PlayerEvent.connect('fish_caught', self, '_fish_splash')
@@ -70,14 +88,14 @@ func _process(delta):
 		if _counter >= _hook_check_freq:
 			if _got_hooked():
 				DebugOverlay.remove_monitor(_hooked_monitor_id)
-				_hook_ref.disconnect('sent_back', self, 'hook_exited')
-				_bait = ''
+				_reset_bait()
 				_on_fish_bit()
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func hook_entered(hook: Hook) -> void:
 	_hook_ref = hook
 	_hook_ref.connect('sent_back', self, 'hook_exited')
+	_hook_ref.connect('fish_fled', self, '_show_shadows')
 	
 	_hook_ref.surface_ref = self
 	
@@ -95,25 +113,43 @@ func hook_entered(hook: Hook) -> void:
 	_selected_fish = null
 	_selected_fish_idx = 0
 	
+	# PROBANDO: Ocultar los peces que se mueven cuando caiga el gancho para que nada
+	# ocupe la atención del jugador aparte del pez que mirará el cebo.
+	_tween.interpolate_property(
+		_shadows, 'modulate:a',
+		1.0, 0.0,
+		0.8, Tween.TRANS_SINE, Tween.EASE_OUT
+	)
+	_tween.start()
+	
 	# Pal debug
 	_hooked_monitor_id = DebugOverlay.add_monitor(
 		'\npez saldrá en', self, '', 'get_hooked_check_time'
 	)
 
 func hook_exited(hook: Hook = null) -> void:
-	_bait = ''
+	_reset_bait()
 	_hook_ref.surface_ref = null
-	_hook_ref.disconnect('sent_back', self, 'hook_exited')
+	_hook_ref.disconnect('fish_fled', self, '_show_shadows')
 	_hook_ref = null
-	_remove_shadow()
+	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
+	
+	# Volver a mostrar las sombras de los peces nadando después de un rato. Si
+	# no se están viendo, hacerlos aparecer después de X segundos, de lo contrario,
+	# hacerlos aparecer de inmediato.
+	_show_shadows()
+
+	# DEBUG
 	DebugOverlay.remove_monitor(_hooked_monitor_id)
 
 #TODO: conectar esta vuelta :(
 #func _pull_sfx():
 #	AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook_ref.global_position)
 
+
 func get_hooked_check_time() -> String:
-	return '%d s' % int(_hook_check_freq - _counter)
+	return '%ds' % int(_hook_check_freq - _counter + 1)
+
 
 func get_fishes_list() -> String:
 	var names := []
@@ -121,10 +157,12 @@ func get_fishes_list() -> String:
 		var fish: FishData = f as FishData
 		names.append(fish.name)
 	return String(names)
-	
+
+
 func get_fish_examine_wait() -> float:
-	return stepify(_fish_examine_wait, 0.01)
-	
+	return stepify(_fish_examine_wait, 1.0) + 1.0
+
+
 func is_point_inside_polygon(point: Vector2) -> bool:
 	for v in _vertices:
 		if Geometry.is_point_in_polygon(point, v):
@@ -153,12 +191,20 @@ func _spawn_fishes() -> void:
 		shadow.surface_ref = self
 		shadow.size = fish.size_str
 
-		add_child(shadow)
+		_shadows.add_child(shadow)
 
+	_show_shadows()
+
+	# DEBUG
 	_lake_fishes_debug = DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
 
 func _on_fish_bit() -> void:
 	_fishes.remove(_captured_fish_idx)
+	
+	var shadow_to_remove: FishShadow = _shadows.get_child(_captured_fish_idx)
+	_shadows.remove_child(shadow_to_remove)
+	shadow_to_remove.queue_free()
+
 	if _fishes.empty():
 		DebugOverlay.remove_monitor(_lake_fishes_debug)
 		_timer.start()
@@ -224,6 +270,7 @@ func _got_hooked() -> bool:
 				_fish_examininig = false
 				_hook_check_freq = rand_range(bite_freq.x, bite_freq.y)
 				_hook_ref.hook_fail()
+				_show_shadows()
 
 	return _captured_fish_idx > -1
 
@@ -231,6 +278,8 @@ func _fish_splash(position):
 	var splash = FISH_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(position)
+	
+	_show_shadows()
 
 func _fight_splash(position):
 	var splash = FIGHT_SPLASH.instance()
@@ -243,3 +292,19 @@ func _remove_shadow() -> void:
 		DebugOverlay.remove_monitor(_fish_examine_debug_id)
 		remove_child(_fish_shadow)
 		_fish_shadow.queue_free()
+
+
+func _show_shadows() -> void:
+	_tween.stop_all()
+	_tween.interpolate_property(
+		_shadows, 'modulate:a',
+		_shadows.modulate.a, 1.0,
+		1.2, Tween.TRANS_SINE, Tween.EASE_OUT,
+		0.0 if _shadows.modulate.a > 0.0 else 3.0
+	)
+	_tween.start()
+
+
+func _reset_bait() -> void:
+	_bait = ''
+	_hook_ref.disconnect('sent_back', self, 'hook_exited')
