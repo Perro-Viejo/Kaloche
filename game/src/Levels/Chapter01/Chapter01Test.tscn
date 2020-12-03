@@ -234,7 +234,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
-frame = 3
+frame = 4
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -249,6 +249,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
+frame = 1
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -263,7 +264,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 1
+frame = 2
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -287,9 +288,13 @@ __meta__ = {
 
 [node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
 position = Vector2( -194, 200 )
+is_good = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 position = Vector2( 145, 122 )

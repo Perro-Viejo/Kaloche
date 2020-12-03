@@ -62,7 +62,7 @@ func _on_area_entered(body: Area2D) -> void:
 	_surface_detected = true
 	var surface: Surface = body
 	if surface.type == Data.SurfaceType.WATER:
-		owner.play_animation('waveB')
+		owner.play_animation('waveB', 3.0)
 		owner.emit_signal('dropped')
 		body.hook_entered(owner)
 	else:
