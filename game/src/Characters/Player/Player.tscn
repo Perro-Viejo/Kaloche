@@ -196,6 +196,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("StateMachine/Walk")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_fs"
+}, {
+"args": [  ],
+"method": "_play_fs"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.4
@@ -223,6 +240,23 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("StateMachine/Walk")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_fs"
+}, {
+"args": [  ],
+"method": "_play_fs"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -263,6 +297,23 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -4.3955, -6.81772 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("StateMachine/Walk")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_fs"
+}, {
+"args": [  ],
+"method": "_play_fs"
+} ]
 }
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -321,7 +372,7 @@ anims/run-rod = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 768, 0, 32, 32 )
+region_rect = Rect2( 736, 0, 32, 32 )
 
 [node name="Overlay" type="Sprite" parent="."]
 visible = false
@@ -497,7 +548,7 @@ position = Vector2( -4, -7 )
 rod_tip_ref = NodePath("../RodTip")
 
 [node name="RodTip" type="Position2D" parent="."]
-position = Vector2( -4, -7 )
+position = Vector2( -4.3955, -6.81772 )
 
 [node name="HookObjective" type="Node2D" parent="."]
 visible = false

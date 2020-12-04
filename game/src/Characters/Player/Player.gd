@@ -11,9 +11,10 @@ enum Tools {
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing := false
+var picked_item: Pickable = null
 var on_ground := false
 var fishing := false setget _set_fishing
-var fs_id := 'FS_Dirt'
+var fs_id := 'Dirt'
 var foot := 'L'
 var is_paused := false
 var is_out := false
@@ -111,7 +112,7 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 			
 		fs_id = tile_set.get_floor_sfx(tile_map.get_cellv(tile_pos))
 	else:
-		fs_id = 'FS_Dirt'
+		fs_id = 'Dirt'
 
 
 func has_equiped() -> bool:
@@ -180,7 +181,7 @@ func _set_fishing(value: bool) -> void:
 func _set_surface(id := '') -> void:
 	surface = id
 	if not id:
-		fs_id = 'FS_Dirt'
+		fs_id = 'Dirt'
 	else:
 		fs_id = id
 

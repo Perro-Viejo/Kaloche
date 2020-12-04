@@ -6,6 +6,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 	var picked: Pickable = owner.node_to_interact as Pickable
 	picked.being_grabbed = false
+	_parent.picked_item = null
 	picked.z_index = 0
 
 	# Retroalimentación { ======================================================

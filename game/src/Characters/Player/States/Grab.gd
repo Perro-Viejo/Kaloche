@@ -11,7 +11,9 @@ func enter(msg: Dictionary = {}) -> void:
 
 	var picked: Pickable = _parent.node_to_interact as Pickable
 	_parent.grabbing = true
+	_parent.picked_item = picked
 	picked.being_grabbed = true
+	print(picked.name)
 	# Retroalimentación { ======================================================
 	# NOTA: si el jugador no se está moviendo, sí estaría bueno que se espere a
 	# que la animación termine para hacer esto

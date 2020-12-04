@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_gak_rod_01.ogg-589acb47d03e8253f450f6595230341d.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_gak_rod_01.ogg"
+dest_files=[ "res://.import/sfx_gak_rod_01.ogg-589acb47d03e8253f450f6595230341d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

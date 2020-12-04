@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -83,6 +83,10 @@
 [ext_resource path="res://assets/audio/animals/sfx_rana.ogg" type="AudioStream" id=81]
 [ext_resource path="res://assets/audio/animals/sfx_insect_03.ogg" type="AudioStream" id=82]
 [ext_resource path="res://assets/audio/animals/sfx_insect_01.ogg" type="AudioStream" id=83]
+[ext_resource path="res://assets/audio/sfx_gak_rod_01.ogg" type="AudioStream" id=84]
+[ext_resource path="res://assets/audio/sfx_gak_rod_04.ogg" type="AudioStream" id=85]
+[ext_resource path="res://assets/audio/sfx_gak_rod_02.ogg" type="AudioStream" id=86]
+[ext_resource path="res://assets/audio/sfx_gak_rod_03.ogg" type="AudioStream" id=87]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -113,7 +117,7 @@ stream = ExtResource( 19 )
 [node name="FS_Dirt3" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
 stream = ExtResource( 22 )
 
-[node name="fs_grass" type="Node2D" parent="Player"]
+[node name="FS_Grass" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -8.0
 random_volume = true
@@ -123,13 +127,13 @@ random_pitch = true
 min_pitch = -3.0
 max_pitch = 2.0
 
-[node name="fs_grass" type="AudioStreamPlayer" parent="Player/fs_grass"]
+[node name="fs_grass" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 17 )
 
-[node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/fs_grass"]
+[node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 2 )
 
-[node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/fs_grass"]
+[node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 18 )
 
 [node name="FS_Rock" type="Node2D" parent="Player"]
@@ -167,6 +171,27 @@ stream = ExtResource( 20 )
 
 [node name="FS_Water3" type="AudioStreamPlayer" parent="Player/FS_Water"]
 stream = ExtResource( 21 )
+
+[node name="Gak_Rod" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -7.0
+min_volume = -3.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="Gak_Rod_01" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
+stream = ExtResource( 84 )
+
+[node name="Gak_Rod_02" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
+stream = ExtResource( 86 )
+
+[node name="Gak_Rod_03" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
+stream = ExtResource( 87 )
+
+[node name="Gak_Rod_04" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
+stream = ExtResource( 85 )
 
 [node name="Demon" type="Node2D" parent="."]
 
