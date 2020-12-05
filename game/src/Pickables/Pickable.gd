@@ -114,3 +114,7 @@ func show_interaction() -> void:
 
 func get_class() -> String:
 	return "Pickable"
+
+func respawn() -> void:
+	position = _initial_position
+ 

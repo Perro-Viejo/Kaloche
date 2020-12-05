@@ -13,12 +13,13 @@ var max_distance := 90.0 # 75.0
 var aim_distance
 var distance
 var hook_pos := Vector2.ZERO
+var can_change_bait := false
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _hook: Hook = null
 var _listening_input := false
 var _current_direction: int = Direction.RIGHT setget _set_current_direction
-var _current_bait: BaitData = null
+var _current_bait: BaitData = FishingDatabase.get_bait(0)
 var _timer: Timer = null
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
@@ -72,9 +73,9 @@ func unhandled_input(event: InputEvent) -> void:
 		owner.hook.target_pos = hook_pos
 		_listening_input = false
 	elif event.is_action_pressed('Drop'):
-		_current_bait = FishingDatabase.get_next_bait()
-		
-		_hook.bait = _current_bait.name if _current_bait else ''
+		if can_change_bait:
+			_current_bait = FishingDatabase.get_next_bait()
+			_hook.bait = _current_bait.name if _current_bait else ''
 	elif event.is_action_pressed('Up'):
 		self._current_direction = Direction.UP
 	elif event.is_action_pressed('Right'):

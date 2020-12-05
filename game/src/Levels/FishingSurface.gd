@@ -321,6 +321,6 @@ func _on_area_entered(other) -> void:
 		add_child(splash)
 		splash.position = other.position
 		if other.is_in_group('Sacred'):
-			other.position = other._initial_position
+			other.respawn()
 		else:
 			other.queue_free()

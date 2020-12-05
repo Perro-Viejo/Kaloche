@@ -25,3 +25,10 @@ func get_next_bait() -> BaitData:
 
 func get_baits() -> Array:
 	return _baits.get_children()
+
+func get_bait(bait_idx) -> BaitData:
+	var bait: BaitData = null
+	bait = _baits.get_child(bait_idx)
+	print(bait)
+	
+	return bait
