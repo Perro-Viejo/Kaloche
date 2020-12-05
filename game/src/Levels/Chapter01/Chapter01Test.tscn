@@ -58,60 +58,60 @@ atlas = ExtResource( 21 )
 region = Rect2( 72, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 22 )
-region = Rect2( 0, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 22 )
-region = Rect2( 4, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 22 )
-region = Rect2( 8, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 22 )
-region = Rect2( 12, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 22 )
-region = Rect2( 16, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 22 )
-region = Rect2( 20, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 22 )
-region = Rect2( 24, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 18 )
 region = Rect2( 6, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 18 )
 region = Rect2( 12, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 18 )
 region = Rect2( 18, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 18 )
 region = Rect2( 24, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 18 )
 region = Rect2( 30, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 18 )
 region = Rect2( 36, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 22 )
+region = Rect2( 4, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 22 )
+region = Rect2( 8, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 22 )
+region = Rect2( 12, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 22 )
+region = Rect2( 16, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 22 )
+region = Rect2( 20, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 22 )
+region = Rect2( 24, 0, 4, 3 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
@@ -122,12 +122,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "sm",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "md",
+"name": "sm",
 "speed": 12.0
 } ]
 
@@ -145,13 +145,13 @@ animations = [ {
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "sm",
-"speed": 10.0
+"name": "md",
+"speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "md",
-"speed": 12.0
+"name": "sm",
+"speed": 10.0
 } ]
 
 [sub_resource type="Curve2D" id=26]
@@ -288,8 +288,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Rocberto" parent="GroupCharacters" instance=ExtResource( 8 )]
+[node name="Rocberto" parent="GroupCharacters" groups=[
+"Sacred",
+] instance=ExtResource( 8 )]
 position = Vector2( -194, 200 )
+collision_layer = 5
 img = ExtResource( 9 )
 tr_code = "Rocberto"
 character = "Rocberto"

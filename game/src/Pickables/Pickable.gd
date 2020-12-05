@@ -13,10 +13,12 @@ export(String) var dialog = ''
 var being_grabbed: bool = false setget set_being_grabbed
 
 var _hides: Area2D
+var _initial_position: Vector2
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 #	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
-
+	if is_in_group('Sacred'):
+		_initial_position = global_position
 	connect('area_entered', self, '_check_collision', [ true ])
 	connect('area_exited', self, '_check_collision')
 	

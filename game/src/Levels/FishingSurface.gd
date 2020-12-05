@@ -43,7 +43,7 @@ var _lake_fishes_debug := -1
 var _fish_shadow: Node2D = null
 var _polygons_2d := []
 var _vertices := []
-var _receive_ready := true
+var _can_receive := true
 
 onready var _shadows := Node2D.new() # Para agrupar los nodos de las sombras
 onready var _tween := Tween.new()
@@ -283,9 +283,9 @@ func _on_fish_caught(position):
 	splash.set_global_position(position)
 	
 	_show_shadows()
-	_receive_ready = false
+	_can_receive = false
 	yield(get_tree().create_timer(0.5), 'timeout')
-	_receive_ready = true
+	_can_receive = true
 
 func _fight_splash(position):
 	var splash = FIGHT_SPLASH.instance()
@@ -316,6 +316,11 @@ func _reset_bait() -> void:
 	_hook_ref.disconnect('sent_back', self, 'hook_exited')
 
 func _on_area_entered(other) -> void:
-	pass
-#	if _receive_ready:
-#		other.queue_free()
+	if _can_receive and other is Pickable:
+		var splash = HOOK_SPLASH.instance()
+		add_child(splash)
+		splash.position = other.position
+		if other.is_in_group('Sacred'):
+			other.position = other._initial_position
+		else:
+			other.queue_free()
