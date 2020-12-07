@@ -73,8 +73,8 @@ func _ready():
 	add_child(_timer)
 	add_child(_shadows)
 	add_child(_tween)
-
-	_spawn_fishes()
+	if visible:
+		_spawn_fishes()
 	
 	PlayerEvent.connect('fish_caught', self, '_on_fish_caught')
 	
@@ -101,6 +101,8 @@ func hook_entered(hook: Hook) -> void:
 	_hook_ref.connect('fish_fled', self, '_show_shadows')
 	
 	_hook_ref.surface_ref = self
+	
+	print(is_point_inside_polygon(_hook_ref.global_position))
 	
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
@@ -254,7 +256,7 @@ func _got_hooked() -> bool:
 				rot = 180
 				vec = Vector2.LEFT
 			_fish_shadow = FISH_SHADOW.instance()
-			_fish_shadow.global_position = _hook_ref.global_position + vec * 4
+			_fish_shadow.position = _hook_ref.global_position + vec * 4
 			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
 			_fish_shadow.is_examining = true

@@ -22,11 +22,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=4]
 light_mode = 2
 
-[sub_resource type="Animation" id=4]
-resource_name = "Fill"
+[sub_resource type="Animation" id=5]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Water:modulate")
@@ -66,12 +65,12 @@ frames = SubResource( 3 )
 [node name="Water" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 light_mask = 1024
-material = SubResource( 5 )
+material = SubResource( 4 )
 position = Vector2( 0, 8.829 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fill = SubResource( 4 )
+anims/Fill = SubResource( 5 )
 
 [node name="TempleDoorButton" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.21022, 39.7324 )
