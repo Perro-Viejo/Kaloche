@@ -240,6 +240,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
+frame = 2
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -254,7 +255,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 4
+frame = 6
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -269,7 +270,6 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 5
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -290,6 +290,9 @@ pickable_needed = "Rocberto"
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
 position = Vector2( -94.4893, -259.567 )
 fishing_surfaces = [ NodePath("../../Surfaces/TankSurface_L"), NodePath("../../Surfaces/TankSurface_R") ]
+
+[node name="Hole" parent="GroupObjects" instance=ExtResource( 26 )]
+position = Vector2( -10.5, -72.5 )
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
@@ -418,9 +421,6 @@ position = Vector2( -94.6628, -263.671 )
 texture = ExtResource( 25 )
 mode = 2
 range_item_cull_mask = 1024
-
-[node name="Hole" parent="." instance=ExtResource( 26 )]
-position = Vector2( -10.5, -76.5 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 
