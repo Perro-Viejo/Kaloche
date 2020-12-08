@@ -189,7 +189,7 @@ script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StateMachine/Idle"]
 frames = SubResource( 32 )
-frame = 25
+frame = 23
 playing = true
 offset = Vector2( 0, -6 )
 
