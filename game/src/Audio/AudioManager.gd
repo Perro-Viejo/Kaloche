@@ -78,4 +78,4 @@ func set_pitch(source, sound, pitch):
 
 func set_amb_position(source, sound, _position, _max_distance):
 	_get_audio(source, sound).set_position(_position)
-	_get_audio(source, sound).set_max_distance(_max_distance)
+	_get_audio(source, sound).set_max_distance(_max_distance)	

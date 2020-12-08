@@ -46,7 +46,7 @@ func activate_tank():
 		surface._spawn_fishes()
 
 func _on_stream_finished(source, sound):
-	if sound == 'Fill_Start':
-		if _is_filling:
+	if _is_filling:
+		if sound == 'Fill_Start':
 			AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Loop', global_position)
 		

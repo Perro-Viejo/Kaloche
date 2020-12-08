@@ -33,60 +33,60 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 21 )
-region = Rect2( 12, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 21 )
-region = Rect2( 24, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 21 )
-region = Rect2( 36, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 21 )
-region = Rect2( 48, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 21 )
-region = Rect2( 60, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 21 )
-region = Rect2( 72, 0, 12, 14 )
-
-[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 18 )
 region = Rect2( 6, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 18 )
 region = Rect2( 12, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 18 )
 region = Rect2( 18, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 18 )
 region = Rect2( 24, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 18 )
 region = Rect2( 30, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 18 )
 region = Rect2( 36, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 21 )
+region = Rect2( 12, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 21 )
+region = Rect2( 24, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 21 )
+region = Rect2( 36, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 21 )
+region = Rect2( 48, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 21 )
+region = Rect2( 60, 0, 12, 14 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 21 )
+region = Rect2( 72, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 22 )
@@ -120,12 +120,12 @@ region = Rect2( 24, 0, 4, 3 )
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "md",
+"name": "xl",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
@@ -143,12 +143,12 @@ _data = {
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "md",
+"name": "xl",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
@@ -168,7 +168,7 @@ script = ExtResource( 11 )
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
 
 [node name="Lagunita" parent="AUDIO_Cap_01/Triggers" index="0"]
-position = Vector2( -63.4703, -273.707 )
+position = Vector2( 34.5297, 414.293 )
 
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -240,7 +240,6 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
-frame = 2
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -255,7 +254,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 6
+frame = 4
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -270,6 +269,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
+frame = 5
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -414,7 +414,7 @@ mode = 2
 range_item_cull_mask = 1024
 
 [node name="TankMask" type="Light2D" parent="Masks"]
-position = Vector2( -94.106, -262.78 )
+position = Vector2( -94.6628, -263.671 )
 texture = ExtResource( 25 )
 mode = 2
 range_item_cull_mask = 1024
