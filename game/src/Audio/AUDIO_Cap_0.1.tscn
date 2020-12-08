@@ -11,7 +11,7 @@ radius = 168.793
 [sub_resource type="CircleShape2D" id=2]
 radius = 110.5
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 326.814, 607.534 )
 
 [node name="AUDIO_Cap_01" type="Node2D"]
@@ -57,7 +57,7 @@ position = Vector2( -15.874, -158.74 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScattererDevice/Area2D"]
 position = Vector2( -2.245, -96.5317 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="ScattererDevice"]
 wait_time = 0.5

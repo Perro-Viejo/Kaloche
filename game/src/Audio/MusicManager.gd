@@ -35,4 +35,4 @@ func play_mx(music: String) -> void:
 			audio.select_sound.connect('finished', self, '_on_finished', [music])
 
 func _on_finished(music: String):
-	AudioEvent.emit_signal('stream_finished', music)
+	AudioEvent.emit_signal('stream_finished', 'MX', music)

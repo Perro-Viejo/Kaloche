@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Objects/Hole.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/world/circle.png" type="Texture" id=2]
+
+[node name="Hole" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 2, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2( 1.9, 0.6 )
+polygon = PoolVector2Array( 13.3593, -4.97977, 13.4699, 3.95476, 6.05678, 11.8382, -6.50134, 11.3126, -13.6379, 2.90364, -13.6932, -3.57827, -4.12249, -14.615, 4.00986, -14.615 )
+
+[node name="StaticBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody"]
+scale = Vector2( 1.9, 0.6 )
+polygon = PoolVector2Array( 14.6843, -4.49166, 14.8239, 4.4945, 6.5, 14.5, -6.5, 14.5, -14.5, 4.5, -14.7368, -4.6875, -10.1974, -12.0833, -4.12923, -17.3269, 4.1016, -17.3269, 10.7237, -11.7708 )
+
+[node name="Respawn" type="Position2D" parent="."]
+position = Vector2( 0, -36.0407 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/ground.tres" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/lake_mask.png" type="Texture" id=23]
 [ext_resource path="res://src/Objects/FishTank.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/images/world/chapter_0.1/tank_water_mask.png" type="Texture" id=25]
+[ext_resource path="res://src/Objects/Hole.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -165,7 +166,9 @@ _data = {
 script = ExtResource( 11 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
-visible = false
+
+[node name="Lagunita" parent="AUDIO_Cap_01/Triggers" index="0"]
+position = Vector2( -63.4703, -273.707 )
 
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -285,8 +288,8 @@ position = Vector2( 0.5, -457 )
 pickable_needed = "Rocberto"
 
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
-position = Vector2( -94.1243, -258.734 )
-fishing_surfaces = [ NodePath("../Surfaces/TankSurface_L"), NodePath("../Surfaces/TankSurface_R") ]
+position = Vector2( -94.4893, -259.567 )
+fishing_surfaces = [ NodePath("../../Surfaces/TankSurface_L"), NodePath("../../Surfaces/TankSurface_R") ]
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
@@ -366,6 +369,7 @@ scale = Vector2( 0.9, 0.9 )
 polygon = PoolVector2Array( 4, -18.5, 8, -18.5, 8, -17.5, 11, -17.5, 11, -16.5, 12, -16.5, 12, -15.5, 15, -15.5, 15, -14.5, 16, -14.5, 16, -13.5, 18, -13.5, 18, -12.5, 22, -12.5, 22, -11.5, 25, -11.5, 25, -10.5, 28, -10.5, 28, -9.5, 31, -9.5, 31, -8.5, 32, -8.5, 32, -6.5, 33, -6.5, 33, -4.5, 34, -4.5, 34, 1.5, 33, 1.5, 33, 3.5, 32, 3.5, 32, 5.5, 31, 5.5, 31, 6.5, 30, 6.5, 30, 7.5, 29, 7.5, 29, 8.5, 28, 8.5, 28, 9.5, 27, 9.5, 27, 10.5, 26, 10.5, 26, 11.5, 24, 11.5, 24, 12.5, 23, 12.5, 23, 13.5, 22, 13.5, 22, 14.5, 17, 14.5, 17, 15.5, 15, 15.5, 15, 16.5, 12, 16.5, 12, 17.5, 9, 17.5, 9, 18.5, 5, 18.5, 5, 19.5, 0, 19.5, 0, 18.5, -5, 18.5, -5, 17.5, -6, 17.5, -6, 16.5, -9, 16.5, -9, 15.5, -12, 15.5, -12, 14.5, -17, 14.5, -17, 13.5, -20, 13.5, -20, 12.5, -22, 12.5, -22, 11.5, -24, 11.5, -24, 10.5, -26, 10.5, -26, 9.5, -28, 9.5, -28, 8.5, -29, 8.5, -29, 7.5, -30, 7.5, -30, 6.5, -31, 6.5, -31, 5.5, -32, 5.5, -32, 4.5, -33, 4.5, -33, 2.5, -34, 2.5, -34, -1.5, -33, -1.5, -33, -2.5, -32, -2.5, -32, -3.5, -31, -3.5, -31, -4.5, -30, -4.5, -30, -5.5, -29, -5.5, -29, -6.5, -28, -6.5, -28, -7.5, -25, -7.5, -25, -8.5, -24, -8.5, -24, -9.5, -23, -9.5, -23, -11.5, -22, -11.5, -22, -13.5, -21, -13.5, -21, -14.5, -20, -14.5, -20, -15.5, -18, -15.5, -18, -16.5, -14, -16.5, -14, -17.5, -10, -17.5, -10, -18.5, -5, -18.5, -5, -19.5, 4, -19.5 )
 
 [node name="TankSurface_L" type="Area2D" parent="Surfaces"]
+visible = false
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -385,6 +389,7 @@ __meta__ = {
 }
 
 [node name="TankSurface_R" type="Area2D" parent="Surfaces"]
+visible = false
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -413,5 +418,10 @@ position = Vector2( -94.106, -262.78 )
 texture = ExtResource( 25 )
 mode = 2
 range_item_cull_mask = 1024
+
+[node name="Hole" parent="." instance=ExtResource( 26 )]
+position = Vector2( -10.5, -76.5 )
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
+
+[editable path="AUDIO_Cap_01"]

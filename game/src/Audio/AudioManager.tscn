@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -87,6 +87,12 @@
 [ext_resource path="res://assets/audio/sfx_gak_rod_04.ogg" type="AudioStream" id=85]
 [ext_resource path="res://assets/audio/sfx_gak_rod_02.ogg" type="AudioStream" id=86]
 [ext_resource path="res://assets/audio/sfx_gak_rod_03.ogg" type="AudioStream" id=87]
+[ext_resource path="res://assets/audio/sfx_tank_empty_st.ogg" type="AudioStream" id=88]
+[ext_resource path="res://assets/audio/sfx_tank_empty_tail.ogg" type="AudioStream" id=89]
+[ext_resource path="res://assets/audio/sfx_tank_fill_loop.ogg" type="AudioStream" id=90]
+[ext_resource path="res://assets/audio/sfx_tank_full.ogg" type="AudioStream" id=91]
+[ext_resource path="res://assets/audio/sfx_tank_empty_loop.ogg" type="AudioStream" id=92]
+[ext_resource path="res://assets/audio/sfx_tank_fill_st.ogg" type="AudioStream" id=93]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -701,3 +707,26 @@ max_pitch = 3.0
 [node name="monkey_01" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 79 )
 max_distance = 200.0
+
+[node name="Tank" type="Node2D" parent="."]
+
+[node name="Empty_Loop" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 92 )
+
+[node name="Empty_Start" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 88 )
+
+[node name="Empty_Tail" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 89 )
+attenuation = 1.07177
+
+[node name="Fill_Start" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 93 )
+volume_db = 5.0
+
+[node name="Fill_Loop" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 90 )
+volume_db = 5.0
+
+[node name="Fill_Full" type="AudioStreamPlayer" parent="Tank"]
+stream = ExtResource( 91 )

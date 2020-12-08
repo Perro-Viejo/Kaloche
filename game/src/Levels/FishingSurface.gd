@@ -102,8 +102,6 @@ func hook_entered(hook: Hook) -> void:
 	
 	_hook_ref.surface_ref = self
 	
-	print(is_point_inside_polygon(_hook_ref.global_position))
-	
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(hook.global_position)
