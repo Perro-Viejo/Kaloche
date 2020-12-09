@@ -75,4 +75,4 @@ anims/Fill = SubResource( 5 )
 [node name="TempleDoorButton" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.21022, 39.7324 )
 is_toggle = false
-needs_grabbing = false
+pickable_needed = "Rocberto"

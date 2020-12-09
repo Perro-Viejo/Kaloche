@@ -3,16 +3,17 @@
 [ext_resource path="res://src/Audio/AmbienceDevice.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 541.697, 830.26 )
+extents = Vector2( 826.601, 1214.78 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 357.748, 674.029 )
+extents = Vector2( 477.69, 952.667 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 167.977, 97.1126 )
+extents = Vector2( 299.874, 402.111 )
 
 [node name="AmbienceDevice" type="Node2D"]
 script = ExtResource( 1 )
+max_distance = 150.0
 
 [node name="MaxDistance" type="Area2D" parent="."]
 

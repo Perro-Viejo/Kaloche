@@ -3,6 +3,9 @@ extends "res://src/StateMachine/State.gd"
 func enter(msg: Dictionary = {}) -> void:
 	.enter()
 
+func exit() -> void:
+	pass
+
 func _process(delta):
 	pass
 #	_parent.get_node("FeedArea/CollisionShape2D/Feed").scale = scale
