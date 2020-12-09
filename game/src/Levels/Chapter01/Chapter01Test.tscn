@@ -34,104 +34,104 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 22 )
-region = Rect2( 0, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 22 )
-region = Rect2( 4, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 22 )
-region = Rect2( 8, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 22 )
-region = Rect2( 12, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 22 )
-region = Rect2( 16, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 22 )
-region = Rect2( 20, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 22 )
-region = Rect2( 24, 0, 4, 3 )
-
-[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 21 )
 region = Rect2( 0, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 21 )
 region = Rect2( 12, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 21 )
 region = Rect2( 24, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 21 )
 region = Rect2( 36, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 21 )
 region = Rect2( 48, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 21 )
 region = Rect2( 60, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 21 )
 region = Rect2( 72, 0, 12, 14 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 18 )
 region = Rect2( 6, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 18 )
 region = Rect2( 12, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 18 )
 region = Rect2( 18, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 18 )
 region = Rect2( 24, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 18 )
 region = Rect2( 30, 0, 6, 5 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 18 )
 region = Rect2( 36, 0, 6, 5 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 22 )
+region = Rect2( 4, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 22 )
+region = Rect2( 8, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 22 )
+region = Rect2( 12, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 22 )
+region = Rect2( 16, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 22 )
+region = Rect2( 20, 0, 4, 3 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 22 )
+region = Rect2( 24, 0, 4, 3 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "sm",
+"name": "xl",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "md",
+"name": "sm",
 "speed": 12.0
 } ]
 
@@ -144,18 +144,18 @@ _data = {
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "sm",
-"speed": 10.0
+"name": "xl",
+"speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "md",
-"speed": 12.0
+"name": "sm",
+"speed": 10.0
 } ]
 
 [sub_resource type="Curve2D" id=26]
@@ -168,13 +168,50 @@ script = ExtResource( 11 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
 
+[node name="BG" parent="AUDIO_Cap_01" index="0"]
+visible = true
+
+[node name="AmbienceDevice" parent="AUDIO_Cap_01/BG" index="0"]
+max_distance = 200.0
+
+[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/MaxDistance" index="0"]
+position = Vector2( 19.0273, 99.8934 )
+
+[node name="AmbZone" parent="AUDIO_Cap_01/BG/AmbienceDevice" index="1"]
+position = Vector2( -7.55127, -98.163 )
+
+[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/AmbZone" index="0"]
+position = Vector2( 71.0525, 188.056 )
+
+[node name="FallOffZone" parent="AUDIO_Cap_01/BG/AmbienceDevice" index="2"]
+position = Vector2( -7.55127, -166.122 )
+
+[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/FallOffZone" index="0"]
+position = Vector2( 49.0814, 71.7345 )
+
 [node name="Lagunita" parent="AUDIO_Cap_01/Spot" index="0"]
 position = Vector2( 482.811, -282.587 )
 
 [node name="Lagunita" parent="AUDIO_Cap_01/Triggers" index="0"]
 position = Vector2( 34.5297, 414.293 )
 
+[node name="CollisionShape2D" parent="AUDIO_Cap_01/ScattererDevice/Area2D" index="0"]
+position = Vector2( 54.8368, 12.8753 )
+
+[node name="Bird" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="0"]
+freq_range = Vector2( 3, 14 )
+
+[node name="Insect" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="1"]
+freq_range = Vector2( 5, 9 )
+
+[node name="Parrot" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="2"]
+freq_range = Vector2( 7, 20 )
+
+[node name="Frog" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="3"]
+freq_range = Vector2( 4, 7 )
+
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="Facade" type="CollisionPolygon2D" parent="StaticCollisions"]
@@ -247,6 +284,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
+frame = 6
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -261,7 +299,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 4
+frame = 3
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -276,7 +314,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 5
+frame = 4
 playing = true
 
 [node name="GroupObjects" type="Node2D" parent="."]
@@ -306,12 +344,9 @@ position = Vector2( -344.5, -311 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
-is_good = true
-carbs = 2
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
+
+[node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
+position = Vector2( -297.478, -298 )
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
@@ -323,20 +358,16 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -339, 480 )
 collision_layer = 5
-is_good = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 486, 1194 )
+position = Vector2( -291.368, -261.308 )
 z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
-position = Vector2( -194, 200 )
+position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../../../World/GroupCharacters/Rocberto")
 
 [node name="GroupWalls" type="Node2D" parent="."]
@@ -383,7 +414,6 @@ position = Vector2( 3, -401 )
 polygon = PoolVector2Array( 13, -96, 20, -96, 20, -89, 133, -89, 133, -64, 77, -64, 77, 72, 21, 72, 21, 120, -28, 120, -28, 72, -84, 72, -84, -64, -140, -64, -140, -89, -28, -89, -28, -96, -20, -96, -20, -117, 13, -117 )
 
 [node name="Lagunita" type="Area2D" parent="Surfaces"]
-position = Vector2( 261, -404 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 20 )
@@ -392,13 +422,12 @@ type = 1
 bite_freq = Vector2( 3, 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Lagunita"]
-position = Vector2( 198, 123 )
+position = Vector2( 458.486, -281.099 )
 scale = Vector2( 0.9, 0.9 )
-polygon = PoolVector2Array( 4, -18.5, 8, -18.5, 8, -17.5, 11, -17.5, 11, -16.5, 12, -16.5, 12, -15.5, 15, -15.5, 15, -14.5, 16, -14.5, 16, -13.5, 18, -13.5, 18, -12.5, 22, -12.5, 22, -11.5, 25, -11.5, 25, -10.5, 28, -10.5, 28, -9.5, 31, -9.5, 31, -8.5, 32, -8.5, 32, -6.5, 33, -6.5, 33, -4.5, 34, -4.5, 34, 1.5, 33, 1.5, 33, 3.5, 32, 3.5, 32, 5.5, 31, 5.5, 31, 6.5, 30, 6.5, 30, 7.5, 29, 7.5, 29, 8.5, 28, 8.5, 28, 9.5, 27, 9.5, 27, 10.5, 26, 10.5, 26, 11.5, 24, 11.5, 24, 12.5, 23, 12.5, 23, 13.5, 22, 13.5, 22, 14.5, 17, 14.5, 17, 15.5, 15, 15.5, 15, 16.5, 12, 16.5, 12, 17.5, 9, 17.5, 9, 18.5, 5, 18.5, 5, 19.5, 0, 19.5, 0, 18.5, -5, 18.5, -5, 17.5, -6, 17.5, -6, 16.5, -9, 16.5, -9, 15.5, -12, 15.5, -12, 14.5, -17, 14.5, -17, 13.5, -20, 13.5, -20, 12.5, -22, 12.5, -22, 11.5, -24, 11.5, -24, 10.5, -26, 10.5, -26, 9.5, -28, 9.5, -28, 8.5, -29, 8.5, -29, 7.5, -30, 7.5, -30, 6.5, -31, 6.5, -31, 5.5, -32, 5.5, -32, 4.5, -33, 4.5, -33, 2.5, -34, 2.5, -34, -1.5, -33, -1.5, -33, -2.5, -32, -2.5, -32, -3.5, -31, -3.5, -31, -4.5, -30, -4.5, -30, -5.5, -29, -5.5, -29, -6.5, -28, -6.5, -28, -7.5, -25, -7.5, -25, -8.5, -24, -8.5, -24, -9.5, -23, -9.5, -23, -11.5, -22, -11.5, -22, -13.5, -21, -13.5, -21, -14.5, -20, -14.5, -20, -15.5, -18, -15.5, -18, -16.5, -14, -16.5, -14, -17.5, -10, -17.5, -10, -18.5, -5, -18.5, -5, -19.5, 4, -19.5 )
+polygon = PoolVector2Array( 8, -18.5, 33, -6.5, 34, -4.5, 34, 1.5, 27, 10.5, 9, 18.5, -0.26178, 18.1658, -20, 12.5, -33.2464, 5.07333, -34, -1.5, -19.219, -14.2652, -5.84746, -18.7224 )
 
 [node name="TankSurface_L" type="Area2D" parent="Surfaces"]
 visible = false
-position = Vector2( 78, 378 )
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -410,7 +439,7 @@ max_fish_count = 2
 bite_freq = Vector2( 3, 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
-position = Vector2( -118.216, -263.24 )
+position = Vector2( -40.6424, 114.602 )
 z_index = 1
 polygon = PoolVector2Array( -0.139297, -26.1833, 25.0876, -26.1833, 25.3545, 25.7233, 0.159386, 25.3896 )
 __meta__ = {
@@ -419,7 +448,6 @@ __meta__ = {
 
 [node name="TankSurface_R" type="Area2D" parent="Surfaces"]
 visible = false
-position = Vector2( 78, 378 )
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -431,7 +459,7 @@ max_fish_count = 2
 bite_freq = Vector2( 3, 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
-position = Vector2( -95.4082, -262.855 )
+position = Vector2( -15.3339, 114.773 )
 z_index = 1
 polygon = PoolVector2Array( -0.139297, -26.1833, 25.0876, -26.1833, 25.4755, 25.3816, -0.200844, 25.2413 )
 
@@ -452,3 +480,5 @@ range_item_cull_mask = 1024
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 
 [editable path="AUDIO_Cap_01"]
+
+[editable path="AUDIO_Cap_01/BG/AmbienceDevice"]

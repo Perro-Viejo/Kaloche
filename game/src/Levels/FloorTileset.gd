@@ -7,9 +7,9 @@ func get_floor_sfx(id: int) -> String:
 	if id > -1:
 		match tile_get_name(id):
 			'river-grass':
-				return 'fs_grass'
+				return 'Grass'
 			'stone_floor':
-				return 'FS_Rock'
+				return 'Rock'
 			'water':
-				return 'FS_Water'
-	return 'FS_Dirt'
+				return 'Water'
+	return 'Dirt'

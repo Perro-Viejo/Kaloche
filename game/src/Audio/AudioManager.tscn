@@ -133,7 +133,7 @@ random_pitch = true
 min_pitch = -3.0
 max_pitch = 2.0
 
-[node name="fs_grass" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 17 )
 
 [node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/FS_Grass"]

@@ -3,6 +3,7 @@ class_name Pickable
 extends Area2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export(bool) var is_good = true
+export(bool) var can_burn = true
 export(int) var carbs = 2
 export(Texture) var img setget set_sprite_texture
 export(String) var on_free = ''
