@@ -116,7 +116,7 @@ func _on_Timer_timeout():
 			health -= 1
 		else:
 			$Timer.stop()
-			queue_free()
+			
 
 
 func _dialog_finished() -> void:

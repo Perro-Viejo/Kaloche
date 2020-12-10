@@ -10,15 +10,20 @@ func _process(delta):
 		else:
 			owner.eat()
 func enter(msg: Dictionary = {}) -> void:
-	pickable_life = owner.pickable.carbs * 120
+	pickable_life = owner.pickable.carbs * 50
 	owner.is_burning = true
-	owner.sprite.modulate = 'f63737'
-	owner.sprite.scale = Vector2(1.2, 1.2)
+	owner.timer.set_paused(true)
+	if owner.pickable.is_in_group('Sacred'):
+		owner.sprite.modulate = '00e1ff'
+	else:
+		owner.sprite.modulate = 'f63737'
+	owner.sprite.scale = owner.sprite.scale * Vector2(1.2, 1.2)
 	AudioEvent.emit_signal('play_requested','Demon', 'Burn')
 	AudioEvent.emit_signal('play_requested','Demon', 'Ignite')
 
 func exit() -> void:
 	owner.is_burning = false
+	owner.timer.set_paused(false)
 	owner.sprite.modulate = 'ffffff'
 	owner.sprite.scale = Vector2.ONE
 #	owner.timer.disconnect('timeout', self, '_on_timeout')

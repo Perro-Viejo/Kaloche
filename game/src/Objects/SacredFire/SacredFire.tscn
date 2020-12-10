@@ -1,13 +1,13 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=1]
-[ext_resource path="res://src/Objects/Burn.gd" type="Script" id=2]
+[ext_resource path="res://src/Objects/SacredFire/Burn.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://src/Characters/Demon/States/Idle.gd" type="Script" id=4]
-[ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=5]
+[ext_resource path="res://src/Objects/SacredFire/Idle.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/sfx_demon_idle.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/images/world/circle.png" type="Texture" id=7]
-[ext_resource path="res://src/Objects/SacredFire.gd" type="Script" id=8]
+[ext_resource path="res://src/Objects/SacredFire/SacredFire.gd" type="Script" id=8]
+[ext_resource path="res://src/Objects/SacredFire/Die.gd" type="Script" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -132,18 +132,16 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=30]
 radius = 4.56896
 
-[sub_resource type="CircleShape2D" id=31]
-radius = 19.8211
-
-[sub_resource type="CircleShape2D" id=32]
-radius = 5.13308
-
 [node name="SacredFire" type="Node2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 8 )
+lifepoints = 60
+max_lifepoints = 60
+size_range = Vector2( 0.5, 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
-frame = 18
+frame = 22
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -170,35 +168,15 @@ script = ExtResource( 4 )
 [node name="Burn" type="Node2D" parent="StateMachine"]
 script = ExtResource( 2 )
 
+[node name="Die" type="Node2D" parent="StateMachine"]
+script = ExtResource( 9 )
+
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
-[node name="Demon" type="KinematicBody2D" parent="."]
-visible = false
+[node name="Tween" type="Tween" parent="."]
 
-[node name="InteractionArea" type="Area2D" parent="Demon"]
-collision_layer = 4
-
-[node name="Area" type="CollisionShape2D" parent="Demon/InteractionArea"]
-position = Vector2( 0, 8.32307 )
-shape = SubResource( 31 )
-
-[node name="Label" type="Label" parent="Demon"]
-margin_left = -111.744
-margin_top = -26.4395
-margin_right = -13.744
-margin_bottom = -12.4395
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Idle" type="AudioStreamPlayer2D" parent="Demon"]
+[node name="Idle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
 max_distance = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Demon"]
-position = Vector2( -0.362368, 3.98609 )
-shape = SubResource( 32 )
-
-[node name="Inventory" type="Node" parent="Demon"]
-script = ExtResource( 5 )

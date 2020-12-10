@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=2]
 
-[ext_resource path="res://src/Objects/SacredFire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Objects/SacredFire/SacredFire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_foreground.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/temple_floor.tres" type="Texture" id=4]
@@ -36,32 +36,32 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 21 )
-region = Rect2( 12, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 4, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 21 )
-region = Rect2( 24, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 8, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 21 )
-region = Rect2( 36, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 12, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 21 )
-region = Rect2( 48, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 16, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 21 )
-region = Rect2( 60, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 20, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 21 )
-region = Rect2( 72, 0, 12, 14 )
+atlas = ExtResource( 22 )
+region = Rect2( 24, 0, 4, 3 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 18 )
@@ -92,38 +92,38 @@ atlas = ExtResource( 18 )
 region = Rect2( 36, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 22 )
-region = Rect2( 0, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 22 )
-region = Rect2( 4, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 12, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 22 )
-region = Rect2( 8, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 24, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 22 )
-region = Rect2( 12, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 36, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 22 )
-region = Rect2( 16, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 48, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 22 )
-region = Rect2( 20, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 60, 0, 12, 14 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 22 )
-region = Rect2( 24, 0, 4, 3 )
+atlas = ExtResource( 21 )
+region = Rect2( 72, 0, 12, 14 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
+"name": "sm",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
@@ -133,7 +133,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "sm",
+"name": "xl",
 "speed": 12.0
 } ]
 
@@ -146,8 +146,8 @@ _data = {
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
-"speed": 12.0
+"name": "sm",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
@@ -156,8 +156,8 @@ animations = [ {
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
-"name": "sm",
-"speed": 10.0
+"name": "xl",
+"speed": 12.0
 } ]
 
 [sub_resource type="Curve2D" id=26]
@@ -286,7 +286,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
-frame = 6
+frame = 4
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -301,7 +301,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 3
+frame = 1
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -316,7 +316,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 4
+frame = 2
 playing = true
 
 [node name="Palms" type="Sprite" parent="GroupGround"]
@@ -352,9 +352,13 @@ position = Vector2( -344.5, -311 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
+carbs = 20
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
+modulate = Color( 0.854902, 0, 0, 1 )
 position = Vector2( -297.478, -298 )
+is_good = false
+carbs = 5
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
