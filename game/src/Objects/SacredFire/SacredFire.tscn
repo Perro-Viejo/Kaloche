@@ -141,7 +141,7 @@ size_range = Vector2( 0.5, 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
-frame = 22
+frame = 8
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -180,3 +180,6 @@ stream = ExtResource( 6 )
 volume_db = -6.0
 autoplay = true
 max_distance = 100.0
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 23.9764, 0 )

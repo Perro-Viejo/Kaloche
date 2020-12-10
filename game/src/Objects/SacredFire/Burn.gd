@@ -8,7 +8,10 @@ func _process(delta):
 			pickable_life -= 1
 			print(pickable_life)
 		else:
-			owner.eat()
+			if owner.pickable.is_in_group('Sacred'):
+				owner.eat_sacred()
+			else:
+				owner.eat()
 func enter(msg: Dictionary = {}) -> void:
 	pickable_life = owner.pickable.carbs * 50
 	owner.is_burning = true

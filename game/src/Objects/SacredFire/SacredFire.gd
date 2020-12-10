@@ -8,6 +8,7 @@ export var size_range:= Vector2(0.5, 1)
 var pickable: Pickable = null
 var is_burning:= false
 
+
 onready var sprite := $Sprite
 onready var timer := $Timer
 onready var tween := $Tween
@@ -24,9 +25,12 @@ func _ready():
 func _on_area_entered(other) -> void:
 	if other.is_in_group('Pickable') and not (other as Pickable).being_grabbed:
 		pickable = other as Pickable
-		print('tengo ', pickable.name, ' en mi llamaje')
-		pickable.set_z_index(-1)
-		$StateMachine.transition_to_state($StateMachine.STATES.BURN)
+		if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
+			_reject_pickable()
+		else:
+			print('tengo ', pickable.name, ' en mi llamaje')
+			pickable.set_z_index(-1)
+			$StateMachine.transition_to_state($StateMachine.STATES.BURN)
 
 func _on_area_exited(other) -> void:
 	if other.is_in_group('Pickable') and other.being_grabbed:
@@ -46,19 +50,39 @@ func _on_timer_timeout():
 
 func eat():
 	print('Me comi el ', pickable.name)
-	if pickable.is_in_group('Sacred'):
-		lifepoints = max_lifepoints
-	else:
-		if pickable.is_good:
-			if not lifepoints + pickable.carbs > max_lifepoints:
-				lifepoints = lifepoints + pickable.carbs
-			else:
-				lifepoints = max_lifepoints
+	if pickable.is_good:
+		if not lifepoints + pickable.carbs > max_lifepoints:
+			lifepoints = lifepoints + pickable.carbs
 		else:
-			if not lifepoints - pickable.carbs < 0:
-				lifepoints = lifepoints - pickable.carbs
-			else:
-				lifepoints = 0
+			lifepoints = max_lifepoints
+	else:
+		if not lifepoints - pickable.carbs < 0:
+			lifepoints = lifepoints - pickable.carbs
+		else:
+			lifepoints = 0
+	_destroy_pickable()
+
+func eat_sacred():
+#	lifepoints = max_lifepoints
+	match pickable.name:
+		'Rocberto':
+			_reject_pickable()
+		_:
+			print('no sé que es pero lo toco jesusito')
+			_destroy_pickable()
+
+func _reject_pickable():
+	pickable.set_z_index(0)
+	tween.interpolate_property(
+		pickable, 'global_position',
+		pickable.global_position, $Position2D.global_position,0.1,
+		Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
+	tween.start()
+	pickable = null
+	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+
+func _destroy_pickable():
+	WorldEvent.emit_signal('pickable_burnt', pickable)
 	pickable.queue_free()
 	pickable = null
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
