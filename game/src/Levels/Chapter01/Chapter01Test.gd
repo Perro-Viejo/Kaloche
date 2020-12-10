@@ -8,8 +8,6 @@ onready var _fishes_cnt: Node2D = find_node('Fishes')
 
 # ⠿⠿⠿⠿ Functions ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
 func _ready() -> void:
-	$ParallaxForeground/ParallaxTrees.show()
-	
 	for fish in _fishes_cnt.get_children():
 		var tween := Tween.new()
 		var follow: PathFollow2D = fish.get_node('PathFollow')
