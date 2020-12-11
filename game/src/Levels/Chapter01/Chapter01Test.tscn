@@ -1,8 +1,8 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://src/Objects/SacredFire/SacredFire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/images/world/chapter_0.1/map_foreground.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/world/chapter_0.1/fg_start.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/temple_floor.tres" type="Texture" id=4]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/temple_facade.tres" type="Texture" id=5]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/temple_walls.tres" type="Texture" id=6]
@@ -29,7 +29,8 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_bushes.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_palms.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/world/chapter_0.1/fg_rocberto.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/world/chapter_0.1/ruins_rocberto.png" type="Texture" id=31]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -37,32 +38,32 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 21 )
-region = Rect2( 12, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 6, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 21 )
-region = Rect2( 24, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 12, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 21 )
-region = Rect2( 36, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 18, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 21 )
-region = Rect2( 48, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 24, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 21 )
-region = Rect2( 60, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 30, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 21 )
-region = Rect2( 72, 0, 12, 14 )
+atlas = ExtResource( 18 )
+region = Rect2( 36, 0, 6, 5 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 22 )
@@ -92,39 +93,11 @@ region = Rect2( 20, 0, 4, 3 )
 atlas = ExtResource( 22 )
 region = Rect2( 24, 0, 4, 3 )
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 18 )
-region = Rect2( 6, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 18 )
-region = Rect2( 12, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 18 )
-region = Rect2( 18, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 18 )
-region = Rect2( 24, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 18 )
-region = Rect2( 30, 0, 6, 5 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 18 )
-region = Rect2( 36, 0, 6, 5 )
-
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
@@ -147,7 +120,7 @@ _data = {
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "xl",
+"name": "md",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
@@ -287,6 +260,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathA/PathFollow"]
 frames = SubResource( 23 )
 animation = "sm"
+frame = 1
 playing = true
 
 [node name="PathB" type="Path2D" parent="GroupGround/Fishes"]
@@ -301,7 +275,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathB/PathFollow"]
 frames = SubResource( 25 )
 animation = "md"
-frame = 4
+frame = 5
 playing = true
 
 [node name="PathC" type="Path2D" parent="GroupGround/Fishes"]
@@ -316,7 +290,7 @@ lookahead = 10.0
 [node name="Fish" type="AnimatedSprite" parent="GroupGround/Fishes/PathC/PathFollow"]
 frames = SubResource( 25 )
 animation = "xl"
-frame = 5
+frame = 6
 playing = true
 
 [node name="Palms" type="Sprite" parent="GroupGround"]
@@ -324,6 +298,21 @@ texture = ExtResource( 29 )
 
 [node name="Bushes" type="Sprite" parent="GroupGround"]
 texture = ExtResource( 28 )
+
+[node name="RuinsRocberto" type="Sprite" parent="GroupGround"]
+position = Vector2( -355, 454 )
+texture = ExtResource( 31 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GroupGround/RuinsRocberto"]
+
+[node name="ColumnB" type="CollisionPolygon2D" parent="GroupGround/RuinsRocberto/StaticBody2D"]
+polygon = PoolVector2Array( 59, -3, 82, -3, 85, 2, 85, 26, 85, 36, 72, 36, 68, 35, 57, 35, 58, 28 )
+
+[node name="ColumnA" type="CollisionPolygon2D" parent="GroupGround/RuinsRocberto/StaticBody2D"]
+polygon = PoolVector2Array( 14, 52, 9, 52, -6, 55, -7, 72, 11, 72, 11, 76, 18, 76, 18, 67, 15, 67, 15, 57 )
+
+[node name="BigColumn" type="CollisionPolygon2D" parent="GroupGround/RuinsRocberto/StaticBody2D"]
+polygon = PoolVector2Array( 3, -71, 4, -53, 6, -29, 9, 2, 11, 6, 10, 8, 3, 9, 1, 11, -11, 16, -12, 23, -16, 25, -24, 21, -23, 27, -30, 28, -44, 27, -44, 31, -55, 34, -66, 18, -68, -66, -29, -78 )
 
 [node name="GroupObjects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
@@ -352,7 +341,13 @@ position = Vector2( -344.5, -311 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
+is_good = true
+can_burn = true
 carbs = 20
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -301.649, -319.858 )
@@ -362,7 +357,12 @@ carbs = 20
 modulate = Color( 0.854902, 0, 0, 1 )
 position = Vector2( -297.478, -298 )
 is_good = false
+can_burn = true
 carbs = 5
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Iguana" parent="GroupObjects" groups=[
 "Sacred",
@@ -382,12 +382,17 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -339, 480 )
 collision_layer = 5
+is_good = true
+can_burn = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( -291.368, -261.308 )
+position = Vector2( -210, 606 )
 z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
@@ -417,13 +422,21 @@ texture = ExtResource( 16 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
+scroll_base_scale = Vector2( 1.2, 1.2 )
 
-[node name="ParallaxTrees" type="ParallaxLayer" parent="ParallaxForeground"]
-motion_scale = Vector2( 1.1, 1.1 )
-motion_offset = Vector2( 50, 120 )
+[node name="Start" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_offset = Vector2( 60, 220 )
 
-[node name="Trees" type="Sprite" parent="ParallaxForeground/ParallaxTrees"]
+[node name="Sprite" type="Sprite" parent="ParallaxForeground/Start"]
+position = Vector2( 384, 1217 )
 texture = ExtResource( 3 )
+
+[node name="Rocberto" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_offset = Vector2( -100, 80 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxForeground/Rocberto"]
+position = Vector2( -378, 492 )
+texture = ExtResource( 30 )
 
 [node name="Surfaces" type="Node2D" parent="."]
 
