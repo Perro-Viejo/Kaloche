@@ -14,6 +14,7 @@ var resistance := 0
 var catch_sfx := ''
 var attracted_to := {}
 var size_str := ''
+var is_sacred := false
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
@@ -33,7 +34,7 @@ func _ready():
 		resistance = rand_range(1, 3)
 		catch_sfx = 'small'
 		size_str = 'sm'
-	elif size > 0.5 and size <= 1 :
+	elif size > 0.5 and size <= 1:
 		resistance = rand_range(3, 7)
 		catch_sfx = 'med'
 		size_str = 'md'
@@ -52,5 +53,6 @@ func get_data() -> Dictionary:
 		resistance = resistance,
 		icon = icon,
 		sprite = sprite,
-		catch_sfx = catch_sfx
+		catch_sfx = catch_sfx,
+		is_sacred = is_sacred
 	}

@@ -32,3 +32,13 @@ func get_bait(bait_idx) -> BaitData:
 	print(bait)
 	
 	return bait
+
+# Obtiene un pez específico por su tipo
+func get_fish(type := -1) -> FishData:
+	var fish: FishData = null
+	for f in $Fishes.get_children():
+		var fish_data: FishData = f
+		if fish_data.type == type:
+			fish = fish_data
+			break
+	return fish

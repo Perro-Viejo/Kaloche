@@ -8,6 +8,7 @@ var _fish_size := 0.0
 var _fish_resistance := 0.0
 var _fish_sprite: Texture = null
 var _fish_name := ''
+var _fish_is_sacred := false
 var _catch_sfx := ''
 var _can_damage_fish := false
 var _catch_chance := 1.0
@@ -61,6 +62,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_fish_resistance = msg.resistance
 	_fish_sprite = msg.sprite
 	_fish_name = msg.name
+	_fish_is_sacred = msg.is_sacred
 	_catch_sfx = msg.catch_sfx
 	_hooked_time = _get_hooked_time()
 
@@ -135,6 +137,9 @@ func _catch_fish() -> void:
 	fish.get_node('Sprite').texture = _fish_sprite
 	fish.global_position = global_position
 	fish.jump(Vector2(35 * pull_dir, position.y))
+	if _fish_is_sacred:
+		fish.modulate = Color('FFE478')
+		fish.add_to_group('Sacred')
 
 	AudioEvent.emit_signal(
 		'play_requested',

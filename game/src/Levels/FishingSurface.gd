@@ -1,3 +1,4 @@
+tool
 class_name FishingSurface
 extends "res://src/Levels/Surface.gd"
 
@@ -24,6 +25,9 @@ export var max_fish_count := 5
 export var spawn_cooldown := 5 # En minutos
 # export var types := []
 export var bite_freq := Vector2(15.0, 30.0)
+export var spawn_specific := false setget _set_spawn_specific
+export(Array, FishData.Type) var specifics = []
+export var has_sacred := false
 
 var _timer: Timer = null
 var _fishes := []
@@ -175,7 +179,13 @@ func is_point_inside_polygon(point: Vector2) -> bool:
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:
 	for c in range(max_fish_count):
-		var fish: FishData = FishingDatabase.get_random_fish()
+		var fish: FishData = null
+		
+		if spawn_specific and specifics.size() > 0:
+			fish = FishingDatabase.get_fish(specifics[randi() % specifics.size()])
+		else:
+			fish = FishingDatabase.get_random_fish()
+		
 		_fishes.append(fish)
 		
 		# Coger un vértice al azar y obtener un punto aleatorio entre dicho
@@ -195,6 +205,12 @@ func _spawn_fishes() -> void:
 		shadow.size = fish.size_str
 
 		_shadows.add_child(shadow)
+		
+	# Hacer que uno de los peces sea sagrado si es necesario
+	if has_sacred:
+		var idx := Utils.get_random_array_idx(_fishes)
+		(_fishes[idx] as FishData).is_sacred = true
+		(_shadows.get_child(idx) as FishShadow).modulate = Color('FFE478')
 
 	_show_shadows()
 
@@ -324,3 +340,12 @@ func _on_area_entered(other) -> void:
 			other.respawn()
 		else:
 			other.queue_free()
+
+func _set_spawn_specific(new_value: bool) -> void:
+	spawn_specific = new_value
+	if spawn_specific:
+		for i in FishData.Type:
+			specifics.append(FishData.Type[i])
+	else:
+		specifics.clear()
+	property_list_changed_notify()
