@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -93,6 +93,7 @@
 [ext_resource path="res://assets/audio/sfx_tank_full.ogg" type="AudioStream" id=91]
 [ext_resource path="res://assets/audio/sfx_tank_empty_loop.ogg" type="AudioStream" id=92]
 [ext_resource path="res://assets/audio/sfx_tank_fill_st.ogg" type="AudioStream" id=93]
+[ext_resource path="res://assets/audio/sfx_temple_door_open.ogg" type="AudioStream" id=94]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -730,3 +731,8 @@ volume_db = 5.0
 
 [node name="Fill_Full" type="AudioStreamPlayer" parent="Tank"]
 stream = ExtResource( 91 )
+
+[node name="Temple" type="Node2D" parent="."]
+
+[node name="Door_Open" type="AudioStreamPlayer" parent="Temple"]
+stream = ExtResource( 94 )

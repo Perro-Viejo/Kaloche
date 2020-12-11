@@ -4,6 +4,7 @@ var _speed_modifier := 2.0
 
 func open() -> void:
 	$AnimationPlayer.play('open', -1, 1 / _speed_modifier)
+	AudioEvent.emit_signal('play_requested', 'Temple', 'Door_Open')
 	PlayerEvent.emit_signal(
 		'camera_shaked',
 		{

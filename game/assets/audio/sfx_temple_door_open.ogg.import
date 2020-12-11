@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_temple_door_open.ogg-4f5f5abf9beb80b9552d3b86698ceecf.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_temple_door_open.ogg"
+dest_files=[ "res://.import/sfx_temple_door_open.ogg-4f5f5abf9beb80b9552d3b86698ceecf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
