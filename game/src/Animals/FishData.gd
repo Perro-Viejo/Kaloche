@@ -19,7 +19,10 @@ var is_sacred := false
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	yield(owner, 'ready')
+	init_data()
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func init_data() -> void:
 	if type == Type.GEN:
 		attracted_to['Nada'] = 1.0
 		for b in FishingDatabase.get_baits():
@@ -28,6 +31,7 @@ func _ready():
 		for bait in chances:
 			attracted_to[get_node(bait).name] = chances[bait]
 
+	randomize()
 	size = rand_range(size_range.min, size_range.max)
 	
 	if size <= 0.5:
@@ -43,16 +47,15 @@ func _ready():
 		catch_sfx = 'large'
 		size_str = 'xl'
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func get_data() -> Dictionary:
-	randomize()
-
 	return {
 		name = 'FISH_' + Type.keys()[type],
+		node_name = name,
 		size = size,
 		resistance = resistance,
 		icon = icon,
 		sprite = sprite,
 		catch_sfx = catch_sfx,
+		attracted_to = attracted_to,
 		is_sacred = is_sacred
 	}

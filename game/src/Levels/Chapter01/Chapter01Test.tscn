@@ -179,6 +179,8 @@ position = Vector2( -50, 658 )
 
 [node name="SacredFire" parent="GroupObjects" instance=ExtResource( 1 )]
 position = Vector2( -344.5, -311 )
+lifepoints = 500
+max_lifepoints = 600
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
@@ -198,14 +200,14 @@ __meta__ = {
 [node name="Rocberto" parent="GroupCharacters" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-position = Vector2( -339, 480 )
+position = Vector2( -338.087, 479.698 )
 collision_layer = 5
 img = ExtResource( 9 )
 tr_code = "Rocberto"
 character = "Rocberto"
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 391, -249 )
+position = Vector2( 487, 1187 )
 z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]

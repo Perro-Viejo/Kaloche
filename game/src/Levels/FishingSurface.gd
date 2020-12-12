@@ -38,7 +38,7 @@ var _hook_check_freq := 0.0
 var _hook_ref: Hook = null
 var _hooked_monitor_id := -1
 var _fish_examininig := false
-var _selected_fish: FishData = null
+var _selected_fish := {}
 var _selected_fish_idx := 0
 var _fish_examine_wait := 0.0
 var _fish_examine_wait_range := Vector2(3.0, 5.0)
@@ -102,7 +102,8 @@ func _process(delta):
 func hook_entered(hook: Hook) -> void:
 	_hook_ref = hook
 	_hook_ref.connect('sent_back', self, 'hook_exited')
-	_hook_ref.connect('fish_fled', self, '_show_shadows')
+	if not _hook_ref.is_connected('fish_fled', self, '_show_shadows'):
+		_hook_ref.connect('fish_fled', self, '_show_shadows')
 	
 	_hook_ref.surface_ref = self
 	
@@ -117,7 +118,7 @@ func hook_entered(hook: Hook) -> void:
 	_counter = 0.0
 	_captured_fish_idx = -1
 	_fish_examininig = false
-	_selected_fish = null
+	_selected_fish = {}
 	_selected_fish_idx = 0
 	
 	# PROBANDO: Ocultar los peces que se mueven cuando caiga el gancho para que nada
@@ -161,8 +162,8 @@ func get_hooked_check_time() -> String:
 func get_fishes_list() -> String:
 	var names := []
 	for f in _fishes:
-		var fish: FishData = f as FishData
-		names.append(fish.name)
+		var fish = f as Dictionary
+		names.append(fish.node_name)
 	return String(names)
 
 
@@ -186,7 +187,7 @@ func _spawn_fishes() -> void:
 		else:
 			fish = FishingDatabase.get_random_fish()
 		
-		_fishes.append(fish)
+		_fishes.append(fish.get_data())
 		
 		# Coger un vértice al azar y obtener un punto aleatorio entre dicho
 		# vértice y el centro del polígono.
@@ -209,7 +210,7 @@ func _spawn_fishes() -> void:
 	# Hacer que uno de los peces sea sagrado si es necesario
 	if has_sacred:
 		var idx := Utils.get_random_array_idx(_fishes)
-		(_fishes[idx] as FishData).is_sacred = true
+		(_fishes[idx] as Dictionary).is_sacred = true
 		(_shadows.get_child(idx) as FishShadow).modulate = Color('FFE478')
 
 	_show_shadows()
@@ -233,13 +234,13 @@ func _on_fish_bit() -> void:
 func _got_hooked() -> bool:
 	# 1. Seleccionar el pez que va a ver la carnada
 	if not _selected_fish:
-		_selected_fish = null
+		_selected_fish = {}
 		_selected_fish_idx = 0
 
 		var highest_chance := 0.0
 		var counter := 0
 		for f in _fishes:
-			var fish: FishData = f as FishData
+			var fish := f as Dictionary
 
 			if _bait != 'Nada' and  fish.attracted_to.has(_bait) \
 				and fish.attracted_to[_bait] > highest_chance:

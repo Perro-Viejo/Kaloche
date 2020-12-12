@@ -44,8 +44,8 @@ func pull_done(rod_strength: float) -> Dictionary:
 		return $StateMachine.state.pull_done(rod_strength)
 	return {}
 
-func hook_success(fish_data: FishData) -> void:
-	$StateMachine.transition_to_key('Hooked', fish_data.get_data())
+func hook_success(fish_data: Dictionary) -> void:
+	$StateMachine.transition_to_key('Hooked', fish_data)
 
 func hook_fail() -> void:
 	emit_signal('tried')

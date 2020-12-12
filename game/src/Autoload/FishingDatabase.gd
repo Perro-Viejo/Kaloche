@@ -29,8 +29,7 @@ func get_baits() -> Array:
 func get_bait(bait_idx) -> BaitData:
 	var bait: BaitData = null
 	bait = _baits.get_child(bait_idx)
-	print(bait)
-	
+
 	return bait
 
 # Obtiene un pez específico por su tipo
