@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://src/Objects/SacredFire/SacredFire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_start.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/temple_floor.tres" type="Texture" id=4]
@@ -17,10 +16,11 @@
 [ext_resource path="res://src/Audio/AUDIO_Cap_0.1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/mountain.tres" type="Texture" id=16]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/images/world/chapter_0.1/rocberto_mask.png" type="Texture" id=18]
+[ext_resource path="res://src/Shaders/clouds_noise1.tres" type="Texture" id=18]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=19]
 [ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=20]
-[ext_resource path="res://assets/images/characters/rocberto_shadow.png" type="Texture" id=21]
+[ext_resource path="res://src/Shaders/clouds2D.shader" type="Shader" id=21]
+[ext_resource path="res://src/Shaders/clouds_noise2.tres" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/lake_mask.png" type="Texture" id=23]
 [ext_resource path="res://src/Objects/FishTank.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/images/world/chapter_0.1/tank_water_mask.png" type="Texture" id=25]
@@ -30,9 +30,28 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map_palms.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_rocberto.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/world/chapter_0.1/rocberto_ruins.png" type="Texture" id=31]
+[ext_resource path="res://src/Objects/Altar.tscn" type="PackedScene" id=32]
+[ext_resource path="res://assets/images/world/chapter_0.1/rocberto_mask.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/characters/rocberto_shadow.png" type="Texture" id=34]
 
-[sub_resource type="CanvasItemMaterial" id=1]
-light_mode = 2
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.454829, 0.457944, 1 )
+colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 21 )
+shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.772549 )
+shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
+shader_param/time_scale1 = 0.001
+shader_param/tile_factor1 = 0.143
+shader_param/scroll_direction2 = Vector2( 1, 0.25 )
+shader_param/time_scale2 = 0.001
+shader_param/tile_factor2 = 0.1
+shader_param/noise_texture2 = ExtResource( 22 )
+shader_param/gradient_texture = SubResource( 2 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 11 )
@@ -129,6 +148,7 @@ __meta__ = {
 }
 
 [node name="Ground" type="Sprite" parent="GroupGround"]
+z_index = -2
 texture = ExtResource( 27 )
 
 [node name="TempleFloor" type="Sprite" parent="GroupGround"]
@@ -182,16 +202,11 @@ fishing_surfaces = [ NodePath("../../Surfaces/TankSurface_L"), NodePath("../../S
 [node name="Hole" parent="GroupObjects" instance=ExtResource( 26 )]
 position = Vector2( -50, 658 )
 
-[node name="SacredFire" parent="GroupObjects" instance=ExtResource( 1 )]
-position = Vector2( -344.5, -311 )
-lifepoints = 500
-max_lifepoints = 600
-
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
 is_good = true
 can_burn = true
-carbs = 20
+carbs = 200
 on_free = ""
 tr_code = ""
 character = ""
@@ -207,6 +222,10 @@ on_free = ""
 tr_code = ""
 character = ""
 dialog = ""
+
+[node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
+position = Vector2( -344, -312 )
+z_index = -1
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
@@ -230,7 +249,7 @@ dialog = ""
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
 position = Vector2( 0, 1 )
-texture = ExtResource( 21 )
+texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 material = SubResource( 1 )
@@ -261,6 +280,17 @@ texture = ExtResource( 6 )
 position = Vector2( 12, -1040.2 )
 z_index = 1
 texture = ExtResource( 16 )
+
+[node name="CloudsLayer" type="ParallaxBackground" parent="."]
+layer = 3
+follow_viewport_enable = true
+
+[node name="Clouds" type="Sprite" parent="CloudsLayer"]
+material = SubResource( 3 )
+position = Vector2( -7.55956, 105.833 )
+scale = Vector2( 1.77269, 4.76008 )
+z_index = 100
+texture = ExtResource( 18 )
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
@@ -299,6 +329,9 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
+max_fish_count = 5
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
 specifics = [ 5 ]
@@ -318,9 +351,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 2
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
 position = Vector2( -40.6424, 114.602 )
@@ -339,9 +376,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 2
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
 position = Vector2( -15.3339, 114.773 )
@@ -365,7 +406,7 @@ range_item_cull_mask = 1024
 [node name="RocbertoMask" type="Light2D" parent="Masks"]
 light_mask = 33
 position = Vector2( -331, 456 )
-texture = ExtResource( 18 )
+texture = ExtResource( 33 )
 mode = 3
 range_z_min = 1
 range_z_max = 1

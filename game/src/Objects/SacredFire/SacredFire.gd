@@ -24,13 +24,16 @@ func _ready():
 
 func _on_area_entered(other) -> void:
 	if other.is_in_group('Pickable') and not (other as Pickable).being_grabbed:
-		pickable = other as Pickable
-		if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
-			_reject_pickable()
+		if is_burning:
+			_reject_pickable(other)
 		else:
-			print('tengo ', pickable.name, ' en mi llamaje')
-			pickable.set_z_index(-1)
-			$StateMachine.transition_to_state($StateMachine.STATES.BURN)
+			pickable = other as Pickable
+			if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
+				_reject_pickable(pickable)
+			else:
+				print('tengo ', pickable.name, ' en mi llamaje')
+				pickable.set_z_index(-1)
+				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
 
 func _on_area_exited(other) -> void:
 	if other.is_in_group('Pickable') and other.being_grabbed:
@@ -44,6 +47,8 @@ func _on_timer_timeout():
 		if lifepoints > 0:
 			lifepoints -= 1
 			scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
+#			if scale.y > 1:
+#				position.y -= 1
 		else:
 			$Timer.stop()
 			$StateMachine.transition_to_state($StateMachine.STATES.DIE)
@@ -66,20 +71,36 @@ func eat_sacred():
 #	lifepoints = max_lifepoints
 	match pickable.name:
 		'Rocberto':
-			_reject_pickable()
+			var rocberto = pickable
+			pickable = null
+			rocberto.set_z_index(0)
+			tween.interpolate_property(
+				rocberto, 'global_position',
+				rocberto.global_position, global_position + Vector2(0, -200), 0.2,
+				Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
+			tween.start()
+			$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+			yield(get_tree().create_timer(1.3), 'timeout')
+			rocberto.global_position.x = $Position2D.global_position.x
+			tween.interpolate_property(
+				rocberto, 'global_position',
+				rocberto.global_position, $Position2D.global_position, 0.2,
+				Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
+			tween.start()
 		_:
 			print('no sé que es pero lo toco jesusito')
 			_destroy_pickable()
 
-func _reject_pickable():
-	pickable.set_z_index(0)
+func _reject_pickable(_pickable):
+	_pickable.set_z_index(0)
 	tween.interpolate_property(
-		pickable, 'global_position',
-		pickable.global_position, $Position2D.global_position,0.1,
+		_pickable, 'global_position',
+		_pickable.global_position, $Position2D.global_position,0.1,
 		Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 	tween.start()
-	pickable = null
-	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+	if _pickable == pickable:
+		pickable = null
+		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 
 func _destroy_pickable():
 	WorldEvent.emit_signal('pickable_burnt', pickable)

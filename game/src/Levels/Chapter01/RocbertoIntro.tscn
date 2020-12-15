@@ -50,7 +50,6 @@ anims/ShowRocberto = SubResource( 1 )
 
 [node name="RocbertoCamera" type="Camera2D" parent="."]
 modulate = Color( 0.760784, 0.760784, 0.819608, 1 )
-zoom = Vector2( 0.6, 0.6 )
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true

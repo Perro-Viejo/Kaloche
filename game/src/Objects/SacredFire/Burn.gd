@@ -13,7 +13,7 @@ func _process(delta):
 			else:
 				owner.eat()
 func enter(msg: Dictionary = {}) -> void:
-	pickable_life = owner.pickable.carbs * 50
+	pickable_life = owner.pickable.carbs * 0
 	owner.is_burning = true
 	owner.timer.set_paused(true)
 	if owner.pickable.is_in_group('Sacred'):
@@ -29,6 +29,6 @@ func exit() -> void:
 	owner.timer.set_paused(false)
 	owner.sprite.modulate = 'ffffff'
 	owner.sprite.scale = Vector2.ONE
-#	owner.timer.disconnect('timeout', self, '_on_timeout')
+	AudioEvent.emit_signal('play_requested','Demon', 'Ignite')
 	AudioEvent.emit_signal('stop_requested','Demon', 'Burn')
 
