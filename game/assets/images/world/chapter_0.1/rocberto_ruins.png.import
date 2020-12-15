@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruins_rocberto.png-4b0c31ce5752d66f41cfa6b98ed0f7b9.stex"
+path="res://.import/rocberto_ruins.png-44ecf7fef7a18910170ebf072665989f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/chapter_0.1/ruins_rocberto.png"
-dest_files=[ "res://.import/ruins_rocberto.png-4b0c31ce5752d66f41cfa6b98ed0f7b9.stex" ]
+source_file="res://assets/images/world/chapter_0.1/rocberto_ruins.png"
+dest_files=[ "res://.import/rocberto_ruins.png-44ecf7fef7a18910170ebf072665989f.stex" ]
 
 [params]
 
