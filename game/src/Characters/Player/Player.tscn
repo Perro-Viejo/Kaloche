@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/Objects/Hook/Hook.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Characters/Player/FishPrepare.gd" type="Script" id=15]
 [ext_resource path="res://src/Characters/Player/FishHold.gd" type="Script" id=16]
+[ext_resource path="res://assets/images/characters/teotriste_shadow.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -372,7 +373,11 @@ anims/run-rod = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 768, 0, 32, 32 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Shadow" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+texture = ExtResource( 17 )
 
 [node name="Overlay" type="Sprite" parent="."]
 visible = false

@@ -38,6 +38,7 @@ onready var hook: Node2D = $Hook
 onready var sprite := $Sprite
 onready var rod_tip := $RodTip
 onready var hook_aim : Node2D = $HookObjective
+onready var shadow := sprite.get_node('Shadow')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
