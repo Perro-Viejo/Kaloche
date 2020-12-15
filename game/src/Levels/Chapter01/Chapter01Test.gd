@@ -7,7 +7,7 @@ onready var _rocberto: Pickable = find_node('Rocberto')
 
 # ⠿⠿⠿⠿ Functions ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
 func _ready() -> void:
-	DebugOverlay.visible = true
+	DebugOverlay.visible = Data.get_data(Data.SHOW_DEBUG)
 
 
 func _on_OverlayArea_body_shape_entered(body_id, body, body_shape, area_shape):

@@ -1,17 +1,25 @@
 class_name Game
 extends Node2D
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 signal SceneIsLoaded
 
 enum {IDLE, FADEOUT, FADEIN}
 
-onready var CurrentScene = null
-onready var CurrentSceneInstance = $Levels.get_child($Levels.get_child_count() - 1)
+export var show_debug := true
+
 var NextScene
 var FadeState:int = IDLE
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+onready var CurrentScene = null
+onready var CurrentSceneInstance = $Levels.get_child($Levels.get_child_count() - 1)
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
+	Data.set_data(Data.SHOW_DEBUG, show_debug)
+	
+	if OS.has_feature('release'):
+		Data.set_data(Data.SHOW_DEBUG, false)
 
 	GuiEvent.connect("Options",	self, "on_Options")
 	GuiEvent.connect("Exit",		self, "on_Exit")
@@ -30,7 +38,7 @@ func _ready()->void:
 	
 	AudioEvent.emit_signal("play_requested", "MX", "Menu")
 
-
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func on_Options(options) -> void:
 	guiBrain.gui_collect_focusgroup()
 
@@ -81,6 +89,11 @@ func restart_scene():
 	CurrentSceneInstance = CurrentScene.instance()
 	$Levels.add_child(CurrentSceneInstance)
 
+func play_song(mx: AudioStream) -> void:
+	$Music.stream = mx
+	$Music.play()
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_FadeTween_tween_completed(object, key)->void:
 	match FadeState:
 		IDLE:
@@ -99,7 +112,3 @@ func _on_FadeTween_tween_completed(object, key)->void:
 			$FadeLayer/FadeTween.start()
 		FADEIN:
 			FadeState = IDLE
-
-func play_song(mx: AudioStream) -> void:
-	$Music.stream = mx
-	$Music.play()

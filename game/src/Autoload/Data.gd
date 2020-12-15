@@ -3,6 +3,7 @@ extends Node
 const DEV_MODE := 'DEV_MODE'
 const CURRENT_SCENE := 'CURRENT_SCENE'
 const DIALOGS := 'DIALOGS'
+const SHOW_DEBUG := 'SHOW_DEBUG'
 
 enum BAITS {NADA, GUSANO, SANGRE}
 enum SurfaceType {GROUND, WATER, ROCK, GRASS, MUD}
