@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map_palms.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_rocberto.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/world/chapter_0.1/rocberto_ruins.png" type="Texture" id=31]
-[ext_resource path="res://src/Objects/Altar.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/Objects/Altar/Altar.tscn" type="PackedScene" id=32]
 [ext_resource path="res://assets/images/world/chapter_0.1/rocberto_mask.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/characters/rocberto_shadow.png" type="Texture" id=34]
 
