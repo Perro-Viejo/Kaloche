@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map_palms.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_rocberto.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/world/chapter_0.1/ruins_rocberto.png" type="Texture" id=31]
-[ext_resource path="res://src/Objects/Altar.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/Objects/Altar/Altar.tscn" type="PackedScene" id=32]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.454829, 0.457944, 1 )
@@ -190,6 +190,7 @@ position = Vector2( 28.5, -976.2 )
 z_index = 2
 
 [node name="TempleDoorButton" parent="GroupObjects" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 29, -912.2 )
 pickable_needed = "Rocberto"
 
@@ -202,24 +203,13 @@ position = Vector2( -50, 658 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
-is_good = true
-can_burn = true
 carbs = 200
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 modulate = Color( 0.854902, 0, 0, 1 )
 position = Vector2( -297.478, -298 )
 is_good = false
-can_burn = true
 carbs = 5
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
 position = Vector2( -344, -312 )
@@ -235,14 +225,9 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
-is_good = true
-can_burn = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 position = Vector2( -287.82, 516.147 )
@@ -400,3 +385,5 @@ range_item_cull_mask = 1024
 [editable path="AUDIO_Cap_01"]
 
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
+
+[editable path="GroupObjects/Altar"]

@@ -13,7 +13,7 @@ func _process(delta):
 			else:
 				owner.eat()
 func enter(msg: Dictionary = {}) -> void:
-	pickable_life = owner.pickable.carbs * 0
+	pickable_life = owner.pickable.carbs * 30
 	owner.is_burning = true
 	owner.timer.set_paused(true)
 	if owner.pickable.is_in_group('Sacred'):
