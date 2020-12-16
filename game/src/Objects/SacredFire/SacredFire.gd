@@ -4,9 +4,11 @@ export var lifepoints:= 10
 export var max_lifepoints:= 20
 export var can_die:= true
 export var size_range:= Vector2(0.5, 1)
+export (NodePath) var external_position = null
 
 var pickable: Pickable = null
 var is_burning:= false
+var reject_position
 
 
 onready var sprite := $Sprite
@@ -15,6 +17,10 @@ onready var tween := $Tween
 onready var feed_area := $FeedArea
 
 func _ready():
+	if external_position == null:
+		reject_position = $Position2D
+	else:
+		reject_position = get_node(external_position)
 	scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
 	feed_area.connect('area_entered', self, '_on_area_entered')
 	feed_area.connect('area_exited', self, '_on_area_exited')
@@ -47,8 +53,6 @@ func _on_timer_timeout():
 		if lifepoints > 0:
 			lifepoints -= 1
 			scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
-#			if scale.y > 1:
-#				position.y -= 1
 		else:
 			$Timer.stop()
 			$StateMachine.transition_to_state($StateMachine.STATES.DIE)
@@ -81,10 +85,10 @@ func eat_sacred():
 			tween.start()
 			$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 			yield(get_tree().create_timer(1.3), 'timeout')
-			rocberto.global_position.x = $Position2D.global_position.x
+			rocberto.global_position.x = reject_position.global_position.x
 			tween.interpolate_property(
 				rocberto, 'global_position',
-				rocberto.global_position, $Position2D.global_position, 0.2,
+				rocberto.global_position, reject_position.global_position, 0.2,
 				Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 			tween.start()
 		_:
@@ -95,7 +99,7 @@ func _reject_pickable(_pickable):
 	_pickable.set_z_index(0)
 	tween.interpolate_property(
 		_pickable, 'global_position',
-		_pickable.global_position, $Position2D.global_position,0.1,
+		_pickable.global_position, reject_position.global_position,0.1,
 		Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 	tween.start()
 	if _pickable == pickable:
