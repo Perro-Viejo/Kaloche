@@ -47,6 +47,14 @@ asset_type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Lagunita"]
 shape = SubResource( 2 )
 
+[node name="Caminando" type="Area2D" parent="Triggers"]
+position = Vector2( -70.072, 369.407 )
+script = ExtResource( 3 )
+asset_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Caminando"]
+shape = SubResource( 2 )
+
 [node name="ScattererDevice" type="Node2D" parent="."]
 position = Vector2( 24.8053, 354.639 )
 script = ExtResource( 5 )

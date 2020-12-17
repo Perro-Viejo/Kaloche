@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/images/vfx/fish_shadow.png" type="Texture" id=1]
 [ext_resource path="res://src/Particles/FishShadow.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -83,7 +83,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -123,7 +123,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -163,21 +163,21 @@ tracks/2/keys = {
 "values": [ Vector2( 0.8, 0.8 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=6]
 light_mode = 2
 
 [node name="FishShadow" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/examine_md = SubResource( 1 )
-anims/swim_md = SubResource( 2 )
-anims/swim_sm = SubResource( 3 )
-anims/swim_xl = SubResource( 4 )
+anims/examine_md = SubResource( 2 )
+anims/swim_md = SubResource( 3 )
+anims/swim_sm = SubResource( 4 )
+anims/swim_xl = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 1024
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 1 )
 offset = Vector2( 3, 0 )
 region_enabled = true

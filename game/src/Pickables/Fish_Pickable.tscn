@@ -1,15 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://src/Shaders/outline2D_outer.shader" type="Shader" id=1]
 [ext_resource path="res://assets/images/gui/outline.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/world/fish_gen.png" type="Texture" id=4]
 [ext_resource path="res://src/Pickables/Fish_Pickable.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 5 )
 
 [node name="Fish" type="Area2D" groups=[
 "Pickable",
 ]]
+material = SubResource( 3 )
 position = Vector2( 0, 5314.4 )
 input_pickable = false
 collision_layer = 5
@@ -17,9 +25,10 @@ script = ExtResource( 5 )
 img = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 texture = ExtResource( 4 )
 
 [node name="Outline" type="Sprite" parent="."]

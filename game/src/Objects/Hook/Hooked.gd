@@ -137,7 +137,9 @@ func _catch_fish() -> void:
 	fish.get_node('Sprite').texture = _fish_sprite
 	fish.global_position = global_position
 	fish.jump(Vector2(35 * pull_dir, position.y))
+	fish.material.set_shader_param('line_color', Color(1.74,1,1.93,0))
 	if _fish_is_sacred:
+		fish.material.set_shader_param('line_color', Color(1.74,1,1.93,1))
 		fish.modulate = Color('FFE478')
 		fish.add_to_group('Sacred')
 
