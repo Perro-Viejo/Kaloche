@@ -271,7 +271,6 @@ texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
 position = Vector2( 23, 622 )
-z_index = 1
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -400,7 +399,9 @@ polygon = PoolVector2Array( -0.139297, -26.1833, 25.0876, -26.1833, 25.4755, 25.
 [node name="LakeMask" type="Light2D" parent="Masks"]
 position = Vector2( 459, -282 )
 texture = ExtResource( 23 )
-mode = 2
+mode = 3
+range_z_min = 1
+range_z_max = 1
 range_item_cull_mask = 1024
 
 [node name="TankMask" type="Light2D" parent="Masks"]

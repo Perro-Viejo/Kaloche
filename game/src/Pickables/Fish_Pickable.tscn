@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/world/fish_gen.png" type="Texture" id=4]
 [ext_resource path="res://src/Pickables/Fish_Pickable.gd" type="Script" id=5]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
@@ -17,7 +17,7 @@ extents = Vector2( 5, 5 )
 [node name="Fish" type="Area2D" groups=[
 "Pickable",
 ]]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( 0, 5314.4 )
 input_pickable = false
 collision_layer = 5

@@ -141,6 +141,7 @@ func hook_exited(hook: Hook = null) -> void:
 	_hook_ref.disconnect('fish_fled', self, '_show_shadows')
 	_hook_ref = null
 	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
+	_shadows.get_child(_selected_fish_idx).modulate.a = 1.0
 	
 	# Volver a mostrar las sombras de los peces nadando después de un rato. Si
 	# no se están viendo, hacerlos aparecer después de X segundos, de lo contrario,
@@ -163,7 +164,7 @@ func get_fishes_list() -> String:
 	var names := []
 	for f in _fishes:
 		var fish = f as Dictionary
-		names.append(fish.node_name)
+		names.append(fish.node_name if not fish.is_sacred else '!' + fish.node_name)
 	return String(names)
 
 
@@ -211,7 +212,7 @@ func _spawn_fishes() -> void:
 	if has_sacred:
 		var idx := Utils.get_random_array_idx(_fishes)
 		(_fishes[idx] as Dictionary).is_sacred = true
-		(_shadows.get_child(idx) as FishShadow).modulate = Color('FFE478')
+		(_shadows.get_child(idx) as FishShadow).glow()
 
 	_show_shadows()
 
@@ -276,6 +277,10 @@ func _got_hooked() -> bool:
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
 			_fish_shadow.is_examining = true
 			add_child(_fish_shadow)
+			if _fishes[_selected_fish_idx].is_sacred:
+				_fish_shadow.glow()
+			
+			_shadows.get_child(_selected_fish_idx).modulate.a = 0.0
 		else:
 			_remove_shadow()
 

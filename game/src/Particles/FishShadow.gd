@@ -13,6 +13,9 @@ var _tween: Tween = null
 onready var _dflt_pos := position
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+func _ready():
+	material.set_shader_param('line_color', Color(1.74,1,1.93,0))
+
 func _enter_tree():
 	if not is_examining:
 		$AnimationPlayer.play('swim_%s' % size)
@@ -57,3 +60,6 @@ func swim(_obj: Object = null, _key: NodePath = '') -> void:
 		else:
 			print('¡Ay! por allá no puedo nadar')
 			swim()
+
+func glow():
+	material.set_shader_param('line_color', Color(1.74,1,1.93,.27))
