@@ -270,7 +270,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 23, 622 )
+position = Vector2( 377, -274 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -345,6 +345,9 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
+max_fish_count = 5
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
 specifics = [ 5 ]
@@ -364,9 +367,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 2
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
 position = Vector2( -40.6424, 114.602 )
@@ -385,9 +392,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 2
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
 position = Vector2( -15.3339, 114.773 )
@@ -415,8 +426,8 @@ light_mask = 33
 position = Vector2( -331, 456 )
 texture = ExtResource( 33 )
 mode = 3
-range_z_min = 1
-range_z_max = 1
+range_z_min = 2
+range_z_max = 2
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 

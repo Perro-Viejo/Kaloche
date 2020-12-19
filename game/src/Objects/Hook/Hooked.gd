@@ -139,7 +139,7 @@ func _catch_fish() -> void:
 	fish.jump(Vector2(35 * pull_dir, position.y))
 	fish.material.set_shader_param('line_color', Color(1.74,1,1.93,0))
 	if _fish_is_sacred:
-		fish.material.set_shader_param('line_color', Color(1.74,1,1.93,1))
+		fish.material.set_shader_param('line_color', Color(1.74,1,1.93,.76))
 		fish.modulate = Color('FFE478')
 		fish.add_to_group('Sacred')
 
