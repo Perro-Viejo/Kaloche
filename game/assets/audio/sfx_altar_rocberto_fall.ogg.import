@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_altar_rocberto_fall.ogg-4e28ecd14dbeb55624fef51fac277c11.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_altar_rocberto_fall.ogg"
+dest_files=[ "res://.import/sfx_altar_rocberto_fall.ogg-4e28ecd14dbeb55624fef51fac277c11.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

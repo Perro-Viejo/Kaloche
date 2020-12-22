@@ -83,14 +83,20 @@ func eat_sacred():
 				rocberto.global_position, global_position + Vector2(0, -200), 0.2,
 				Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 			tween.start()
+			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Reject', rocberto.global_position)
 			$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
-			yield(get_tree().create_timer(1.3), 'timeout')
+			yield(get_tree().create_timer(0.7), 'timeout')
+			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Fall', reject_position.global_position)
+			yield(get_tree().create_timer(0.4), 'timeout')
 			rocberto.global_position.x = reject_position.global_position.x
 			tween.interpolate_property(
 				rocberto, 'global_position',
 				rocberto.global_position, reject_position.global_position, 0.2,
-				Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
+				Tween.TRANS_EXPO, Tween.TRANS_LINEAR)
 			tween.start()
+			yield(tween, 'tween_completed')
+			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Impact', reject_position.global_position)
+			
 		_:
 			print('no sé que es pero lo toco jesusito')
 			_destroy_pickable()
