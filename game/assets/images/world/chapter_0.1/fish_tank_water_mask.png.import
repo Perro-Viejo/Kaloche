@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tank_water_mask.png-d98932f9681e266bd4cb76f32dbe2190.stex"
+path="res://.import/fish_tank_water_mask.png-27811f732be10466bc35d6b2e3851b10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/chapter_0.1/tank_water_mask.png"
-dest_files=[ "res://.import/tank_water_mask.png-d98932f9681e266bd4cb76f32dbe2190.stex" ]
+source_file="res://assets/images/world/chapter_0.1/fish_tank_water_mask.png"
+dest_files=[ "res://.import/fish_tank_water_mask.png-27811f732be10466bc35d6b2e3851b10.stex" ]
 
 [params]
 

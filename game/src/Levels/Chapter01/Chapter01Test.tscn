@@ -24,7 +24,7 @@
 [ext_resource path="res://src/Shaders/clouds_noise2.tres" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/lake_mask.png" type="Texture" id=23]
 [ext_resource path="res://src/Objects/FishTank.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/images/world/chapter_0.1/tank_water_mask.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_water_mask.png" type="Texture" id=25]
 [ext_resource path="res://src/Objects/Hole.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/images/world/chapter_0.1/map.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_bushes.png" type="Texture" id=28]
@@ -270,7 +270,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 377, -274 )
+position = Vector2( -281, 510 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -359,7 +359,6 @@ scale = Vector2( 0.9, 0.9 )
 polygon = PoolVector2Array( 8, -18.5, 33, -6.5, 34, -4.5, 34, 1.5, 27, 10.5, 9, 18.5, -0.26178, 18.1658, -20, 12.5, -33.2464, 5.07333, -34, -1.5, -19.219, -14.2652, -5.84746, -18.7224 )
 
 [node name="TankSurface_L" type="Area2D" parent="Surfaces"]
-visible = false
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -368,7 +367,7 @@ script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
 has_fishes = true
-max_fish_count = 2
+max_fish_count = 10
 spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
 spawn_specific = false
@@ -378,7 +377,7 @@ has_sacred = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
 position = Vector2( -40.6424, 114.602 )
 z_index = 1
-polygon = PoolVector2Array( -0.139297, -26.1833, 25.0876, -26.1833, 25.3545, 25.7233, 0.159386, 25.3896 )
+polygon = PoolVector2Array( -91.3576, -66.602, 5.6424, -66.602, 5.6424, 1.398, 23.6424, 1.398, 23.6424, 69.398, -90.3576, 69.398 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -403,7 +402,7 @@ has_sacred = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
 position = Vector2( -15.3339, 114.773 )
 z_index = 1
-polygon = PoolVector2Array( -0.139297, -26.1833, 25.0876, -26.1833, 25.4755, 25.3816, -0.200844, 25.2413 )
+polygon = PoolVector2Array( 1.3339, 1.227, 18.3339, 1.227, 18.3339, -66.773, 114.334, -66.773, 114.334, 69.227, 1.3339, 69.227 )
 
 [node name="Masks" type="Node2D" parent="."]
 
@@ -416,7 +415,7 @@ range_z_max = 1
 range_item_cull_mask = 1024
 
 [node name="TankMask" type="Light2D" parent="Masks"]
-position = Vector2( -16, 114.5 )
+position = Vector2( -16, 116 )
 texture = ExtResource( 25 )
 mode = 2
 range_item_cull_mask = 1024
