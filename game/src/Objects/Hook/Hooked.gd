@@ -35,6 +35,7 @@ func _process(delta) -> void:
 		_fight_cooldown = 0
 		var ran_num = randf()
 		if ran_num <= 0.4:
+			AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', owner.global_position)
 			owner.surface_ref._fight_splash(owner.global_position + _fish_pos)
 	# Esto es pa' que el jugador no pueda jalar la caña como loco
 	_oportunity_cooldown -= 1
