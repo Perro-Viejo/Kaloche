@@ -230,13 +230,24 @@ position = Vector2( -50, 658 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
+is_good = true
+can_burn = true
 carbs = 200
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -297.478, -298 )
 is_good = false
+can_burn = true
 carbs = 5
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" groups=[
 "Sacred",
@@ -244,8 +255,13 @@ carbs = 5
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
+can_burn = true
 carbs = 5
 img = ExtResource( 1 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
 position = Vector2( -344, -312 )
@@ -261,9 +277,14 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
+is_good = true
+can_burn = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
@@ -353,6 +374,9 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
+max_fish_count = 5
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
 specifics = [ 5 ]
@@ -372,9 +396,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 10
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
 position = Vector2( -40.6424, 114.602 )
@@ -393,9 +421,13 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
+has_fishes = true
 max_fish_count = 2
+spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
+spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
+has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
 position = Vector2( -15.3339, 114.773 )
