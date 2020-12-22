@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -35,6 +35,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/rocberto_mask.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/characters/rocberto_shadow.png" type="Texture" id=34]
 [ext_resource path="res://src/Shaders/outline2D_outer.shader" type="Shader" id=35]
+[ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_fg.png" type="Texture" id=36]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -270,7 +271,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( -281, 510 )
+position = Vector2( -14, 10 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -326,6 +327,13 @@ motion_offset = Vector2( -100, 80 )
 position = Vector2( -378, 492 )
 texture = ExtResource( 30 )
 
+[node name="FishTank" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_offset = Vector2( -35, 20 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxForeground/FishTank"]
+position = Vector2( -20, 268 )
+texture = ExtResource( 36 )
+
 [node name="Surfaces" type="Node2D" parent="."]
 
 [node name="EntranceFloor" type="Area2D" parent="Surfaces"]
@@ -345,9 +353,6 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
-has_fishes = true
-max_fish_count = 5
-spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
 specifics = [ 5 ]
@@ -359,6 +364,7 @@ scale = Vector2( 0.9, 0.9 )
 polygon = PoolVector2Array( 8, -18.5, 33, -6.5, 34, -4.5, 34, 1.5, 27, 10.5, 9, 18.5, -0.26178, 18.1658, -20, 12.5, -33.2464, 5.07333, -34, -1.5, -19.219, -14.2652, -5.84746, -18.7224 )
 
 [node name="TankSurface_L" type="Area2D" parent="Surfaces"]
+visible = false
 monitoring = false
 monitorable = false
 collision_layer = 4
@@ -366,13 +372,9 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
-has_fishes = true
 max_fish_count = 10
-spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
-spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
-has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
 position = Vector2( -40.6424, 114.602 )
@@ -391,13 +393,9 @@ collision_mask = 3
 script = ExtResource( 20 )
 fs_name = "Water"
 type = 1
-has_fishes = true
 max_fish_count = 2
-spawn_cooldown = 5
 bite_freq = Vector2( 3, 5 )
-spawn_specific = false
 specifics = [ 0, 1, 2, 3, 4, 5 ]
-has_sacred = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
 position = Vector2( -15.3339, 114.773 )

@@ -333,7 +333,7 @@ colors = PoolColorArray( 0.239216, 0.431373, 0.439216, 1, 0.364706, 0.870588, 0.
 extents = Vector2( 2.20734, 2.00338 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 1, 0.5 )
+extents = Vector2( 1.5, 0.5 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Actor",
@@ -374,7 +374,7 @@ anims/run-rod = SubResource( 8 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 416, 0, 32, 32 )
 
 [node name="Shadow" type="Sprite" parent="Sprite"]
 show_behind_parent = true
@@ -496,8 +496,7 @@ shape = SubResource( 13 )
 wait_time = 0.4
 
 [node name="FootArea" type="Area2D" parent="."]
-visible = false
-collision_mask = 16
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )

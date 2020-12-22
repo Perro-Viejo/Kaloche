@@ -8,12 +8,12 @@ export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 func _ready() -> void:
 	connect('body_entered', self, '_assign_sfx')
 	connect('body_exited', self, '_stop_sfx')
+	
+	add_to_group('Surface')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _assign_sfx(body: Node) -> void:
-	if body.is_in_group('Actor'):
-		body.surface = fs_name
+	pass
 
 func _stop_sfx(body: Node) -> void:
-	if body.is_in_group('Actor'):
-		body.surface = ''
+	pass

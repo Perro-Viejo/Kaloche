@@ -46,8 +46,8 @@ func _ready() -> void:
 	fishing_spot._fish_splash = $FishSplash
 	hook.hide()
 	# Escuchar eventos de los hijos de satán
-	$FootArea.connect('body_entered', self, 'toggle_on_ground', [ true ])
-	$FootArea.connect('body_exited', self, 'toggle_on_ground')
+	$FootArea.connect('area_entered', self, 'toggle_on_ground', [ true ])
+	$FootArea.connect('area_exited', self, 'toggle_on_ground')
 
 	# Conectarse a eventos del universo
 	DialogEvent.connect('line_triggered', self, '_should_speak')
@@ -94,26 +94,13 @@ func change_zoom(out: bool = true) -> void:
 
 	yield($Tween, 'tween_completed')
 
+
 func toggle_on_ground(body: Node2D, on: = false) -> void:
-	if not body.is_in_group('Floor'): return
-
-	on_ground = on
-
-	if on_ground:
-
-		var tile_map: TileMap = body as TileMap
-		var tile_set: FloorTileset = tile_map.tile_set
-		var tile_pos: Vector2 = (foot_area.global_position / 8).floor()
-		# Gono-style
-		
-		tile_pos.x += dir.x
-
-		if dir.y > 0:
-			tile_pos.y += 1
-			
-		fs_id = tile_set.get_floor_sfx(tile_map.get_cellv(tile_pos))
-	else:
-		fs_id = 'Grass'
+	if body.is_in_group('Surface'):
+		if on:
+			self.surface = body.fs_name
+		else:
+			self.surface = ''
 
 
 func has_equiped() -> bool:
