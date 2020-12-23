@@ -58,7 +58,6 @@ func swim(_obj: Object = null, _key: NodePath = '') -> void:
 			)
 			_tween.start()
 		else:
-			print('¡Ay! por allá no puedo nadar')
 			swim()
 
 func glow():

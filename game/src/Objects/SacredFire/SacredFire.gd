@@ -48,7 +48,6 @@ func _on_area_exited(other) -> void:
 		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 
 func _on_timer_timeout():
-	print(lifepoints)
 	if can_die:
 		if lifepoints > 0:
 			lifepoints -= 1

@@ -163,7 +163,8 @@ func _get_next_position():
 		_fish_pos = Vector2(rand_range(-5, 5), rand_range(-5, 5))
 	else:
 		_fish_pos = Vector2(rand_range(-1.5, 1.5), rand_range(-1.5, 1.5))
-	if owner.surface_ref.is_point_inside_polygon(owner.global_position + _fish_pos):
+	var hook_pos := (owner.surface_ref as FishingSurface).to_local(owner.global_position)
+	if owner.surface_ref.is_point_inside_polygon(hook_pos + _fish_pos):
 		_next_position = owner.position + _fish_pos
 	else:
 		_get_next_position()

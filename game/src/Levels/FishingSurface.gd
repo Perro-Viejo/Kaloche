@@ -1,22 +1,11 @@
 tool
 class_name FishingSurface
-extends "res://src/Levels/Surface.gd"
+extends 'res://src/Levels/Surface.gd'
 
-"""
-El orden de las variables:
-signals
-enums
-constants
-exported variables
-public variables
-private variables
-onready variables
-"""
-
-const HOOK_SPLASH = preload("res://src/Particles/HookSplash.tscn")
-const FISH_SPLASH = preload("res://src/Particles/FishSplash.tscn")
-const FIGHT_SPLASH = preload("res://src/Particles/FightSplash.tscn")
-const FISH_SHADOW = preload("res://src/Particles/FishShadow.tscn")
+const HOOK_SPLASH = preload('res://src/Particles/HookSplash.tscn')
+const FISH_SPLASH = preload('res://src/Particles/FishSplash.tscn')
+const FIGHT_SPLASH = preload('res://src/Particles/FightSplash.tscn')
+const FISH_SHADOW = preload('res://src/Particles/FishShadow.tscn')
 
 export var has_fishes := true
 export var max_fish_count := 5
@@ -45,8 +34,6 @@ var _fish_examine_wait_range := Vector2(3.0, 5.0)
 var _fish_examine_debug_id := -1
 var _lake_fishes_debug := -1
 var _fish_shadow: Node2D = null
-var _polygons_2d := []
-var _vertices := []
 var _can_receive := true
 
 onready var _shadows := Node2D.new() # Para agrupar los nodos de las sombras
@@ -55,19 +42,7 @@ onready var _tween := Tween.new()
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	_shadows.name = 'Shadows'
-	
-	for chld in get_children():
-		if chld is CollisionPolygon2D:
-			_polygons_2d.append(chld)
-	
-			# La posición del CollisionPolygon2D es su centro, así que las
-			# coordenadas de sus vértices deben ser relativas al mismo. Por
-			# eso hay que manipular el arreglo de Vector2 para que cada vértice
-			# se "traslade" en relación a ese centro.
-			var translated_vertices: PoolVector2Array = PoolVector2Array()
-			for vtx in chld.polygon:
-				translated_vertices.append(vtx + chld.position)
-			_vertices.append(translated_vertices)
+	type = Data.SurfaceType.WATER
 	
 	_timer = Timer.new()
 	_timer.wait_time = spawn_cooldown
@@ -172,12 +147,6 @@ func get_fish_examine_wait() -> float:
 	return stepify(_fish_examine_wait, 1.0) + 1.0
 
 
-func is_point_inside_polygon(point: Vector2) -> bool:
-	for v in _vertices:
-		if Geometry.is_point_in_polygon(point, v):
-			return true
-	return false
-
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _spawn_fishes() -> void:
 	for c in range(max_fish_count):
@@ -194,12 +163,12 @@ func _spawn_fishes() -> void:
 		# vértice y el centro del polígono.
 		randomize()
 
-		var target_polygon: CollisionPolygon2D = _polygons_2d[0]
 		var vertex: Vector2 = _vertices[0][randi() % _vertices[0].size()]
 		# Gracias >>>
 		# https://math.stackexchange.com/questions/1965497/how-can-i-find-a-random-position-between-two-points
 		var u := rand_range(0.0, 0.4)
-		var spawn_point: Vector2 = (1 - u) * target_polygon.position + (u * vertex)
+		var polygon_center: Vector2 = Vector2.ZERO
+		var spawn_point: Vector2 = (1 - u) * polygon_center + (u * vertex)
 		var shadow = FISH_SHADOW.instance()
 
 		shadow.position = spawn_point
@@ -217,7 +186,8 @@ func _spawn_fishes() -> void:
 	_show_shadows()
 
 	# DEBUG
-	_lake_fishes_debug = DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
+	if has_sacred:
+		_lake_fishes_debug = DebugOverlay.add_monitor('\npeces', self, '', 'get_fishes_list')
 
 func _on_fish_bit() -> void:
 	_fishes.remove(_captured_fish_idx)
@@ -272,7 +242,7 @@ func _got_hooked() -> bool:
 				rot = 180
 				vec = Vector2.LEFT
 			_fish_shadow = FISH_SHADOW.instance()
-			_fish_shadow.position = _hook_ref.global_position + vec * 4
+			_fish_shadow.position = to_local(_hook_ref.global_position) + vec * 4
 			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
 			_fish_shadow.is_examining = true

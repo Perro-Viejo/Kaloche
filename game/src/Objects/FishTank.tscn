@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_holes.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Objects/TempleDoorButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_columns.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_arch.png" type="Texture" id=7]
+[ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 8.0
@@ -191,3 +192,50 @@ polygon = PoolVector2Array( -15, -85, -15, -72, 16, -72, 16, -85 )
 [node name="BottomColumns" type="CollisionPolygon2D" parent="ZIndexChanger"]
 position = Vector2( 0, 165 )
 polygon = PoolVector2Array( -127, -85, -127, -74, 128, -74, 128, -85 )
+
+[node name="FishingSurfaces" type="Node2D" parent="."]
+
+[node name="FishingSurfaceL1" type="Area2D" parent="FishingSurfaces"]
+position = Vector2( -84, -9 )
+collision_layer = 4
+collision_mask = 2147483651
+script = ExtResource( 8 )
+type = 1
+bite_freq = Vector2( 3, 3 )
+has_sacred = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FishingSurfaces/FishingSurfaceL1"]
+polygon = PoolVector2Array( -27, -8, 5.00001, -30, 35, -23, 48, 7, -8.99999, 35 )
+
+[node name="FishingSurfaceL2" type="Area2D" parent="FishingSurfaces"]
+position = Vector2( -51, 36 )
+collision_layer = 4
+collision_mask = 2147483651
+script = ExtResource( 8 )
+type = 1
+bite_freq = Vector2( 3, 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FishingSurfaces/FishingSurfaceL2"]
+polygon = PoolVector2Array( -45, -2, -1.00001, -23, 26, -24, 39, -7, 35, 17, -5.00001, 24, -47, 18 )
+
+[node name="FishingSurfaceR1" type="Area2D" parent="FishingSurfaces"]
+position = Vector2( 49, 23 )
+collision_layer = 4
+collision_mask = 2147483651
+script = ExtResource( 8 )
+type = 1
+bite_freq = Vector2( 3, 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FishingSurfaces/FishingSurfaceR1"]
+polygon = PoolVector2Array( -33, 1, -13, -28, 24, -18, 25, 12, -7, 29 )
+
+[node name="FishingSurfaceR2" type="Area2D" parent="FishingSurfaces"]
+position = Vector2( 79, -17.65 )
+collision_layer = 4
+collision_mask = 2147483651
+script = ExtResource( 8 )
+type = 1
+bite_freq = Vector2( 3, 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FishingSurfaces/FishingSurfaceR2"]
+polygon = PoolVector2Array( -56, -6.35, -52, -26.35, -19, -26.35, 31, -18.35, 24, 20.65, -33, 8.65 )

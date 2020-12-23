@@ -184,6 +184,22 @@ texture = ExtResource( 4 )
 position = Vector2( 460, -278 )
 texture = ExtResource( 7 )
 
+[node name="FishingSurface" type="Area2D" parent="GroupGround/Lake"]
+position = Vector2( -1, -2.9996 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 20 )
+fs_name = "Water"
+type = 1
+bite_freq = Vector2( 3, 5 )
+spawn_specific = true
+specifics = [ 5 ]
+has_sacred = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroupGround/Lake/FishingSurface"]
+scale = Vector2( 0.9, 0.9 )
+polygon = PoolVector2Array( 8, -18.5, 33, -6.5, 34, -4.5, 34, 1.5, 27, 10.5, 9, 18.5, -0.26178, 18.1658, -20, 12.5, -33.2464, 5.07333, -34, -1.5, -19.219, -14.2652, -5.84746, -18.7224 )
+
 [node name="Palms" type="Sprite" parent="GroupGround"]
 texture = ExtResource( 29 )
 
@@ -222,8 +238,19 @@ position = Vector2( 29, -912.2 )
 pickable_needed = "Rocberto"
 
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
-position = Vector2( -16, 118.5 )
-fishing_surfaces = [ NodePath("../../Surfaces/TankSurface_L"), NodePath("../../Surfaces/TankSurface_R") ]
+position = Vector2( -16, 120 )
+
+[node name="FishingSurfaceL1" parent="GroupObjects/FishTank/FishingSurfaces" index="0"]
+specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
+
+[node name="FishingSurfaceL2" parent="GroupObjects/FishTank/FishingSurfaces" index="1"]
+specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
+
+[node name="FishingSurfaceR1" parent="GroupObjects/FishTank/FishingSurfaces" index="2"]
+specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
+
+[node name="FishingSurfaceR2" parent="GroupObjects/FishTank/FishingSurfaces" index="3"]
+specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
 [node name="Hole" parent="GroupObjects" instance=ExtResource( 26 )]
 position = Vector2( -50, 658 )
@@ -292,7 +319,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( -14, 10 )
+position = Vector2( 394, -281 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -368,72 +395,6 @@ fs_name = "Rock"
 position = Vector2( 3, -401 )
 polygon = PoolVector2Array( 13, -96, 20, -96, 20, -89, 133, -89, 133, -64, 77, -64, 77, 72, 21, 72, 21, 120, -28, 120, -28, 72, -84, 72, -84, -64, -140, -64, -140, -89, -28, -89, -28, -96, -20, -96, -20, -117, 13, -117 )
 
-[node name="Lagunita" type="Area2D" parent="Surfaces"]
-collision_layer = 4
-collision_mask = 3
-script = ExtResource( 20 )
-fs_name = "Water"
-type = 1
-has_fishes = true
-max_fish_count = 5
-spawn_cooldown = 5
-bite_freq = Vector2( 3, 5 )
-spawn_specific = true
-specifics = [ 5 ]
-has_sacred = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Lagunita"]
-position = Vector2( 458.486, -281.099 )
-scale = Vector2( 0.9, 0.9 )
-polygon = PoolVector2Array( 8, -18.5, 33, -6.5, 34, -4.5, 34, 1.5, 27, 10.5, 9, 18.5, -0.26178, 18.1658, -20, 12.5, -33.2464, 5.07333, -34, -1.5, -19.219, -14.2652, -5.84746, -18.7224 )
-
-[node name="TankSurface_L" type="Area2D" parent="Surfaces"]
-visible = false
-monitoring = false
-monitorable = false
-collision_layer = 4
-collision_mask = 3
-script = ExtResource( 20 )
-fs_name = "Water"
-type = 1
-has_fishes = true
-max_fish_count = 10
-spawn_cooldown = 5
-bite_freq = Vector2( 3, 5 )
-spawn_specific = false
-specifics = [ 0, 1, 2, 3, 4, 5 ]
-has_sacred = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_L"]
-position = Vector2( -40.6424, 114.602 )
-z_index = 1
-polygon = PoolVector2Array( -91.3576, -66.602, 5.6424, -66.602, 5.6424, 1.398, 23.6424, 1.398, 23.6424, 69.398, -90.3576, 69.398 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="TankSurface_R" type="Area2D" parent="Surfaces"]
-visible = false
-monitoring = false
-monitorable = false
-collision_layer = 4
-collision_mask = 3
-script = ExtResource( 20 )
-fs_name = "Water"
-type = 1
-has_fishes = true
-max_fish_count = 2
-spawn_cooldown = 5
-bite_freq = Vector2( 3, 5 )
-spawn_specific = false
-specifics = [ 0, 1, 2, 3, 4, 5 ]
-has_sacred = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankSurface_R"]
-position = Vector2( -15.3339, 114.773 )
-z_index = 1
-polygon = PoolVector2Array( 1.3339, 1.227, 18.3339, 1.227, 18.3339, -66.773, 114.334, -66.773, 114.334, 69.227, 1.3339, 69.227 )
-
 [node name="Masks" type="Node2D" parent="."]
 
 [node name="LakeMask" type="Light2D" parent="Masks"]
@@ -463,5 +424,7 @@ range_z_max = 2
 [editable path="AUDIO_Cap_01"]
 
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
+
+[editable path="GroupObjects/FishTank"]
 
 [editable path="GroupObjects/Altar"]

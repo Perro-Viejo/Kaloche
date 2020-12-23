@@ -1,15 +1,18 @@
 extends Node2D
 
-export var fishing_surfaces: Array = []
-
-var _animation
 var _is_filling = false
 
 onready var _z_index_changer: Area2D = $ZIndexChanger
+onready var _fishing_surfaces: Node2D = $FishingSurfaces
+onready var _animation: AnimationPlayer = $AnimationPlayer
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
-	_animation = $AnimationPlayer
+	for s in _fishing_surfaces.get_children():
+		var surface := s as FishingSurface
+		surface.hide()
+		surface.monitoring = false
+		surface.monitorable = false
 	
 	# Conectarse a señales de los hijastros
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
@@ -41,12 +44,11 @@ func activate_tank():
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
 	$TempleDoorButton.is_toggle = true
-	for s in fishing_surfaces:
-		var surface = get_node(s)
+	for s in _fishing_surfaces.get_children():
+		var surface := s as FishingSurface
 		surface.show()
 		surface.monitoring = true
 		surface.monitorable = true
-		surface._spawn_fishes()
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
