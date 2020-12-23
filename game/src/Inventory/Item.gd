@@ -1,14 +1,13 @@
-extends Node
 class_name Item
+extends Resource
 
-const ITEM_TYPE = "Item"
+const ITEM_TYPE = 'Item'
 
-export(int) var size = 0
-export(String) var item_name = ""
+export var name_code := ''
 #Averiguar sobre grupos y esos visajes
-export(String) var category = "default"
-
-export(String) var description = ""
+export var category := 'default'
+export var description_code := ''
+export var texture: Texture
 
 var container = null
 
@@ -23,8 +22,3 @@ func activate() -> void:
 
 func desactivate() -> void:
 	pass
-
-func _ready():
-	var sprite = Sprite.new()
-	sprite.texture = load("res://assets/images/world/%s.png")
-	$Node.add_child(sprite)

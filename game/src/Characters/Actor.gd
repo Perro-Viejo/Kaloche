@@ -5,11 +5,11 @@ signal died()
 export(Color) var dialog_color
 export(int) var health = 0
 export(bool) var immortal = false
+export(Resource) var inventory
 
 var _in_dialog := false
 export(int) var max_health = 0
 
-onready var inventory = $Inventory
 onready var state_machine = $StateMachine
 
 # Called when the node enters the scene tree for the first time.
