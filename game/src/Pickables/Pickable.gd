@@ -2,23 +2,22 @@ tool
 class_name Pickable
 extends Area2D
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-export(bool) var is_good = true
-export(bool) var can_burn = true
-export(int) var carbs = 2
-export(Texture) var img setget set_sprite_texture
-export(String) var on_free = ''
-export(String) var tr_code = ''
-export(String) var character = ''
-export(String) var dialog = ''
+export var is_good := true
+export var can_burn := true
+export var carbs := 2
+export var img: Texture setget set_sprite_texture
+export var on_free := ''
+export var tr_code := ''
+export var character := ''
+export var dialog := ''
 
-var being_grabbed: bool = false setget set_being_grabbed
+var being_grabbed := false setget set_being_grabbed
 
 var _hides: Area2D
 var _respawn_position: Vector2
 var _original_position: Vector2
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
-#	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
 	if is_in_group('Sacred'):
 		_original_position = global_position
 	connect('area_entered', self, '_check_collision', [ true ])
@@ -51,6 +50,11 @@ func set_being_grabbed(new_val: bool) -> void:
 	# área de comilona de elfuegoquequiereconsumiralmundo, detectará "la caída"
 	# del objeto y se lo comerá
 	monitorable = !new_val
+	
+	if being_grabbed:
+		$Shadow.hide()
+	else:
+		$Shadow.show()
 
 	hide_interaction()
 
@@ -101,17 +105,17 @@ func _hidden_in_tree(dup: Pickable) -> void:
 
 func hide_interaction() -> void:
 	HudEvent.emit_signal('name_bubble_requested')
-#	$Bubble.hide()
 	$Outline.hide()
 
 
 func show_interaction() -> void:
+	if being_grabbed: return
+	
 	HudEvent.emit_signal(
 		'name_bubble_requested',
 		self,
 		tr('P_' + (tr_code if tr_code else name).to_upper())
 	)
-#	$Bubble.show()
 	$Outline.show()
 
 func get_class() -> String:

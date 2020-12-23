@@ -155,6 +155,7 @@ func _disable_camera(is_current: bool) -> void:
 func _set_node_to_interact(new_node: Pickable) -> void:
 	if node_to_interact:
 		node_to_interact.hide_interaction()
+
 	if new_node and new_node.is_in_group('Pickable'):
 		new_node.show_interaction()
 
