@@ -51,10 +51,11 @@ func set_being_grabbed(new_val: bool) -> void:
 	# del objeto y se lo comerá
 	monitorable = !new_val
 	
-	if being_grabbed:
-		$Shadow.hide()
-	else:
-		$Shadow.show()
+	if find_node('Shadow'):
+		if being_grabbed:
+			$Shadow.hide()
+		else:
+			$Shadow.show()
 
 	hide_interaction()
 

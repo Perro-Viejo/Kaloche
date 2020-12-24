@@ -110,8 +110,26 @@ func has_equiped() -> bool:
 func play_animation(animation_name := '') -> void:
 	$AnimationPlayer.play(animation_name)
 
+
 func stop_animation() -> void:
 	$AnimationPlayer.stop()
+
+
+# Agrega un Item al inventario cuando éste está vinculado a un Pickup
+func pickup_item() -> void:
+	(inventory as Inventory).add_to_inventory(picked_item.item)
+	yield(get_tree().create_timer(0.1), 'timeout')
+	is_paused = true
+	picked_item.hide_interaction()
+	# TODO: Hacer retroalimentación de agarrada de Pickup para inventario
+	speak('Eeeeeeeeeeeeeeeeeeee')
+	yield(get_tree().create_timer(2.0), 'timeout')
+	speak('Ora tengo: %s' % tr(picked_item.item.name_code))
+	grabbing = false
+	picked_item.queue_free()
+	picked_item = null
+	is_paused = false
+
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:

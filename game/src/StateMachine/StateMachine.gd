@@ -55,7 +55,7 @@ func transition_to_state(target_state: State, msg: Dictionary = {}) -> void:
 	_previous_state = state.name	
 	_current_state_name = target_state.name
 
-	target_state.enter()
+	target_state.enter(msg)
 
 
 func set_state(value: State) -> void:

@@ -25,12 +25,8 @@ func _ready():
 	$AmbZone.connect('area_exited', self, 'position_bg', [false])
 	
 	#TODO Determinar distancia de el falloff zone con respecto al AmbZone
-	
-	print (
-		$MaxDistance/CollisionShape2D.shape.extents,
-		$AmbZone/CollisionShape2D.shape.extents
-	)
 
+	
 func _process(delta):
 	if follow_player:
 #		if listener.global_position.x < $AmbZone/CollisionShape2D.shape.extents.x:
