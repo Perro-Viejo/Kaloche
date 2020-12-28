@@ -1,4 +1,3 @@
-tool
 class_name FishingSurface
 extends 'res://src/Levels/Surface.gd'
 
