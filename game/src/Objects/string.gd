@@ -8,13 +8,13 @@ export (float) var friction = 0.9
 export (bool) var start_pin = true
 export (bool) var end_pin = true
 
-var _hook_ref: Hook = null
+var hook_ref: Hook = null
 var pos: PoolVector2Array
 var pos_ex: PoolVector2Array
 var count: int
 
 func _ready():
-	_hook_ref = get_parent()
+	hook_ref = get_parent()
 	count = get_count(length)
 	resize_arrays()
 	init_position()
@@ -34,8 +34,8 @@ func init_position():
 	position = Vector2.ZERO
 
 func _process(delta):
-	pos[0] = _hook_ref.rod_tip.position - _hook_ref.position
-	pos_ex[0] = _hook_ref.rod_tip.position - _hook_ref.position
+	pos[0] = hook_ref.rod_tip.position - hook_ref.position
+	pos_ex[0] = hook_ref.rod_tip.position - hook_ref.position
 	pos[count-1] = Vector2.ZERO
 	pos_ex[count-1] = Vector2.ZERO
 	update_points(delta)

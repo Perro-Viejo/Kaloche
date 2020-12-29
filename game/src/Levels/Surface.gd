@@ -4,6 +4,8 @@ extends Area2D
 export var fs_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 
+var hook_ref: Hook = null
+
 var _vertices := []
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒

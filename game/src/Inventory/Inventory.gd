@@ -3,6 +3,7 @@ extends Resource
 
 # Si es -1 entonces el espacio del inventario es infinito
 export var max_size := -1
+export (Array, Resource) var default_items := []
 
 var _inventory := {}
 var _current_size := 0
@@ -38,6 +39,10 @@ func on_item_removed(item) -> void:
 func has_item(item_name) -> bool:
 	return item_name in _inventory
 
+func set_default_items() -> void:
+	if not default_items == []:
+		for i in default_items:
+			_add_item_to_inventory(i)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _add_item_to_inventory(item) -> bool:

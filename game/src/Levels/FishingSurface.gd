@@ -23,7 +23,6 @@ var _captured_fish_idx := -1
 var _bait := ''
 var _counter := 0.0
 var _hook_check_freq := 0.0
-var _hook_ref: Hook = null
 var _hooked_monitor_id := -1
 var _fish_examininig := false
 var _selected_fish := {}
@@ -42,6 +41,7 @@ onready var _tween := Tween.new()
 func _ready():
 	_shadows.name = 'Shadows'
 	type = Data.SurfaceType.WATER
+	add_to_group('FishingSurface')
 	
 	_timer = Timer.new()
 	_timer.wait_time = spawn_cooldown
@@ -74,12 +74,12 @@ func _process(delta):
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func hook_entered(hook: Hook) -> void:
-	_hook_ref = hook
-	_hook_ref.connect('sent_back', self, 'hook_exited')
-	if not _hook_ref.is_connected('fish_fled', self, '_show_shadows'):
-		_hook_ref.connect('fish_fled', self, '_show_shadows')
+	hook_ref = hook
+	hook_ref.connect('sent_back', self, 'hook_exited')
+	if not hook_ref.is_connected('fish_fled', self, '_show_shadows'):
+		hook_ref.connect('fish_fled', self, '_show_shadows')
 	
-	_hook_ref.surface_ref = self
+	hook_ref.surface_ref = self
 	
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
@@ -111,9 +111,9 @@ func hook_entered(hook: Hook) -> void:
 
 func hook_exited(hook: Hook = null) -> void:
 	_reset_bait()
-	_hook_ref.surface_ref = null
-	_hook_ref.disconnect('fish_fled', self, '_show_shadows')
-	_hook_ref = null
+	hook_ref.surface_ref = null
+	hook_ref.disconnect('fish_fled', self, '_show_shadows')
+	hook_ref = null
 	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
 	_shadows.get_child(_selected_fish_idx).modulate.a = 1.0
 	
@@ -127,7 +127,7 @@ func hook_exited(hook: Hook = null) -> void:
 
 #TODO: conectar esta vuelta :(
 #func _pull_sfx():
-#	AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', _hook_ref.global_position)
+#	AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', hook_ref.global_position)
 
 
 func get_hooked_check_time() -> String:
@@ -234,14 +234,14 @@ func _got_hooked() -> bool:
 			# ubicar y reproducir animación de la sombra
 			var vec
 			var rot
-			if _hook_ref.dflt_pos.x < 0:
+			if hook_ref.dflt_pos.x < 0:
 				vec = Vector2.RIGHT
 				rot = 0
 			else:
 				rot = 180
 				vec = Vector2.LEFT
 			_fish_shadow = FISH_SHADOW.instance()
-			_fish_shadow.position = to_local(_hook_ref.global_position) + vec * 4
+			_fish_shadow.position = to_local(hook_ref.global_position) + vec * 4
 			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
 			_fish_shadow.is_examining = true
@@ -256,14 +256,14 @@ func _got_hooked() -> bool:
 			# 2. Determinar si el pez seleccionado muerde o no la carnada
 			if randf() <= _selected_fish.attracted_to[_bait]:
 				_captured_fish_idx = _selected_fish_idx
-				_hook_ref.hook_success(_fishes[_captured_fish_idx])
+				hook_ref.hook_success(_fishes[_captured_fish_idx])
 			else:
 				# TODO: Inhabilitar el pez por un tiempo para que no vuelva a intentar
 				#		morder la carnada
 				_counter = 0.0
 				_fish_examininig = false
 				_hook_check_freq = rand_range(bite_freq.x, bite_freq.y)
-				_hook_ref.hook_fail()
+				hook_ref.hook_fail()
 				_show_shadows()
 
 	return _captured_fish_idx > -1
@@ -304,7 +304,7 @@ func _show_shadows() -> void:
 
 func _reset_bait() -> void:
 	_bait = ''
-	_hook_ref.disconnect('sent_back', self, 'hook_exited')
+	hook_ref.disconnect('sent_back', self, 'hook_exited')
 
 func _on_area_entered(other) -> void:
 	if _can_receive and other is Pickable:

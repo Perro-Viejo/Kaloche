@@ -36,7 +36,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_check_surface_counter = _check_surface_wait
 	_area_ref.connect('area_entered', self, '_on_area_entered')
 	_area_ref.connect('area_exited', self, '_on_area_exited')
-	_area_ref.monitoring = true
+	_area_ref.set_deferred('monitoring', true)
 	_surface_detected = false
 	_timer.start()
 
@@ -50,7 +50,7 @@ func exit() -> void:
 	_surface_detected = false
 	_area_ref.disconnect('area_entered', self, '_on_area_entered')
 	_area_ref.disconnect('area_exited', self, '_on_area_exited')
-	_area_ref.monitoring = false
+	_area_ref.set_deferred('monitoring', false)
 	.exit()
 
 func pull_done(rod_strength: float) -> Dictionary:
@@ -59,14 +59,16 @@ func pull_done(rod_strength: float) -> Dictionary:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_area_entered(body: Area2D) -> void:
+	
 	_surface_detected = true
 	var surface: Surface = body
 	if surface.type == Data.SurfaceType.WATER:
 		owner.play_animation('waveB', 3.0)
 		owner.emit_signal('dropped')
-		body.hook_entered(owner)
+		if body.is_in_group('FishingSurface'):
+			body.hook_entered(owner)
 	else:
-		body._hook_ref = null
+		body.hook_ref = null
 		_sent_back()
 
 func _on_area_exited(body: Area2D) -> void:

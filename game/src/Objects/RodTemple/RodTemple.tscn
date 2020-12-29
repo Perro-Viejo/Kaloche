@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Inventory/Rod.tres" type="Resource" id=1]
+[ext_resource path="res://assets/images/world/rod.png" type="Texture" id=2]
+[ext_resource path="res://src/Pickables/Pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple.png" type="Texture" id=4]
+[ext_resource path="res://src/Objects/RodTemple/RodTemple.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Emerge"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Temple:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 24 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Temple/Rod:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Temple/Rod:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Temple/Rod:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="RodTemple" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Temple" type="Sprite" parent="."]
+position = Vector2( 0, 24 )
+texture = ExtResource( 4 )
+
+[node name="Rod" parent="Temple" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -0.228394, -4.5713 )
+z_index = 1
+monitoring = false
+monitorable = false
+img = ExtResource( 2 )
+tr_code = "I_ROD"
+item = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -20.0
+margin_top = 14.0
+margin_right = 20.0
+margin_bottom = 54.0
+color = Color( 0.364706, 0.870588, 0.529412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Emerge = SubResource( 1 )

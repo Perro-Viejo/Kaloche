@@ -42,6 +42,8 @@ onready var shadow := sprite.get_node('Shadow')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
+	# Poner los objetos por defecto en el inventario
+	(inventory as Inventory).set_default_items()
 	# Hacer la configuración por defecto cuando el Player ya está en escena
 	fishing_spot._fish_splash = $FishSplash
 	hook.hide()
