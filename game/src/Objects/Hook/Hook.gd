@@ -7,7 +7,7 @@ signal hooked
 signal tried
 signal fish_fled
 
-export (NodePath) var rod_tip_ref
+export(NodePath) var rod_tip_ref
 
 var target_pos: Vector2 setget _set_target_pos
 var target_set := false
@@ -16,6 +16,7 @@ var thrown = false
 var height = -135
 var time = 0
 var surface_ref: Area2D = null
+var surface_type := 'Grass' setget _set_surface_type
 
 onready var origin_pos = position
 onready var tween := $Tween
@@ -34,6 +35,7 @@ func _ready():
 
 	DebugOverlay.add_monitor('\ncarnada', self, ':bait')
 
+
 func _process(delta):
 	if thrown:
 		position.y = height * (-time * time + time)
@@ -44,17 +46,21 @@ func pull_done(rod_strength: float) -> Dictionary:
 		return $StateMachine.state.pull_done(rod_strength)
 	return {}
 
+
 func hook_success(fish_data: Dictionary) -> void:
 	$StateMachine.transition_to_key('Hooked', fish_data)
 
+
 func hook_fail() -> void:
 	emit_signal('tried')
+
 
 func play_animation(animation_name := '', speed := 1.0) -> void:
 	if $AnimationPlayer.has_animation(animation_name):
 		$AnimationPlayer.play(animation_name, -1.0, speed)
 	else:
 		printerr('Soy el Hook y no tengo la animación %s' % animation_name)
+
 
 func show_hook(value): 
 	$Sprite.visible = value
@@ -65,7 +71,12 @@ func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position
 	target_pos = position + end_pos
 	target_set = true
+
+
 func _set_bait(new_bait := '') -> void:
 	if not new_bait: new_bait = 'Nada'
 	bait = new_bait
 
+
+func _set_surface_type(new_type: String) -> void:
+	surface_type = new_type if new_type else 'Grass'

@@ -10,7 +10,6 @@ export var _wave_anim_interval := Vector2(3.6, 12.9)
 var _area_ref: Area2D = null
 var _surface_detected := false
 var _check_surface_counter := 0.0
-var _current_surface
 
 onready var _timer: Timer = Timer.new()
 
@@ -27,6 +26,7 @@ func _ready():
 	
 	owner.connect('tried', self, '_on_hook_failed')
 
+
 func physics_process(delta: float) -> void:
 	_check_surface_counter -= delta
 	if _check_surface_counter < 0 and not _surface_detected:
@@ -34,12 +34,14 @@ func physics_process(delta: float) -> void:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
+	_play_sfx()
 	_check_surface_counter = _check_surface_wait
 	_area_ref.connect('area_entered', self, '_on_area_entered')
 	_area_ref.connect('area_exited', self, '_on_area_exited')
 	_area_ref.set_deferred('monitoring', true)
 	_surface_detected = false
 	_timer.start()
+
 
 func exit() -> void:
 #	Juan: no se si debería estar esta animación por que tiene un espacio antes
@@ -52,19 +54,18 @@ func exit() -> void:
 	_area_ref.disconnect('area_entered', self, '_on_area_entered')
 	_area_ref.disconnect('area_exited', self, '_on_area_exited')
 	_area_ref.set_deferred('monitoring', false)
-	_current_surface = ''
 	.exit()
+
 
 func pull_done(rod_strength: float) -> Dictionary:
 	_sent_back()
 	return {}
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_area_entered(body: Area2D) -> void:
 	_surface_detected = true
 	var surface: Surface = body
-	_current_surface = surface.fs_name
-	_play_sfx()
 	if surface.type == Data.SurfaceType.WATER:
 		owner.play_animation('waveB', 3.0)
 		owner.emit_signal('dropped')
@@ -74,19 +75,23 @@ func _on_area_entered(body: Area2D) -> void:
 		body.hook_ref = null
 		_sent_back()
 
+
 func _on_area_exited(body: Area2D) -> void:
 	var surface: Surface = body
 	if surface.type == Data.SurfaceType.WATER:
 		body.hook_exited(owner)
+
 
 func _sent_back() -> void:
 	owner.play_animation('waveB')
 	_state_machine.transition_to_key('Idle')
 	owner.emit_signal('sent_back')
 
+
 func _on_timeout() -> void:
 	owner.play_animation('waveA', 1.5)
 	_timer.start()
+
 
 # Un pez se fijó en el cebo pero al final no lo mordió porque los peces no son
 # tan pendejos a veces
@@ -97,8 +102,8 @@ func _on_hook_failed() -> void:
 	_timer.wait_time = 4.0
 	_timer.start()
 
+
 func _play_sfx() -> void:
-	var surface = 'Grass'
-	if _current_surface:
-		surface = _current_surface
-	AudioEvent.emit_signal('play_requested', 'Hook', surface, owner.global_position)
+	AudioEvent.emit_signal(
+		'play_requested', 'Hook', owner.surface_type, owner.global_position
+	)

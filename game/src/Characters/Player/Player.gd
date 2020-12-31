@@ -37,7 +37,7 @@ onready var foot_area: Area2D = $FootArea
 onready var hook: Node2D = $Hook
 onready var sprite := $Sprite
 onready var rod_tip := $RodTip
-onready var hook_aim : Node2D = $HookObjective
+onready var hook_target : Node2D = $HookTarget
 onready var shadow := sprite.get_node('Shadow')
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
@@ -50,6 +50,8 @@ func _ready() -> void:
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('area_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('area_exited', self, 'toggle_on_ground')
+	hook_target.connect('area_entered', self, '_set_hook_drop_surface', [ true ])
+	hook_target.connect('area_exited', self, '_set_hook_drop_surface', [ false ])
 
 	# Conectarse a eventos del universo
 	DialogEvent.connect('line_triggered', self, '_should_speak')
@@ -203,3 +205,11 @@ func _set_current_tool(tool_id: int) -> void:
 			$StateMachine.state.on_tool_equiped(tool_id)
 	else:
 		speak('No tengo nada... y no se me para')
+
+
+func _set_hook_drop_surface(area: Area2D, entered: bool) -> void:
+	if area.is_in_group('Surface'):
+		if entered:
+			hook.surface_type = (area as Surface).surface_name
+		else:
+			hook.surface_type = ''

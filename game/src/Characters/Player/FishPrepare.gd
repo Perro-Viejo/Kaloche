@@ -7,15 +7,13 @@ enum Direction {
 	LEFT
 }
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var min_distance := 75.0 # 24.0
 var max_distance := 90.0 # 75.0
-var aim_distance
-var distance
-var hook_pos := Vector2.ZERO
+var aim_distance := Vector2.ZERO
+var distance := 0.0
+var hook_target_pos := Vector2.ZERO
 var can_change_bait := false
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _hook: Hook = null
 var _listening_input := false
 var _current_direction: int = Direction.RIGHT setget _set_current_direction
@@ -30,18 +28,19 @@ func _ready():
 	_timer.connect('timeout', self, '_enable_input_listening')
 	add_child(_timer)
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
-	self._current_direction = Direction.RIGHT if not owner.sprite.flip_h else Direction.LEFT
+	_determine_distance()
 	
 	owner.is_paused = true
 	owner.fishing = true
 	
 	_hook = owner.hook
-	
 	_hook.bait = _current_bait.name if _current_bait else ''
 
-	_prepare_hook_throw()
+	self._current_direction = Direction.RIGHT if not owner.sprite.flip_h else Direction.LEFT
+
 	# TODO: Si vamos a renderizar distintos tipos de caña, la definición de estas
 	#		debería indicar dónde se pondrá el gancho.
 	_hook.show()
@@ -52,8 +51,9 @@ func enter(msg: Dictionary = {}) -> void:
 
 	.enter(msg)
 
+
 func exit() -> void:
-	owner.hook_aim.hide()
+	owner.hook_target.hide()
 	owner.is_paused = false
 	_listening_input = false
 
@@ -61,6 +61,7 @@ func exit() -> void:
 	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')
 
 	.exit()
+
 
 func unhandled_input(event: InputEvent) -> void:
 	if not _listening_input: return
@@ -70,7 +71,7 @@ func unhandled_input(event: InputEvent) -> void:
 		# a la que se lanzará el gancho
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 
-		owner.hook.target_pos = hook_pos
+		owner.hook.target_pos = hook_target_pos
 		_listening_input = false
 	elif event.is_action_pressed('Drop'):
 		if can_change_bait:
@@ -87,10 +88,10 @@ func unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed('Equip') and not owner.hook.thrown:
 		_state_machine.transition_to_key('Idle')
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_current_direction(dir: int) -> void:
 	_current_direction = dir
-	
 
 	match _current_direction:
 		Direction.RIGHT:
@@ -98,30 +99,25 @@ func _set_current_direction(dir: int) -> void:
 			owner.rod_tip.position.x = owner.rod_tip_pos.x
 			owner.sprite.flip_h = false
 			if distance:
-				hook_pos = Vector2(distance, 12)
+				hook_target_pos = Vector2(distance, 12)
 				aim_distance = Vector2(distance + _hook.position.x - 6,0)
 		Direction.LEFT:
 			owner.hook.position = Vector2(6, -6)
 			owner.rod_tip.position.x = -owner.rod_tip_pos.x
 			owner.sprite.flip_h = true
 			if distance:
-				hook_pos = Vector2(distance * -1, 12)
+				hook_target_pos = Vector2(distance * -1, 12)
 				aim_distance = Vector2(distance * -1 - _hook.position.x + 6,0)
 
-func _prepare_hook_throw():
-	#Muestra la predicción del lanzamiento y realiza los cálculos para enviar
-	#al hook
+	owner.hook_target.position = aim_distance
+	owner.hook_target.show()
+
+
+# Determina la distancia a la que caerá el gancho cuando sea lanzado
+func _determine_distance():
 	randomize()
 	distance = rand_range(min_distance, max_distance)
-	match _current_direction:
-			Direction.RIGHT:
-				hook_pos = Vector2(distance, 12)
-				aim_distance = Vector2(distance + _hook.position.x - 6,0)
-			Direction.LEFT:
-				hook_pos = Vector2(distance * -1, 12)
-				aim_distance = Vector2(distance * -1 + _hook.position.x + 6,0)
-	owner.hook_aim.position = aim_distance
-	owner.hook_aim.show()
-	
+
+
 func _enable_input_listening() -> void:
 	_listening_input = true

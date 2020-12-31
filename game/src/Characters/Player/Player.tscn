@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
@@ -335,6 +335,9 @@ extents = Vector2( 2.20734, 2.00338 )
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 1.5, 0.5 )
 
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 2, 2 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Actor",
 ]]
@@ -553,14 +556,14 @@ rod_tip_ref = NodePath("../RodTip")
 [node name="RodTip" type="Position2D" parent="."]
 position = Vector2( -4.3955, -6.81772 )
 
-[node name="HookObjective" type="Node2D" parent="."]
+[node name="HookTarget" type="Area2D" parent="."]
 visible = false
 scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_editor_description_": ""
-}
 
-[node name="rect" type="ColorRect" parent="HookObjective"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookTarget"]
+shape = SubResource( 15 )
+
+[node name="rect" type="ColorRect" parent="HookTarget"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -574,7 +577,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="rect2" type="ColorRect" parent="HookObjective"]
+[node name="rect2" type="ColorRect" parent="HookTarget"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

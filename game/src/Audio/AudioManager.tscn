@@ -839,3 +839,21 @@ stream = ExtResource( 104 )
 [node name="rock_03" type="AudioStreamPlayer2D" parent="Hook/Rock"]
 stream = ExtResource( 108 )
 attenuation = 0.707107
+
+[node name="Water" type="Node2D" parent="Hook"]
+script = ExtResource( 26 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = 3.0
+max_pitch = -3.0
+
+[node name="rock_01" type="AudioStreamPlayer2D" parent="Hook/Water"]
+stream = ExtResource( 66 )
+
+[node name="rock_02" type="AudioStreamPlayer2D" parent="Hook/Water"]
+stream = ExtResource( 65 )
+
+[node name="rock_03" type="AudioStreamPlayer2D" parent="Hook/Water"]
+stream = ExtResource( 64 )
+attenuation = 0.707107

@@ -1,6 +1,7 @@
 class_name Surface
 extends Area2D
 
+export var surface_name := ''
 export var fs_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	
 	connect('body_entered', self, '_assign_sfx')
 	connect('body_exited', self, '_stop_sfx')
+	connect('area_entered', self, '_on_area_entered')
 	
 	add_to_group('Surface')
 
@@ -39,4 +41,8 @@ func _assign_sfx(body: Node) -> void:
 	pass
 
 func _stop_sfx(body: Node) -> void:
+	pass
+
+
+func _on_area_entered(area: Area2D) -> void:
 	pass

@@ -55,8 +55,6 @@ func _ready():
 		_spawn_fishes()
 	
 	PlayerEvent.connect('fish_caught', self, '_on_fish_caught')
-	
-	connect('area_entered', self, '_on_area_entered')
 
 func _process(delta):
 	if _fish_examininig and _fish_examine_wait > 0.0:
@@ -84,9 +82,6 @@ func hook_entered(hook: Hook) -> void:
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(hook.global_position)
-	AudioEvent.emit_signal(
-		'play_requested', 'Fishing', 'rod_fall_long', hook.global_position
-	)
 	_bait = hook.bait
 	_hook_check_freq = rand_range(bite_freq.x, bite_freq.y)
 	_counter = 0.0
@@ -306,7 +301,7 @@ func _reset_bait() -> void:
 	_bait = ''
 	hook_ref.disconnect('sent_back', self, 'hook_exited')
 
-func _on_area_entered(other) -> void:
+func _on_area_entered(other: Area2D) -> void:
 	if _can_receive and other is Pickable:
 		var splash = HOOK_SPLASH.instance()
 		add_child(splash)
