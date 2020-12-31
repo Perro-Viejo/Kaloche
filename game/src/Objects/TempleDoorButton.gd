@@ -24,6 +24,7 @@ func _on_pressed(body: Node) -> void:
 				$Area2D.connect('body_entered', self, '_on_unpressed')
 				
 				$AnimationPlayer.play('press')
+				AudioEvent.emit_signal('play_requested','Button','Down', position)
 				yield(get_tree().create_timer(0.1), 'timeout')
 				emit_signal('button_pressed')
 
@@ -35,5 +36,6 @@ func _on_unpressed(body: Node) -> void:
 			$Area2D.disconnect('body_entered', self, '_on_unpressed')
 			
 			$AnimationPlayer.play_backwards('press')
+			AudioEvent.emit_signal('play_requested','Button','Up', position)
 			yield(get_tree().create_timer(0.1), 'timeout')
 			emit_signal('button_unpressed')

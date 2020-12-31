@@ -10,6 +10,7 @@ export var _wave_anim_interval := Vector2(3.6, 12.9)
 var _area_ref: Area2D = null
 var _surface_detected := false
 var _check_surface_counter := 0.0
+var _current_surface
 
 onready var _timer: Timer = Timer.new()
 
@@ -51,6 +52,7 @@ func exit() -> void:
 	_area_ref.disconnect('area_entered', self, '_on_area_entered')
 	_area_ref.disconnect('area_exited', self, '_on_area_exited')
 	_area_ref.set_deferred('monitoring', false)
+	_current_surface = ''
 	.exit()
 
 func pull_done(rod_strength: float) -> Dictionary:
@@ -59,9 +61,10 @@ func pull_done(rod_strength: float) -> Dictionary:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_area_entered(body: Area2D) -> void:
-	
 	_surface_detected = true
 	var surface: Surface = body
+	_current_surface = surface.fs_name
+	_play_sfx()
 	if surface.type == Data.SurfaceType.WATER:
 		owner.play_animation('waveB', 3.0)
 		owner.emit_signal('dropped')
@@ -93,3 +96,9 @@ func _on_hook_failed() -> void:
 	# Esperar X segundos antes de retomar el ciclo de mostrar la onda pequeña
 	_timer.wait_time = 4.0
 	_timer.start()
+
+func _play_sfx() -> void:
+	var surface = 'Grass'
+	if _current_surface:
+		surface = _current_surface
+	AudioEvent.emit_signal('play_requested', 'Hook', surface, owner.global_position)

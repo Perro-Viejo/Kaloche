@@ -6,9 +6,10 @@ func _ready():
 
 func _on_area_entered(other) -> void:
 	if other is Pickable:
+		other.hide()
+		AudioEvent.emit_signal('play_requested', 'Hole', 'Fall')
 		if other.is_in_group('Sacred'):
-			other.hide()
-			yield(get_tree().create_timer(1.5), 'timeout')
+			yield(get_tree().create_timer(1.9), 'timeout')
 			other.respawn($Respawn.global_position)
 		else:
 			other.queue_free()

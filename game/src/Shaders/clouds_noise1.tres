@@ -2,11 +2,12 @@
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 50.0
-persistence = 0.819
+persistence = 0.428
 lacunarity = 2.73
 
 [resource]
 flags = 2
-width = 1024
+width = 2048
+height = 3000
 seamless = true
 noise = SubResource( 1 )

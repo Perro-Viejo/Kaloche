@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_hook_grass_03.ogg-0aca5e24ba4d89a5e1924ba55c7fd55e.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_hook_grass_03.ogg"
+dest_files=[ "res://.import/sfx_hook_grass_03.ogg-0aca5e24ba4d89a5e1924ba55c7fd55e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

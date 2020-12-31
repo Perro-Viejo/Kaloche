@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -97,6 +97,19 @@
 [ext_resource path="res://assets/audio/sfx_altar_rocberto_impact.ogg" type="AudioStream" id=95]
 [ext_resource path="res://assets/audio/sfx_altar_rocberto_reject.ogg" type="AudioStream" id=96]
 [ext_resource path="res://assets/audio/sfx_altar_rocberto_fall.ogg" type="AudioStream" id=97]
+[ext_resource path="res://assets/audio/bg_spot_hole.ogg" type="AudioStream" id=98]
+[ext_resource path="res://assets/audio/sfx_hole_fall.ogg" type="AudioStream" id=99]
+[ext_resource path="res://assets/audio/sfx_button_down.ogg" type="AudioStream" id=100]
+[ext_resource path="res://assets/audio/sfx_button_up.ogg" type="AudioStream" id=101]
+[ext_resource path="res://assets/audio/sfx_hook_rock_01.ogg" type="AudioStream" id=102]
+[ext_resource path="res://assets/audio/sfx_hook_dirt_01.ogg" type="AudioStream" id=103]
+[ext_resource path="res://assets/audio/sfx_hook_rock_02.ogg" type="AudioStream" id=104]
+[ext_resource path="res://assets/audio/sfx_hook_grass_02.ogg" type="AudioStream" id=105]
+[ext_resource path="res://assets/audio/sfx_hook_dirt_02.ogg" type="AudioStream" id=106]
+[ext_resource path="res://assets/audio/sfx_hook_dirt_03.ogg" type="AudioStream" id=107]
+[ext_resource path="res://assets/audio/sfx_hook_rock_03.ogg" type="AudioStream" id=108]
+[ext_resource path="res://assets/audio/sfx_hook_grass_01.ogg" type="AudioStream" id=109]
+[ext_resource path="res://assets/audio/sfx_hook_grass_03.ogg" type="AudioStream" id=110]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -532,6 +545,12 @@ stream = ExtResource( 73 )
 volume_db = 14.0
 max_distance = 150.0
 
+[node name="Hole" type="AudioStreamPlayer2D" parent="Spot"]
+position = Vector2( 7, 0 )
+stream = ExtResource( 98 )
+max_distance = 350.0
+attenuation = 3.13834
+
 [node name="Animals" type="Node2D" parent="."]
 
 [node name="Bird" type="Node2D" parent="Animals"]
@@ -753,3 +772,70 @@ volume_db = 6.5
 [node name="Rocberto_Impact" type="AudioStreamPlayer2D" parent="SacredFire"]
 stream = ExtResource( 95 )
 volume_db = 5.0
+
+[node name="Hole" type="Node2D" parent="."]
+
+[node name="Fall" type="AudioStreamPlayer" parent="Hole"]
+stream = ExtResource( 99 )
+
+[node name="Button" type="Node2D" parent="."]
+
+[node name="Up" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource( 101 )
+
+[node name="Down" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource( 100 )
+
+[node name="Hook" type="Node2D" parent="."]
+
+[node name="Grass" type="Node2D" parent="Hook"]
+script = ExtResource( 26 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = 3.0
+max_pitch = -3.0
+
+[node name="grass_01" type="AudioStreamPlayer2D" parent="Hook/Grass"]
+stream = ExtResource( 109 )
+
+[node name="grass_02" type="AudioStreamPlayer2D" parent="Hook/Grass"]
+stream = ExtResource( 105 )
+
+[node name="grass_03" type="AudioStreamPlayer2D" parent="Hook/Grass"]
+stream = ExtResource( 110 )
+
+[node name="Dirt" type="Node2D" parent="Hook"]
+script = ExtResource( 26 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = 3.0
+max_pitch = -3.0
+
+[node name="dirt_01" type="AudioStreamPlayer2D" parent="Hook/Dirt"]
+stream = ExtResource( 103 )
+
+[node name="dirt_02" type="AudioStreamPlayer2D" parent="Hook/Dirt"]
+stream = ExtResource( 106 )
+
+[node name="dirt_03" type="AudioStreamPlayer2D" parent="Hook/Dirt"]
+stream = ExtResource( 107 )
+
+[node name="Rock" type="Node2D" parent="Hook"]
+script = ExtResource( 26 )
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = 3.0
+max_pitch = -3.0
+
+[node name="rock_01" type="AudioStreamPlayer2D" parent="Hook/Rock"]
+stream = ExtResource( 102 )
+
+[node name="rock_02" type="AudioStreamPlayer2D" parent="Hook/Rock"]
+stream = ExtResource( 104 )
+
+[node name="rock_03" type="AudioStreamPlayer2D" parent="Hook/Rock"]
+stream = ExtResource( 108 )
+attenuation = 0.707107

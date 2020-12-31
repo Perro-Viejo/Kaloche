@@ -35,6 +35,7 @@ func _ready():
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func fill_tank():
 	$Tank/Area2D.type = Data.SurfaceType.WATER
+	$Tank/Area2D.fs_name = 'Water'
 	_is_filling = true
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Start', global_position)
@@ -69,6 +70,7 @@ func _on_animation_finished(anim):
 		activate_tank()
 	if _animation.get_current_animation_position() == 0:
 		$Tank/Area2D.type = Data.SurfaceType.ROCK
+		$Tank/Area2D.fs_name = 'Rock'
 		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
 

@@ -40,7 +40,8 @@ func has_item(item_name) -> bool:
 	return item_name in _inventory
 
 func set_default_items() -> void:
-	if not default_items == []:
+	#Toca revisar que si se carga los default items no recibe la canya
+	if not default_items.empty():
 		for i in default_items:
 			_add_item_to_inventory(i)
 

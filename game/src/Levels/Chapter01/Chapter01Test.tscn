@@ -54,7 +54,7 @@ shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.454829, 0.457944, 1 )
+offsets = PoolRealArray( 0, 0.376106, 0.384956, 1 )
 colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
 
 [sub_resource type="GradientTexture" id=4]
@@ -62,7 +62,7 @@ gradient = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 21 )
-shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.772549 )
+shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.564706 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
 shader_param/time_scale1 = 0.001
 shader_param/tile_factor1 = 0.143
@@ -83,53 +83,6 @@ __meta__ = {
 environment = SubResource( 1 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
-
-[node name="BG" parent="AUDIO_Cap_01" index="0"]
-visible = true
-
-[node name="AmbienceDevice" parent="AUDIO_Cap_01/BG" index="0"]
-max_distance = 200.0
-
-[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/MaxDistance" index="0"]
-position = Vector2( 19.0273, 99.8934 )
-
-[node name="AmbZone" parent="AUDIO_Cap_01/BG/AmbienceDevice" index="1"]
-position = Vector2( -7.55127, -98.163 )
-
-[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/AmbZone" index="0"]
-position = Vector2( 71.0525, 188.056 )
-
-[node name="FallOffZone" parent="AUDIO_Cap_01/BG/AmbienceDevice" index="2"]
-position = Vector2( -7.55127, -166.122 )
-
-[node name="CollisionShape2D" parent="AUDIO_Cap_01/BG/AmbienceDevice/FallOffZone" index="0"]
-position = Vector2( 49.0814, 71.7345 )
-
-[node name="Lagunita" parent="AUDIO_Cap_01/Spot" index="0"]
-position = Vector2( 482.811, -282.587 )
-
-[node name="Lagunita" parent="AUDIO_Cap_01/Triggers" index="0"]
-position = Vector2( 34.5297, 414.293 )
-monitoring = false
-monitorable = false
-
-[node name="Caminando" parent="AUDIO_Cap_01/Triggers" index="1"]
-position = Vector2( 17.928, 345.407 )
-
-[node name="CollisionShape2D" parent="AUDIO_Cap_01/ScattererDevice/Area2D" index="0"]
-position = Vector2( 54.8368, 12.8753 )
-
-[node name="Bird" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="0"]
-freq_range = Vector2( 3, 14 )
-
-[node name="Insect" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="1"]
-freq_range = Vector2( 5, 9 )
-
-[node name="Parrot" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="2"]
-freq_range = Vector2( 7, 20 )
-
-[node name="Frog" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="3"]
-freq_range = Vector2( 4, 7 )
 
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
 visible = false
@@ -343,7 +296,6 @@ follow_viewport_enable = true
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
 material = SubResource( 5 )
 position = Vector2( -3.62032, 106.465 )
-scale = Vector2( 1.77269, 4.76008 )
 z_index = 100
 texture = ExtResource( 18 )
 
