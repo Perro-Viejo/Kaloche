@@ -73,11 +73,12 @@ func _process(delta):
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func hook_entered(hook: Hook) -> void:
 	hook_ref = hook
-	hook_ref.connect('sent_back', self, 'hook_exited')
+	if not hook_ref.is_connected('sent_back', self, 'hook_exited'):
+		hook_ref.connect('sent_back', self, 'hook_exited')
 	if not hook_ref.is_connected('fish_fled', self, '_show_shadows'):
 		hook_ref.connect('fish_fled', self, '_show_shadows')
 	
-	hook_ref.surface_ref = self
+#	hook_ref.surface_ref = self
 	
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)

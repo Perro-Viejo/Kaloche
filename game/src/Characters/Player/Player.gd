@@ -8,7 +8,6 @@ enum Tools {
 	SHOVEL
 }
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables públicas ▒▒▒▒
 var node_to_interact: Pickable = null setget _set_node_to_interact
 var grabbing := false
 var picked_item: Pickable = null
@@ -25,12 +24,10 @@ var current_tool: int = Tools.NONE setget _set_current_tool
 var rod_tip_pos := Vector2(-5, -4)
 var rod_tip_offset := Vector2(11, -2)
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables privadas ▒▒▒▒
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
 var _shake_timer := 0.0
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ variables onready ▒▒▒▒
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
 onready var foot_area: Area2D = $FootArea
@@ -210,6 +207,6 @@ func _set_current_tool(tool_id: int) -> void:
 func _set_hook_drop_surface(area: Area2D, entered: bool) -> void:
 	if area.is_in_group('Surface'):
 		if entered:
-			hook.surface_type = (area as Surface).surface_name
+			hook.surface_ref = area as Surface
 		else:
-			hook.surface_type = ''
+			hook.surface_ref = null

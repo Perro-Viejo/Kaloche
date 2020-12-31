@@ -212,6 +212,7 @@ polygon = PoolVector2Array( -127, -85, -127, -74, 128, -74, 128, -85 )
 
 [node name="FishingSurfaceL1" type="Area2D" parent="FishingSurfaces"]
 position = Vector2( -84, -9 )
+priority = 1.0
 collision_layer = 4
 collision_mask = 2147483651
 script = ExtResource( 8 )
@@ -225,6 +226,7 @@ polygon = PoolVector2Array( -27, -8, 5.00001, -30, 35, -23, 48, 7, -8.99999, 35 
 
 [node name="FishingSurfaceL2" type="Area2D" parent="FishingSurfaces"]
 position = Vector2( -51, 36 )
+priority = 1.0
 collision_layer = 4
 collision_mask = 2147483651
 script = ExtResource( 8 )
@@ -237,6 +239,7 @@ polygon = PoolVector2Array( -45, -2, -1.00001, -23, 26, -24, 39, -7, 35, 17, -5.
 
 [node name="FishingSurfaceR1" type="Area2D" parent="FishingSurfaces"]
 position = Vector2( 49, 23 )
+priority = 1.0
 collision_layer = 4
 collision_mask = 2147483651
 script = ExtResource( 8 )
@@ -249,6 +252,7 @@ polygon = PoolVector2Array( -33, 1, -13, -28, 24, -18, 25, 12, -7, 29 )
 
 [node name="FishingSurfaceR2" type="Area2D" parent="FishingSurfaces"]
 position = Vector2( 79, -17.65 )
+priority = 1.0
 collision_layer = 4
 collision_mask = 2147483651
 script = ExtResource( 8 )

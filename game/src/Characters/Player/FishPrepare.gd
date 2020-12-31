@@ -53,7 +53,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-	owner.hook_target.hide()
+#	owner.hook_target.hide()
 	owner.is_paused = false
 	_listening_input = false
 
@@ -67,12 +67,13 @@ func unhandled_input(event: InputEvent) -> void:
 	if not _listening_input: return
 
 	if event.is_action_pressed('Action'):
+		_listening_input = false
+
 		# Se usa la dirección seleccionada por el jugador y se calcula la distancia
 		# a la que se lanzará el gancho
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 
 		owner.hook.target_pos = hook_target_pos
-		_listening_input = false
 	elif event.is_action_pressed('Drop'):
 		if can_change_bait:
 			_current_bait = FishingDatabase.get_next_bait()
@@ -86,6 +87,7 @@ func unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed('Left'):
 		self._current_direction = Direction.LEFT
 	elif event.is_action_pressed('Equip') and not owner.hook.thrown:
+		owner.hook_target.position = Vector2.ZERO
 		_state_machine.transition_to_key('Idle')
 
 

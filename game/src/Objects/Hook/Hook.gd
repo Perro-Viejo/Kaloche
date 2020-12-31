@@ -15,8 +15,11 @@ var bait := 'Nada' setget _set_bait
 var thrown = false
 var height = -135
 var time = 0
-var surface_ref: Area2D = null
-var surface_type := 'Grass' setget _set_surface_type
+var surface_ref: Area2D = null setget _set_surface_ref
+# TODO: Esto debería de alguna forma estar vinculado a la zona/mapa donde esté
+# el jugador. Por ejemplo, en el capítulo 0.1 el área más grande es de pasto (Grass),
+# pero podría haber otros escenarios donde la mayoría sea roca o tierra o charco.
+var surface_type := 'Grass'
 
 onready var origin_pos = position
 onready var tween := $Tween
@@ -78,5 +81,6 @@ func _set_bait(new_bait := '') -> void:
 	bait = new_bait
 
 
-func _set_surface_type(new_type: String) -> void:
-	surface_type = new_type if new_type else 'Grass'
+func _set_surface_ref(new_surface: Area2D) -> void:
+	surface_ref = new_surface
+	surface_type = new_surface.surface_name if new_surface else 'Grass'

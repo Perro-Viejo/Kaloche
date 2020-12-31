@@ -3,44 +3,32 @@ extends "res://src/StateMachine/State.gd"
 
 # Determina cuánto tiempo pasará antes de verificar la superficie en la que
 # cayó el gancho para saber si es o no una zona de pesca
-export var _check_surface_wait := 1.0 # En segundos
 export var _idle_anim_interval := Vector2(0.5, 2.0)
 export var _wave_anim_interval := Vector2(3.6, 12.9)
 
-var _area_ref: Area2D = null
-var _surface_detected := false
-var _check_surface_counter := 0.0
+var _pull_done := false
 
-onready var _timer: Timer = Timer.new()
+onready var _small_wave_timer: Timer = Timer.new()
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	yield(owner, 'ready')
-	_area_ref = owner.area
 
 	# El timerocho
-	_timer.wait_time = _wave_anim_interval.x
-	_timer.one_shot = true
-	_timer.connect('timeout', self, '_on_timeout')
-	add_child(_timer)
+	_small_wave_timer.wait_time = _wave_anim_interval.x
+	_small_wave_timer.one_shot = true
+	_small_wave_timer.connect('timeout', self, '_show_small_wave')
+	add_child(_small_wave_timer)
 	
 	owner.connect('tried', self, '_on_hook_failed')
 
 
-func physics_process(delta: float) -> void:
-	_check_surface_counter -= delta
-	if _check_surface_counter < 0 and not _surface_detected:
-		_sent_back()
-
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
+	_pull_done = false
+	
 	_play_sfx()
-	_check_surface_counter = _check_surface_wait
-	_area_ref.connect('area_entered', self, '_on_area_entered')
-	_area_ref.connect('area_exited', self, '_on_area_exited')
-	_area_ref.set_deferred('monitoring', true)
-	_surface_detected = false
-	_timer.start()
+	_check_surface()
 
 
 func exit() -> void:
@@ -49,61 +37,61 @@ func exit() -> void:
 #	animación específica para este con el mismo sprite
  
 #	owner.play_animation('waveB')
-	_timer.stop()
-	_surface_detected = false
-	_area_ref.disconnect('area_entered', self, '_on_area_entered')
-	_area_ref.disconnect('area_exited', self, '_on_area_exited')
-	_area_ref.set_deferred('monitoring', false)
+
+	if owner.surface_ref:
+		if owner.surface_ref.type == Data.SurfaceType.WATER:
+			_small_wave_timer.stop()
+		
+		if _pull_done and owner.surface_ref.is_in_group('FishingSurface'):
+			owner.surface_ref.hook_exited(owner)
+
+#	owner.surface_ref = null
 	.exit()
 
 
 func pull_done(rod_strength: float) -> Dictionary:
+	_pull_done = true
+	owner.play_animation('waveB')
 	_sent_back()
 	return {}
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
-func _on_area_entered(body: Area2D) -> void:
-	_surface_detected = true
-	var surface: Surface = body
-	if surface.type == Data.SurfaceType.WATER:
-		owner.play_animation('waveB', 3.0)
-		owner.emit_signal('dropped')
-		if body.is_in_group('FishingSurface'):
-			body.hook_entered(owner)
-	else:
-		body.hook_ref = null
-		_sent_back()
-
-
-func _on_area_exited(body: Area2D) -> void:
-	var surface: Surface = body
-	if surface.type == Data.SurfaceType.WATER:
-		body.hook_exited(owner)
-
-
 func _sent_back() -> void:
-	owner.play_animation('waveB')
-	_state_machine.transition_to_key('Idle')
 	owner.emit_signal('sent_back')
+	_state_machine.transition_to_key('Idle')
 
 
-func _on_timeout() -> void:
+func _show_small_wave() -> void:
 	owner.play_animation('waveA', 1.5)
-	_timer.start()
+	_small_wave_timer.start()
 
 
 # Un pez se fijó en el cebo pero al final no lo mordió porque los peces no son
 # tan pendejos a veces
 func _on_hook_failed() -> void:
-	_timer.stop()
+	_small_wave_timer.stop()
 	owner.play_animation('waveB')
 	# Esperar X segundos antes de retomar el ciclo de mostrar la onda pequeña
-	_timer.wait_time = 4.0
-	_timer.start()
+	_small_wave_timer.wait_time = 4.0
+	_small_wave_timer.start()
 
 
 func _play_sfx() -> void:
 	AudioEvent.emit_signal(
 		'play_requested', 'Hook', owner.surface_type, owner.global_position
 	)
+
+
+func _check_surface() -> void:
+	if owner.surface_ref:
+		if owner.surface_ref.type == Data.SurfaceType.WATER:
+			_small_wave_timer.start()
+			owner.play_animation('waveB', 3.0)
+			owner.emit_signal('dropped')
+			if owner.surface_ref.is_in_group('FishingSurface'):
+				owner.surface_ref.hook_entered(owner)
+			return
+		else:
+			owner.surface_ref.hook_ref = null
+	_sent_back()
