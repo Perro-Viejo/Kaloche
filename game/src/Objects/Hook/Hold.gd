@@ -56,6 +56,10 @@ func pull_done(rod_strength: float) -> Dictionary:
 	return {}
 
 
+func surface_updated() -> void:
+	_check_surface()
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _sent_back() -> void:
 	owner.emit_signal('sent_back')

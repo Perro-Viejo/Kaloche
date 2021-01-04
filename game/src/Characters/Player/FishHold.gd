@@ -24,6 +24,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	owner.is_paused = false
 	owner.fishing = false
+	owner.hook_target.position = Vector2.ZERO
 	_hook.disconnect('hooked', owner, 'speak')
 	_hook.disconnect('tried', owner, 'speak')
 	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')

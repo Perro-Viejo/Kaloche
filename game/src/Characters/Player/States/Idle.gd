@@ -3,6 +3,10 @@ extends "res://src/StateMachine/State.gd"
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 	
+	if msg.has('fishing_failed'):
+		# El gancho cayó en una superficie en la que no se puede pescar
+		owner.hook_target.position = Vector2.ZERO
+
 	if msg.has('pickup'):
 		yield(owner.pickup_item(), 'completed')
 		play_animation()

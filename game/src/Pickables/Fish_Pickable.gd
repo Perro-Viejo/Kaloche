@@ -45,13 +45,17 @@ var fish_type := [
 ]
 
 func jump(origin):
+	monitorable = false
+	monitoring = false
 	_tween.interpolate_property(
 		self, "position",
 		position, position + (origin * -1) * rand_range(1.5, 2.5) , 1.6,
 		Tween.TRANS_EXPO, Tween.EASE_OUT
 	)
 	_tween.start()
+	_tween.connect('tween_completed', self, '_enable_monitoring')
 #	Aquí debería el pez saltar por su vida cuando llegue a su posición final
+
 
 func check_bait(bait):
 	var chance := randf()
@@ -71,3 +75,9 @@ func check_bait(bait):
 	tr_code = selected_fish
 	set_sprite_texture(load("res://assets/images/world/fish_" + selected_fish + ".png"))
 #	$Bubble/Label.text = 'P_' + (tr_code if tr_code != '' else name).to_upper()
+
+
+func _enable_monitoring(_obj: Object, _key: NodePath) -> void:
+	yield(get_tree().create_timer(0.5), 'timeout')
+	monitorable = true
+	monitoring = true

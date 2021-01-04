@@ -45,7 +45,12 @@ func enter(msg: Dictionary = {}) -> void:
 	#		debería indicar dónde se pondrá el gancho.
 	_hook.show()
 	_hook.connect('dropped', _state_machine, 'transition_to_key', ['FishHold'])
-	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
+	_hook.connect(
+		'sent_back',
+		_state_machine,
+		'transition_to_key',
+		['Idle', { fishing_failed = true } ]
+	)
 	_listening_input = false
 	_timer.start()
 

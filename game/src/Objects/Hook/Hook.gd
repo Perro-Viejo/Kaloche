@@ -84,3 +84,5 @@ func _set_bait(new_bait := '') -> void:
 func _set_surface_ref(new_surface: Area2D) -> void:
 	surface_ref = new_surface
 	surface_type = new_surface.surface_name if new_surface else 'Grass'
+	if $StateMachine.state.has_method('surface_updated') :
+		$StateMachine.state.surface_updated()

@@ -106,12 +106,13 @@ func hook_entered(hook: Hook) -> void:
 	)
 
 func hook_exited(hook: Hook = null) -> void:
+	if not hook_ref: return
 	_reset_bait()
 	hook_ref.surface_ref = null
 	hook_ref.disconnect('fish_fled', self, '_show_shadows')
 	hook_ref = null
-	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
 	_shadows.get_child(_selected_fish_idx).modulate.a = 1.0
+	_remove_shadow() # Quitar la sombra del pez que tantea la carnada
 	
 	# Volver a mostrar las sombras de los peces nadando después de un rato. Si
 	# no se están viendo, hacerlos aparecer después de X segundos, de lo contrario,

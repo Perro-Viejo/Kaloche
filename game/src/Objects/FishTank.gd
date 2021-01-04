@@ -12,6 +12,7 @@ var _is_active = false
 onready var _z_index_changer: Area2D = $ZIndexChanger
 onready var _fishing_surfaces: Node2D = $FishingSurfaces
 onready var _animation: AnimationPlayer = $AnimationPlayer
+onready var _tank_surface: Area2D = $Tank/Surface
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
@@ -23,7 +24,7 @@ func _ready():
 		surface.monitorable = false
 	
 	# Conectarse a señales de los hijastros
-	$Tank/Area2D.connect('area_entered', self, '_on_area_entered')
+	_tank_surface.connect('area_entered', self, '_on_area_entered')
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
 	_animation.connect('animation_finished', self, '_on_animation_finished')
@@ -34,8 +35,8 @@ func _ready():
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func fill_tank():
-	$Tank/Area2D.type = Data.SurfaceType.WATER
-	$Tank/Area2D.surface_name = 'Water'
+	_tank_surface.type = Data.SurfaceType.WATER
+	_tank_surface.surface_name = 'Water'
 	_is_filling = true
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Start', global_position)
@@ -69,8 +70,8 @@ func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == _animation.get_current_animation_length():
 		activate_tank()
 	if _animation.get_current_animation_position() == 0:
-		$Tank/Area2D.type = Data.SurfaceType.ROCK
-		$Tank/Area2D.surface_name = 'Rock'
+		_tank_surface.type = Data.SurfaceType.ROCK
+		_tank_surface.surface_name = 'Rock'
 		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
 

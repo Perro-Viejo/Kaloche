@@ -82,6 +82,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	DebugOverlay.remove_monitor(_can_damage_fish_debug)
 	DebugOverlay.remove_monitor(_hooked_time_debug)
+
 	_can_damage_fish_debug = -1
 	_hooked_time_debug = -1
 	set_process(false)
