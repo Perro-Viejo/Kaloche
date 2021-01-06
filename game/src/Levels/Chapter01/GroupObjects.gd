@@ -6,4 +6,4 @@ func _ready():
 
 func _on_activate_door() -> void:
 	#Falta hacer algo para que no se pueda detectar la colisión cuando es invisible
-	$TempleDoorButton.show()
+	$AltarActivation.show_door($TempleDoorButton)

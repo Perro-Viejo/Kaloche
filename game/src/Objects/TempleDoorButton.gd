@@ -39,3 +39,8 @@ func _on_unpressed(body: Node) -> void:
 			AudioEvent.emit_signal('play_requested','Button','Up', position)
 			yield(get_tree().create_timer(0.1), 'timeout')
 			emit_signal('button_unpressed')
+
+func activate():
+	show()
+	$Area2D.monitorable = true
+	$Area2D.monitoring = true
