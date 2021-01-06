@@ -173,7 +173,6 @@ z_index = 5
 texture = ExtResource( 29 )
 
 [node name="Bushes" type="Sprite" parent="GroupGround"]
-visible = false
 texture = ExtResource( 28 )
 
 [node name="RuinsRocberto" type="Sprite" parent="GroupGround"]
@@ -228,13 +227,24 @@ position = Vector2( -50, 658 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
+is_good = true
+can_burn = true
 carbs = 200
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -297.478, -298 )
 is_good = false
+can_burn = true
 carbs = 5
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" groups=[
 "Sacred",
@@ -242,14 +252,26 @@ carbs = 5
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
+can_burn = true
 carbs = 5
 img = ExtResource( 1 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Fish" parent="GroupObjects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -415.27, -294.967 )
+is_good = true
+can_burn = true
+carbs = 2
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
 position = Vector2( -344, -312 )
@@ -281,9 +303,14 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
+is_good = true
+can_burn = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
@@ -347,7 +374,6 @@ position = Vector2( -378, 492 )
 texture = ExtResource( 30 )
 
 [node name="FishTank" type="ParallaxLayer" parent="ParallaxForeground"]
-visible = false
 motion_offset = Vector2( -35, 20 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/FishTank"]
