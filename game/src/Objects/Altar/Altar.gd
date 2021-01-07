@@ -2,6 +2,7 @@ extends Node2D
 
 signal activate_door
 
+
 func _ready():
 	WorldEvent.connect('pickable_burnt', self, '_on_pickable_burnt')
 
