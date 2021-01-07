@@ -58,7 +58,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-#	owner.hook_target.hide()
+	owner.hook_target.hide()
 	owner.is_paused = false
 	_listening_input = false
 

@@ -557,6 +557,7 @@ rod_tip_ref = NodePath("../RodTip")
 position = Vector2( -4.3955, -6.81772 )
 
 [node name="HookTarget" type="Area2D" parent="."]
+visible = false
 scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookTarget"]

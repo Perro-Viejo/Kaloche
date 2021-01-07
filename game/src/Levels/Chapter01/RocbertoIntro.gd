@@ -52,9 +52,10 @@ func _rocberto_found(body: Node) -> void:
 
 
 func _player_leaves(body: Node) -> void:
-	$Tween.interpolate_property(
-		_player_cam, 'zoom',
-		_player_cam.zoom, Vector2.ONE,
-		0.4, Tween.TRANS_EXPO, Tween.EASE_OUT
-	)
-	$Tween.start()
+	if _player_cam != null:
+		$Tween.interpolate_property(
+			_player_cam, 'zoom',
+			_player_cam.zoom, Vector2.ONE,
+			0.4, Tween.TRANS_EXPO, Tween.EASE_OUT
+		)
+		$Tween.start()

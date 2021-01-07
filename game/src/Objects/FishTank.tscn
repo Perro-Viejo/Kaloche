@@ -37,17 +37,17 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 23 ), Vector2( 0, 18 ), Vector2( 0, 9 ), Vector2( 0, 4 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 237, 27 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 237, 0, 237, 27 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
@@ -81,7 +81,7 @@ fs_name = "Rock"
 type = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tank/Surface"]
-polygon = PoolVector2Array( -15, -74, -15, 1, 16, 1, 16, -74, 119, -74, 119, 64, -119, 64, -119, -74 )
+polygon = PoolVector2Array( -16, -63, -16, 1, 17, 1, 17, -63, 118, -63, 118, 64, -118, 64, -118, -63 )
 __meta__ = {
 "_editor_description_": ""
 }

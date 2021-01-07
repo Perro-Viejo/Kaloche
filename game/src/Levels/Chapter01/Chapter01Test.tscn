@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map_bushes_mask.png" type="Texture" id=38]
 [ext_resource path="res://src/Objects/Altar/AltarActivation.tscn" type="PackedScene" id=39]
 [ext_resource path="res://src/Pickables/Fish_Pickable.tscn" type="PackedScene" id=40]
+[ext_resource path="res://src/Objects/FishTankAnimation.tscn" type="PackedScene" id=41]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -208,7 +209,6 @@ pickable_needed = "Rocberto"
 
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
 position = Vector2( -16, 120 )
-rod_temple_path = NodePath("../RodTemple")
 
 [node name="FishingSurfaceL1" parent="GroupObjects/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
@@ -222,29 +222,27 @@ specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 
 [node name="FishingSurfaceR2" parent="GroupObjects/FishTank/FishingSurfaces" index="3"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
+[node name="FishTankAnimation" parent="GroupObjects" instance=ExtResource( 41 )]
+_player = NodePath("../../GroupCharacters/Player")
+
+[node name="TargetA" parent="GroupObjects/FishTankAnimation" index="3"]
+position = Vector2( 2, 516 )
+
+[node name="TargetB" parent="GroupObjects/FishTankAnimation" index="4"]
+position = Vector2( 168, 680 )
+
 [node name="Hole" parent="GroupObjects" instance=ExtResource( 26 )]
 position = Vector2( -50, 658 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -317, -298 )
-is_good = true
-can_burn = true
 carbs = 200
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -297.478, -298 )
 is_good = false
-can_burn = true
 carbs = 5
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" groups=[
 "Sacred",
@@ -252,26 +250,14 @@ dialog = ""
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
-can_burn = true
 carbs = 5
 img = ExtResource( 1 )
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Fish" parent="GroupObjects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -415.27, -294.967 )
-is_good = true
-can_burn = true
-carbs = 2
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
 position = Vector2( -344, -312 )
@@ -303,14 +289,9 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
-is_good = true
-can_burn = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
@@ -420,6 +401,7 @@ range_z_max = 2
 
 [node name="BushesMask" type="Light2D" parent="Masks"]
 light_mask = 33
+position = Vector2( 0, 0.840912 )
 texture = ExtResource( 38 )
 mode = 3
 range_z_min = 2
@@ -435,6 +417,8 @@ __meta__ = {
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
 
 [editable path="GroupObjects/FishTank"]
+
+[editable path="GroupObjects/FishTankAnimation"]
 
 [editable path="GroupObjects/Altar"]
 

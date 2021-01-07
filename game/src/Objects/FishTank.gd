@@ -1,10 +1,8 @@
 extends Node2D
 
+signal tank_activated
+
 const HOOK_SPLASH = preload('res://src/Particles/HookSplash.tscn')
-
-export (NodePath) var rod_temple_path = ''
-
-var rod_temple
 
 var _is_filling = false
 var _is_active = false
@@ -16,7 +14,6 @@ onready var _tank_surface: Area2D = $Tank/Surface
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
-	rod_temple = get_node(rod_temple_path)
 	for s in _fishing_surfaces.get_children():
 		var surface := s as FishingSurface
 		surface.hide()
@@ -56,7 +53,7 @@ func activate_tank():
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
 	_is_active = true
-	rod_temple.emerge()
+	emit_signal('tank_activated')
 	$TempleDoorButton.is_toggle = true
 	for s in _fishing_surfaces.get_children():
 		var surface := s as FishingSurface

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Objects/FishTankAnimation.gd" type="Script" id=1]
+
+[node name="FishTankAnimation" type="Node2D"]
+position = Vector2( -16, 120 )
+script = ExtResource( 1 )
+_targetA = NodePath("TargetA")
+_targetB = NodePath("TargetB")
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="FishTankAnimations" type="AnimationPlayer" parent="."]
+
+[node name="FishTankCamera" type="Camera2D" parent="."]
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TargetA" type="Position2D" parent="."]
+position = Vector2( 346, 203 )
+
+[node name="TargetB" type="Position2D" parent="."]
+position = Vector2( 356, -398 )

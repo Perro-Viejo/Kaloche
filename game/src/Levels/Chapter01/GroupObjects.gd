@@ -3,7 +3,10 @@ extends Node2D
 func _ready():
 	$TempleDoorButton.connect('button_pressed', $TempleDoor, 'open')
 	$Altar.connect('activate_door', self, '_on_activate_door')
+	$FishTank.connect('tank_activated', self, '_on_tank_activated')
 
 func _on_activate_door() -> void:
-	#Falta hacer algo para que no se pueda detectar la colisión cuando es invisible
 	$AltarActivation.show_door($TempleDoorButton)
+
+func _on_tank_activated() -> void:
+	$FishTankAnimation.reveal_rod($RodTemple)
