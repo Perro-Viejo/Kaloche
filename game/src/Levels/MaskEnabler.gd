@@ -1,13 +1,16 @@
 extends Area2D
-class_name ZIndexChanger
+class_name MaskEnabler
+
+onready var _parent: Light2D = get_parent()
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
-	connect('area_entered', self, '_change_z_index', [true])
-	connect('area_exited', self, '_change_z_index', [false])
+	_parent.enabled = false
+	connect('area_entered', self, '_toggle_mask', [true])
+	connect('area_exited', self, '_toggle_mask', [false])
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
-func _change_z_index(body: Area2D, entered: bool) -> void:
+func _toggle_mask(body: Area2D, entered: bool) -> void:
 	if body.name == 'FootArea':
-		get_parent().z_index = 0 if entered else 4
+		_parent.enabled = entered
