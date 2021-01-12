@@ -94,6 +94,11 @@ func eat_sacred():
 				Tween.TRANS_EXPO, Tween.TRANS_LINEAR)
 			tween.start()
 			yield(tween, 'tween_completed')
+			PlayerEvent.emit_signal('camera_shaked', 
+			{
+				strength = 1.6,
+				duration = 0.2,
+			})
 			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Impact', reject_position.global_position)
 			
 		_:

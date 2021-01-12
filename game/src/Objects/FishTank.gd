@@ -35,23 +35,44 @@ func fill_tank():
 	_tank_surface.type = Data.SurfaceType.WATER
 	_tank_surface.surface_name = 'Water'
 	_is_filling = true
-	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
-	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Start', global_position)
+#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
+	AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			source = 'Tank',
+			id = 'Tank_Fill',
+			head = 'Fill_Start',
+			loop = 'Fill_Loop',
+			tail = 'Fill_Full',
+			_position = global_position
+		}
+		)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
 
 func empty_tank():
 	_is_filling = false
-	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
-	AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Loop', global_position)
-	AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Start', global_position)
+	AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			id = 'Tank_Fill',
+			stop = true
+		}
+		)
+#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
 	$Holes.set_frame(0)
 	_animation.play_backwards('Fill')
 
 
 func activate_tank():
-	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
-	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
+#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
+#	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
+	AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			id = 'Tank_Fill',
+		}
+		)
 	_is_active = true
 	emit_signal('tank_activated')
 	$TempleDoorButton.is_toggle = true
@@ -69,13 +90,14 @@ func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == 0:
 		_tank_surface.type = Data.SurfaceType.ROCK
 		_tank_surface.surface_name = 'Rock'
-		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
-		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
+#		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
+#		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
 
 func _on_stream_finished(source, sound):
-	if _is_filling:
-		if sound == 'Fill_Start':
-			AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Loop', global_position)
+	pass
+#	if _is_filling:
+#		if sound == 'Fill_Start':
+#			AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Loop', global_position)
 		
 
 
