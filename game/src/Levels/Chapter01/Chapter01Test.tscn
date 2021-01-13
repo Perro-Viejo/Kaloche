@@ -290,7 +290,7 @@ position = Vector2( -350, -312 )
 [node name="CollisionEnabler" parent="GroupObjects/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../GroupCharacters/Player") ]
 
-[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/OutsideCollisions" index="1"]
+[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../GroupCharacters/Player") ]
 
 [node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]

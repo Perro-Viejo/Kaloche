@@ -89,6 +89,7 @@ visible = false
 script = ExtResource( 8 )
 zindex_on_entered = 4
 zindex_on_exited = 0
+involved_nodes = [ NodePath("../../SacredFire") ]
 
 [node name="North" type="CollisionPolygon2D" parent="Main/ZIndexChanger"]
 polygon = PoolVector2Array( -72, 0, -72, -88, 72, -88, 72, 0, 48, 0, 48, -21, -48, -21, -48, 0 )
@@ -219,7 +220,7 @@ max_lifepoints = 300
 external_position = NodePath("../Position2D")
 
 [node name="Sprite" parent="SacredFire" index="0"]
-frame = 7
+frame = 23
 
 [node name="Position2D" parent="SacredFire" index="6"]
 position = Vector2( 59.2451, 13.5395 )
