@@ -1,6 +1,10 @@
 extends Area2D
 class_name ZIndexChanger
 
+export var zindex_on_entered := 0
+export var zindex_on_exited := 4
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	connect('area_entered', self, '_change_z_index', [true])
@@ -10,4 +14,4 @@ func _ready():
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _change_z_index(body: Area2D, entered: bool) -> void:
 	if body.name == 'FootArea':
-		get_parent().z_index = 0 if entered else 4
+		get_parent().z_index = zindex_on_entered if entered else zindex_on_exited
