@@ -83,10 +83,11 @@ func set_amb_position(source, sound, _position, _max_distance):
 
 func toggle_head_loop_tail (content):
 	if _hlt.has(content.id):
-		if _hlt.has('finished'):
+		if content.has('finished'):
 			count_step(content)
 		continue_hlt(content)
 	else:
+		if not content.has('source'): return
 		_hlt[content.id] = {
 			step = 0,
 			audios = [
@@ -97,36 +98,51 @@ func toggle_head_loop_tail (content):
 			_position = content._position,
 			head_time = Timer.new()
 		}
+		if content.has('sync_loop'):
+			_hlt[content.id].sync_loop = true
 		continue_hlt(content)
 
 func continue_hlt(content) -> void:
 	var current_hlt = _hlt[content.id]
 	var current_step = current_hlt.step
 	
-	if current_step == 3: return
-	
 	if content.has('stop'):
-		if current_step == 0:
+		if current_step < 2:
 			current_hlt.head_time.disconnect('timeout', self, 'continue_hlt')
 			current_hlt.head_time.disconnect('timeout', self, 'count_step')
 			current_hlt.head_time.queue_free()
 			current_hlt.head_time = Timer.new()
 			# ↑↑↑ Este Timer podría ser un tween para usar en general 
 			#en el AudioManager
+			
+		elif current_hlt.has('sync_loop'):
+			current_hlt.head_time.disconnect('timeout', self, 'continue_hlt')
+			current_hlt.head_time.disconnect('timeout', self, 'count_step')
+			current_hlt.head_time.queue_free()
+			current_hlt.head_time = Timer.new()
+			current_hlt.step = 0
 		current_hlt.audios[current_step].stop()
-		current_step = 0
+		current_hlt.step = 0
 	else:
 		if current_step == 0:
 			current_hlt.head_time.one_shot = true
-			current_hlt.head_time.autostart = true
+			if content.has('sync_loop'):
+				current_hlt.head_time.autostart = false
+				count_step(content)
+				continue_hlt(content)
+			else:
+				current_hlt.head_time.autostart = true
 			current_hlt.head_time.wait_time = current_hlt.audios[current_step].stream.get_length()
-			current_hlt.head_time.connect('timeout', self, 'continue_hlt', [content])
 			current_hlt.head_time.connect('timeout', self, 'count_step', [content])
+			current_hlt.head_time.connect('timeout', self, 'continue_hlt', [content])
 			add_child(current_hlt.head_time)
-		if current_step == 2:
+		elif current_step == 2:
 			current_hlt.audios[current_step -1].stop()
-			current_step = 0
+			current_hlt.audios[current_step].connect('finished', self, 'count_step', [content])
 		current_hlt.audios[current_step].play()
+		print(current_hlt.audios[current_step].name)
 
 func count_step(content) -> void:
-	_hlt[content.id].step += 1
+	_hlt[content.id].step = wrapi(_hlt[content.id].step + 1, 0, 3)
+	if _hlt[content.id].audios[_hlt[content.id].step].is_connected('finished', self, 'count_step'):
+		_hlt[content.id].audios[_hlt[content.id].step].disconnect('finished', self, 'count_step')

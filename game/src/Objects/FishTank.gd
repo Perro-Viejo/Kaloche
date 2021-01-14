@@ -35,7 +35,13 @@ func fill_tank():
 	_tank_surface.type = Data.SurfaceType.WATER
 	_tank_surface.surface_name = 'Water'
 	_is_filling = true
-#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
+	AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			id = 'Tank_Empty',
+			stop = true
+		}
+		)
 	AudioEvent.emit_signal(
 		'headloop_toggle', 
 		{
@@ -62,11 +68,21 @@ func empty_tank():
 		)
 	$Holes.set_frame(0)
 	_animation.play_backwards('Fill')
+	AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			source = 'Tank',
+			id = 'Tank_Empty',
+			head = 'Empty_Start',
+			loop = 'Empty_Loop',
+			tail = 'Empty_Tail',
+			sync_loop = true,
+			_position = global_position
+		}
+		)
 
 
 func activate_tank():
-#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
-#	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
 	AudioEvent.emit_signal(
 		'headloop_toggle', 
 		{
@@ -91,8 +107,13 @@ func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == 0:
 		_tank_surface.type = Data.SurfaceType.ROCK
 		_tank_surface.surface_name = 'Rock'
-#		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
-#		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
+		AudioEvent.emit_signal(
+		'headloop_toggle', 
+		{
+			id = 'Tank_Empty',
+			finished = true
+		}
+		)
 
 
 func _change_z_index(body: Area2D, entered: bool) -> void:
