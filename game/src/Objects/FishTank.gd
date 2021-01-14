@@ -12,6 +12,7 @@ onready var _fishing_surfaces: Node2D = $FishingSurfaces
 onready var _animation: AnimationPlayer = $AnimationPlayer
 onready var _tank_surface: Area2D = $Tank/Surface
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	for s in _fishing_surfaces.get_children():
@@ -39,6 +40,7 @@ func fill_tank():
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Start', global_position)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
+
 
 func empty_tank():
 	_is_filling = false
@@ -71,6 +73,7 @@ func _on_animation_finished(anim):
 		_tank_surface.surface_name = 'Rock'
 		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
+
 
 func _on_stream_finished(source, sound):
 	if _is_filling:

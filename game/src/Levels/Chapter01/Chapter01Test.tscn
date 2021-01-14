@@ -236,8 +236,33 @@ position = Vector2( 168, 680 )
 [node name="Hole" parent="GroupObjects" instance=ExtResource( 26 )]
 position = Vector2( -50, 658 )
 
+[node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
+position = Vector2( -350, -312 )
+
+[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/InsideCollisions" index="1"]
+targets = [ NodePath("../../../../../GroupCharacters/Player") ]
+
+[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/OutsideCollisions" index="2"]
+targets = [ NodePath("../../../../../GroupCharacters/Player") ]
+
+[node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
+position = Vector2( -350, -312 )
+_player = NodePath("../../GroupCharacters/Player")
+
+[node name="TargetA" parent="GroupObjects/AltarActivation" index="3"]
+position = Vector2( 346, 203 )
+
+[node name="TargetB" parent="GroupObjects/AltarActivation" index="4"]
+position = Vector2( 356, -398 )
+
+[node name="TargetC" parent="GroupObjects/AltarActivation" index="5"]
+position = Vector2( 375, -599 )
+
+[node name="RodTemple" parent="GroupObjects" instance=ExtResource( 37 )]
+position = Vector2( 152, 800 )
+
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
-position = Vector2( -317, -298 )
+position = Vector2( -294, -277 )
 is_good = true
 can_burn = true
 carbs = 200
@@ -248,7 +273,7 @@ dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
-position = Vector2( -297.478, -298 )
+position = Vector2( -390, -277 )
 is_good = false
 can_burn = true
 carbs = 5
@@ -275,7 +300,7 @@ dialog = ""
 "Sacred",
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
-position = Vector2( -415.27, -294.967 )
+position = Vector2( -350, -262 )
 is_good = true
 can_burn = true
 carbs = 2
@@ -283,31 +308,6 @@ on_free = ""
 tr_code = ""
 character = ""
 dialog = ""
-
-[node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
-position = Vector2( -350, -312 )
-
-[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/InsideCollisions" index="1"]
-targets = [ NodePath("../../../../../GroupCharacters/Player") ]
-
-[node name="CollisionEnabler" parent="GroupObjects/Altar/Main/OutsideCollisions" index="2"]
-targets = [ NodePath("../../../../../GroupCharacters/Player") ]
-
-[node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
-position = Vector2( -350, -312 )
-_player = NodePath("../../GroupCharacters/Player")
-
-[node name="TargetA" parent="GroupObjects/AltarActivation" index="3"]
-position = Vector2( 346, 203 )
-
-[node name="TargetB" parent="GroupObjects/AltarActivation" index="4"]
-position = Vector2( 356, -398 )
-
-[node name="TargetC" parent="GroupObjects/AltarActivation" index="5"]
-position = Vector2( 375, -599 )
-
-[node name="RodTemple" parent="GroupObjects" instance=ExtResource( 37 )]
-position = Vector2( 152, 800 )
 
 [node name="GroupCharacters" type="Node2D" parent="."]
 __meta__ = {
