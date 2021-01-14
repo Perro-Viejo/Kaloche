@@ -25,7 +25,6 @@ func _ready():
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
 	_animation.connect('animation_finished', self, '_on_animation_finished')
-	AudioEvent.connect('stream_finished', self, '_on_stream_finished')
 	_z_index_changer.connect('area_entered', self, '_change_z_index', [true])
 	_z_index_changer.connect('area_exited', self, '_change_z_index', [false])
 
@@ -59,7 +58,6 @@ func empty_tank():
 			stop = true
 		}
 		)
-#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
 	$Holes.set_frame(0)
 	_animation.play_backwards('Fill')
 
@@ -71,6 +69,7 @@ func activate_tank():
 		'headloop_toggle', 
 		{
 			id = 'Tank_Fill',
+			finished = true
 		}
 		)
 	_is_active = true
@@ -92,13 +91,6 @@ func _on_animation_finished(anim):
 		_tank_surface.surface_name = 'Rock'
 #		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 #		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
-
-func _on_stream_finished(source, sound):
-	pass
-#	if _is_filling:
-#		if sound == 'Fill_Start':
-#			AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Loop', global_position)
-		
 
 
 func _change_z_index(body: Area2D, entered: bool) -> void:

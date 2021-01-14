@@ -83,8 +83,9 @@ func set_amb_position(source, sound, _position, _max_distance):
 
 func toggle_head_loop_tail (content):
 	if _hlt.has(content.id):
-		pass
-#		continue_hlt(content)
+		if _hlt.has('finished'):
+			count_step(content)
+		continue_hlt(content)
 	else:
 		_hlt[content.id] = {
 			step = 0,
@@ -104,23 +105,28 @@ func continue_hlt(content) -> void:
 	
 	if current_step == 3: return
 	
-	print(current_step)
-	
-#	if current_step == 0:
-#		current_hlt.head_time.one_shot = true
-#		current_hlt.head_time.autostart = true
-#		current_hlt.head_time.wait_time = current_hlt.audios[current_step].stream.get_length()
-#		current_hlt.head_time.connect('timeout', self, 'continue_hlt', [content])
-#		add_child(current_hlt.head_time)
-#
-#	if current_step == 2:
-#		current_hlt.audios[current_step - 1].stop()
-#
-#	if content.has('stop'):
-#		current_hlt.audios[current_step - 1].stop()
-#		current_step = 0
-#	else:
-#		current_hlt.step += 1
-#		if current_hlt.audios[current_step] is AudioStreamPlayer2D:
-#			current_hlt.audios[current_step].set_position(current_hlt._position)
-#		current_hlt.audios[current_step].play()
+	if content.has('stop'):
+		if current_step == 0:
+			current_hlt.head_time.disconnect('timeout', self, 'continue_hlt')
+			current_hlt.head_time.disconnect('timeout', self, 'count_step')
+			current_hlt.head_time.queue_free()
+			current_hlt.head_time = Timer.new()
+			# ↑↑↑ Este Timer podría ser un tween para usar en general 
+			#en el AudioManager
+		current_hlt.audios[current_step].stop()
+		current_step = 0
+	else:
+		if current_step == 0:
+			current_hlt.head_time.one_shot = true
+			current_hlt.head_time.autostart = true
+			current_hlt.head_time.wait_time = current_hlt.audios[current_step].stream.get_length()
+			current_hlt.head_time.connect('timeout', self, 'continue_hlt', [content])
+			current_hlt.head_time.connect('timeout', self, 'count_step', [content])
+			add_child(current_hlt.head_time)
+		if current_step == 2:
+			current_hlt.audios[current_step -1].stop()
+			current_step = 0
+		current_hlt.audios[current_step].play()
+
+func count_step(content) -> void:
+	_hlt[content.id].step += 1
