@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/images/world/magic_fire_particle.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/SacredFire/Burn.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Objects/SacredFire/Idle.gd" type="Script" id=4]
+[ext_resource path="res://src/Levels/ZIndexChanger.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio/sfx_demon_idle.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/images/world/circle.png" type="Texture" id=7]
 [ext_resource path="res://src/Objects/SacredFire/SacredFire.gd" type="Script" id=8]
@@ -141,7 +142,7 @@ size_range = Vector2( 0.5, 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
-frame = 1
+frame = 5
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -181,5 +182,13 @@ volume_db = -6.0
 autoplay = true
 max_distance = 100.0
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="RejectPosition" type="Position2D" parent="."]
 position = Vector2( 23.9764, 0 )
+
+[node name="ZIndexChanger" type="Area2D" parent="."]
+script = ExtResource( 5 )
+zindex_on_entered = 4
+zindex_on_exited = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ZIndexChanger"]
+polygon = PoolVector2Array( 12, 2, 12, -16, -12, -16, -12, 2 )
