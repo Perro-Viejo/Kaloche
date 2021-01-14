@@ -12,6 +12,7 @@ onready var _fishing_surfaces: Node2D = $FishingSurfaces
 onready var _animation: AnimationPlayer = $AnimationPlayer
 onready var _tank_surface: Area2D = $Tank/Surface
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	for s in _fishing_surfaces.get_children():
@@ -48,6 +49,7 @@ func fill_tank():
 		)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
+
 
 func empty_tank():
 	_is_filling = false

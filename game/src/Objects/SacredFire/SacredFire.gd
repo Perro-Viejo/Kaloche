@@ -1,4 +1,7 @@
 extends Node2D
+# Controla lo que pasa con los fuegos sagrados que pueden consumir objetos y
+# dependen de ellos para mantenerse con vida, o ser más fuertes. Es el fuego
+# base para Kaloche.
 
 export var lifepoints:= 10
 export var max_lifepoints:= 20
@@ -10,15 +13,15 @@ var pickable: Pickable = null
 var is_burning:= false
 var reject_position
 
-
 onready var sprite := $Sprite
 onready var timer := $Timer
 onready var tween := $Tween
 onready var feed_area := $FeedArea
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
 	if external_position == null:
-		reject_position = $Position2D
+		reject_position = $RejectPosition
 	else:
 		reject_position = get_node(external_position)
 	scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
@@ -28,34 +31,8 @@ func _ready():
 	if can_die:
 		timer.start()
 
-func _on_area_entered(other) -> void:
-	if other.is_in_group('Pickable') and not (other as Pickable).being_grabbed:
-		if is_burning:
-			_reject_pickable(other)
-		else:
-			pickable = other as Pickable
-			if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
-				_reject_pickable(pickable)
-			else:
-				print('tengo ', pickable.name, ' en mi llamaje')
-				pickable.set_z_index(-1)
-				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
 
-func _on_area_exited(other) -> void:
-	if other.is_in_group('Pickable') and other.being_grabbed:
-		print('me sacaron el ', pickable.name)
-		pickable = null
-		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
-
-func _on_timer_timeout():
-	if can_die:
-		if lifepoints > 0:
-			lifepoints -= 1
-			scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
-		else:
-			$Timer.stop()
-			$StateMachine.transition_to_state($StateMachine.STATES.DIE)
-
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func eat():
 	print('Me comi el ', pickable.name)
 	if pickable.is_good:
@@ -69,6 +46,7 @@ func eat():
 		else:
 			lifepoints = 0
 	_destroy_pickable()
+
 
 func eat_sacred():
 #	lifepoints = max_lifepoints
@@ -105,6 +83,39 @@ func eat_sacred():
 			print('no sé que es pero lo toco jesusito')
 			_destroy_pickable()
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+func _on_area_entered(other) -> void:
+	if other.is_in_group('Pickable') and not (other as Pickable).being_grabbed:
+		if is_burning:
+			_reject_pickable(other)
+		else:
+			pickable = other as Pickable
+			if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
+				_reject_pickable(pickable)
+			else:
+				print('tengo ', pickable.name, ' en mi llamaje')
+				pickable.set_z_index(-1)
+				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
+
+
+func _on_area_exited(other) -> void:
+	if other.is_in_group('Pickable') and other.being_grabbed:
+		print('me sacaron el ', pickable.name)
+		pickable = null
+		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+
+
+func _on_timer_timeout():
+	if can_die:
+		if lifepoints > 0:
+			lifepoints -= 1
+			scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
+		else:
+			$Timer.stop()
+			$StateMachine.transition_to_state($StateMachine.STATES.DIE)
+
+
 func _reject_pickable(_pickable):
 	_pickable.set_z_index(0)
 	tween.interpolate_property(
@@ -115,6 +126,7 @@ func _reject_pickable(_pickable):
 	if _pickable == pickable:
 		pickable = null
 		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+
 
 func _destroy_pickable():
 	WorldEvent.emit_signal('pickable_burnt', pickable)

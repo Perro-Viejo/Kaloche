@@ -37,6 +37,7 @@ onready var rod_tip := $RodTip
 onready var hook_target : Node2D = $HookTarget
 onready var shadow := sprite.get_node('Shadow')
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	# Poner los objetos por defecto en el inventario

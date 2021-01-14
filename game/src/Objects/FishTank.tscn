@@ -107,87 +107,87 @@ position = Vector2( 0, -14.5 )
 z_index = 3
 texture = ExtResource( 6 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Columns"]
+[node name="Collisions" type="StaticBody2D" parent="Columns"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Columns/Collisions"]
 polygon = PoolVector2Array( -117, -70.5, -114, -70.5, -114, -74.5, -117, -74.5 )
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Columns/Collisions"]
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 24, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 48, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 70, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 113, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 135, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 159, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 183, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 207, 0 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( -24, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 0, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 24, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 72, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 110, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 135, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 159, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 183, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 207, 166 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -74.5, -93, -74.5 )
 
-[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 80, 74.5 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -76, -93, -76 )
 
-[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Columns/StaticBody2D"]
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Columns/Collisions"]
 position = Vector2( 103, 74.5 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -76, -93, -76 )
 
