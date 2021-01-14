@@ -22,5 +22,4 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 		var target_zindex := zindex_on_entered if entered else zindex_on_exited
 		get_parent().z_index = target_zindex
 		for n in _involved_nodes:
-			print(n.name)
 			n.z_index = target_zindex

@@ -7,7 +7,6 @@ const HOOK_SPLASH = preload('res://src/Particles/HookSplash.tscn')
 var _is_filling = false
 var _is_active = false
 
-onready var _z_index_changer: Area2D = $ZIndexChanger
 onready var _fishing_surfaces: Node2D = $FishingSurfaces
 onready var _animation: AnimationPlayer = $AnimationPlayer
 onready var _tank_surface: Area2D = $Tank/Surface
@@ -26,8 +25,6 @@ func _ready():
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
 	_animation.connect('animation_finished', self, '_on_animation_finished')
-	_z_index_changer.connect('area_entered', self, '_change_z_index', [true])
-	_z_index_changer.connect('area_exited', self, '_change_z_index', [false])
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -35,7 +32,6 @@ func fill_tank():
 	_tank_surface.type = Data.SurfaceType.WATER
 	_tank_surface.surface_name = 'Water'
 	_is_filling = true
-#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
 	AudioEvent.emit_signal(
 		'headloop_toggle', 
 		{
@@ -65,8 +61,6 @@ func empty_tank():
 
 
 func activate_tank():
-#	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill_Loop')
-#	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Full')
 	AudioEvent.emit_signal(
 		'headloop_toggle', 
 		{
@@ -91,14 +85,6 @@ func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == 0:
 		_tank_surface.type = Data.SurfaceType.ROCK
 		_tank_surface.surface_name = 'Rock'
-#		AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty_Loop')
-#		AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Tail', global_position)
-
-
-func _change_z_index(body: Area2D, entered: bool) -> void:
-	if body.name == 'FootArea':
-		$Columns.z_index = 2 if entered else 3
-		$Arch.z_index = 2 if entered else 3
 
 
 func _on_area_entered(other) -> void:
