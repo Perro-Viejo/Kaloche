@@ -133,6 +133,12 @@ func pickup_item() -> void:
 	is_paused = false
 
 
+func change_zindex(new_value: int) -> void:
+	z_index = new_value
+	if picked_item:
+		picked_item.z_index = new_value
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)

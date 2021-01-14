@@ -43,6 +43,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 21, 13 )
 
 [node name="Area2D" type="Area2D" parent="."]
+priority = 2.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -8, -4 )
