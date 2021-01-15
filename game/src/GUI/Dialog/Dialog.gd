@@ -160,6 +160,7 @@ func _play_dialog_line() -> void:
 
 			id += 1
 
+		_dialog_menu.remove_options()
 		_dialog_menu.create_options(line_dic.options)
 
 	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ APAGAR OPCIONES ▮▮▮▮

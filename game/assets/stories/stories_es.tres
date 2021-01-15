@@ -543,7 +543,7 @@ story = {
 "name": "RocbertoIntro",
 "nodes": {
 1: {
-"graph_offset": Vector2( 40, 100 ),
+"graph_offset": Vector2( -3200, 200 ),
 "links": {
 0: 2
 },
@@ -553,45 +553,37 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( 380, 320 ),
+"graph_offset": Vector2( -2680, 160 ),
 "links": {
 0: 4,
 1: 5,
-2: 7,
-3: 3
+2: 12
 },
-"rect_size": Vector2( 441, 159 ),
-"slot_amount": 4,
+"rect_size": Vector2( 441, 255 ),
+"slot_amount": 3,
 "text": "{
 \"actor\": \"Rocberto\",
 \"line\": \"¡pssssssst!\",
 \"time\": 1,
 \"options\": [
 	{
-		\"line\": \"¡La puta que me parió, una roca que habla!\",
-		\"say\": true,
+		\"line\": \"¡Uy jueputa! ¿Qué hace aquí?\",
 		\"emotion\": \"Surprised\"
 	},
 	{
-		\"line\": \"¿¡Ah!? Creo que escuché una voz\",
-		\"say\": true,
+		\"line\": \"¡¿Eh?! ¿Qué fue ese ruido?\",
 		\"emotion\": \"Surprised\"
 	},
 	{
-		\"line\": \"¿Llevarlo conmigo? Me la tiene es que chupar\",
-		\"say\": true,
-		\"show\": false,
+		\"line\": \"Mejor me voy de acá. Aquí no hay nada.\",
 		\"emotion\": \"Happy\"
-	},
-	{
-		\"line\": \"Chau chau adiós\"
 	}
 ]
 }",
 "type": "line"
 },
 3: {
-"graph_offset": Vector2( 1000, 620 ),
+"graph_offset": Vector2( -180, -120 ),
 "links": {
 
 },
@@ -601,82 +593,140 @@ story = {
 "type": "line"
 },
 4: {
-"graph_offset": Vector2( 1000, 60 ),
+"graph_offset": Vector2( -2000, -400 ),
 "links": {
-0: 6
+0: 7
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"Soy Rocberto. Mucho gusto.\",
-\"off\": [0,1]
+\"actor\": \"Player\",
+\"line\": \"Creí que estába solo.\"
 }",
 "type": "line"
 },
 5: {
-"graph_offset": Vector2( 1000, 240 ),
-"links": {
-0: 6
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.\",
-\"off\": [0,1]
-}",
-"type": "line"
-},
-6: {
-"graph_offset": Vector2( 1500, 60 ),
-"links": {
-0: 8
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?\",
-\"on\": [2]
-}",
-"type": "line"
-},
-7: {
-"graph_offset": Vector2( 1000, 420 ),
+"graph_offset": Vector2( -2000, 100 ),
 "links": {
 0: 9
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.\",
-\"off\": [2]
+\"actor\": \"Teotriste\",
+\"line\": \"Será esa cosa de allá.\"
 }",
 "type": "line"
 },
-8: {
-"graph_offset": Vector2( 1980, 60 ),
+6: {
+"graph_offset": Vector2( -920, -520 ),
 "links": {
 
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": "return",
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Mejor digame si ha visto pasar a alguien más.\"
+}",
 "type": "line"
 },
-9: {
-"graph_offset": Vector2( 1520, 420 ),
+7: {
+"graph_offset": Vector2( -1480, -400 ),
 "links": {
-0: 3
+0: 6,
+1: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 2,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte.\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Pues así como suerte, no lo sé...\",
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿Y a quién más a visto pasar?\",
+		\"emotion\": \"Surprised\"
+	}
+]
+}",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( -920, -260 ),
+"links": {
+
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Lo pensaré\"
+\"line\": \"No me molestaría encontrarme con unas muchachonas en este momento.\"
 }",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( -1500, 100 ),
+"links": {
+0: 11
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Bueno, bueno. No es para tanto, no se enoje.\",
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \" Tranquilo, no se guie por la pinta.\",
+		\"emotion\": \"Surprised\"
+	}
+]
+}",
+"type": "line"
+},
+10: {
+"graph_offset": Vector2( -920, 0 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Que aquí donde me ve, todavía levanto algo.\"
+}",
+"type": "line"
+},
+11: {
+"graph_offset": Vector2( -920, 200 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Lo cochino es porque llevo un rato explorando.\"
+}",
+"type": "line"
+},
+12: {
+"graph_offset": Vector2( -1500, 520 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "",
 "type": "line"
 }
 }

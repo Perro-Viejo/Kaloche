@@ -52,12 +52,18 @@ DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita
 DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana
 DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea
 DLG_5_2_ROCBERTO,¡pssssssst!,¡pssssssst!
-DLG_5_2_ROCBERTO_OPT_0,"¡La puta que me parió, una roca que habla!","¡La puta que me parió, una roca que habla!"
-DLG_5_2_ROCBERTO_OPT_1,¿¡Ah!? Creo que escuché una voz,¿¡Ah!? Creo que escuché una voz
-DLG_5_2_ROCBERTO_OPT_2,¿Llevarlo conmigo? Me la tiene es que chupar,¿Llevarlo conmigo? Me la tiene es que chupar
-DLG_5_2_ROCBERTO_OPT_3,Chau chau adiós,Chau chau adiós
-DLG_5_4_ROCBERTO,Soy Rocberto. Mucho gusto.,Soy Rocberto. Mucho gusto.
-DLG_5_5_ROCBERTO,"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.","¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo."
-DLG_5_6_ROCBERTO,"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?","Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?"
-DLG_5_7_ROCBERTO,Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.,Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.
-DLG_5_9_PLAYER,Lo pensaré,Lo pensaré
+DLG_5_2_ROCBERTO_OPT_0,¡Uy jueputa! ¿Qué hace aquí?,¡Uy jueputa! ¿Qué hace aquí?
+DLG_5_2_ROCBERTO_OPT_1,¡¿Eh?! ¿Qué fue ese ruido?,¡¿Eh?! ¿Qué fue ese ruido?
+DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá. Aquí no hay nada.,Mejor me voy de acá. Aquí no hay nada.
+DLG_5_4_PLAYER,Creí que estába solo.,Creí que estába solo.
+DLG_5_5_TEOTRISTE,Será esa cosa de allá.,Será esa cosa de allá.
+DLG_5_6_PLAYER,Mejor digame si ha visto pasar a alguien más.,Mejor digame si ha visto pasar a alguien más.
+DLG_5_7_ROCBERTO,"No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte.","No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte."
+DLG_5_7_ROCBERTO_OPT_0,"Pues así como suerte, no lo sé...","Pues así como suerte, no lo sé..."
+DLG_5_7_ROCBERTO_OPT_1,¿Y a quién más a visto pasar?,¿Y a quién más a visto pasar?
+DLG_5_8_PLAYER,No me molestaría encontrarme con unas muchachonas en este momento.,No me molestaría encontrarme con unas muchachonas en este momento.
+DLG_5_9_ROCBERTO,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.
+DLG_5_9_ROCBERTO_OPT_0,"Bueno, bueno. No es para tanto, no se enoje.","Bueno, bueno. No es para tanto, no se enoje."
+DLG_5_9_ROCBERTO_OPT_1," Tranquilo, no se guie por la pinta."," Tranquilo, no se guie por la pinta."
+DLG_5_10_PLAYER,"Que aquí donde me ve, todavía levanto algo.","Que aquí donde me ve, todavía levanto algo."
+DLG_5_11_PLAYER,Lo cochino es porque llevo un rato explorando.,Lo cochino es porque llevo un rato explorando.

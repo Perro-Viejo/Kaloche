@@ -313,7 +313,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( -289, -266 )
+position = Vector2( -281, 518 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -430,13 +430,17 @@ range_z_max = 2
 __meta__ = {
 "_editor_description_": ""
 }
-
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 
 [editable path="AUDIO_Cap_01"]
+
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
+
 [editable path="GroupObjects/FishTank"]
+
 [editable path="GroupObjects/FishTankAnimation"]
+
 [editable path="GroupObjects/Altar"]
+
 [editable path="GroupObjects/AltarActivation"]

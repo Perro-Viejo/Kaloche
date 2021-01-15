@@ -389,8 +389,7 @@ story = {
 "links": {
 0: 4,
 1: 5,
-2: 7,
-3: 3
+2: 12
 },
 "text": "{
 \"actor\": \"Rocberto\",
@@ -398,23 +397,16 @@ story = {
 \"time\": 1,
 \"options\": [
 	{
-		\"line\": \"¡La puta que me parió, una roca que habla!\",
-		\"say\": true,
+		\"line\": \"¡Uy jueputa! ¿Qué hace aquí?\",
 		\"emotion\": \"Surprised\"
 	},
 	{
-		\"line\": \"¿¡Ah!? Creo que escuché una voz\",
-		\"say\": true,
+		\"line\": \"¡¿Eh?! ¿Qué fue ese ruido?\",
 		\"emotion\": \"Surprised\"
 	},
 	{
-		\"line\": \"¿Llevarlo conmigo? Me la tiene es que chupar\",
-		\"say\": true,
-		\"show\": false,
+		\"line\": \"Mejor me voy de acá. Aquí no hay nada.\",
 		\"emotion\": \"Happy\"
-	},
-	{
-		\"line\": \"Chau chau adiós\"
 	}
 ]
 }"
@@ -427,58 +419,104 @@ story = {
 },
 4: {
 "links": {
-0: 6
+0: 7
 },
 "text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"Soy Rocberto. Mucho gusto.\",
-\"off\": [0,1]
+\"actor\": \"Player\",
+\"line\": \"Creí que estába solo.\"
 }"
 },
 5: {
 "links": {
-0: 6
+0: 9
 },
 "text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"¡Sí! ¡sí! Soy yo, Rocberto. Aquí abajo.\",
-\"off\": [0,1]
+\"actor\": \"Teotriste\",
+\"line\": \"Será esa cosa de allá.\"
 }"
 },
 6: {
 "links": {
-0: 8
+
 },
 "text": "{
-\"actor\": \"Rocberto\",
-\"line\": \"Me han echao una maldición re paila, necesito entrar al templo. ¿Me llevarías contigo?\",
-\"on\": [2]
+\"actor\": \"Player\",
+\"line\": \"Mejor digame si ha visto pasar a alguien más.\"
 }"
 },
 7: {
 "links": {
-0: 9
+0: 6,
+1: 8
 },
 "text": "{
 \"actor\": \"Rocberto\",
-\"line\": \"Estando así te lastimaría. Llévame a la puerta y luego saldaré mi deuda.\",
-\"off\": [2]
+\"line\": \"No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte.\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Pues así como suerte, no lo sé...\",
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \"¿Y a quién más a visto pasar?\",
+		\"emotion\": \"Surprised\"
+	}
+]
 }"
 },
 8: {
 "links": {
 
 },
-"text": "return"
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"No me molestaría encontrarme con unas muchachonas en este momento.\"
+}"
 },
 9: {
 "links": {
-0: 3
+0: 11
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Bueno, bueno. No es para tanto, no se enoje.\",
+		\"emotion\": \"Surprised\"
+	},
+	{
+		\"line\": \" Tranquilo, no se guie por la pinta.\",
+		\"emotion\": \"Surprised\"
+	}
+]
+}"
+},
+10: {
+"links": {
+
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Lo pensaré\"
+\"line\": \"Que aquí donde me ve, todavía levanto algo.\"
 }"
+},
+11: {
+"links": {
+
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Lo cochino es porque llevo un rato explorando.\"
+}"
+},
+12: {
+"links": {
+
+},
+"text": ""
 }
 }
 }

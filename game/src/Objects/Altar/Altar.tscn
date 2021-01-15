@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Objects/SacredFire/SacredFire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/world/chapter_0.1/altar.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/Levels/MaskEnabler.gd" type="Script" id=11]
 [ext_resource path="res://src/Levels/CollisionEnabler.gd" type="Script" id=12]
 [ext_resource path="res://src/Levels/Area2DToggler.gd" type="Script" id=13]
+[ext_resource path="res://src/Levels/Surface.gd" type="Script" id=14]
 
 [node name="Altar" type="Node2D"]
 script = ExtResource( 3 )
@@ -218,7 +219,17 @@ max_lifepoints = 300
 external_position = NodePath("../Position2D")
 
 [node name="Sprite" parent="SacredFire" index="0"]
-frame = 6
+frame = 23
+
+[node name="Surface" type="Node2D" parent="."]
+
+[node name="AltarFloor" type="Area2D" parent="Surface"]
+script = ExtResource( 14 )
+surface_name = "Rock"
+fs_name = "Rock"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surface/AltarFloor"]
+polygon = PoolVector2Array( -70.9528, 33.5791, -20.6915, 34.051, -20.6915, 51.2767, 22.9627, 51.7486, 22.0188, 32.8712, 70.0244, 32.2929, 47.7505, -29.2254, -37.9172, -29.6605 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 49.265, 63.3029 )
