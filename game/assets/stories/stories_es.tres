@@ -173,7 +173,6 @@ story = {
 12: {
 "graph_offset": Vector2( 2200, 2200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -243,7 +242,6 @@ story = {
 5: {
 "graph_offset": Vector2( 800, 800 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -306,7 +304,6 @@ story = {
 3: {
 "graph_offset": Vector2( 800, 600 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -361,7 +358,6 @@ story = {
 7: {
 "graph_offset": Vector2( 1400, 0 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -371,7 +367,6 @@ story = {
 8: {
 "graph_offset": Vector2( 2000, 200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -395,7 +390,6 @@ story = {
 10: {
 "graph_offset": Vector2( 1400, 400 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -423,7 +417,6 @@ story = {
 2: {
 "graph_offset": Vector2( 1020, 200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -527,7 +520,6 @@ story = {
 7: {
 "graph_offset": Vector2( 1580, -420 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -588,7 +580,6 @@ story = {
 3: {
 "graph_offset": Vector2( -180, -120 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -609,14 +600,14 @@ story = {
 "type": "line"
 },
 5: {
-"graph_offset": Vector2( -2000, 100 ),
+"graph_offset": Vector2( -2000, -80 ),
 "links": {
 0: 9
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "{
-\"actor\": \"Teotriste\",
+\"actor\": \"Player\",
 \"line\": \"Será esa cosa de allá.\"
 }",
 "type": "line"
@@ -675,7 +666,7 @@ story = {
 "type": "line"
 },
 9: {
-"graph_offset": Vector2( -1500, 100 ),
+"graph_offset": Vector2( -1500, -120 ),
 "links": {
 0: 10,
 1: 11

@@ -88,6 +88,7 @@ func _play_dialog_line() -> void:
 		_finish_dialog()
 		return
 
+	_selected_slot = 0
 	if _in_dialog_with_options:
 		# Verificar si el texto del nodo es la palabra clave para volver al menú
 		# de opciones activo
