@@ -389,7 +389,7 @@ story = {
 "links": {
 0: 4,
 1: 5,
-2: 12
+2: 3
 },
 "text": "{
 \"actor\": \"Rocberto\",
@@ -398,15 +398,18 @@ story = {
 \"options\": [
 	{
 		\"line\": \"¡Uy jueputa! ¿Qué hace aquí?\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	},
 	{
 		\"line\": \"¡¿Eh?! ¿Qué fue ese ruido?\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	},
 	{
 		\"line\": \"Mejor me voy de acá. Aquí no hay nada.\",
-		\"emotion\": \"Happy\"
+		\"emotion\": \"Happy\",
+		\"say\": true
 	}
 ]
 }"
@@ -437,7 +440,7 @@ story = {
 },
 6: {
 "links": {
-
+0: 3
 },
 "text": "{
 \"actor\": \"Player\",
@@ -456,18 +459,20 @@ story = {
 \"options\": [
 	{
 		\"line\": \"Pues así como suerte, no lo sé...\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	},
 	{
 		\"line\": \"¿Y a quién más a visto pasar?\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	}
 ]
 }"
 },
 8: {
 "links": {
-
+0: 3
 },
 "text": "{
 \"actor\": \"Player\",
@@ -476,7 +481,8 @@ story = {
 },
 9: {
 "links": {
-0: 11
+0: 10,
+1: 11
 },
 "text": "{
 \"actor\": \"Rocberto\",
@@ -485,18 +491,20 @@ story = {
 \"options\": [
 	{
 		\"line\": \"Bueno, bueno. No es para tanto, no se enoje.\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	},
 	{
 		\"line\": \" Tranquilo, no se guie por la pinta.\",
-		\"emotion\": \"Surprised\"
+		\"emotion\": \"Surprised\",
+		\"say\": true
 	}
 ]
 }"
 },
 10: {
 "links": {
-
+0: 3
 },
 "text": "{
 \"actor\": \"Player\",
@@ -505,18 +513,12 @@ story = {
 },
 11: {
 "links": {
-
+0: 3
 },
 "text": "{
 \"actor\": \"Player\",
 \"line\": \"Lo cochino es porque llevo un rato explorando.\"
 }"
-},
-12: {
-"links": {
-
-},
-"text": ""
 }
 }
 }

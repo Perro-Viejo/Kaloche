@@ -290,8 +290,8 @@ func _finish_dialog() -> void:
 		_options_nid = 0
 		_in_dialog_with_options = false
 		_dialog_menu.remove_options()
-		PlayerEvent.emit_signal('control_toggled')
 
+	PlayerEvent.emit_signal('control_toggled')
 	DialogEvent.emit_signal('dialog_finished')
 
 
