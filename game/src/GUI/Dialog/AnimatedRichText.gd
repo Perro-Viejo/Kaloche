@@ -22,16 +22,17 @@ func _process(delta: float) -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func play_text(value: String) -> void:
 	clear()
+	bbcode_text = _wrapper % value
 	percent_visible = 0
 	$Label.text = ''
-
-	append_bbcode(_wrapper % value)
 
 	# Se usa un Label para saber el ancho que tendrá el texto
 	$Label.text = text
 	yield(get_tree(), 'idle_frame')
 
 	prints('cuenta:', get_total_character_count())
+	# Si se quiere hacer de otro modo en el Inspector
+	# (animation_speed * 0.01) * get_total_character_count()
 	var duration := secs_per_character * get_total_character_count()
 	prints('duración":', duration)
 	_tween.interpolate_property(
