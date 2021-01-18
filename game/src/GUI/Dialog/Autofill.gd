@@ -1,6 +1,6 @@
 class_name Autofill
 extends Label
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 signal fill_done
 
 export(float) var animation_time = 0.01
@@ -21,7 +21,9 @@ var _text: String
 var _forced_update := false
 var _is_disappearing := false
 var _time_to_dissapear := 0.0
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+
 func _ready():
 	hide()
 

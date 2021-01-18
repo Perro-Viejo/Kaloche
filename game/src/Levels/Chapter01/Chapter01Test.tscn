@@ -463,17 +463,13 @@ range_z_max = 2
 __meta__ = {
 "_editor_description_": ""
 }
+
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 
 [editable path="AUDIO_Cap_01"]
-
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
-
 [editable path="GroupObjects/FishTank"]
-
 [editable path="GroupObjects/FishTankAnimation"]
-
 [editable path="GroupObjects/Altar"]
-
 [editable path="GroupObjects/AltarActivation"]

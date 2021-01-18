@@ -208,7 +208,7 @@ func _set_current_tool(tool_id: int) -> void:
 		if $StateMachine.state == $StateMachine.STATES.IDLE:
 			$StateMachine.state.on_tool_equiped(tool_id)
 	else:
-		speak('No tengo nada... y no se me para')
+		speak('No tengo nada... y no [shake]se me para[/shake]')
 
 
 func _set_hook_drop_surface(area: Area2D, entered: bool) -> void:

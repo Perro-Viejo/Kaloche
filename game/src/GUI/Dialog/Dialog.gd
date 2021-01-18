@@ -1,6 +1,8 @@
-class_name Dialog
 extends Control
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+class_name Dialog
+# Controla la presentación e interacción de los diálogos. Estos son leídos de
+# un archivo cocinado del plugin EXP Godot Dialog System.
+
 var _forced_update := false
 var _current_character: Node2D = null
 # Cosas del Godot Dialog System ---- {
@@ -19,7 +21,9 @@ var _current_options := ''
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 onready var _dialog_menu: DialogMenu = find_node('DialogMenu')
 onready var _autofill: Autofill = find_node('Autofill')
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	# Configurar el Data manager para que vaya guardando información de los
 	# diálogos (eventualmente esto se guardará en un archivo así como se guardan
@@ -43,6 +47,7 @@ func _ready() -> void:
 	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _play_dialog(dialog_name: String) -> void:
 	_did = _story_reader.get_did_via_record_name(dialog_name)
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
@@ -75,13 +80,14 @@ func _continue_dialog(slot := 0) -> void:
 	if _nid == _final_nid:
 		_finish_dialog()
 	else:
-		_play_dialog_line()
+		_read_line()
 
 
 func _next_dialog_line(slot := 0) -> void:
 	_nid = _story_reader.get_nid_from_slot(_did, _nid, slot)
 
-func _play_dialog_line() -> void:
+
+func _read_line() -> void:
 	var line_txt := _story_reader.get_text(_did, _nid)
 
 	if _nid == _final_nid:
@@ -214,9 +220,12 @@ func _on_character_spoke(
 	if message != '':
 		_current_character = character
 
-		_autofill.set_text(message)
-		_autofill.set_disappear_time(time_to_disappear)
-		_autofill.show()
+#		_autofill.set_text(message)
+#		_autofill.set_disappear_time(time_to_disappear)
+#		_autofill.show()
+		
+		$AnimatedRichText.play_text(message)
+		
 		HudEvent.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
