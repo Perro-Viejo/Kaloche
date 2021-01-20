@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -78,9 +78,9 @@
 [ext_resource path="res://assets/audio/animals/sfx_bird_02.ogg" type="AudioStream" id=76]
 [ext_resource path="res://assets/audio/animals/sfx_parrot_01.ogg" type="AudioStream" id=77]
 [ext_resource path="res://assets/audio/animals/sfx_bird_03.ogg" type="AudioStream" id=78]
-[ext_resource path="res://assets/audio/animals/sfx_mico.ogg" type="AudioStream" id=79]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_01.ogg" type="AudioStream" id=79]
 [ext_resource path="res://assets/audio/animals/sfx_insect_02.ogg" type="AudioStream" id=80]
-[ext_resource path="res://assets/audio/animals/sfx_rana.ogg" type="AudioStream" id=81]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_02.ogg" type="AudioStream" id=81]
 [ext_resource path="res://assets/audio/animals/sfx_insect_03.ogg" type="AudioStream" id=82]
 [ext_resource path="res://assets/audio/animals/sfx_insect_01.ogg" type="AudioStream" id=83]
 [ext_resource path="res://assets/audio/sfx_gak_rod_01.ogg" type="AudioStream" id=84]
@@ -110,6 +110,32 @@
 [ext_resource path="res://assets/audio/sfx_hook_rock_03.ogg" type="AudioStream" id=108]
 [ext_resource path="res://assets/audio/sfx_hook_grass_01.ogg" type="AudioStream" id=109]
 [ext_resource path="res://assets/audio/sfx_hook_grass_03.ogg" type="AudioStream" id=110]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_05.ogg" type="AudioStream" id=111]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_13.ogg" type="AudioStream" id=112]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_08.ogg" type="AudioStream" id=113]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_14.ogg" type="AudioStream" id=114]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_02.ogg" type="AudioStream" id=115]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_07.ogg" type="AudioStream" id=116]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_03.ogg" type="AudioStream" id=117]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_04.ogg" type="AudioStream" id=118]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_10.ogg" type="AudioStream" id=119]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_11.ogg" type="AudioStream" id=120]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_09.ogg" type="AudioStream" id=121]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_12.ogg" type="AudioStream" id=122]
+[ext_resource path="res://assets/audio/animals/sfx_monkey_06.ogg" type="AudioStream" id=123]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_03.ogg" type="AudioStream" id=124]
+[ext_resource path="res://assets/audio/animals/sfx_frog_long_01.ogg" type="AudioStream" id=125]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_04.ogg" type="AudioStream" id=126]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_06.ogg" type="AudioStream" id=127]
+[ext_resource path="res://assets/audio/animals/sfx_frog_long_03.ogg" type="AudioStream" id=128]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_08.ogg" type="AudioStream" id=129]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_05.ogg" type="AudioStream" id=130]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_09.ogg" type="AudioStream" id=131]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_10.ogg" type="AudioStream" id=132]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_07.ogg" type="AudioStream" id=133]
+[ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_01.ogg" type="AudioStream" id=134]
+[ext_resource path="res://assets/audio/animals/sfx_frog_long_02.ogg" type="AudioStream" id=135]
+[ext_resource path="res://assets/audio/animals/sfx_frog_long_04.ogg" type="AudioStream" id=136]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -294,7 +320,6 @@ __meta__ = {
 [node name="Afuera" type="AudioStreamPlayer2D" parent="BG"]
 position = Vector2( 180, 85 )
 stream = ExtResource( 68 )
-volume_db = 8.0
 max_distance = 200.0
 attenuation = 1.1487
 
@@ -558,6 +583,7 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+volume = -5.0
 random_volume = true
 min_volume = -3.0
 max_volume = 1.0
@@ -630,6 +656,7 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+volume = -6.0
 random_volume = true
 min_volume = -4.0
 random_pitch = true
@@ -704,6 +731,7 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+volume = -3.0
 random_volume = true
 min_volume = -3.0
 max_volume = 2.0
@@ -712,7 +740,73 @@ min_pitch = -3.0
 max_pitch = 3.0
 
 [node name="frog_01" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 134 )
+max_distance = 200.0
+
+[node name="frog_02" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 81 )
+max_distance = 200.0
+
+[node name="frog_03" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 124 )
+max_distance = 200.0
+
+[node name="frog_04" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 126 )
+max_distance = 200.0
+
+[node name="frog_05" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 130 )
+max_distance = 200.0
+
+[node name="frog_06" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 127 )
+max_distance = 200.0
+
+[node name="frog_07" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 133 )
+max_distance = 200.0
+
+[node name="frog_08" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 129 )
+max_distance = 200.0
+
+[node name="frog_09" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 131 )
+max_distance = 200.0
+attenuation = 0.0384733
+
+[node name="frog_10" type="AudioStreamPlayer2D" parent="Animals/Frog"]
+stream = ExtResource( 132 )
+max_distance = 200.0
+
+[node name="FrogLong" type="Node2D" parent="Animals"]
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+volume = -6.0
+random_volume = true
+min_volume = -3.0
+max_volume = 2.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 3.0
+
+[node name="frog_01" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
+stream = ExtResource( 125 )
+max_distance = 200.0
+
+[node name="frog_02" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
+stream = ExtResource( 135 )
+max_distance = 200.0
+
+[node name="frog_03" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
+stream = ExtResource( 128 )
+max_distance = 200.0
+
+[node name="frog_04" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
+stream = ExtResource( 136 )
 max_distance = 200.0
 
 [node name="Monkey" type="Node2D" parent="Animals"]
@@ -720,6 +814,7 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+volume = -3.0
 random_volume = true
 min_volume = -3.0
 max_volume = 1.0
@@ -729,6 +824,59 @@ max_pitch = 3.0
 
 [node name="monkey_01" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 79 )
+max_distance = 200.0
+
+[node name="monkey_02" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 115 )
+max_distance = 200.0
+
+[node name="monkey_03" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 117 )
+max_distance = 200.0
+
+[node name="monkey_04" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 118 )
+max_distance = 200.0
+
+[node name="monkey_05" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 111 )
+max_distance = 200.0
+
+[node name="monkey_06" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 123 )
+max_distance = 200.0
+
+[node name="monkey_07" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 116 )
+max_distance = 200.0
+
+[node name="monkey_08" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 113 )
+max_distance = 200.0
+
+[node name="monkey_09" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 121 )
+max_distance = 200.0
+
+[node name="monkey_10" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 119 )
+max_distance = 200.0
+
+[node name="monkey_11" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 120 )
+max_distance = 200.0
+
+[node name="monkey_12" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 122 )
+max_distance = 200.0
+
+[node name="monkey_13" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 112 )
+max_distance = 200.0
+attenuation = 0.0796601
+
+[node name="monkey_14" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
+stream = ExtResource( 114 )
 max_distance = 200.0
 
 [node name="Tank" type="Node2D" parent="."]
