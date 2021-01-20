@@ -117,6 +117,7 @@ story = {
 },
 12: {
 "links": {
+
 },
 "text": "end"
 }
@@ -162,6 +163,7 @@ story = {
 },
 5: {
 "links": {
+
 },
 "text": "end"
 }
@@ -208,6 +210,7 @@ story = {
 },
 3: {
 "links": {
+
 },
 "text": "end"
 },
@@ -246,11 +249,13 @@ story = {
 },
 7: {
 "links": {
+
 },
 "text": "return"
 },
 8: {
 "links": {
+
 },
 "text": "return"
 },
@@ -266,6 +271,7 @@ story = {
 },
 10: {
 "links": {
+
 },
 "text": "return"
 }
@@ -281,6 +287,7 @@ story = {
 },
 2: {
 "links": {
+
 },
 "text": "end"
 },
@@ -364,6 +371,7 @@ story = {
 },
 7: {
 "links": {
+
 },
 "text": "return"
 }
@@ -381,7 +389,7 @@ story = {
 "links": {
 0: 4,
 1: 5,
-2: 3
+2: 12
 },
 "text": "{
 \"actor\": \"Rocberto\",
@@ -389,25 +397,26 @@ story = {
 \"time\": 1,
 \"options\": [
 	{
-		\"line\": \"¡Uy jueputa! ¿Qué hace aquí?\",
+		\"line\": \"¡Uy jueputa! La roca me está hablando.\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	},
 	{
 		\"line\": \"¡¿Eh?! ¿Qué fue ese ruido?\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	},
 	{
-		\"line\": \"Mejor me voy de acá. Aquí no hay nada.\",
+		\"line\": \"Mejor me voy de acá.\",
 		\"emotion\": \"Happy\",
-		\"say\": true
+		\"say\": false
 	}
 ]
 }"
 },
 3: {
 "links": {
+
 },
 "text": "end"
 },
@@ -417,7 +426,7 @@ story = {
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Creí que estába solo.\"
+\"line\": \"Creí que estába solo... Quiubo ¿Qué hace aquí?\"
 }"
 },
 5: {
@@ -426,16 +435,16 @@ story = {
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Será esa cosa de allá.\"
+\"line\": \"Como que escucho algo. Creo que es esa cosa de allá.\"
 }"
 },
 6: {
 "links": {
-0: 3
+0: 16
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Mejor digame si ha visto pasar a alguien más.\"
+\"line\": \"¿Por qué lo dice? ¿Que no ha visto pasar a nadie más?\"
 }"
 },
 7: {
@@ -449,25 +458,25 @@ story = {
 \"time\": 1,
 \"options\": [
 	{
-		\"line\": \"Pues así como suerte, no lo sé...\",
+		\"line\": \"¿Suerte? ¿Cómo así?\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	},
 	{
-		\"line\": \"¿Y a quién más a visto pasar?\",
+		\"line\": \"¿Y a quién más ha visto pasar?\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	}
 ]
 }"
 },
 8: {
 "links": {
-0: 3
+0: 18
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"No me molestaría encontrarme con unas muchachonas en este momento.\"
+\"line\": \"¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.\"
 }"
 },
 9: {
@@ -483,32 +492,169 @@ story = {
 	{
 		\"line\": \"Bueno, bueno. No es para tanto, no se enoje.\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	},
 	{
 		\"line\": \" Tranquilo, no se guie por la pinta.\",
 		\"emotion\": \"Surprised\",
-		\"say\": true
+		\"say\": false
 	}
 ]
 }"
 },
 10: {
 "links": {
-0: 3
+0: 19
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Que aquí donde me ve, todavía levanto algo.\"
+\"line\": \"No se me enoje que ahí donde me ve, este cuerpito todavía levanta algo.\"
 }"
 },
 11: {
+"links": {
+0: 20
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Es que estaba explorando por ahí y quedé bien cochino.\"
+}"
+},
+12: {
+"links": {
+0: 13
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Seguiré explorando por allá, creo que aquí no hay nada..\"
+}"
+},
+13: {
+"links": {
+0: 14,
+1: 15
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Espera! ¡No te vayas, por favor!.\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Vale, no tiene que gritar que no me he ido.\",
+		\"emotion\": \"Surprised\",
+		\"say\": false
+	},
+	{
+		\"line\": \" Ya, pero sin ponerse a llorar que aquí sigo.\",
+		\"emotion\": \"Surprised\",
+		\"say\": false
+	}
+]
+}"
+},
+14: {
+"links": {
+0: 21
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¡Leve la nieve que aquí sigo! ¿Qué más? ¿Qué hace?\"
+}"
+},
+15: {
+"links": {
+0: 22
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Parce, no me ponga esa cara que me dan ganas de llorar también y luego no hay quién nos calme. ¿Está solito aquí?\"
+}"
+},
+16: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"No, llevo un rato aquí y es la primer persona que veo.\",
+\"time\": 1,
+}"
+},
+17: {
 "links": {
 0: 3
 },
 "text": "{
 \"actor\": \"Player\",
-\"line\": \"Lo cochino es porque llevo un rato explorando.\"
+\"line\": \"D:\",
+\"time\": 1,
+\"options\": [
+	{
+		\"line\": \"Uy parce, ¿Cómo así?\",
+		\"emotion\": \"Surprised\",
+		\"say\": true
+	},
+	{
+		\"line\": \"No'mbre, no me diga eso, compadre.\",
+		\"emotion\": \"Surprised\",
+		\"say\": true
+	},	
+	{
+		\"line\": \"Ya, ¿Y entonces pa' dónde?\",
+		\"emotion\": \"Surprised\",
+		\"say\": true
+	}
+]
+}"
+},
+18: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"No, llevo un rato aquí y es la primer persona que veo.\",
+\"time\": 1,
+}"
+},
+19: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato..\",
+\"time\": 1,
+}"
+},
+20: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¿Ah si? Yo llevo un rato aquí y no he visto a nadie más.\",
+\"time\": 1,
+}"
+},
+21: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Nada, aquí echando sol. Mire que ya llevo ya un rato aquí y no he visto pasar a nadie más.\",
+\"time\": 1,
+}"
+},
+22: {
+"links": {
+0: 17
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Ay qué pena molestar al señor! Si, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima.\",
+\"time\": 1,
 }"
 }
 }

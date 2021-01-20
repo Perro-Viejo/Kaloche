@@ -52,18 +52,34 @@ DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita
 DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana
 DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea
 DLG_5_2_ROCBERTO,¡pssssssst!,¡pssssssst!
-DLG_5_2_ROCBERTO_OPT_0,¡Uy jueputa! ¿Qué hace aquí?,¡Uy jueputa! ¿Qué hace aquí?
+DLG_5_2_ROCBERTO_OPT_0,¡Uy jueputa! La roca me está hablando.,¡Uy jueputa! La roca me está hablando.
 DLG_5_2_ROCBERTO_OPT_1,¡¿Eh?! ¿Qué fue ese ruido?,¡¿Eh?! ¿Qué fue ese ruido?
-DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá. Aquí no hay nada.,Mejor me voy de acá. Aquí no hay nada.
-DLG_5_4_PLAYER,Creí que estába solo.,Creí que estába solo.
-DLG_5_5_TEOTRISTE,Será esa cosa de allá.,Será esa cosa de allá.
-DLG_5_6_PLAYER,Mejor digame si ha visto pasar a alguien más.,Mejor digame si ha visto pasar a alguien más.
+DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá.,Mejor me voy de acá.
+DLG_5_4_PLAYER,Creí que estába solo... Quiubo ¿Qué hace aquí?,Creí que estába solo... Quiubo ¿Qué hace aquí?
+DLG_5_5_PLAYER,Como que escucho algo. Creo que es esa cosa de allá.,Como que escucho algo. Creo que es esa cosa de allá.
+DLG_5_6_PLAYER,¿Por qué lo dice? ¿Que no ha visto pasar a nadie más?,¿Por qué lo dice? ¿Que no ha visto pasar a nadie más?
 DLG_5_7_ROCBERTO,"No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte.","No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte."
-DLG_5_7_ROCBERTO_OPT_0,"Pues así como suerte, no lo sé...","Pues así como suerte, no lo sé..."
-DLG_5_7_ROCBERTO_OPT_1,¿Y a quién más a visto pasar?,¿Y a quién más a visto pasar?
-DLG_5_8_PLAYER,No me molestaría encontrarme con unas muchachonas en este momento.,No me molestaría encontrarme con unas muchachonas en este momento.
+DLG_5_7_ROCBERTO_OPT_0,¿Suerte? ¿Cómo así?,¿Suerte? ¿Cómo así?
+DLG_5_7_ROCBERTO_OPT_1,¿Y a quién más ha visto pasar?,¿Y a quién más ha visto pasar?
+DLG_5_8_PLAYER,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.
 DLG_5_9_ROCBERTO,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.
 DLG_5_9_ROCBERTO_OPT_0,"Bueno, bueno. No es para tanto, no se enoje.","Bueno, bueno. No es para tanto, no se enoje."
 DLG_5_9_ROCBERTO_OPT_1," Tranquilo, no se guie por la pinta."," Tranquilo, no se guie por la pinta."
-DLG_5_10_PLAYER,"Que aquí donde me ve, todavía levanto algo.","Que aquí donde me ve, todavía levanto algo."
-DLG_5_11_PLAYER,Lo cochino es porque llevo un rato explorando.,Lo cochino es porque llevo un rato explorando.
+DLG_5_10_PLAYER,"No se me enoje que ahí donde me ve, este cuerpito todavía levanta algo.","No se me enoje que ahí donde me ve, este cuerpito todavía levanta algo."
+DLG_5_11_PLAYER,Es que estaba explorando por ahí y quedé bien cochino.,Es que estaba explorando por ahí y quedé bien cochino.
+DLG_5_12_PLAYER,"Seguiré explorando por allá, creo que aquí no hay nada..","Seguiré explorando por allá, creo que aquí no hay nada.."
+DLG_5_13_ROCBERTO,"¡Espera! ¡No te vayas, por favor!.","¡Espera! ¡No te vayas, por favor!."
+DLG_5_13_ROCBERTO_OPT_0,"Vale, no tiene que gritar que no me he ido.","Vale, no tiene que gritar que no me he ido."
+DLG_5_13_ROCBERTO_OPT_1," Ya, pero sin ponerse a llorar que aquí sigo."," Ya, pero sin ponerse a llorar que aquí sigo."
+DLG_5_14_PLAYER,¡Leve la nieve que aquí sigo! ¿Qué más? ¿Qué hace?,¡Leve la nieve que aquí sigo! ¿Qué más? ¿Qué hace?
+DLG_5_15_PLAYER,"Parce, no me ponga esa cara que me dan ganas de llorar también y luego no hay quién nos calme. ¿Está solito aquí?","Parce, no me ponga esa cara que me dan ganas de llorar también y luego no hay quién nos calme. ¿Está solito aquí?"
+DLG_5_16_ROCBERTO,"No, llevo un rato aquí y es la primer persona que veo.","No, llevo un rato aquí y es la primer persona que veo."
+DLG_5_17_PLAYER,D:,D:
+DLG_5_17_PLAYER_OPT_0,"Uy parce, ¿Cómo así?","Uy parce, ¿Cómo así?"
+DLG_5_17_PLAYER_OPT_1,"No'mbre, no me diga eso, compadre.","No'mbre, no me diga eso, compadre."
+DLG_5_17_PLAYER_OPT_2,"Ya, ¿Y entonces pa' dónde?","Ya, ¿Y entonces pa' dónde?"
+DLG_5_18_ROCBERTO,"No, llevo un rato aquí y es la primer persona que veo.","No, llevo un rato aquí y es la primer persona que veo."
+DLG_5_19_ROCBERTO,Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato..,Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato..
+DLG_5_20_ROCBERTO,¿Ah si? Yo llevo un rato aquí y no he visto a nadie más.,¿Ah si? Yo llevo un rato aquí y no he visto a nadie más.
+DLG_5_21_ROCBERTO,"Nada, aquí echando sol. Mire que ya llevo ya un rato aquí y no he visto pasar a nadie más.","Nada, aquí echando sol. Mire que ya llevo ya un rato aquí y no he visto pasar a nadie más."
+DLG_5_22_ROCBERTO,"¡Ay qué pena molestar al señor! Si, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima.","¡Ay qué pena molestar al señor! Si, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima."
