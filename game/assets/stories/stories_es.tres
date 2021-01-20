@@ -537,7 +537,7 @@ story = {
 }
 },
 5: {
-"available_nid": [ 23, 24, 25 ],
+"available_nid": [  ],
 "groups": [  ],
 "human_readable_description": "Cuando Rocberto es encontrado por Teotriste",
 "name": "RocbertoIntro",
@@ -586,7 +586,7 @@ story = {
 "type": "line"
 },
 3: {
-"graph_offset": Vector2( 1160, -320 ),
+"graph_offset": Vector2( 2980, -60 ),
 "links": {
 
 },
@@ -810,7 +810,9 @@ story = {
 17: {
 "graph_offset": Vector2( 400, 0 ),
 "links": {
-0: 3
+0: 23,
+1: 24,
+2: 25
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 3,
@@ -861,7 +863,7 @@ story = {
 "slot_amount": 1,
 "text": "{
 \"actor\": \"Rocberto\",
-\"line\": \"Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato..\",
+\"line\": \"Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato.\",
 \"time\": 1,
 }",
 "type": "line"
@@ -905,6 +907,111 @@ story = {
 \"actor\": \"Rocberto\",
 \"line\": \"¡Ay qué pena molestar al señor! Si, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima.\",
 \"time\": 1,
+}",
+"type": "line"
+},
+23: {
+"graph_offset": Vector2( 900, -240 ),
+"links": {
+0: 26
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Y entonces para dónde es que jala uno aquí?\"
+}",
+"type": "line"
+},
+24: {
+"graph_offset": Vector2( 900, -40 ),
+"links": {
+0: 29
+},
+"rect_size": Vector2( 423, 150 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Ya llevo un rato dando  vueltas y nada.\"
+}",
+"type": "line"
+},
+25: {
+"graph_offset": Vector2( 900, 160 ),
+"links": {
+0: 30
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"No me diga que esto es todo.\"
+}",
+"type": "line"
+},
+26: {
+"graph_offset": Vector2( 1400, -240 ),
+"links": {
+0: 27
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Estamos en la Sierra de la Macarena así que seguro algo encontramos.\"
+}",
+"type": "line"
+},
+27: {
+"graph_offset": Vector2( 1900, -240 ),
+"links": {
+0: 28
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Encontramos?\",
+\"time\": 1,
+}",
+"type": "line"
+},
+28: {
+"graph_offset": Vector2( 2400, -240 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Claro! Lleveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.\"
+}",
+"type": "line"
+},
+29: {
+"graph_offset": Vector2( 1400, -40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Usted no se me preocupe que esto es la Sierra de la Macarena y yo me la conozco mejor que cualquiera. Lleveme con usted y ya verá.\"
+}",
+"type": "line"
+},
+30: {
+"graph_offset": Vector2( 1400, 160 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levanteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie.\"
 }",
 "type": "line"
 }

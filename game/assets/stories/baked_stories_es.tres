@@ -582,7 +582,9 @@ story = {
 },
 17: {
 "links": {
-0: 3
+0: 23,
+1: 24,
+2: 25
 },
 "text": "{
 \"actor\": \"Player\",
@@ -623,7 +625,7 @@ story = {
 },
 "text": "{
 \"actor\": \"Rocberto\",
-\"line\": \"Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato..\",
+\"line\": \"Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato.\",
 \"time\": 1,
 }"
 },
@@ -655,6 +657,79 @@ story = {
 \"actor\": \"Rocberto\",
 \"line\": \"¡Ay qué pena molestar al señor! Si, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima.\",
 \"time\": 1,
+}"
+},
+23: {
+"links": {
+0: 26
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Y entonces para dónde es que jala uno aquí?\"
+}"
+},
+24: {
+"links": {
+0: 29
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"Ya llevo un rato dando  vueltas y nada.\"
+}"
+},
+25: {
+"links": {
+0: 30
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"No me diga que esto es todo.\"
+}"
+},
+26: {
+"links": {
+0: 27
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Estamos en la Sierra de la Macarena así que seguro algo encontramos.\"
+}"
+},
+27: {
+"links": {
+0: 28
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Encontramos?\",
+\"time\": 1,
+}"
+},
+28: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"¡Claro! Lleveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.\"
+}"
+},
+29: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Rocberto\",
+\"line\": \"Usted no se me preocupe que esto es la Sierra de la Macarena y yo me la conozco mejor que cualquiera. Lleveme con usted y ya verá.\"
+}"
+},
+30: {
+"links": {
+0: 3
+},
+"text": "{
+\"actor\": \"Player\",
+\"line\": \"¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levanteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie.\"
 }"
 }
 }
