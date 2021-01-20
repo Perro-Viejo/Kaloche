@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_monkey_01.ogg-b32adb50f654120dd293551b19565aa1.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_monkey_01.ogg"
+dest_files=[ "res://.import/sfx_monkey_01.ogg-b32adb50f654120dd293551b19565aa1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

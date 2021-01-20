@@ -93,7 +93,19 @@ __meta__ = {
 environment = SubResource( 1 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
-visible = false
+
+[node name="Caminando" parent="AUDIO_Cap_01/Triggers" index="1"]
+position = Vector2( 393.928, 1185.41 )
+
+[node name="Frog" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="3"]
+weight = 0.5
+
+[node name="FrogLong" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="4"]
+freq_range = Vector2( 30, 60 )
+weight = 0.2
+
+[node name="Monkey" parent="AUDIO_Cap_01/ScattererDevice/Emitters" index="5"]
+weight = 0.3
 
 [node name="StaticCollisions" type="StaticBody2D" parent="."]
 visible = false

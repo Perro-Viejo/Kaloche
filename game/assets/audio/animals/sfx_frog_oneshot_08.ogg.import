@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_frog_oneshot_08.ogg-137442e4189136f393dade7cab36b68e.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/animals/sfx_frog_oneshot_08.ogg"
+dest_files=[ "res://.import/sfx_frog_oneshot_08.ogg-137442e4189136f393dade7cab36b68e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
