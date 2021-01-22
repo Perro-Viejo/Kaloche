@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/GUI/Dialog/Autofill.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/Dialog/Dialog.gd" type="Script" id=2]
 [ext_resource path="res://src/GUI/Dialog/DialogMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/GUI/Dialog/AnimatedRichText.gd" type="Script" id=4]
-[ext_resource path="res://assets/resources/dynamic_fonts/m5x7_16.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/resources/style_box_texture/text_bg.tres" type="StyleBox" id=6]
+[ext_resource path="res://src/GUI/Dialog/AnimatedRichText.tscn" type="PackedScene" id=4]
 
 [node name="Dialog" type="Control"]
 anchor_right = 1.0
@@ -26,37 +24,4 @@ margin_bottom = 26.4256
 [node name="DialogMenu" parent="." instance=ExtResource( 3 )]
 anchor_top = 1.0
 
-[node name="AnimatedRichText" type="RichTextLabel" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -5.0
-margin_top = 8.0
-margin_right = 5.0
-margin_bottom = 32.0
-grow_horizontal = 2
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/normal_font = ExtResource( 5 )
-bbcode_enabled = true
-bbcode_text = "[center]Este es un texto de [wave]pruebaaaaaaaaas[/wave][/center]"
-meta_underlined = false
-text = "Este es un texto de pruebaaaaaaaaas"
-scroll_active = false
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-secs_per_character = 0.03
-
-[node name="Tween" type="Tween" parent="AnimatedRichText"]
-
-[node name="Label" type="Label" parent="AnimatedRichText"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 3.0
-margin_right = 20.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 5 )
+[node name="AnimatedRichText" parent="." instance=ExtResource( 4 )]

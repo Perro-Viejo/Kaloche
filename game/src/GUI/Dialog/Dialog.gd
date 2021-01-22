@@ -20,7 +20,7 @@ var _current_options := ''
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 onready var _dialog_menu: DialogMenu = find_node('DialogMenu')
-onready var _autofill: Autofill = find_node('Autofill')
+#onready var _autofill: Autofill = find_node('Autofill')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -37,14 +37,15 @@ func _ready() -> void:
 			_story_reader.read(_stories_es)
 
 	# Conectarse a eventos de los retoños
-	_autofill.connect('fill_done', self, '_autofill_completed')
+#	_autofill.connect('fill_done', self, '_dialog_line_finished')
+	$AnimatedRichText.connect('animation_finished', self, '_dialog_line_finished')
 
 	# Conectarse a eventos de la vida real
 	DialogEvent.connect('dialog_requested', self, '_play_dialog')
 	DialogEvent.connect('dialog_continued', self, '_continue_dialog')
-	DialogEvent.connect('character_spoke', self, '_on_character_spoke')
+	DialogEvent.connect('character_spoke', self, '_show_dialog_line')
 	DialogEvent.connect('dialog_option_clicked', self, '_option_clicked')
-	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
+#	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
@@ -63,11 +64,11 @@ func _play_dialog(dialog_name: String) -> void:
 func _continue_dialog(slot := 0) -> void:
 	# Para la forma de diálogo anterior al plugin ------------------------------
 	if _did == 0:
-		_finish_dialog()
+		_close_dialog()
 		return
 	# --------------------------------------------------------------------------
 
-	if _autofill.is_visible(): return
+#	if _autofill.is_visible(): return
 
 	if _selected_slot < 0 and _nid == _options_nid:
 		# Para mostrar el menú de opciones de diálogo al final de la línea
@@ -78,20 +79,20 @@ func _continue_dialog(slot := 0) -> void:
 	_next_dialog_line(max(0, slot))
 
 	if _nid == _final_nid:
-		_finish_dialog()
+		_close_dialog()
 	else:
-		_read_line()
+		_read_dialog_line()
 
 
 func _next_dialog_line(slot := 0) -> void:
 	_nid = _story_reader.get_nid_from_slot(_did, _nid, slot)
 
 
-func _read_line() -> void:
+func _read_dialog_line() -> void:
 	var line_txt := _story_reader.get_text(_did, _nid)
 
 	if _nid == _final_nid:
-		_finish_dialog()
+		_close_dialog()
 		return
 
 	_selected_slot = 0
@@ -132,7 +133,7 @@ func _read_line() -> void:
 	if line_dic.has('time'):
 		time_to_disappear = line_dic.time as float
 
-	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ ON START (event) ▮▮▮▮
+	# ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ON START (event) ▁▁▁▁
 	if line_dic.has('on_start'):
 		var on_start_dict = line_dic.on_start
 		if on_start_dict.params.size() == 1:
@@ -140,7 +141,7 @@ func _read_line() -> void:
 		else:
 			get_node("/root/"+on_start_dict.type).emit_signal(on_start_dict.event)
 
-	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ OPCIONES ▮▮▮▮
+	# ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ OPCIONES ▁▁▁▁
 	if line_dic.has('options'):
 		_options_nid = _nid
 		_selected_slot = -1
@@ -170,7 +171,7 @@ func _read_line() -> void:
 		_dialog_menu.remove_options()
 		_dialog_menu.create_options(line_dic.options)
 
-	# ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮ APAGAR OPCIONES ▮▮▮▮
+	# ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ APAGAR OPCIONES ▁▁▁▁
 	if line_dic.has('off') or line_dic.has('on'):
 		# En este nodo se apagarán opciones
 		var cfg := {}
@@ -195,21 +196,22 @@ func _read_line() -> void:
 			time_to_disappear,
 			emotion
 		)
+	else:
+		_continue_dialog()
 
 
-func _on_character_spoke(
+func _show_dialog_line(
 		character: Node2D = null, message :String = '', time_to_disappear := 0.0
 	):
-	if _autofill.typing:
-		_autofill.stop()
-		if not is_inside_tree(): return
-		yield(get_tree().create_timer(.3), 'timeout')
+#	if _autofill.typing:
+#		_autofill.stop()
+#		if not is_inside_tree(): return
+#		yield(get_tree().create_timer(.3), 'timeout')
 
 	# Definir el color del texto
-	var text_color: Color = Color('#222323')
+	var text_color: Color = Color('#ffffeb')
 	if character and character.get('dialog_color'):
 		text_color = character.dialog_color
-	_autofill.set_text_color(text_color)
 
 	if _current_character \
 		and _current_character.is_inside_tree() \
@@ -224,12 +226,12 @@ func _on_character_spoke(
 #		_autofill.set_disappear_time(time_to_disappear)
 #		_autofill.show()
 		
-		$AnimatedRichText.play_text(message)
+		$AnimatedRichText.play_text(message, text_color)
 		
 		HudEvent.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
-		_autofill.finish_and_hide()
+#		_autofill.finish_and_hide()
 		HudEvent.emit_signal('talking_bubble_requested')
 
 
@@ -248,7 +250,7 @@ func _option_clicked(opt: Dictionary) -> void:
 		_continue_dialog(_selected_slot)
 
 
-func _autofill_completed() -> void:
+func _dialog_line_finished() -> void:
 	if _current_character:
 		HudEvent.emit_signal('talking_bubble_requested')
 
@@ -273,7 +275,7 @@ func _autofill_completed() -> void:
 		_continue_dialog(_selected_slot)
 
 
-func _finish_dialog() -> void:
+func _close_dialog() -> void:
 	# Para la forma de diálogo anterior al plugin ------------------------------
 	if _final_nid == 0: return
 	# --------------------------------------------------------------------------

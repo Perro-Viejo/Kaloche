@@ -344,7 +344,7 @@ extents = Vector2( 2, 2 )
 z_index = 2
 collision_mask = 4
 script = ExtResource( 2 )
-dialog_color = Color( 0.54902, 0.247059, 0.364706, 1 )
+dialog_color = Color( 0.729412, 0.380392, 0.337255, 1 )
 inventory = ExtResource( 18 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

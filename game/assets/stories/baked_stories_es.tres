@@ -117,7 +117,6 @@ story = {
 },
 12: {
 "links": {
-
 },
 "text": "end"
 }
@@ -163,7 +162,6 @@ story = {
 },
 5: {
 "links": {
-
 },
 "text": "end"
 }
@@ -210,7 +208,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "end"
 },
@@ -249,13 +246,11 @@ story = {
 },
 7: {
 "links": {
-
 },
 "text": "return"
 },
 8: {
 "links": {
-
 },
 "text": "return"
 },
@@ -271,7 +266,6 @@ story = {
 },
 10: {
 "links": {
-
 },
 "text": "return"
 }
@@ -287,7 +281,6 @@ story = {
 },
 2: {
 "links": {
-
 },
 "text": "end"
 },
@@ -371,7 +364,6 @@ story = {
 },
 7: {
 "links": {
-
 },
 "text": "return"
 }
@@ -416,7 +408,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "end"
 },
@@ -587,9 +578,6 @@ story = {
 2: 25
 },
 "text": "{
-\"actor\": \"Player\",
-\"line\": \"D:\",
-\"time\": 1,
 \"options\": [
 	{
 		\"line\": \"Uy parce, ¿Cómo así?\",

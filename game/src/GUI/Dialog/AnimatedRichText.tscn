@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/GUI/Dialog/AnimatedRichText.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/dynamic_fonts/m5x7_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/resources/style_box_texture/text_bg.tres" type="StyleBox" id=3]
+
+[node name="AnimatedRichText" type="RichTextLabel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 32.0
+grow_horizontal = 2
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 1, 1, 0.921569, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Este es un texto de [wave]pruebaaaaaaaaas[/wave][/center]"
+meta_underlined = false
+text = "Este es un texto de pruebaaaaaaaaas"
+scroll_active = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+secs_per_character = 0.03
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.0
+margin_top = 3.0
+margin_right = 108.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 2 )
+text = "Este es un texto de pruebaaaaaaaaas"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
