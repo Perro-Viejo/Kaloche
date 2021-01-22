@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_tank_fill_end.ogg-0e70fc01c9774b0155235f8ec4dd0591.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_tank_fill_end.ogg"
+dest_files=[ "res://.import/sfx_tank_fill_end.ogg-0e70fc01c9774b0155235f8ec4dd0591.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

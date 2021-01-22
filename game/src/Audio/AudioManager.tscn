@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -136,6 +136,8 @@
 [ext_resource path="res://assets/audio/animals/sfx_frog_oneshot_01.ogg" type="AudioStream" id=134]
 [ext_resource path="res://assets/audio/animals/sfx_frog_long_02.ogg" type="AudioStream" id=135]
 [ext_resource path="res://assets/audio/animals/sfx_frog_long_04.ogg" type="AudioStream" id=136]
+[ext_resource path="res://assets/audio/sfx_tank_fill.ogg" type="AudioStream" id=137]
+[ext_resource path="res://assets/audio/sfx_tank_fill_end.ogg" type="AudioStream" id=138]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -901,6 +903,12 @@ volume_db = 5.0
 
 [node name="Fill_Full" type="AudioStreamPlayer" parent="Tank"]
 stream = ExtResource( 91 )
+
+[node name="Fill" type="AudioStreamPlayer" parent="Tank"]
+stream = ExtResource( 137 )
+
+[node name="Fill_End" type="AudioStreamPlayer" parent="Tank"]
+stream = ExtResource( 138 )
 
 [node name="Temple" type="Node2D" parent="."]
 

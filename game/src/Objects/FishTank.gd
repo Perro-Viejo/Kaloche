@@ -39,30 +39,32 @@ func fill_tank():
 			stop = true
 		}
 	)
-	AudioEvent.emit_signal(
-		'headloop_toggle', 
-		{
-			source = 'Tank',
-			id = 'Tank_Fill',
-			head = 'Fill_Start',
-			loop = 'Fill_Loop',
-			tail = 'Fill_Full',
-			_position = global_position
-		}
-	)
+	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill', Vector2.ZERO, _animation.get_current_animation_position())
+#	AudioEvent.emit_signal(
+#		'headloop_toggle', 
+#		{
+#			source = 'Tank',
+#			id = 'Tank_Fill',
+#			head = 'Fill_Start',
+#			loop = 'Fill_Loop',
+#			tail = 'Fill_Full',
+#			_position = global_position
+#		}
+#	)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
 
 
 func empty_tank():
 	_is_filling = false
-	AudioEvent.emit_signal(
-		'headloop_toggle', 
-		{
-			id = 'Tank_Fill',
-			stop = true
-		}
-	)
+	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill')
+#	AudioEvent.emit_signal(
+#		'headloop_toggle', 
+#		{
+#			id = 'Tank_Fill',
+#			stop = true
+#		}
+#	)
 	$Holes.set_frame(0)
 	_animation.play_backwards('Fill')
 	AudioEvent.emit_signal(
@@ -80,13 +82,14 @@ func empty_tank():
 
 
 func activate_tank():
-	AudioEvent.emit_signal(
-		'headloop_toggle', 
-		{
-			id = 'Tank_Fill',
-			finished = true
-		}
-		)
+#	AudioEvent.emit_signal(
+#		'headloop_toggle', 
+#		{
+#			id = 'Tank_Fill',
+#			finished = true
+#		}
+#		)
+	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_End')
 	_is_active = true
 	emit_signal('tank_activated')
 	$TempleDoorButton.is_toggle = true

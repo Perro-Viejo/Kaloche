@@ -24,7 +24,7 @@ func _get_audio(source, sound) -> Node:
 		node = get_node(sound_path)
 	return node
 
-func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160, 90)) -> void:
+func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160, 90), start_time: float = 0.0) -> void:
 	var audio: Node = _get_audio(source, sound)
 	# Corrige el error de no tener un DX para el personaje que va a hablar
 	if not audio: return
@@ -41,7 +41,10 @@ func play_sound(source: String, sound: String, _position: Vector2 = Vector2(-160
 		if source == "BG":
 			audio.play(rand_range(0.0, audio.stream.get_length()))
 		else:
-			audio.play()
+			if start_time == 0.0:
+				audio.play()
+			else:
+				audio.play(start_time)
 		if audio is AudioStreamPlayer or audio is AudioStreamPlayer2D:
 			if audio.is_connected('finished', self, '_on_finished'):
 				return

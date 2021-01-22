@@ -6,7 +6,7 @@ signal music_stoped() # Sólo mientras tanto
 signal mx_request(music)
 signal mx_stop(music)
 signal dx_requested(character, emotion)
-signal play_requested(source, sound, position)
+signal play_requested(source, sound, position, start_time)
 signal stop_requested(source, sound)
 signal pause_requested(source, sound)
 signal stream_finished(source, sound)
