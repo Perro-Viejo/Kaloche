@@ -51,7 +51,7 @@ DLG_4_3_ROCBERTO_OPT_3,Mejor ya nada. Chao.,Mejor ya nada. Chao.
 DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita
 DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana
 DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea
-DLG_5_2_ROCBERTO,¡pssssssst!,¡pssssssst!
+DLG_5_2_ROCBERTO,[shake]¡pssssssst![/shake],¡pssssssst!
 DLG_5_2_ROCBERTO_OPT_0,¡Uy jueputa! La roca me está hablando.,¡Uy jueputa! La roca me está hablando.
 DLG_5_2_ROCBERTO_OPT_1,¡¿Eh?! ¿Qué fue ese ruido?,¡¿Eh?! ¿Qué fue ese ruido?
 DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá.,Mejor me voy de acá.
@@ -62,7 +62,7 @@ DLG_5_7_ROCBERTO,"No mucho, esperando a ver si pasa alguien. Parece que hoy es m
 DLG_5_7_ROCBERTO_OPT_0,¿Suerte? ¿Cómo así?,¿Suerte? ¿Cómo así?
 DLG_5_7_ROCBERTO_OPT_1,¿Y a quién más ha visto pasar?,¿Y a quién más ha visto pasar?
 DLG_5_8_PLAYER,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.
-DLG_5_9_ROCBERTO,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.
+DLG_5_9_ROCBERTO,¿Cosa? [shake]¡Soy una roca![/shake] Mire que usted tampoco tendrá muy buena pinta.,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.
 DLG_5_9_ROCBERTO_OPT_0,"Bueno, bueno. No es para tanto, no se enoje.","Bueno, bueno. No es para tanto, no se enoje."
 DLG_5_9_ROCBERTO_OPT_1," Tranquilo, no se guie por la pinta."," Tranquilo, no se guie por la pinta."
 DLG_5_10_PLAYER,"No se me enoje que ahí donde me ve, este cuerpito todavía levanta algo.","No se me enoje que ahí donde me ve, este cuerpito todavía levanta algo."

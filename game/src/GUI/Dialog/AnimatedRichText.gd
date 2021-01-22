@@ -13,6 +13,7 @@ var _is_waiting_input := false
 var _max_width := rect_size.x
 var _dflt_height := rect_size.y
 #  ----------------------------------------------------------------------------
+var _target_size := Vector2.ONE
 
 onready var _tween: Tween = $Tween
 onready var _label_dflt_size: Vector2 = $Label.rect_size
@@ -49,7 +50,7 @@ func play_text(value: String, color: Color = Color('#ffffeb')) -> void:
 	$Label.rect_size = _label_dflt_size
 	$Label.text = text
 	yield(get_tree(), 'idle_frame')
-	var target_size := Vector2(
+	_target_size = Vector2(
 		min(_max_width, $Label.rect_size.x + 12.0),
 		_dflt_height + (($Label.get_line_count() - 1) * 14.0)
 	)
@@ -67,20 +68,21 @@ func play_text(value: String, color: Color = Color('#ffffeb')) -> void:
 	)
 	_tween.interpolate_property(
 		self, 'rect_size:x',
-		rect_size.x, target_size.x,
+		rect_size.x, _target_size.x,
 		0.62, Tween.TRANS_BACK, Tween.EASE_OUT
 	)
 	if $Label.get_line_count() > 1:
 		_tween.interpolate_property(
 			self, 'rect_size:y',
-			rect_size.y, target_size.y,
+			rect_size.y, _target_size.y,
 			0.47, Tween.TRANS_SINE, Tween.EASE_IN,
 			0.67
 		)
 	else:
-		rect_size.y = target_size.y
-	_tween.start()
+		rect_size.y = _target_size.y
+
 	modulate.a = 1.0
+	_tween.start()
 
 
 func stop() ->void:
@@ -90,6 +92,12 @@ func stop() ->void:
 	if _is_waiting_input:
 		_is_waiting_input = false
 		_notify_completion()
+	else:
+		# Saltarse las animaciones
+		_tween.stop_all()
+		percent_visible = 1.0
+		rect_size = _target_size
+		_wait_input()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
