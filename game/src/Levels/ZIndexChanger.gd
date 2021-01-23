@@ -22,4 +22,7 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 		var target_zindex := zindex_on_entered if entered else zindex_on_exited
 		get_parent().z_index = target_zindex
 		for n in _involved_nodes:
-			n.z_index = target_zindex
+			if n:
+				# Esto corrige un error que puede ocurrir si el nodo guardado en
+				# el arreglo ha sido eliminado
+				n.z_index = target_zindex
