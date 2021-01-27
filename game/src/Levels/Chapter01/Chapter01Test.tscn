@@ -224,6 +224,12 @@ pickable_needed = "Rocberto"
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
 position = Vector2( -16, 120 )
 
+[node name="ZIndexChanger" parent="GroupObjects/FishTank/Columns" index="1"]
+modulate = Color( 0, 1, 1, 1 )
+
+[node name="ZIndexChanger" parent="GroupObjects/FishTank/Arch" index="0"]
+modulate = Color( 0, 1, 1, 1 )
+
 [node name="FishingSurfaceL1" parent="GroupObjects/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
@@ -251,11 +257,26 @@ position = Vector2( -50, 658 )
 [node name="Altar" parent="GroupObjects" instance=ExtResource( 32 )]
 position = Vector2( -350, -312 )
 
+[node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsBack" index="1"]
+modulate = Color( 0, 1, 1, 1 )
+
 [node name="CollisionEnabler" parent="GroupObjects/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../GroupCharacters/Player") ]
 
 [node name="CollisionEnabler" parent="GroupObjects/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../GroupCharacters/Player") ]
+
+[node name="ZIndexChanger" parent="GroupObjects/Altar/Main" index="2"]
+modulate = Color( 0, 1, 1, 1 )
+
+[node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsFront" index="1"]
+modulate = Color( 0, 1, 1, 1 )
+
+[node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsFrontDebris" index="1"]
+modulate = Color( 0, 1, 1, 1 )
+
+[node name="ZIndexChanger" parent="GroupObjects/Altar/Stone" index="1"]
+modulate = Color( 0, 1, 1, 1 )
 
 [node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
 position = Vector2( -350, -312 )

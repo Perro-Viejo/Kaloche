@@ -1,5 +1,8 @@
-extends Area2D
+tool
 class_name ZIndexChanger
+extends Area2D
+
+signal z_index_changed(new_z_index)
 
 export var zindex_on_entered := 0
 export var zindex_on_exited := 4
@@ -12,8 +15,12 @@ var _involved_nodes := []
 func _ready():
 	for p in involved_nodes:
 		_involved_nodes.append(get_node(p))
+
 	connect('area_entered', self, '_change_z_index', [true])
 	connect('area_exited', self, '_change_z_index', [false])
+	
+	# Cosas de Editor
+	modulate = Color.aqua
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
@@ -26,3 +33,4 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 				# Esto corrige un error que puede ocurrir si el nodo guardado en
 				# el arreglo ha sido eliminado
 				n.z_index = target_zindex
+		emit_signal('z_index_changed', target_zindex)

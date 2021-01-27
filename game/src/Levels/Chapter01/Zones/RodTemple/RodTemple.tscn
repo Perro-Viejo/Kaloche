@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Inventory/Rod.tres" type="Resource" id=1]
 [ext_resource path="res://src/Pickables/Pickup.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_outside_floor.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_cover_debris.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_columns.png" type="Texture" id=10]
+[ext_resource path="res://src/Levels/ZIndexChanger.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Emerge"
@@ -51,7 +52,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Mask:visible")
+tracks/3/path = NodePath("Temple/Mask:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -80,7 +81,27 @@ texture = ExtResource( 7 )
 
 [node name="Temple" type="Sprite" parent="."]
 position = Vector2( 0, 9 )
+z_index = 4
 texture = ExtResource( 4 )
+
+[node name="Mask" type="Light2D" parent="Temple"]
+position = Vector2( -1, 0.5 )
+texture = ExtResource( 6 )
+mode = 3
+range_z_min = 4
+range_z_max = 4
+
+[node name="Collisions" type="StaticBody2D" parent="Temple"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Temple/Collisions"]
+polygon = PoolVector2Array( -25, -13, -25, -27, 26, -27, 26, -13 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Temple"]
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Temple/ZIndexChanger"]
+polygon = PoolVector2Array( -29, -12, 30, -12, 30, 15, -29, 15 )
 
 [node name="Rod" parent="Temple" instance=ExtResource( 2 )]
 position = Vector2( -0.228394, -4.5713 )
@@ -96,19 +117,60 @@ character = ""
 dialog = ""
 item = ExtResource( 1 )
 
-[node name="Mask" type="Light2D" parent="."]
-position = Vector2( -1, 9.5 )
-texture = ExtResource( 6 )
-mode = 3
-range_z_min = 0
-range_z_max = 0
-
 [node name="CoverDebris" type="Sprite" parent="."]
 position = Vector2( 8.5, -23.5 )
-z_index = 1
+z_index = 5
 texture = ExtResource( 9 )
 
 [node name="Columns" type="Sprite" parent="."]
 position = Vector2( 0, -10.5 )
-z_index = 4
+z_index = 5
 texture = ExtResource( 10 )
+
+[node name="Collisions" type="StaticBody2D" parent="Columns"]
+
+[node name="W" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( -69, 4.5, -69, 3.5, -65, 3.5, -65, 4.5 )
+
+[node name="NW" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( -32, -32.5, -28, -32.5, -28, -33.5, -32, -33.5 )
+
+[node name="NE" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( 29, -31.5, 33, -31.5, 33, -32.5, 29, -32.5 )
+
+[node name="E" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( 66, 4.5, 66, 3.5, 70, 3.5, 70, 4.5 )
+
+[node name="SE" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( 21, 42.5, 25, 42.5, 25, 41.5, 21, 41.5 )
+
+[node name="SW" type="CollisionPolygon2D" parent="Columns/Collisions"]
+polygon = PoolVector2Array( -24, 42.5, -20, 42.5, -20, 41.5, -24, 41.5 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Columns"]
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 11 )
+zindex_on_exited = 5
+
+[node name="W" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+polygon = PoolVector2Array( -72, 5.5, -62, 5.5, -62, 26.5, -72, 26.5 )
+
+[node name="NW" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+position = Vector2( 37, -36.5 )
+polygon = PoolVector2Array( -72, 5, -62, 5, -62, 26, -72, 26 )
+
+[node name="NE" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+position = Vector2( 98, -35.5 )
+polygon = PoolVector2Array( -72, 5, -62, 5, -62, 26, -72, 26 )
+
+[node name="E" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+position = Vector2( 135, 0.5 )
+polygon = PoolVector2Array( -72, 5, -62, 5, -62, 26, -72, 26 )
+
+[node name="SE" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+position = Vector2( 90, 38.5 )
+polygon = PoolVector2Array( -72, 5, -62, 5, -62, 26, -72, 26 )
+
+[node name="SW" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
+position = Vector2( 45, 38.5 )
+polygon = PoolVector2Array( -72, 5, -62, 5, -62, 26, -72, 26 )
