@@ -278,6 +278,12 @@ modulate = Color( 0, 1, 1, 1 )
 [node name="ZIndexChanger" parent="GroupObjects/Altar/Stone" index="1"]
 modulate = Color( 0, 1, 1, 1 )
 
+[node name="Sprite" parent="GroupObjects/Altar/SacredFire" index="0"]
+frame = 5
+
+[node name="ZIndexChanger" parent="GroupObjects/Altar/SacredFire" index="7"]
+modulate = Color( 0, 1, 1, 1 )
+
 [node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
 position = Vector2( -350, -312 )
 _player = NodePath("../../GroupCharacters/Player")
@@ -367,7 +373,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 214, 769 )
+position = Vector2( 150, 819 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -496,5 +502,7 @@ __meta__ = {
 [editable path="GroupObjects/FishTankAnimation"]
 
 [editable path="GroupObjects/Altar"]
+
+[editable path="GroupObjects/Altar/SacredFire"]
 
 [editable path="GroupObjects/AltarActivation"]
