@@ -271,7 +271,7 @@ range_z_min = -1
 range_z_max = -1
 
 [node name="Water" type="Sprite" parent="."]
-position = Vector2( 0.5, -4 )
+position = Vector2( 0.5, 80 )
 z_index = -1
 texture = ExtResource( 14 )
 
@@ -282,7 +282,7 @@ visible = false
 polygon = PoolVector2Array( -12.5, 22, -10.5, 13, -33.5, 5, -38.5, -2, -38.5, -20, -22.5, -28, 22.5, -28, 38.5, -20, 38.5, -2, 32.5, 5, 9.5, 13, 11.5, 22, 36.5, 15, 51.5, 4, 55.5, -4, 52.5, -16, 41.5, -25, 20.5, -32, -20.5, -32, -41.5, -25, -52.5, -16, -55.5, -4, -52.5, 4, -36.5, 15 )
 
 [node name="Floor" type="Sprite" parent="."]
-position = Vector2( 0.5, -12.5 )
+position = Vector2( 0.5, 71.5 )
 z_index = -1
 texture = ExtResource( 13 )
 
@@ -290,26 +290,25 @@ texture = ExtResource( 13 )
 texture = ExtResource( 8 )
 
 [node name="Cover" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0.5, -5.5 )
 z_index = -2
 texture = ExtResource( 7 )
 
 [node name="Main" type="Sprite" parent="."]
-position = Vector2( 0, -75 )
+position = Vector2( 0, 9 )
 z_index = 4
 texture = ExtResource( 4 )
 
 [node name="CollisionsClosed" type="StaticBody2D" parent="Main"]
 visible = false
-collision_layer = 0
-collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main/CollisionsClosed"]
 polygon = PoolVector2Array( -26, -16, -26, -29, 26, -29, 26, -18, 19, -18, 19, -16, -1, -16, -1, -14, -16, -14, -16, -16 )
 
 [node name="CollisionsOpen" type="StaticBody2D" parent="Main"]
 visible = false
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main/CollisionsOpen"]
 polygon = PoolVector2Array( -18, 52, -19, 41, 20, 41, 19, 52 )
@@ -317,7 +316,6 @@ polygon = PoolVector2Array( -18, 52, -19, 41, 20, 41, 19, 52 )
 [node name="ZIndexChanger" type="Area2D" parent="Main"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-position = Vector2( 0, 71 )
 script = ExtResource( 11 )
 zindex_on_entered = 1
 
@@ -325,7 +323,10 @@ zindex_on_entered = 1
 polygon = PoolVector2Array( -37, -12, 27, -12, 27, -15, 41, -15, 41, 15, -37, 15 )
 
 [node name="Rod" parent="Main" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( -0.228394, 49 )
+monitoring = false
+monitorable = false
 is_good = true
 can_burn = true
 carbs = 2
@@ -337,7 +338,6 @@ dialog = ""
 item = ExtResource( 1 )
 
 [node name="MainClosedMask" type="Light2D" parent="."]
-visible = false
 position = Vector2( 0, 9.5 )
 texture = ExtResource( 6 )
 mode = 3
@@ -345,6 +345,7 @@ range_z_min = 4
 range_z_max = 4
 
 [node name="MainOpenMask" type="Light2D" parent="."]
+visible = false
 position = Vector2( 1, 2 )
 texture = ExtResource( 16 )
 mode = 3
@@ -352,22 +353,20 @@ range_z_min = 4
 range_z_max = 4
 
 [node name="CoverDebris" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 8.5, -23.5 )
 z_index = 5
 texture = ExtResource( 9 )
 
 [node name="Collisions" type="StaticBody2D" parent="CoverDebris"]
-collision_layer = 0
-collision_mask = 0
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverDebris/Collisions"]
 position = Vector2( 0.5, 0.5 )
 polygon = PoolVector2Array( 23, 15, 18, 15, 18, 13, 22, 13 )
 
 [node name="ZIndexChanger" type="Area2D" parent="CoverDebris"]
+visible = false
 modulate = Color( 0, 1, 1, 1 )
-monitoring = false
 script = ExtResource( 11 )
 zindex_on_entered = 2
 zindex_on_exited = 5
