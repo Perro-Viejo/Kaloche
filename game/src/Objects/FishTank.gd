@@ -32,25 +32,13 @@ func fill_tank():
 	_tank_surface.type = Data.SurfaceType.WATER
 	_tank_surface.surface_name = 'Water'
 	_is_filling = true
+	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty')
 	AudioEvent.emit_signal(
-		'headloop_toggle', 
-		{
-			id = 'Tank_Empty',
-			stop = true
-		}
-	)
-	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill', Vector2.ZERO, _animation.get_current_animation_position())
-#	AudioEvent.emit_signal(
-#		'headloop_toggle', 
-#		{
-#			source = 'Tank',
-#			id = 'Tank_Fill',
-#			head = 'Fill_Start',
-#			loop = 'Fill_Loop',
-#			tail = 'Fill_Full',
-#			_position = global_position
-#		}
-#	)
+		'play_requested', 
+		'Tank', 'Fill', 
+		Vector2.ZERO, 
+		_animation.get_current_animation_position() if _animation.is_playing() 
+		else 0.0)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
 
@@ -58,37 +46,18 @@ func fill_tank():
 func empty_tank():
 	_is_filling = false
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Fill')
-#	AudioEvent.emit_signal(
-#		'headloop_toggle', 
-#		{
-#			id = 'Tank_Fill',
-#			stop = true
-#		}
-#	)
 	$Holes.set_frame(0)
 	_animation.play_backwards('Fill')
+	AudioEvent.emit_signal('play_requested', 'Tank', 'Empty_Start')
 	AudioEvent.emit_signal(
-		'headloop_toggle', 
-		{
-			source = 'Tank',
-			id = 'Tank_Empty',
-			head = 'Empty_Start',
-			loop = 'Empty_Loop',
-			tail = 'Empty_Tail',
-			sync_loop = true,
-			_position = global_position
-		}
-	)
+		'play_requested', 
+		'Tank', 'Empty', 
+		Vector2.ZERO, 
+		_animation.get_current_animation_length() - _animation.get_current_animation_position() if _animation.is_playing() 
+		else 0.0)
 
 
 func activate_tank():
-#	AudioEvent.emit_signal(
-#		'headloop_toggle', 
-#		{
-#			id = 'Tank_Fill',
-#			finished = true
-#		}
-#		)
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_End')
 	_is_active = true
 	emit_signal('tank_activated')
@@ -107,13 +76,6 @@ func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == 0:
 		_tank_surface.type = Data.SurfaceType.ROCK
 		_tank_surface.surface_name = 'Rock'
-		AudioEvent.emit_signal(
-			'headloop_toggle', 
-			{
-				id = 'Tank_Empty',
-				finished = true
-			}
-		)
 
 
 func _on_area_entered(other) -> void:
@@ -128,6 +90,8 @@ func _on_area_entered(other) -> void:
 			other.hide()
 			yield(get_tree().create_timer(1.5), 'timeout')
 			other.respawn($Respawn.global_position)
+			if other.name == 'Rocberto':
+				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Respawn')
 		else:
 			if _is_active or _is_filling:
 				other.queue_free()
