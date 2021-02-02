@@ -2,7 +2,6 @@ class_name Surface
 extends Area2D
 
 export var surface_name := ''
-export var fs_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 
 var hook_ref: Hook = null

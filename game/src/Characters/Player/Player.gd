@@ -100,7 +100,7 @@ func change_zoom(out: bool = true) -> void:
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
 		if on:
-			self.surface = body.fs_name
+			self.surface = body.surface_name
 		else:
 			self.surface = ''
 

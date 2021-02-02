@@ -78,7 +78,6 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource( 9 )
 surface_name = "Rock"
-fs_name = "Rock"
 type = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tank/Surface"]
@@ -275,18 +274,12 @@ position = Vector2( 0, -106.073 )
 
 [node name="Surfaces" type="Node2D" parent="."]
 
-[node name="UpperFloor" type="Area2D" parent="Surfaces"]
+[node name="TankFloor" type="Area2D" parent="Surfaces"]
 script = ExtResource( 9 )
 surface_name = "Rock"
-fs_name = "Rock"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/UpperFloor"]
-polygon = PoolVector2Array( -134, -89, -134, -72, -16, -72, -16, -6, 16, -6, 16, -72, 134, -72, 134, -89 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/TankFloor"]
+polygon = PoolVector2Array( -119, -89, -119, -73, -16, -72, -16, -6, 16, -6, 16, -72, 119, -72, 119, -89 )
 
-[node name="OuterFloor" type="Area2D" parent="Surfaces"]
-script = ExtResource( 9 )
-surface_name = "Rock"
-fs_name = "Rock"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/OuterFloor"]
-polygon = PoolVector2Array( -134, -72, -134, 89, 134, 89, 134, -72, 119, -72, 119, 72, -119, 72, -119, -72 )
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Surfaces/TankFloor"]
+polygon = PoolVector2Array( -134, -89, -134, 89, 134, 89, 134, -89, 119, -89, 119, 72, -119, 72, -119, -89 )

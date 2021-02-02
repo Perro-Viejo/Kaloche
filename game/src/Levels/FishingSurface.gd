@@ -310,6 +310,8 @@ func _on_area_entered(other: Area2D) -> void:
 		splash.position = other.position
 		if other.is_in_group('Sacred'):
 			other.respawn()
+			if other.name == 'Rocberto':
+				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Respawn')
 		else:
 			other.queue_free()
 

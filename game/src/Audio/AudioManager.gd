@@ -143,7 +143,6 @@ func continue_hlt(content) -> void:
 			current_hlt.audios[current_step -1].stop()
 			current_hlt.audios[current_step].connect('finished', self, 'count_step', [content])
 		current_hlt.audios[current_step].play()
-		print(current_hlt.audios[current_step].name)
 
 func count_step(content) -> void:
 	_hlt[content.id].step = wrapi(_hlt[content.id].step + 1, 0, 3)

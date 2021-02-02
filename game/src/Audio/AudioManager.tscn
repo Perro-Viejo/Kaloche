@@ -67,7 +67,7 @@
 [ext_resource path="res://assets/audio/sfx_fishingrod_med.ogg" type="AudioStream" id=65]
 [ext_resource path="res://assets/audio/sfx_fishingrod_small.ogg" type="AudioStream" id=66]
 [ext_resource path="res://assets/audio/bg_pinalito.ogg" type="AudioStream" id=67]
-[ext_resource path="res://assets/audio/bg_capitulo_0.1.ogg" type="AudioStream" id=68]
+[ext_resource path="res://assets/audio/sfx_rocberto_respawn.ogg" type="AudioStream" id=68]
 [ext_resource path="res://src/Audio/MusicManager.gd" type="Script" id=69]
 [ext_resource path="res://assets/audio/mx/0/mx_0_lagunita.ogg" type="AudioStream" id=70]
 [ext_resource path="res://assets/audio/mx/0/mx_0_rocberto.ogg" type="AudioStream" id=71]
@@ -91,7 +91,7 @@
 [ext_resource path="res://assets/audio/sfx_tank_empty_tail.ogg" type="AudioStream" id=89]
 [ext_resource path="res://assets/audio/sfx_tank_fill_loop.ogg" type="AudioStream" id=90]
 [ext_resource path="res://assets/audio/sfx_tank_full.ogg" type="AudioStream" id=91]
-[ext_resource path="res://assets/audio/sfx_tank_empty_loop.ogg" type="AudioStream" id=92]
+[ext_resource path="res://assets/audio/sfx_tank_empty.ogg" type="AudioStream" id=92]
 [ext_resource path="res://assets/audio/sfx_tank_fill_st.ogg" type="AudioStream" id=93]
 [ext_resource path="res://assets/audio/sfx_temple_door_open.ogg" type="AudioStream" id=94]
 [ext_resource path="res://assets/audio/sfx_altar_rocberto_impact.ogg" type="AudioStream" id=95]
@@ -321,7 +321,8 @@ __meta__ = {
 
 [node name="Afuera" type="AudioStreamPlayer2D" parent="BG"]
 position = Vector2( 180, 85 )
-stream = ExtResource( 68 )
+stream = ExtResource( 28 )
+volume_db = 2.0
 max_distance = 200.0
 attenuation = 1.1487
 
@@ -883,11 +884,12 @@ max_distance = 200.0
 
 [node name="Tank" type="Node2D" parent="."]
 
-[node name="Empty_Loop" type="AudioStreamPlayer2D" parent="Tank"]
+[node name="Empty" type="AudioStreamPlayer2D" parent="Tank"]
 stream = ExtResource( 92 )
 
-[node name="Empty_Start" type="AudioStreamPlayer2D" parent="Tank"]
+[node name="Empty_Start" type="AudioStreamPlayer" parent="Tank"]
 stream = ExtResource( 88 )
+volume_db = -3.0
 
 [node name="Empty_Tail" type="AudioStreamPlayer2D" parent="Tank"]
 stream = ExtResource( 89 )
@@ -1013,3 +1015,9 @@ stream = ExtResource( 65 )
 [node name="rock_03" type="AudioStreamPlayer2D" parent="Hook/Water"]
 stream = ExtResource( 64 )
 attenuation = 0.707107
+
+[node name="Rocberto" type="Node2D" parent="."]
+
+[node name="Respawn" type="AudioStreamPlayer" parent="Rocberto"]
+stream = ExtResource( 68 )
+volume_db = -4.0
