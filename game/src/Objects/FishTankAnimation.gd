@@ -72,6 +72,9 @@ func reveal_rod(rod_altar_ref):
 
 func move_camera(target) -> void:
 	yield(get_tree().create_timer(target._yield), 'timeout')
+	if target._target.name == 'TargetA':
+		yield(get_tree().create_timer(1.7), 'timeout')
+		AudioEvent.emit_signal('play_requested', 'TempleRod', 'Whoosh')
 	_tween.interpolate_property(
 		_camera, 'global_position',
 		_prev_position, target._target.global_position,
@@ -103,7 +106,9 @@ func next_target(_object, key) -> void:
 			4.8, Tween.TRANS_LINEAR, Tween.EASE_OUT
 		)
 		_tween.start()
-		yield(get_tree().create_timer(0.8), 'timeout')
+		yield(get_tree().create_timer(0.7), 'timeout')
+		AudioEvent.emit_signal('play_requested', 'TempleRod', 'Emerge')
+		yield(get_tree().create_timer(0.1), 'timeout')
 		_rod_altar.emerge()
 		_shake_camera(
 		{
