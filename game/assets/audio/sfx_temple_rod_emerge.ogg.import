@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_temple_rod_emerge.ogg-90a469ace4ff03a131cd8fc6ab49e7af.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_temple_rod_emerge.ogg"
+dest_files=[ "res://.import/sfx_temple_rod_emerge.ogg-90a469ace4ff03a131cd8fc6ab49e7af.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=2]
+[gd_scene load_steps=168 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -165,6 +165,8 @@
 [ext_resource path="res://assets/audio/fs/fs_grass_05.ogg" type="AudioStream" id=163]
 [ext_resource path="res://assets/audio/fs/fs_grass_10.ogg" type="AudioStream" id=164]
 [ext_resource path="res://assets/audio/fs/fs_rock_05.ogg" type="AudioStream" id=165]
+[ext_resource path="res://assets/audio/sfx_temple_rod_whoosh.ogg" type="AudioStream" id=166]
+[ext_resource path="res://assets/audio/sfx_temple_rod_emerge.ogg" type="AudioStream" id=167]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -1133,3 +1135,12 @@ attenuation = 0.707107
 [node name="Respawn" type="AudioStreamPlayer" parent="Rocberto"]
 stream = ExtResource( 68 )
 volume_db = -4.0
+
+[node name="TempleRod" type="Node2D" parent="."]
+
+[node name="Emerge" type="AudioStreamPlayer" parent="TempleRod"]
+stream = ExtResource( 167 )
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="TempleRod"]
+stream = ExtResource( 166 )
+volume_db = 3.0
