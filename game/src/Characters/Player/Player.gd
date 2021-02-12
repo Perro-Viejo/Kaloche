@@ -20,6 +20,7 @@ var is_out := false
 var is_moving := false
 var dir := Vector2(0, 0)
 var surface := fs_id setget _set_surface
+var surfaces_queue := []
 var current_tool: int = Tools.NONE setget _set_current_tool
 var rod_tip_pos := Vector2(-5, -4)
 var rod_tip_offset := Vector2(11, -2)
@@ -100,9 +101,17 @@ func change_zoom(out: bool = true) -> void:
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
 		if on:
+			if body.overlap:
+				surfaces_queue.append(body)
 			self.surface = body.surface_name
 		else:
-			self.surface = ''
+			if surfaces_queue.back().get_instance_id() == body.get_instance_id():
+				surfaces_queue.pop_back()
+			print(surfaces_queue)
+			if surfaces_queue == []:
+				self.surface = ''
+			else:
+				self.surface = surfaces_queue.back().surface_name
 
 
 func has_equiped() -> bool:

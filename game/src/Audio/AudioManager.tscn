@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=2]
+[gd_scene load_steps=178 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -167,6 +167,16 @@
 [ext_resource path="res://assets/audio/fs/fs_rock_05.ogg" type="AudioStream" id=165]
 [ext_resource path="res://assets/audio/sfx_temple_rod_whoosh.ogg" type="AudioStream" id=166]
 [ext_resource path="res://assets/audio/sfx_temple_rod_emerge.ogg" type="AudioStream" id=167]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_07.ogg" type="AudioStream" id=168]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_09.ogg" type="AudioStream" id=169]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_01.ogg" type="AudioStream" id=170]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_08.ogg" type="AudioStream" id=171]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_06.ogg" type="AudioStream" id=172]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_05.ogg" type="AudioStream" id=173]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_10.ogg" type="AudioStream" id=174]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_04.ogg" type="AudioStream" id=175]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_03.ogg" type="AudioStream" id=176]
+[ext_resource path="res://assets/audio/fs/fs_rock_rod_temple_02.ogg" type="AudioStream" id=177]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -297,6 +307,46 @@ stream = ExtResource( 145 )
 
 [node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 146 )
+
+[node name="FS_Rod_Temple" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -4.0
+random_volume = true
+min_volume = -1.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 1.0
+
+[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 170 )
+
+[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 177 )
+
+[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 176 )
+
+[node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 175 )
+
+[node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 173 )
+
+[node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 172 )
+
+[node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 168 )
+
+[node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 171 )
+
+[node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 169 )
+
+[node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+stream = ExtResource( 174 )
 
 [node name="FS_Water" type="Node2D" parent="Player"]
 script = ExtResource( 26 )

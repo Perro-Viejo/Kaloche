@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fs_rock_rod_temple_04.ogg-b099ee004dc90982dbfc86b3f31edb26.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/fs/fs_rock_rod_temple_04.ogg"
+dest_files=[ "res://.import/fs_rock_rod_temple_04.ogg-b099ee004dc90982dbfc86b3f31edb26.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

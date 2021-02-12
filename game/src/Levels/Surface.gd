@@ -3,6 +3,7 @@ extends Area2D
 
 export var surface_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
+export var overlap := false
 
 var hook_ref: Hook = null
 

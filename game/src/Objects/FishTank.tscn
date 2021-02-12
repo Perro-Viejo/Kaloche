@@ -192,7 +192,11 @@ position = Vector2( 103, 74.5 )
 polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -76, -93, -76 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Columns"]
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="TopColumns" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 0, 14.5 )
@@ -208,7 +212,11 @@ z_index = 4
 texture = ExtResource( 7 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Arch"]
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="Arch" type="CollisionPolygon2D" parent="Arch/ZIndexChanger"]
 position = Vector2( 0, 111 )
