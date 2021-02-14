@@ -174,7 +174,6 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource( 20 )
 surface_name = "Water"
-fs_name = "Water"
 type = 1
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
@@ -226,12 +225,6 @@ pickable_needed = "Rocberto"
 [node name="FishTank" parent="GroupObjects" instance=ExtResource( 24 )]
 position = Vector2( -16, 120 )
 
-[node name="ZIndexChanger" parent="GroupObjects/FishTank/Columns" index="1"]
-modulate = Color( 0, 1, 1, 1 )
-
-[node name="ZIndexChanger" parent="GroupObjects/FishTank/Arch" index="0"]
-modulate = Color( 0, 1, 1, 1 )
-
 [node name="FishingSurfaceL1" parent="GroupObjects/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
@@ -281,7 +274,7 @@ modulate = Color( 0, 1, 1, 1 )
 modulate = Color( 0, 1, 1, 1 )
 
 [node name="Sprite" parent="GroupObjects/Altar/SacredFire" index="0"]
-frame = 3
+frame = 18
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/SacredFire" index="7"]
 modulate = Color( 0, 1, 1, 1 )
@@ -375,7 +368,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( 44, 673 )
+position = Vector2( -16, 0 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -459,7 +452,6 @@ position = Vector2( 28.5, -455.2 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 19 )
-fs_name = "Rock"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/EntranceFloor"]
 position = Vector2( 3, -401 )
@@ -499,14 +491,19 @@ range_z_max = 2
 __meta__ = {
 "_editor_description_": ""
 }
-
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 
 [editable path="AUDIO_Cap_01"]
+
 [editable path="AUDIO_Cap_01/BG/AmbienceDevice"]
+
 [editable path="GroupObjects/FishTank"]
+
 [editable path="GroupObjects/FishTankAnimation"]
+
 [editable path="GroupObjects/Altar"]
+
 [editable path="GroupObjects/Altar/SacredFire"]
+
 [editable path="GroupObjects/AltarActivation"]

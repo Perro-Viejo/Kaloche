@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Inventory/Rod.tres" type="Resource" id=1]
 [ext_resource path="res://src/Pickables/Pickup.tscn" type="PackedScene" id=2]
@@ -17,10 +17,15 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_tank_mask.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_open_mask.png" type="Texture" id=16]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=17]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_pilar.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_pilar_underwater.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_pilar_underwater_mask.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_gutters.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_gutters_mask.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Emerge"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Main:position")
 tracks/0/interp = 1
@@ -28,7 +33,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 9 ), Vector2( 0, -75 ) ]
@@ -112,10 +117,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 3.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 71.5 ), Vector2( 0.5, -12.5 ) ]
+"values": [ Vector2( 0.5, 71 ), Vector2( 0.5, -13 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Water:position")
@@ -124,7 +129,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 4.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.5, 80 ), Vector2( 0.5, -4 ) ]
@@ -249,11 +254,163 @@ tracks/18/keys = {
 "update": 1,
 "values": [ 1, 0 ]
 }
+tracks/19/type = "value"
+tracks/19/path = NodePath("Pilar:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 82.5 ), Vector2( 0.5, -1.5 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("PilarUnderwater:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.5, 83 ), Vector2( 0.5, -1 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("PilarUnderwater:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 3.5, 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Pilar:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("PilarUnderwaterMask:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 3.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 32 ), Vector2( 0.5, 15 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Gutters:animation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "off", "on" ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Gutters:playing")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Gutters:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 45 ), Vector2( 0, -39 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Surfaces/BrokenFloor:monitoring")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Surfaces/BrokenFloor:monitorable")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 21 )
+region = Rect2( 61, 0, 61, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 21 )
+region = Rect2( 122, 0, 61, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 21 )
+region = Rect2( 183, 0, 61, 128 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 61, 128 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
 
 [node name="RodTemple" type="Node2D"]
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_horizontal_guides_": [ -21.0 ]
+"_edit_horizontal_guides_": [ 25.0 ]
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -282,8 +439,28 @@ visible = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water/Collisions"]
 polygon = PoolVector2Array( -12.5, 22, -10.5, 13, -33.5, 5, -38.5, -2, -38.5, -20, -22.5, -28, 22.5, -28, 38.5, -20, 38.5, -2, 32.5, 5, 9.5, 13, 11.5, 22, 36.5, 15, 51.5, 4, 55.5, -4, 52.5, -16, 41.5, -25, 20.5, -32, -20.5, -32, -41.5, -25, -52.5, -16, -55.5, -4, -52.5, 4, -36.5, 15 )
 
+[node name="Pilar" type="Sprite" parent="."]
+position = Vector2( 0.5, 82.5 )
+z_index = -1
+texture = ExtResource( 18 )
+
+[node name="PilarUnderwater" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 1024
+material = SubResource( 2 )
+position = Vector2( 0.5, 83 )
+z_index = -1
+texture = ExtResource( 19 )
+
+[node name="PilarUnderwaterMask" type="Light2D" parent="."]
+position = Vector2( 0.5, 32 )
+z_index = -1
+texture = ExtResource( 20 )
+mode = 2
+range_item_cull_mask = 1024
+
 [node name="Floor" type="Sprite" parent="."]
-position = Vector2( 0.5, 71.5 )
+position = Vector2( 0.5, 71 )
 z_index = -1
 texture = ExtResource( 13 )
 
@@ -319,11 +496,9 @@ visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 11 )
 zindex_on_entered = 1
-zindex_on_exited = 4
-involved_nodes = [  ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main/ZIndexChanger"]
-polygon = PoolVector2Array( -37, -12, 27, -12, 27, -15, 41, -15, 41, 15, -37, 15 )
+polygon = PoolVector2Array( -37, -12, -26, -21, -26, -12, 27, -12, 27, -15, 27, -21, 41, -15, 41, 15, -37, 15 )
 
 [node name="Rod" parent="Main" instance=ExtResource( 2 )]
 visible = false
@@ -354,29 +529,6 @@ texture = ExtResource( 16 )
 mode = 3
 range_z_min = 4
 range_z_max = 4
-
-[node name="CoverDebris" type="Sprite" parent="."]
-position = Vector2( 8.5, -23.5 )
-z_index = 5
-texture = ExtResource( 9 )
-
-[node name="Collisions" type="StaticBody2D" parent="CoverDebris"]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverDebris/Collisions"]
-position = Vector2( 0.5, 0.5 )
-polygon = PoolVector2Array( 23, 15, 18, 15, 18, 13, 22, 13 )
-
-[node name="ZIndexChanger" type="Area2D" parent="CoverDebris"]
-visible = false
-modulate = Color( 0, 1, 1, 1 )
-script = ExtResource( 11 )
-zindex_on_entered = 2
-zindex_on_exited = 5
-involved_nodes = [  ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverDebris/ZIndexChanger"]
-polygon = PoolVector2Array( -30.5, 23.5, -9.5, 23.5, -9.5, 20.5, 18.5, 20.5, 18.5, 17.5, 32.5, 17.5, 32.5, 44.5, -30.5, 44.5 )
 
 [node name="Columns" type="Sprite" parent="."]
 position = Vector2( 0, -10.5 )
@@ -409,20 +561,18 @@ polygon = PoolVector2Array( -25, 42.5, -19, 42.5, -19, 40.5, -25, 40.5 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 11 )
-zindex_on_entered = 0
 zindex_on_exited = 5
-involved_nodes = [  ]
 
 [node name="W" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 polygon = PoolVector2Array( -75, 6.5, -59, 6.5, -59, 26.5, -75, 26.5 )
 
 [node name="NW" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 37, -36.5 )
-polygon = PoolVector2Array( -75, 7, -59, 7, -59, 26, -75, 26 )
+polygon = PoolVector2Array( -75, 7, -59, 7, -59, 21, -70, 26, -75, 26 )
 
 [node name="NE" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 98, -35.5 )
-polygon = PoolVector2Array( -75, 6, -59, 6, -59, 25, -75, 25 )
+polygon = PoolVector2Array( -75, 6, -59, 6, -59, 25, -65, 25, -75, 20 )
 
 [node name="E" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 135, 0.5 )
@@ -436,9 +586,59 @@ polygon = PoolVector2Array( -75, 5, -59, 5, -59, 26, -75, 26 )
 position = Vector2( 45, 38.5 )
 polygon = PoolVector2Array( -75, 5, -59, 5, -59, 26, -75, 26 )
 
+[node name="CoverDebris" type="Sprite" parent="."]
+position = Vector2( 8.5, -23.5 )
+z_index = 5
+texture = ExtResource( 9 )
+
+[node name="Collisions" type="StaticBody2D" parent="CoverDebris"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverDebris/Collisions"]
+position = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( 23, 15, 18, 15, 18, 13, 22, 13 )
+
+[node name="ZIndexChanger" type="Area2D" parent="CoverDebris"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 11 )
+zindex_on_entered = 2
+zindex_on_exited = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverDebris/ZIndexChanger"]
+polygon = PoolVector2Array( -30.5, 23.5, -9.5, 23.5, -9.5, 20.5, 18.5, 20.5, 18.5, 17.5, 32.5, 17.5, 32.5, 44.5, -30.5, 44.5 )
+
+[node name="Gutters" type="AnimatedSprite" parent="."]
+light_mask = 32
+position = Vector2( 0, 45 )
+z_index = 5
+frames = SubResource( 7 )
+animation = "off"
+
+[node name="ZIndexChanger" type="Area2D" parent="Gutters"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 11 )
+zindex_on_entered = 1
+zindex_on_exited = 5
+involved_nodes = [ NodePath("../../Columns"), NodePath("../../Main") ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gutters/ZIndexChanger"]
+polygon = PoolVector2Array( -42, 61, -27, 64, -27, 60, -13, 60, -10, 48, 11, 48, 14, 60, 26, 60, 26, 64, 43, 61, 43, 25, 32, 14, 27, 14, 27, 23, -26, 23, -26, 14, -30, 14, -42, 25 )
+
+[node name="GuttersMask" type="Light2D" parent="."]
+position = Vector2( 0, -123 )
+texture = ExtResource( 22 )
+offset = Vector2( 0.5, 115 )
+mode = 3
+range_z_min = 0
+range_z_max = 5
+range_item_cull_mask = 32
+
 [node name="Surfaces" type="Node2D" parent="."]
 
 [node name="BrokenFloor" type="Area2D" parent="Surfaces"]
+visible = false
 priority = 1.0
 script = ExtResource( 17 )
 surface_name = "Rod_Temple"
@@ -449,6 +649,7 @@ overlap = true
 polygon = PoolVector2Array( -47.0394, 13.7276, -14.0342, 24.8695, -9.61948, 10.364, 10.3518, 10.364, 14.5563, 24.2388, 57.442, 3.00616, 54.9193, -18.0163, 18.5506, -34.624, -28.9601, -32.1013, -50.4029, -22.6412, -57.1301, -6.2437 )
 
 [node name="RockFloor" type="Area2D" parent="Surfaces"]
+visible = false
 priority = 1.0
 script = ExtResource( 17 )
 surface_name = "Rock"

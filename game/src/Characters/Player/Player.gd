@@ -105,10 +105,11 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 				surfaces_queue.append(body)
 			self.surface = body.surface_name
 		else:
-			if surfaces_queue.back().get_instance_id() == body.get_instance_id():
+			if surfaces_queue \
+				and surfaces_queue.back().get_instance_id() == body.get_instance_id():
 				surfaces_queue.pop_back()
-			print(surfaces_queue)
-			if surfaces_queue == []:
+
+			if surfaces_queue.empty():
 				self.surface = ''
 			else:
 				self.surface = surfaces_queue.back().surface_name
