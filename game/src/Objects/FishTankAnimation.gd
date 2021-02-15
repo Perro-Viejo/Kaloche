@@ -4,7 +4,6 @@ export (NodePath) var _player = ''
 export (NodePath) var _targetA = ''
 export (NodePath) var _targetB = ''
 
-
 var _was_played := false
 var _player_cam_cfg := {
 	pos = Vector2.ZERO,
@@ -13,8 +12,7 @@ var _player_cam_cfg := {
 var _player_cam: Camera2D
 var _current_target 
 var _prev_position := Vector2.ZERO
-var _rod_altar
-
+var _rod_temple: Node2D
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
 var _shake_timer := 0.0
@@ -39,11 +37,14 @@ onready var _targets := [
 	},
 ]
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	_was_played = false
 	_current_target = _targets.pop_front()
 	#Conectarse a señales de los hijos
 	_tween.connect('tween_completed', self, 'next_target')
+
 
 func _process(delta) -> void:
 	if _is_camera_shaking:
@@ -57,8 +58,10 @@ func _process(delta) -> void:
 			_is_camera_shaking = false
 			_camera.offset = Vector2.ZERO
 
-func reveal_rod(rod_altar_ref):
-	_rod_altar = rod_altar_ref
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func reveal_rod(rod_temple_ref: Node2D):
+	_rod_temple = rod_temple_ref
 	_player_cam = get_node(_player).get_node('Camera2D')
 	PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 	_player_cam_cfg.pos = _player_cam.get_camera_screen_center()
@@ -69,6 +72,7 @@ func reveal_rod(rod_altar_ref):
 	_prev_position = _camera.global_position
 	yield(get_tree().create_timer(0.6), 'timeout')
 	move_camera(_current_target)
+
 
 func move_camera(target) -> void:
 	yield(get_tree().create_timer(target._yield), 'timeout')
@@ -87,6 +91,7 @@ func move_camera(target) -> void:
 			Vector2(0.7,0.7), _player_cam_cfg.zoom,
 			2, Tween.TRANS_EXPO, Tween.EASE_IN
 		)
+
 
 func next_target(_object, key) -> void:
 	if key == ':zoom': return
@@ -109,7 +114,7 @@ func next_target(_object, key) -> void:
 		yield(get_tree().create_timer(0.7), 'timeout')
 		AudioEvent.emit_signal('play_requested', 'TempleRod', 'Emerge')
 		yield(get_tree().create_timer(0.1), 'timeout')
-		_rod_altar.emerge()
+		_rod_temple.emerge()
 		_shake_camera(
 		{
 			strength = 1.5,
@@ -117,10 +122,10 @@ func next_target(_object, key) -> void:
 		})
 		_current_target = {
 			_target = _player_cam,
-			_time = 5,
+			_time = _rod_temple.get_emerge_animation_length(),
 			_trans = Tween.TRANS_EXPO,
 			_ease = Tween.EASE_OUT,
-			_yield = 5
+			_yield = _rod_temple.get_emerge_animation_length()
 		}
 		_was_played = true
 		move_camera(_current_target)
@@ -128,6 +133,8 @@ func next_target(_object, key) -> void:
 		_current_target = _targets.pop_front()
 		move_camera(_current_target)
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _shake_camera(props: Dictionary) -> void:
 	if props.has('strength'):
 		_camera_shake_amount = props.strength

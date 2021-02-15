@@ -17,6 +17,10 @@ func emerge():
 	_animation.play('Emerge')
 
 
+func get_emerge_animation_length() -> float:
+	return _animation.get_animation('Emerge').length
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _change_temple_mask_range(new_z_index: int) -> void:
 	$MainClosedMask.range_z_min = new_z_index

@@ -194,9 +194,6 @@ polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -76, -93, -76 )
 [node name="ZIndexChanger" type="Area2D" parent="Columns"]
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
 
 [node name="TopColumns" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 0, 14.5 )
@@ -214,9 +211,6 @@ texture = ExtResource( 7 )
 [node name="ZIndexChanger" type="Area2D" parent="Arch"]
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
 
 [node name="Arch" type="CollisionPolygon2D" parent="Arch/ZIndexChanger"]
 position = Vector2( 0, 111 )
@@ -225,6 +219,7 @@ polygon = PoolVector2Array( -15, -85, -15, -72, 16, -72, 16, -85 )
 [node name="FishingSurfaces" type="Node2D" parent="."]
 
 [node name="FishingSurfaceL1" type="Area2D" parent="FishingSurfaces"]
+visible = false
 position = Vector2( -84, -9 )
 priority = 2.0
 collision_layer = 4
@@ -239,6 +234,7 @@ has_sacred = true
 polygon = PoolVector2Array( -27, -8, 5.00001, -30, 35, -23, 48, 7, -8.99999, 35 )
 
 [node name="FishingSurfaceL2" type="Area2D" parent="FishingSurfaces"]
+visible = false
 position = Vector2( -51, 36 )
 priority = 2.0
 collision_layer = 4
@@ -252,6 +248,7 @@ bite_freq = Vector2( 3, 3 )
 polygon = PoolVector2Array( -45, -2, -1.00001, -23, 26, -24, 39, -7, 35, 17, -5.00001, 24, -47, 18 )
 
 [node name="FishingSurfaceR1" type="Area2D" parent="FishingSurfaces"]
+visible = false
 position = Vector2( 49, 23 )
 priority = 2.0
 collision_layer = 4
@@ -265,6 +262,7 @@ bite_freq = Vector2( 3, 3 )
 polygon = PoolVector2Array( -33, 1, -13, -28, 24, -18, 25, 12, -7, 29 )
 
 [node name="FishingSurfaceR2" type="Area2D" parent="FishingSurfaces"]
+visible = false
 position = Vector2( 79, -17.65 )
 priority = 2.0
 collision_layer = 4
@@ -283,6 +281,7 @@ position = Vector2( 0, -106.073 )
 [node name="Surfaces" type="Node2D" parent="."]
 
 [node name="TankFloor" type="Area2D" parent="Surfaces"]
+visible = false
 script = ExtResource( 9 )
 surface_name = "Rock"
 

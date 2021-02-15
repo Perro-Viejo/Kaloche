@@ -274,7 +274,7 @@ modulate = Color( 0, 1, 1, 1 )
 modulate = Color( 0, 1, 1, 1 )
 
 [node name="Sprite" parent="GroupObjects/Altar/SacredFire" index="0"]
-frame = 18
+frame = 20
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/SacredFire" index="7"]
 modulate = Color( 0, 1, 1, 1 )
