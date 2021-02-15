@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bg_spot_rod_temple.ogg-eff8313e6722e235fd7c6fdacbdffe96.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bg_spot_rod_temple.ogg"
+dest_files=[ "res://.import/bg_spot_rod_temple.ogg-eff8313e6722e235fd7c6fdacbdffe96.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

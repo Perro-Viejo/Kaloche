@@ -91,6 +91,8 @@ func move_camera(target) -> void:
 			Vector2(0.7,0.7), _player_cam_cfg.zoom,
 			2, Tween.TRANS_EXPO, Tween.EASE_IN
 		)
+		yield(get_tree().create_timer(2), 'timeout')
+		AudioEvent.emit_signal('mx_request', 'RodTemple')
 
 
 func next_target(_object, key) -> void:

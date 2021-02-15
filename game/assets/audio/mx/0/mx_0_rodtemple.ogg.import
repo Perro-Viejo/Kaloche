@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_0_rodtemple.ogg-fb5673f703b1b0568361651ee548f3be.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/mx/0/mx_0_rodtemple.ogg"
+dest_files=[ "res://.import/mx_0_rodtemple.ogg-fb5673f703b1b0568361651ee548f3be.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

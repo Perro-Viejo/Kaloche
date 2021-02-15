@@ -88,6 +88,8 @@ func _on_area_entered(other) -> void:
 			yield(get_tree().create_timer(0.5), 'timeout')
 		if other.is_in_group('Sacred'):
 			other.hide()
+			if other.name == 'Rocberto':
+				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Disappear')
 			yield(get_tree().create_timer(1.5), 'timeout')
 			other.respawn($Respawn.global_position)
 			if other.name == 'Rocberto':
