@@ -32,4 +32,4 @@ func _on_area_exited(other):
 			"MX":
 				pass
 			"SPOT":
-				AudioEvent.emit_signal("stop_requested", "Spot", asset_name)
+				AudioEvent.emit_signal("stop_requested", "Spot", asset_name, global_position)

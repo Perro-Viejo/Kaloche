@@ -94,7 +94,12 @@ __meta__ = {
 environment = SubResource( 1 )
 
 [node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
-visible = false
+
+[node name="Lagunita" parent="AUDIO_Cap_01/Spot" index="0"]
+position = Vector2( 481.811, -283.587 )
+
+[node name="CollisionShape2D" parent="AUDIO_Cap_01/Spot/Lagunita" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="Caminando" parent="AUDIO_Cap_01/Triggers" index="1"]
 position = Vector2( 393.928, 1185.41 )
@@ -254,6 +259,7 @@ position = Vector2( -350, -312 )
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsBack" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+involved_nodes = [  ]
 
 [node name="CollisionEnabler" parent="GroupObjects/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../GroupCharacters/Player") ]
@@ -266,18 +272,28 @@ modulate = Color( 0, 1, 1, 1 )
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsFront" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/ColumnsFrontDebris" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/Stone" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="Sprite" parent="GroupObjects/Altar/SacredFire" index="0"]
-frame = 20
+frame = 11
 
 [node name="ZIndexChanger" parent="GroupObjects/Altar/SacredFire" index="7"]
 modulate = Color( 0, 1, 1, 1 )
+involved_nodes = [  ]
 
 [node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
 position = Vector2( -350, -312 )
@@ -297,24 +313,13 @@ position = Vector2( 156, 800 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -294, -277 )
-is_good = true
-can_burn = true
 carbs = 200
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -390, -277 )
 is_good = false
-can_burn = true
 carbs = 5
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" groups=[
 "Sacred",
@@ -322,13 +327,8 @@ dialog = ""
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
-can_burn = true
 carbs = 5
 img = ExtResource( 1 )
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Fish" parent="GroupObjects" groups=[
 "Sacred",
@@ -353,14 +353,9 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
-is_good = true
-can_burn = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
