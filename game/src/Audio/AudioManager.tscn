@@ -751,8 +751,7 @@ attenuation = 3.13834
 
 [node name="RodTemple" type="AudioStreamPlayer2D" parent="Spot"]
 stream = ExtResource( 179 )
-volume_db = 5.0
-max_distance = 600.0
+max_distance = 530.0
 attenuation = 1.56917
 
 [node name="Animals" type="Node2D" parent="."]
