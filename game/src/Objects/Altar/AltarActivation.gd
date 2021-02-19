@@ -22,21 +22,21 @@ onready var _tween: Tween = $Tween
 onready var _targets := [
 	{
 		_target = get_node(_targetA),
-		_time = 4,
+		_time = 12,
 		_trans = Tween.TRANS_LINEAR,
 		_ease = Tween.EASE_OUT,
 		_yield = 0
 	},
 	{
 		_target = get_node(_targetB),
-		_time = 2,
+		_time = 6,
 		_trans = Tween.TRANS_SINE,
 		_ease = Tween.EASE_IN,
 		_yield = 1
 	},
 	{
 		_target = get_node(_targetC),
-		_time = 4,
+		_time = 16,
 		_trans = Tween.TRANS_LINEAR,
 		_ease = Tween.EASE_OUT,
 		_yield = 0
@@ -88,7 +88,7 @@ func next_target(_object, _key) -> void:
 			_time = 2,
 			_trans = Tween.TRANS_EXPO,
 			_ease = Tween.EASE_OUT,
-			_yield = 0.6
+			_yield = 3
 		}
 		_was_played = true
 		move_camera(_current_target)

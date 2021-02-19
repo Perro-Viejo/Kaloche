@@ -78,7 +78,7 @@ func eat_sacred():
 				duration = 0.2,
 			})
 			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Impact', reject_position.global_position)
-			
+		
 		_:
 			print('no sé que es pero lo toco jesusito')
 			_destroy_pickable()

@@ -1,7 +1,7 @@
 class_name AmbienceDevice
 extends Node2D
 
-enum AMBS {SIERRA, PINALITO, AFUERA}
+enum AMBS {SIERRA, PINALITO, AFUERA, CAMP}
 
 export (AMBS) var ambience
 export (float) var max_distance = 150

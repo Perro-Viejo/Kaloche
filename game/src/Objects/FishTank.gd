@@ -21,6 +21,7 @@ func _ready():
 		surface.monitorable = false
 	
 	# Conectarse a señales de los hijastros
+	AudioEvent.emit_signal('change_volume', 'Spot', 'FishTank', -80)
 	_tank_surface.connect('area_entered', self, '_on_area_entered')
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
@@ -58,6 +59,7 @@ func empty_tank():
 
 
 func activate_tank():
+	AudioEvent.emit_signal('change_volume', 'Spot', 'FishTank', 10)
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_End')
 	_is_active = true
 	emit_signal('tank_activated')

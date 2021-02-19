@@ -21,7 +21,7 @@ func _on_area_entered(other):
 			"MX":
 				AudioEvent.emit_signal("mx_request", asset_name)
 			"SPOT":
-				AudioEvent.emit_signal("play_requested", "Spot", asset_name, position)
+				AudioEvent.emit_signal("play_requested", "Spot", asset_name, global_position)
 
 
 func _on_area_exited(other):
@@ -32,4 +32,4 @@ func _on_area_exited(other):
 			"MX":
 				pass
 			"SPOT":
-				AudioEvent.emit_signal("stop_requested", "Spot", asset_name, global_position)
+				AudioEvent.emit_signal("stop_requested", "Spot", asset_name)

@@ -18,6 +18,9 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.timer.set_paused(true)
 	if owner.pickable.is_in_group('Sacred'):
 		owner.sprite.modulate = '00e1ff'
+		match owner.pickable.name:
+			'Fish':
+				AudioEvent.emit_signal('mx_request', 'Sacrifice')
 	else:
 		owner.sprite.modulate = 'f63737'
 	owner.sprite.scale = owner.sprite.scale * Vector2(1.2, 1.2)

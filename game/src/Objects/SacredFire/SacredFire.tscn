@@ -142,6 +142,7 @@ size_range = Vector2( 0.5, 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
+frame = 11
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -185,9 +186,11 @@ max_distance = 100.0
 position = Vector2( 23.9764, 0 )
 
 [node name="ZIndexChanger" type="Area2D" parent="."]
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 5 )
 zindex_on_entered = 4
 zindex_on_exited = 0
+involved_nodes = [  ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ZIndexChanger"]
 polygon = PoolVector2Array( 12, 2, 12, -16, -12, -16, -12, 2 )

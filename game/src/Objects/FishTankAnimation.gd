@@ -120,7 +120,7 @@ func next_target(_object, key) -> void:
 		_shake_camera(
 		{
 			strength = 1.5,
-			duration = 4,
+			duration = 7.5,
 		})
 		_current_target = {
 			_target = _player_cam,

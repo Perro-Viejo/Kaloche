@@ -411,6 +411,30 @@ tracks/31/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/32/type = "value"
+tracks/32/path = NodePath("Surfaces/Water:monitoring")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 9.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Surfaces/Water:monitorable")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 9.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 light_mode = 2
@@ -441,7 +465,7 @@ animations = [ {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "on",
-"speed": 5.0
+"speed": 6.0
 } ]
 
 [sub_resource type="AtlasTexture" id=8]
@@ -979,7 +1003,7 @@ z_index = -1
 texture = ExtResource( 19 )
 
 [node name="PilarUnderwaterMask" type="Light2D" parent="."]
-position = Vector2( 0.5, 32 )
+position = Vector2( 0.5, 17.04 )
 z_index = -1
 texture = ExtResource( 20 )
 mode = 2
@@ -1172,6 +1196,22 @@ overlap = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/BrokenFloor"]
 polygon = PoolVector2Array( -47.0394, 13.7276, -14.0342, 24.8695, -9.61948, 10.364, 10.3518, 10.364, 14.5563, 24.2388, 57.442, 3.00616, 54.9193, -18.0163, 18.5506, -34.624, -28.9601, -32.1013, -50.4029, -22.6412, -57.1301, -6.2437 )
+
+[node name="Water" type="Area2D" parent="Surfaces"]
+visible = false
+priority = 1.0
+monitoring = false
+monitorable = false
+script = ExtResource( 17 )
+surface_name = "Water"
+type = 1
+overlap = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Water"]
+polygon = PoolVector2Array( -53.3188, 6.42883, -38.523, 17.2915, -13.6136, 23.8466, -11.1789, 12.6093, -32.3425, 6.05425, -39.834, -7.99238, -34.7772, -18.1059, -16.7975, -28.0322, -16.0484, -32.7144, -47.5128, -22.6009, -55.7535, -5.93221 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Surfaces/Water"]
+polygon = PoolVector2Array( 15.625, 23.75, 29.625, 21.125, 39.625, 16.125, 51.625, 8.5, 56.25, -3.625, 52.3119, -16.6076, 34.894, -27.0958, 15.9779, -33.2763, 15.2288, -30.2797, 36.2051, -16.7949, 41.0746, -4.4339, 31, 8.375, 12.75, 12.625 )
 
 [node name="RockFloor" type="Area2D" parent="Surfaces"]
 visible = false
