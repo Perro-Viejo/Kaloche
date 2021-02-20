@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=2]
+[gd_scene load_steps=186 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -183,6 +183,8 @@
 [ext_resource path="res://assets/audio/bg_camp.ogg" type="AudioStream" id=181]
 [ext_resource path="res://assets/audio/bg_spot_fish_tank.ogg" type="AudioStream" id=182]
 [ext_resource path="res://assets/audio/mx/0/mx_0_sacrifice.ogg" type="AudioStream" id=183]
+[ext_resource path="res://assets/audio/sfx_tank_oneshot_covered.ogg" type="AudioStream" id=184]
+[ext_resource path="res://assets/audio/sfx_tank_oneshot_uncovered.ogg" type="AudioStream" id=185]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -1112,6 +1114,12 @@ volume_db = 5.0
 [node name="Fill_Loop" type="AudioStreamPlayer2D" parent="Tank"]
 stream = ExtResource( 90 )
 volume_db = 5.0
+
+[node name="Fill_Covered" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 184 )
+
+[node name="Fill_Uncovered" type="AudioStreamPlayer2D" parent="Tank"]
+stream = ExtResource( 185 )
 
 [node name="Fill_Full" type="AudioStreamPlayer" parent="Tank"]
 stream = ExtResource( 91 )

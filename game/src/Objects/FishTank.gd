@@ -27,7 +27,6 @@ func _ready():
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
 	_animation.connect('animation_finished', self, '_on_animation_finished')
 
-
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func fill_tank():
 	_tank_surface.type = Data.SurfaceType.WATER
@@ -42,6 +41,10 @@ func fill_tank():
 		else 0.0)
 	$Holes.set_frame(1)
 	_animation.play('Fill')
+	if _animation.get_current_animation_position() >= 3.6:
+		AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Covered', global_position)
+	else:
+		AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_Uncovered', global_position)
 
 
 func empty_tank():
