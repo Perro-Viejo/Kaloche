@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -43,6 +43,12 @@
 [ext_resource path="res://src/Objects/FishTankAnimation.tscn" type="PackedScene" id=41]
 [ext_resource path="res://assets/images/world/chapter_0.1/altar_fg.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_fg.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/world/chapter_0.1/entrance_ruins.png" type="Texture" id=44]
+[ext_resource path="res://src/Levels/Chapter01/Zones/EntranceRuins/EntranceRuins.gd" type="Script" id=45]
+[ext_resource path="res://assets/images/world/rock2.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/world/rock1.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/world/rock4.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/world/rock3.png" type="Texture" id=49]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -82,6 +88,22 @@ shader_param/time_scale2 = 0.001
 shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
 shader_param/gradient_texture = SubResource( 5 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 44 )
+region = Rect2( 0, 0, 55, 59 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 44 )
+region = Rect2( 55, 0, 55, 59 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 11 )
@@ -271,7 +293,7 @@ zindex_on_exited = 4
 involved_nodes = [  ]
 
 [node name="Sprite" parent="GroupObjects/Altar/SacredFire" index="0"]
-frame = 15
+frame = 13
 
 [node name="AltarActivation" parent="GroupObjects" instance=ExtResource( 39 )]
 position = Vector2( -350, -312 )
@@ -291,13 +313,24 @@ position = Vector2( 156, 800 )
 
 [node name="Pickable" parent="GroupObjects" instance=ExtResource( 8 )]
 position = Vector2( -294, -277 )
+is_good = true
+can_burn = true
 carbs = 200
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable2" parent="GroupObjects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -390, -277 )
 is_good = false
+can_burn = true
 carbs = 5
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable3" parent="GroupObjects" groups=[
 "Sacred",
@@ -305,8 +338,13 @@ carbs = 5
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
+can_burn = true
 carbs = 5
 img = ExtResource( 1 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Fish" parent="GroupObjects" groups=[
 "Sacred",
@@ -331,9 +369,14 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
+is_good = true
+can_burn = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Shadow" type="Sprite" parent="GroupCharacters/Rocberto"]
 show_behind_parent = true
@@ -341,7 +384,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 34 )
 
 [node name="Player" parent="GroupCharacters" instance=ExtResource( 2 )]
-position = Vector2( -16, 0 )
+position = Vector2( 455.937, 1193.06 )
 
 [node name="RocbertoIntro" parent="GroupCharacters" instance=ExtResource( 17 )]
 position = Vector2( -338.087, 479.698 )
@@ -464,6 +507,101 @@ range_z_max = 2
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Zones" type="Node2D" parent="."]
+
+[node name="EntranceRuins" type="Node2D" parent="Zones"]
+position = Vector2( 366.682, 1189.88 )
+script = ExtResource( 45 )
+
+[node name="Ruins" type="AnimatedSprite" parent="Zones/EntranceRuins"]
+position = Vector2( -12.0665, -8.6991 )
+frames = SubResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Zones/EntranceRuins"]
+visible = false
+
+[node name="Blocked" type="CollisionPolygon2D" parent="Zones/EntranceRuins/StaticBody2D"]
+position = Vector2( -0.280579, 0 )
+polygon = PoolVector2Array( -11.5618, 18.3925, -13.6771, -7.18604, -2.42029, -30.6266, -17.1741, -44.4653, -25.5925, 19.515 )
+
+[node name="Unblocked" type="CollisionPolygon2D" parent="Zones/EntranceRuins/StaticBody2D"]
+position = Vector2( -0.0932922, 0 )
+polygon = PoolVector2Array( -10.0125, 20.7584, -2.33362, 18.2301, -11.4171, 9.52112, -8.13956, 6.15002, 6.28165, 10.1766, 15.5524, 3.05969, -3.17642, -3.30811, -12.7281, -0.498779, -22.4728, -10.0098, -24.9955, -3.30811, -28.7413, 0.437622, -28.9286, 15.8889 )
+disabled = true
+
+[node name="Unblocked2" type="CollisionPolygon2D" parent="Zones/EntranceRuins/StaticBody2D"]
+position = Vector2( -0.280579, 0 )
+polygon = PoolVector2Array( 6.74988, -22.7861, 10.3083, -27.7493, 8.42981, -33.2335, -1.87106, -38.103, -12.7281, -27.3746, -10.387, -21.4751, -1.2099, -24.8463 )
+disabled = true
+
+[node name="Debris" type="Node2D" parent="Zones/EntranceRuins"]
+
+[node name="Rock" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -2.52267, -20.1815 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 47 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="Rock2" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -7.27951, -16.4652 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 46 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="Rock3" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -5.19839, -10.5192 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 49 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="Rock4" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -10.2525, -5.16772 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 48 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="Rock5" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -7.87411, 0.77832 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 49 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="Rock6" parent="Zones/EntranceRuins/Debris" instance=ExtResource( 8 )]
+position = Vector2( -12.3336, 6.27856 )
+is_good = false
+can_burn = false
+carbs = 2
+img = ExtResource( 46 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 [connection signal="body_shape_entered" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_entered"]
 [connection signal="body_shape_exited" from="OverlayArea" to="." method="_on_OverlayArea_body_shape_exited"]
 

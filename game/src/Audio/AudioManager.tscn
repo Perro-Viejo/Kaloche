@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=2]
+[gd_scene load_steps=193 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -185,6 +185,13 @@
 [ext_resource path="res://assets/audio/mx/0/mx_0_sacrifice.ogg" type="AudioStream" id=183]
 [ext_resource path="res://assets/audio/sfx_tank_oneshot_covered.ogg" type="AudioStream" id=184]
 [ext_resource path="res://assets/audio/sfx_tank_oneshot_uncovered.ogg" type="AudioStream" id=185]
+[ext_resource path="res://assets/audio/sfx_pu_sacred_loop.ogg" type="AudioStream" id=186]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_rumble_01.ogg" type="AudioStream" id=187]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_destruction.ogg" type="AudioStream" id=188]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_rumble_03.ogg" type="AudioStream" id=189]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_rumble_04.ogg" type="AudioStream" id=190]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_rumble_02.ogg" type="AudioStream" id=191]
+[ext_resource path="res://assets/audio/sfx_entrance_ruins_rumble_05.ogg" type="AudioStream" id=192]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -516,6 +523,7 @@ __meta__ = {
 [node name="Camp" type="AudioStreamPlayer2D" parent="BG"]
 position = Vector2( 180, 85 )
 stream = ExtResource( 181 )
+volume_db = -5.0
 max_distance = 200.0
 attenuation = 1.1487
 
@@ -1252,3 +1260,36 @@ stream = ExtResource( 167 )
 [node name="Whoosh" type="AudioStreamPlayer" parent="TempleRod"]
 stream = ExtResource( 166 )
 volume_db = 3.0
+
+[node name="Pickable" type="Node2D" parent="."]
+
+[node name="Sacred_Loop" type="AudioStreamPlayer2D" parent="Pickable"]
+stream = ExtResource( 186 )
+volume_db = -6.0
+max_distance = 180.0
+attenuation = 1.46409
+
+[node name="EntranceRuins" type="Node2D" parent="."]
+
+[node name="Destruction" type="AudioStreamPlayer" parent="EntranceRuins"]
+stream = ExtResource( 188 )
+volume_db = 3.0
+
+[node name="Rumble" type="Node2D" parent="EntranceRuins"]
+script = ExtResource( 26 )
+volume = 3.0
+
+[node name="Rumble1" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
+stream = ExtResource( 187 )
+
+[node name="Rumble2" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
+stream = ExtResource( 191 )
+
+[node name="Rumble3" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
+stream = ExtResource( 189 )
+
+[node name="Rumble4" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
+stream = ExtResource( 190 )
+
+[node name="Rumble5" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
+stream = ExtResource( 192 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_entrance_ruins_rumble_03.ogg-f56f6156172cdfb195f13db4d5f5d114.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_entrance_ruins_rumble_03.ogg"
+dest_files=[ "res://.import/sfx_entrance_ruins_rumble_03.ogg-f56f6156172cdfb195f13db4d5f5d114.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

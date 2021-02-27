@@ -44,6 +44,7 @@ var fish_type := [
 	}
 ]
 
+
 func jump(origin):
 	monitorable = false
 	monitoring = false
@@ -78,6 +79,9 @@ func check_bait(bait):
 
 
 func _enable_monitoring(_obj: Object, _key: NodePath) -> void:
+	if is_in_group('Sacred'):
+		AudioEvent.emit_signal('play_requested', 'Pickable', 'Sacred_Loop', global_position)
+		AudioEvent.emit_signal('follow_requested', 'Pickable', 'Sacred_Loop', self)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	monitorable = true
 	monitoring = true

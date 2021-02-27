@@ -1,6 +1,7 @@
 tool
 class_name Pickable
 extends Area2D
+signal grabbed_changed(state)
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 export var is_good := true
 export var can_burn := true
@@ -45,6 +46,7 @@ func set_sprite_texture(tex: Texture) -> void:
 
 func set_being_grabbed(new_val: bool) -> void:
 	being_grabbed = new_val
+	emit_signal('grabbed_changed', being_grabbed)
 	# Hacer que el objeto no se pueda monitorear mientras está siendo cargado
 	# por el jugador... así se asegura que si éste lo suelta estándo dentro del
 	# área de comilona de elfuegoquequiereconsumiralmundo, detectará "la caída"

@@ -1,8 +1,9 @@
 extends Node2D
 # ♪ Controla la reproducción de efectos de sonido dentro del juego ♪
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
-var _sources: Array = []
-var _hlt: Dictionary = {}
+var _sources: = []
+var _hlt: = {}
+var _active_followers: = []
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
 	for src in get_children():
@@ -15,7 +16,12 @@ func _ready():
 	AudioEvent.connect('change_volume', self, 'set_volume')
 	AudioEvent.connect('position_amb', self, 'set_amb_position')
 	AudioEvent.connect('headloop_toggle', self, 'toggle_head_loop_tail')
+	AudioEvent.connect('follow_requested', self, 'follow_object')
 	
+
+func _process(delta):
+	for follower in _active_followers:
+		follower._audio_follower.global_position = follower._follower_target.global_position
 
 func _get_audio(source, sound) -> Node:
 	var sound_path := '%s/%s' % [source, sound]
@@ -73,6 +79,14 @@ func pause_sound(source: String, sound: String) -> void:
 
 func _on_finished(source: String, sound: String):
 	AudioEvent.emit_signal('stream_finished', source, sound)
+
+func follow_object(source: String, sound: String, object):
+	_active_followers.append(
+		{
+			_audio_follower = _get_audio(source, sound),
+			_follower_target = object
+		}
+	) 
 
 func set_volume(source, sound, volume):
 	_get_audio(source, sound).set_volume_db(volume)
