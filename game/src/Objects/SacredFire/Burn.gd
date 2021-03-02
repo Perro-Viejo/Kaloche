@@ -18,6 +18,7 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.timer.set_paused(true)
 	if owner.pickable.is_in_group('Sacred'):
 		owner.sprite.modulate = '00e1ff'
+		AudioEvent.emit_signal('stop_requested', 'Pickable', 'Sacred_Loop')
 		match owner.pickable.name:
 			'Fish':
 				AudioEvent.emit_signal('mx_request', 'Sacrifice')

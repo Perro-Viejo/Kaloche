@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Levels/Chapter01/Zones/EntranceRuins/EntranceRuins.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/world/rock3.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/world/rock4.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/world/rock2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/world/rock1.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/world/chapter_0.1/entrance_ruins.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 55, 59 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 8 )
+region = Rect2( 55, 0, 55, 59 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="EntranceRuins" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Ruins" type="AnimatedSprite" parent="."]
+position = Vector2( -12.0665, -8.6991 )
+frames = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="Blocked" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -0.280579, 0 )
+polygon = PoolVector2Array( -11.5618, 18.3925, -13.6771, -7.18604, -2.42029, -30.6266, -17.1741, -44.4653, -25.5925, 19.515 )
+
+[node name="Unblocked" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -0.0932922, 0 )
+polygon = PoolVector2Array( -10.0125, 20.7584, -2.33362, 18.2301, -11.4171, 9.52112, -8.13956, 6.15002, 6.28165, 10.1766, 15.5524, 3.05969, -3.17642, -3.30811, -12.7281, -0.498779, -22.4728, -10.0098, -24.9955, -3.30811, -28.7413, 0.437622, -28.9286, 15.8889 )
+disabled = true
+
+[node name="Unblocked2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -0.280579, 0 )
+polygon = PoolVector2Array( 6.74988, -22.7861, 10.3083, -27.7493, 8.42981, -33.2335, -1.87106, -38.103, -12.7281, -27.3746, -10.387, -21.4751, -1.2099, -24.8463 )
+disabled = true
+
+[node name="Debris" type="Node2D" parent="."]
+
+[node name="Rock" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -2.52267, -20.1815 )
+is_good = false
+can_burn = false
+img = ExtResource( 7 )
+
+[node name="Rock2" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -7.27951, -16.4652 )
+is_good = false
+can_burn = false
+img = ExtResource( 6 )
+
+[node name="Rock3" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -5.19839, -10.5192 )
+is_good = false
+can_burn = false
+img = ExtResource( 4 )
+
+[node name="Rock4" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -10.2525, -5.16772 )
+is_good = false
+can_burn = false
+img = ExtResource( 5 )
+
+[node name="Rock5" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -7.87411, 0.77832 )
+is_good = false
+can_burn = false
+img = ExtResource( 4 )
+
+[node name="Rock6" parent="Debris" instance=ExtResource( 2 )]
+position = Vector2( -12.3336, 6.27856 )
+is_good = false
+can_burn = false
+img = ExtResource( 6 )

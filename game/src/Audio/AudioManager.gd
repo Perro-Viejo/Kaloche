@@ -21,7 +21,8 @@ func _ready():
 
 func _process(delta):
 	for follower in _active_followers:
-		follower._audio_follower.global_position = follower._follower_target.global_position
+		if follower._following:
+			follower._audio_follower.global_position = follower._follower_target.global_position
 
 func _get_audio(source, sound) -> Node:
 	var sound_path := '%s/%s' % [source, sound]
@@ -70,7 +71,6 @@ func play_dx(character: String, emotion: String):
 func stop_sound(source: String, sound: String) -> void:
 	_get_audio(source, sound).stop()
 
-
 func pause_sound(source: String, sound: String) -> void:
 	var audio: Node = _get_audio(source, sound)
 
@@ -80,13 +80,18 @@ func pause_sound(source: String, sound: String) -> void:
 func _on_finished(source: String, sound: String):
 	AudioEvent.emit_signal('stream_finished', source, sound)
 
-func follow_object(source: String, sound: String, object):
-	_active_followers.append(
-		{
-			_audio_follower = _get_audio(source, sound),
-			_follower_target = object
-		}
-	) 
+func follow_object(source: String, sound: String, object, following):
+	if following:
+		_active_followers.append(
+			{
+				_audio_follower = _get_audio(source, sound),
+				_follower_target = object,
+				_following = following
+			}
+		) 
+	else:
+		if _active_followers.has(_get_audio(source, sound)):
+			_active_followers.erase(_get_audio(source, sound))
 
 func set_volume(source, sound, volume):
 	_get_audio(source, sound).set_volume_db(volume)
