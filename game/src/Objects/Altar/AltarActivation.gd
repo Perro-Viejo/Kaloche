@@ -5,7 +5,6 @@ export (NodePath) var _targetA = ''
 export (NodePath) var _targetB = ''
 export (NodePath) var _targetC = ''
 
-
 var _was_played := false
 var _player_cam_cfg := {
 	pos = Vector2.ZERO,
@@ -43,12 +42,16 @@ onready var _targets := [
 	}
 ]
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	_was_played = false
 	_current_target = _targets.pop_front()
 	#Conectarse a señales de los hijos
 	_tween.connect('tween_completed', self, 'next_target')
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func show_door(button_ref):
 	_temple_button = button_ref
 	_player_cam = get_node(_player).get_node('Camera2D')

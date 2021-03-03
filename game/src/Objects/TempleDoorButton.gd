@@ -10,11 +10,21 @@ export var needs_grabbing := true
 
 export var pickable_needed := ''
 
-# ⠿⠿⠿⠿ Functions ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	$Area2D.connect('body_entered', self, '_on_pressed')
 	$Area2D.connect('body_exited', self, '_on_unpressed')
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func activate():
+	show()
+	$Area2D.monitorable = true
+	$Area2D.monitoring = true
+
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_pressed(body: Node) -> void:
 	if not _pressed and body.name == 'Player':
 		if body.grabbing == needs_grabbing:
@@ -28,6 +38,7 @@ func _on_pressed(body: Node) -> void:
 				yield(get_tree().create_timer(0.1), 'timeout')
 				emit_signal('button_pressed')
 
+
 func _on_unpressed(body: Node) -> void:
 	if not is_toggle:
 		if _pressed and body.name == 'Player':
@@ -39,8 +50,3 @@ func _on_unpressed(body: Node) -> void:
 			AudioEvent.emit_signal('play_requested','Button','Up', position)
 			yield(get_tree().create_timer(0.1), 'timeout')
 			emit_signal('button_unpressed')
-
-func activate():
-	show()
-	$Area2D.monitorable = true
-	$Area2D.monitoring = true
