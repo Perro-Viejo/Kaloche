@@ -21,8 +21,7 @@ func _ready():
 
 func _process(delta):
 	for follower in _active_followers:
-		if follower._following:
-			follower._audio_follower.global_position = follower._follower_target.global_position
+		follower._audio_follower.global_position = follower._follower_target.global_position
 
 func _get_audio(source, sound) -> Node:
 	var sound_path := '%s/%s' % [source, sound]
@@ -86,12 +85,12 @@ func follow_object(source: String, sound: String, object, following):
 			{
 				_audio_follower = _get_audio(source, sound),
 				_follower_target = object,
-				_following = following
 			}
 		) 
 	else:
-		if _active_followers.has(_get_audio(source, sound)):
-			_active_followers.erase(_get_audio(source, sound))
+		for follower in _active_followers:
+			if follower._audio_follower == _get_audio(source, sound):
+				_active_followers.erase(follower)
 
 func set_volume(source, sound, volume):
 	_get_audio(source, sound).set_volume_db(volume)
