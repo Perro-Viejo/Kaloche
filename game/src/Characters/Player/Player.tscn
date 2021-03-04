@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
+[ext_resource path="res://assets/images/characters/teotriste_behind.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://src/Characters/Player/States/Idle.gd" type="Script" id=4]
@@ -11,7 +12,6 @@
 [ext_resource path="res://src/Characters/Player/States/Fish.gd" type="Script" id=10]
 [ext_resource path="res://src/Characters/Player/Fishing.gd" type="Script" id=11]
 [ext_resource path="res://src/Characters/Player/States/Talk.gd" type="Script" id=12]
-[ext_resource path="res://assets/images/characters/teotriste_overlay.png" type="Texture" id=13]
 [ext_resource path="res://src/Objects/Hook/Hook.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Characters/Player/FishPrepare.gd" type="Script" id=15]
 [ext_resource path="res://src/Characters/Player/FishHold.gd" type="Script" id=16]
@@ -100,6 +100,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -214,6 +226,18 @@ tracks/2/keys = {
 "method": "_play_fs"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Overlay:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.4
@@ -317,6 +341,9 @@ tracks/3/keys = {
 } ]
 }
 
+[sub_resource type="CanvasItemMaterial" id=16]
+light_mode = 2
+
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 3.64699, 3.57263 )
 
@@ -382,11 +409,14 @@ show_behind_parent = true
 texture = ExtResource( 17 )
 
 [node name="Overlay" type="Sprite" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0.501961 )
+light_mask = 32768
+material = SubResource( 16 )
 z_index = 2
-texture = ExtResource( 13 )
-region_enabled = true
-region_rect = Rect2( 384, 0, 32, 32 )
+texture = ExtResource( 1 )
+hframes = 32
+frame = 12
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 9 )

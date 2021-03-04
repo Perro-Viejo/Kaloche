@@ -37,6 +37,7 @@ onready var sprite := $Sprite
 onready var rod_tip := $RodTip
 onready var hook_target : Node2D = $HookTarget
 onready var shadow := sprite.get_node('Shadow')
+onready var behind: Sprite = $Overlay
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
