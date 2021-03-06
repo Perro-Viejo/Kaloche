@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -12,6 +12,59 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pillars_front.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pillars_back.png" type="Texture" id=11]
 [ext_resource path="res://src/Levels/ZIndexChanger.gd" type="Script" id=12]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pillars_back_light.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pyramids_light.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_walls_front_light.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pillars_middle_light.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_pillars_front_light.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_mask.png" type="Texture" id=18]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+class_name ZIndexChanger
+extends Area2D
+
+signal z_index_changed(new_z_index)
+
+export var zindex_on_entered := 0
+export var zindex_on_exited := 4
+export(Array, NodePath) var involved_nodes := []
+export(Array, NodePath) var disable_lights_on_enter := []
+export(Array, NodePath) var disable_lights_on_exit := []
+
+var _involved_nodes := []
+
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+func _ready():
+	for p in involved_nodes:
+		_involved_nodes.append(get_node(p))
+
+	connect('area_entered', self, '_change_z_index', [true])
+	connect('area_exited', self, '_change_z_index', [false])
+	
+	# Cosas de Editor
+	modulate = Color.aqua
+
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+func _change_z_index(body: Area2D, entered: bool) -> void:
+	if body.name == 'FootArea':
+		var target_zindex := zindex_on_entered if entered else zindex_on_exited
+		get_parent().z_index = target_zindex
+		for n in _involved_nodes:
+			if n:
+				# Esto corrige un error que puede ocurrir si el nodo guardado en
+				# el arreglo ha sido eliminado
+				n.z_index = target_zindex
+		emit_signal('z_index_changed', target_zindex)
+
+		for l in disable_lights_on_enter:
+			(get_node(l) as Light2D).enabled = !entered
+		
+		for l in disable_lights_on_exit:
+			(get_node(l) as Light2D).enabled = entered
+"
 
 [node name="TempleEntrance" type="Node2D"]
 __meta__ = {
@@ -49,23 +102,135 @@ position = Vector2( 0, -233.5 )
 texture = ExtResource( 8 )
 hframes = 2
 
-[node name="Pillars" type="Node2D" parent="."]
+[node name="Collisions" type="StaticBody2D" parent="Facade"]
 visible = false
+
+[node name="Front" type="CollisionPolygon2D" parent="Facade/Collisions"]
+polygon = PoolVector2Array( -49, 66.5, -17, 66.5, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66.5, 49, 66.5, 49, 1.5, -49, 1.5 )
+
+[node name="HoleMask" type="Light2D" parent="Facade"]
+position = Vector2( 0, 58.5 )
+texture = ExtResource( 18 )
+mode = 3
+range_z_min = 2
+range_z_max = 2
+
+[node name="Pillars" type="Node2D" parent="."]
 
 [node name="Back" type="Sprite" parent="Pillars"]
 position = Vector2( 0, -196 )
 z_index = 4
 texture = ExtResource( 11 )
 
+[node name="Behind" type="Light2D" parent="Pillars/Back"]
+texture = ExtResource( 13 )
+mode = 2
+range_item_cull_mask = 32768
+
+[node name="Collisions" type="StaticBody2D" parent="Pillars/Back"]
+visible = false
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Back/Collisions"]
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Back/Collisions"]
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Pillars/Back"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 12 )
+disable_lights_on_enter = [ NodePath("../Behind") ]
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Back/ZIndexChanger"]
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Back/ZIndexChanger"]
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+
 [node name="Middle" type="Sprite" parent="Pillars"]
 position = Vector2( 0, -138 )
 z_index = 4
 texture = ExtResource( 9 )
 
+[node name="Behind" type="Light2D" parent="Pillars/Middle"]
+texture = ExtResource( 16 )
+mode = 2
+range_item_cull_mask = 32768
+
+[node name="Collisions" type="StaticBody2D" parent="Pillars/Middle"]
+visible = false
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Middle/Collisions"]
+position = Vector2( -21, 0 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Middle/Collisions"]
+position = Vector2( 21, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Pillars/Middle"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = SubResource( 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [ NodePath("../../Back") ]
+disable_lights_on_enter = [ NodePath("../Behind") ]
+disable_lights_on_exit = [  ]
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Middle/ZIndexChanger"]
+position = Vector2( -21, 0 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Middle/ZIndexChanger"]
+position = Vector2( 21, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+
 [node name="Front" type="Sprite" parent="Pillars"]
 position = Vector2( 0, -80 )
 z_index = 4
 texture = ExtResource( 10 )
+
+[node name="Behind" type="Light2D" parent="Pillars/Front"]
+texture = ExtResource( 17 )
+mode = 2
+range_item_cull_mask = 32768
+
+[node name="Collisions" type="StaticBody2D" parent="Pillars/Front"]
+visible = false
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Front/Collisions"]
+position = Vector2( -42, 0 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Front/Collisions"]
+position = Vector2( 42, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Pillars/Front"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = SubResource( 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
+disable_lights_on_enter = [ NodePath("../Behind") ]
+disable_lights_on_exit = [  ]
+
+[node name="Left" type="CollisionPolygon2D" parent="Pillars/Front/ZIndexChanger"]
+position = Vector2( -42, 0 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Pillars/Front/ZIndexChanger"]
+position = Vector2( 42, 0 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
 
 [node name="WallsFront" type="Sprite" parent="."]
 position = Vector2( 0, 12.5 )
@@ -73,7 +238,7 @@ z_index = 4
 texture = ExtResource( 3 )
 
 [node name="Behind" type="Light2D" parent="WallsFront"]
-texture = ExtResource( 3 )
+texture = ExtResource( 15 )
 mode = 2
 range_item_cull_mask = 32768
 
@@ -81,10 +246,32 @@ range_item_cull_mask = 32768
 visible = false
 
 [node name="Left" type="CollisionPolygon2D" parent="WallsFront/Collisions"]
-polygon = PoolVector2Array( -73, -1.5, -66, 30.5, -34, 30.5, -43, 45.5, -96, 45.5, -113, 76.5, -177, 76.5, -163, 13.5, -248, 13.5, -245, -1.5 )
+polygon = PoolVector2Array( -73, -1.5, -66, 30.5, -34, 30.5, -43, 45.5, -96, 45.5, -113, 76.5, -179, 76.5, -165, 13.5, -250, 13.5, -247, -1.5 )
 
 [node name="Right" type="CollisionPolygon2D" parent="WallsFront/Collisions"]
-polygon = PoolVector2Array( 34, 30.5, 43, 45.5, 96, 45.5, 113, 76.5, 177, 76.5, 167, 32.5, 163, 13.5, 248, 13.5, 244, -1.5, 73, -1.5, 66, 30.5 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -73, -1.5, -66, 30.5, -34, 30.5, -43, 45.5, -96, 45.5, -113, 76.5, -179, 76.5, -165, 13.5, -250, 13.5, -247, -1.5 )
+
+[node name="ZIndexChanger" type="Area2D" parent="WallsFront"]
+visible = false
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 12 )
+involved_nodes = [ NodePath("../../Pillars/Front") ]
+disable_lights_on_enter = [ NodePath("../Behind") ]
+
+[node name="Left" type="CollisionPolygon2D" parent="WallsFront/ZIndexChanger"]
+polygon = PoolVector2Array( -274, 20.5, -160, 20.5, -160, 33.5, -281, 33.5 )
+
+[node name="Left2" type="CollisionPolygon2D" parent="WallsFront/ZIndexChanger"]
+polygon = PoolVector2Array( -200, 83.5, -110, 83.5, -95, 52.5, -40, 52.5, -30, 30.5, -24, 30.5, -24, 64.5, -88, 64.5, -102, 96.5, -200, 96.5 )
+
+[node name="Right" type="CollisionPolygon2D" parent="WallsFront/ZIndexChanger"]
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -274, 20.5, -160, 20.5, -160, 33.5, -281, 33.5 )
+
+[node name="Right2" type="CollisionPolygon2D" parent="WallsFront/ZIndexChanger"]
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -200, 83.5, -110, 83.5, -95, 52.5, -40, 52.5, -30, 30.5, -24, 30.5, -24, 64.5, -88, 64.5, -102, 96.5, -200, 96.5 )
 
 [node name="Canal" type="Sprite" parent="."]
 position = Vector2( 0, 6 )
@@ -109,9 +296,6 @@ polygon = PoolVector2Array( 17, 33.5, 26, 33.5, 26, 30.5, 17, 30.5 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 12 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="K/ZIndexChanger"]
 polygon = PoolVector2Array( -27, 36.5, -27, 41.5, -16, 41.5, -16, 36.5, 16, 36.5, 16, 41.5, 27, 41.5, 27, 36.5, 40, 36.5, 40, 65.5, -40, 65.5, -40, 36.5 )
@@ -122,7 +306,7 @@ z_index = 4
 texture = ExtResource( 7 )
 
 [node name="Behind" type="Light2D" parent="Pyramids"]
-texture = ExtResource( 7 )
+texture = ExtResource( 14 )
 mode = 2
 range_item_cull_mask = 32768
 
@@ -136,11 +320,10 @@ polygon = PoolVector2Array( -52, 23, -37, 10, -67, 10 )
 polygon = PoolVector2Array( 52, 23, 67, 10, 37, 10 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Pyramids"]
+visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 12 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
+disable_lights_on_enter = [ NodePath("../Behind") ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pyramids/ZIndexChanger"]
 polygon = PoolVector2Array( 34, 14, -34, 14, -52, 32, -70, 14, -80, 14, -80, 46, 80, 46, 80, 14, 70, 14, 52, 32 )

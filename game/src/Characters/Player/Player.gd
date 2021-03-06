@@ -150,6 +150,13 @@ func change_zindex(new_value: int) -> void:
 		picked_item.z_index = new_value
 
 
+func toggle_behind(ref_z_index: int) -> void:
+	if ref_z_index <= self.z_index:
+		behind.hide()
+	else:
+		behind.show()
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
