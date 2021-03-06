@@ -47,25 +47,28 @@ glow_strength = 1.04
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 59.7887, 29.1147 )
+
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.376106, 0.384956, 1 )
 colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 21 )
 shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.564706 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
@@ -75,7 +78,7 @@ shader_param/scroll_direction2 = Vector2( 1, 0.25 )
 shader_param/time_scale2 = 0.001
 shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
-shader_param/gradient_texture = SubResource( 5 )
+shader_param/gradient_texture = SubResource( 6 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 11 )
@@ -119,7 +122,7 @@ surface_name = "Water"
 type = 1
 bite_freq = Vector2( 3, 5 )
 spawn_specific = true
-specifics = [ 5 ]
+specifics = [ 2, 5 ]
 has_sacred = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Lake/FishingSurface"]
@@ -144,6 +147,7 @@ position = Vector2( -350, -316 )
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+involved_nodes = [  ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
@@ -156,12 +160,21 @@ modulate = Color( 0, 1, 1, 1 )
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
 modulate = Color( 0, 1, 1, 1 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
 frame = 15
@@ -228,6 +241,11 @@ position = Vector2( 168, 680 )
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
 position = Vector2( 10.5, -824 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ConditionArea"]
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="Zones/ConditionArea"]
+
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
 __meta__ = {
@@ -245,7 +263,7 @@ character = ""
 dialog = ""
 
 [node name="Pickable2" parent="Objects" instance=ExtResource( 8 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( -390, -277 )
 is_good = false
 can_burn = true
@@ -258,7 +276,7 @@ dialog = ""
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 319.522, 497 )
 is_good = false
 can_burn = true
@@ -272,7 +290,7 @@ dialog = ""
 [node name="Fish" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( -350, -262 )
 is_good = true
 can_burn = true
@@ -318,7 +336,7 @@ layer = 3
 follow_viewport_enable = true
 
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
-material = SubResource( 6 )
+material = SubResource( 7 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100
 texture = ExtResource( 18 )

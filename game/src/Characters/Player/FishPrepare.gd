@@ -114,7 +114,7 @@ func _set_current_direction(dir: int) -> void:
 			owner.sprite.flip_h = true
 			if distance:
 				hook_target_pos = Vector2(distance * -1, 12)
-				aim_distance = Vector2(distance * -1 - _hook.position.x + 6,0)
+				aim_distance = Vector2(distance * -1 - _hook.position.x + 18,0)
 
 	owner.hook_target.position = aim_distance
 	owner.hook_target.show()

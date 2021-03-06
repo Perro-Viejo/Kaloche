@@ -13,7 +13,7 @@ func enter(msg: Dictionary = {}) -> void:
 			owner.rod_tip_offset.x *-1, owner.rod_tip_offset.y
 		)
 	_hook = owner.hook
-	_hook.connect('hooked', owner, 'speak', ['¡Mordió!'])
+	_hook.connect('hooked', self, '_on_fish_hooked')
 	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
 	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
 	_hook.connect('fish_fled', self, '_on_fish_fled')
@@ -25,7 +25,7 @@ func exit() -> void:
 	owner.is_paused = false
 	owner.fishing = false
 	owner.hook_target.position = Vector2.ZERO
-	_hook.disconnect('hooked', owner, 'speak')
+	_hook.disconnect('hooked', self, '_on_fish_hooked')
 	_hook.disconnect('tried', owner, 'speak')
 	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')
 	_hook.disconnect('fish_fled', self, '_on_fish_fled')
@@ -63,10 +63,14 @@ func unhandled_input(event: InputEvent) -> void:
 			responses.shuffle()
 			randomize()
 			var ran_num = randf()
-			if ran_num <= 0.2: 
+			if ran_num <= 0.1: 
 				owner.speak(tr(responses[0]))
 
 
 func _on_fish_fled() -> void:
 	owner.speak(tr('Se voló el bagrese...'))
 	_state_machine.transition_to_key('Idle')
+
+func _on_fish_hooked() -> void:
+#	owner.speak(tr('¡Mordió!'))
+	owner.react()

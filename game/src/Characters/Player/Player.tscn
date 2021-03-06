@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/images/characters/teotriste_behind.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Characters/Player/FishHold.gd" type="Script" id=16]
 [ext_resource path="res://assets/images/characters/teotriste_shadow.png" type="Texture" id=17]
 [ext_resource path="res://src/Inventory/InventoryPlayer.tres" type="Resource" id=18]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -373,6 +374,11 @@ collision_mask = 4
 script = ExtResource( 2 )
 dialog_color = Color( 0.729412, 0.380392, 0.337255, 1 )
 inventory = ExtResource( 18 )
+
+[node name="Exclamation" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1, -11 )
+texture = ExtResource( 19 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

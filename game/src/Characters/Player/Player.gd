@@ -98,6 +98,11 @@ func change_zoom(out: bool = true) -> void:
 
 	yield($Tween, 'tween_completed')
 
+func fishing_zoom(zooming: bool):
+	if zooming:
+		cam.zoom = cam.zoom * Vector2.ONE * 0.9
+	else:
+		cam.zoom = Vector2.ONE
 
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
@@ -149,6 +154,11 @@ func change_zindex(new_value: int) -> void:
 	if picked_item:
 		picked_item.z_index = new_value
 
+func react():
+	speak('')
+	$Exclamation.show()
+	yield(get_tree().create_timer(0.6), 'timeout')
+	$Exclamation.hide()
 
 func toggle_behind(ref_z_index: int) -> void:
 	if ref_z_index <= self.z_index:
