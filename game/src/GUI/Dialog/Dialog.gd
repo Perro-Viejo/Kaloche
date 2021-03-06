@@ -231,7 +231,7 @@ func _show_dialog_line(
 		HudEvent.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
-#		_autofill.finish_and_hide()
+		$AnimatedRichText.stop()
 		HudEvent.emit_signal('talking_bubble_requested')
 
 
