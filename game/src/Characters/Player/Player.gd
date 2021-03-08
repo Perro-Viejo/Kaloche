@@ -28,6 +28,7 @@ var rod_tip_offset := Vector2(11, -2)
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
 var _shake_timer := 0.0
+var current_cam_offset
 
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot
@@ -65,14 +66,14 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if _is_camera_shaking:
 		_shake_timer -= delta
-		$Camera2D.offset = Vector2(
+		$Camera2D.offset = current_cam_offset + Vector2(
 			rand_range(-1.0, 1.0) * _camera_shake_amount,
 			rand_range(-1.0, 1.0) * _camera_shake_amount
 		)
 
 		if _shake_timer <= 0.0:
 			_is_camera_shaking = false
-			$Camera2D.offset = Vector2.ZERO
+			$Camera2D.offset = current_cam_offset
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -98,39 +99,52 @@ func change_zoom(out: bool = true) -> void:
 
 	yield($Tween, 'tween_completed')
 
-func fishing_zoom(zooming: bool):
-	if zooming:
-		if not $Tween.is_active():
-			$Tween.interpolate_property(
-				cam,
-				'zoom',
-				cam.zoom,
-				cam.zoom * Vector2.ONE * 0.95,
-				.6,
-				Tween.TRANS_EXPO,
-				Tween.EASE_OUT
-			)
-			$Tween.start()
-	else:
+func fishing_zoom(zooming: bool, start: bool = false):
+	if start:
 		$Tween.interpolate_property(
 			cam,
 			'offset',
 			cam.offset,
-			Vector2.ZERO,
-			.8,
+			hook.position,
+			.9,
 			Tween.TRANS_EXPO,
-			Tween.EASE_OUT
-		)
-		$Tween.interpolate_property(
-			cam,
-			'zoom',
-			cam.zoom,
-			Vector2.ONE,
-			.8,
-			Tween.TRANS_EXPO,
-			Tween.EASE_OUT
+			Tween.EASE_OUT,
+			.2
 		)
 		$Tween.start()
+	else:
+		if zooming:
+			if not $Tween.is_active():
+				$Tween.interpolate_property(
+					cam,
+					'zoom',
+					cam.zoom,
+					cam.zoom * Vector2.ONE * 0.95,
+					.6,
+					Tween.TRANS_EXPO,
+					Tween.EASE_OUT
+				)
+				$Tween.start()
+		else:
+			$Tween.interpolate_property(
+				cam,
+				'offset',
+				cam.offset,
+				Vector2.ZERO,
+				.8,
+				Tween.TRANS_EXPO,
+				Tween.EASE_OUT
+			)
+			$Tween.interpolate_property(
+				cam,
+				'zoom',
+				cam.zoom,
+				Vector2.ONE,
+				.8,
+				Tween.TRANS_EXPO,
+				Tween.EASE_OUT
+			)
+			$Tween.start()
 
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
@@ -185,18 +199,6 @@ func change_zindex(new_value: int) -> void:
 func react():
 	speak('')
 	$Exclamation.show()
-	if cam.offset == Vector2.ZERO:
-		$Tween.interpolate_property(
-			cam,
-			'offset',
-			cam.offset,
-			hook.position,
-			.9,
-			Tween.TRANS_EXPO,
-			Tween.EASE_OUT,
-			.2
-		)
-		$Tween.start()
 	yield(get_tree().create_timer(0.6), 'timeout')
 	$Exclamation.hide()
 
@@ -220,6 +222,7 @@ func _toggle_control(props: Dictionary = {}) -> void:
 
 
 func _shake_camera(props: Dictionary) -> void:
+	current_cam_offset = $Camera2D.offset
 	if props.has('strength'):
 		_camera_shake_amount = props.strength
 	if props.has('duration'):

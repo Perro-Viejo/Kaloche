@@ -63,6 +63,7 @@ func surface_updated() -> void:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _sent_back() -> void:
+	owner.get_parent().fishing_zoom(false, false)
 	owner.emit_signal('sent_back')
 	_state_machine.transition_to_key('Idle')
 
@@ -75,6 +76,7 @@ func _show_small_wave() -> void:
 # Un pez se fijó en el cebo pero al final no lo mordió porque los peces no son
 # tan pendejos a veces
 func _on_hook_failed() -> void:
+	owner.get_parent().fishing_zoom(false, false)
 	_small_wave_timer.stop()
 	owner.play_animation('waveB')
 	# Esperar X segundos antes de retomar el ciclo de mostrar la onda pequeña

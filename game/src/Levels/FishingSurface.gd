@@ -241,6 +241,7 @@ func _got_hooked() -> bool:
 			_fish_shadow.position = to_local(hook_ref.global_position) + vec * 4
 			_fish_shadow.rotation_degrees = rot
 			_fish_shadow.get_node('AnimationPlayer').play('examine_md')
+			hook_ref.owner.fishing_zoom(false, true)
 			_fish_shadow.is_examining = true
 			add_child(_fish_shadow)
 			if _fishes[_selected_fish_idx].is_sacred:
