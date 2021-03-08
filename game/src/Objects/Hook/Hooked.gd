@@ -48,6 +48,7 @@ func _process(delta) -> void:
 	# Esto determina si el pez se va por la ineptitud de Teotriste
 	_hooked_time -= 1
 	if _hooked_time <= 0:
+		
 		owner.emit_signal('fish_fled')
 		_state_machine.transition_to_key('Idle')
 
@@ -86,7 +87,6 @@ func exit() -> void:
 	_can_damage_fish_debug = -1
 	_hooked_time_debug = -1
 	set_process(false)
-	owner.get_parent().fishing_zoom(false)
 	.exit()
 
 
@@ -99,7 +99,6 @@ func pull_done(rod_strength: float) -> Dictionary:
 	}
 
 	if _can_damage_fish:
-		owner.get_parent().fishing_zoom(true)
 		_fish_resistance -= 1
 		if randf() <= _catch_chance:
 			if _fish_size <= rod_strength:

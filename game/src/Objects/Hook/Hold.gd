@@ -44,6 +44,7 @@ func exit() -> void:
 		
 		if _pull_done and owner.surface_ref.is_in_group('FishingSurface'):
 			owner.surface_ref.hook_exited(owner)
+			
 
 #	owner.surface_ref = null
 	.exit()

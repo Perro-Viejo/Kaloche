@@ -1,11 +1,19 @@
 extends Node2D
-# ♪ Controla la reproducción de efectos de sonido dentro del juego ♪
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
 var _sources: = []
 var _hlt: = {}
 var _active_followers: = []
+var _effects = {}
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready():
+	_effects = {
+		temple_entrance_verb = {
+			effect = AudioServer.get_bus_effect(2, 0),
+			default_wet = 0.0,
+			default_dry = 1.0,
+		} 
+	}
+	change_fx_setting()
 	for src in get_children():
 		_sources.append(src.name)
 
@@ -17,6 +25,7 @@ func _ready():
 	AudioEvent.connect('position_amb', self, 'set_amb_position')
 	AudioEvent.connect('headloop_toggle', self, 'toggle_head_loop_tail')
 	AudioEvent.connect('follow_requested', self, 'follow_object')
+	AudioEvent.connect('fx_change_requested', self, 'change_fx_setting')
 	
 
 func _process(delta):
@@ -166,3 +175,8 @@ func count_step(content) -> void:
 	_hlt[content.id].step = wrapi(_hlt[content.id].step + 1, 0, 3)
 	if _hlt[content.id].audios[_hlt[content.id].step].is_connected('finished', self, 'count_step'):
 		_hlt[content.id].audios[_hlt[content.id].step].disconnect('finished', self, 'count_step')
+
+func change_fx_setting(fx = '', dry = 1.0, wet = 0.0):
+	if not fx == '':
+		_effects.get(fx).effect.wet = wet
+		_effects.get(fx).effect.dry = dry

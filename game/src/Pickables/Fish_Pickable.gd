@@ -87,7 +87,8 @@ func _enable_monitoring(_obj: Object, _key: NodePath) -> void:
 	monitoring = true
 
 func queue_free():
-	AudioEvent.emit_signal('stop_requested', 'Pickable', 'Sacred_Loop')
-	AudioEvent.emit_signal('follow_requested', 'Pickable', 'Sacred_Loop', self, false)
+	if is_in_group('Sacred'):
+		AudioEvent.emit_signal('stop_requested', 'Pickable', 'Sacred_Loop')
+		AudioEvent.emit_signal('follow_requested', 'Pickable', 'Sacred_Loop', self, false)
 	yield(get_tree(), "idle_frame")
 	.queue_free()

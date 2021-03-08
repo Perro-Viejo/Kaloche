@@ -38,7 +38,8 @@ func unhandled_input(event: InputEvent) -> void:
 		# TODO: Aquí hay que enviar la fuerza de la caña dependiendo de su tipo
 		var pull_result := owner.hook.pull_done(1.3) as Dictionary
 		
-		if not pull_result: return
+		if not pull_result:
+			return
 		#Juan: ¿creo que este se puede quitar?
 		if pull_result.escaped:
 			var responses = [
@@ -49,11 +50,15 @@ func unhandled_input(event: InputEvent) -> void:
 			responses.shuffle()
 			owner.speak(tr(responses[0]))
 		elif pull_result.lost:
+			owner.fishing_zoom(false)
 			owner.speak(tr('Ta muy gordo este hp'))
 		elif pull_result.caught:
+			owner.fishing_zoom(false)
 			owner.speak(tr('Te atrapé pedazo de mierda'))
 			_state_machine.transition_to_key('Idle')
 		elif pull_result.fighting:
+			owner.fishing_zoom(true)
+			
 			var responses = [
 				'Pescaito berriondo...',
 				'¡Jala arrecho este bicho!',
@@ -68,6 +73,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func _on_fish_fled() -> void:
+	owner.fishing_zoom(false)
 	owner.speak(tr('Se voló el bagrese...'))
 	_state_machine.transition_to_key('Idle')
 

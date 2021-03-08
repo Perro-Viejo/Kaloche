@@ -100,9 +100,33 @@ func change_zoom(out: bool = true) -> void:
 
 func fishing_zoom(zooming: bool):
 	if zooming:
-		cam.zoom = cam.zoom * Vector2.ONE * 0.9
+		if hook.position.x > 0:
+			cam.offset = cam.offset + Vector2(2.1, 1)
+		else:
+			cam.offset = cam.offset - Vector2(2.1, 1)
+		if not $Tween.is_active():
+			$Tween.interpolate_property(
+			cam,
+			'zoom',
+			cam.zoom,
+			cam.zoom * Vector2.ONE * 0.95,
+			.4,
+			Tween.TRANS_BOUNCE,
+			Tween.EASE_IN
+		)
+			$Tween.start()
 	else:
-		cam.zoom = Vector2.ONE
+		cam.offset = Vector2.ZERO
+		$Tween.interpolate_property(
+			cam,
+			'zoom',
+			cam.zoom,
+			Vector2.ONE,
+			.5,
+			Tween.TRANS_EXPO,
+			Tween.EASE_OUT
+		)
+		$Tween.start()
 
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):

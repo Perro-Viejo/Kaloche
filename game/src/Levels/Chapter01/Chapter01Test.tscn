@@ -1,15 +1,20 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_start.png" type="Texture" id=3]
 [ext_resource path="res://src/Levels/Chapter01/Zones.gd" type="Script" id=4]
 [ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/TempleEntrance.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Audio/AmbienceDevice.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/lake.tres" type="Texture" id=7]
 [ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/images/characters/rocberto.png" type="Texture" id=9]
+[ext_resource path="res://src/Audio/ScattererDevice.gd" type="Script" id=10]
 [ext_resource path="res://src/Levels/Chapter01/Chapter01Test.gd" type="Script" id=11]
-[ext_resource path="res://src/Audio/AUDIO_Cap_01.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Audio/ScattererEmitter.gd" type="Script" id=12]
+[ext_resource path="res://src/Audio/BasicAudioTrigger.gd" type="Script" id=13]
+[ext_resource path="res://src/Audio/AmbienceDevice.gd" type="Script" id=14]
+[ext_resource path="res://src/Audio/EffectZone.gd" type="Script" id=15]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/Shaders/clouds_noise1.tres" type="Texture" id=18]
 [ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=20]
@@ -47,28 +52,52 @@ glow_strength = 1.04
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 59.7887, 29.1147 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 962.916, 421.869 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 796.635, 321.967 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 708.625, 145.456 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 272.884
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 324.606
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 302.273
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 110.5
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 326.814, 607.534 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 150, 189.938 )
+
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.376106, 0.384956, 1 )
 colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 21 )
 shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.564706 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
@@ -78,7 +107,7 @@ shader_param/scroll_direction2 = Vector2( 1, 0.25 )
 shader_param/time_scale2 = 0.001
 shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
-shader_param/gradient_texture = SubResource( 6 )
+shader_param/gradient_texture = SubResource( 5 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 11 )
@@ -90,8 +119,157 @@ __meta__ = {
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="AUDIO_Cap_01" parent="." instance=ExtResource( 15 )]
-visible = false
+[node name="AUDIO_Cap_01" type="Node2D" parent="."]
+position = Vector2( -23.811, 1.5874 )
+
+[node name="BG" type="Node2D" parent="AUDIO_Cap_01"]
+
+[node name="Afuera" parent="AUDIO_Cap_01/BG" instance=ExtResource( 6 )]
+position = Vector2( -14.9695, 14.8181 )
+ambience = 2
+max_distance = 200.0
+
+[node name="Camp" type="Node2D" parent="AUDIO_Cap_01/BG"]
+position = Vector2( 491.591, 1118.79 )
+script = ExtResource( 14 )
+ambience = 3
+
+[node name="MaxDistance" type="Area2D" parent="AUDIO_Cap_01/BG/Camp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/BG/Camp/MaxDistance"]
+position = Vector2( -365.377, -95.7538 )
+shape = SubResource( 7 )
+
+[node name="AmbZone" type="Area2D" parent="AUDIO_Cap_01/BG/Camp"]
+position = Vector2( 0, -77.3624 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/BG/Camp/AmbZone"]
+position = Vector2( -398.67, -23.097 )
+shape = SubResource( 8 )
+
+[node name="FallOffZone" type="Area2D" parent="AUDIO_Cap_01/BG/Camp"]
+position = Vector2( -96.9244, -15.3167 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/BG/Camp/FallOffZone"]
+position = Vector2( -350.272, 23.1284 )
+shape = SubResource( 9 )
+
+[node name="Spot" type="Node2D" parent="AUDIO_Cap_01"]
+z_index = 1
+
+[node name="Lagunita" type="Area2D" parent="AUDIO_Cap_01/Spot"]
+position = Vector2( 481.811, -283.587 )
+script = ExtResource( 13 )
+asset_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Spot/Lagunita"]
+shape = SubResource( 10 )
+
+[node name="Hole" type="Area2D" parent="AUDIO_Cap_01/Spot"]
+position = Vector2( -26.189, 652.413 )
+script = ExtResource( 13 )
+asset_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Spot/Hole"]
+position = Vector2( 1.33484, 2.00226 )
+shape = SubResource( 11 )
+
+[node name="FishTank" type="Area2D" parent="AUDIO_Cap_01/Spot"]
+position = Vector2( 8.811, 115.413 )
+script = ExtResource( 13 )
+asset_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Spot/FishTank"]
+position = Vector2( 1.33484, 2.00226 )
+shape = SubResource( 12 )
+
+[node name="Triggers" type="Node2D" parent="AUDIO_Cap_01"]
+z_index = 1
+
+[node name="Lagunita" type="Area2D" parent="AUDIO_Cap_01/Triggers"]
+position = Vector2( 34.5297, 414.293 )
+monitoring = false
+monitorable = false
+script = ExtResource( 13 )
+asset_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Triggers/Lagunita"]
+shape = SubResource( 13 )
+
+[node name="Caminando" type="Area2D" parent="AUDIO_Cap_01/Triggers"]
+position = Vector2( 393.928, 1185.41 )
+script = ExtResource( 13 )
+asset_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/Triggers/Caminando"]
+shape = SubResource( 13 )
+
+[node name="ScattererDevice" type="Node2D" parent="AUDIO_Cap_01"]
+position = Vector2( 24.8053, 354.639 )
+script = ExtResource( 10 )
+freq_range = Vector2( 5, 10 )
+
+[node name="Area2D" type="Area2D" parent="AUDIO_Cap_01/ScattererDevice"]
+position = Vector2( -15.874, -158.74 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/ScattererDevice/Area2D"]
+position = Vector2( 54.8368, 12.8753 )
+shape = SubResource( 14 )
+
+[node name="Timer" type="Timer" parent="AUDIO_Cap_01/ScattererDevice"]
+wait_time = 0.5
+
+[node name="Emitters" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice"]
+
+[node name="Bird" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 3, 14 )
+weight = 0.7
+
+[node name="Insect" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 5, 9 )
+weight = 0.6
+
+[node name="Parrot" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 7, 20 )
+weight = 0.9
+
+[node name="Frog" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 4, 7 )
+weight = 0.5
+
+[node name="FrogLong" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 30, 60 )
+weight = 0.2
+
+[node name="Monkey" type="Node2D" parent="AUDIO_Cap_01/ScattererDevice/Emitters"]
+script = ExtResource( 12 )
+source = "Animals"
+freq_range = Vector2( 5, 20 )
+weight = 0.3
+
+[node name="EffectZones" type="Node2D" parent="AUDIO_Cap_01"]
+
+[node name="EntranceVerb" type="Area2D" parent="AUDIO_Cap_01/EffectZones"]
+position = Vector2( 38.643, -918.419 )
+script = ExtResource( 15 )
+effect = "temple_entrance_verb"
+wet = 0.25
+min_distance = 120
+distance_based = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AUDIO_Cap_01/EffectZones/EntranceVerb"]
+z_index = 1
+shape = SubResource( 15 )
 
 [node name="Map" type="Node2D" parent="."]
 __meta__ = {
@@ -148,6 +326,8 @@ position = Vector2( -350, -316 )
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
 modulate = Color( 0, 1, 1, 1 )
 involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
@@ -157,27 +337,39 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/Main" index="2"]
 modulate = Color( 0, 1, 1, 1 )
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
 modulate = Color( 0, 1, 1, 1 )
 zindex_on_entered = 0
 zindex_on_exited = 4
 involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
 modulate = Color( 0, 1, 1, 1 )
 zindex_on_entered = 0
 zindex_on_exited = 4
 involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
 modulate = Color( 0, 1, 1, 1 )
 zindex_on_entered = 0
 zindex_on_exited = 4
 involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 15
+frame = 27
+
+[node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -216,6 +408,14 @@ position = Vector2( 156, 796 )
 [node name="FishTank" parent="Zones" instance=ExtResource( 24 )]
 position = Vector2( -16, 116 )
 
+[node name="ZIndexChanger" parent="Zones/FishTank/Columns" index="1"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+
+[node name="ZIndexChanger" parent="Zones/FishTank/Arch" index="0"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+
 [node name="FishingSurfaceL1" parent="Zones/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
@@ -241,11 +441,6 @@ position = Vector2( 168, 680 )
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
 position = Vector2( 10.5, -824 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ConditionArea"]
-shape = SubResource( 2 )
-
-[node name="Tween" type="Tween" parent="Zones/ConditionArea"]
-
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
 __meta__ = {
@@ -254,51 +449,29 @@ __meta__ = {
 
 [node name="Pickable" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( -294, -277 )
-is_good = true
-can_burn = true
 carbs = 200
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable2" parent="Objects" instance=ExtResource( 8 )]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( -390, -277 )
 is_good = false
-can_burn = true
 carbs = 5
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
-can_burn = true
 carbs = 5
 img = ExtResource( 1 )
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Fish" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( -350, -262 )
-is_good = true
-can_burn = true
 carbs = 50
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="Characters" type="Node2D" parent="."]
 __meta__ = {
@@ -310,14 +483,9 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
-is_good = true
-can_burn = true
-carbs = 2
 img = ExtResource( 9 )
-on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
-dialog = ""
 
 [node name="Shadow" type="Sprite" parent="Characters/Rocberto"]
 show_behind_parent = true
@@ -329,14 +497,14 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 11, -970 )
+position = Vector2( 2.89343, -626.162 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
 follow_viewport_enable = true
 
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
-material = SubResource( 7 )
+material = SubResource( 6 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100
 texture = ExtResource( 18 )

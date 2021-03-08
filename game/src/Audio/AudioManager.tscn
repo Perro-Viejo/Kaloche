@@ -255,33 +255,43 @@ max_pitch = 1.0
 
 [node name="FS_Grass" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 17 )
+bus = "SFX"
 
 [node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 2 )
+bus = "SFX"
 
 [node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 18 )
+bus = "SFX"
 
 [node name="FS_Grass4" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 154 )
+bus = "SFX"
 
 [node name="FS_Grass5" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 163 )
+bus = "SFX"
 
 [node name="FS_Grass6" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 159 )
+bus = "SFX"
 
 [node name="FS_Grass7" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 157 )
+bus = "SFX"
 
 [node name="FS_Grass8" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 158 )
+bus = "SFX"
 
 [node name="FS_Grass9" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 160 )
+bus = "SFX"
 
 [node name="FS_Grass10" type="AudioStreamPlayer" parent="Player/FS_Grass"]
 stream = ExtResource( 164 )
+bus = "SFX"
 
 [node name="FS_Rock" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
@@ -295,33 +305,53 @@ max_pitch = 1.0
 
 [node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 16 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 23 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 25 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 151 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 165 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 148 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 161 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 144 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 145 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rock"]
 stream = ExtResource( 146 )
+mix_target = 2
+bus = "SFX"
 
 [node name="FS_Rod_Temple" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
