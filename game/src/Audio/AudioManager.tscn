@@ -443,15 +443,19 @@ max_pitch = 2.0
 
 [node name="Gak_Rod_01" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
 stream = ExtResource( 84 )
+bus = "SFX"
 
 [node name="Gak_Rod_02" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
 stream = ExtResource( 86 )
+bus = "SFX"
 
 [node name="Gak_Rod_03" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
 stream = ExtResource( 87 )
+bus = "SFX"
 
 [node name="Gak_Rod_04" type="AudioStreamPlayer" parent="Player/Gak_Rod"]
 stream = ExtResource( 85 )
+bus = "SFX"
 
 [node name="Demon" type="Node2D" parent="."]
 

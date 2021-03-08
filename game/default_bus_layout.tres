@@ -2,9 +2,11 @@
 
 [sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
-room_size = 0.05
+predelay_msec = 50.0
+predelay_feedback = 0.2
+room_size = 0.02
 damping = 0.16
-spread = 0.5
+spread = 0.2
 wet = 0.0
 
 [resource]
