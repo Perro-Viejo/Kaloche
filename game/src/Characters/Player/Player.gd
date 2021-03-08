@@ -100,20 +100,20 @@ func change_zoom(out: bool = true) -> void:
 
 func fishing_zoom(zooming: bool):
 	if zooming:
-		if hook.position.x > 0:
-			cam.offset = cam.offset + Vector2(2.1, 1)
-		else:
-			cam.offset = cam.offset - Vector2(2.1, 1)
+#		if hook.position.x > 0:
+#			cam.offset = cam.offset + Vector2(2.1, 1)
+#		else:
+#			cam.offset = cam.offset - Vector2(2.1, 1)
 		if not $Tween.is_active():
 			$Tween.interpolate_property(
-			cam,
-			'zoom',
-			cam.zoom,
-			cam.zoom * Vector2.ONE * 0.95,
-			.4,
-			Tween.TRANS_BOUNCE,
-			Tween.EASE_IN
-		)
+				cam,
+				'zoom',
+				cam.zoom,
+				cam.zoom * Vector2.ONE * 0.95,
+				.4,
+				Tween.TRANS_BOUNCE,
+				Tween.EASE_IN
+			)
 			$Tween.start()
 	else:
 		cam.offset = Vector2.ZERO
