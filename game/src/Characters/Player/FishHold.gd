@@ -78,5 +78,4 @@ func _on_fish_fled() -> void:
 	_state_machine.transition_to_key('Idle')
 
 func _on_fish_hooked() -> void:
-#	owner.speak(tr('¡Mordió!'))
 	owner.react()

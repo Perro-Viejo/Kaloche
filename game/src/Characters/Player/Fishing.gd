@@ -20,7 +20,7 @@ var fishing_started = false
 var fish_size
 var bite_check
 var hooked_time
-var hooked_time_range = [350, 450]
+var hooked_time_range = [350, 550]
 var hooked
 var fish_pull = Vector2(0, 1) 
 var pull_points

@@ -100,29 +100,33 @@ func change_zoom(out: bool = true) -> void:
 
 func fishing_zoom(zooming: bool):
 	if zooming:
-#		if hook.position.x > 0:
-#			cam.offset = cam.offset + Vector2(2.1, 1)
-#		else:
-#			cam.offset = cam.offset - Vector2(2.1, 1)
 		if not $Tween.is_active():
 			$Tween.interpolate_property(
 				cam,
 				'zoom',
 				cam.zoom,
 				cam.zoom * Vector2.ONE * 0.95,
-				.4,
-				Tween.TRANS_BOUNCE,
-				Tween.EASE_IN
+				.6,
+				Tween.TRANS_EXPO,
+				Tween.EASE_OUT
 			)
 			$Tween.start()
 	else:
-		cam.offset = Vector2.ZERO
+		$Tween.interpolate_property(
+			cam,
+			'offset',
+			cam.offset,
+			Vector2.ZERO,
+			.8,
+			Tween.TRANS_EXPO,
+			Tween.EASE_OUT
+		)
 		$Tween.interpolate_property(
 			cam,
 			'zoom',
 			cam.zoom,
 			Vector2.ONE,
-			.5,
+			.8,
 			Tween.TRANS_EXPO,
 			Tween.EASE_OUT
 		)
@@ -181,6 +185,18 @@ func change_zindex(new_value: int) -> void:
 func react():
 	speak('')
 	$Exclamation.show()
+	if cam.offset == Vector2.ZERO:
+		$Tween.interpolate_property(
+			cam,
+			'offset',
+			cam.offset,
+			hook.position,
+			.9,
+			Tween.TRANS_EXPO,
+			Tween.EASE_OUT,
+			.2
+		)
+		$Tween.start()
 	yield(get_tree().create_timer(0.6), 'timeout')
 	$Exclamation.hide()
 

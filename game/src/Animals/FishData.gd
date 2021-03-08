@@ -35,15 +35,15 @@ func init_data() -> void:
 	size = rand_range(size_range.min, size_range.max)
 	
 	if size <= 0.5:
-		resistance = rand_range(1, 3)
+		resistance = rand_range(4, 7)
 		catch_sfx = 'small'
 		size_str = 'sm'
 	elif size > 0.5 and size <= 1:
-		resistance = rand_range(3, 7)
+		resistance = rand_range(6, 11)
 		catch_sfx = 'med'
 		size_str = 'md'
 	elif size > 1:
-		resistance = rand_range(7, 12)
+		resistance = rand_range(12, 15)
 		catch_sfx = 'large'
 		size_str = 'xl'
 
