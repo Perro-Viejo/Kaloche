@@ -10,8 +10,7 @@ func _ready():
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_activate_door() -> void:
-#	$AltarActivation.show_door($TempleDoorButton)
-	pass
+	$AltarActivation.activate_temple()
 
 
 func _on_tank_activated() -> void:

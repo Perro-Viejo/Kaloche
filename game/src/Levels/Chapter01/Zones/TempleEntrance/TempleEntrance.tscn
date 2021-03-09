@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -21,6 +21,31 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_treepots.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_treepots_trees_vfx.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_treepots_bushes.png" type="Texture" id=21]
+[ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/TempleEntrance.gd" type="Script" id=22]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_door.png" type="Texture" id=23]
+
+[sub_resource type="Animation" id=33]
+resource_name = "Activate"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "temple_activated"
+} ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "OpenDoor"
+
+[sub_resource type="Animation" id=34]
+resource_name = "SETUP"
 
 [sub_resource type="GDScript" id=1]
 script/source = "tool
@@ -198,9 +223,15 @@ animations = [ {
 } ]
 
 [node name="TempleEntrance" type="Node2D"]
+script = ExtResource( 22 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 162.0 ]
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Activate = SubResource( 33 )
+anims/OpenDoor = SubResource( 35 )
+anims/SETUP = SubResource( 34 )
 
 [node name="Floor" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -245,6 +276,15 @@ texture = ExtResource( 18 )
 mode = 3
 range_z_min = 2
 range_z_max = 2
+
+[node name="Door" type="Sprite" parent="."]
+position = Vector2( 0, -185 )
+texture = ExtResource( 23 )
+
+[node name="Collisions" type="StaticBody2D" parent="Door"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/Collisions"]
+polygon = PoolVector2Array( -16, 18, 16, 18, 16, -23, -16, -23 )
 
 [node name="Pillars" type="Node2D" parent="."]
 
@@ -449,8 +489,6 @@ texture = ExtResource( 21 )
 [node name="Trees" type="AnimatedSprite" parent="Treepots"]
 position = Vector2( -4.5, -56 )
 frames = SubResource( 32 )
-frame = 17
-playing = true
 
 [node name="K" type="Sprite" parent="."]
 position = Vector2( 0, 78.5 )

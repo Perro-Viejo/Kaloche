@@ -144,9 +144,6 @@ position = Vector2( -350, -316 )
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
 modulate = Color( 0, 1, 1, 1 )
-involved_nodes = [  ]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
@@ -156,43 +153,24 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/Main" index="2"]
 modulate = Color( 0, 1, 1, 1 )
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
 modulate = Color( 0, 1, 1, 1 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
 modulate = Color( 0, 1, 1, 1 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
 
 [node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
 modulate = Color( 0, 1, 1, 1 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 26
-
-[node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
+frame = 13
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
 _player = NodePath("../../Characters/Player")
+targets_times = [ 2, 2, 2, 2 ]
+temple_entrance_path = NodePath("../TempleEntrance")
 
 [node name="TargetA" parent="Zones/AltarActivation" index="3"]
 position = Vector2( 346, 203 )
@@ -227,14 +205,6 @@ position = Vector2( 156, 796 )
 [node name="FishTank" parent="Zones" instance=ExtResource( 24 )]
 position = Vector2( -16, 116 )
 
-[node name="ZIndexChanger" parent="Zones/FishTank/Columns" index="1"]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
-
-[node name="ZIndexChanger" parent="Zones/FishTank/Arch" index="0"]
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
-
 [node name="FishingSurfaceL1" parent="Zones/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
@@ -268,13 +238,24 @@ __meta__ = {
 
 [node name="Pickable" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( -294, -277 )
+is_good = true
+can_burn = true
 carbs = 200
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable2" parent="Objects" instance=ExtResource( 8 )]
 material = SubResource( 2 )
 position = Vector2( -390, -277 )
 is_good = false
+can_burn = true
 carbs = 5
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
@@ -282,15 +263,26 @@ carbs = 5
 material = SubResource( 2 )
 position = Vector2( 319.522, 497 )
 is_good = false
+can_burn = true
 carbs = 5
 img = ExtResource( 1 )
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Fish" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -350, -262 )
+is_good = true
+can_burn = true
 carbs = 50
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
 
 [node name="Characters" type="Node2D" parent="."]
 __meta__ = {
@@ -302,9 +294,14 @@ __meta__ = {
 ] instance=ExtResource( 8 )]
 position = Vector2( -338.087, 479.698 )
 collision_layer = 5
+is_good = true
+can_burn = true
+carbs = 2
 img = ExtResource( 9 )
+on_free = ""
 tr_code = "Rocberto"
 character = "Rocberto"
+dialog = ""
 
 [node name="Shadow" type="Sprite" parent="Characters/Rocberto"]
 show_behind_parent = true
@@ -316,7 +313,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 396.643, -253.914 )
+position = Vector2( 9, -953 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
