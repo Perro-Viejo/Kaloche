@@ -142,29 +142,14 @@ position = Vector2( 366.682, 1189.88 )
 [node name="Altar" parent="Zones" instance=ExtResource( 32 )]
 position = Vector2( -350, -316 )
 
-[node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
-modulate = Color( 0, 1, 1, 1 )
-
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
-[node name="ZIndexChanger" parent="Zones/Altar/Main" index="2"]
-modulate = Color( 0, 1, 1, 1 )
-
-[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
-modulate = Color( 0, 1, 1, 1 )
-
-[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
-modulate = Color( 0, 1, 1, 1 )
-
-[node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
-modulate = Color( 0, 1, 1, 1 )
-
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 3
+frame = 1
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )

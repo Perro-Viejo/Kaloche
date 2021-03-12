@@ -43,6 +43,7 @@ polygon = PoolVector2Array( -33, 15, -40, 30, -48, 30, -48, 15 )
 
 [node name="ZIndexChanger" type="Area2D" parent="ColumnsBack"]
 visible = false
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 zindex_on_entered = 4
 zindex_on_exited = 0
@@ -86,6 +87,7 @@ polygon = PoolVector2Array( -36.5, 4, -33.5, -20, -22.5, -41, 25.5, -41, 36.5, -
 
 [node name="ZIndexChanger" type="Area2D" parent="Main"]
 visible = false
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 zindex_on_entered = 4
 zindex_on_exited = 0
@@ -146,6 +148,7 @@ polygon = PoolVector2Array( 32, 27.5, 39, 32.5, 53, 32.5, 55, 22.5, 34, 22.5 )
 
 [node name="ZIndexChanger" type="Area2D" parent="ColumnsFront"]
 visible = false
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 
 [node name="LeftColumn" type="CollisionPolygon2D" parent="ColumnsFront/ZIndexChanger"]
@@ -170,6 +173,7 @@ polygon = PoolVector2Array( 87, 25.5, 84, 21.5, 60, 21.5, 60, 25.5 )
 
 [node name="ZIndexChanger" type="Area2D" parent="ColumnsFrontDebris"]
 visible = false
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColumnsFrontDebris/ZIndexChanger"]
@@ -206,6 +210,7 @@ polygon = PoolVector2Array( -8, 8.5, -8, 10.5, 8, 10.5, 8, 8.5 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Stone"]
 visible = false
+modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stone/ZIndexChanger"]
@@ -219,14 +224,13 @@ max_lifepoints = 300
 external_position = NodePath("../Position2D")
 
 [node name="Sprite" parent="SacredFire" index="0"]
-frame = 10
+frame = 16
 
 [node name="Surface" type="Node2D" parent="."]
 
 [node name="AltarFloor" type="Area2D" parent="Surface"]
 script = ExtResource( 14 )
 surface_name = "Rock"
-fs_name = "Rock"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surface/AltarFloor"]
 polygon = PoolVector2Array( -70.9528, 33.5791, -20.6915, 34.051, -20.6915, 51.2767, 22.9627, 51.7486, 22.0188, 32.8712, 70.0244, 32.2929, 47.7505, -29.2254, -37.9172, -29.6605 )

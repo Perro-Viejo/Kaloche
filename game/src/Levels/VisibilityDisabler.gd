@@ -5,12 +5,18 @@ extends Node2D
 # y Light2D.
 
 export var root_path: NodePath = '../'
+export(Array, NodePath) var ignore_childs = []
+
+var _ids_to_ignore := []
 
 onready var _root: Node2D = get_node(root_path)
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready():
+	for p in ignore_childs:
+		_ids_to_ignore.append(get_node(p).get_instance_id())
+
 	_root.connect('visibility_changed', self, '_toggle_colliders', [_root])
 	
 	# La verificación de estado inicial
@@ -28,5 +34,7 @@ func _toggle_colliders(node: Node2D = self) -> void:
 			(c as Area2D).monitoring = _root.visible
 		elif c is Light2D:
 			(c as Light2D).enabled = _root.visible
-		elif not c.get_children().empty():
-			_toggle_colliders(c)
+
+		if not c.get_children().empty():
+			if not _ids_to_ignore.has(c.get_instance_id()):
+				_toggle_colliders(c)
