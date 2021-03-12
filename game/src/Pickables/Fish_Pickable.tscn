@@ -5,6 +5,8 @@
 [ext_resource path="res://assets/images/world/fish_gen.png" type="Texture" id=4]
 [ext_resource path="res://src/Pickables/Fish_Pickable.gd" type="Script" id=5]
 
+
+
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 1 )

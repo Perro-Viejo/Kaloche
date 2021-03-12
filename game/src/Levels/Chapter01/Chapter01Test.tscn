@@ -164,7 +164,7 @@ modulate = Color( 0, 1, 1, 1 )
 modulate = Color( 0, 1, 1, 1 )
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 13
+frame = 3
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -313,7 +313,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 9, -953 )
+position = Vector2( 10, -849 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
