@@ -57,7 +57,7 @@ func _ready() -> void:
 	# Conectarse a eventos del universo
 	DialogEvent.connect('line_triggered', self, '_should_speak')
 	PlayerEvent.connect('control_toggled', self, '_toggle_control')
-	PlayerEvent.connect('camera_shaked', self, '_shake_camera')
+	PlayerEvent.connect('camera_shook', self, '_shake_camera')
 	PlayerEvent.connect('camera_moved', self, '_move_camera')
 	PlayerEvent.connect('camera_moved_to', self, '_move_camera_to')
 	PlayerEvent.connect('camera_disabled', self, '_disable_camera')
@@ -198,9 +198,11 @@ func change_zindex(new_value: int) -> void:
 
 func react():
 	speak('')
+	$Exclamation.play('react')
 	$Exclamation.show()
 	yield(get_tree().create_timer(0.6), 'timeout')
 	$Exclamation.hide()
+	$Exclamation.stop()
 
 func toggle_behind(ref_z_index: int) -> void:
 	if ref_z_index <= self.z_index:

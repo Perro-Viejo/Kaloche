@@ -37,6 +37,18 @@ func _process(delta) -> void:
 		if ran_num <= 0.4:
 			AudioEvent.emit_signal('play_requested', 'Fishing', 'pull_fish_fight', owner.global_position)
 			owner.surface_ref._fight_splash(owner.global_position + _fish_pos)
+			owner.surface_ref.show_wave('waveA')
+			# Aquí es que se mueve pa abajo cuando el pez jala
+			owner.tween.interpolate_property(
+				owner,
+				'position:y',
+				owner.position.y + rand_range(1.0, 2.0),
+				owner.position.y,
+				0.2,
+				Tween.TRANS_BOUNCE,
+				Tween.EASE_OUT
+			)
+			owner.tween.start()
 	# Esto es pa' que el jugador no pueda jalar la caña como loco
 	_oportunity_cooldown -= 1
 	if _oportunity_cooldown <= 0:
@@ -55,10 +67,10 @@ func _process(delta) -> void:
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
-	PlayerEvent.emit_signal('camera_shaked', 
+	PlayerEvent.emit_signal('camera_shook', 
 	{
-			strength = 0.45,
-			duration = 0.18,
+			strength = 0.55,
+			duration = 0.25,
 		})
 	_fish_size = msg.size
 	_fish_resistance = msg.resistance
@@ -76,6 +88,17 @@ func enter(msg: Dictionary = {}) -> void:
 	)
 
 	owner.emit_signal('hooked')
+# Aquí es que se mueve pa abajo cuando el pez muerde
+	owner.tween.interpolate_property(
+		owner,
+		'position:y',
+		owner.position.y + rand_range(2.0, 3.0),
+		owner.position.y,
+		0.5,
+		Tween.TRANS_BOUNCE,
+		Tween.EASE_OUT
+	)
+	owner.tween.start()
 	
 	set_process(true)
 

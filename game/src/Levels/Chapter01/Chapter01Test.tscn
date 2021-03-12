@@ -184,7 +184,7 @@ disable_lights_on_enter = [  ]
 disable_lights_on_exit = [  ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 27
+frame = 26
 
 [node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
 disable_lights_on_enter = [  ]
@@ -316,7 +316,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 383.39, -275.904 )
+position = Vector2( 396.643, -253.914 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3

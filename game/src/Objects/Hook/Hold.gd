@@ -35,8 +35,6 @@ func exit() -> void:
 #	Juan: no se si debería estar esta animación por que tiene un espacio antes
 #	que le quita impacto a la mordida, puede ser quitar el espacio o hacer una 
 #	animación específica para este con el mismo sprite
- 
-#	owner.play_animation('waveB')
 
 	if owner.surface_ref:
 		if owner.surface_ref.type == Data.SurfaceType.WATER:
@@ -64,12 +62,14 @@ func surface_updated() -> void:
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _sent_back() -> void:
 	owner.get_parent().fishing_zoom(false, false)
+	_small_wave_timer.stop()
 	owner.emit_signal('sent_back')
 	_state_machine.transition_to_key('Idle')
 
 
 func _show_small_wave() -> void:
-	owner.play_animation('waveA', 1.5)
+	if owner.surface_ref:
+		owner.surface_ref.show_wave('waveA', 1.5)
 	_small_wave_timer.start()
 
 
@@ -79,6 +79,18 @@ func _on_hook_failed() -> void:
 	owner.get_parent().fishing_zoom(false, false)
 	_small_wave_timer.stop()
 	owner.play_animation('waveB')
+	owner.surface_ref.show_wave('waveB')
+	# Aquí es que se mueve cuando cae
+	owner.tween.interpolate_property(
+		owner,
+		'position:y',
+		owner.position.y + rand_range(0.5, 2.5),
+		owner.position.y,
+		1.5,
+		Tween.TRANS_BOUNCE,
+		Tween.EASE_OUT
+	)
+	owner.tween.start()
 	# Esperar X segundos antes de retomar el ciclo de mostrar la onda pequeña
 	_small_wave_timer.wait_time = 4.0
 	_small_wave_timer.start()
@@ -94,8 +106,18 @@ func _check_surface() -> void:
 	if owner.surface_ref:
 		if owner.surface_ref.type == Data.SurfaceType.WATER:
 			_small_wave_timer.start()
-			owner.play_animation('waveB', 3.0)
 			owner.emit_signal('dropped')
+			# Aquí es que se mueve cuando cae
+			owner.tween.interpolate_property(
+				owner,
+				'position:y',
+				owner.position.y + rand_range(2.0, 3.0),
+				owner.position.y,
+				.7,
+				Tween.TRANS_BOUNCE,
+				Tween.EASE_OUT
+			)
+			owner.tween.start()
 			if owner.surface_ref.is_in_group('FishingSurface'):
 				owner.surface_ref.hook_entered(owner)
 			return

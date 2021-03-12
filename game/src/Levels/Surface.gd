@@ -1,6 +1,8 @@
 class_name Surface
 extends Area2D
 
+const HOOK_WAVE = preload('res://src/Particles/WaterWave.tscn')
+
 export var surface_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 export var overlap := false
@@ -35,6 +37,12 @@ func is_point_inside_polygon(point: Vector2) -> bool:
 			return true
 	return false
 
+func show_wave(wave, speed = 1.0):
+	var water_wave = HOOK_WAVE.instance()
+	add_child(water_wave)
+	if hook_ref:
+		water_wave.set_global_position(hook_ref.global_position + Vector2(2, 5))
+	water_wave.play_animation(wave, speed)
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _assign_sfx(body: Node) -> void:

@@ -8,7 +8,7 @@ func open() -> void:
 	$AnimationPlayer.play('open', -1, 1 / _speed_modifier)
 	AudioEvent.emit_signal('play_requested', 'Temple', 'Door_Open')
 	PlayerEvent.emit_signal(
-		'camera_shaked',
+		'camera_shook',
 		{
 			strength = 1.2,
 			duration = $AnimationPlayer.current_animation_length * _speed_modifier,

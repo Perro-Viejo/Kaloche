@@ -79,7 +79,7 @@ func hook_entered(hook: Hook) -> void:
 		hook_ref.connect('fish_fled', self, '_show_shadows')
 	
 #	hook_ref.surface_ref = self
-	
+	show_wave('waveB')
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
 	splash.set_global_position(hook.global_position)
@@ -106,6 +106,7 @@ func hook_entered(hook: Hook) -> void:
 	)
 
 func hook_exited(hook: Hook = null) -> void:
+	show_wave('waveA', 3.0)
 	if not hook_ref: return
 	_reset_bait()
 	hook_ref.surface_ref = null
