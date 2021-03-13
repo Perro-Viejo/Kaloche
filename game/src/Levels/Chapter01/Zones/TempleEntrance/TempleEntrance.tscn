@@ -602,7 +602,6 @@ anims/SETUP = SubResource( 3 )
 [node name="Floor" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 2
-frame = 1
 
 [node name="Surface" type="Area2D" parent="Floor"]
 visible = false
@@ -616,7 +615,6 @@ polygon = PoolVector2Array( 52, 171, -52, 171, -79, 144, -61, 108, -209, 108, -1
 position = Vector2( 0, -123.5 )
 texture = ExtResource( 4 )
 hframes = 2
-frame = 1
 
 [node name="Collisions" type="StaticBody2D" parent="WallsBack"]
 visible = false
@@ -632,7 +630,6 @@ polygon = PoolVector2Array( 175, 134.5, 244, 134.5, 231, 72.5, 163, -60.5, 50, -
 position = Vector2( 0, -233.5 )
 texture = ExtResource( 8 )
 hframes = 2
-frame = 1
 
 [node name="Collisions" type="StaticBody2D" parent="Facade"]
 visible = false
@@ -657,7 +654,6 @@ texture = ExtResource( 23 )
 polygon = PoolVector2Array( -16, 18, 16, 18, 16, -23, -16, -23 )
 
 [node name="Pillars" type="Node2D" parent="."]
-visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Pillars"]
 script = ExtResource( 36 )
@@ -670,7 +666,7 @@ range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 0, -76 )
+position = Vector2( 0, -196 )
 z_index = 4
 texture = ExtResource( 11 )
 
@@ -710,7 +706,7 @@ range_item_cull_mask = 64
 
 [node name="Middle" type="Sprite" parent="Pillars"]
 light_mask = 64
-position = Vector2( 0, -18 )
+position = Vector2( 0, -138 )
 z_index = 4
 texture = ExtResource( 9 )
 
@@ -735,11 +731,8 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = SubResource( 4 )
-zindex_on_entered = 0
-zindex_on_exited = 4
 involved_nodes = [ NodePath("../../Back") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
-disable_lights_on_exit = [  ]
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Middle/ZIndexChanger"]
 position = Vector2( -21, 0 )
@@ -758,7 +751,7 @@ range_item_cull_mask = 128
 
 [node name="Front" type="Sprite" parent="Pillars"]
 light_mask = 128
-position = Vector2( 0, 40 )
+position = Vector2( 0, -80 )
 z_index = 4
 texture = ExtResource( 10 )
 
@@ -783,11 +776,8 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = SubResource( 4 )
-zindex_on_entered = 0
-zindex_on_exited = 4
 involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
-disable_lights_on_exit = [  ]
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Front/ZIndexChanger"]
 position = Vector2( -42, 0 )
@@ -799,6 +789,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
 
 [node name="Platform" type="Node2D" parent="."]
+visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
 script = ExtResource( 36 )
@@ -960,6 +951,7 @@ polygon = PoolVector2Array( 16, 41.5, 46, 39.5, 54, 39.5, 54, 18.5, 8, 18.5, 8, 
 polygon = PoolVector2Array( 16, 41.5, 46, 39.5, 54, 39.5, 54, 18.5, 8, 18.5, 8, 41.5 )
 
 [node name="Fingers" type="Node2D" parent="."]
+visible = false
 z_index = 4
 
 [node name="Mask" type="Light2D" parent="Fingers"]
