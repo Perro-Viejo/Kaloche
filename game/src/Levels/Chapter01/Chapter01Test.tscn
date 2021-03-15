@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_start.png" type="Texture" id=3]
 [ext_resource path="res://src/Levels/Chapter01/Zones.gd" type="Script" id=4]
 [ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/TempleEntrance.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Levels/Chapter01/ConditionArea.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/lake.tres" type="Texture" id=7]
 [ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/images/characters/rocberto.png" type="Texture" id=9]
@@ -47,25 +48,28 @@ glow_strength = 1.04
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 61.1199, 10 )
+
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.376106, 0.384956, 1 )
 colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 21 )
 shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.564706 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
@@ -75,7 +79,7 @@ shader_param/scroll_direction2 = Vector2( 1, 0.25 )
 shader_param/time_scale2 = 0.001
 shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
-shader_param/gradient_texture = SubResource( 5 )
+shader_param/gradient_texture = SubResource( 6 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 11 )
@@ -142,14 +146,58 @@ position = Vector2( 366.682, 1189.88 )
 [node name="Altar" parent="Zones" instance=ExtResource( 32 )]
 position = Vector2( -350, -316 )
 
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
+involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
+[node name="ZIndexChanger" parent="Zones/Altar/Main" index="2"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
+[node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
+[node name="SacredFire" parent="Zones/Altar" index="6"]
+position = Vector2( 0.794586, -24.7351 )
+can_die = false
+
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 1
+frame = 15
+
+[node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -190,6 +238,16 @@ position = Vector2( 156, 796 )
 [node name="FishTank" parent="Zones" instance=ExtResource( 24 )]
 position = Vector2( -16, 116 )
 
+[node name="ZIndexChanger" parent="Zones/FishTank/Columns" index="1"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
+[node name="ZIndexChanger" parent="Zones/FishTank/Arch" index="0"]
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+
 [node name="FishingSurfaceL1" parent="Zones/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
 
@@ -215,6 +273,16 @@ position = Vector2( 168, 680 )
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
 position = Vector2( 10.5, -824 )
 
+[node name="ConditionArea" type="Area2D" parent="Zones"]
+position = Vector2( -17.4264, 525.118 )
+script = ExtResource( 6 )
+pickable_needed = "Rocberto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ConditionArea"]
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="Zones/ConditionArea"]
+
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
 __meta__ = {
@@ -232,7 +300,7 @@ character = ""
 dialog = ""
 
 [node name="Pickable2" parent="Objects" instance=ExtResource( 8 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( -390, -277 )
 is_good = false
 can_burn = true
@@ -245,7 +313,7 @@ dialog = ""
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 319.522, 497 )
 is_good = false
 can_burn = true
@@ -259,8 +327,9 @@ dialog = ""
 [node name="Fish" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
-material = SubResource( 3 )
-position = Vector2( -350, -262 )
+visible = false
+material = SubResource( 4 )
+position = Vector2( -600.282, -347.43 )
 is_good = true
 can_burn = true
 carbs = 50
@@ -298,14 +367,14 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 10, -849 )
+position = Vector2( 547.427, 1196.21 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
 follow_viewport_enable = true
 
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
-material = SubResource( 6 )
+material = SubResource( 7 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100
 texture = ExtResource( 18 )
