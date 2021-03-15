@@ -224,7 +224,7 @@ max_lifepoints = 300
 external_position = NodePath("../Position2D")
 
 [node name="Sprite" parent="SacredFire" index="0"]
-frame = 16
+frame = 4
 
 [node name="Surface" type="Node2D" parent="."]
 
