@@ -862,6 +862,7 @@ z_index = 4
 texture = ExtResource( 31 )
 
 [node name="Behind" type="Light2D" parent="Platform/IsoBack"]
+enabled = false
 texture = ExtResource( 39 )
 mode = 2
 range_item_cull_mask = 32768
@@ -944,6 +945,7 @@ z_index = 4
 texture = ExtResource( 29 )
 
 [node name="Behind" type="Light2D" parent="Platform/IsoFront"]
+enabled = false
 texture = ExtResource( 37 )
 mode = 2
 range_item_cull_mask = 32768

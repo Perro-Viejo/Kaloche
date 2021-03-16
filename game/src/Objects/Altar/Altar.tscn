@@ -109,6 +109,7 @@ polygon = PoolVector2Array( -40, 0, -40, 19, -56, 19, -56, 0 )
 modulate = Color( 0, 1, 1, 1 )
 
 [node name="NorthToggler" type="Area2D" parent="Main/Area2DTogglers"]
+modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -1.5, 13 )
 priority = 5.0
 script = ExtResource( 13 )
@@ -119,6 +120,7 @@ disable_on_entered = true
 polygon = PoolVector2Array( -54.5, -29, 57.5, -29, 57.5, -69, -54.5, -69 )
 
 [node name="InsideToggler" type="Area2D" parent="Main/Area2DTogglers"]
+modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 13 )
 targets = [ NodePath("../NorthToggler"), NodePath("../../ZIndexChanger"), NodePath("../../../ColumnsBack/ZIndexChanger") ]
 disable_on_entered = true
@@ -221,10 +223,8 @@ position = Vector2( 0, -25 )
 scale = Vector2( 1, 1 )
 lifepoints = 150
 max_lifepoints = 300
+can_die = false
 external_position = NodePath("../Position2D")
-
-[node name="Sprite" parent="SacredFire" index="0"]
-frame = 18
 
 [node name="Surface" type="Node2D" parent="."]
 
