@@ -94,3 +94,7 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 		
 		for z in pause_z_changers_on_enter:
 			(get_node(z) as ZIndexChanger).listen_areas(!entered)
+		
+		prints('ZIndexChanger %s: %s' %
+			[get_parent().name, 'entra' if entered else 'sale']
+		)
