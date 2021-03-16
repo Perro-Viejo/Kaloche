@@ -298,7 +298,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 9, -852 )
+position = Vector2( 9, -842 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3

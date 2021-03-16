@@ -4,6 +4,7 @@ extends Area2D
 export(Array, NodePath) var targets = []
 export var starts_disabled := false
 export var modify_masks := false
+export var disable_on_enter := false
 
 var _target_bodies := []
 
@@ -22,6 +23,7 @@ func _ready():
 		else:
 			_parent.collision_layer = 0
 			_parent.collision_mask = 0
+		_parent.hide()
 
 	connect('area_entered', self, '_toggle_mask', [true])
 	connect('area_exited', self, '_toggle_mask', [false])
@@ -30,6 +32,16 @@ func _ready():
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _toggle_mask(body: Area2D, entered: bool) -> void:
 	if body.name == 'FootArea':
+		
+		prints('%s: %s' % [_parent.name, 'entra' if entered else 'sale'])
+		
+		if disable_on_enter and entered:
+			_enabled = true
+			_parent.hide()
+		elif not disable_on_enter:
+			if entered: _parent.show()
+			else: _parent.hide()
+
 		if not modify_masks:
 			for b in _target_bodies:
 				if _enabled:

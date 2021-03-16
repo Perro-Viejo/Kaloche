@@ -802,7 +802,7 @@ polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
 script = ExtResource( 36 )
-ignore_childs = [ NodePath("../IsoFront"), NodePath("../IsoBack") ]
+ignore_childs = [ NodePath("../IsoFront"), NodePath("../IsoBack"), NodePath("../PlatformOff") ]
 
 [node name="Mask" type="Light2D" parent="Platform"]
 position = Vector2( 0, 25 )
@@ -812,19 +812,39 @@ range_item_cull_mask = 512
 
 [node name="PlatformOff" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -62 )
+position = Vector2( 0, -61 )
 z_index = 4
 texture = ExtResource( 27 )
 
 [node name="Collisions" type="StaticBody2D" parent="Platform/PlatformOff"]
-visible = false
 
-[node name="Left" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions"]
-polygon = PoolVector2Array( -16, 17, -43, 17, -57, 10, -57, 3, -43, 10, -15, 10, -13, 5 )
+[node name="FrontLeft" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions"]
+polygon = PoolVector2Array( -16, 17, -43, 17, -61, 8, -61, 3, -53, -16, -39, -22, -39, -23, -1, -23, -1, -20, -39, -20, -51, -14, -60, 4, -43, 10, -15, 10, -13, 5 )
 
-[node name="Right" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions"]
+[node name="FrontRight" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions"]
 scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -16, 17, -43, 17, -57, 10, -57, 3, -43, 10, -15, 10, -13, 5 )
+
+[node name="CollisionEnabler" type="Area2D" parent="Platform/PlatformOff/Collisions"]
+script = ExtResource( 38 )
+modify_masks = true
+disable_on_enter = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions/CollisionEnabler"]
+polygon = PoolVector2Array( -65, 5, -43, 13, -16, 13, -13, 5, 13, 5, 15, 10, 43, 10, 57, 3, 53, -14, 42, -27, -39, -27, -55, -19 )
+
+[node name="ExternalCollisions" type="StaticBody2D" parent="Platform/PlatformOff"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOff/ExternalCollisions"]
+polygon = PoolVector2Array( -64, 2, -55, -22, -38, -29, -1, -29, -1, -30, -40, -30, -57, -24, -67, 3, -66, 9, -43, 21, -16, 21, -16, 10, -43, 10 )
+
+[node name="CollisionEnabler" type="Area2D" parent="Platform/PlatformOff/ExternalCollisions"]
+script = ExtResource( 38 )
+starts_disabled = true
+modify_masks = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOff/ExternalCollisions/CollisionEnabler"]
+polygon = PoolVector2Array( -65, 3, -43, 12, -15, 12, -15, 18, 15, 18, 15, 14, 43, 10, 57, 3, 53, -14, 40, -29, -40, -29, -56, -22 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Platform/PlatformOff"]
 visible = false
@@ -840,6 +860,7 @@ polygon = PoolVector2Array( -62, 14, -44, 23, 45, 23, 62, 14, 67, 14, 67, 43, -6
 polygon = PoolVector2Array( -60, 14, -44, 22, 45, 22, 62, 13, 62, -22, -60, -22 )
 
 [node name="IsoBack" type="Sprite" parent="Platform"]
+visible = false
 light_mask = 512
 position = Vector2( 0, -118.5 )
 z_index = 4
@@ -922,6 +943,7 @@ region_rect = Rect2( 0, 0, 75, 8 )
 polygon = PoolVector2Array( 8, 0, 17, 5, -1, 5 )
 
 [node name="IsoFront" type="Sprite" parent="Platform"]
+visible = false
 light_mask = 512
 position = Vector2( 0, -102.5 )
 z_index = 4
