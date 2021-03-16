@@ -516,6 +516,7 @@ stream = ExtResource( 28 )
 volume_db = 8.0
 max_distance = 200.0
 attenuation = 1.1487
+bus = "AMB"
 
 [node name="Testigo" type="ColorRect" parent="BG/Sierra"]
 visible = false
@@ -538,6 +539,7 @@ stream = ExtResource( 28 )
 volume_db = 2.0
 max_distance = 200.0
 attenuation = 1.1487
+bus = "AMB"
 
 [node name="Testigo" type="ColorRect" parent="BG/Afuera"]
 visible = false
@@ -560,6 +562,7 @@ stream = ExtResource( 181 )
 volume_db = -5.0
 max_distance = 200.0
 attenuation = 1.1487
+bus = "AMB"
 
 [node name="Testigo" type="ColorRect" parent="BG/Camp"]
 visible = false
@@ -582,6 +585,7 @@ stream = ExtResource( 67 )
 volume_db = 8.0
 max_distance = 100.0
 attenuation = 1.1487
+bus = "AMB"
 
 [node name="Testigo" type="ColorRect" parent="BG/Pinalito"]
 visible = false
@@ -815,23 +819,27 @@ stream = ExtResource( 73 )
 volume_db = 14.0
 max_distance = 170.0
 attenuation = 1.93187
+bus = "AMB"
 
 [node name="Hole" type="AudioStreamPlayer2D" parent="Spot"]
 position = Vector2( 7, 0 )
 stream = ExtResource( 98 )
 max_distance = 350.0
 attenuation = 3.13834
+bus = "AMB"
 
 [node name="RodTemple" type="AudioStreamPlayer2D" parent="Spot"]
 stream = ExtResource( 179 )
 max_distance = 530.0
 attenuation = 1.56917
+bus = "AMB"
 
 [node name="FishTank" type="AudioStreamPlayer2D" parent="Spot"]
 stream = ExtResource( 182 )
 volume_db = 10.0
 max_distance = 300.0
 attenuation = 0.840897
+bus = "AMB"
 
 [node name="Animals" type="Node2D" parent="."]
 
@@ -851,6 +859,7 @@ max_pitch = 4.0
 [node name="bird_01" type="AudioStreamPlayer2D" parent="Animals/Bird"]
 stream = ExtResource( 75 )
 max_distance = 200.0
+bus = "AMB"
 __meta__ = {
 "_edit_group_": true
 }
@@ -873,6 +882,7 @@ __meta__ = {
 [node name="bird_02" type="AudioStreamPlayer2D" parent="Animals/Bird"]
 stream = ExtResource( 76 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Testigo2" type="ColorRect" parent="Animals/Bird/bird_02"]
 visible = false
@@ -892,6 +902,7 @@ __meta__ = {
 [node name="bird_03" type="AudioStreamPlayer2D" parent="Animals/Bird"]
 stream = ExtResource( 78 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Testigo3" type="ColorRect" parent="Animals/Bird/bird_03"]
 visible = false
@@ -923,6 +934,7 @@ max_pitch = 1.0
 [node name="parrot_01" type="AudioStreamPlayer2D" parent="Animals/Parrot"]
 stream = ExtResource( 77 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Testigo4" type="ColorRect" parent="Animals/Parrot/parrot_01"]
 visible = false
@@ -942,6 +954,7 @@ __meta__ = {
 [node name="parrot_02" type="AudioStreamPlayer2D" parent="Animals/Parrot"]
 stream = ExtResource( 74 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Testigo5" type="ColorRect" parent="Animals/Parrot/parrot_02"]
 visible = false
@@ -974,14 +987,17 @@ max_pitch = 4.0
 [node name="insect_01" type="AudioStreamPlayer2D" parent="Animals/Insect"]
 stream = ExtResource( 83 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="insect_02" type="AudioStreamPlayer2D" parent="Animals/Insect"]
 stream = ExtResource( 80 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="insect_03" type="AudioStreamPlayer2D" parent="Animals/Insect"]
 stream = ExtResource( 82 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Frog" type="Node2D" parent="Animals"]
 script = ExtResource( 26 )
@@ -999,43 +1015,53 @@ max_pitch = 3.0
 [node name="frog_01" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 134 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_02" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 81 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_03" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 124 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_04" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 126 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_05" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 130 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_06" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 127 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_07" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 133 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_08" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 129 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_09" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 131 )
 max_distance = 200.0
 attenuation = 0.0384733
+bus = "AMB"
 
 [node name="frog_10" type="AudioStreamPlayer2D" parent="Animals/Frog"]
 stream = ExtResource( 132 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="FrogLong" type="Node2D" parent="Animals"]
 script = ExtResource( 26 )
@@ -1053,18 +1079,22 @@ max_pitch = 3.0
 [node name="frog_01" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
 stream = ExtResource( 125 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_02" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
 stream = ExtResource( 135 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_03" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
 stream = ExtResource( 128 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="frog_04" type="AudioStreamPlayer2D" parent="Animals/FrogLong"]
 stream = ExtResource( 136 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Monkey" type="Node2D" parent="Animals"]
 script = ExtResource( 26 )
@@ -1082,59 +1112,73 @@ max_pitch = 3.0
 [node name="monkey_01" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 79 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_02" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 115 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_03" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 117 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_04" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 118 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_05" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 111 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_06" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 123 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_07" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 116 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_08" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 113 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_09" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 121 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_10" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 119 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_11" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 120 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_12" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 122 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="monkey_13" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 112 )
 max_distance = 200.0
 attenuation = 0.0796601
+bus = "AMB"
 
 [node name="monkey_14" type="AudioStreamPlayer2D" parent="Animals/Monkey"]
 stream = ExtResource( 114 )
 max_distance = 200.0
+bus = "AMB"
 
 [node name="Tank" type="Node2D" parent="."]
 

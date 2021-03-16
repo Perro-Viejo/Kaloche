@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mx_sierra.ogg-5f9d3891a5aa86e42c518f76086faaad.oggst
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
