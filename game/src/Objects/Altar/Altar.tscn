@@ -226,6 +226,9 @@ max_lifepoints = 300
 can_die = false
 external_position = NodePath("../Position2D")
 
+[node name="Sprite" parent="SacredFire" index="0"]
+frame = 5
+
 [node name="Surface" type="Node2D" parent="."]
 
 [node name="AltarFloor" type="Area2D" parent="Surface"]

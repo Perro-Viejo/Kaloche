@@ -23,11 +23,16 @@ func _ready():
 	_toggle_colliders(_root)
 
 
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func force_toggle() -> void:
+	_toggle_colliders(_root, true)
+
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
-func _toggle_colliders(node: Node2D = self) -> void:
+func _toggle_colliders(node: Node2D = self, force := false) -> void:
 	for c in node.get_children():
 		if c is StaticBody2D:
-			(c as StaticBody2D).collision_layer = 0 if not _root.visible else 1
+#			(c as StaticBody2D).collision_layer = 0 if not _root.visible else 1
 			(c as StaticBody2D).collision_mask = 0 if not _root.visible else 1
 		elif c is Area2D:
 			(c as Area2D).monitorable = _root.visible
@@ -36,5 +41,5 @@ func _toggle_colliders(node: Node2D = self) -> void:
 			(c as Light2D).enabled = _root.visible
 
 		if not c.get_children().empty():
-			if not _ids_to_ignore.has(c.get_instance_id()):
+			if not _ids_to_ignore.has(c.get_instance_id()) or force:
 				_toggle_colliders(c)
