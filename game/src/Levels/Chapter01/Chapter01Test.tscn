@@ -148,8 +148,14 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 [node name="CollisionEnabler" parent="Zones/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
+[node name="NorthToggler" parent="Zones/Altar/Main/Area2DTogglers" index="0"]
+modulate = Color( 1, 0, 0, 1 )
+
+[node name="InsideToggler" parent="Zones/Altar/Main/Area2DTogglers" index="1"]
+modulate = Color( 1, 0, 0, 1 )
+
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 15
+frame = 11
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -298,7 +304,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 9, -842 )
+position = Vector2( 11, -839 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3

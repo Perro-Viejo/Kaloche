@@ -35,12 +35,14 @@ func _toggle_mask(body: Area2D, entered: bool) -> void:
 		
 		prints('%s: %s' % [_parent.name, 'entra' if entered else 'sale'])
 		
+		# TODO: Reducir la lógica de este bloque ------------------------------
 		if disable_on_enter and entered:
 			_enabled = true
 			_parent.hide()
 		elif not disable_on_enter:
 			if entered: _parent.show()
 			else: _parent.hide()
+		# ---------------------------------------------------------------------
 
 		if not modify_masks:
 			for b in _target_bodies:
