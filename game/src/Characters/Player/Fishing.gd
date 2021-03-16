@@ -69,6 +69,7 @@ func _process(delta):
 		hooked_time -= 1
 		if hooked_time <= 0:
 			get_parent().speak(tr("Se voló el bagrese..."))
+			AudioEvent.emit_signal('play_requested', 'Fishing', 'escape', get_parent().global_position)
 			AudioEvent.emit_signal("play_requested", "Fishing", "pull_fish_none", get_parent().position + (rect_position + end_pos))
 			_timer.set_pause_mode(false)
 			hooked = false

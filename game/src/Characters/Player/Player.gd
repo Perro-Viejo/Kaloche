@@ -101,6 +101,7 @@ func change_zoom(out: bool = true) -> void:
 
 func fishing_zoom(zooming: bool, start: bool = false):
 	if start:
+		AudioEvent.emit_signal('play_requested', 'Fishing', 'whoosh_in')
 		$Tween.interpolate_property(
 			cam,
 			'offset',
@@ -112,6 +113,7 @@ func fishing_zoom(zooming: bool, start: bool = false):
 			.2
 		)
 		$Tween.start()
+		speak('')
 	else:
 		if zooming:
 			if not $Tween.is_active():
@@ -145,6 +147,8 @@ func fishing_zoom(zooming: bool, start: bool = false):
 				Tween.EASE_OUT
 			)
 			$Tween.start()
+			if not cam.offset == Vector2.ZERO:
+				AudioEvent.emit_signal('play_requested', 'Fishing', 'whoosh_out')
 
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
@@ -199,6 +203,7 @@ func change_zindex(new_value: int) -> void:
 func react():
 	speak('')
 	$Exclamation.play('react')
+	AudioEvent.emit_signal('play_requested', 'Player', 'react_fish', global_position)
 	$Exclamation.show()
 	yield(get_tree().create_timer(0.6), 'timeout')
 	$Exclamation.hide()

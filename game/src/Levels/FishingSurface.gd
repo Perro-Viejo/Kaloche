@@ -106,6 +106,7 @@ func hook_entered(hook: Hook) -> void:
 	)
 
 func hook_exited(hook: Hook = null) -> void:
+	AudioEvent.emit_signal('play_requested', 'Fishing', 'return', hook_ref.global_position)
 	show_wave('waveA', 3.0)
 	if not hook_ref: return
 	_reset_bait()

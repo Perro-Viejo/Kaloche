@@ -56,6 +56,7 @@ func hook_success(fish_data: Dictionary) -> void:
 
 func hook_fail() -> void:
 	emit_signal('tried')
+	AudioEvent.emit_signal('play_requested', 'Fishing', 'escape', global_position)
 
 
 func play_animation(animation_name := '', speed := 1.0) -> void:

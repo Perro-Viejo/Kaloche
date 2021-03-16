@@ -593,22 +593,22 @@ tracks/3/keys = {
 [sub_resource type="CanvasItemMaterial" id=70]
 light_mode = 2
 
-[sub_resource type="CircleShape2D" id=72]
+[sub_resource type="CircleShape2D" id=71]
 radius = 3.06255
 
-[sub_resource type="Curve" id=73]
+[sub_resource type="Curve" id=72]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.19548, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=74]
+[sub_resource type="Gradient" id=73]
 colors = PoolColorArray( 0.239216, 0.431373, 0.439216, 1, 0.364706, 0.870588, 0.529412, 1 )
 
-[sub_resource type="RectangleShape2D" id=75]
+[sub_resource type="RectangleShape2D" id=74]
 extents = Vector2( 2.20734, 2.00338 )
 
-[sub_resource type="RectangleShape2D" id=76]
+[sub_resource type="RectangleShape2D" id=75]
 extents = Vector2( 1.5, 0.5 )
 
-[sub_resource type="RectangleShape2D" id=77]
+[sub_resource type="RectangleShape2D" id=76]
 extents = Vector2( 2, 2 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -731,7 +731,7 @@ visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-shape = SubResource( 72 )
+shape = SubResource( 71 )
 
 [node name="FishSplash" type="CPUParticles2D" parent="."]
 visible = false
@@ -753,8 +753,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 73 )
-color_ramp = SubResource( 74 )
+scale_amount_curve = SubResource( 72 )
+color_ramp = SubResource( 73 )
 
 [node name="FishingSpot" type="ColorRect" parent="."]
 visible = false
@@ -774,7 +774,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingSpot/FishingArea"]
 position = Vector2( -5.30872, 2.85854 )
-shape = SubResource( 75 )
+shape = SubResource( 74 )
 
 [node name="Timer" type="Timer" parent="FishingSpot"]
 wait_time = 0.4
@@ -785,7 +785,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FootArea"]
 position = Vector2( 0.5, 4.12547 )
-shape = SubResource( 76 )
+shape = SubResource( 75 )
 
 [node name="Splash_L" type="CPUParticles2D" parent="."]
 visible = false
@@ -807,8 +807,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 73 )
-color_ramp = SubResource( 74 )
+scale_amount_curve = SubResource( 72 )
+color_ramp = SubResource( 73 )
 
 [node name="Splash_R" type="CPUParticles2D" parent="."]
 visible = false
@@ -830,8 +830,8 @@ emission_colors = PoolColorArray(  )
 spread = 35.0
 gravity = Vector2( 0, 100 )
 scale_amount = 0.8
-scale_amount_curve = SubResource( 73 )
-color_ramp = SubResource( 74 )
+scale_amount_curve = SubResource( 72 )
+color_ramp = SubResource( 73 )
 
 [node name="Hook" parent="." instance=ExtResource( 14 )]
 position = Vector2( -4, -7 )
@@ -846,7 +846,7 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookTarget"]
 modulate = Color( 0.388235, 0.0313726, 0.960784, 1 )
-shape = SubResource( 77 )
+shape = SubResource( 76 )
 
 [node name="rect" type="ColorRect" parent="HookTarget"]
 anchor_left = 0.5

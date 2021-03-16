@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_fish_escape_02.ogg-cd954b45e344bd24b6ef9b45fb0b053e.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_fish_escape_02.ogg"
+dest_files=[ "res://.import/sfx_fish_escape_02.ogg-cd954b45e344bd24b6ef9b45fb0b053e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
