@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/player_react_fish.ogg-5093a706b2f025c4470c0243e3440d70.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/player_react_fish.ogg"
+dest_files=[ "res://.import/player_react_fish.ogg-5093a706b2f025c4470c0243e3440d70.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

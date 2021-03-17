@@ -15,7 +15,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_hook = owner.hook
 	_hook.connect('hooked', self, '_on_fish_hooked')
 #	-> Aquí era cuando el pez no mordía
-#	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
+	_hook.connect('tried', owner, 'speak', ['Uy... casi muerde'])
 	_hook.connect('sent_back', _state_machine, 'transition_to_key', ['Idle'])
 	_hook.connect('fish_fled', self, '_on_fish_fled')
 
@@ -27,7 +27,7 @@ func exit() -> void:
 	owner.fishing = false
 	owner.hook_target.position = Vector2.ZERO
 	_hook.disconnect('hooked', self, '_on_fish_hooked')
-#	_hook.disconnect('tried', owner, 'speak')
+	_hook.disconnect('tried', owner, 'speak')
 	_hook.disconnect('sent_back', _state_machine, 'transition_to_key')
 	_hook.disconnect('fish_fled', self, '_on_fish_fled')
 
@@ -40,6 +40,8 @@ func unhandled_input(event: InputEvent) -> void:
 		var pull_result := owner.hook.pull_done(1.3) as Dictionary
 		
 		if not pull_result:
+			#toca ver por que esto suena en el jugador
+#			AudioEvent.emit_signal('play_requested', 'Fishing', 'return', _hook.global_position)
 			return
 		#Juan: ¿creo que este se puede quitar?
 		if pull_result.escaped:
@@ -76,8 +78,10 @@ func unhandled_input(event: InputEvent) -> void:
 
 func _on_fish_fled() -> void:
 	owner.fishing_zoom(false)
+	AudioEvent.emit_signal('play_requested', 'Fishing', 'escape', _hook.global_position)
 	owner.speak(tr('Se voló el bagrese...'))
 	_state_machine.transition_to_key('Idle')
 
 func _on_fish_hooked() -> void:
+	AudioEvent.emit_signal('play_requested', 'Fishing', 'hooked', _hook.global_position)
 	owner.react()
