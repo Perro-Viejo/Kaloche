@@ -474,7 +474,7 @@ bus = "SFX"
 
 [node name="react_fish" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource( 196 )
-volume_db = 3.0
+volume_db = -2.0
 
 [node name="Demon" type="Node2D" parent="."]
 
@@ -796,14 +796,17 @@ pitch_scale = 2.63
 
 [node name="pull_fish_small" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 60 )
+volume_db = 2.0
 pitch_scale = 1.39
 
 [node name="pull_fish_med" type="AudioStreamPlayer2D" parent="Fishing"]
 stream = ExtResource( 61 )
+volume_db = 2.0
 
 [node name="pull_fish_large" type="AudioStreamPlayer2D" parent="Fishing"]
 position = Vector2( 0.157486, 0.629959 )
 stream = ExtResource( 62 )
+volume_db = 2.0
 
 [node name="pull_fish_fight" type="Node2D" parent="Fishing"]
 script = ExtResource( 26 )
@@ -837,6 +840,12 @@ stream = ExtResource( 204 )
 
 [node name="escape" type="Node2D" parent="Fishing"]
 script = ExtResource( 26 )
+random_volume = true
+min_volume = -1.0
+max_volume = 2.0
+random_pitch = true
+min_pitch = -1.0
+max_pitch = 1.0
 
 [node name="escape_01" type="AudioStreamPlayer2D" parent="Fishing/escape"]
 stream = ExtResource( 200 )
@@ -868,11 +877,11 @@ stream = ExtResource( 201 )
 
 [node name="whoosh_in" type="AudioStreamPlayer" parent="Fishing"]
 stream = ExtResource( 206 )
-volume_db = -7.0
+volume_db = -3.0
 
 [node name="whoosh_out" type="AudioStreamPlayer" parent="Fishing"]
 stream = ExtResource( 207 )
-volume_db = -7.0
+volume_db = -3.0
 
 [node name="MusicManager" type="Node2D" parent="."]
 script = ExtResource( 69 )
