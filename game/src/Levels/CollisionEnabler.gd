@@ -38,7 +38,7 @@ func ready_setup() -> void:
 func _toggle_mask(body: Area2D, entered: bool) -> void:
 	if body.name == 'FootArea':
 		
-		prints('%s: %s' % [_parent.name, 'entra' if entered else 'sale'])
+#		prints('%s: %s' % [_parent.name, 'entra' if entered else 'sale'])
 		
 		# TODO: Reducir la lógica de este bloque ------------------------------
 		if disable_on_enter and entered:

@@ -39,4 +39,4 @@ func _toggle(body: Area2D, entered: bool) -> void:
 				area2d.set_deferred('monitoring', disable_on_entered)
 			area2d.modulate = color
 		
-		prints('%s: %s' % [name, 'entra' if entered else 'sale'])
+#		prints('%s: %s' % [name, 'entra' if entered else 'sale'])
