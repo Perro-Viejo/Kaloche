@@ -16,6 +16,14 @@ func _ready():
 	for b in targets:
 		_target_bodies.append(get_node(b))
 	
+	ready_setup()
+
+	connect('area_entered', self, '_toggle_mask', [true])
+	connect('area_exited', self, '_toggle_mask', [false])
+
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+func ready_setup() -> void:
 	if starts_disabled:
 		if not modify_masks:
 			for b in _target_bodies:
@@ -24,9 +32,6 @@ func _ready():
 			_parent.collision_layer = 0
 			_parent.collision_mask = 0
 		_parent.hide()
-
-	connect('area_entered', self, '_toggle_mask', [true])
-	connect('area_exited', self, '_toggle_mask', [false])
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒

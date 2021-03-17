@@ -298,20 +298,6 @@ tracks/22/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
-tracks/23/type = "method"
-tracks/23/path = NodePath("Platform/VisibilityDisabler")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "force_toggle"
-} ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "OpenDoor"
@@ -450,20 +436,6 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
-}
-tracks/11/type = "method"
-tracks/11/path = NodePath("Platform/VisibilityDisabler")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "force_toggle"
-} ]
 }
 
 [sub_resource type="GDScript" id=4]
@@ -655,7 +627,6 @@ anims/SETUP = SubResource( 3 )
 [node name="Floor" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 2
-frame = 1
 
 [node name="Surface" type="Area2D" parent="Floor"]
 visible = false
@@ -667,6 +638,7 @@ polygon = PoolVector2Array( 52, 171, -52, 171, -79, 144, -61, 108, -209, 108, -1
 
 [node name="HoleCollisions" type="StaticBody2D" parent="Floor"]
 visible = false
+collision_mask = 0
 
 [node name="LeftBack" type="CollisionPolygon2D" parent="Floor/HoleCollisions"]
 polygon = PoolVector2Array( -93, -150, -86, -162, -29, -162, -33, -155, -25, -153, -35, -151, -36, -150 )
@@ -693,7 +665,6 @@ polygon = PoolVector2Array( -151, -34, -77, -34, -70, -46, -144, -46 )
 position = Vector2( 0, -123.5 )
 texture = ExtResource( 4 )
 hframes = 2
-frame = 1
 
 [node name="Collisions" type="StaticBody2D" parent="WallsBack"]
 visible = false
@@ -709,7 +680,6 @@ polygon = PoolVector2Array( 175, 134.5, 244, 134.5, 231, 72.5, 163, -60.5, 50, -
 position = Vector2( 0, -233.5 )
 texture = ExtResource( 8 )
 hframes = 2
-frame = 1
 
 [node name="Collisions" type="StaticBody2D" parent="Facade"]
 visible = false
@@ -734,7 +704,6 @@ texture = ExtResource( 23 )
 polygon = PoolVector2Array( -16, 18, 16, 18, 16, -23, -16, -23 )
 
 [node name="Pillars" type="Node2D" parent="."]
-visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Pillars"]
 script = ExtResource( 36 )
@@ -747,7 +716,7 @@ range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 0, -76 )
+position = Vector2( 0, -196 )
 z_index = 4
 texture = ExtResource( 11 )
 
@@ -787,7 +756,7 @@ range_item_cull_mask = 64
 
 [node name="Middle" type="Sprite" parent="Pillars"]
 light_mask = 64
-position = Vector2( 0, -18 )
+position = Vector2( 0, -138 )
 z_index = 4
 texture = ExtResource( 9 )
 
@@ -835,7 +804,7 @@ range_item_cull_mask = 128
 
 [node name="Front" type="Sprite" parent="Pillars"]
 light_mask = 128
-position = Vector2( 0, 40 )
+position = Vector2( 0, -80 )
 z_index = 4
 texture = ExtResource( 10 )
 
@@ -876,10 +845,10 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
 
 [node name="Platform" type="Node2D" parent="."]
+visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
 script = ExtResource( 36 )
-ignore_childs = [ NodePath("../IsoFront"), NodePath("../IsoBack"), NodePath("../PlatformOff") ]
 
 [node name="Mask" type="Light2D" parent="Platform"]
 position = Vector2( 0, 25 )
@@ -889,7 +858,7 @@ range_item_cull_mask = 512
 
 [node name="PlatformOff" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -62 )
+position = Vector2( 0, 66 )
 z_index = 4
 texture = ExtResource( 27 )
 
@@ -932,7 +901,7 @@ polygon = PoolVector2Array( -58, 12, -58, 0, -50, -16, -40, -19, -40, -21, 40, -
 
 [node name="IsoBack" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -118.5 )
+position = Vector2( 0, 9.5 )
 z_index = 4
 texture = ExtResource( 31 )
 
@@ -999,7 +968,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 58, 40.6, 46, 32.6, -34, 32.6, -46, 40.6, -28, 40.6, -28, 44.6, -14, 37.6, -6, 41.6, 18, 41.6, 26, 37.6, 40, 44.6, 40, 40.6 )
 
 [node name="DoorButton" parent="Platform" instance=ExtResource( 28 )]
-position = Vector2( 0, -70 )
+position = Vector2( 0, 58 )
 z_index = 4
 pickable_needed = "Rocberto"
 
@@ -1015,7 +984,7 @@ polygon = PoolVector2Array( 8, 0, 17, 5, -1, 5 )
 
 [node name="IsoFront" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -102.5 )
+position = Vector2( 0, 25.5 )
 z_index = 4
 texture = ExtResource( 29 )
 
@@ -1102,6 +1071,7 @@ disable_on_entered = true
 polygon = PoolVector2Array( 13, 5, -13, 5, -16, 12, -43, 12, -64, 4, -64, 2, -55, -22, -38, -29, 38, -29, 55, -22, 64, 2, 64, 4, 43, 12, 16, 12 )
 
 [node name="Fingers" type="Node2D" parent="."]
+visible = false
 z_index = 4
 __meta__ = {
 "_edit_group_": true,
@@ -1116,12 +1086,12 @@ range_item_cull_mask = 32
 
 [node name="Left" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( -109, -126.5 )
+position = Vector2( -319, -126.5 )
 texture = ExtResource( 30 )
 
 [node name="Right" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( 109.5, -126.5 )
+position = Vector2( 319.5, -126.5 )
 texture = ExtResource( 32 )
 
 [node name="WallsFront" type="Sprite" parent="."]

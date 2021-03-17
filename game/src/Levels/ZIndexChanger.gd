@@ -26,11 +26,7 @@ func _ready():
 	for p in involved_nodes:
 		_involved_nodes.append(get_node(p))
 	
-	if disable_lights_on_ready:
-		for l in disable_lights_on_enter:
-			(get_node(l) as Light2D).enabled = false
-		for l in disable_lights_on_exit:
-			(get_node(l) as Light2D).enabled = false
+	ready_setup()
 
 	listen_areas(true)
 
@@ -50,6 +46,14 @@ func listen_areas(listen: bool) -> void:
 	else:
 		connect('area_entered', self, '_change_z_index', [true])
 		connect('area_exited', self, '_change_z_index', [false])
+
+
+func ready_setup() -> void:
+	if disable_lights_on_ready:
+		for l in disable_lights_on_enter:
+			(get_node(l) as Light2D).enabled = false
+		for l in disable_lights_on_exit:
+			(get_node(l) as Light2D).enabled = false
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒

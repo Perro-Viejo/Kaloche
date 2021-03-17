@@ -20,6 +20,7 @@ func _ready():
 	_root.connect('visibility_changed', self, '_toggle_colliders', [_root])
 	
 	# La verificación de estado inicial
+	yield(get_parent(), 'ready')
 	_toggle_colliders(_root)
 
 
@@ -35,8 +36,14 @@ func _toggle_colliders(node: Node2D = self, force := false) -> void:
 #			(c as StaticBody2D).collision_layer = 0 if not _root.visible else 1
 			(c as StaticBody2D).collision_mask = 0 if not _root.visible else 1
 		elif c is Area2D:
-			(c as Area2D).monitorable = _root.visible
-			(c as Area2D).monitoring = _root.visible
+			if _root.visible and (c is CollisionEnabler or c is ZIndexChanger):
+				# Para que se configure el nodo en el estado por defecto
+				(c as Area2D).monitorable = true
+				(c as Area2D).monitoring = true
+				c.ready_setup()
+			else:
+				(c as Area2D).monitorable = _root.visible
+				(c as Area2D).monitoring = _root.visible
 		elif c is Light2D:
 			(c as Light2D).enabled = _root.visible
 
