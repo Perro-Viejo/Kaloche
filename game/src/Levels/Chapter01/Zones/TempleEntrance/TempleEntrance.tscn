@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -43,6 +43,10 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on_behind.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_door_mask.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pillars.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch_mask.png" type="Texture" id=47]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -337,6 +341,38 @@ tracks/25/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/26/type = "value"
+tracks/26/path = NodePath("Platform/DoorButton:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/27/type = "bezier"
+tracks/27/path = NodePath("FacadeTorch:position:x")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("FacadeTorch:position:y")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( -302.5, -0.25, 0, 0.25, 0, -302.5, -0.25, 0, 0.25, 0, -278.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "OpenDoor"
@@ -348,7 +384,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"times": PoolRealArray( 0, 1 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Door:position:y")
@@ -358,7 +394,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( -185, -0.25, 0, 0.25, 0, -236, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Platform/IsoBack:position:y")
@@ -399,8 +435,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1 )
 }
 tracks/6/type = "bezier"
 tracks/6/path = NodePath("Platform/PlatformOn:position:y")
@@ -410,7 +446,7 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
 "points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -74, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"times": PoolRealArray( 0, 1 )
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Platform/PlatformOff:visible")
@@ -459,6 +495,38 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("FacadePillars:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("FacadePillars:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("FacadePillars:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -631,6 +699,54 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("FacadePillars:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("FacadePillars:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 90 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Platform/DoorButton:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("FacadeTorch:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -302.5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1030,6 +1146,18 @@ tracks/34/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/35/type = "value"
+tracks/35/path = NodePath("FacadePillars:visible")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="GDScript" id=5]
 script/source = "tool
@@ -1292,11 +1420,52 @@ range_z_min = 0
 range_z_max = 0
 range_item_cull_mask = 16384
 
+[node name="TorchMask" type="Light2D" parent="Facade"]
+position = Vector2( 0, -58.5 )
+texture = ExtResource( 47 )
+mode = 3
+range_z_min = 0
+range_z_max = 0
+range_item_cull_mask = 16384
+
 [node name="Collisions" type="StaticBody2D" parent="Facade"]
 visible = false
 
 [node name="Front" type="CollisionPolygon2D" parent="Facade/Collisions"]
 polygon = PoolVector2Array( -49, 66.5, -17, 66.5, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66.5, 49, 66.5, 49, 1.5, -49, 1.5 )
+
+[node name="FacadeTorch" type="Sprite" parent="."]
+light_mask = 16384
+position = Vector2( 0, -278.5 )
+texture = ExtResource( 46 )
+
+[node name="FacadePillars" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, 90 )
+
+[node name="VisibilityDisabler" type="Node2D" parent="FacadePillars"]
+script = ExtResource( 36 )
+
+[node name="Pillars" type="Sprite" parent="FacadePillars"]
+position = Vector2( 0, -175 )
+texture = ExtResource( 44 )
+
+[node name="Collisions" type="StaticBody2D" parent="FacadePillars/Pillars"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FacadePillars/Pillars/Collisions"]
+polygon = PoolVector2Array( -23, 22, -29, 19, -45, 19, -45, 20, -29, 20 )
+
+[node name="ZIndexChanger" type="Area2D" parent="FacadePillars/Pillars"]
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 12 )
+involved_nodes = [ NodePath("../../Pyramids") ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FacadePillars/Pillars/ZIndexChanger"]
+polygon = PoolVector2Array( -31, 29, -20, 22, -16, 22, -16, 39, -48, 39, -48, 29 )
+
+[node name="Pyramids" type="Sprite" parent="FacadePillars"]
+position = Vector2( 0, -212.5 )
+texture = ExtResource( 45 )
 
 [node name="Door" type="Sprite" parent="."]
 light_mask = 16384
@@ -1584,7 +1753,6 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 58, 40.6, 46, 32.6, -34, 32.6, -46, 40.6, -28, 40.6, -28, 44.6, -14, 37.6, -6, 41.6, 18, 41.6, 26, 37.6, 40, 44.6, 40, 40.6 )
 
 [node name="DoorButton" parent="Platform" instance=ExtResource( 28 )]
-visible = false
 position = Vector2( 0, -70 )
 z_index = 4
 needs_grabbing = false
@@ -1671,6 +1839,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 17, 41.5, 46, 39.5, 59, 39.5, 52, 24.5, 34, 24.5, 34, 28.5, 25, 33.5, 8, 25.5, 8, 24.5, -8, 24.5, -8, 25.5, -25, 33.5, -34, 28.5, -34, 24.5, -52, 24.5, -59, 39.5, -46, 39.5, -17, 41.5 )
 
 [node name="PlatformOn" type="Sprite" parent="Platform"]
+visible = false
 light_mask = 512
 position = Vector2( 0, -50 )
 z_index = 4
