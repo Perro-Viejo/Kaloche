@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -40,6 +40,8 @@
 [ext_resource path="res://src/Levels/CollisionEnabler.gd" type="Script" id=38]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_iso_back_behind.png" type="Texture" id=39]
 [ext_resource path="res://src/Levels/Area2DToggler.gd" type="Script" id=40]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on_behind.png" type="Texture" id=42]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -298,12 +300,168 @@ tracks/22/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/23/type = "value"
+tracks/23/path = NodePath("Platform/DoorButton:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Platform/PlatformOn:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Platform/PlatformOff:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "OpenDoor"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Door:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Door:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -185, -0.25, 0, 0.25, 0, -236, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Platform/IsoBack:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -118.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Platform/IsoFront:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -102.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Platform/PlatformOn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Platform/PlatformOn:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Platform/PlatformOn:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -74, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Platform/PlatformOff:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Platform/Area2DTogglers/ExternalToggler:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Platform/Area2DTogglers/InternalToggler:monitoring")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Platform/DoorButton:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
-resource_name = "SETUP"
+resource_name = "SETUP_ACTIVATE"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pillars/Back:position")
@@ -437,8 +595,442 @@ tracks/10/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Platform/DoorButton:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Platform/PlatformOn:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Platform/PlatformOff:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="Animation" id=4]
+resource_name = "SETUP_OPEN_DOOR"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pillars/Back:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -76 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pillars/Middle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -18 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pillars/Front:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Facade:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Floor:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("WallsBack:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Pillars:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Platform:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Fingers:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Fingers/Left:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( -109, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Fingers/Left:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("Fingers/Right:position:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 109.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("Fingers/Right:position:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("Platform/PlatformOff:position:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("Platform/PlatformOff:position:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( -62, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("Platform/IsoBack:position:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("Platform/IsoBack:position:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( -118.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("Platform/DoorButton:position:x")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("Platform/DoorButton:position:y")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( -70, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("Platform/IsoFront:position:x")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/20/type = "bezier"
+tracks/20/path = NodePath("Platform/IsoFront:position:y")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"points": PoolRealArray( -102.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Floor/HoleCollisions:collision_mask")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/22/type = "bezier"
+tracks/22/path = NodePath("Door:position:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("Door:position:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( -185, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Platform/PlatformOn:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("Platform/PlatformOn:position:x")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("Platform/PlatformOn:position:y")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( -50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Platform/PlatformOff:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Platform/DoorButton:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/29/type = "method"
+tracks/29/path = NodePath("Platform/PlatformOff/VisibilityDisabler")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "toggle_colliders"
+} ]
+}
+tracks/30/type = "method"
+tracks/30/path = NodePath("Platform/IsoFront/VisibilityDisabler")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "force_disable"
+} ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Platform/Area2DTogglers/ExternalToggler:monitoring")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Platform/Area2DTogglers/InternalToggler:monitoring")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/33/type = "method"
+tracks/33/path = NodePath("Platform/IsoBack/VisibilityDisabler")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "force_disable"
+} ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Platform/DoorButton:modulate")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="GDScript" id=5]
 script/source = "tool
 class_name ZIndexChanger
 extends Area2D
@@ -485,129 +1077,129 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 			(get_node(l) as Light2D).enabled = entered
 "
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 1024, 256, 256 )
 
-[sub_resource type="SpriteFrames" id=35]
+[sub_resource type="SpriteFrames" id=36]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
@@ -622,7 +1214,8 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Activate = SubResource( 1 )
 anims/OpenDoor = SubResource( 2 )
-anims/SETUP = SubResource( 3 )
+anims/SETUP_ACTIVATE = SubResource( 3 )
+anims/SETUP_OPEN_DOOR = SubResource( 4 )
 
 [node name="Floor" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -699,6 +1292,7 @@ position = Vector2( 0, -185 )
 texture = ExtResource( 23 )
 
 [node name="Collisions" type="StaticBody2D" parent="Door"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/Collisions"]
 polygon = PoolVector2Array( -16, 18, 16, 18, 16, -23, -16, -23 )
@@ -780,7 +1374,7 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Middle"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 4 )
+script = SubResource( 5 )
 zindex_on_entered = 0
 zindex_on_exited = 4
 involved_nodes = [ NodePath("../../Back") ]
@@ -828,7 +1422,7 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Front"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 4 )
+script = SubResource( 5 )
 zindex_on_entered = 0
 zindex_on_exited = 4
 involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
@@ -849,6 +1443,7 @@ visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
 script = ExtResource( 36 )
+ignore_childs = [ NodePath("../PlatformOn") ]
 
 [node name="Mask" type="Light2D" parent="Platform"]
 position = Vector2( 0, 25 )
@@ -862,7 +1457,12 @@ position = Vector2( 0, 66 )
 z_index = 4
 texture = ExtResource( 27 )
 
+[node name="VisibilityDisabler" type="Node2D" parent="Platform/PlatformOff"]
+script = ExtResource( 36 )
+toggle_on_ready = false
+
 [node name="Collisions" type="StaticBody2D" parent="Platform/PlatformOff"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOff/Collisions"]
 polygon = PoolVector2Array( -16, 15, -43, 15, -61, 6, -61, 2, -53, -16, -39, -23, 39, -23, 53, -16, 61, 2, 61, 6, 43, 15, 16, 15, 13, 5, 15, 10, 43, 10, 59, 4, 51, -14, 39, -20, -39, -20, -51, -14, -59, 4, -43, 10, -15, 10, -13, 5 )
@@ -901,9 +1501,13 @@ polygon = PoolVector2Array( -58, 12, -58, 0, -50, -16, -40, -19, -40, -21, 40, -
 
 [node name="IsoBack" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, 9.5 )
+position = Vector2( 0, -118.5 )
 z_index = 4
 texture = ExtResource( 31 )
+
+[node name="VisibilityDisabler" type="Node2D" parent="Platform/IsoBack"]
+script = ExtResource( 36 )
+toggle_on_ready = false
 
 [node name="Behind" type="Light2D" parent="Platform/IsoBack"]
 enabled = false
@@ -970,6 +1574,7 @@ polygon = PoolVector2Array( 58, 40.6, 46, 32.6, -34, 32.6, -46, 40.6, -28, 40.6,
 [node name="DoorButton" parent="Platform" instance=ExtResource( 28 )]
 position = Vector2( 0, 58 )
 z_index = 4
+needs_grabbing = false
 pickable_needed = "Rocberto"
 
 [node name="Sprite" parent="Platform/DoorButton" index="1"]
@@ -979,14 +1584,22 @@ offset = Vector2( 0, 0 )
 hframes = 3
 region_rect = Rect2( 0, 0, 75, 8 )
 
+[node name="Area2D" parent="Platform/DoorButton" index="2"]
+visible = false
+
 [node name="CollisionPolygon2D" parent="Platform/DoorButton/Area2D" index="0"]
 polygon = PoolVector2Array( 8, 0, 17, 5, -1, 5 )
 
 [node name="IsoFront" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, 25.5 )
+position = Vector2( 0, -102.5 )
 z_index = 4
 texture = ExtResource( 29 )
+
+[node name="VisibilityDisabler" type="Node2D" parent="Platform/IsoFront"]
+position = Vector2( 0, -16 )
+script = ExtResource( 36 )
+toggle_on_ready = false
 
 [node name="Behind" type="Light2D" parent="Platform/IsoFront"]
 enabled = false
@@ -1044,6 +1657,35 @@ disable_lights_on_ready = true
 scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 17, 41.5, 46, 39.5, 59, 39.5, 52, 24.5, 34, 24.5, 34, 28.5, 25, 33.5, 8, 25.5, 8, 24.5, -8, 24.5, -8, 25.5, -25, 33.5, -34, 28.5, -34, 24.5, -52, 24.5, -59, 39.5, -46, 39.5, -17, 41.5 )
 
+[node name="PlatformOn" type="Sprite" parent="Platform"]
+visible = false
+light_mask = 512
+position = Vector2( 0, -50 )
+z_index = 4
+texture = ExtResource( 41 )
+
+[node name="VisibilityDisabler" type="Node2D" parent="Platform/PlatformOn"]
+script = ExtResource( 36 )
+
+[node name="Behind" type="Light2D" parent="Platform/PlatformOn"]
+texture = ExtResource( 42 )
+mode = 2
+range_item_cull_mask = 32768
+
+[node name="Collisions" type="StaticBody2D" parent="Platform/PlatformOn"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOn/Collisions"]
+polygon = PoolVector2Array( -15, -32, -15, 2, 15, 2, 15, -32, 19, -32, 19, 0, 37, 0, 49, 6, 56, 20, 42, 27, -42, 27, -56, 20, -49, 6, -37, 0, -19, 0, -19, -32 )
+
+[node name="ZIndexChanger" type="Area2D" parent="Platform/PlatformOn"]
+modulate = Color( 0, 1, 1, 1 )
+script = ExtResource( 12 )
+involved_nodes = [ NodePath("../../IsoBack"), NodePath("../../IsoFront") ]
+disable_lights_on_enter = [ NodePath("../Behind"), NodePath("../../IsoBack/Behind"), NodePath("../../IsoFront/Behind") ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/PlatformOn/ZIndexChanger"]
+polygon = PoolVector2Array( -42, 33, -58, 25, -72, 25, -72, 50, 72, 50, 72, 25, 58, 25, 42, 33 )
+
 [node name="Area2DTogglers" type="Node2D" parent="Platform"]
 position = Vector2( 0, -62 )
 z_index = 10
@@ -1051,6 +1693,7 @@ z_index = 10
 [node name="ExternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
+monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../../IsoBack/DownCollisions/CollisionEnabler"), NodePath("../../PlatformOff/ExternalCollisions/CollisionEnabler"), NodePath("../../PlatformOff/Collisions/CollisionEnabler"), NodePath("../InternalToggler"), NodePath("../../IsoBack/ZIndexChanger"), NodePath("../../IsoFront/ZIndexChanger") ]
@@ -1062,6 +1705,7 @@ polygon = PoolVector2Array( -61, 15, -61, 2, -53, -16, -39, -23, -39, -20, 39, -
 [node name="InternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
+monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../ExternalToggler") ]
@@ -1078,11 +1722,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Mask" type="Light2D" parent="Fingers"]
+[node name="Behind" type="Light2D" parent="Fingers"]
 position = Vector2( 0, -127 )
 texture = ExtResource( 34 )
-mode = 3
-range_item_cull_mask = 32
+mode = 2
+range_item_cull_mask = 32768
 
 [node name="Left" type="Sprite" parent="Fingers"]
 light_mask = 32
@@ -1191,7 +1835,7 @@ texture = ExtResource( 21 )
 
 [node name="Trees" type="AnimatedSprite" parent="Treepots"]
 position = Vector2( -4.5, -56 )
-frames = SubResource( 35 )
+frames = SubResource( 36 )
 
 [node name="K" type="Sprite" parent="."]
 position = Vector2( 0, 78.5 )

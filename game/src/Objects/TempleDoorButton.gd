@@ -1,5 +1,6 @@
+class_name SpriteButton
 extends Node2D
-# ⠿⠿⠿⠿ Variables ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+
 signal button_pressed
 signal button_unpressed
 
@@ -27,16 +28,21 @@ func activate():
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _on_pressed(body: Node) -> void:
 	if not _pressed and body.name == 'Player':
-		if body.grabbing == needs_grabbing:
+		if needs_grabbing and body.grabbing:
 			if pickable_needed == '' or body.picked_item.name == pickable_needed:
 				_pressed = true
-				$Area2D.disconnect('body_entered', self, '_on_pressed')
-				$Area2D.connect('body_entered', self, '_on_unpressed')
-				
-				$AnimationPlayer.play('press')
-				AudioEvent.emit_signal('play_requested','Button','Down', position)
-				yield(get_tree().create_timer(0.1), 'timeout')
-				emit_signal('button_pressed')
+		elif not needs_grabbing:
+			_pressed = true
+		
+		if _pressed:
+			$Area2D.disconnect('body_entered', self, '_on_pressed')
+			$Area2D.connect('body_entered', self, '_on_unpressed')
+
+			$AnimationPlayer.play('press')
+			AudioEvent.emit_signal('play_requested','Button','Down', position)
+
+			yield(get_tree().create_timer(0.1), 'timeout')
+			emit_signal('button_pressed')
 
 
 func _on_unpressed(body: Node) -> void:
@@ -45,8 +51,10 @@ func _on_unpressed(body: Node) -> void:
 			_pressed = false
 			$Area2D.connect('body_entered', self, '_on_pressed')
 			$Area2D.disconnect('body_entered', self, '_on_unpressed')
-			
+
 			$AnimationPlayer.play_backwards('press')
+
 			AudioEvent.emit_signal('play_requested','Button','Up', position)
+
 			yield(get_tree().create_timer(0.1), 'timeout')
 			emit_signal('button_unpressed')
