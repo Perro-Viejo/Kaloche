@@ -39,12 +39,10 @@ func exit() -> void:
 	if owner.surface_ref:
 		if owner.surface_ref.type == Data.SurfaceType.WATER:
 			_small_wave_timer.stop()
-		
+
 		if _pull_done and owner.surface_ref.is_in_group('FishingSurface'):
 			owner.surface_ref.hook_exited(owner)
-			
 
-#	owner.surface_ref = null
 	.exit()
 
 
@@ -122,5 +120,6 @@ func _check_surface() -> void:
 				owner.surface_ref.hook_entered(owner)
 			return
 		else:
+			prints('la verdura está cara')
 			owner.surface_ref.hook_ref = null
 	_sent_back()

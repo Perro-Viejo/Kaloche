@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://src/Shaders/clouds_noise2.tres" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/lake_mask.png" type="Texture" id=23]
 [ext_resource path="res://src/Objects/FishTank.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_water_mask.png" type="Texture" id=25]
 [ext_resource path="res://src/Objects/Hole.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/images/world/chapter_0.1/map.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_bushes.png" type="Texture" id=28]
@@ -96,6 +95,7 @@ visible = false
 
 [node name="Map" type="Node2D" parent="."]
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -139,6 +139,9 @@ texture = ExtResource( 28 )
 
 [node name="Zones" type="Node2D" parent="."]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="EntranceRuins" parent="Zones" instance=ExtResource( 44 )]
 position = Vector2( 366.682, 1189.88 )
@@ -153,7 +156,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 18
+frame = 12
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -176,6 +179,9 @@ position = Vector2( -50, 654 )
 [node name="RuinsRocberto" type="Sprite" parent="Zones"]
 position = Vector2( -355, 454 )
 texture = ExtResource( 31 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Zones/RuinsRocberto"]
 
@@ -222,6 +228,9 @@ position = Vector2( 10.5, -824 )
 [node name="ConditionArea" type="Area2D" parent="Zones"]
 position = Vector2( -17.4264, 525.118 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 pickable_needed = "Rocberto"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ConditionArea"]
@@ -285,7 +294,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 479, 1182 )
+position = Vector2( 403, -284 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
@@ -296,6 +305,9 @@ material = SubResource( 7 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100
 texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
@@ -303,6 +315,10 @@ scroll_base_scale = Vector2( 1.2, 1.2 )
 
 [node name="Start" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( 60, 220 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/Start"]
 position = Vector2( 384, 1217 )
@@ -310,6 +326,10 @@ texture = ExtResource( 3 )
 
 [node name="Rocberto" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( -100, 80 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/Rocberto"]
 position = Vector2( -378, 492 )
@@ -317,6 +337,10 @@ texture = ExtResource( 30 )
 
 [node name="FishTank" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( -35, 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/FishTank"]
 position = Vector2( -59, 215 )
@@ -325,6 +349,10 @@ offset = Vector2( 46, -25 )
 
 [node name="Altar" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( -102.5, -70 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/Altar"]
 position = Vector2( -366.5, -225.5 )
@@ -332,12 +360,20 @@ texture = ExtResource( 42 )
 
 [node name="RodTemple" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( -8, 145 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/RodTemple"]
 position = Vector2( 121, 810 )
 texture = ExtResource( 43 )
 
 [node name="Masks" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="LakeMask" type="Light2D" parent="Masks"]
 position = Vector2( 459, -282 )
@@ -345,12 +381,6 @@ texture = ExtResource( 23 )
 mode = 3
 range_z_min = 1
 range_z_max = 1
-range_item_cull_mask = 1024
-
-[node name="TankMask" type="Light2D" parent="Masks"]
-position = Vector2( -16, 120 )
-texture = ExtResource( 25 )
-mode = 2
 range_item_cull_mask = 1024
 
 [node name="RocbertoMask" type="Light2D" parent="Masks"]

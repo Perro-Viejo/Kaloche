@@ -54,8 +54,8 @@ func _physics_process(delta) -> void:
 	if not can_move or owner.is_paused:
 		return
 
-	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+	dir.x = Utils.is_pressed('Right', true) - Utils.is_pressed('Left', true)
+	dir.y = Utils.is_pressed('Down', true) - Utils.is_pressed('Up', true)
 	
 	owner.dir = dir
 	

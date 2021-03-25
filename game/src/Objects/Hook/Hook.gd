@@ -43,6 +43,7 @@ func _process(delta):
 	if thrown:
 		position.y = height * (-time * time + time)
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func pull_done(rod_strength: float) -> Dictionary:
 	if $StateMachine.state.has_method('pull_done') :
@@ -70,6 +71,7 @@ func show_hook(value):
 	$Sprite.visible = value
 	$String.visible = value
 
+
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _set_target_pos(end_pos: Vector2) -> void:
 	dflt_pos = position
@@ -83,7 +85,12 @@ func _set_bait(new_bait := '') -> void:
 
 
 func _set_surface_ref(new_surface: Area2D) -> void:
+	if surface_ref and new_surface \
+		and new_surface.get_instance_id() == surface_ref.get_instance_id():
+		return
+
 	surface_ref = new_surface
 	surface_type = new_surface.surface_name if new_surface else 'Grass'
+
 	if $StateMachine.state.has_method('surface_updated') :
 		$StateMachine.state.surface_updated()

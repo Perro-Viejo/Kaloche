@@ -29,8 +29,8 @@ func _ready():
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func fill_tank():
-	_tank_surface.type = Data.SurfaceType.WATER
-	_tank_surface.surface_name = 'Water'
+#	_tank_surface.type = Data.SurfaceType.WATER
+#	_tank_surface.surface_name = 'Water'
 	_is_filling = true
 	AudioEvent.emit_signal('stop_requested', 'Tank', 'Empty')
 	AudioEvent.emit_signal(
@@ -78,9 +78,9 @@ func activate_tank():
 func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == _animation.get_current_animation_length():
 		activate_tank()
-	if _animation.get_current_animation_position() == 0:
-		_tank_surface.type = Data.SurfaceType.ROCK
-		_tank_surface.surface_name = 'Rock'
+#	if _animation.get_current_animation_position() == 0:
+#		_tank_surface.type = Data.SurfaceType.ROCK
+#		_tank_surface.surface_name = 'Rock'
 
 
 func _on_area_entered(other) -> void:

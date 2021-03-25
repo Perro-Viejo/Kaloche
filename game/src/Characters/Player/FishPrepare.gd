@@ -116,6 +116,7 @@ func _set_current_direction(dir: int) -> void:
 				hook_target_pos = Vector2(distance * -1, 12)
 				aim_distance = Vector2(distance * -1 - _hook.position.x + 18,0)
 
+	(owner.hook as Hook).surface_ref = null
 	owner.hook_target.position = aim_distance
 	owner.hook_target.show()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://assets/images/characters/teotriste_behind.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://src/Characters/Player/FishHold.gd" type="Script" id=16]
 [ext_resource path="res://assets/images/characters/teotriste_shadow.png" type="Texture" id=17]
 [ext_resource path="res://src/Inventory/InventoryPlayer.tres" type="Resource" id=18]
+[ext_resource path="res://src/Levels/VisibilityDisabler.gd" type="Script" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 13 )
@@ -843,6 +844,10 @@ position = Vector2( -4.3955, -6.81772 )
 [node name="HookTarget" type="Area2D" parent="."]
 visible = false
 scale = Vector2( 0.5, 0.5 )
+
+[node name="VisibilityDisabler" type="Node2D" parent="HookTarget"]
+script = ExtResource( 19 )
+check_root = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookTarget"]
 modulate = Color( 0.388235, 0.0313726, 0.960784, 1 )

@@ -51,8 +51,7 @@ func _ready() -> void:
 	# Escuchar eventos de los hijos de satán
 	$FootArea.connect('area_entered', self, 'toggle_on_ground', [ true ])
 	$FootArea.connect('area_exited', self, 'toggle_on_ground')
-	hook_target.connect('area_entered', self, '_set_hook_drop_surface', [ true ])
-	hook_target.connect('area_exited', self, '_set_hook_drop_surface', [ false ])
+	hook_target.connect('area_entered', self, '_set_hook_drop_surface')
 
 	# Conectarse a eventos del universo
 	DialogEvent.connect('line_triggered', self, '_should_speak')
@@ -289,9 +288,6 @@ func _set_current_tool(tool_id: int) -> void:
 		speak('No tengo nada... y no [shake]se me para[/shake]')
 
 
-func _set_hook_drop_surface(area: Area2D, entered: bool) -> void:
+func _set_hook_drop_surface(area: Area2D) -> void:
 	if area.is_in_group('Surface'):
-		if entered:
-			hook.surface_ref = area as Surface
-		else:
-			hook.surface_ref = null
+		hook.surface_ref = area as Surface

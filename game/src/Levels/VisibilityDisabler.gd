@@ -7,6 +7,7 @@ extends Node2D
 export var root_path: NodePath = '../'
 export(Array, NodePath) var ignore_childs = []
 export var toggle_on_ready := true
+export var check_root := false
 
 var _ids_to_ignore := []
 
@@ -23,7 +24,7 @@ func _ready():
 	# La verificación de estado inicial
 	if toggle_on_ready:
 		yield(get_parent(), 'ready')
-		_toggle_colliders(_root)
+		toggle_colliders()
 
 
 # ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
@@ -39,21 +40,31 @@ func toggle_colliders() -> void:
 func _toggle_colliders(node: Node2D = self, force_disable := false) -> void:
 	var target_state: bool = false if force_disable else _root.visible
 	
+	# Esto se usa en los casos en los que este nodo se asignó como hijo de un
+	# nodo de los tipos: StaticBody2D, Area2D y Light2D
+	if check_root and node.get_instance_id() == _root.get_instance_id():
+		_check_node(_root, target_state)
+	
 	for c in node.get_children():
-		if c is StaticBody2D:
-			(c as StaticBody2D).collision_mask = 0 if not target_state else 1
-		elif c is Area2D:
-			if target_state and (c is CollisionEnabler or c is ZIndexChanger):
-				# Para que se configure el nodo en el estado por defecto
-				(c as Area2D).monitorable = true
-				(c as Area2D).monitoring = true
-				c.ready_setup()
-			else:
-				(c as Area2D).monitorable = target_state
-				(c as Area2D).monitoring = target_state
-		elif c is Light2D:
-			(c as Light2D).enabled = target_state
+		_check_node(c, target_state)
 
 		if not c.get_children().empty():
 			if not _ids_to_ignore.has(c.get_instance_id()):
 				_toggle_colliders(c, force_disable)
+
+
+# Inhabilita o habilita un nodo si es de los tipos: StaticBody2D, Area2D y Light2D
+func _check_node(node: Node2D, target_state: bool) -> void:
+	if node is StaticBody2D:
+		(node as StaticBody2D).collision_mask = 0 if not target_state else 1
+	elif node is Area2D:
+		if target_state and (node is CollisionEnabler or node is ZIndexChanger):
+			# Para que se configure el nodo en el estado por defecto
+			(node as Area2D).monitorable = true
+			(node as Area2D).monitoring = true
+			node.ready_setup()
+		else:
+			(node as Area2D).monitorable = target_state
+			(node as Area2D).monitoring = target_state
+	elif node is Light2D:
+		(node as Light2D).enabled = target_state

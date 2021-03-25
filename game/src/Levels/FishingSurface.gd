@@ -77,8 +77,7 @@ func hook_entered(hook: Hook) -> void:
 		hook_ref.connect('sent_back', self, 'hook_exited')
 	if not hook_ref.is_connected('fish_fled', self, '_show_shadows'):
 		hook_ref.connect('fish_fled', self, '_show_shadows')
-	
-#	hook_ref.surface_ref = self
+
 	show_wave('waveB')
 	var splash = HOOK_SPLASH.instance()
 	add_child(splash)
@@ -289,6 +288,7 @@ func _remove_shadow() -> void:
 		DebugOverlay.remove_monitor(_fish_examine_debug_id)
 		remove_child(_fish_shadow)
 		_fish_shadow.queue_free()
+		_fish_shadow = null
 
 
 func _show_shadows() -> void:
