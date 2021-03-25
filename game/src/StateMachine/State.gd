@@ -13,6 +13,8 @@ var _parent: Node = null
 
 onready var _state_machine = _get_state_machine(self)
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
 func _ready() -> void:
 	yield(owner, 'ready')
 	if _parent_path:
@@ -20,8 +22,9 @@ func _ready() -> void:
 	else:
 		_parent = get_node('../..')
 	visible = false
-	
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func unhandled_input(event: InputEvent) -> void:
 	pass
 
@@ -45,16 +48,20 @@ func exit() -> void:
 	visible = false
 	stop()
 
+
 func play_animation() -> bool:
 	if animation_name:
 		owner.play_animation(animation_name)
 		return true
 	return false
-	
+
+
 func stop() -> void:
 	if animation_name:
 		owner.stop_animation()
-	
+
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
 func _get_state_machine(node: Node) -> Node:
 	if node != null and not node.is_in_group('state_machine'):
 		return _get_state_machine(node.get_parent())

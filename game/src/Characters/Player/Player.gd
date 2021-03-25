@@ -280,9 +280,10 @@ func _set_surface(id := '') -> void:
 
 func _set_current_tool(tool_id: int) -> void:
 	var i: Inventory = inventory
+
 	if inventory.has_item('I_ROD'):
 		current_tool = tool_id
-		if $StateMachine.state == $StateMachine.STATES.IDLE:
+		if $StateMachine.state.has_method('on_tool_equiped'):
 			$StateMachine.state.on_tool_equiped(tool_id)
 	else:
 		speak('No tengo nada... y no [shake]se me para[/shake]')

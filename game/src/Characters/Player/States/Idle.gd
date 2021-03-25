@@ -1,5 +1,7 @@
 extends "res://src/StateMachine/State.gd"
 
+
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 	
@@ -10,6 +12,7 @@ func enter(msg: Dictionary = {}) -> void:
 	if msg.has('pickup'):
 		yield(owner.pickup_item(), 'completed')
 		play_animation()
+
 
 func play_animation() -> bool:
 	if owner.has_equiped():
@@ -22,9 +25,6 @@ func play_animation() -> bool:
 		else:
 			owner.play_animation('idle')
 	return true
-
-func exit() -> void:
-	.exit()
 
 
 func on_tool_equiped(tool_id: int) -> void:
