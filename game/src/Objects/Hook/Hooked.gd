@@ -22,7 +22,7 @@ var _hooked_time_debug := -1
 var _next_position := Vector2.ZERO
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	set_process(false)
 
@@ -65,7 +65,7 @@ func _process(delta) -> void:
 		_state_machine.transition_to_key('Idle')
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func enter(msg: Dictionary = {}) -> void:
 	PlayerEvent.emit_signal('camera_shook', 
 	{
@@ -145,7 +145,7 @@ func pull_done(rod_strength: float) -> Dictionary:
 	
 	return result
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 # Instancia el pez pescado y lo manda pa' detrás del Teotriste
 func _catch_fish() -> void:
 	var fish := preload('res://src/Pickables/Fish_Pickable.tscn').instance() as FishPickable

@@ -8,7 +8,7 @@ export (Array, Resource) var default_items := []
 var _inventory := {}
 var _current_size := 0
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func add_to_inventory(item) -> bool:
 	if item.is_type("Item"):
 		return _add_item_to_inventory(item)
@@ -45,7 +45,7 @@ func set_default_items() -> void:
 		for i in default_items:
 			_add_item_to_inventory(i)
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _add_item_to_inventory(item) -> bool:
 	if max_size < 0 or _current_size + 1 <= max_size:
 		if item.name_code in _inventory:

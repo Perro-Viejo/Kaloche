@@ -3,7 +3,7 @@ extends Node2D
 var _speed_modifier := 2.0
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func open() -> void:
 	$AnimationPlayer.play('open', -1, 1 / _speed_modifier)
 	AudioEvent.emit_signal('play_requested', 'Temple', 'Door_Open')

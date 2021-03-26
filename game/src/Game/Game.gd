@@ -13,6 +13,7 @@ var FadeState:int = IDLE
 onready var CurrentScene = null
 onready var CurrentSceneInstance = $Levels.get_child($Levels.get_child_count() - 1)
 
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
@@ -20,7 +21,15 @@ func _ready()->void:
 	
 	if OS.has_feature('release'):
 		Data.set_data(Data.SHOW_DEBUG, false)
+	
+	if Settings.HTML5:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+	# Conectarse a eventos de los chabalitos
+	$HTMLfocus.connect('closed', self, '_on_html_focus_closed')
+
+
+	# Conectarse a eventos del universo digimon
 	GuiEvent.connect("Options",	self, "on_Options")
 	GuiEvent.connect("Exit",		self, "on_Exit")
 	GuiEvent.connect("ChangeScene",self, "on_ChangeScene")
@@ -32,10 +41,6 @@ func _ready()->void:
 	AudioEvent.connect('music_requested', self, 'play_song')
 	AudioEvent.connect('music_stoped', $Music, 'stop')
 
-	guiBrain.gui_collect_focusgroup()
-
-#	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
 	AudioEvent.emit_signal("play_requested", "MX", "Menu")
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
@@ -112,3 +117,7 @@ func _on_FadeTween_tween_completed(object, key)->void:
 			$FadeLayer/FadeTween.start()
 		FADEIN:
 			FadeState = IDLE
+
+
+func _on_html_focus_closed() -> void:
+	guiBrain.gui_collect_focusgroup()

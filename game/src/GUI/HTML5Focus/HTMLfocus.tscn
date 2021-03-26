@@ -3,9 +3,6 @@
 [ext_resource path="res://src/GUI/HTML5Focus/HTMLfocus.gd" type="Script" id=1]
 [ext_resource path="res://assets/resources/dynamic_fonts/m5x7_64.tres" type="DynamicFont" id=2]
 
-
-
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -36,4 +33,5 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 text = "Click me"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

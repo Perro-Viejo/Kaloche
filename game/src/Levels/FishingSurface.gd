@@ -37,7 +37,7 @@ var _can_receive := true
 onready var _shadows := Node2D.new() # Para agrupar los nodos de las sombras
 onready var _tween := Tween.new()
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
 	_shadows.name = 'Shadows'
 	type = Data.SurfaceType.WATER
@@ -70,7 +70,7 @@ func _process(delta):
 				_reset_bait()
 				_on_fish_bit()
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func hook_entered(hook: Hook) -> void:
 	hook_ref = hook
 	if not hook_ref.is_connected('sent_back', self, 'hook_exited'):
@@ -144,7 +144,7 @@ func get_fish_examine_wait() -> float:
 	return stepify(_fish_examine_wait, 1.0) + 1.0
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _spawn_fishes() -> void:
 	for c in range(max_fish_count):
 		var fish: FishData = null

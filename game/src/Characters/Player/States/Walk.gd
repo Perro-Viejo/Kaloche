@@ -1,6 +1,6 @@
 extends 'res://src/StateMachine/State.gd'
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func enter(msg: Dictionary = {}) -> void:
 	_parent.is_moving = true
 	.enter(msg)
@@ -32,7 +32,7 @@ func on_tool_equiped(tool_id: int) -> void:
 			owner.play_animation('run')
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _play_fs() -> void:
 	AudioEvent.emit_signal('play_requested', 'Player', 'FS_' + _parent.fs_id)
 

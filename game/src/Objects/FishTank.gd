@@ -12,7 +12,7 @@ onready var _animation: AnimationPlayer = $AnimationPlayer
 onready var _tank_surface: Area2D = $Tank/Surface
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
 	for s in _fishing_surfaces.get_children():
 		var surface := s as FishingSurface
@@ -27,7 +27,7 @@ func _ready():
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
 	_animation.connect('animation_finished', self, '_on_animation_finished')
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func fill_tank():
 #	_tank_surface.type = Data.SurfaceType.WATER
 #	_tank_surface.surface_name = 'Water'
@@ -74,7 +74,7 @@ func activate_tank():
 		surface.monitorable = true
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_animation_finished(anim):
 	if _animation.get_current_animation_position() == _animation.get_current_animation_length():
 		activate_tank()

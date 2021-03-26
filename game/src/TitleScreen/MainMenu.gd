@@ -1,5 +1,5 @@
 extends CanvasLayer
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 export (String, FILE, '*.tscn') var First_Level: String
 export (String, FILE, '*.tscn') var intro_scn: String
 export(bool) var show_intro = true
@@ -16,15 +16,19 @@ onready var _credits_container: TextureButton = find_node('CreditsContainer')
 onready var _credits_back: Button = _credits_container.get_node('Back')
 onready var _devs: Label = find_node('Devs')
 onready var _in_memory: Control = find_node('InMemory')
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Métodos de Godot ░░░░
 func _ready()->void:
 	SectionEvent.MainMenu = true
-	guiBrain.gui_collect_focusgroup()
+
 	_credits_container.hide()
 	$CPUParticles2D.show()
 
 	if Settings.HTML5:
 		_exit.visible = false
+	else:
+		guiBrain.gui_collect_focusgroup()
 
 	# Conectarse a señales de los hijos
 	_new_game.connect('pressed', self, '_on_NewGame_pressed')
@@ -47,6 +51,16 @@ func _exit_tree()->void:
 	guiBrain.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Métodos públicos ░░░░
+func retranslate()->void:
+	_new_game.text = tr('NEW_GAME')
+	_options.text = tr('OPTIONS')
+	_credits.text = tr('CREDITS')
+	_exit.text = tr('EXIT')
+	_credits_back.text = tr('BACK')
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Métodos privados ░░░░
 func _on_NewGame_pressed()->void:
 	AudioEvent.emit_signal('stop_requested', 'MX', 'Menu')
 	GuiEvent.emit_signal('NewGame')
@@ -77,11 +91,3 @@ func _on_Credits_pressed() -> void:
 
 func _on_Exit_pressed()->void:
 	GuiEvent.emit_signal('Exit')
-
-#localization
-func retranslate()->void:
-	_new_game.text = tr('NEW_GAME')
-	_options.text = tr('OPTIONS')
-	_credits.text = tr('CREDITS')
-	_exit.text = tr('EXIT')
-	_credits_back.text = tr('BACK')

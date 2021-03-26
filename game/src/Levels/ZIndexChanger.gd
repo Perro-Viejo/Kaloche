@@ -21,7 +21,7 @@ export(InvolvedNodesCase) var lights_to_enable_case := InvolvedNodesCase.BOTH
 var _involved_nodes := []
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos de Godot ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
 	for p in involved_nodes:
 		_involved_nodes.append(get_node(p))
@@ -34,7 +34,7 @@ func _ready():
 	modulate = Color.aqua
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos públicos ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 # Pemite pausar temporalmente la escucha de las señales de entrada y salida del
 # área. Esto resulta útil para que no ocurran problemas de cambio de z-index cuando
 # el ZIndexChanger de otro nodo también está alterando a este y sus polígonos son
@@ -56,7 +56,7 @@ func ready_setup() -> void:
 			(get_node(l) as Light2D).enabled = false
 
 
-# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ métodos privados ▒▒▒▒
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _change_z_index(body: Area2D, entered: bool) -> void:
 	if body.name == 'FootArea':
 		var target_zindex := zindex_on_entered if entered else zindex_on_exited

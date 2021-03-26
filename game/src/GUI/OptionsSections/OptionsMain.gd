@@ -56,7 +56,7 @@ func set_resolution()->void:
 	find_node('Borderless').pressed = Settings.Borderless
 	#Your logic for scaling
 
-# ⋐▒▒▒ CONTROL DE PANELES ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒⋑
+# ⋐░░░ CONTROL DE PANELES ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░⋑
 func _on_option_pressed(id := -1) -> void:
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
 	_hide_panels()
@@ -103,7 +103,7 @@ func _close_panel() -> void:
 			break
 	_last_focus_owner.grab_focus()
 	_last_focus_owner = null
-# ⋐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ CONTROL DE PANELES ▒▒▒▒⋑
+# ⋐░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ CONTROL DE PANELES ░░░░⋑
 
 #### BUTTON SIGNALS ####
 func _on_Fullscreen_pressed():
