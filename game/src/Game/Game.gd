@@ -22,7 +22,7 @@ func _ready()->void:
 	if OS.has_feature('release'):
 		Data.set_data(Data.SHOW_DEBUG, false)
 	
-	if Settings.HTML5:
+	if Settings.HTML5 or OS.has_feature('release'):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	# Conectarse a eventos de los chabalitos
