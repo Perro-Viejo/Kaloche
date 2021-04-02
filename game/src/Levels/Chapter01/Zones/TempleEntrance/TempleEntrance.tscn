@@ -1347,6 +1347,7 @@ anims/SETUP_ACTIVATE = SubResource( 3 )
 anims/SETUP_OPEN_DOOR = SubResource( 4 )
 
 [node name="Floor" type="Sprite" parent="."]
+position = Vector2( 0, 15 )
 texture = ExtResource( 1 )
 hframes = 2
 
@@ -1399,7 +1400,7 @@ polygon = PoolVector2Array( -175, 134, -86, -44, -50, -44, -50, -61, -164, -61, 
 polygon = PoolVector2Array( 175, 134.5, 244, 134.5, 231, 72.5, 163, -60.5, 50, -60.5, 50, -43.5, 87, -43.5 )
 
 [node name="Facade" type="Sprite" parent="."]
-position = Vector2( 0, -233.5 )
+position = Vector2( 0, -234 )
 texture = ExtResource( 8 )
 hframes = 2
 
