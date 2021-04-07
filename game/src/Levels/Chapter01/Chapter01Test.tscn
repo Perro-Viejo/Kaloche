@@ -153,12 +153,12 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 1
+frame = 26
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
 _player = NodePath("../../Characters/Player")
-targets_times = [ 2, 2, 2, 2 ]
+targets_times = [ 2, 6, 2, 2 ]
 temple_entrance_path = NodePath("../TempleEntrance")
 
 [node name="TargetA" parent="Zones/AltarActivation" index="3"]
@@ -278,7 +278,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 10, -964 )
+position = Vector2( 11, -886 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -42,7 +42,6 @@
 [ext_resource path="res://src/Levels/Area2DToggler.gd" type="Script" id=40]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on_behind.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_door_mask.png" type="Texture" id=43]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pillars.png" type="Texture" id=44]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch.png" type="Texture" id=46]
@@ -53,7 +52,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
-length = 2.0
+length = 10.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -61,7 +60,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 2 ),
+"times": PoolRealArray( 10 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -69,259 +68,255 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pillars/Back:position")
+tracks/1/path = NodePath("Pillars:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -196 ), Vector2( 0, -196 ), Vector2( 0, -76 ) ]
+"times": PoolRealArray( 0, 5.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Pillars/Middle:position")
+tracks/2/path = NodePath("Platform:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -138 ), Vector2( 0, -138 ), Vector2( 0, -18 ) ]
+"times": PoolRealArray( 0, 5.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Pillars/Front:position")
+tracks/3/path = NodePath("Fingers:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -80 ), Vector2( 0, -80 ), Vector2( 0, 40 ) ]
+"times": PoolRealArray( 0, 5.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Facade:frame")
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Fingers/Left:position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
+"points": PoolRealArray( -319, -0.25, 0, 0.25, 0, -109, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("Floor:frame")
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Fingers/Left:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
+"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("WallsBack:frame")
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Fingers/Right:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
+"points": PoolRealArray( 319.5, -0.25, 0, 0.25, 0, 109.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("Pillars:visible")
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Fingers/Right:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("Platform:visible")
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Platform/PlatformOff:position:x")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("Fingers:visible")
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Platform/PlatformOff:position:y")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"points": PoolRealArray( 66, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath("Fingers/Left:position:x")
+tracks/10/path = NodePath("Platform/IsoBack:position:x")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( -319, -0.25, 0, 0.25, 0, -109, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath("Fingers/Left:position:y")
+tracks/11/path = NodePath("Platform/IsoBack:position:y")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 9.5, -0.25, 0, 0.25, 0, -118.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/12/type = "bezier"
-tracks/12/path = NodePath("Fingers/Right:position:x")
+tracks/12/path = NodePath("Platform/DoorButton:position:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 319.5, -0.25, 0, 0.25, 0, 109.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/13/type = "bezier"
-tracks/13/path = NodePath("Fingers/Right:position:y")
+tracks/13/path = NodePath("Platform/DoorButton:position:y")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 58, -0.25, 0, 0.25, 0, -70, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/14/type = "bezier"
-tracks/14/path = NodePath("Platform/PlatformOff:position:x")
+tracks/14/path = NodePath("Platform/IsoFront:position:x")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 5.6, 6.6 )
 }
 tracks/15/type = "bezier"
-tracks/15/path = NodePath("Platform/PlatformOff:position:y")
+tracks/15/path = NodePath("Platform/IsoFront:position:y")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"points": PoolRealArray( 66, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 25.5, -0.25, 0, 0.25, 0, -102.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 6.6 )
 }
-tracks/16/type = "bezier"
-tracks/16/path = NodePath("Platform/IsoBack:position:x")
+tracks/16/type = "value"
+tracks/16/path = NodePath("Floor/HoleCollisions:collision_mask")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 0, 6.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
 }
-tracks/17/type = "bezier"
-tracks/17/path = NodePath("Platform/IsoBack:position:y")
+tracks/17/type = "value"
+tracks/17/path = NodePath("Platform/DoorButton:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"points": PoolRealArray( 9.5, -0.25, 0, 0.25, 0, -118.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 5.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
-tracks/18/type = "bezier"
-tracks/18/path = NodePath("Platform/DoorButton:position:x")
+tracks/18/type = "value"
+tracks/18/path = NodePath("Platform/PlatformOn:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
-tracks/19/type = "bezier"
-tracks/19/path = NodePath("Platform/DoorButton:position:y")
+tracks/19/type = "value"
+tracks/19/path = NodePath("Platform/PlatformOff:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"points": PoolRealArray( 58, -0.25, 0, 0.25, 0, -70, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 5.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
-tracks/20/type = "bezier"
-tracks/20/path = NodePath("Platform/IsoFront:position:x")
+tracks/20/type = "value"
+tracks/20/path = NodePath("Platform/DoorButton:modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/21/type = "bezier"
-tracks/21/path = NodePath("Platform/IsoFront:position:y")
+tracks/21/path = NodePath("FacadeTorch:position:x")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"points": PoolRealArray( 25.5, -0.25, 0, 0.25, 0, -102.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1, 2 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5.6, 6.6 )
 }
-tracks/22/type = "value"
-tracks/22/path = NodePath("Floor/HoleCollisions:collision_mask")
+tracks/22/type = "bezier"
+tracks/22/path = NodePath("FacadeTorch:position:y")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
+"points": PoolRealArray( -302.5, -0.25, 0, 0.25, 0, -302.5, -0.25, 0, 0.25, 0, -278.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5.6, 6.6 )
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("Platform/DoorButton:visible")
+tracks/23/path = NodePath("Covers:modulate")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("Platform/PlatformOn:visible")
+tracks/24/path = NodePath("Pillars/Middle:modulate")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -329,52 +324,160 @@ tracks/24/enabled = true
 tracks/24/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("Platform/PlatformOff:visible")
+tracks/25/path = NodePath("Pillars/Front:modulate")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
 tracks/25/enabled = true
 tracks/25/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/26/type = "value"
-tracks/26/path = NodePath("Platform/DoorButton:modulate")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-tracks/27/type = "bezier"
-tracks/27/path = NodePath("FacadeTorch:position:x")
+tracks/26/type = "value"
+tracks/26/path = NodePath("Pillars/Back:frame")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Pillars/Middle:frame")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
 tracks/27/enabled = true
 tracks/27/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
 }
-tracks/28/type = "bezier"
-tracks/28/path = NodePath("FacadeTorch:position:y")
+tracks/28/type = "value"
+tracks/28/path = NodePath("Pillars/Front:frame")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
 tracks/28/enabled = true
 tracks/28/keys = {
-"points": PoolRealArray( -302.5, -0.25, 0, 0.25, 0, -302.5, -0.25, 0, 0.25, 0, -278.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("Pillars/Back:position:x")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = false
+tracks/29/keys = {
+"points": PoolRealArray( 1.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("Pillars/Back:position:y")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( -204, -0.25, 0, 0.25, 0, -204, -0.25, 0, 0.1419, -2.31999, -150.594, -0.0883294, 0, 0.0837709, -6.19173, -150.594, -0.0883294, 0, 0.0837709, -6.19173, -76, -0.358091, -17.9124, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.2, 1.9, 2.3, 3.7 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("Pillars/Middle:position:x")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = false
+tracks/31/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/32/type = "bezier"
+tracks/32/path = NodePath("Pillars/Middle:position:y")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"points": PoolRealArray( -146, -0.25, 0, 0.25, 0, -146, -0.25, 0, 0.25, 0, -107.252, -0.057852, -6.2607, 0.228859, 24.7669, -18, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.4, 3.1, 4.3 )
+}
+tracks/33/type = "bezier"
+tracks/33/path = NodePath("Pillars/Front:position:x")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = false
+tracks/33/keys = {
+"points": PoolRealArray( -0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/34/type = "bezier"
+tracks/34/path = NodePath("Pillars/Front:position:y")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"points": PoolRealArray( -92, -0.25, 0, 0.25, 0, -92, -0.25, 0, 0.832045, 9.51475, -26.7596, -0.219594, -24.767, 0.232143, 24.7669, 40, -0.383689, -60.5679, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.6, 2.9, 3.8 )
+}
+tracks/35/type = "bezier"
+tracks/35/path = NodePath("Facade/TorchCover:position:x")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = false
+tracks/35/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 8.1, 9.6 )
+}
+tracks/36/type = "bezier"
+tracks/36/path = NodePath("Facade/TorchCover:position:y")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"points": PoolRealArray( -53.5, -0.25, 0, 0.25, 0, -53.5, -0.25, 0, 0.25, 0, -58.2987, -0.608379, 3.25595, 0.249983, -1.33787 ),
+"times": PoolRealArray( 0, 8, 9.6 )
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Facade/TorchCover:self_modulate")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0, 8.1, 9.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Facade/TorchCover:scale")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0, 8.1, 9.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -545,7 +648,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -196 ) ]
+"values": [ Vector2( 1.5, -204 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Pillars/Middle:position")
@@ -557,7 +660,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -138 ) ]
+"values": [ Vector2( 0, -146 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Pillars/Front:position")
@@ -569,7 +672,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -80 ) ]
+"values": [ Vector2( -0.5, -92 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Door:position")
@@ -581,10 +684,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -185 ) ]
+"values": [ Vector2( 0, -193 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Facade:frame")
+tracks/4/path = NodePath("Pillars:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -593,10 +696,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Floor:frame")
+tracks/5/path = NodePath("Platform:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -605,10 +708,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("WallsBack:frame")
+tracks/6/path = NodePath("Fingers:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -617,10 +720,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Pillars:visible")
+tracks/7/path = NodePath("Floor/HoleCollisions:collision_mask")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -629,10 +732,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ 0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Platform:visible")
+tracks/8/path = NodePath("Platform/DoorButton:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -641,10 +744,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Fingers:visible")
+tracks/9/path = NodePath("Platform/PlatformOn:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -656,7 +759,7 @@ tracks/9/keys = {
 "values": [ false ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Floor/HoleCollisions:collision_mask")
+tracks/10/path = NodePath("Platform/PlatformOff:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -665,10 +768,10 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ true ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Platform/DoorButton:visible")
+tracks/11/path = NodePath("FacadePillars:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -677,10 +780,10 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Platform/PlatformOn:visible")
+tracks/12/path = NodePath("FacadePillars:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -688,11 +791,11 @@ tracks/12/enabled = true
 tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, 90 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Platform/PlatformOff:visible")
+tracks/13/path = NodePath("Platform/DoorButton:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -700,11 +803,11 @@ tracks/13/enabled = true
 tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("FacadePillars:visible")
+tracks/14/path = NodePath("FacadeTorch:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -712,11 +815,11 @@ tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, -302.5 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("FacadePillars:position")
+tracks/15/path = NodePath("FacadeTorch:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -725,10 +828,10 @@ tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 90 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Platform/DoorButton:modulate")
+tracks/16/path = NodePath("Covers:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -740,7 +843,7 @@ tracks/16/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("FacadeTorch:position")
+tracks/17/path = NodePath("Pillars/Back:frame")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -748,8 +851,68 @@ tracks/17/enabled = true
 tracks/17/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Pillars/Middle:frame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Pillars/Front:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Facade/TorchCover:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -302.5 ) ]
+"values": [ Vector2( 0, -53.5 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Facade/TorchCover:self_modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Facade/TorchCover:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1340,7 +1503,7 @@ animations = [ {
 [node name="TempleEntrance" type="Node2D"]
 script = ExtResource( 22 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 162.0 ]
+"_edit_horizontal_guides_": [ 162.0, -52.0 ]
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1395,10 +1558,12 @@ visible = false
 
 [node name="Left" type="CollisionPolygon2D" parent="WallsBack/Collisions"]
 position = Vector2( 0, 0.5 )
-polygon = PoolVector2Array( -175, 134, -86, -44, -50, -44, -50, -61, -164, -61, -231, 72, -245, 134 )
+polygon = PoolVector2Array( -175, 134, -77, -62, -164, -62, -231, 72, -245, 134 )
 
 [node name="Right" type="CollisionPolygon2D" parent="WallsBack/Collisions"]
-polygon = PoolVector2Array( 175, 134.5, 244, 134.5, 231, 72.5, 163, -60.5, 50, -60.5, 50, -43.5, 87, -43.5 )
+position = Vector2( 0, 0.5 )
+scale = Vector2( -1, 1 )
+polygon = PoolVector2Array( -175, 134, -77, -62, -164, -62, -231, 72, -245, 134 )
 
 [node name="Covers" type="Node2D" parent="."]
 
@@ -1416,6 +1581,7 @@ position = Vector2( 0, -193 )
 texture = ExtResource( 23 )
 
 [node name="Collisions" type="StaticBody2D" parent="Door"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/Collisions"]
 polygon = PoolVector2Array( -16, 15, 16, 15, 16, -23, -16, -23 )
@@ -1431,15 +1597,6 @@ mode = 3
 range_z_min = 2
 range_z_max = 2
 
-[node name="DoorMask" type="Light2D" parent="Facade"]
-visible = false
-position = Vector2( 1, 20 )
-texture = ExtResource( 43 )
-mode = 3
-range_z_min = 0
-range_z_max = 0
-range_item_cull_mask = 16384
-
 [node name="TorchMask" type="Light2D" parent="Facade"]
 position = Vector2( 0, -58.5 )
 texture = ExtResource( 47 )
@@ -1449,16 +1606,17 @@ range_z_max = 0
 range_item_cull_mask = 16384
 
 [node name="Collisions" type="StaticBody2D" parent="Facade"]
+visible = false
 
 [node name="Front" type="CollisionPolygon2D" parent="Facade/Collisions"]
 polygon = PoolVector2Array( -101, 66, -17, 66, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66, 101, 66, 101, 1, -101, 1 )
 
-[node name="Cover" type="Sprite" parent="Facade"]
+[node name="TorchCover" type="Sprite" parent="Facade"]
 position = Vector2( 0, -53.5 )
 texture = ExtResource( 50 )
 
 [node name="FacadeTorch" type="Sprite" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 light_mask = 16384
 position = Vector2( 0, -302.5 )
 texture = ExtResource( 46 )
@@ -1497,19 +1655,20 @@ texture = ExtResource( 45 )
 script = ExtResource( 36 )
 
 [node name="BackMask" type="Light2D" parent="Pillars"]
-position = Vector2( -1, -143 )
+position = Vector2( 1.5, -138 )
 texture = ExtResource( 24 )
 mode = 3
 range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 0.5, -204 )
+position = Vector2( 1.5, -204 )
 z_index = 4
 texture = ExtResource( 11 )
 hframes = 2
 
 [node name="Behind" type="Light2D" parent="Pillars/Back"]
+position = Vector2( 0, -2 )
 texture = ExtResource( 13 )
 mode = 2
 range_item_cull_mask = 32768
@@ -1518,11 +1677,11 @@ range_item_cull_mask = 32768
 visible = false
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Back/Collisions"]
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+polygon = PoolVector2Array( -37.5, 41, -61.5, 41, -61.5, 36, -34.5, 36 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Back/Collisions"]
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+polygon = PoolVector2Array( -37.5, 41, -61.5, 41, -61.5, 36, -34.5, 36 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Back"]
 visible = false
@@ -1531,11 +1690,11 @@ script = ExtResource( 12 )
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Back/ZIndexChanger"]
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+polygon = PoolVector2Array( -66.5, 48, -61.5, 48, -61.5, 49, -35.5, 49, -29.5, 38, -19.5, 38, -19.5, 60, -66.5, 60 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Back/ZIndexChanger"]
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+polygon = PoolVector2Array( -66.5, 48, -61.5, 48, -61.5, 49, -35.5, 49, -29.5, 38, -19.5, 38, -19.5, 60, -66.5, 60 )
 
 [node name="MiddleMask" type="Light2D" parent="Pillars"]
 position = Vector2( 0, -86 )
@@ -1551,6 +1710,7 @@ texture = ExtResource( 9 )
 hframes = 2
 
 [node name="Behind" type="Light2D" parent="Pillars/Middle"]
+position = Vector2( 0, -2 )
 texture = ExtResource( 16 )
 mode = 2
 range_item_cull_mask = 32768
@@ -1560,12 +1720,12 @@ visible = false
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Middle/Collisions"]
 position = Vector2( -21, 0 )
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+polygon = PoolVector2Array( -37, 41, -61, 41, -61, 36, -34, 36 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Middle/Collisions"]
 position = Vector2( 21, 0 )
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+polygon = PoolVector2Array( -37, 41, -61, 41, -61, 36, -34, 36 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Middle"]
 visible = false
@@ -1576,15 +1736,15 @@ disable_lights_on_enter = [ NodePath("../Behind") ]
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Middle/ZIndexChanger"]
 position = Vector2( -21, 0 )
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+polygon = PoolVector2Array( -66, 48, -62, 48, -62, 49, -36, 49, -30, 38, -20, 38, -20, 60, -66, 60 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Middle/ZIndexChanger"]
 position = Vector2( 21, 0 )
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+polygon = PoolVector2Array( -66, 48, -62, 48, -62, 49, -36, 49, -30, 38, -20, 38, -20, 60, -66, 60 )
 
 [node name="FrontMask" type="Light2D" parent="Pillars"]
-position = Vector2( -1, -29 )
+position = Vector2( 0, -29 )
 texture = ExtResource( 26 )
 mode = 3
 range_item_cull_mask = 128
@@ -1600,6 +1760,7 @@ __meta__ = {
 }
 
 [node name="Behind" type="Light2D" parent="Pillars/Front"]
+position = Vector2( 0, 2 )
 texture = ExtResource( 17 )
 mode = 2
 range_item_cull_mask = 32768
@@ -1608,13 +1769,13 @@ range_item_cull_mask = 32768
 visible = false
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Front/Collisions"]
-position = Vector2( -42, 0 )
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+position = Vector2( -41, 0 )
+polygon = PoolVector2Array( -38, 43, -61.5, 43, -61.5, 40, -34, 40 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Front/Collisions"]
 position = Vector2( 42, 0 )
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -38, 43, -61, 43, -61, 39, -34, 39 )
+polygon = PoolVector2Array( -38, 43, -61, 43, -61, 40, -35, 40 )
 
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Front"]
 visible = false
@@ -1624,13 +1785,13 @@ involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
 [node name="Left" type="CollisionPolygon2D" parent="Pillars/Front/ZIndexChanger"]
-position = Vector2( -42, 0 )
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+position = Vector2( -41, 0 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -35.5, 50, -27, 40, -19.5, 40, -19.5, 60, -66, 60 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Pillars/Front/ZIndexChanger"]
 position = Vector2( 42, 0 )
 scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
+polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 40, -20, 40, -20, 60, -66, 60 )
 
 [node name="Platform" type="Node2D" parent="."]
 visible = false
@@ -1920,6 +2081,12 @@ texture = ExtResource( 34 )
 mode = 2
 range_item_cull_mask = 32768
 
+[node name="Mask" type="Light2D" parent="Fingers"]
+position = Vector2( 0, -127 )
+texture = ExtResource( 34 )
+mode = 3
+range_item_cull_mask = 32
+
 [node name="Left" type="Sprite" parent="Fingers"]
 light_mask = 32
 position = Vector2( -319, -126.5 )
@@ -1935,7 +2102,8 @@ position = Vector2( 0, 6.5 )
 z_index = 4
 texture = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Behind" type="Light2D" parent="WallsFront"]
@@ -1979,13 +2147,17 @@ polygon = PoolVector2Array( -200, 83.5, -110, 83.5, -95, 52.5, -40, 52.5, -30, 3
 position = Vector2( 0, 1 )
 z_index = 4
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Treepots" type="Sprite" parent="."]
 position = Vector2( 0, 76 )
 z_index = 4
 texture = ExtResource( 19 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Collisions" type="StaticBody2D" parent="Treepots"]
@@ -2028,6 +2200,9 @@ frames = SubResource( 36 )
 position = Vector2( 0, 69.5 )
 z_index = 4
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Collisions" type="StaticBody2D" parent="K"]
 visible = false
@@ -2047,9 +2222,12 @@ script = ExtResource( 12 )
 polygon = PoolVector2Array( -27, 36.5, -27, 41.5, -16, 41.5, -16, 36.5, 16, 36.5, 16, 41.5, 27, 41.5, 27, 36.5, 40, 36.5, 40, 65.5, -40, 65.5, -40, 36.5 )
 
 [node name="Pyramids" type="Sprite" parent="."]
-position = Vector2( 0, 133.5 )
+position = Vector2( 0, 133 )
 z_index = 4
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Behind" type="Light2D" parent="Pyramids"]
 position = Vector2( 0, 0.5 )
