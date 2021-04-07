@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -47,6 +47,9 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch.png" type="Texture" id=46]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch_mask.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_walls_cover.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor_cover.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_cover.png" type="Texture" id=50]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -1347,9 +1350,8 @@ anims/SETUP_ACTIVATE = SubResource( 3 )
 anims/SETUP_OPEN_DOOR = SubResource( 4 )
 
 [node name="Floor" type="Sprite" parent="."]
-position = Vector2( 0, 15 )
+position = Vector2( 0.5, -12.5 )
 texture = ExtResource( 1 )
-hframes = 2
 
 [node name="Surface" type="Area2D" parent="Floor"]
 visible = false
@@ -1385,9 +1387,8 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -151, -34, -77, -34, -70, -46, -144, -46 )
 
 [node name="WallsBack" type="Sprite" parent="."]
-position = Vector2( 0, -123.5 )
+position = Vector2( 0, -122.5 )
 texture = ExtResource( 4 )
-hframes = 2
 
 [node name="Collisions" type="StaticBody2D" parent="WallsBack"]
 visible = false
@@ -1399,10 +1400,29 @@ polygon = PoolVector2Array( -175, 134, -86, -44, -50, -44, -50, -61, -164, -61, 
 [node name="Right" type="CollisionPolygon2D" parent="WallsBack/Collisions"]
 polygon = PoolVector2Array( 175, 134.5, 244, 134.5, 231, 72.5, 163, -60.5, 50, -60.5, 50, -43.5, 87, -43.5 )
 
+[node name="Covers" type="Node2D" parent="."]
+
+[node name="WallsBack" type="Sprite" parent="Covers"]
+position = Vector2( 0, -137.5 )
+texture = ExtResource( 48 )
+
+[node name="Floor" type="Sprite" parent="Covers"]
+position = Vector2( 0, -102 )
+texture = ExtResource( 49 )
+
+[node name="Door" type="Sprite" parent="."]
+light_mask = 16384
+position = Vector2( 0, -193 )
+texture = ExtResource( 23 )
+
+[node name="Collisions" type="StaticBody2D" parent="Door"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/Collisions"]
+polygon = PoolVector2Array( -16, 15, 16, 15, 16, -23, -16, -23 )
+
 [node name="Facade" type="Sprite" parent="."]
-position = Vector2( 0, -234 )
+position = Vector2( 0, -242 )
 texture = ExtResource( 8 )
-hframes = 2
 
 [node name="HoleMask" type="Light2D" parent="Facade"]
 position = Vector2( 0, 58.5 )
@@ -1412,7 +1432,8 @@ range_z_min = 2
 range_z_max = 2
 
 [node name="DoorMask" type="Light2D" parent="Facade"]
-position = Vector2( 0, 19.5 )
+visible = false
+position = Vector2( 1, 20 )
 texture = ExtResource( 43 )
 mode = 3
 range_z_min = 0
@@ -1428,12 +1449,16 @@ range_z_max = 0
 range_item_cull_mask = 16384
 
 [node name="Collisions" type="StaticBody2D" parent="Facade"]
-visible = false
 
 [node name="Front" type="CollisionPolygon2D" parent="Facade/Collisions"]
-polygon = PoolVector2Array( -49, 66.5, -17, 66.5, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66.5, 49, 66.5, 49, 1.5, -49, 1.5 )
+polygon = PoolVector2Array( -101, 66, -17, 66, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66, 101, 66, 101, 1, -101, 1 )
+
+[node name="Cover" type="Sprite" parent="Facade"]
+position = Vector2( 0, -53.5 )
+texture = ExtResource( 50 )
 
 [node name="FacadeTorch" type="Sprite" parent="."]
+visible = false
 light_mask = 16384
 position = Vector2( 0, -302.5 )
 texture = ExtResource( 46 )
@@ -1466,33 +1491,23 @@ polygon = PoolVector2Array( -31, 29, -20, 22, -16, 22, -16, 39, -48, 39, -48, 29
 position = Vector2( 0, -212.5 )
 texture = ExtResource( 45 )
 
-[node name="Door" type="Sprite" parent="."]
-light_mask = 16384
-position = Vector2( 0, -185 )
-texture = ExtResource( 23 )
-
-[node name="Collisions" type="StaticBody2D" parent="Door"]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/Collisions"]
-polygon = PoolVector2Array( -16, 18, 16, 18, 16, -23, -16, -23 )
-
 [node name="Pillars" type="Node2D" parent="."]
 
 [node name="VisibilityDisabler" type="Node2D" parent="Pillars"]
 script = ExtResource( 36 )
 
 [node name="BackMask" type="Light2D" parent="Pillars"]
-position = Vector2( 0, -134 )
+position = Vector2( -1, -143 )
 texture = ExtResource( 24 )
 mode = 3
 range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 0, -196 )
+position = Vector2( 0.5, -204 )
 z_index = 4
 texture = ExtResource( 11 )
+hframes = 2
 
 [node name="Behind" type="Light2D" parent="Pillars/Back"]
 texture = ExtResource( 13 )
@@ -1523,16 +1538,17 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
 
 [node name="MiddleMask" type="Light2D" parent="Pillars"]
-position = Vector2( 0, -76 )
+position = Vector2( 0, -86 )
 texture = ExtResource( 25 )
 mode = 3
 range_item_cull_mask = 64
 
 [node name="Middle" type="Sprite" parent="Pillars"]
 light_mask = 64
-position = Vector2( 0, -138 )
+position = Vector2( 0, -146 )
 z_index = 4
 texture = ExtResource( 9 )
+hframes = 2
 
 [node name="Behind" type="Light2D" parent="Pillars/Middle"]
 texture = ExtResource( 16 )
@@ -1568,16 +1584,20 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 39, -20, 39, -20, 60, -66, 60 )
 
 [node name="FrontMask" type="Light2D" parent="Pillars"]
-position = Vector2( 0, -18 )
+position = Vector2( -1, -29 )
 texture = ExtResource( 26 )
 mode = 3
 range_item_cull_mask = 128
 
 [node name="Front" type="Sprite" parent="Pillars"]
 light_mask = 128
-position = Vector2( 0, -80 )
+position = Vector2( -0.5, -92 )
 z_index = 4
 texture = ExtResource( 10 )
+hframes = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Behind" type="Light2D" parent="Pillars/Front"]
 texture = ExtResource( 17 )
@@ -1911,12 +1931,11 @@ position = Vector2( 319.5, -126.5 )
 texture = ExtResource( 32 )
 
 [node name="WallsFront" type="Sprite" parent="."]
-position = Vector2( 0, 12.5 )
+position = Vector2( 0, 6.5 )
 z_index = 4
 texture = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="Behind" type="Light2D" parent="WallsFront"]
@@ -1957,20 +1976,16 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -200, 83.5, -110, 83.5, -95, 52.5, -40, 52.5, -30, 30.5, -24, 30.5, -24, 96.5, -102, 96.5, -200, 96.5 )
 
 [node name="Canal" type="Sprite" parent="."]
-position = Vector2( 0, 6 )
+position = Vector2( 0, 1 )
 z_index = 4
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Treepots" type="Sprite" parent="."]
-position = Vector2( 0, 83 )
+position = Vector2( 0, 76 )
 z_index = 4
 texture = ExtResource( 19 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="Collisions" type="StaticBody2D" parent="Treepots"]
@@ -2010,12 +2025,9 @@ position = Vector2( -4.5, -56 )
 frames = SubResource( 36 )
 
 [node name="K" type="Sprite" parent="."]
-position = Vector2( 0, 78.5 )
+position = Vector2( 0, 69.5 )
 z_index = 4
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Collisions" type="StaticBody2D" parent="K"]
 visible = false
@@ -2035,14 +2047,12 @@ script = ExtResource( 12 )
 polygon = PoolVector2Array( -27, 36.5, -27, 41.5, -16, 41.5, -16, 36.5, 16, 36.5, 16, 41.5, 27, 41.5, 27, 36.5, 40, 36.5, 40, 65.5, -40, 65.5, -40, 36.5 )
 
 [node name="Pyramids" type="Sprite" parent="."]
-position = Vector2( 0, 134 )
+position = Vector2( 0, 133.5 )
 z_index = 4
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Behind" type="Light2D" parent="Pyramids"]
+position = Vector2( 0, 0.5 )
 texture = ExtResource( 14 )
 mode = 2
 range_item_cull_mask = 32768
