@@ -10,7 +10,7 @@ var _fish_sprite: Texture = null
 var _fish_name := ''
 var _fish_is_sacred := false
 var _catch_sfx := ''
-var _can_damage_fish := false
+var _can_damage_fish := true
 var _catch_chance := 1.0
 var _oportunity_cooldown := 0
 var _can_damage_fish_debug := -1
@@ -50,12 +50,13 @@ func _process(delta) -> void:
 			)
 			owner.tween.start()
 	# Esto es pa' que el jugador no pueda jalar la caña como loco
-	_oportunity_cooldown -= 1
-	if _oportunity_cooldown <= 0:
-		_can_damage_fish = true
-		if _oportunity_cooldown <= rand_range(-30, -10):
-			_can_damage_fish = false
-			_oportunity_cooldown = rand_range(5, 60)
+	# se debe ir pronto
+#	_oportunity_cooldown -= 1
+#	if _oportunity_cooldown <= 0:
+#		_can_damage_fish = true
+#		if _oportunity_cooldown <= rand_range(-30, -10):
+#			_can_damage_fish = false
+#			_oportunity_cooldown = rand_range(5, 60)
 	
 	# Esto determina si el pez se va por la ineptitud de Teotriste
 	_hooked_time -= 1

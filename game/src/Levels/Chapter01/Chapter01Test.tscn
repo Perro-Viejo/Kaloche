@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/world/chapter_0.1/fg_start.png" type="Texture" id=3]
 [ext_resource path="res://src/Levels/Chapter01/Zones.gd" type="Script" id=4]
 [ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/TempleEntrance.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Objects/RockSign.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/images/world/chapter_0.1.sprites/lake.tres" type="Texture" id=7]
 [ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/images/characters/rocberto.png" type="Texture" id=9]
@@ -145,14 +146,78 @@ position = Vector2( 366.682, 1189.88 )
 [node name="Altar" parent="Zones" instance=ExtResource( 32 )]
 position = Vector2( -350, -316 )
 
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsBack" index="1"]
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
+
 [node name="CollisionEnabler" parent="Zones/Altar/Main/InsideCollisions" index="1"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="CollisionEnabler" parent="Zones/Altar/Main/OutsideCollisions" index="2"]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
+[node name="ZIndexChanger" parent="Zones/Altar/Main" index="2"]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
+
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFront" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
+
+[node name="ZIndexChanger" parent="Zones/Altar/ColumnsFrontDebris" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
+
+[node name="ZIndexChanger" parent="Zones/Altar/Stone" index="1"]
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
+
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 6
+frame = 8
+
+[node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -251,7 +316,40 @@ img = ExtResource( 1 )
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -309, -255 )
+is_good = true
+can_burn = true
 carbs = 50
+on_free = ""
+tr_code = ""
+character = ""
+dialog = ""
+
+[node name="RockSign" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( -296.663, 756.422 )
+
+[node name="RockSign2" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( -189.755, 586.261 )
+message_id = 1
+
+[node name="RockSign3" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 86.945, 703.859 )
+message_id = 2
+
+[node name="RockSign4" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 246.785, 481.135 )
+message_id = 3
+
+[node name="RockSign5" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( -16.7775, -28.5776 )
+message_id = 4
+
+[node name="RockSign6" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( -70.5948, -189.189 )
+message_id = 5
+
+[node name="RockSign7" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 78.4052, -189.189 )
+message_id = 6
 
 [node name="Characters" type="Node2D" parent="."]
 
@@ -274,7 +372,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( 483, 1180 )
+position = Vector2( -292.503, 518.006 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3
@@ -383,7 +481,11 @@ __meta__ = {
 }
 
 [editable path="Zones/Altar"]
+
 [editable path="Zones/Altar/SacredFire"]
+
 [editable path="Zones/AltarActivation"]
+
 [editable path="Zones/FishTank"]
+
 [editable path="Zones/FishTankAnimation"]

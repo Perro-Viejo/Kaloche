@@ -2,7 +2,7 @@ extends Node
 
 signal character_spoke(character, message, time_to_disappear, emotion)
 signal dialog_event(playing, countdown, duration)
-signal dialog_requested(dialog_name)
+signal dialog_requested(dialog_name, selected_slot)
 signal dialog_continued
 signal dialog_skipped
 signal dialog_finished

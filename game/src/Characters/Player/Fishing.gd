@@ -78,15 +78,16 @@ func _process(delta):
 			stop()
 			bite_check = rand_range(min_bite_freq, max_bite_freq)
 		#Esto muestra en que momento es vulnerable el pez pa jalarlo
-		if hooked:
-			oportunity_cooldown -= 1
-			if oportunity_cooldown <= 0:
-				color = '5dde87'
-				can_pull = true
-				if oportunity_cooldown <= rand_range(-30, -10):
-					color = 'ff96d7'
-					can_pull = false
-					oportunity_cooldown = rand_range(5, 60)
+		#debe ser borrado prontox
+#		if hooked:
+#			oportunity_cooldown -= 1
+#			if oportunity_cooldown <= 0:
+#				color = '5dde87'
+#				can_pull = true
+#				if oportunity_cooldown <= rand_range(-30, -10):
+#					color = 'ff96d7'
+#					can_pull = false
+#					oportunity_cooldown = rand_range(5, 60)
 				
 
 func start_fishing():

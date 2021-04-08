@@ -143,3 +143,12 @@ func _shake_camera(props: Dictionary) -> void:
 	if props.has('duration'):
 		_shake_timer = props.duration
 	_is_camera_shaking = true
+
+func _skip():
+	#Salta la cinematica
+	_was_played = true
+	PlayerEvent.emit_signal('control_toggled', { disable_camera = false })
+	_player_cam_cfg.pos = _player_cam.get_camera_screen_center()
+	_player_cam_cfg.zoom = _player_cam.zoom
+	_camera.global_position = _player_cam_cfg.pos
+	_camera.zoom = _player_cam_cfg.zoom

@@ -16,6 +16,7 @@ var _in_dialog_with_options := false
 var _wait := false
 var _selected_slot := -1
 var _current_options := ''
+var _ignore_toggle := false
 # } ----
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
@@ -49,7 +50,7 @@ func _ready() -> void:
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _play_dialog(dialog_name: String) -> void:
+func _play_dialog(dialog_name: String, selected_slot = -1) -> void:
 	_did = _story_reader.get_did_via_record_name(dialog_name)
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
 	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
@@ -57,8 +58,17 @@ func _play_dialog(dialog_name: String) -> void:
 	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
 		_in_dialog_with_options = true
 		PlayerEvent.emit_signal('control_toggled', { disable = true })
-
-	_continue_dialog()
+	
+	var slot := 0
+	if selected_slot >= 0:
+		slot = selected_slot
+		_ignore_toggle = true
+	else:
+		var start_slots := _story_reader.get_slot_count(_did, _nid)
+		if start_slots > 1:
+			randomize()
+			slot = randi() % start_slots
+	_continue_dialog(slot)
 
 
 func _continue_dialog(slot := 0) -> void:
@@ -302,8 +312,10 @@ func _close_dialog() -> void:
 		_options_nid = 0
 		_in_dialog_with_options = false
 		_dialog_menu.remove_options()
-
-	PlayerEvent.emit_signal('control_toggled')
+		# Revisar este toggle para que no dependa que el diálogo tenga opciones
+	
+	if not _ignore_toggle:
+		PlayerEvent.emit_signal('control_toggled')
 	DialogEvent.emit_signal('dialog_finished')
 
 
