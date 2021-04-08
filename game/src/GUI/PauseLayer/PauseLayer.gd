@@ -3,13 +3,18 @@ extends CanvasLayer
 export (String, FILE, "*.tscn") var Main_Menu: String
 
 var _world_positions := []
-var _options_list: Resource = preload('res://src/GUI/Buttons/OptionsList.tscn')
 
 onready var _options_container: Container = find_node('OptionsContainer')
+onready var _teletransport_container: Container = find_node('TeletransportContainer')
+onready var _level_positions: OptionButton = find_node('PositionsList')
+onready var _teletransport_separator: HSeparator = find_node('TeletransportSeparator')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready()->void:
+	_teletransport_container.hide()
+	_teletransport_separator.hide()
+	
 	GuiEvent.connect("Paused", self, "on_show_paused")
 	GuiEvent.connect("Options", self, "on_show_options")
 	SectionEvent.Paused = false
@@ -70,15 +75,16 @@ func _retranslate()->void:
 func _on_world_entered(data: Dictionary):
 	if OS.has_feature('debug'):
 		if data.has('points'):
-			var pepe: OptionButton = _options_list.instance()
-			pepe.connect('item_selected', self, '_position_selected')
-
+			_level_positions.add_item('Ningún sitio')
 			for p in data.points:
 				_world_positions.append((p as Position2D).get_instance_id())
-				pepe.add_item(p.name, p.get_index())
+				_level_positions.add_item(p.name, p.get_index())
 
-			_options_container.add_child(pepe)
+			_level_positions.connect('item_selected', self, '_position_selected')
+			_teletransport_container.show()
+			_teletransport_separator.show()
 
 
 func _position_selected(index: int) -> void:
-	WorldEvent.emit_signal('zone_position_requested', _world_positions[index])
+	if index == 0: return
+	WorldEvent.emit_signal('zone_position_requested', _world_positions[index - 1])

@@ -153,7 +153,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 27
+frame = 17
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -227,13 +227,40 @@ position = Vector2( 10.5, -816 )
 
 [node name="ZonePositions" type="Node2D" parent="Zones"]
 
-[node name="Start" type="Position2D" parent="Zones/ZonePositions"]
+[node name="BirthBridge" type="Position2D" parent="Zones/ZonePositions"]
 position = Vector2( 488, 1186 )
 
-[node name="Altar" type="Position2D" parent="Zones/ZonePositions"]
+[node name="PathOfInitiation" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -394, 1035 )
+
+[node name="WellOfDrownedSongs" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -108, 666 )
+
+[node name="ChamberOfSpells" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -280, 524 )
+
+[node name="TempleOfSacapayara" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 94, 740 )
+
+[node name="ShrineOfTheDrowned" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 289, 511 )
+
+[node name="PondOfPayara" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -15, -15 )
+
+[node name="CeremonialAltar" type="Position2D" parent="Zones/ZonePositions"]
 position = Vector2( -262, -256 )
 
-[node name="Entrance" type="Position2D" parent="Zones/ZonePositions"]
+[node name="GardenOfTheCurubos" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 409, -128 )
+
+[node name="GardenOfTheMyrtles" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 397, -274 )
+
+[node name="PathOfTheEffort" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 10, -213 )
+
+[node name="TempleEntrance" type="Position2D" parent="Zones/ZonePositions"]
 position = Vector2( 12, -781 )
 
 [node name="Objects" type="Node2D" parent="."]
