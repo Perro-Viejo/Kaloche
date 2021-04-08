@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/altar_fg.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_fg.png" type="Texture" id=43]
 [ext_resource path="res://src/Levels/Chapter01/Zones/EntranceRuins/EntranceRuins.tscn" type="PackedScene" id=44]
+[ext_resource path="res://src/Levels/Chapter01/Zones/Stairs/Stairs.tscn" type="PackedScene" id=45]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -208,21 +209,12 @@ lights_to_enable = [  ]
 lights_to_enable_case = 0
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 8
-
-[node name="ZIndexChanger" parent="Zones/Altar/SacredFire" index="7"]
-affect_involved_on = 0
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
-disable_lights_on_ready = false
-pause_z_changers_on_enter = [  ]
-lights_to_enable = [  ]
-lights_to_enable_case = 0
+frame = 17
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
 _player = NodePath("../../Characters/Player")
-targets_times = [ 2, 2, 2, 2 ]
+targets_times = [ 2, 6, 2, 2 ]
 temple_entrance_path = NodePath("../TempleEntrance")
 
 [node name="TargetA" parent="Zones/AltarActivation" index="3"]
@@ -283,8 +275,49 @@ position = Vector2( 2, 516 )
 [node name="TargetB" parent="Zones/FishTankAnimation" index="4"]
 position = Vector2( 168, 680 )
 
+[node name="Stairs" parent="Zones" instance=ExtResource( 45 )]
+position = Vector2( 10.5, -423 )
+
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
-position = Vector2( 10.5, -824 )
+position = Vector2( 10.5, -816 )
+
+[node name="ZonePositions" type="Node2D" parent="Zones"]
+
+[node name="BirthBridge" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 488, 1186 )
+
+[node name="PathOfInitiation" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -394, 1035 )
+
+[node name="WellOfDrownedSongs" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -108, 666 )
+
+[node name="ChamberOfSpells" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -280, 524 )
+
+[node name="TempleOfSacapayara" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 94, 740 )
+
+[node name="ShrineOfTheDrowned" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 289, 511 )
+
+[node name="PondOfPayara" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -15, -15 )
+
+[node name="CeremonialAltar" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -262, -256 )
+
+[node name="GardenOfTheCurubos" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 409, -128 )
+
+[node name="GardenOfTheMyrtles" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 397, -274 )
+
+[node name="PathOfTheEffort" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 10, -213 )
+
+[node name="TempleEntrance" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 12, -781 )
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
@@ -372,7 +405,7 @@ position = Vector2( -338.087, 479.698 )
 rocberto = NodePath("../Rocberto")
 
 [node name="Player" parent="Characters" instance=ExtResource( 2 )]
-position = Vector2( -292.503, 518.006 )
+position = Vector2( -292, 518 )
 
 [node name="CloudsLayer" type="ParallaxBackground" parent="."]
 layer = 3

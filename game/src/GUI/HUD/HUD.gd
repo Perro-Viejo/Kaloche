@@ -104,5 +104,5 @@ func toggle_journal() -> void:
 		_journal.hide()
 
 
-func _on_world_entered():
+func _on_world_entered(data: Dictionary):
 	world_entered = true

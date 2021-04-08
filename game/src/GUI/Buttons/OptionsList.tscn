@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/resources/dynamic_fonts/menu_button_10.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/images/gui/list_arrow.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/radio_checked.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/radio_unchecked.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.894118, 0.470588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[sub_resource type="Theme" id=1]
+PopupMenu/colors/font_color = Color( 1, 1, 0.921569, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.133333, 0.137255, 0.137255, 1 )
+PopupMenu/colors/font_color_separator = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 0
+PopupMenu/constants/vseparation = 2
+PopupMenu/fonts/font = ExtResource( 1 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = ExtResource( 3 )
+PopupMenu/icons/radio_unchecked = ExtResource( 4 )
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = SubResource( 2 )
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 3 )
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[node name="OptionsList" type="OptionButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 1 )
+custom_icons/arrow = ExtResource( 2 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

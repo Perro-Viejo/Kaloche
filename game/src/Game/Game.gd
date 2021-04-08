@@ -6,12 +6,14 @@ signal SceneIsLoaded
 enum {IDLE, FADEOUT, FADEIN}
 
 export var show_debug := true
+export var disable_mouse := true
 
 var NextScene
 var FadeState:int = IDLE
 
 onready var CurrentScene = null
 onready var CurrentSceneInstance = $Levels.get_child($Levels.get_child_count() - 1)
+onready var _mouse_blocker: Control = $MouseBlocker/Control
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -19,10 +21,17 @@ func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
 	Data.set_data(Data.SHOW_DEBUG, show_debug)
 	
+	if disable_mouse:
+		_mouse_blocker.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		_mouse_blocker.hide()
+	
 	if OS.has_feature('release'):
 		Data.set_data(Data.SHOW_DEBUG, false)
 	
 	if Settings.HTML5 or OS.has_feature('release'):
+		_mouse_blocker.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	# Conectarse a eventos de los chabalitos

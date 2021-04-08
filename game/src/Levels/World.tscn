@@ -3260,10 +3260,8 @@ tile_data = PoolIntArray( -4194231, 4, 0, -4194226, 4, 0, -4194225, 4, 0, -41942
 [node name="Switch" parent="WorldLayer/Switches" instance=ExtResource( 27 )]
 position = Vector2( -1142.39, 522.257 )
 z_index = -1
-carbs = 2
 img_off = ExtResource( 29 )
 img_on = ExtResource( 28 )
-dialog = ""
 id = "testSwitch"
 
 [node name="Fire" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
@@ -3274,7 +3272,6 @@ delay = 1
 [node name="Fire3" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
 position = Vector2( -1143.73, 541.872 )
 switch_id = "testSwitch"
-delay = 0
 
 [node name="Fire4" parent="WorldLayer/Switches" instance=ExtResource( 30 )]
 position = Vector2( -1183.93, 474.984 )
@@ -3315,4 +3312,5 @@ delay = 2
 position = Vector2( -1103.41, 475.213 )
 switch_id = "testSwitch"
 delay = 3
+
 [connection signal="pressed" from="WorldLayer/Button" to="." method="_on_Button_pressed"]
