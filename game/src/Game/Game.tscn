@@ -61,4 +61,5 @@ bus = "SFX"
 
 [node name="HTMLfocus" parent="." instance=ExtResource( 7 )]
 layer = 128
+
 [connection signal="tween_completed" from="FadeLayer/FadeTween" to="." method="_on_FadeTween_tween_completed"]

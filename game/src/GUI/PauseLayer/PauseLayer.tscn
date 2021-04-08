@@ -6,7 +6,12 @@
 [ext_resource path="res://assets/resources/dynamic_fonts/menu_button_10.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.54902, 0.247059, 0.364706, 1 )
+bg_color = Color( 0.133333, 0.137255, 0.137255, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 0.921569, 1 )
 anti_aliasing = false
 
 [sub_resource type="StyleBoxLine" id=2]
@@ -21,6 +26,14 @@ Main_Menu = "res://TitleScreen/MainMenu.tscn"
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.133333, 0.137255, 0.137255, 0.737255 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 anchor_right = 1.0
