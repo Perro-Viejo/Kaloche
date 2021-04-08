@@ -51,7 +51,7 @@ custom_constants/margin_top = 16
 custom_constants/margin_left = 16
 custom_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/MarginContainer"]
+[node name="OptionsContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/MarginContainer"]
 margin_left = 16.0
 margin_top = 30.0
 margin_right = 184.0
@@ -59,7 +59,7 @@ margin_bottom = 89.0
 size_flags_vertical = 4
 custom_constants/separation = 1
 
-[node name="Resume" parent="Control/MarginContainer/Panel/MarginContainer/VBoxContainer" groups=[
+[node name="Resume" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" groups=[
 "FocusGroup",
 "Pause",
 ] instance=ExtResource( 2 )]
@@ -68,36 +68,36 @@ margin_right = 99.0
 margin_bottom = 11.0
 text = "Resume"
 
-[node name="Restart" parent="Control/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Restart" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 68.0
 margin_top = 12.0
 margin_right = 100.0
 margin_bottom = 23.0
 text = "Restart"
 
-[node name="Options" parent="Control/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Options" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 68.0
 margin_top = 24.0
 margin_right = 99.0
 margin_bottom = 35.0
 text = "Options"
 
-[node name="MainMenu" parent="Control/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="MainMenu" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 62.0
 margin_top = 36.0
 margin_right = 105.0
 margin_bottom = 47.0
 text = "Main Menu"
 
-[node name="Exit" parent="Control/MarginContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Exit" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 76.0
 margin_top = 48.0
 margin_right = 92.0
 margin_bottom = 59.0
 text = "Exit"
 
-[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Exit" to="." method="_on_Exit_pressed"]

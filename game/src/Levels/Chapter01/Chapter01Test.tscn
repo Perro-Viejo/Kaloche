@@ -153,7 +153,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 26
+frame = 27
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -224,6 +224,17 @@ position = Vector2( 10.5, -423 )
 
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
 position = Vector2( 10.5, -816 )
+
+[node name="ZonePositions" type="Node2D" parent="Zones"]
+
+[node name="Start" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 488, 1186 )
+
+[node name="Altar" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( -262, -256 )
+
+[node name="Entrance" type="Position2D" parent="Zones/ZonePositions"]
+position = Vector2( 12, -781 )
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )

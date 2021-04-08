@@ -12,6 +12,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 show_debug = false
+disable_mouse = false
 
 [node name="Levels" type="Node2D" parent="."]
 
