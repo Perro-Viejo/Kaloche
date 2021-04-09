@@ -32,6 +32,8 @@ DEFAULT,Default,Defecto
 USE_NEW_CONTROLS,Use new control!,Usar nuevos controles!
 CANCEL,Cancel,Cancelar
 LANGUAGES,Languages,Idiomas
+GUI_SHOW_CONTROLS,Show controls,A ver los controles
+GUI_CLOSE_CONTROLS,Press Z to close,Presiona Z para cerrar
 DEMON_SALUTE_01,Hi Teosad,Hola Teotriste
 DEMON_SALUTE_02,Fear me for I am...,Siente la emoción de conocer mi nombre...
 DEMON_SALUTE_03,^^^Kaloching^^^,^^^Kaloches^^^
@@ -55,7 +57,7 @@ P_IGUANA,Iguana,Iguana
 P_JAGUAR,Jaguar,Jaguar
 P_FISH,Fish,Pescaito
 F_DOG,Thanks!,¡Gracias! Toto Santos
-F_CRICKET_GOD, Staaaaap!,Humano. Me has encontrado.\nPídeme lo que quieras. (  u )3( u )
+F_CRICKET_GOD,Staaaaap!,Humano. Me has encontrado.\nPídeme lo que quieras. (  u )3( u )
 P_FISH_GEN,Whatever,Cualquiera
 P_FISH_APUY,Apuymon,Apuy
 P_FISH_CHANCHITA,Chanchitamon,Chanchita
@@ -71,7 +73,7 @@ FOREST,La Madre Vieja,La Madre Vieja
 TEMPLE,Templo del dios Kuarebachu,Templo del dios Kuarebachu
 RIVER,Caño Cristales,Caño Cristales
 LAKE,La Culiandanga,La Culiandanga
-INTRO_01,Teotriste había logrado llegar a la Sierra de la Macarena. La oscuridad cubriendo leguas de inextricable selva y ciénega. ,Teotriste había logrado llegar a la Sierra de la Macarena. La oscuridad cubriendo leguas de inextricable selva y ciénega. 
+INTRO_01,Teotriste había logrado llegar a la Sierra de la Macarena. La oscuridad cubriendo leguas de inextricable selva y ciénega.,Teotriste había logrado llegar a la Sierra de la Macarena. La oscuridad cubriendo leguas de inextricable selva y ciénega.
 INTRO_02,"Lo cierto es que el hombre apenas se movía, ignorando las ramas que le dilaceraban las carnes y se arrastró, mareado y ensangrentado, hasta el recinto triangular que corona un oso hormiguero de piedra, que tuvo alguna vez el color del fuego y ahora el de la ceniza. ","Lo cierto es que el hombre apenas se movía, ignorando las ramas que le dilaceraban las carnes y se arrastró, mareado y ensangrentado, hasta el recinto triangular que corona un oso hormiguero de piedra, que tuvo alguna vez el color del fuego y ahora el de la ceniza. "
 INTRO_03,"El forastero se tendió bajo el pedestal, sintiendo sólo el frío del miedo. Cerró los ojos y durmió.","El forastero se tendió bajo el pedestal, sintiendo sólo el frío del miedo. Cerró los ojos y durmió."
 INTRO_04,"Al principio los sueños eran caóticos pero poco después, el forastero se soñaba - estaba frente a un pequeño fuego, activo y caluroso, sobrenatural.","Al principio los sueños eran caóticos pero poco después, el forastero se soñaba - estaba frente a un pequeño fuego, activo y caluroso, sobrenatural."

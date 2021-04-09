@@ -151,4 +151,3 @@ func retranslate()->void:
 
 func set_node_in_focus()->void:
 	var FocusGroup:Array = get_groups()
-	print(FocusGroup)

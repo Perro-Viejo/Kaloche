@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/TitleScreen/MainMenu.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/GUI/FadeLayer/Fade_layer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/GUI/HTML5Focus/HTMLfocus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Audio/AudioManager.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/GUI/ControlsLayer/ControlsLayer.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,6 +31,14 @@ layer = 100
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 5 )]
 layer = 101
+
+[node name="ControlsLayer" parent="." instance=ExtResource( 9 )]
+layer = 102
+
+[node name="Helper" parent="ControlsLayer/MainContainer" index="0" groups=[
+"FocusGroup",
+"ShowControls",
+]]
 
 [node name="FadeLayer" parent="." instance=ExtResource( 6 )]
 layer = 128
@@ -63,3 +72,5 @@ bus = "SFX"
 layer = 128
 
 [connection signal="tween_completed" from="FadeLayer/FadeTween" to="." method="_on_FadeTween_tween_completed"]
+
+[editable path="ControlsLayer"]

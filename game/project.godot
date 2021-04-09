@@ -289,6 +289,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "EXP-System-Dialog", "aseprite_importer", "codeandweb.texturepacker" )
 
+[global]
+
+pause=false
+
 [importer_defaults]
 
 texture={

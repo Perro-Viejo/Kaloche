@@ -92,8 +92,8 @@ func change_scene()->void: #handle actual scene change
 	CurrentScene = NextScene
 	NextScene = null
 	CurrentSceneInstance = CurrentScene.instance()
-	$Levels.add_child(CurrentSceneInstance)
 	Data.set_data(Data.CURRENT_SCENE, CurrentSceneInstance.name)
+	$Levels.add_child(CurrentSceneInstance)
 
 func restart_scene():
 	if FadeState != IDLE:

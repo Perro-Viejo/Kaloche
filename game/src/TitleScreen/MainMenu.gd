@@ -2,7 +2,9 @@ extends CanvasLayer
 
 export (String, FILE, '*.tscn') var First_Level: String
 export (String, FILE, '*.tscn') var intro_scn: String
-export(bool) var show_intro = true
+export (String, FILE, '*.tscn') var controls_scn: String
+export var show_intro := true
+export var show_controls := true
 
 var _is_credits := false
 
@@ -64,6 +66,10 @@ func retranslate()->void:
 func _on_NewGame_pressed()->void:
 	AudioEvent.emit_signal('stop_requested', 'MX', 'Menu')
 	GuiEvent.emit_signal('NewGame')
+	if show_controls:
+		GuiEvent.emit_signal('ChangeScene', controls_scn)
+#		SectionEvent.show_controls = true
+#		yield(GuiEvent, 'show_controls_exited')
 	if show_intro:
 		GuiEvent.emit_signal('ChangeScene', intro_scn)
 	else:

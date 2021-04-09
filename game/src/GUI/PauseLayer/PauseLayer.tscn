@@ -60,11 +60,10 @@ custom_constants/margin_bottom = 16
 
 [node name="OptionsContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/MarginContainer"]
 margin_left = 16.0
-margin_top = 30.0
+margin_top = 17.0
 margin_right = 184.0
-margin_bottom = 89.0
+margin_bottom = 103.0
 size_flags_vertical = 4
-custom_constants/separation = 1
 
 [node name="TeletransportContainer" type="HBoxContainer" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer"]
 visible = false
@@ -100,35 +99,45 @@ margin_right = 99.0
 margin_bottom = 11.0
 text = "Resume"
 
+[node name="ShowControls" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" groups=[
+"FocusGroup",
+] instance=ExtResource( 2 )]
+margin_left = 41.0
+margin_top = 15.0
+margin_right = 127.0
+margin_bottom = 26.0
+text = "GUI_SHOW_CONTROLS"
+
 [node name="Restart" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 68.0
-margin_top = 12.0
+margin_top = 30.0
 margin_right = 100.0
-margin_bottom = 23.0
+margin_bottom = 41.0
 text = "Restart"
 
 [node name="Options" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 68.0
-margin_top = 24.0
+margin_top = 45.0
 margin_right = 99.0
-margin_bottom = 35.0
+margin_bottom = 56.0
 text = "Options"
 
 [node name="MainMenu" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 62.0
-margin_top = 36.0
+margin_top = 60.0
 margin_right = 105.0
-margin_bottom = 47.0
+margin_bottom = 71.0
 text = "Main Menu"
 
 [node name="Exit" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 76.0
-margin_top = 48.0
+margin_top = 75.0
 margin_right = 92.0
-margin_bottom = 59.0
+margin_bottom = 86.0
 text = "Exit"
 
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/ShowControls" to="." method="_on_ShowControls_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

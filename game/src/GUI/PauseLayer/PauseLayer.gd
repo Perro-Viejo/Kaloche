@@ -17,6 +17,8 @@ func _ready()->void:
 	
 	GuiEvent.connect("Paused", self, "on_show_paused")
 	GuiEvent.connect("Options", self, "on_show_options")
+	GuiEvent.connect('show_controls_requested', self, '_on_show_controls')
+	
 	SectionEvent.Paused = false
 	#localization
 	Settings.connect("ReTranslate", self, "_retranslate")
@@ -88,3 +90,12 @@ func _on_world_entered(data: Dictionary):
 func _position_selected(index: int) -> void:
 	if index == 0: return
 	WorldEvent.emit_signal('zone_position_requested', _world_positions[index - 1])
+
+
+func _on_ShowControls_pressed():
+	SectionEvent.show_controls = true
+
+
+func _on_show_controls(value: bool) -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	$Control.visible = !value

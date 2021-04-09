@@ -344,6 +344,7 @@ margin_left = 202.0
 margin_right = 304.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
+
 [connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
 

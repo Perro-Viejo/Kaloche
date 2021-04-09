@@ -20,6 +20,7 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 	FocusGroup = get_tree().get_nodes_in_group("FocusGroup")
 	for btn in FocusGroup: #Save references to call main buttons in sections
 		var groups:Array = btn.get_groups()
+
 		if groups.has("MainMenu"):
 			ButtonsSections["MainMenu"] = btn
 		if groups.has("Pause"):
@@ -30,6 +31,8 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 			ButtonsSections["OptionsControls"] = btn
 		if groups.has("DialogMenu"):
 			ButtonsSections["DialogMenu"] = btn
+		if groups.has("ShowControls"):
+			ButtonsSections["ShowControls"] = btn
 	# Para que por defecto se seleccione la primera opción de cualquier menú que
 	# se abra por aquí
 	force_focus()
@@ -70,10 +73,13 @@ func force_focus():
 				btn = ButtonsSections.OptionsControls
 			else:
 				btn = ButtonsSections.OptionsMain
+		elif SectionEvent.show_controls:
+			btn = ButtonsSections.ShowControls
 		else:
 			if SectionEvent.Paused:
 				btn = ButtonsSections.Pause
 			elif SectionEvent.dialog:
 				btn = ButtonsSections.DialogMenu
+
 	if btn != null:
 		btn.grab_focus()

@@ -12,3 +12,4 @@ signal Languages
 signal Paused
 signal Exit
 signal Refocus
+signal show_controls_requested
