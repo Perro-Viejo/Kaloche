@@ -79,6 +79,7 @@ func unhandled_input(event: InputEvent) -> void:
 		AudioEvent.emit_signal('play_requested', 'Fishing', 'rod_throw')
 
 		owner.hook.target_pos = hook_target_pos
+	# TODO: Acá falta evaluar que control va a hacer el cambio de carnada
 	elif event.is_action_pressed('Drop'):
 		if can_change_bait:
 			_current_bait = FishingDatabase.get_next_bait()

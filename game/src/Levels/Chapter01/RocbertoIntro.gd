@@ -52,7 +52,8 @@ func _rocberto_found(body: Node) -> void:
 
 
 func _player_leaves(body: Node) -> void:
-	DialogEvent.disconnect('dialog_finished', self, 'focus_player')
+	if DialogEvent.is_connected('dialog_finished', self, 'focus_player'):
+		DialogEvent.disconnect('dialog_finished', self, 'focus_player')
 	if _player_cam != null:
 		$Tween.interpolate_property(
 			_player_cam, 'zoom',

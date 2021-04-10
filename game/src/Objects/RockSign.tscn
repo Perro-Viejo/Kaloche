@@ -17,7 +17,6 @@ script = ExtResource( 3 )
 texture = ExtResource( 1 )
 
 [node name="ZIndexChanger" type="Area2D" parent="."]
-visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 2 )
 zindex_on_entered = 0
@@ -32,7 +31,7 @@ lights_to_enable = [  ]
 lights_to_enable_case = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ZIndexChanger"]
-polygon = PoolVector2Array( 39, 30, -39, 30, -39, 0, -13, 0, -13, 7, 13, 7, 13, 0, 39, 0 )
+polygon = PoolVector2Array( 39, 39, -39, 40, -39, 0, -13, 0, -13, 7, 13, 7, 13, 0, 39, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
