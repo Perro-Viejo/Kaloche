@@ -85,6 +85,8 @@ margin_right = 168.0
 margin_bottom = 9.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.921569, 0.337255, 0.294118, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0.470588, 1 )
+custom_colors/font_color_pressed = Color( 0.266667, 0.894118, 0.952941, 1 )
 
 [node name="TeletransportSeparator" type="HSeparator" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer"]
 visible = false
@@ -101,9 +103,7 @@ margin_right = 99.0
 margin_bottom = 11.0
 text = "GUI_RESUME"
 
-[node name="ShowControls" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" groups=[
-"FocusGroup",
-] instance=ExtResource( 2 )]
+[node name="ShowControls" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 41.0
 margin_top = 15.0
 margin_right = 127.0

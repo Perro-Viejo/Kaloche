@@ -27,9 +27,10 @@ func _ready()->void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func on_show_paused(value:bool)->void:
-	#Signals allow each module have it's own response logic
+	# Signals allow each module have it's own response logic
 	$Control.visible = value
 	get_tree().paused = value
+	guiBrain.force_focus()
 
 
 func on_show_options(value:bool)->void:
@@ -92,6 +93,8 @@ func _on_world_entered(data: Dictionary):
 func _position_selected(index: int) -> void:
 	if index == 0: return
 	WorldEvent.emit_signal('zone_position_requested', _world_positions[index - 1])
+	yield(get_tree(), 'idle_frame')
+	guiBrain.force_focus()
 
 
 func _on_ShowControls_pressed():

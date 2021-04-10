@@ -277,6 +277,7 @@ text = "Salir"
 align = 0
 
 [node name="CreditsContainer" type="TextureButton" parent="BG"]
+visible = false
 margin_left = 255.983
 margin_top = 145.233
 margin_right = 295.983
@@ -312,7 +313,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 18
+frame = 12
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -323,7 +324,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 12
+frame = 6
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )

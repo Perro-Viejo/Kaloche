@@ -38,7 +38,6 @@ func _ready() -> void:
 			_story_reader.read(_stories_es)
 
 	# Conectarse a eventos de los retoños
-#	_autofill.connect('fill_done', self, '_dialog_line_finished')
 	$AnimatedRichText.connect('animation_finished', self, '_dialog_line_finished')
 
 	# Conectarse a eventos de la vida real
@@ -47,7 +46,6 @@ func _ready() -> void:
 	DialogEvent.connect('character_spoke', self, '_show_dialog_line')
 	DialogEvent.connect('dialog_option_clicked', self, '_option_clicked')
 	DialogEvent.connect('forced_close_requested', self, '_on_forced_closed')
-#	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
@@ -55,6 +53,7 @@ func _play_dialog(dialog_name: String, selected_slot = -1) -> void:
 	_did = _story_reader.get_did_via_record_name(dialog_name)
 	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
 	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
+	_ignore_toggle = false
 
 	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
 		_in_dialog_with_options = true
@@ -314,15 +313,16 @@ func _close_dialog() -> void:
 		_options_nid = 0
 		_in_dialog_with_options = false
 		_dialog_menu.remove_options()
-		# Revisar este toggle para que no dependa que el diálogo tenga opciones
-	
+
 	if not _ignore_toggle:
 		PlayerEvent.emit_signal('control_toggled')
+
 	DialogEvent.emit_signal('dialog_finished')
 
 
 func _get_options_id() -> String:
 	return '%s-%s' % [_did, _options_nid]
+
 
 func _on_forced_closed():
 	$AnimatedRichText.stop(true)

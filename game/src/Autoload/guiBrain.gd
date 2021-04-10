@@ -33,6 +33,7 @@ func gui_collect_focusgroup()->void:	#Workaround to get initial focus
 			ButtonsSections["DialogMenu"] = btn
 		if groups.has("ShowControls"):
 			ButtonsSections["ShowControls"] = btn
+
 	# Para que por defecto se seleccione la primera opción de cualquier menú que
 	# se abra por aquí
 	force_focus()
