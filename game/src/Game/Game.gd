@@ -7,6 +7,7 @@ enum {IDLE, FADEOUT, FADEIN}
 
 export var show_debug := true
 export var disable_mouse := true
+export var hide_teletransport_in_editor := false
 
 var NextScene
 var FadeState:int = IDLE
@@ -20,6 +21,7 @@ onready var _mouse_blocker: Control = $MouseBlocker/Control
 func _ready()->void:
 	Data.set_data(Data.CURRENT_SCENE, 'MainMenu')
 	Data.set_data(Data.SHOW_DEBUG, show_debug)
+	Data.set_data(Data.HIDE_TELETRANSPORT_IN_EDITOR, hide_teletransport_in_editor)
 	
 	if disable_mouse:
 		_mouse_blocker.show()

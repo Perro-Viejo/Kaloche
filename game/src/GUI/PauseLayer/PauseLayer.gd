@@ -76,6 +76,7 @@ func _retranslate()->void:
 
 
 func _on_world_entered(data: Dictionary):
+	if Data.get_data(Data.HIDE_TELETRANSPORT_IN_EDITOR): return
 	if OS.has_feature('debug'):
 		if data.has('points'):
 			_level_positions.add_item('Ningún sitio')
