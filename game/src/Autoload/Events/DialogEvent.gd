@@ -7,6 +7,7 @@ signal dialog_continued
 signal dialog_skipped
 signal dialog_finished
 signal dialog_paused
+signal forced_close_requested
 signal line_triggered(character_name, text, time, emotion)
 signal dialog_menu_requested(options)
 signal dialog_option_clicked(option_dic)

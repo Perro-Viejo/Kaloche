@@ -25,14 +25,19 @@ func _unhandled_input(event: InputEvent) -> void:
 					_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
 		elif owner.node_to_interact and not owner.grabbing:
 			_state_machine.transition_to_state(_state_machine.STATES.GRAB)
-	elif event.is_action_pressed('Drop'):
-		if owner.node_to_interact:
-			if owner.grabbing:
-				_state_machine.transition_to_state(
-					_state_machine.STATES.DROP, { dir = _last_dir }
-				)
-			elif owner.node_to_interact.dialog:
-				DialogEvent.emit_signal('dialog_requested', owner.node_to_interact.dialog)
+		elif owner.node_to_interact and owner.grabbing:
+			_state_machine.transition_to_state(
+				_state_machine.STATES.DROP, { dir = _last_dir }
+			)
+	#El evento de drop por si acaso...
+#	elif event.is_action_pressed('Drop'):
+#		if owner.node_to_interact:
+#			if owner.grabbing:
+#				_state_machine.transition_to_state(
+#					_state_machine.STATES.DROP, { dir = _last_dir }
+#				)
+#			elif owner.node_to_interact.dialog:
+#				DialogEvent.emit_signal('dialog_requested', owner.node_to_interact.dialog)
 	elif event.is_action_pressed('Equip') and not owner.grabbing:
 		if owner.has_equiped():
 			owner.current_tool = owner.Tools.NONE

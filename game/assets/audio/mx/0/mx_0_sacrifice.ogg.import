@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mx_0_sacrifice.ogg-a8fa286dfcc3b890f6b1fec8a84dd7a1.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

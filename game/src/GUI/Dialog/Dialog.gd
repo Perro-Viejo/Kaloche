@@ -46,6 +46,7 @@ func _ready() -> void:
 	DialogEvent.connect('dialog_continued', self, '_continue_dialog')
 	DialogEvent.connect('character_spoke', self, '_show_dialog_line')
 	DialogEvent.connect('dialog_option_clicked', self, '_option_clicked')
+	DialogEvent.connect('forced_close_requested', self, '_on_forced_closed')
 #	HudEvent.connect('hud_accept_pressed', _autofill, 'stop')
 
 
@@ -68,6 +69,7 @@ func _play_dialog(dialog_name: String, selected_slot = -1) -> void:
 		if start_slots > 1:
 			randomize()
 			slot = randi() % start_slots
+			_ignore_toggle = true
 	_continue_dialog(slot)
 
 
@@ -321,3 +323,6 @@ func _close_dialog() -> void:
 
 func _get_options_id() -> String:
 	return '%s-%s' % [_did, _options_nid]
+
+func _on_forced_closed():
+	$AnimatedRichText.stop(true)

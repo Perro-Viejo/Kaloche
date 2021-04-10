@@ -85,19 +85,26 @@ func play_text(value: String, color: Color = Color('#ffffeb')) -> void:
 	_tween.start()
 
 
-func stop() ->void:
+func stop(forced = false) ->void:
 	if modulate.a == 0.0:
 		return
-
-	if _is_waiting_input:
-		_is_waiting_input = false
-		_notify_completion()
+	
+	if not forced:
+		if _is_waiting_input:
+			_is_waiting_input = false
+			_notify_completion()
+		else:
+			# Saltarse las animaciones
+			_tween.stop_all()
+			percent_visible = 1.0
+			rect_size = _target_size
+			_wait_input()
 	else:
-		# Saltarse las animaciones
 		_tween.stop_all()
 		percent_visible = 1.0
 		rect_size = _target_size
-		_wait_input()
+		_is_waiting_input = false
+		_notify_completion()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░

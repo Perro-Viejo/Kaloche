@@ -50,13 +50,13 @@ glow_bicubic_upscale = true
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 35 )
-shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
-shader_param/line_thickness = 1.0
+shader_param/line_color = Color( 0.564706, 0.686275, 1.41176, 0.905882 )
+shader_param/line_thickness = 2.0
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 35 )
-shader_param/line_color = Color( 1.74, 1, 1.93, 1 )
+shader_param/line_color = Color( 1.74118, 1, 1.92941, 0.678431 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="Gradient" id=4]
@@ -270,16 +270,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Pickable" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( -294, -277 )
-carbs = 200
-
-[node name="Pickable2" parent="Objects" instance=ExtResource( 8 )]
-material = SubResource( 2 )
-position = Vector2( -390, -277 )
-is_good = false
-carbs = 5
-
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
@@ -294,6 +284,8 @@ img = ExtResource( 1 )
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -309, -255 )
+is_good = true
+can_burn = true
 carbs = 50
 
 [node name="RockSign" parent="Objects" instance=ExtResource( 6 )]
