@@ -151,8 +151,10 @@ align = 1
 autowrap = true
 
 [node name="NameBubble" parent="Control" instance=ExtResource( 4 )]
+visible = false
 
 [node name="TalkingBubble" parent="Control" instance=ExtResource( 5 )]
+visible = false
 
 [node name="PlayerBorder" type="TextureRect" parent="Control"]
 visible = false

@@ -32,7 +32,13 @@ DEFAULT,Default,Defecto
 USE_NEW_CONTROLS,Use new control!,Usar nuevos controles!
 CANCEL,Cancel,Cancelar
 LANGUAGES,Languages,Idiomas
+,,
+GUI_RESUME,Resume,Seguir jugando
 GUI_SHOW_CONTROLS,Show controls,A ver los controles
+GUI_RESTART,Restart,Volver a empezar
+GUI_OPTIONS,Options,A ver las opciones
+GUI_MAIN_MENU,Main menu,Pa'l menú principal
+GUI_EXIT,Exit,Sacámela un poquito
 GUI_CLOSE_CONTROLS,Press Z to close,Presiona Z para cerrar
 DEMON_SALUTE_01,Hi Teosad,Hola Teotriste
 DEMON_SALUTE_02,Fear me for I am...,Siente la emoción de conocer mi nombre...

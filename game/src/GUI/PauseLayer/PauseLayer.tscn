@@ -24,6 +24,7 @@ script = ExtResource( 1 )
 Main_Menu = "res://TitleScreen/MainMenu.tscn"
 
 [node name="Control" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -97,7 +98,7 @@ custom_styles/separator = SubResource( 2 )
 margin_left = 68.0
 margin_right = 99.0
 margin_bottom = 11.0
-text = "Resume"
+text = "GUI_RESUME"
 
 [node name="ShowControls" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" groups=[
 "FocusGroup",
@@ -113,28 +114,28 @@ margin_left = 68.0
 margin_top = 30.0
 margin_right = 100.0
 margin_bottom = 41.0
-text = "Restart"
+text = "GUI_RESTART"
 
 [node name="Options" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 68.0
 margin_top = 45.0
 margin_right = 99.0
 margin_bottom = 56.0
-text = "Options"
+text = "GUI_OPTIONS"
 
 [node name="MainMenu" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 62.0
 margin_top = 60.0
 margin_right = 105.0
 margin_bottom = 71.0
-text = "Main Menu"
+text = "GUI_MAIN_MENU"
 
 [node name="Exit" parent="Control/MarginContainer/Panel/MarginContainer/OptionsContainer" instance=ExtResource( 2 )]
 margin_left = 76.0
 margin_top = 75.0
 margin_right = 92.0
 margin_bottom = 86.0
-text = "Exit"
+text = "GUI_EXIT"
 
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Panel/MarginContainer/OptionsContainer/ShowControls" to="." method="_on_ShowControls_pressed"]

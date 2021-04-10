@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-export (String, FILE, "*.tscn") var Main_Menu: String
+export (String, FILE, '*.tscn') var Main_Menu: String
 
 var _world_positions := []
 
@@ -15,13 +15,13 @@ func _ready()->void:
 	_teletransport_container.hide()
 	_teletransport_separator.hide()
 	
-	GuiEvent.connect("Paused", self, "on_show_paused")
-	GuiEvent.connect("Options", self, "on_show_options")
+	GuiEvent.connect('Paused', self, 'on_show_paused')
+	GuiEvent.connect('Options', self, 'on_show_options')
 	GuiEvent.connect('show_controls_requested', self, '_on_show_controls')
 	
 	SectionEvent.Paused = false
 	#localization
-	Settings.connect("ReTranslate", self, "_retranslate")
+	Settings.connect('ReTranslate', self, '_retranslate')
 	WorldEvent.connect('world_entered', self, '_on_world_entered')
 
 
@@ -46,7 +46,7 @@ func _on_Resume_pressed():
 
 func _on_Restart_pressed():
 	GuiEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
-	GuiEvent.emit_signal("Restart")
+	GuiEvent.emit_signal('Restart')
 	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
 
@@ -57,21 +57,22 @@ func _on_Options_pressed():
 
 func _on_MainMenu_pressed():
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
-	GuiEvent.emit_signal("ChangeScene", Main_Menu)
+	GuiEvent.emit_signal('ChangeScene', Main_Menu)
 	SectionEvent.Paused = false
 
 
 func _on_Exit_pressed():
 	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
-	GuiEvent.emit_signal("Exit")
+	GuiEvent.emit_signal('Exit')
 
 
 func _retranslate()->void:
-	find_node("Resume").text = tr("RESUME")
-	find_node("Restart").text = tr("RESTART")
-	find_node("Options").text = tr("OPTIONS")
-	find_node("MainMenu").text = tr("MAIN_MENU")
-	find_node("Exit").text = tr("EXIT")
+	find_node('Resume').text = tr('GUI_RESUME')
+	find_node('ShowControls').text = tr('GUI_SHOW_CONTROLS')
+	find_node('Restart').text = tr('GUI_RESTART')
+	find_node('Options').text = tr('GUI_OPTIONS')
+	find_node('MainMenu').text = tr('GUI_MAIN_MENU')
+	find_node('Exit').text = tr('GUI_EXIT')
 
 
 func _on_world_entered(data: Dictionary):

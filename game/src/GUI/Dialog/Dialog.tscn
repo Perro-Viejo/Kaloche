@@ -18,3 +18,4 @@ __meta__ = {
 anchor_top = 1.0
 
 [node name="AnimatedRichText" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
