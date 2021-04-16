@@ -199,7 +199,7 @@ text = "Cerrar [ X ]"
 
 [node name="AudioPanel" type="Panel" parent="PanelsContainer"]
 visible = false
-margin_right = 101.0
+margin_right = 48.0
 margin_bottom = 106.0
 size_flags_horizontal = 3
 custom_styles/panel = ExtResource( 2 )
@@ -217,7 +217,7 @@ __meta__ = {
 }
 
 [node name="Volume" type="Label" parent="PanelsContainer/AudioPanel/VBoxContainer"]
-margin_right = 101.0
+margin_right = 57.0
 margin_bottom = 12.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -229,7 +229,7 @@ align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelsContainer/AudioPanel/VBoxContainer"]
 margin_top = 16.0
-margin_right = 101.0
+margin_right = 57.0
 margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -238,44 +238,43 @@ custom_constants/margin_left = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer"]
 margin_left = 5.0
-margin_right = 97.0
+margin_right = 53.0
 margin_bottom = 86.0
 
 [node name="AudioOptions" type="VBoxContainer" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer"]
-margin_right = 92.0
+margin_right = 48.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 custom_constants/separation = 4
 
 [node name="Master" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
-margin_right = 92.0
+margin_right = 48.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 
 [node name="ScaleName" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master" index="0"]
-margin_right = 92.0
+margin_right = 48.0
 
 [node name="HSlider" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions/Master" index="1"]
-margin_right = 92.0
+margin_right = 48.0
 focus_neighbour_top = NodePath("../../Close")
 focus_previous = NodePath("../../Close")
 
 [node name="Music" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
 margin_top = 25.0
-margin_right = 92.0
+margin_right = 48.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 
 [node name="SFX" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 7 )]
 margin_top = 50.0
-margin_right = 92.0
+margin_right = 48.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
 
 [node name="Close" parent="PanelsContainer/AudioPanel/VBoxContainer/MarginContainer/HBoxContainer/AudioOptions" instance=ExtResource( 9 )]
-margin_left = 22.0
 margin_top = 75.0
-margin_right = 70.0
+margin_right = 48.0
 margin_bottom = 86.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_bottom = NodePath("../Master/HSlider")
@@ -344,7 +343,6 @@ margin_left = 202.0
 margin_right = 304.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
-
 [connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="PanelsContainer/ResolutionMenu/VBoxContainer/HBoxContainer/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
 

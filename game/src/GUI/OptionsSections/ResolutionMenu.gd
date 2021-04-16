@@ -30,15 +30,17 @@ func _ready():
 	)
 
 func _change_scale(dir := 1) -> void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	Settings.Scale += dir
 	_scale_text.text = '%s (x%d)' % [tr('SCALE'), Settings.Scale]
 
 func _update_focus(focus: bool, txt: Label) -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 	_scale_text.add_color_override(
 		'font_color', highlight if focus else _dflt_color
 	)
 	if txt:
+		AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 		txt.add_color_override(
 			'font_color', highlight if focus else _dflt_color
 		)

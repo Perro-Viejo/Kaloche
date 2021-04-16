@@ -132,7 +132,7 @@ range_item_cull_mask = 1024
 [node name="TempleDoorButton" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0.5, -25 )
 is_toggle = false
-needs_grabbing = false
+pickable_needed = "Rocberto"
 
 [node name="Columns" type="Sprite" parent="."]
 position = Vector2( 0, -14.5 )

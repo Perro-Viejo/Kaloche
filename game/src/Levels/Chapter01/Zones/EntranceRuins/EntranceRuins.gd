@@ -14,6 +14,7 @@ func _ready():
 func _rock_grabbed(state, rock):
 	if state == false:
 		current_rocks.erase(rock)
+		rock.disconnect('grabbed_changed', self, '_rock_grabbed')
 	else:
 		if not _broken:
 			AudioEvent.emit_signal('play_requested', 'EntranceRuins', 'Rumble', global_position)

@@ -6,6 +6,6 @@ func _ready()->void:
 	SectionEvent.Controls = false
 
 func on_show_options(value:bool)->void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	$Control.visible = value
 	SectionEvent.Controls = false

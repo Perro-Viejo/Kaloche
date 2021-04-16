@@ -47,6 +47,14 @@ modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
 zindex_on_entered = 4
 zindex_on_exited = 0
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColumnsBack/ZIndexChanger"]
 polygon = PoolVector2Array( -72, 38, -72, -50, 72, -50, 72, 38, 54, 38, 52, 17, -52, 17, -54, 38 )
@@ -92,6 +100,13 @@ script = ExtResource( 8 )
 zindex_on_entered = 4
 zindex_on_exited = 0
 involved_nodes = [ NodePath("../../SacredFire") ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="North" type="CollisionPolygon2D" parent="Main/ZIndexChanger"]
 polygon = PoolVector2Array( -72, 0, -72, -88, 72, -88, 72, 0, 48, 0, 48, -21, -48, -21, -48, 0 )
@@ -152,6 +167,16 @@ polygon = PoolVector2Array( 32, 27.5, 39, 32.5, 53, 32.5, 55, 22.5, 34, 22.5 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="LeftColumn" type="CollisionPolygon2D" parent="ColumnsFront/ZIndexChanger"]
 position = Vector2( 14, 0 )
@@ -177,6 +202,16 @@ polygon = PoolVector2Array( 87, 25.5, 84, 21.5, 60, 21.5, 60, 25.5 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColumnsFrontDebris/ZIndexChanger"]
 polygon = PoolVector2Array( -17, 2, 20, 2, 20, 20, -17, 20 )
@@ -214,6 +249,16 @@ polygon = PoolVector2Array( -8, 8.5, -8, 10.5, 8, 10.5, 8, 8.5 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 8 )
+zindex_on_entered = 0
+zindex_on_exited = 4
+involved_nodes = [  ]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stone/ZIndexChanger"]
 polygon = PoolVector2Array( -21, 14.5, 21, 14.5, 21, 26.5, -21, 26.5 )
@@ -227,7 +272,16 @@ can_die = false
 external_position = NodePath("../Position2D")
 
 [node name="Sprite" parent="SacredFire" index="0"]
-frame = 5
+frame = 7
+
+[node name="ZIndexChanger" parent="SacredFire" index="7"]
+affect_involved_on = 0
+disable_lights_on_enter = [  ]
+disable_lights_on_exit = [  ]
+disable_lights_on_ready = false
+pause_z_changers_on_enter = [  ]
+lights_to_enable = [  ]
+lights_to_enable_case = 0
 
 [node name="Surface" type="Node2D" parent="."]
 

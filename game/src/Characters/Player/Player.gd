@@ -180,6 +180,7 @@ func stop_animation() -> void:
 
 # Agrega un Item al inventario cuando éste está vinculado a un Pickup
 func pickup_item() -> void:
+	AudioEvent.emit_signal('play_requested','Player','Pickup_Tool', global_position)
 	(inventory as Inventory).add_to_inventory(picked_item.item)
 	yield(get_tree().create_timer(0.1), 'timeout')
 	is_paused = true
@@ -190,6 +191,7 @@ func pickup_item() -> void:
 	speak('Ora tengo: %s' % tr(picked_item.item.name_code))
 	grabbing = false
 	picked_item.queue_free()
+	AudioEvent.emit_signal('play_requested','Player','Item_Disappear', global_position)
 	picked_item = null
 	is_paused = false
 
@@ -285,7 +287,12 @@ func _set_current_tool(tool_id: int) -> void:
 		current_tool = tool_id
 		if $StateMachine.state.has_method('on_tool_equiped'):
 			$StateMachine.state.on_tool_equiped(tool_id)
+			if current_tool:
+				match current_tool:
+					1: 
+						AudioEvent.emit_signal('play_requested', 'Player', 'Equip_Rod', global_position)
 	else:
+		AudioEvent.emit_signal('play_requested', 'Player', 'False_Equip', global_position)
 		speak('No tengo nada... y no [shake]se me para[/shake]')
 
 

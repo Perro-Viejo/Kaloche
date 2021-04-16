@@ -58,7 +58,7 @@ func set_resolution()->void:
 
 # ⋐░░░ CONTROL DE PANELES ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░⋑
 func _on_option_pressed(id := -1) -> void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	_hide_panels()
 	
 	_last_focus_owner = guiBrain.FocusDetect.get_focus_owner()
@@ -73,7 +73,7 @@ func _on_option_pressed(id := -1) -> void:
 			# TODO: Encontrar una forma menos manual de hacer esta mierda
 			_panels.language.focus_active()
 		OPT.BACK:
-			AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+			AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 			Settings.save_settings()
 			SectionEvent.Options = false
 			return
@@ -96,6 +96,7 @@ func _get_current_panel() -> Panel:
 	return current
 
 func _close_panel() -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	Settings.save_settings()
 	for p in _panels:
 		if _panels[p].visible:
@@ -107,23 +108,23 @@ func _close_panel() -> void:
 
 #### BUTTON SIGNALS ####
 func _on_Fullscreen_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	if SetUp:
 		return
 	Settings.Fullscreen = find_node('Fullscreen').pressed
 
 func _on_Borderless_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	if SetUp:
 		return
 	Settings.Borderless = find_node('Borderless').pressed
 
 func _on_Resized()->void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	set_resolution()
 
 func _on_Languages_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	SectionEvent.Languages = !SectionEvent.Languages
 	if !SectionEvent.Languages:
 		return
@@ -131,7 +132,7 @@ func _on_Languages_pressed():
 	SectionEvent.Languages = !SectionEvent.Languages
 
 func _on_Controls_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	SectionEvent.Controls = true
 
 #localization

@@ -17,6 +17,7 @@ func set_value(val: float) -> void:
 	$HSlider.value = val
 
 func _highlight_name(on := true) -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 	$ScaleName.add_color_override('font_color', highlight if on else _dflt_color)
 
 

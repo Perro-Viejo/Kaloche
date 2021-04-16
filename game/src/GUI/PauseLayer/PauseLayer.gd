@@ -34,36 +34,36 @@ func on_show_paused(value:bool)->void:
 
 
 func on_show_options(value:bool)->void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	if !SectionEvent.MainMenu:
 		$Control.visible = !value
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_Resume_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
 
 func _on_Restart_pressed():
-	GuiEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	GuiEvent.emit_signal('play_requested', 'UI', 'Select')
 	GuiEvent.emit_signal('Restart')
 	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
 
 func _on_Options_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	SectionEvent.Options = true
 
 
 func _on_MainMenu_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	GuiEvent.emit_signal('ChangeScene', Main_Menu)
 	SectionEvent.Paused = false
 
 
 func _on_Exit_pressed():
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	GuiEvent.emit_signal('Exit')
 
 
@@ -91,6 +91,7 @@ func _on_world_entered(data: Dictionary):
 
 
 func _position_selected(index: int) -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 	if index == 0: return
 	WorldEvent.emit_signal('zone_position_requested', _world_positions[index - 1])
 	yield(get_tree(), 'idle_frame')
@@ -102,5 +103,5 @@ func _on_ShowControls_pressed():
 
 
 func _on_show_controls(value: bool) -> void:
-	AudioEvent.emit_signal('play_requested', 'UI', 'Gen_Button')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	$Control.visible = !value

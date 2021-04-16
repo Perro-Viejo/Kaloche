@@ -29,21 +29,18 @@ func _on_Master_value_changed(value: float):
 		return
 	Settings.VolumeMaster = value/100
 	var player:AudioStreamPlayer = find_node('Master').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
+	AudioEvent.emit_signal('play_requested', 'UI', 'Volume_Test')
 
 func _on_Music_value_changed(value: float):
 	if not _enable:
 		return
 	Settings.VolumeMusic = value/100
 	var player:AudioStreamPlayer = find_node('Music').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
+	AudioEvent.emit_signal('play_requested', 'UI', 'Music_Test')
 
 func _on_SFX_value_changed(value: float):
 	if not _enable:
 		return
 	Settings.VolumeSFX = value/100
 	var player:AudioStreamPlayer = find_node('SFX').get_node('AudioStreamPlayer')
-	player.stream = preLoad.snd_TestBeep
-	player.play()
+	AudioEvent.emit_signal('play_requested', 'UI', 'Volume_Test')

@@ -19,10 +19,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed('Action'):
 		if owner.has_equiped():
-			match owner.current_tool:
-				owner.Tools.ROD:
-					# Inicia la pesca
-					_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
+			if owner.node_to_interact:
+				owner.current_tool = owner.Tools.NONE
+				_state_machine.transition_to_state(_state_machine.STATES.GRAB)
+			else:
+				match owner.current_tool:
+					owner.Tools.ROD:
+						# Inicia la pesca
+						_state_machine.transition_to_state(_state_machine.STATES.FISHPREPARE)
 		elif owner.node_to_interact and not owner.grabbing:
 			_state_machine.transition_to_state(_state_machine.STATES.GRAB)
 		elif owner.node_to_interact and owner.grabbing:
@@ -41,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed('Equip') and not owner.grabbing:
 		if owner.has_equiped():
 			owner.current_tool = owner.Tools.NONE
+			AudioEvent.emit_signal('play_requested', 'Player', 'Unequip', owner.global_position)
 		else:
 			owner.current_tool = owner.Tools.ROD
 		# TODO: Aquí se equipará el objeto seleccionado en el inventario. Por

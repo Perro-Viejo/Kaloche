@@ -81,6 +81,7 @@ func _on_Options_pressed()->void:
 
 
 func _on_Credits_pressed() -> void:
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	_is_credits = !_is_credits
 	_credits_container.visible = _is_credits
 	_devs.visible = _is_credits

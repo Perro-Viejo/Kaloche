@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=2]
+[gd_scene load_steps=221 format=2]
 
 [ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/fs/fs_grass_02.ogg" type="AudioStream" id=2]
@@ -207,6 +207,19 @@
 [ext_resource path="res://assets/audio/sfx_fishingrod_return_02.ogg" type="AudioStream" id=205]
 [ext_resource path="res://assets/audio/sfx_fishing_whoosh_in.ogg" type="AudioStream" id=206]
 [ext_resource path="res://assets/audio/sfx_fishing_whoosh_out.ogg" type="AudioStream" id=207]
+[ext_resource path="res://assets/audio/sfx_bridge_break.ogg" type="AudioStream" id=208]
+[ext_resource path="res://assets/audio/sfx_equip_false.ogg" type="AudioStream" id=209]
+[ext_resource path="res://assets/audio/sfx_equip_rod.ogg" type="AudioStream" id=210]
+[ext_resource path="res://assets/audio/sfx_unequip.ogg" type="AudioStream" id=211]
+[ext_resource path="res://assets/audio/sfx_pickup_tool.ogg" type="AudioStream" id=212]
+[ext_resource path="res://assets/audio/sfx_disappear.ogg" type="AudioStream" id=213]
+[ext_resource path="res://assets/audio/sfx_button_block_02.ogg" type="AudioStream" id=214]
+[ext_resource path="res://assets/audio/sfx_button_block_01.ogg" type="AudioStream" id=215]
+[ext_resource path="res://assets/audio/ui_volume_test.ogg" type="AudioStream" id=216]
+[ext_resource path="res://assets/audio/ui_move_01.ogg" type="AudioStream" id=217]
+[ext_resource path="res://assets/audio/ui_move_02.ogg" type="AudioStream" id=218]
+[ext_resource path="res://assets/audio/ui_select_02.ogg" type="AudioStream" id=219]
+[ext_resource path="res://assets/audio/ui_select_01.ogg" type="AudioStream" id=220]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -219,7 +232,7 @@ stream = ExtResource( 9 )
 [node name="Drop" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 8 )
 
-[node name="FS_Dirt" type="Node2D" parent="Player"]
+[node name="FS_Dirt_L" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -2.0
 random_volume = true
@@ -228,37 +241,46 @@ random_pitch = true
 min_pitch = -5.0
 max_pitch = 4.0
 
-[node name="FS_Dirt" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 24 )
 
-[node name="FS_Dirt2" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt2" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 19 )
 
-[node name="FS_Dirt3" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt3" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 22 )
 
-[node name="FS_Dirt4" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt4" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 147 )
 
-[node name="FS_Dirt5" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt5" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 156 )
 
-[node name="FS_Dirt6" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt2_R" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -2.0
+random_volume = true
+min_volume = -2.0
+random_pitch = true
+min_pitch = -5.0
+max_pitch = 4.0
+
+[node name="FS_Dirt6" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
 stream = ExtResource( 162 )
 
-[node name="FS_Dirt7" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt7" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
 stream = ExtResource( 150 )
 
-[node name="FS_Dirt8" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt8" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
 stream = ExtResource( 155 )
 
-[node name="FS_Dirt9" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt9" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
 stream = ExtResource( 153 )
 
-[node name="FS_Dirt10" type="AudioStreamPlayer" parent="Player/FS_Dirt"]
+[node name="FS_Dirt10" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
 stream = ExtResource( 17 )
 
-[node name="FS_Grass" type="Node2D" parent="Player"]
+[node name="FS_Grass_L" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -4.0
 random_volume = true
@@ -268,47 +290,57 @@ random_pitch = true
 min_pitch = -2.0
 max_pitch = 1.0
 
-[node name="FS_Grass" type="AudioStreamPlayer" parent="Player/FS_Grass"]
-stream = ExtResource( 17 )
-bus = "SFX"
-
-[node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/FS_Grass"]
-stream = ExtResource( 2 )
-bus = "SFX"
-
-[node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/FS_Grass"]
-stream = ExtResource( 18 )
-bus = "SFX"
-
-[node name="FS_Grass4" type="AudioStreamPlayer" parent="Player/FS_Grass"]
-stream = ExtResource( 154 )
-bus = "SFX"
-
-[node name="FS_Grass5" type="AudioStreamPlayer" parent="Player/FS_Grass"]
-stream = ExtResource( 163 )
-bus = "SFX"
-
-[node name="FS_Grass6" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass6" type="AudioStreamPlayer" parent="Player/FS_Grass_L"]
 stream = ExtResource( 159 )
 bus = "SFX"
 
-[node name="FS_Grass7" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass7" type="AudioStreamPlayer" parent="Player/FS_Grass_L"]
 stream = ExtResource( 157 )
 bus = "SFX"
 
-[node name="FS_Grass8" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass8" type="AudioStreamPlayer" parent="Player/FS_Grass_L"]
 stream = ExtResource( 158 )
 bus = "SFX"
 
-[node name="FS_Grass9" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass9" type="AudioStreamPlayer" parent="Player/FS_Grass_L"]
 stream = ExtResource( 160 )
 bus = "SFX"
 
-[node name="FS_Grass10" type="AudioStreamPlayer" parent="Player/FS_Grass"]
+[node name="FS_Grass10" type="AudioStreamPlayer" parent="Player/FS_Grass_L"]
 stream = ExtResource( 164 )
 bus = "SFX"
 
-[node name="FS_Rock" type="Node2D" parent="Player"]
+[node name="FS_Grass_R" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -4.0
+random_volume = true
+min_volume = -2.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 1.0
+
+[node name="FS_Grass" type="AudioStreamPlayer" parent="Player/FS_Grass_R"]
+stream = ExtResource( 17 )
+bus = "SFX"
+
+[node name="FS_Grass2" type="AudioStreamPlayer" parent="Player/FS_Grass_R"]
+stream = ExtResource( 2 )
+bus = "SFX"
+
+[node name="FS_Grass3" type="AudioStreamPlayer" parent="Player/FS_Grass_R"]
+stream = ExtResource( 18 )
+bus = "SFX"
+
+[node name="FS_Grass4" type="AudioStreamPlayer" parent="Player/FS_Grass_R"]
+stream = ExtResource( 154 )
+bus = "SFX"
+
+[node name="FS_Grass5" type="AudioStreamPlayer" parent="Player/FS_Grass_R"]
+stream = ExtResource( 163 )
+bus = "SFX"
+
+[node name="FS_Rock_L" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -4.0
 random_volume = true
@@ -318,57 +350,32 @@ random_pitch = true
 min_pitch = -3.0
 max_pitch = 1.0
 
-[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rock_L"]
 stream = ExtResource( 16 )
 mix_target = 2
 bus = "SFX"
 
-[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rock_L"]
 stream = ExtResource( 23 )
 mix_target = 2
 bus = "SFX"
 
-[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rock_L"]
 stream = ExtResource( 25 )
 mix_target = 2
 bus = "SFX"
 
-[node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+[node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rock_L"]
 stream = ExtResource( 151 )
 mix_target = 2
 bus = "SFX"
 
-[node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rock"]
+[node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rock_L"]
 stream = ExtResource( 165 )
 mix_target = 2
 bus = "SFX"
 
-[node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rock"]
-stream = ExtResource( 148 )
-mix_target = 2
-bus = "SFX"
-
-[node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rock"]
-stream = ExtResource( 161 )
-mix_target = 2
-bus = "SFX"
-
-[node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rock"]
-stream = ExtResource( 144 )
-mix_target = 2
-bus = "SFX"
-
-[node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rock"]
-stream = ExtResource( 145 )
-mix_target = 2
-bus = "SFX"
-
-[node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rock"]
-stream = ExtResource( 146 )
-mix_target = 2
-bus = "SFX"
-
-[node name="FS_Rod_Temple" type="Node2D" parent="Player"]
+[node name="FS_Rock_R" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -4.0
 random_volume = true
@@ -378,37 +385,82 @@ random_pitch = true
 min_pitch = -3.0
 max_pitch = 1.0
 
-[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rock_R"]
+stream = ExtResource( 148 )
+mix_target = 2
+bus = "SFX"
+
+[node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rock_R"]
+stream = ExtResource( 161 )
+mix_target = 2
+bus = "SFX"
+
+[node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rock_R"]
+stream = ExtResource( 144 )
+mix_target = 2
+bus = "SFX"
+
+[node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rock_R"]
+stream = ExtResource( 145 )
+mix_target = 2
+bus = "SFX"
+
+[node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rock_R"]
+stream = ExtResource( 146 )
+mix_target = 2
+bus = "SFX"
+
+[node name="FS_Rod_Temple_L" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -4.0
+random_volume = true
+min_volume = -1.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 1.0
+
+[node name="FS_Rock" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_L"]
 stream = ExtResource( 170 )
 
-[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock2" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_L"]
 stream = ExtResource( 177 )
 
-[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock3" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_L"]
 stream = ExtResource( 176 )
 
-[node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock4" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_L"]
 stream = ExtResource( 175 )
 
-[node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock5" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_L"]
 stream = ExtResource( 173 )
 
-[node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rod_Temple_R" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -4.0
+random_volume = true
+min_volume = -1.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -3.0
+max_pitch = 1.0
+
+[node name="FS_Rock6" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_R"]
 stream = ExtResource( 172 )
 
-[node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock7" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_R"]
 stream = ExtResource( 168 )
 
-[node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock8" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_R"]
 stream = ExtResource( 171 )
 
-[node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock9" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_R"]
 stream = ExtResource( 169 )
 
-[node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple"]
+[node name="FS_Rock10" type="AudioStreamPlayer" parent="Player/FS_Rod_Temple_R"]
 stream = ExtResource( 174 )
 
-[node name="FS_Water" type="Node2D" parent="Player"]
+[node name="FS_Water_L" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -6.0
 min_volume = -5.0
@@ -417,34 +469,43 @@ random_pitch = true
 min_pitch = -2.0
 max_pitch = 2.0
 
-[node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 15 )
 
-[node name="FS_Water2" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water2" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 20 )
 
-[node name="FS_Water3" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water3" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 21 )
 
-[node name="FS_Water4" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water4" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 149 )
 
-[node name="FS_Water5" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water5" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 152 )
 
-[node name="FS_Water6" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water_R" type="Node2D" parent="Player"]
+script = ExtResource( 26 )
+volume = -6.0
+min_volume = -5.0
+max_volume = 1.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="FS_Water6" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 139 )
 
-[node name="FS_Water7" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water7" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 142 )
 
-[node name="FS_Water8" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water8" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 140 )
 
-[node name="FS_Water9" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water9" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 141 )
 
-[node name="FS_Water10" type="AudioStreamPlayer" parent="Player/FS_Water"]
+[node name="FS_Water10" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 143 )
 
 [node name="Gak_Rod" type="Node2D" parent="Player"]
@@ -475,6 +536,23 @@ bus = "SFX"
 [node name="react_fish" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource( 196 )
 volume_db = -2.0
+
+[node name="Equip_Rod" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 210 )
+
+[node name="Unequip" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 211 )
+
+[node name="False_Equip" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 209 )
+
+[node name="Item_Disappear" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 213 )
+volume_db = 6.0
+
+[node name="Pickup_Tool" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 212 )
+volume_db = 8.0
 
 [node name="Demon" type="Node2D" parent="."]
 
@@ -526,6 +604,43 @@ volume_db = -17.0
 stream = ExtResource( 10 )
 volume_db = -12.0
 pitch_scale = 3.0
+
+[node name="Volume_Test" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 216 )
+volume_db = -9.0
+bus = "SFX"
+
+[node name="Music_Test" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 216 )
+volume_db = -9.0
+pitch_scale = 0.5
+bus = "Music"
+
+[node name="Move" type="Node2D" parent="UI"]
+script = ExtResource( 26 )
+volume = -4.0
+random_pitch = true
+min_pitch = -2.0
+max_pitch = 2.0
+
+[node name="Move_01" type="AudioStreamPlayer" parent="UI/Move"]
+stream = ExtResource( 217 )
+
+[node name="Move_02" type="AudioStreamPlayer" parent="UI/Move"]
+stream = ExtResource( 218 )
+
+[node name="Select" type="Node2D" parent="UI"]
+script = ExtResource( 26 )
+random_pitch = true
+min_pitch = -5.0
+max_pitch = 5.0
+
+[node name="Select_01" type="AudioStreamPlayer" parent="UI/Select"]
+stream = ExtResource( 220 )
+
+[node name="Select_02" type="AudioStreamPlayer" parent="UI/Select"]
+stream = ExtResource( 219 )
+volume_db = -4.0
 
 [node name="BG" type="Node2D" parent="."]
 
@@ -772,6 +887,7 @@ pitch_scale = 0.31
 
 [node name="Menu" type="AudioStreamPlayer" parent="MX"]
 stream = ExtResource( 59 )
+bus = "Music"
 
 [node name="Fishing" type="Node2D" parent="."]
 
@@ -888,19 +1004,24 @@ script = ExtResource( 69 )
 
 [node name="Caminando" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 72 )
+bus = "Music"
 
 [node name="RodTemple" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 180 )
+bus = "Music"
 
 [node name="Rocberto" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 71 )
+bus = "Music"
 
 [node name="Lagunita" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 70 )
+bus = "Music"
 
 [node name="Sacrifice" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 183 )
 volume_db = -3.0
+bus = "Music"
 
 [node name="Spot" type="Node2D" parent="."]
 
@@ -1335,9 +1456,21 @@ stream = ExtResource( 99 )
 
 [node name="Up" type="AudioStreamPlayer2D" parent="Button"]
 stream = ExtResource( 101 )
+volume_db = 4.0
 
 [node name="Down" type="AudioStreamPlayer2D" parent="Button"]
 stream = ExtResource( 100 )
+volume_db = 4.0
+
+[node name="Block" type="Node2D" parent="Button"]
+script = ExtResource( 26 )
+volume = 4.0
+
+[node name="Block_01" type="AudioStreamPlayer2D" parent="Button/Block"]
+stream = ExtResource( 215 )
+
+[node name="Block_02" type="AudioStreamPlayer2D" parent="Button/Block"]
+stream = ExtResource( 214 )
 
 [node name="Hook" type="Node2D" parent="."]
 
@@ -1462,3 +1595,10 @@ stream = ExtResource( 190 )
 
 [node name="Rumble5" type="AudioStreamPlayer2D" parent="EntranceRuins/Rumble"]
 stream = ExtResource( 192 )
+
+[node name="Bridge" type="Node2D" parent="."]
+
+[node name="Break" type="AudioStreamPlayer2D" parent="Bridge"]
+stream = ExtResource( 208 )
+volume_db = 8.0
+pitch_scale = 0.9

@@ -34,7 +34,11 @@ func on_tool_equiped(tool_id: int) -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _play_fs() -> void:
-	AudioEvent.emit_signal('play_requested', 'Player', 'FS_' + _parent.fs_id)
+	if _parent.foot =='L':
+		_parent.foot = 'R'
+	else:
+		_parent.foot = 'L'
+	AudioEvent.emit_signal('play_requested', 'Player', 'FS_' + _parent.fs_id + '_' +_parent.foot)
 
 	if _parent.fs_id == 'Water':
 		match _parent.foot:

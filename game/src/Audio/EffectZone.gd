@@ -28,9 +28,6 @@ func _on_body_entered(body):
 		current_body = body
 		if not distance_based:
 			AudioEvent.emit_signal('fx_change_requested', effect, dry, wet)
-		else:
-			max_distance = global_position.distance_to(current_body.global_position)
-	
 
 func _on_body_exited(body):
 	if body.name == 'Player':

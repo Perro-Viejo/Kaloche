@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_button_block_01.ogg-7bd1fd1f82ff65e8a558e83f372cec9f.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_button_block_01.ogg"
+dest_files=[ "res://.import/sfx_button_block_01.ogg-7bd1fd1f82ff65e8a558e83f372cec9f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -179,6 +179,7 @@ position = Vector2( 38.643, -918.419 )
 script = ExtResource( 6 )
 effect = "temple_entrance_verb"
 wet = 0.05
+max_distance = 195
 min_distance = 130
 distance_based = true
 target_bus = "AMB"

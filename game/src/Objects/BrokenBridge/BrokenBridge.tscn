@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/world/chapter_0.1/Bridge.png" type="Texture" id=1]
+[ext_resource path="res://src/Objects/BrokenBridge/BrokenBridge.gd" type="Script" id=2]
+[ext_resource path="res://src/Levels/Surface.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Break"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bridge:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="BrokenBridge" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Bridge" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Break = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -16.5, -5.5, -7, -15, 19, -1, 13.5, 11.5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -28.6326, 71.6673, -14.3212, 64.3713, -13.5039, 71.1061, 30.2967, -3.81828, 37.0314, 9.09003, -21.6418, 100.851, -27.2541, 100.571 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -89.8068, 61.0039, -80.2658, 64.0907, -72.128, 54.5497, -74.0923, 40.7996, -2.53534, -36.3697, -7.86703, -40.0177, -74.9341, 31.5393, -77.1791, 23.9627, -90.0874, 29.0137 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 36.7508, -9.99182, 26.6487, 1.2328, 13.4597, -14.4817, -10.6732, -23.4614, 0.270813, -33.2829 )
+
+[node name="Surface" type="Area2D" parent="."]
+script = ExtResource( 3 )
+surface_name = "Rod_Temple"
+type = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surface"]
+polygon = PoolVector2Array( -81.9693, 59.1903, -9.60915, -22.8646, 25.2265, 1.85744, -31.4585, 101.283 )

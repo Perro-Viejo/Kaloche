@@ -19,6 +19,7 @@ func _ready()->void:
 	options_container.move_child(_close, options_container.get_child_count())
 
 	# Reasignar focas
+	AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 	options_container.get_child(0).focus_previous = _close.get_path()
 	options_container.get_child(0).focus_neighbour_top = _close.get_path()
 	_close.focus_next = options_container.get_child(0).get_path()
@@ -26,6 +27,7 @@ func _ready()->void:
 
 func focus_active() -> void:
 	_get_current_language_btn().grab_focus()
+	AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 
 func _on_button_pressed(value:String)->void:
 	_uncheck_all()

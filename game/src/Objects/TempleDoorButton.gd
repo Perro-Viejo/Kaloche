@@ -31,6 +31,8 @@ func _on_pressed(body: Node) -> void:
 		if needs_grabbing and body.grabbing:
 			if pickable_needed == '' or body.picked_item.name == pickable_needed:
 				_pressed = true
+		elif needs_grabbing and not body.grabbing:
+			AudioEvent.emit_signal('play_requested','Button','Block', position)
 		elif not needs_grabbing:
 			_pressed = true
 		

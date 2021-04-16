@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_bridge_break.ogg-502e7765625e355f0e6de7a9b773cbae.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx_bridge_break.ogg"
+dest_files=[ "res://.import/sfx_bridge_break.ogg-502e7765625e355f0e6de7a9b773cbae.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

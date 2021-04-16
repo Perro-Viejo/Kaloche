@@ -657,7 +657,7 @@ anims/run-rod = SubResource( 69 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 384, 0, 32, 32 )
 
 [node name="Shadow" type="Sprite" parent="Sprite"]
 show_behind_parent = true
@@ -673,6 +673,7 @@ material = SubResource( 70 )
 z_index = 2
 texture = ExtResource( 1 )
 hframes = 32
+frame = 12
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="StateMachine" type="Node2D" parent="."]

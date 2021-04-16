@@ -83,4 +83,5 @@ func force_focus():
 				btn = ButtonsSections.DialogMenu
 
 	if btn != null:
+		AudioEvent.emit_signal('play_requested', 'UI', 'Move')
 		btn.grab_focus()

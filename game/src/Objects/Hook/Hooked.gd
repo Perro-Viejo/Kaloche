@@ -20,6 +20,7 @@ var _hooked_time := 0
 var _hooked_time_range := [350.0, 450.0] # En segundos
 var _hooked_time_debug := -1
 var _next_position := Vector2.ZERO
+var _initial_gravity := Vector2.ZERO
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -68,6 +69,8 @@ func _process(delta) -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func enter(msg: Dictionary = {}) -> void:
+	_initial_gravity = owner.string.gravity
+	owner.string.gravity = Vector2.ZERO
 	PlayerEvent.emit_signal('camera_shook', 
 	{
 			strength = 0.55,
@@ -105,6 +108,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
+	owner.string.gravity = _initial_gravity
 	DebugOverlay.remove_monitor(_can_damage_fish_debug)
 	DebugOverlay.remove_monitor(_hooked_time_debug)
 
