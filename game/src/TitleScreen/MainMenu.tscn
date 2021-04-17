@@ -222,7 +222,7 @@ margin_right = 113.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.364706, 0.870588, 0.529412, 1 )
-text = "v0.9.2 - roca parlanchina"
+text = "v0.9.3 - sonandocaña"
 align = 2
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxMain"]
@@ -313,7 +313,7 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 16
+frame = 18
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -324,7 +324,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 10
+frame = 12
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
