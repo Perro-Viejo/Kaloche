@@ -79,12 +79,13 @@ shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
 shader_param/gradient_texture = SubResource( 5 )
 
-[node name="World" type="Node2D"]
+[node name="Chapter01" type="Node2D"]
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
+dev_entry_point = NodePath("Zones/ZonePositions/CeremonialAltar")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -155,7 +156,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 17
+frame = 20
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -291,13 +292,7 @@ img = ExtResource( 1 )
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -309, -255 )
-is_good = true
-can_burn = true
 carbs = 50
-on_free = ""
-tr_code = ""
-character = ""
-dialog = ""
 
 [node name="RockSign" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( -296.663, 756.422 )
@@ -456,11 +451,7 @@ __meta__ = {
 }
 
 [editable path="Zones/Altar"]
-
 [editable path="Zones/Altar/SacredFire"]
-
 [editable path="Zones/AltarActivation"]
-
 [editable path="Zones/FishTank"]
-
 [editable path="Zones/FishTankAnimation"]

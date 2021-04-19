@@ -2,6 +2,8 @@
 extends Node2D
 # ⠿⠿⠿⠿ Variables ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
 
+export var dev_entry_point: NodePath
+
 var _follow_b_tween: Tween
 var _points := []
 
@@ -22,6 +24,9 @@ func _ready() -> void:
 	})
 	
 	DebugOverlay.visible = Data.get_data(Data.SHOW_DEBUG)
+	
+	if OS.has_feature('editor') and get_node_or_null(dev_entry_point):
+		_player.global_position = get_node(dev_entry_point).global_position
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░

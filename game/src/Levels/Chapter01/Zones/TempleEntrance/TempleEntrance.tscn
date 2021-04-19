@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://src/Levels/Area2DToggler.gd" type="Script" id=40]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_on_behind.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_platform_cover.png" type="Texture" id=43]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pillars.png" type="Texture" id=44]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_torch.png" type="Texture" id=46]
@@ -310,7 +311,7 @@ tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -478,6 +479,18 @@ tracks/38/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Covers/Platform:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64.5 ), Vector2( 0, -60.5 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -913,6 +926,18 @@ tracks/22/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Covers/Platform:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64.5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1575,6 +1600,10 @@ texture = ExtResource( 48 )
 position = Vector2( 0, -102 )
 texture = ExtResource( 49 )
 
+[node name="Platform" type="Sprite" parent="Covers"]
+position = Vector2( 0, -64.5 )
+texture = ExtResource( 43 )
+
 [node name="Door" type="Sprite" parent="."]
 light_mask = 16384
 position = Vector2( 0, -193 )
@@ -1795,6 +1824,7 @@ polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 40, -20, 40
 
 [node name="Platform" type="Node2D" parent="."]
 visible = false
+position = Vector2( 0, -8 )
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
 script = ExtResource( 36 )
@@ -1937,7 +1967,7 @@ light_mask = 512
 texture = ExtResource( 35 )
 offset = Vector2( 0, 0 )
 hframes = 3
-region_rect = Rect2( 0, 0, 75, 8 )
+region_rect = Rect2( 0, 0, 75, 9 )
 
 [node name="Area2D" parent="Platform/DoorButton" index="2"]
 visible = false
@@ -2069,10 +2099,10 @@ polygon = PoolVector2Array( 13, 5, -13, 5, -16, 12, -43, 12, -64, 4, -64, 2, -55
 
 [node name="Fingers" type="Node2D" parent="."]
 visible = false
+position = Vector2( 0, -8 )
 z_index = 4
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="Behind" type="Light2D" parent="Fingers"]

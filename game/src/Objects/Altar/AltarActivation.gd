@@ -88,11 +88,21 @@ func move_camera(target: Dictionary) -> void:
 
 func next_target(_object: Object, _key: NodePath) -> void:
 	if _was_played == true:
-		yield(get_tree().create_timer(0.3), 'timeout')
+		_tween.disconnect('tween_completed', self, 'next_target')
+		_tween.interpolate_property(
+			_camera, 'zoom',
+			Vector2.ONE * 2.5, Vector2.ONE,
+			0.8, Tween.TRANS_SINE, Tween.EASE_OUT
+		)
+		_tween.start()
+		yield(_tween, 'tween_all_completed')
+
 		_player_cam.position = _camera.position
 		_player_cam.make_current()
+		
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 		queue_free()
+
 		return
 
 	_prev_position = _current_target._target.global_position
@@ -101,7 +111,16 @@ func next_target(_object: Object, _key: NodePath) -> void:
 		_was_played = true
 
 		# Esperar un momento y luego iniciar la animación de activación del templo
-		yield(get_tree().create_timer(0.8), 'timeout')
+		_tween.disconnect('tween_completed', self, 'next_target')
+		_tween.interpolate_property(
+			_camera, 'zoom',
+			Vector2.ONE, Vector2.ONE * 2.5,
+			2.0, Tween.TRANS_SINE, Tween.EASE_IN
+		)
+		_tween.start()
+		yield(_tween, 'tween_all_completed')
+		_tween.connect('tween_completed', self, 'next_target')
+
 		_temple_entrance.activate()
 	else:
 		_current_target = _targets.pop_front()
