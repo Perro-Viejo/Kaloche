@@ -27,7 +27,7 @@ func temple_activated() -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _open_door() -> void:
-	yield(get_tree().create_timer(2.0), 'timeout')
+	yield(get_tree().create_timer(0.8), 'timeout')
 	$AnimationPlayer.play('SETUP_OPEN_DOOR')
 	yield($AnimationPlayer, 'animation_finished')
 	yield(get_tree(), 'idle_frame')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -51,7 +51,9 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor_cover.png" type="Texture" id=49]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_cover.png" type="Texture" id=50]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids_mask.png" type="Texture" id=51]
-[ext_resource path="res://src/Nodes/VFXLevitate/VFXLevitate.gd" type="Script" id=52]
+[ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/Pyramids.gd" type="Script" id=52]
+[ext_resource path="res://src/Nodes/VFXLevitate/VFXLevitateRes.gd" type="Script" id=53]
+[ext_resource path="res://src/Nodes/VFXZoomi/VFXZoomi.gd" type="Script" id=54]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -1342,7 +1344,20 @@ tracks/33/keys = {
 "values": [ Vector2( 0, -90 ) ]
 }
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="Resource" id=5]
+script = ExtResource( 53 )
+distance = 2.0
+speed = 1.0
+repeat = -1
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 54 )
+max_scale = 1.08
+min_scale = 0.98
+speed = 1.1
+repeat = -1
+
+[sub_resource type="GDScript" id=7]
 script/source = "tool
 class_name ZIndexChanger
 extends Area2D
@@ -1389,8 +1404,7 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 			(get_node(l) as Light2D).enabled = entered
 "
 
-[sub_resource type="Animation" id=37]
-resource_name = "new_press"
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1405,129 +1419,129 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 1024, 256, 256 )
 
-[sub_resource type="SpriteFrames" id=36]
+[sub_resource type="SpriteFrames" id=39]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
@@ -1705,7 +1719,7 @@ light_mask = 512
 position = Vector2( 0, -37.5 )
 texture = ExtResource( 45 )
 script = ExtResource( 52 )
-distance = 2.0
+vfxs = [ SubResource( 5 ), SubResource( 6 ) ]
 
 [node name="Pillars" type="Node2D" parent="."]
 visible = false
@@ -1791,7 +1805,7 @@ polygon = PoolVector2Array( -37, 41, -61, 41, -61, 36, -34, 36 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Middle"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 5 )
+script = SubResource( 7 )
 involved_nodes = [ NodePath("../../Back") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
@@ -1842,7 +1856,7 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 40, -35, 40 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Front"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 5 )
+script = SubResource( 7 )
 involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
@@ -1995,7 +2009,7 @@ needs_grabbing = false
 pickable_needed = "Rocberto"
 
 [node name="AnimationPlayer" parent="Platform/DoorButton" index="0"]
-anims/new_press = SubResource( 37 )
+anims/new_press = SubResource( 8 )
 
 [node name="Sprite" parent="Platform/DoorButton" index="1"]
 light_mask = 512
@@ -2257,7 +2271,7 @@ texture = ExtResource( 21 )
 
 [node name="Trees" type="AnimatedSprite" parent="Treepots"]
 position = Vector2( -4.5, -56 )
-frames = SubResource( 36 )
+frames = SubResource( 39 )
 
 [node name="K" type="Sprite" parent="."]
 position = Vector2( 0, 69.5 )
