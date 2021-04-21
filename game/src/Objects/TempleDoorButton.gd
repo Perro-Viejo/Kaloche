@@ -38,9 +38,9 @@ func _on_pressed(body: Node) -> void:
 		
 		if _pressed:
 			$Area2D.disconnect('body_entered', self, '_on_pressed')
-			$Area2D.connect('body_entered', self, '_on_unpressed')
+#			$Area2D.connect('body_entered', self, '_on_unpressed')
 
-			$AnimationPlayer.play('press')
+			$AnimationPlayer.play('new_press')
 			AudioEvent.emit_signal('play_requested','Button','Down', position)
 
 			yield(get_tree().create_timer(0.1), 'timeout')

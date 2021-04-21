@@ -42,6 +42,11 @@ func _ready()->void:
 	Settings.connect('ReTranslate', self, 'retranslate') # Localización
 
 	retranslate()
+	
+	if Engine.editor_hint:
+		# Si el juego no está corriendo en el editor, sí o sí que muestre los
+		# controles
+		show_controls = true
 
 
 func _process(delta):
@@ -68,8 +73,6 @@ func _on_NewGame_pressed()->void:
 	GuiEvent.emit_signal('NewGame')
 	if show_controls:
 		GuiEvent.emit_signal('ChangeScene', controls_scn)
-#		SectionEvent.show_controls = true
-#		yield(GuiEvent, 'show_controls_exited')
 	if show_intro:
 		GuiEvent.emit_signal('ChangeScene', intro_scn)
 	else:
