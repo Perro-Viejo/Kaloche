@@ -1,4 +1,5 @@
-extends KinematicBody2D
+class_name Actor
+extends Node2D
 
 signal died()
 

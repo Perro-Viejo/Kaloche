@@ -11,7 +11,14 @@ func _ready():
 			effect = AudioServer.get_bus_effect(2, 0),
 			default_wet = 0.0,
 			default_dry = 1.0,
-		} 
+			default_size = 0.01
+		},
+		intro_dream_verb = {
+			effect = AudioServer.get_bus_effect(2, 0),
+			default_wet = 0.0,
+			default_dry = 1.0,
+			default_size = 0.5
+		}
 	}
 	change_fx_setting()
 	for src in get_children():
@@ -176,7 +183,8 @@ func count_step(content) -> void:
 	if _hlt[content.id].audios[_hlt[content.id].step].is_connected('finished', self, 'count_step'):
 		_hlt[content.id].audios[_hlt[content.id].step].disconnect('finished', self, 'count_step')
 
-func change_fx_setting(fx = '', dry = 1.0, wet = 0.0):
+func change_fx_setting(fx = '', dry = 1.0, wet = 0.0, size = 0.01):
 	if not fx == '':
 		_effects.get(fx).effect.wet = wet
 		_effects.get(fx).effect.dry = dry
+		_effects.get(fx).effect.room_size = size

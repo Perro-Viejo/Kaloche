@@ -61,18 +61,13 @@ tile_data = PoolIntArray( 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0
 
 [node name="Pickable" parent="." instance=ExtResource( 5 )]
 position = Vector2( 201.035, 103 )
-is_good = true
-carbs = 2
 img = ExtResource( 6 )
-on_free = ""
 tr_code = "TOUCAN"
-character = ""
-dialog = ""
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 164, 103 )
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="1"]
 position = Vector2( 1, -32 )
 zoom = Vector2( 0.5, 0.5 )
 drag_margin_left = 1.0
@@ -88,7 +83,7 @@ in_intro = true
 visible = false
 
 [node name="AnimatedSprite" parent="Demon/StateMachine/Idle" index="0"]
-frame = 10
+frame = 1
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 

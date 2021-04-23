@@ -20,8 +20,7 @@ disable_mouse = false
 [node name="MainMenu" parent="Levels" instance=ExtResource( 2 )]
 layer = -1
 First_Level = "res://src/Levels/Chapter01/Chapter01Test.tscn"
-intro_scn = "res://src/Levels/Intro/Intro.tscn"
-show_intro = false
+intro_scn = "res://src/Levels/IntroDream/IntroDream.tscn"
 show_controls = false
 
 [node name="HUDLayer" parent="." instance=ExtResource( 3 )]

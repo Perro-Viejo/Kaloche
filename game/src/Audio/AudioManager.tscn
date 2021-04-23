@@ -256,7 +256,7 @@ stream = ExtResource( 147 )
 [node name="FS_Dirt5" type="AudioStreamPlayer" parent="Player/FS_Dirt_L"]
 stream = ExtResource( 156 )
 
-[node name="FS_Dirt2_R" type="Node2D" parent="Player"]
+[node name="FS_Dirt_R" type="Node2D" parent="Player"]
 script = ExtResource( 26 )
 volume = -2.0
 random_volume = true
@@ -265,19 +265,19 @@ random_pitch = true
 min_pitch = -5.0
 max_pitch = 4.0
 
-[node name="FS_Dirt6" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
+[node name="FS_Dirt6" type="AudioStreamPlayer" parent="Player/FS_Dirt_R"]
 stream = ExtResource( 162 )
 
-[node name="FS_Dirt7" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
+[node name="FS_Dirt7" type="AudioStreamPlayer" parent="Player/FS_Dirt_R"]
 stream = ExtResource( 150 )
 
-[node name="FS_Dirt8" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
+[node name="FS_Dirt8" type="AudioStreamPlayer" parent="Player/FS_Dirt_R"]
 stream = ExtResource( 155 )
 
-[node name="FS_Dirt9" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
+[node name="FS_Dirt9" type="AudioStreamPlayer" parent="Player/FS_Dirt_R"]
 stream = ExtResource( 153 )
 
-[node name="FS_Dirt10" type="AudioStreamPlayer" parent="Player/FS_Dirt2_R"]
+[node name="FS_Dirt10" type="AudioStreamPlayer" parent="Player/FS_Dirt_R"]
 stream = ExtResource( 17 )
 
 [node name="FS_Grass_L" type="Node2D" parent="Player"]
@@ -467,7 +467,6 @@ min_volume = -5.0
 max_volume = 1.0
 random_pitch = true
 min_pitch = -2.0
-max_pitch = 2.0
 
 [node name="FS_Water" type="AudioStreamPlayer" parent="Player/FS_Water_L"]
 stream = ExtResource( 15 )
@@ -491,13 +490,13 @@ min_volume = -5.0
 max_volume = 1.0
 random_pitch = true
 min_pitch = -2.0
-max_pitch = 2.0
 
 [node name="FS_Water6" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 139 )
 
 [node name="FS_Water7" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 142 )
+pitch_scale = 0.9
 
 [node name="FS_Water8" type="AudioStreamPlayer" parent="Player/FS_Water_R"]
 stream = ExtResource( 140 )

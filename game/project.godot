@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Characters/Actor.gd"
+}, {
+"base": "Node2D",
 "class": "AmbienceDevice",
 "language": "GDScript",
 "path": "res://src/Audio/AmbienceDevice.gd"
@@ -49,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Levels/CollisionEnabler.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Node2D",
 "class": "Demon",
 "language": "GDScript",
 "path": "res://src/Characters/Demon/Demon.gd"
@@ -144,7 +149,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Pickables/Pickup.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Node2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Characters/Player/Player.gd"
@@ -215,6 +220,7 @@ _global_script_classes=[ {
 "path": "res://src/Levels/Zone.gd"
 } ]
 _global_script_class_icons={
+"Actor": "",
 "AmbienceDevice": "",
 "AnimatedRichText": "",
 "Area2DToggler": "",

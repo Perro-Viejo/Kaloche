@@ -1,9 +1,10 @@
+tool
 extends Node2D
 # Controla lo que pasa con los fuegos sagrados que pueden consumir objetos y
 # dependen de ellos para mantenerse con vida, o ser más fuertes. Es el fuego
 # base para Kaloche.
 
-export var lifepoints:= 10
+export var lifepoints:= 10 setget _set_lifepoints
 export var max_lifepoints:= 20
 export var can_die:= true
 export var size_range:= Vector2(0.5, 1)
@@ -133,3 +134,8 @@ func _destroy_pickable():
 	pickable.queue_free()
 	pickable = null
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
+
+func _set_lifepoints(value):
+	lifepoints = value
+	scale = Vector2.ONE * range_lerp(lifepoints, 0, max_lifepoints, size_range.x, size_range.y)
+	
