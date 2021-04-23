@@ -35,8 +35,8 @@ func start() -> void:
 		speed, Tween.TRANS_LINEAR, Tween.EASE_OUT,
 		speed * 2
 	)
+
 	tween.start()
-	
 	started()
 
 

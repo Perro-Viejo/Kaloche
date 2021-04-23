@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/resources/sprite_frames/sacred_fire.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/Nodes/SimpleFire/SimpleFire.gd" type="Script" id=2]
+[ext_resource path="res://src/Nodes/VFX/VFXHandler.gd" type="Script" id=3]
+
+[node name="SimpleFire" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+frame = 25
+playing = true
+offset = Vector2( 0, -16 )
+script = ExtResource( 2 )
+
+[node name="VFXHandler" type="Node2D" parent="."]
+script = ExtResource( 3 )

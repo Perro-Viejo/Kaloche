@@ -87,6 +87,9 @@ func move_camera(target: Dictionary) -> void:
 
 
 func next_target(_object: Object, _key: NodePath) -> void:
+	if _current_target._target.name == 'TargetB':
+		_temple_entrance.start_front_pyramids()
+	
 	if _was_played == true:
 		_tween.disconnect('tween_completed', self, 'next_target')
 		_tween.interpolate_property(

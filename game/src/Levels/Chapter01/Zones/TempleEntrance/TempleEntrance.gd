@@ -11,7 +11,7 @@ onready var _main_collider: Area2D = $MainCollider
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
-	$AnimationPlayer.play('SETUP_ACTIVATE')
+#	$AnimationPlayer.play('SETUP_ACTIVATE')
 	
 	door_button.connect('button_pressed', self, '_open_door')
 	_main_collider.connect('area_entered', self, '_check_entered', [true])
@@ -27,6 +27,10 @@ func activate() -> void:
 
 func temple_activated() -> void:
 	emit_signal('activated')
+
+
+func start_front_pyramids() -> void:
+	$Fires.start_front_pyramids()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
