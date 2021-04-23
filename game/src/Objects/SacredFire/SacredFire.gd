@@ -34,7 +34,6 @@ func _ready():
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func eat():
-	print('Me comi el ', pickable.name)
 	if pickable.is_good:
 		if not lifepoints + pickable.carbs > max_lifepoints:
 			lifepoints = lifepoints + pickable.carbs
@@ -80,7 +79,6 @@ func eat_sacred():
 			AudioEvent.emit_signal('play_requested', 'SacredFire', 'Rocberto_Impact', reject_position.global_position)
 		
 		_:
-			print('no sé que es pero lo toco jesusito')
 			_destroy_pickable()
 
 
@@ -94,14 +92,12 @@ func _on_area_entered(other) -> void:
 			if pickable.is_good and lifepoints + pickable.carbs >= max_lifepoints:
 				_reject_pickable(pickable)
 			else:
-				print('tengo ', pickable.name, ' en mi llamaje')
 				pickable.set_z_index(-1)
 				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
 
 
 func _on_area_exited(other) -> void:
 	if other.is_in_group('Pickable') and other.being_grabbed:
-		print('me sacaron el ', pickable.name)
 		pickable = null
 		$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 

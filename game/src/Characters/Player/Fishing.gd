@@ -131,7 +131,6 @@ func start_fishing():
 func fish():
 	#Cae el anzuelo y empieza a pescar
 	color = 'eb564b'
-	print('toy pescando')
 	var rod_sound
 	rod_sound = RODS.keys()[current_rod].to_lower()
 	AudioEvent.emit_signal("play_requested", "Fishing", "rod_fall_"+ rod_sound, get_parent().position + (rect_position + end_pos))
@@ -198,7 +197,6 @@ func catch_fish():
 		fish_size_sfx = "med"
 	else: 
 		fish_size_sfx = "large"
-	print (fish_size_sfx)
 	AudioEvent.emit_signal("play_requested", "Fishing", "pull_fish_"+ fish_size_sfx, get_parent().position + (rect_position + end_pos))
 	
 	stop()

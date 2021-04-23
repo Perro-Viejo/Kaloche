@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -51,9 +51,15 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor_cover.png" type="Texture" id=49]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_cover.png" type="Texture" id=50]
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_facade_pyramids_mask.png" type="Texture" id=51]
-[ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/Pyramids.gd" type="Script" id=52]
-[ext_resource path="res://src/Nodes/VFXLevitate/VFXLevitateRes.gd" type="Script" id=53]
-[ext_resource path="res://src/Nodes/VFXZoomi/VFXZoomi.gd" type="Script" id=54]
+[ext_resource path="res://src/Nodes/VFX/VFXLevitate/VFXLevitate.gd" type="Script" id=52]
+[ext_resource path="res://assets/resources/sprite_frames/sacred_fire.tres" type="SpriteFrames" id=53]
+[ext_resource path="res://src/Nodes/VFX/VFXZoomi/VFXZoomi.gd" type="Script" id=54]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_fingers_left_canals.png" type="Texture" id=55]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_fingers_canals_mask.png" type="Texture" id=56]
+[ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_fingers_right_canals.png" type="Texture" id=57]
+[ext_resource path="res://src/Nodes/VFX/VFXHandler.gd" type="Script" id=58]
+[ext_resource path="res://src/Nodes/VFX/VFXShake/VFXShake.gd" type="Script" id=59]
+[ext_resource path="res://src/Nodes/VFX/VFXGrow/VFXGrow.gd" type="Script" id=60]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -115,8 +121,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( -319, -0.25, 0, 0.25, 0, -109, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( -319, -0.25, 0, 0.674892, 43.7579, -109, -2.44357, -103.829, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 10.5 )
 }
 tracks/5/type = "bezier"
 tracks/5/path = NodePath("Fingers/Left:position:y")
@@ -126,7 +132,7 @@ tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"times": PoolRealArray( 5.6, 8 )
 }
 tracks/6/type = "bezier"
 tracks/6/path = NodePath("Fingers/Right:position:x")
@@ -135,8 +141,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"points": PoolRealArray( 319.5, -0.25, 0, 0.25, 0, 109.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( 319.5, -0.25, 0, 0.25, 0, 109.5, -1.98318, 25.3982, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 10.5 )
 }
 tracks/7/type = "bezier"
 tracks/7/path = NodePath("Fingers/Right:position:y")
@@ -145,18 +151,18 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( -126.5, -0.25, 0, 0.25, 0, -126.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( -127, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6 )
 }
 tracks/8/type = "bezier"
 tracks/8/path = NodePath("Platform/PlatformOff:position:x")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"times": PoolRealArray( 5.6, 7.1 )
 }
 tracks/9/type = "bezier"
 tracks/9/path = NodePath("Platform/PlatformOff:position:y")
@@ -165,18 +171,18 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 66, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( 66, -0.25, 0, 0.25, 0, 37.1111, -0.25, 0, 0.25, 0, 37.1111, -0.25, 0, 0.25, 0, 17.5463, -0.25, 0, 0.25, 0, 17.5463, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
 }
 tracks/10/type = "bezier"
 tracks/10/path = NodePath("Platform/IsoBack:position:x")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"times": PoolRealArray( 5.6, 7.1 )
 }
 tracks/11/type = "bezier"
 tracks/11/path = NodePath("Platform/IsoBack:position:y")
@@ -185,18 +191,18 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 9.5, -0.25, 0, 0.25, 0, -118.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( 9.5, -0.25, 0, 0.25, 0, -19.3889, -0.25, 0, 0.25, 0, -19.3889, -0.25, 0, 0.25, 0, -38.9537, -0.25, 0, 0.25, 0, -38.9537, -0.25, 0, 0.25, 0, -118.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
 }
 tracks/12/type = "bezier"
 tracks/12/path = NodePath("Platform/DoorButton:position:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
-tracks/12/enabled = true
+tracks/12/enabled = false
 tracks/12/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"times": PoolRealArray( 5.6, 7.1 )
 }
 tracks/13/type = "bezier"
 tracks/13/path = NodePath("Platform/DoorButton:position:y")
@@ -205,18 +211,18 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"points": PoolRealArray( 58, -0.25, 0, 0.25, 0, -70, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( 58, -0.25, 0, 0.25, 0, 29.1111, -0.25, 0, 0.25, 0, 29.1111, -0.25, 0, 0.25, 0, 9.5463, -0.25, 0, 0.25, 0, 9.5463, -0.25, 0, 0.25, 0, -70, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
 }
 tracks/14/type = "bezier"
 tracks/14/path = NodePath("Platform/IsoFront:position:x")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"times": PoolRealArray( 5.6, 7.1 )
 }
 tracks/15/type = "bezier"
 tracks/15/path = NodePath("Platform/IsoFront:position:y")
@@ -225,8 +231,8 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"points": PoolRealArray( 25.5, -0.25, 0, 0.25, 0, -102.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 6.6 )
+"points": PoolRealArray( 25.5, -0.25, 0, 0.25, 0, -3.38888, -0.25, 0, 0.25, 0, -3.38888, -0.25, 0, 0.25, 0, -22.9537, -0.25, 0, 0.25, 0, -22.9537, -0.25, 0, 0.25, 0, -102.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("Floor/HoleCollisions:collision_mask")
@@ -235,7 +241,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 6.6 ),
+"times": PoolRealArray( 0, 7.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -496,6 +502,183 @@ tracks/39/keys = {
 "update": 0,
 "values": [ Vector2( 0, -64.5 ), Vector2( 0, -60.5 ) ]
 }
+tracks/40/type = "value"
+tracks/40/path = NodePath("FacadeTorch:modulate")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0, 11, 11.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/41/type = "method"
+tracks/41/path = NodePath("Platform/VFXHandler")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ [ "shake" ] ],
+"method": "start_vfx"
+}, {
+"args": [ [ "shake" ] ],
+"method": "stop_vfx"
+}, {
+"args": [ [ "shake" ] ],
+"method": "start_vfx"
+}, {
+"args": [ [ "shake" ] ],
+"method": "stop_vfx"
+}, {
+"args": [ [ "shake" ] ],
+"method": "start_vfx"
+}, {
+"args": [ [ "shake" ] ],
+"method": "stop_vfx"
+} ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("Fires/FrontCanal:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/43/type = "method"
+tracks/43/path = NodePath("Fires/FrontCanal/Left/VFXHandler")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/44/type = "method"
+tracks/44/path = NodePath("Fires/FrontCanal/Middle/VFXHandler")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/45/type = "method"
+tracks/45/path = NodePath("Fires/FrontCanal/Right/VFXHandler")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("Fires/Fingers:visible")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 10.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/47/type = "method"
+tracks/47/path = NodePath("Fires/Fingers/LeftBack/VFXHandler")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/keys = {
+"times": PoolRealArray( 10.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/48/type = "method"
+tracks/48/path = NodePath("Fires/Fingers/LeftBack2/VFXHandler")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/keys = {
+"times": PoolRealArray( 10.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/49/type = "method"
+tracks/49/path = NodePath("Fires/Fingers/LeftMiddle/VFXHandler")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/keys = {
+"times": PoolRealArray( 10.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/50/type = "method"
+tracks/50/path = NodePath("Fires/Fingers/LeftMiddle2/VFXHandler")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/keys = {
+"times": PoolRealArray( 10.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
+tracks/51/type = "method"
+tracks/51/path = NodePath("Fires/Fingers/LeftFront/VFXHandler")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/keys = {
+"times": PoolRealArray( 11.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "grow" ] ],
+"method": "start_vfx"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "OpenDoor"
@@ -652,7 +835,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/14/type = "method"
-tracks/14/path = NodePath("FacadePillars/Pillars/Pyramids")
+tracks/14/path = NodePath("FacadePillars/Pillars/Pyramids/VFXHandler")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -661,8 +844,8 @@ tracks/14/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "start_floating"
+"args": [ [ "levitate", "zoomi" ] ],
+"method": "start_vfx"
 } ]
 }
 
@@ -806,7 +989,7 @@ tracks/11/path = NodePath("FacadePillars:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
-tracks/11/enabled = false
+tracks/11/enabled = true
 tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -956,6 +1139,30 @@ tracks/23/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -90 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Fires/FrontCanal:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Fires/Fingers:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1345,17 +1552,19 @@ tracks/33/keys = {
 }
 
 [sub_resource type="Resource" id=5]
-script = ExtResource( 53 )
-distance = 2.0
-speed = 1.0
-repeat = -1
-
-[sub_resource type="Resource" id=6]
+resource_name = "zoomi"
 script = ExtResource( 54 )
-max_scale = 1.08
-min_scale = 0.98
 speed = 1.1
 repeat = -1
+max_scale = 1.08
+min_scale = 0.98
+
+[sub_resource type="Resource" id=6]
+resource_name = "levitate"
+script = ExtResource( 52 )
+speed = 1.0
+repeat = -1
+distance = 2.0
 
 [sub_resource type="GDScript" id=7]
 script/source = "tool
@@ -1419,138 +1628,186 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 20 )
-region = Rect2( 0, 0, 256, 256 )
+[sub_resource type="Resource" id=9]
+resource_name = "shake"
+script = ExtResource( 59 )
+speed = 0.05
+repeat = -1
+shake_strength = Vector2( 0.3, 0 )
+fixed_strength = true
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 20 )
-region = Rect2( 256, 0, 256, 256 )
+region = Rect2( 0, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 20 )
-region = Rect2( 512, 0, 256, 256 )
+region = Rect2( 256, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 20 )
-region = Rect2( 768, 0, 256, 256 )
+region = Rect2( 512, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 20 )
-region = Rect2( 1024, 0, 256, 256 )
+region = Rect2( 768, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 20 )
-region = Rect2( 1280, 0, 256, 256 )
+region = Rect2( 1024, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 20 )
-region = Rect2( 0, 256, 256, 256 )
+region = Rect2( 1280, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 20 )
-region = Rect2( 256, 256, 256, 256 )
+region = Rect2( 0, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
-region = Rect2( 512, 256, 256, 256 )
+region = Rect2( 256, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 768, 256, 256, 256 )
+region = Rect2( 512, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 1024, 256, 256, 256 )
+region = Rect2( 768, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 1280, 256, 256, 256 )
+region = Rect2( 1024, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 0, 512, 256, 256 )
+region = Rect2( 1280, 256, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
-region = Rect2( 256, 512, 256, 256 )
+region = Rect2( 0, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 20 )
-region = Rect2( 512, 512, 256, 256 )
+region = Rect2( 256, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 20 )
-region = Rect2( 768, 512, 256, 256 )
+region = Rect2( 512, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 20 )
-region = Rect2( 1024, 512, 256, 256 )
+region = Rect2( 768, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 20 )
-region = Rect2( 1280, 512, 256, 256 )
+region = Rect2( 1024, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 20 )
-region = Rect2( 0, 768, 256, 256 )
+region = Rect2( 1280, 512, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 20 )
-region = Rect2( 256, 768, 256, 256 )
+region = Rect2( 0, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 20 )
-region = Rect2( 512, 768, 256, 256 )
+region = Rect2( 256, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 20 )
-region = Rect2( 768, 768, 256, 256 )
+region = Rect2( 512, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 20 )
-region = Rect2( 1024, 768, 256, 256 )
+region = Rect2( 768, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 20 )
-region = Rect2( 1280, 768, 256, 256 )
+region = Rect2( 1024, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 20 )
-region = Rect2( 0, 1024, 256, 256 )
+region = Rect2( 1280, 768, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 20 )
-region = Rect2( 256, 1024, 256, 256 )
+region = Rect2( 0, 1024, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 20 )
-region = Rect2( 512, 1024, 256, 256 )
+region = Rect2( 256, 1024, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 20 )
-region = Rect2( 768, 1024, 256, 256 )
+region = Rect2( 512, 1024, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 20 )
-region = Rect2( 1024, 1024, 256, 256 )
+region = Rect2( 768, 1024, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 20 )
+region = Rect2( 1024, 1024, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 20 )
 region = Rect2( 1280, 1024, 256, 256 )
 
-[sub_resource type="SpriteFrames" id=39]
+[sub_resource type="SpriteFrames" id=40]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
 } ]
 
+[sub_resource type="Resource" id=44]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=42]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=43]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=46]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=47]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=48]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+
 [node name="TempleEntrance" type="Node2D"]
 script = ExtResource( 22 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 162.0, -52.0 ]
+"_edit_horizontal_guides_": [ 162.0, -52.0, -212.0 ]
 }
 
 [node name="Tween" type="Tween" parent="."]
@@ -1580,6 +1837,7 @@ polygon = PoolVector2Array( 52, 171, -52, 171, -79, 144, -61, 108, -209, 108, -1
 
 [node name="HoleCollisions" type="StaticBody2D" parent="Floor"]
 visible = false
+collision_mask = 0
 
 [node name="LeftBack" type="CollisionPolygon2D" parent="Floor/HoleCollisions"]
 polygon = PoolVector2Array( -93, -150, -86, -162, -29, -162, -33, -155, -25, -153, -35, -151, -36, -150 )
@@ -1619,7 +1877,6 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -175, 134, -77, -62, -164, -62, -231, 72, -245, 134 )
 
 [node name="Covers" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="WallsBack" type="Sprite" parent="Covers"]
 position = Vector2( 0, -137.5 )
@@ -1630,7 +1887,7 @@ position = Vector2( 0, -102 )
 texture = ExtResource( 49 )
 
 [node name="Platform" type="Sprite" parent="Covers"]
-position = Vector2( 0, -60.5 )
+position = Vector2( 0, -64.5 )
 texture = ExtResource( 43 )
 
 [node name="Door" type="Sprite" parent="."]
@@ -1670,15 +1927,13 @@ visible = false
 polygon = PoolVector2Array( -101, 66, -17, 66, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66, 101, 66, 101, 1, -101, 1 )
 
 [node name="TorchCover" type="Sprite" parent="Facade"]
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -63 )
-scale = Vector2( 1e-05, 1e-05 )
+position = Vector2( 0, -53.5 )
 texture = ExtResource( 50 )
 
 [node name="FacadeTorch" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 light_mask = 16384
-position = Vector2( 0, -291.5 )
+position = Vector2( 0, -302.5 )
 texture = ExtResource( 46 )
 
 [node name="FacadePillars" type="Node2D" parent="."]
@@ -1718,11 +1973,12 @@ polygon = PoolVector2Array( -31, 29, -20, 22, -16, 22, -16, 39, -48, 39, -48, 29
 light_mask = 512
 position = Vector2( 0, -37.5 )
 texture = ExtResource( 45 )
-script = ExtResource( 52 )
+
+[node name="VFXHandler" type="Node2D" parent="FacadePillars/Pillars/Pyramids"]
+script = ExtResource( 58 )
 vfxs = [ SubResource( 5 ), SubResource( 6 ) ]
 
 [node name="Pillars" type="Node2D" parent="."]
-visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Pillars"]
 script = ExtResource( 36 )
@@ -1735,11 +1991,10 @@ range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 1.5, -76 )
+position = Vector2( 1.5, -204 )
 z_index = 4
 texture = ExtResource( 11 )
 hframes = 2
-frame = 1
 
 [node name="Behind" type="Light2D" parent="Pillars/Back"]
 position = Vector2( 0, -2 )
@@ -1778,11 +2033,10 @@ range_item_cull_mask = 64
 
 [node name="Middle" type="Sprite" parent="Pillars"]
 light_mask = 64
-position = Vector2( 0, -18 )
+position = Vector2( 0, -146 )
 z_index = 4
 texture = ExtResource( 9 )
 hframes = 2
-frame = 1
 
 [node name="Behind" type="Light2D" parent="Pillars/Middle"]
 position = Vector2( 0, -2 )
@@ -1826,11 +2080,10 @@ range_item_cull_mask = 128
 
 [node name="Front" type="Sprite" parent="Pillars"]
 light_mask = 128
-position = Vector2( -0.5, 40 )
+position = Vector2( -0.5, -92 )
 z_index = 4
 texture = ExtResource( 10 )
 hframes = 2
-frame = 1
 __meta__ = {
 "_edit_group_": true
 }
@@ -1870,6 +2123,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 40, -20, 40, -20, 60, -66, 60 )
 
 [node name="Platform" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
@@ -1884,7 +2138,7 @@ range_item_cull_mask = 512
 
 [node name="PlatformOff" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -62 )
+position = Vector2( 0, 17.5463 )
 z_index = 4
 texture = ExtResource( 27 )
 
@@ -1932,7 +2186,7 @@ polygon = PoolVector2Array( -58, 12, -58, 0, -50, -16, -40, -19, -40, -21, 40, -
 
 [node name="IsoBack" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -118.5 )
+position = Vector2( 0, -38.9537 )
 z_index = 4
 texture = ExtResource( 31 )
 
@@ -2003,7 +2257,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 58, 40.6, 46, 32.6, -34, 32.6, -46, 40.6, -28, 40.6, -28, 44.6, -14, 37.6, -6, 41.6, 18, 41.6, 26, 37.6, 40, 44.6, 40, 40.6 )
 
 [node name="DoorButton" parent="Platform" instance=ExtResource( 28 )]
-position = Vector2( 0, -70 )
+position = Vector2( 0, 9.5463 )
 z_index = 4
 needs_grabbing = false
 pickable_needed = "Rocberto"
@@ -2025,7 +2279,7 @@ polygon = PoolVector2Array( 8, 0, 17, 5, -1, 5 )
 
 [node name="IsoFront" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -102.5 )
+position = Vector2( 0, -22.9537 )
 z_index = 4
 texture = ExtResource( 29 )
 
@@ -2126,6 +2380,7 @@ z_index = 10
 [node name="ExternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
+monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../../IsoBack/DownCollisions/CollisionEnabler"), NodePath("../../PlatformOff/ExternalCollisions/CollisionEnabler"), NodePath("../../PlatformOff/Collisions/CollisionEnabler"), NodePath("../InternalToggler"), NodePath("../../IsoBack/ZIndexChanger"), NodePath("../../IsoFront/ZIndexChanger") ]
@@ -2137,6 +2392,7 @@ polygon = PoolVector2Array( -61, 15, -61, 2, -53, -16, -39, -23, -39, -20, 39, -
 [node name="InternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
+monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../ExternalToggler") ]
@@ -2145,7 +2401,13 @@ disable_on_entered = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform/Area2DTogglers/InternalToggler"]
 polygon = PoolVector2Array( 13, 5, -13, 5, -16, 12, -43, 12, -64, 4, -64, 2, -55, -22, -38, -29, 38, -29, 55, -22, 64, 2, 64, 4, 43, 12, 16, 12 )
 
+[node name="VFXHandler" type="Node2D" parent="Platform"]
+position = Vector2( 0, -185 )
+script = ExtResource( 58 )
+vfxs = [ SubResource( 9 ) ]
+
 [node name="Fingers" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 z_index = 4
 __meta__ = {
@@ -2158,21 +2420,37 @@ texture = ExtResource( 34 )
 mode = 2
 range_item_cull_mask = 32768
 
-[node name="Mask" type="Light2D" parent="Fingers"]
+[node name="FingersMask" type="Light2D" parent="Fingers"]
 position = Vector2( 0, -127 )
 texture = ExtResource( 34 )
 mode = 3
 range_item_cull_mask = 32
 
+[node name="CanalsMask" type="Light2D" parent="Fingers"]
+position = Vector2( 0, -136.5 )
+texture = ExtResource( 56 )
+mode = 3
+range_item_cull_mask = 64
+
 [node name="Left" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( -109, -126.5 )
+position = Vector2( -146.682, -126.5 )
 texture = ExtResource( 30 )
+
+[node name="Canals" type="Sprite" parent="Fingers/Left"]
+light_mask = 64
+position = Vector2( -11, -10 )
+texture = ExtResource( 55 )
 
 [node name="Right" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( 109.5, -126.5 )
+position = Vector2( 129.653, -127 )
 texture = ExtResource( 32 )
+
+[node name="Canals" type="Sprite" parent="Fingers/Right"]
+light_mask = 64
+position = Vector2( 10.5, -9.5 )
+texture = ExtResource( 57 )
 
 [node name="WallsFront" type="Sprite" parent="."]
 position = Vector2( 0, 6.5 )
@@ -2271,7 +2549,7 @@ texture = ExtResource( 21 )
 
 [node name="Trees" type="AnimatedSprite" parent="Treepots"]
 position = Vector2( -4.5, -56 )
-frames = SubResource( 39 )
+frames = SubResource( 40 )
 
 [node name="K" type="Sprite" parent="."]
 position = Vector2( 0, 69.5 )
@@ -2329,5 +2607,104 @@ disable_lights_on_enter = [ NodePath("../Behind") ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pyramids/ZIndexChanger"]
 polygon = PoolVector2Array( 34, 14, -34, 14, -52, 32, -70, 14, -80, 14, -80, 46, 80, 46, 80, 14, 70, 14, 52, 32 )
+
+[node name="Fires" type="Node2D" parent="."]
+z_index = 6
+
+[node name="FrontCanal" type="Node2D" parent="Fires"]
+visible = false
+
+[node name="Left" type="AnimatedSprite" parent="Fires/FrontCanal"]
+position = Vector2( -35, -4 )
+frames = ExtResource( 53 )
+frame = 11
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/FrontCanal/Left"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 44 ) ]
+
+[node name="Middle" type="AnimatedSprite" parent="Fires/FrontCanal"]
+position = Vector2( 0, -4 )
+frames = ExtResource( 53 )
+frame = 11
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/FrontCanal/Middle"]
+position = Vector2( -35, 0 )
+script = ExtResource( 58 )
+vfxs = [ SubResource( 42 ) ]
+
+[node name="Right" type="AnimatedSprite" parent="Fires/FrontCanal"]
+position = Vector2( 35, -4 )
+frames = ExtResource( 53 )
+frame = 10
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/FrontCanal/Right"]
+position = Vector2( -70, 0 )
+script = ExtResource( 58 )
+vfxs = [ SubResource( 43 ) ]
+
+[node name="Fingers" type="Node2D" parent="Fires"]
+visible = false
+
+[node name="LeftBack" type="AnimatedSprite" parent="Fires/Fingers"]
+position = Vector2( -94, -202 )
+frames = ExtResource( 53 )
+frame = 10
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftBack"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 45 ) ]
+
+[node name="LeftBack2" type="AnimatedSprite" parent="Fires/Fingers"]
+position = Vector2( -103, -184 )
+frames = ExtResource( 53 )
+frame = 10
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftBack2"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 46 ) ]
+
+[node name="LeftMiddle" type="AnimatedSprite" parent="Fires/Fingers"]
+position = Vector2( -101, -143 )
+frames = ExtResource( 53 )
+frame = 10
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftMiddle"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 47 ) ]
+
+[node name="LeftMiddle2" type="AnimatedSprite" parent="Fires/Fingers"]
+position = Vector2( -110, -126 )
+frames = ExtResource( 53 )
+frame = 9
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftMiddle2"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 48 ) ]
+
+[node name="LeftFront" type="AnimatedSprite" parent="Fires/Fingers"]
+position = Vector2( -144, -86 )
+frames = ExtResource( 53 )
+frame = 9
+playing = true
+offset = Vector2( 0, -16 )
+
+[node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftFront"]
+script = ExtResource( 58 )
+vfxs = [ SubResource( 49 ) ]
 
 [editable path="Platform/DoorButton"]

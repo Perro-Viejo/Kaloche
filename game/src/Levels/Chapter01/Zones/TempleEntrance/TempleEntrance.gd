@@ -11,9 +11,13 @@ onready var _main_collider: Area2D = $MainCollider
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
+	$AnimationPlayer.play('SETUP_ACTIVATE')
+	
 	door_button.connect('button_pressed', self, '_open_door')
 	_main_collider.connect('area_entered', self, '_check_entered', [true])
 	_main_collider.connect('area_exited', self, '_check_entered', [false])
+	
+	WorldEvent.connect('world_entered', self, '_start_vfx')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
@@ -47,3 +51,7 @@ func _check_entered(body: Area2D, entered: bool) -> void:
 		)
 		$Tween.start()
 		player_cam.offset.y = -100.0 if entered else 0.0
+
+
+func _start_vfx(_data: Dictionary) -> void:
+	pass

@@ -85,7 +85,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/PathOfTheEffort")
+dev_entry_point = NodePath("Zones/ZonePositions/TempleEntrance")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -156,12 +156,12 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 9
+frame = 3
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
 _player = NodePath("../../Characters/Player")
-targets_times = [ 2, 6, 2, 2 ]
+targets_times = [ 2, 2, 2, 2 ]
 temple_entrance_path = NodePath("../TempleEntrance")
 
 [node name="TargetA" parent="Zones/AltarActivation" index="3"]
@@ -292,7 +292,6 @@ img = ExtResource( 1 )
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -309, -255 )
-carbs = 50
 
 [node name="RockSign" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( -296.663, 756.422 )
