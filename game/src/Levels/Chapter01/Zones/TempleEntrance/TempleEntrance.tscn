@@ -1556,6 +1556,7 @@ resource_name = "zoomi"
 script = ExtResource( 54 )
 speed = 1.1
 repeat = -1
+delay = 0.0
 max_scale = 1.08
 min_scale = 0.98
 
@@ -1564,6 +1565,7 @@ resource_name = "levitate"
 script = ExtResource( 52 )
 speed = 1.0
 repeat = -1
+delay = 0.0
 distance = 2.0
 
 [sub_resource type="GDScript" id=7]
@@ -1633,6 +1635,7 @@ resource_name = "shake"
 script = ExtResource( 59 )
 speed = 0.05
 repeat = -1
+delay = 0.0
 shake_strength = Vector2( 0.3, 0 )
 fixed_strength = true
 
@@ -1764,45 +1767,53 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=43]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 60 )
+speed = 0.5
+repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=45]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=46]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=47]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
+delay = 0.0
 
 [sub_resource type="Resource" id=48]
 script = ExtResource( 60 )
 speed = 0.5
 repeat = 0
-
-[sub_resource type="Resource" id=49]
-script = ExtResource( 60 )
-speed = 0.5
-repeat = 0
+delay = 0.0
 
 [node name="TempleEntrance" type="Node2D"]
 script = ExtResource( 22 )
@@ -2138,7 +2149,7 @@ range_item_cull_mask = 512
 
 [node name="PlatformOff" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, 17.5463 )
+position = Vector2( 0, 66 )
 z_index = 4
 texture = ExtResource( 27 )
 
@@ -2186,7 +2197,7 @@ polygon = PoolVector2Array( -58, 12, -58, 0, -50, -16, -40, -19, -40, -21, 40, -
 
 [node name="IsoBack" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -38.9537 )
+position = Vector2( 0, 9.5 )
 z_index = 4
 texture = ExtResource( 31 )
 
@@ -2257,7 +2268,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( 58, 40.6, 46, 32.6, -34, 32.6, -46, 40.6, -28, 40.6, -28, 44.6, -14, 37.6, -6, 41.6, 18, 41.6, 26, 37.6, 40, 44.6, 40, 40.6 )
 
 [node name="DoorButton" parent="Platform" instance=ExtResource( 28 )]
-position = Vector2( 0, 9.5463 )
+position = Vector2( 0, 58 )
 z_index = 4
 needs_grabbing = false
 pickable_needed = "Rocberto"
@@ -2279,7 +2290,7 @@ polygon = PoolVector2Array( 8, 0, 17, 5, -1, 5 )
 
 [node name="IsoFront" type="Sprite" parent="Platform"]
 light_mask = 512
-position = Vector2( 0, -22.9537 )
+position = Vector2( 0, 25.5 )
 z_index = 4
 texture = ExtResource( 29 )
 
@@ -2434,7 +2445,7 @@ range_item_cull_mask = 64
 
 [node name="Left" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( -146.682, -126.5 )
+position = Vector2( -319, -126.5 )
 texture = ExtResource( 30 )
 
 [node name="Canals" type="Sprite" parent="Fingers/Left"]
@@ -2444,7 +2455,7 @@ texture = ExtResource( 55 )
 
 [node name="Right" type="Sprite" parent="Fingers"]
 light_mask = 32
-position = Vector2( 129.653, -127 )
+position = Vector2( 319.5, -127 )
 texture = ExtResource( 32 )
 
 [node name="Canals" type="Sprite" parent="Fingers/Right"]
@@ -2617,18 +2628,18 @@ visible = false
 [node name="Left" type="AnimatedSprite" parent="Fires/FrontCanal"]
 position = Vector2( -35, -4 )
 frames = ExtResource( 53 )
-frame = 11
+frame = 5
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/FrontCanal/Left"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 44 ) ]
+vfxs = [ SubResource( 41 ) ]
 
 [node name="Middle" type="AnimatedSprite" parent="Fires/FrontCanal"]
 position = Vector2( 0, -4 )
 frames = ExtResource( 53 )
-frame = 11
+frame = 5
 playing = true
 offset = Vector2( 0, -16 )
 
@@ -2640,7 +2651,7 @@ vfxs = [ SubResource( 42 ) ]
 [node name="Right" type="AnimatedSprite" parent="Fires/FrontCanal"]
 position = Vector2( 35, -4 )
 frames = ExtResource( 53 )
-frame = 10
+frame = 4
 playing = true
 offset = Vector2( 0, -16 )
 
@@ -2655,56 +2666,56 @@ visible = false
 [node name="LeftBack" type="AnimatedSprite" parent="Fires/Fingers"]
 position = Vector2( -94, -202 )
 frames = ExtResource( 53 )
-frame = 10
+frame = 4
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftBack"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 45 ) ]
+vfxs = [ SubResource( 44 ) ]
 
 [node name="LeftBack2" type="AnimatedSprite" parent="Fires/Fingers"]
 position = Vector2( -103, -184 )
 frames = ExtResource( 53 )
-frame = 10
+frame = 4
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftBack2"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 46 ) ]
+vfxs = [ SubResource( 45 ) ]
 
 [node name="LeftMiddle" type="AnimatedSprite" parent="Fires/Fingers"]
 position = Vector2( -101, -143 )
 frames = ExtResource( 53 )
-frame = 10
+frame = 4
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftMiddle"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 47 ) ]
+vfxs = [ SubResource( 46 ) ]
 
 [node name="LeftMiddle2" type="AnimatedSprite" parent="Fires/Fingers"]
 position = Vector2( -110, -126 )
 frames = ExtResource( 53 )
-frame = 9
+frame = 3
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftMiddle2"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 48 ) ]
+vfxs = [ SubResource( 47 ) ]
 
 [node name="LeftFront" type="AnimatedSprite" parent="Fires/Fingers"]
 position = Vector2( -144, -86 )
 frames = ExtResource( 53 )
-frame = 9
+frame = 3
 playing = true
 offset = Vector2( 0, -16 )
 
 [node name="VFXHandler" type="Node2D" parent="Fires/Fingers/LeftFront"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 49 ) ]
+vfxs = [ SubResource( 48 ) ]
 
 [editable path="Platform/DoorButton"]

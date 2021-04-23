@@ -189,7 +189,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXGrow/VFXGrow.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "VFXHandler",
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXHandler.gd"

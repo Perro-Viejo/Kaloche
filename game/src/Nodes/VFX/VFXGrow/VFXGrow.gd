@@ -9,7 +9,8 @@ func start() -> void:
 	tween.interpolate_property(
 		target, 'scale',
 		Vector2.ZERO, Vector2.ONE,
-		speed, Tween.TRANS_SINE, Tween.EASE_OUT
+		speed, Tween.TRANS_SINE, Tween.EASE_OUT,
+		delay
 	)
 	tween.start()
 	

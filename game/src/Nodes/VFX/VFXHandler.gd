@@ -5,6 +5,8 @@ export var target: NodePath = '../'
 
 export(Array, Resource) var vfxs := []
 
+
+
 func _ready() -> void:
 	for v in vfxs:
 		v.target = get_node(target)
