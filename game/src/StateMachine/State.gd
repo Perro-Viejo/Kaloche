@@ -34,7 +34,6 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	# print('%s enters %s' % [ owner.name, name ])
 	visible = true
 	play_animation()
 	pass

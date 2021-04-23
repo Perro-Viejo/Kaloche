@@ -10,6 +10,5 @@ func enter(msg: Dictionary = {}) -> void:
 	)
 	owner.tween.start()
 func _on_tween_completed(obj, key) -> void:
-	print('ya no epcisto')
 	owner.tween.disconnect('tween_completed', self, '_on_tween_completed')
 	owner.queue_free()

@@ -120,6 +120,5 @@ func _check_surface() -> void:
 				owner.surface_ref.hook_entered(owner)
 			return
 		else:
-			prints('la verdura está cara')
 			owner.surface_ref.hook_ref = null
 	_sent_back()
