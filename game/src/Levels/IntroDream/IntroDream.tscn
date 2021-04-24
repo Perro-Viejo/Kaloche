@@ -101,13 +101,18 @@ scale = Vector2( 0.51875, 0.51875 )
 lifepoints = 1
 max_lifepoints = 80
 can_die = false
-external_position = null
 
 [node name="TalkingPyramidA" parent="." instance=ExtResource( 9 )]
 position = Vector2( 0.821899, -282.766 )
+awake = true
+light_color = Color( 0.921569, 0.337255, 0.294118, 0.666667 )
 
 [node name="TalkingPyramidB" parent="." instance=ExtResource( 9 )]
 position = Vector2( -287.263, 219.752 )
+awake = true
+light_color = Color( 1, 0.894118, 0.470588, 0.666667 )
 
 [node name="TalkingPyramidC" parent="." instance=ExtResource( 9 )]
 position = Vector2( 291.711, 236.63 )
+awake = true
+light_color = Color( 0.364706, 0.870588, 0.529412, 0.666667 )
