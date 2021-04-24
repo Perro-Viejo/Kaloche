@@ -86,7 +86,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/TempleEntrance")
+dev_entry_point = NodePath("Zones/ZonePositions/CeremonialAltar")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -166,7 +166,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 scale = Vector2( 1.25, 1.25 )
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 3
+frame = 20
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -178,7 +178,7 @@ temple_entrance_path = NodePath("../TempleEntrance")
 position = Vector2( 346, 203 )
 
 [node name="TargetB" parent="Zones/AltarActivation" index="4"]
-position = Vector2( 356, -398 )
+position = Vector2( 360, -306 )
 
 [node name="TargetC" parent="Zones/AltarActivation" index="5"]
 position = Vector2( 375, -599 )
@@ -460,11 +460,7 @@ __meta__ = {
 }
 
 [editable path="Zones/Altar"]
-
 [editable path="Zones/Altar/SacredFire"]
-
 [editable path="Zones/AltarActivation"]
-
 [editable path="Zones/FishTank"]
-
 [editable path="Zones/FishTankAnimation"]

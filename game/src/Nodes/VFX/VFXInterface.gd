@@ -6,7 +6,7 @@ extends Resource
 
 export var speed := 1.0
 export var repeat := -1
-export var delay := 0.0
+export var start_delay := 0.0
 
 var tween: Tween
 var target: Node2D setget _set_target
@@ -27,7 +27,6 @@ func started() -> void:
 	yield(tween, 'tween_all_completed')
 
 	if repeat < 0 or repeat - _count > 0:
-		yield(tween, 'tween_all_completed')
 		if repeat > 0: _count += 1
 		start()
 	else:
