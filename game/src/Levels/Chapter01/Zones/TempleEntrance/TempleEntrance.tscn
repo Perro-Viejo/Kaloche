@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=2]
+[gd_scene load_steps=136 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -61,10 +61,13 @@
 [ext_resource path="res://src/Nodes/VFX/VFXShake/VFXShake.gd" type="Script" id=59]
 [ext_resource path="res://src/Levels/Chapter01/Zones/TempleEntrance/Fires.gd" type="Script" id=60]
 [ext_resource path="res://src/Nodes/VFX/VFXGrow/VFXGrow.gd" type="Script" id=61]
+[ext_resource path="res://assets/resources/sprite_frames/small_fire.tres" type="SpriteFrames" id=62]
+[ext_resource path="res://assets/resources/sprite_frames/small_fire-24fps.tres" type="SpriteFrames" id=63]
+[ext_resource path="res://assets/resources/sprite_frames/sacred_fire-24fps.tres" type="SpriteFrames" id=64]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
-length = 13.0
+length = 16.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -72,7 +75,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 13 ),
+"times": PoolRealArray( 16 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -173,7 +176,7 @@ tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
 "points": PoolRealArray( 66, -0.25, 0, 0.25, 0, 37.1111, -0.25, 0, 0.25, 0, 37.1111, -0.25, 0, 0.25, 0, 17.5463, -0.25, 0, 0.25, 0, 17.5463, -0.25, 0, 0.25, 0, -62, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 16 )
 }
 tracks/10/type = "bezier"
 tracks/10/path = NodePath("Platform/IsoBack:position:x")
@@ -193,7 +196,7 @@ tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
 "points": PoolRealArray( 9.5, -0.25, 0, 0.25, 0, -19.3889, -0.25, 0, 0.25, 0, -19.3889, -0.25, 0, 0.25, 0, -38.9537, -0.25, 0, 0.25, 0, -38.9537, -0.25, 0, 0.25, 0, -118.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 16 )
 }
 tracks/12/type = "bezier"
 tracks/12/path = NodePath("Platform/DoorButton:position:x")
@@ -213,7 +216,7 @@ tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
 "points": PoolRealArray( 58, -0.25, 0, 0.25, 0, 29.1111, -0.25, 0, 0.25, 0, 29.1111, -0.25, 0, 0.25, 0, 9.5463, -0.25, 0, 0.25, 0, 9.5463, -0.25, 0, 0.25, 0, -70, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 16 )
 }
 tracks/14/type = "bezier"
 tracks/14/path = NodePath("Platform/IsoFront:position:x")
@@ -233,7 +236,7 @@ tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
 "points": PoolRealArray( 25.5, -0.25, 0, 0.25, 0, -3.38888, -0.25, 0, 0.25, 0, -3.38888, -0.25, 0, 0.25, 0, -22.9537, -0.25, 0, 0.25, 0, -22.9537, -0.25, 0, 0.25, 0, -102.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 )
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 16 )
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("Floor/HoleCollisions:collision_mask")
@@ -522,7 +525,7 @@ tracks/41/loop_wrap = true
 tracks/41/imported = false
 tracks/41/enabled = true
 tracks/41/keys = {
-"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 13 ),
+"times": PoolRealArray( 5.6, 7, 8.1, 9.6, 10.4, 15.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ [ "shake" ] ],
@@ -587,6 +590,18 @@ tracks/44/keys = {
 "args": [  ],
 "method": "start_right_fingers"
 } ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("Fires/RightFingers:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -1090,6 +1105,18 @@ tracks/25/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/26/type = "value"
+tracks/26/path = NodePath("Fires/RightFingers:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "SETUP_OPEN_DOOR"
@@ -1477,16 +1504,15 @@ tracks/33/keys = {
 "values": [ Vector2( 0, -90 ) ]
 }
 
-[sub_resource type="Resource" id=71]
+[sub_resource type="Resource" id=5]
 resource_name = "grow"
 script = ExtResource( 61 )
-speed = 0.2
+speed = 1.0
 repeat = 0
-start_delay = 4.0
-scale_to = Vector2( 2, 2 )
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=5]
-resource_name = "zoomi"
+[sub_resource type="Resource" id=6]
 script = ExtResource( 54 )
 speed = 1.1
 repeat = -1
@@ -1494,31 +1520,30 @@ start_delay = 0.0
 max_scale = 1.08
 min_scale = 0.98
 
-[sub_resource type="Resource" id=6]
-resource_name = "levitate"
+[sub_resource type="Resource" id=7]
 script = ExtResource( 52 )
 speed = 1.0
 repeat = -1
 start_delay = 0.0
 distance = 2.0
 
-[sub_resource type="Resource" id=69]
+[sub_resource type="Resource" id=8]
 resource_name = "grow"
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 1.0
-scale_to = Vector2( 0.8, 0.8 )
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=70]
+[sub_resource type="Resource" id=9]
 resource_name = "grow"
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 1.0
-scale_to = Vector2( 0.8, 0.8 )
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=10]
 script/source = "tool
 class_name ZIndexChanger
 extends Area2D
@@ -1565,8 +1590,9 @@ func _change_z_index(body: Area2D, entered: bool) -> void:
 			(get_node(l) as Light2D).enabled = entered
 "
 
-[sub_resource type="Animation" id=8]
-length = 0.3
+[sub_resource type="Animation" id=11]
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -1574,14 +1600,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Resource" id=9]
-resource_name = "shake"
+[sub_resource type="Resource" id=12]
 script = ExtResource( 59 )
 speed = 0.05
 repeat = -1
@@ -1589,129 +1614,129 @@ start_delay = 0.0
 shake_strength = Vector2( 0.6, 0 )
 fixed_strength = true
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 256, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 512, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 768, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 20 )
 region = Rect2( 256, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 20 )
 region = Rect2( 512, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 20 )
 region = Rect2( 768, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 20 )
 region = Rect2( 1024, 1024, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 20 )
 region = Rect2( 1280, 1024, 256, 256 )
 
-[sub_resource type="SpriteFrames" id=40]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
@@ -1724,21 +1749,7 @@ repeat = 0
 start_delay = 2.0
 scale_to = Vector2( 0.8, 0.8 )
 
-[sub_resource type="Resource" id=54]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = -1
-start_delay = 0.0
-scale_to = Vector2( 1, 1 )
-
 [sub_resource type="Resource" id=45]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 1.5
-scale_to = Vector2( 1, 1 )
-
-[sub_resource type="Resource" id=55]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
@@ -1749,24 +1760,10 @@ scale_to = Vector2( 1, 1 )
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 1.0
-scale_to = Vector2( 0.5, 0.5 )
-
-[sub_resource type="Resource" id=56]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = -1
-start_delay = 0.0
+start_delay = 1.5
 scale_to = Vector2( 1, 1 )
 
 [sub_resource type="Resource" id=47]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 0.5
-scale_to = Vector2( 1.2, 1.2 )
-
-[sub_resource type="Resource" id=57]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
@@ -1777,24 +1774,10 @@ scale_to = Vector2( 1, 1 )
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 0.0
-scale_to = Vector2( 1, 1 )
-
-[sub_resource type="Resource" id=58]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = -1
-start_delay = 0.0
-scale_to = Vector2( 1, 1 )
+start_delay = 1.0
+scale_to = Vector2( 0.5, 0.5 )
 
 [sub_resource type="Resource" id=49]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 3.0
-scale_to = Vector2( 0.8, 0.8 )
-
-[sub_resource type="Resource" id=59]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
@@ -1805,24 +1788,10 @@ scale_to = Vector2( 1, 1 )
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 2.0
-scale_to = Vector2( 1, 1 )
-
-[sub_resource type="Resource" id=60]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = -1
-start_delay = 0.0
-scale_to = Vector2( 1, 1 )
+start_delay = 0.5
+scale_to = Vector2( 1.2, 1.2 )
 
 [sub_resource type="Resource" id=51]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 2.5
-scale_to = Vector2( 1, 1 )
-
-[sub_resource type="Resource" id=61]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
@@ -1833,17 +1802,73 @@ scale_to = Vector2( 1, 1 )
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 1.0
-scale_to = Vector2( 0.6, 0.6 )
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=53]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=53]
+[sub_resource type="Resource" id=54]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = 0
+start_delay = 3.0
+scale_to = Vector2( 0.8, 0.8 )
+
+[sub_resource type="Resource" id=55]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=56]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = 0
+start_delay = 2.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=58]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = 0
+start_delay = 2.5
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=59]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=60]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = 0
+start_delay = 1.0
+scale_to = Vector2( 0.6, 0.6 )
+
+[sub_resource type="Resource" id=61]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=62]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
@@ -1857,26 +1882,12 @@ repeat = -1
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=41]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 0.0
-scale_to = Vector2( 1, 1 )
-
 [sub_resource type="Resource" id=64]
 script = ExtResource( 61 )
 speed = 1.0
-repeat = -1
+repeat = 0
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
-
-[sub_resource type="Resource" id=42]
-script = ExtResource( 61 )
-speed = 1.0
-repeat = 0
-start_delay = 1.0
-scale_to = Vector2( 1.2, 1.2 )
 
 [sub_resource type="Resource" id=65]
 script = ExtResource( 61 )
@@ -1885,21 +1896,35 @@ repeat = -1
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=66]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = 0
-start_delay = 0.2
-scale_to = Vector2( 1, 1 )
+start_delay = 1.0
+scale_to = Vector2( 1.2, 1.2 )
 
-[sub_resource type="Resource" id=66]
+[sub_resource type="Resource" id=67]
 script = ExtResource( 61 )
 speed = 1.0
 repeat = -1
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=67]
+[sub_resource type="Resource" id=68]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = 0
+start_delay = 0.2
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=69]
+script = ExtResource( 61 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+scale_to = Vector2( 1, 1 )
+
+[sub_resource type="Resource" id=70]
 resource_name = "grow"
 script = ExtResource( 61 )
 speed = 1.0
@@ -1907,7 +1932,7 @@ repeat = 0
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
-[sub_resource type="Resource" id=68]
+[sub_resource type="Resource" id=71]
 resource_name = "grow"
 script = ExtResource( 61 )
 speed = 1.0
@@ -1948,6 +1973,7 @@ polygon = PoolVector2Array( 52, 171, -52, 171, -79, 144, -61, 108, -209, 108, -1
 
 [node name="HoleCollisions" type="StaticBody2D" parent="Floor"]
 visible = false
+collision_mask = 0
 
 [node name="LeftBack" type="CollisionPolygon2D" parent="Floor/HoleCollisions"]
 polygon = PoolVector2Array( -93, -150, -86, -162, -29, -162, -33, -155, -25, -153, -35, -151, -36, -150 )
@@ -1987,7 +2013,6 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -175, 134, -77, -62, -164, -62, -231, 72, -245, 134 )
 
 [node name="Covers" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="WallsBack" type="Sprite" parent="Covers"]
 position = Vector2( 0, -137.5 )
@@ -1998,7 +2023,7 @@ position = Vector2( 0, -102 )
 texture = ExtResource( 49 )
 
 [node name="Platform" type="Sprite" parent="Covers"]
-position = Vector2( 0, -60.5 )
+position = Vector2( 0, -64.5 )
 texture = ExtResource( 43 )
 
 [node name="Door" type="Sprite" parent="."]
@@ -2038,20 +2063,20 @@ visible = false
 polygon = PoolVector2Array( -101, 66, -17, 66, -14, 58.5, -14, 17.5, 14, 17.5, 14, 58.5, 17, 66, 101, 66, 101, 1, -101, 1 )
 
 [node name="TorchCover" type="Sprite" parent="Facade"]
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -63 )
-scale = Vector2( 1e-05, 1e-05 )
+position = Vector2( 0, -53.5 )
 texture = ExtResource( 50 )
 
 [node name="FacadeTorch" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 light_mask = 16384
-position = Vector2( 0, -291.5 )
+position = Vector2( 0, -302.5 )
 texture = ExtResource( 46 )
 
 [node name="TorchFire" parent="FacadeTorch" instance=ExtResource( 53 )]
-position = Vector2( 0, 1.5 )
+position = Vector2( -0.5, -1.5 )
+frames = ExtResource( 64 )
 playing = false
-vfxs = [ SubResource( 71 ) ]
+vfxs = [ SubResource( 5 ) ]
 
 [node name="FacadePillars" type="Node2D" parent="."]
 visible = false
@@ -2093,24 +2118,23 @@ texture = ExtResource( 45 )
 
 [node name="VFXHandler" type="Node2D" parent="FacadePillars/Pillars/Pyramids"]
 script = ExtResource( 58 )
-vfxs = [ SubResource( 5 ), SubResource( 6 ) ]
+vfxs = [ SubResource( 6 ), SubResource( 7 ) ]
 
 [node name="FacadePyramids" type="Node2D" parent="FacadePillars/Pillars/Pyramids"]
 
 [node name="LeftPyramid" parent="FacadePillars/Pillars/Pyramids/FacadePyramids" instance=ExtResource( 53 )]
-position = Vector2( -34, -8.5 )
+position = Vector2( -33.5, -10.5 )
 frame = 0
 playing = false
-vfxs = [ SubResource( 69 ) ]
+vfxs = [ SubResource( 8 ) ]
 
 [node name="RightPyramid" parent="FacadePillars/Pillars/Pyramids/FacadePyramids" instance=ExtResource( 53 )]
-position = Vector2( 34, -8.5 )
+position = Vector2( 33.5, -10.5 )
 frame = 0
 playing = false
-vfxs = [ SubResource( 70 ) ]
+vfxs = [ SubResource( 9 ) ]
 
 [node name="Pillars" type="Node2D" parent="."]
-visible = false
 
 [node name="VisibilityDisabler" type="Node2D" parent="Pillars"]
 script = ExtResource( 36 )
@@ -2123,11 +2147,10 @@ range_item_cull_mask = 32
 
 [node name="Back" type="Sprite" parent="Pillars"]
 light_mask = 32
-position = Vector2( 1.5, -76 )
+position = Vector2( 1.5, -204 )
 z_index = 4
 texture = ExtResource( 11 )
 hframes = 2
-frame = 1
 
 [node name="Behind" type="Light2D" parent="Pillars/Back"]
 position = Vector2( 0, -2 )
@@ -2166,11 +2189,10 @@ range_item_cull_mask = 64
 
 [node name="Middle" type="Sprite" parent="Pillars"]
 light_mask = 64
-position = Vector2( 0, -18 )
+position = Vector2( 0, -146 )
 z_index = 4
 texture = ExtResource( 9 )
 hframes = 2
-frame = 1
 
 [node name="Behind" type="Light2D" parent="Pillars/Middle"]
 position = Vector2( 0, -2 )
@@ -2193,7 +2215,7 @@ polygon = PoolVector2Array( -37, 41, -61, 41, -61, 36, -34, 36 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Middle"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 7 )
+script = SubResource( 10 )
 involved_nodes = [ NodePath("../../Back") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
@@ -2214,11 +2236,10 @@ range_item_cull_mask = 128
 
 [node name="Front" type="Sprite" parent="Pillars"]
 light_mask = 128
-position = Vector2( -0.5, 40 )
+position = Vector2( -0.5, -92 )
 z_index = 4
 texture = ExtResource( 10 )
 hframes = 2
-frame = 1
 __meta__ = {
 "_edit_group_": true
 }
@@ -2244,7 +2265,7 @@ polygon = PoolVector2Array( -38, 43, -61, 43, -61, 40, -35, 40 )
 [node name="ZIndexChanger" type="Area2D" parent="Pillars/Front"]
 visible = false
 modulate = Color( 0, 1, 1, 1 )
-script = SubResource( 7 )
+script = SubResource( 10 )
 involved_nodes = [ NodePath("../../Back"), NodePath("../../Middle") ]
 disable_lights_on_enter = [ NodePath("../Behind") ]
 
@@ -2258,6 +2279,7 @@ scale = Vector2( -1, 1 )
 polygon = PoolVector2Array( -66, 49, -62, 49, -62, 50, -36, 50, -28, 40, -20, 40, -20, 60, -66, 60 )
 
 [node name="Platform" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 
 [node name="VisibilityDisabler" type="Node2D" parent="Platform"]
@@ -2397,7 +2419,7 @@ needs_grabbing = false
 pickable_needed = "Rocberto"
 
 [node name="AnimationPlayer" parent="Platform/DoorButton" index="0"]
-anims/new_press = SubResource( 8 )
+anims/new_press = SubResource( 11 )
 
 [node name="Sprite" parent="Platform/DoorButton" index="1"]
 light_mask = 512
@@ -2514,7 +2536,6 @@ z_index = 10
 [node name="ExternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
-monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../../IsoBack/DownCollisions/CollisionEnabler"), NodePath("../../PlatformOff/ExternalCollisions/CollisionEnabler"), NodePath("../../PlatformOff/Collisions/CollisionEnabler"), NodePath("../InternalToggler"), NodePath("../../IsoBack/ZIndexChanger"), NodePath("../../IsoFront/ZIndexChanger") ]
@@ -2526,7 +2547,6 @@ polygon = PoolVector2Array( -61, 15, -61, 2, -53, -16, -39, -23, -39, -20, 39, -
 [node name="InternalToggler" type="Area2D" parent="Platform/Area2DTogglers"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
-monitoring = false
 monitorable = false
 script = ExtResource( 40 )
 targets = [ NodePath("../ExternalToggler") ]
@@ -2538,9 +2558,10 @@ polygon = PoolVector2Array( 13, 5, -13, 5, -16, 12, -43, 12, -64, 4, -64, 2, -55
 [node name="VFXHandler" type="Node2D" parent="Platform"]
 position = Vector2( 0, -185 )
 script = ExtResource( 58 )
-vfxs = [ SubResource( 9 ) ]
+vfxs = [ SubResource( 12 ) ]
 
 [node name="Fingers" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -8 )
 z_index = 4
 __meta__ = {
@@ -2682,7 +2703,7 @@ texture = ExtResource( 21 )
 
 [node name="Trees" type="AnimatedSprite" parent="Treepots"]
 position = Vector2( -4.5, -56 )
-frames = SubResource( 40 )
+frames = SubResource( 43 )
 
 [node name="K" type="Sprite" parent="."]
 position = Vector2( 0, 69.5 )
@@ -2748,100 +2769,130 @@ facade_pyramids = NodePath("../FacadePillars/Pillars/Pyramids/FacadePyramids")
 facade_torch = NodePath("../FacadeTorch")
 
 [node name="LeftFingers" type="Node2D" parent="Fires"]
+visible = false
 
 [node name="SimpleFire" parent="Fires/LeftFingers" instance=ExtResource( 53 )]
-position = Vector2( -95, -200 )
+position = Vector2( -94.5, -202 )
+frames = ExtResource( 63 )
 frame = 1
 playing = false
-vfxs = [ SubResource( 44 ), SubResource( 54 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 44 ), SubResource( 45 ) ]
 
 [node name="SimpleFire2" parent="Fires/LeftFingers" instance=ExtResource( 53 )]
-position = Vector2( -104, -182 )
+position = Vector2( -103.5, -185 )
+frames = ExtResource( 63 )
 frame = 1
 playing = false
-vfxs = [ SubResource( 45 ), SubResource( 55 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 46 ), SubResource( 47 ) ]
 
 [node name="SimpleFire3" parent="Fires/LeftFingers" instance=ExtResource( 53 )]
-position = Vector2( -101, -142 )
+position = Vector2( -100.5, -144 )
+frames = ExtResource( 63 )
 frame = 1
 playing = false
-vfxs = [ SubResource( 46 ), SubResource( 56 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 48 ), SubResource( 49 ) ]
 
 [node name="SimpleFire4" parent="Fires/LeftFingers" instance=ExtResource( 53 )]
-position = Vector2( -110, -124 )
+position = Vector2( -110.5, -126 )
+frames = ExtResource( 63 )
 frame = 8
 playing = false
-vfxs = [ SubResource( 47 ), SubResource( 57 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 50 ), SubResource( 51 ) ]
 
 [node name="SimpleFire5" parent="Fires/LeftFingers" instance=ExtResource( 53 )]
-position = Vector2( -145, -84 )
+position = Vector2( -144.5, -85 )
+frames = ExtResource( 63 )
 frame = 19
 playing = false
-vfxs = [ SubResource( 48 ), SubResource( 58 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 52 ), SubResource( 53 ) ]
 
 [node name="RightFingers" type="Node2D" parent="Fires"]
+visible = false
 
 [node name="SimpleFire" parent="Fires/RightFingers" instance=ExtResource( 53 )]
-position = Vector2( 95, -201 )
+position = Vector2( 93.5, -203 )
+frames = ExtResource( 63 )
 frame = 13
 playing = false
-vfxs = [ SubResource( 49 ), SubResource( 59 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 54 ), SubResource( 55 ) ]
 
 [node name="SimpleFire2" parent="Fires/RightFingers" instance=ExtResource( 53 )]
-position = Vector2( 104, -183 )
+position = Vector2( 102.5, -184 )
+frames = ExtResource( 63 )
 frame = 21
 playing = false
-vfxs = [ SubResource( 50 ), SubResource( 60 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 56 ), SubResource( 57 ) ]
 
 [node name="SimpleFire3" parent="Fires/RightFingers" instance=ExtResource( 53 )]
-position = Vector2( 102, -142 )
+position = Vector2( 99.5, -144 )
+frames = ExtResource( 63 )
 frame = 13
 playing = false
-vfxs = [ SubResource( 51 ), SubResource( 61 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 58 ), SubResource( 59 ) ]
 
 [node name="SimpleFire4" parent="Fires/RightFingers" instance=ExtResource( 53 )]
-position = Vector2( 110, -125 )
+position = Vector2( 108.5, -127 )
+frames = ExtResource( 63 )
 playing = false
-vfxs = [ SubResource( 52 ), SubResource( 62 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 60 ), SubResource( 61 ) ]
 
 [node name="SimpleFire5" parent="Fires/RightFingers" instance=ExtResource( 53 )]
-position = Vector2( 145, -85 )
+position = Vector2( 143.5, -86 )
+frames = ExtResource( 63 )
 frame = 18
 playing = false
-vfxs = [ SubResource( 53 ), SubResource( 63 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 62 ), SubResource( 63 ) ]
 
 [node name="FrontCanal" type="Node2D" parent="Fires"]
+visible = false
 
 [node name="Left" parent="Fires/FrontCanal" instance=ExtResource( 53 )]
-position = Vector2( -35, -4 )
-frame = 24
+position = Vector2( -35.5, -5 )
+frames = ExtResource( 63 )
 playing = false
-vfxs = [ SubResource( 41 ), SubResource( 64 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 64 ), SubResource( 65 ) ]
 
 [node name="Middle" parent="Fires/FrontCanal" instance=ExtResource( 53 )]
 position = Vector2( 0, -4 )
-frame = 15
+frames = ExtResource( 64 )
 playing = false
-vfxs = [ SubResource( 42 ), SubResource( 65 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 66 ), SubResource( 67 ) ]
 
 [node name="Right" parent="Fires/FrontCanal" instance=ExtResource( 53 )]
-position = Vector2( 35, -4 )
-frame = 18
+position = Vector2( 34.5, -5 )
+frames = ExtResource( 63 )
 playing = false
-vfxs = [ SubResource( 43 ), SubResource( 66 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 68 ), SubResource( 69 ) ]
 
 [node name="FrontPyramids" type="Node2D" parent="Fires"]
 
 [node name="SimpleFire" parent="Fires/FrontPyramids" instance=ExtResource( 53 )]
-position = Vector2( -52, 108 )
+position = Vector2( -52, 105 )
+frames = ExtResource( 63 )
 frame = 0
 playing = false
-vfxs = [ SubResource( 67 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 70 ) ]
 
 [node name="SimpleFire2" parent="Fires/FrontPyramids" instance=ExtResource( 53 )]
-position = Vector2( 52, 108 )
+position = Vector2( 52, 105 )
+frames = ExtResource( 62 )
 frame = 0
 playing = false
-vfxs = [ SubResource( 68 ) ]
+offset = Vector2( 0, -18 )
+vfxs = [ SubResource( 71 ) ]
 
 [editable path="Platform/DoorButton"]

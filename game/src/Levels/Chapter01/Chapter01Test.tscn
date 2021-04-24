@@ -86,7 +86,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/CeremonialAltar")
+dev_entry_point = NodePath("Zones/ZonePositions/BirthBridge")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -166,7 +166,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 scale = Vector2( 1.25, 1.25 )
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 20
+frame = 25
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -302,6 +302,7 @@ img = ExtResource( 1 )
 ] instance=ExtResource( 40 )]
 material = SubResource( 3 )
 position = Vector2( -309, -255 )
+carbs = 10
 
 [node name="RockSign" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( -296.663, 756.422 )

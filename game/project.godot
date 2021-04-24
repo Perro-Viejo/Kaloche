@@ -204,7 +204,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXInterface.gd"
 }, {
-"base": "Reference",
+"base": "VFXInterface",
 "class": "VFXLevitate",
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXLevitate/VFXLevitate.gd"
@@ -214,7 +214,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXShake/VFXShake.gd"
 }, {
-"base": "Reference",
+"base": "VFXInterface",
 "class": "VFXZoomi",
 "language": "GDScript",
 "path": "res://src/Nodes/VFX/VFXZoomi/VFXZoomi.gd"
