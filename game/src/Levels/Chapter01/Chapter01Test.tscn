@@ -166,7 +166,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 scale = Vector2( 1.25, 1.25 )
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 25
+frame = 45
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
