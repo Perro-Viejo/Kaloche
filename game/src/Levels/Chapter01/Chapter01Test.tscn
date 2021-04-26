@@ -163,7 +163,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="SacredFire" parent="Zones/Altar" index="6"]
-scale = Vector2( 4.25, 4.25 )
+scale = Vector2( 1.25, 1.25 )
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
