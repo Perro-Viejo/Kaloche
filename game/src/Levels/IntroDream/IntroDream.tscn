@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/intintro_dream_grass.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_back.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_rock.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_water.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/world/chapter_0.1/light_circle_mask.png" type="Texture" id=14]
+[ext_resource path="res://src/Nodes/VFX/VFXHandler.gd" type="Script" id=15]
 
 [node name="IntroDream" type="Node2D"]
 script = ExtResource( 11 )
@@ -79,6 +80,9 @@ position = Vector2( -3.3371, 76.4196 )
 position = Vector2( -2.67645, 52.6674 )
 texture = ExtResource( 6 )
 hframes = 2
+
+[node name="VFXHandler" type="Node2D" parent="Campfire"]
+script = ExtResource( 15 )
 
 [node name="CampfireLight" type="Light2D" parent="."]
 position = Vector2( -2.0278, 50.3592 )

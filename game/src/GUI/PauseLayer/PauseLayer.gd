@@ -46,7 +46,7 @@ func _on_Resume_pressed():
 
 
 func _on_Restart_pressed():
-	GuiEvent.emit_signal('play_requested', 'UI', 'Select')
+	AudioEvent.emit_signal('play_requested', 'UI', 'Select')
 	GuiEvent.emit_signal('Restart')
 	SectionEvent.Paused = false #setget triggers signal and responding to it hide GUI
 
@@ -85,7 +85,12 @@ func _on_world_entered(data: Dictionary):
 				_world_positions.append((p as Position2D).get_instance_id())
 				_level_positions.add_item(p.name, p.get_index())
 
-			_level_positions.connect('item_selected', self, '_position_selected')
+			if not _level_positions.is_connected(
+					'item_selected', self, '_position_selected'
+				):
+				_level_positions.connect(
+					'item_selected', self, '_position_selected'
+				)
 			_teletransport_container.show()
 			_teletransport_separator.show()
 
