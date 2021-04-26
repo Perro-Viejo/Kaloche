@@ -163,10 +163,11 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="SacredFire" parent="Zones/Altar" index="6"]
-scale = Vector2( 1.25, 1.25 )
+scale = Vector2( 4.25, 4.25 )
+toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 20
+frame = 11
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -181,7 +182,7 @@ position = Vector2( 346, 203 )
 position = Vector2( 360, -306 )
 
 [node name="TargetC" parent="Zones/AltarActivation" index="5"]
-position = Vector2( 375, -599 )
+position = Vector2( 360, -646 )
 
 [node name="Hole" parent="Zones" instance=ExtResource( 26 )]
 position = Vector2( -50, 654 )

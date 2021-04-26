@@ -11,7 +11,7 @@ onready var _main_collider: Area2D = $MainCollider
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
-	$AnimationPlayer.play('SETUP_ACTIVATE')
+#	$AnimationPlayer.play('SETUP_ACTIVATE')
 	
 	door_button.connect('button_pressed', self, '_open_door')
 	_main_collider.connect('area_entered', self, '_check_entered', [true])
@@ -35,11 +35,14 @@ func start_front_pyramids() -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _open_door() -> void:
+	PlayerEvent.emit_signal('control_toggled', {is_cutscene = true})
 	yield(get_tree().create_timer(0.8), 'timeout')
 	$AnimationPlayer.play('SETUP_OPEN_DOOR')
 	yield($AnimationPlayer, 'animation_finished')
 	yield(get_tree(), 'idle_frame')
 	$AnimationPlayer.play('OpenDoor')
+	yield($AnimationPlayer, 'animation_finished')
+	PlayerEvent.emit_signal('control_toggled')
 
 
 func _check_entered(body: Area2D, entered: bool) -> void:

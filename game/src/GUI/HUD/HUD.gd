@@ -13,6 +13,9 @@ onready var _dflt_pos: = {
 onready var _continue: TextureButton = find_node('Continue')
 onready var _journal: Control = $Control/Journal
 onready var _dialog: Dialog = find_node('Dialog')
+onready var _cutscene_border: Control = find_node('CutsceneBorder')
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func _ready() -> void:
 	_zone_name.text = ''
@@ -28,6 +31,8 @@ func _ready() -> void:
 	WorldEvent.connect('zone_entered', self, 'update_zone_name')
 	WorldEvent.connect('world_entered', self, '_on_world_entered')
 	HudEvent.connect('continue_requested', self, 'show_continue')
+	HudEvent.connect('cutscene_started', _cutscene_border, 'toggle', [true])
+	HudEvent.connect('cutscene_ended', _cutscene_border, 'toggle', [false])
 	
 	# DEBUG
 	DebugOverlay.add_monitor('\nse presionó', self, ':last_key')

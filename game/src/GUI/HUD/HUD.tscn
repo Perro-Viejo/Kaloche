@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/resources/dynamic_fonts/m5x7_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/HUD/HUD.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/GUI/TalkingBubble/TalkingBubble.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/gui/paper_sheet.png" type="Texture" id=6]
 [ext_resource path="res://src/GUI/HUD/Journal.gd" type="Script" id=7]
+[ext_resource path="res://src/GUI/HUD/CutsceneBorder.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.709804, 0.709804, 1 )
@@ -156,12 +157,38 @@ visible = false
 [node name="TalkingBubble" parent="Control" instance=ExtResource( 5 )]
 visible = false
 
-[node name="PlayerBorder" type="TextureRect" parent="Control"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="CutsceneBorder" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Control/CutsceneBorder"]
+margin_right = 320.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Bottom" type="ColorRect" parent="Control/CutsceneBorder"]
+margin_top = 164.0
+margin_right = 320.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 16 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+
+[node name="Tween" type="Tween" parent="Control/CutsceneBorder"]
 
 [node name="Tween" type="Tween" parent="."]

@@ -9,6 +9,7 @@ export var max_lifepoints:= 20
 export var can_die:= true
 export var size_range:= Vector2(0.5, 1)
 export (NodePath) var external_position = null
+export var toggle_player_on_burn := false
 
 var pickable: Pickable = null
 var is_burning:= false
@@ -95,6 +96,9 @@ func _on_area_entered(other) -> void:
 			else:
 				pickable.set_z_index(-1)
 				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
+				
+				if toggle_player_on_burn:
+					PlayerEvent.emit_signal('control_toggled', {is_cutscene = true})
 
 
 func _on_area_exited(other) -> void:

@@ -61,8 +61,6 @@ func _ready() -> void:
 func activate_temple():
 	_player_cam = get_node(_player).get_node('Camera2D')
 
-	PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
-
 	_player_cam_cfg.pos = _player_cam.get_camera_screen_center()
 	_player_cam_cfg.zoom = _player_cam.zoom
 

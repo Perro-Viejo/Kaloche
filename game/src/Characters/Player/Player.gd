@@ -24,6 +24,7 @@ var surfaces_queue := []
 var current_tool: int = Tools.NONE setget _set_current_tool
 var rod_tip_pos := Vector2(-5, -4)
 var rod_tip_offset := Vector2(11, -2)
+var in_cutscene := false
 
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
@@ -224,6 +225,10 @@ func _toggle_control(props: Dictionary = {}) -> void:
 	
 	if props.has('disable'):
 		is_paused = props.disable
+	
+	if props.has('is_cutscene') or in_cutscene:
+		in_cutscene = is_paused
+		HudEvent.emit_signal('cutscene_started' if is_paused else 'cutscene_ended')
 
 #	if props.has('disable_camera'):
 #		cam.current = false
