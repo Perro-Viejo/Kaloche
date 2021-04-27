@@ -5,10 +5,10 @@ type="Translation"
 
 [deps]
 
-files=[ "res://assets/localization/dialogings.es.translation", "res://assets/localization/dialogings.en.translation" ]
+files=[ "res://assets/localization/dialogings.es.translation", "res://assets/localization/dialogings.en.translation", "res://assets/localization/dialogings.es_CO.translation" ]
 
 source_file="res://assets/localization/dialogings.csv"
-dest_files=[ "res://assets/localization/dialogings.es.translation", "res://assets/localization/dialogings.en.translation" ]
+dest_files=[ "res://assets/localization/dialogings.es.translation", "res://assets/localization/dialogings.en.translation", "res://assets/localization/dialogings.es_CO.translation" ]
 
 [params]
 

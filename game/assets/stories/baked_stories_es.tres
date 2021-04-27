@@ -117,7 +117,6 @@ story = {
 },
 12: {
 "links": {
-
 },
 "text": "end"
 }
@@ -163,7 +162,6 @@ story = {
 },
 5: {
 "links": {
-
 },
 "text": "end"
 }
@@ -210,7 +208,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "end"
 },
@@ -249,13 +246,11 @@ story = {
 },
 7: {
 "links": {
-
 },
 "text": "return"
 },
 8: {
 "links": {
-
 },
 "text": "return"
 },
@@ -271,7 +266,6 @@ story = {
 },
 10: {
 "links": {
-
 },
 "text": "return"
 }
@@ -287,7 +281,6 @@ story = {
 },
 2: {
 "links": {
-
 },
 "text": "end"
 },
@@ -371,7 +364,6 @@ story = {
 },
 7: {
 "links": {
-
 },
 "text": "return"
 }
@@ -416,7 +408,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "end"
 },
@@ -725,7 +716,7 @@ story = {
 0: 3
 },
 "text": "{
-\"actor\": \"Player\",
+\"actor\": \"Rocberto\",
 \"line\": \"¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levanteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie.\"
 }"
 }
@@ -780,7 +771,6 @@ story = {
 },
 6: {
 "links": {
-
 },
 "text": "end"
 }
@@ -872,7 +862,6 @@ story = {
 },
 9: {
 "links": {
-
 },
 "text": "end"
 }

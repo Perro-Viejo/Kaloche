@@ -306,7 +306,11 @@ func _reset_bait() -> void:
 	_bait = ''
 	hook_ref.disconnect('sent_back', self, 'hook_exited')
 
+
 func _on_area_entered(other: Area2D) -> void:
+	# Se llama al método del padre para que funcionen las alteraciones de la
+	# superficie a la velocidad de movimiento del Actor que entra.
+	._on_area_entered(other)
 	if _can_receive and other is Pickable:
 		var splash = HOOK_SPLASH.instance()
 		add_child(splash)
@@ -317,6 +321,7 @@ func _on_area_entered(other: Area2D) -> void:
 				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Respawn')
 		else:
 			other.queue_free()
+
 
 func _set_spawn_specific(new_value: bool) -> void:
 	spawn_specific = new_value

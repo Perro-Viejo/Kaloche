@@ -175,7 +175,6 @@ story = {
 12: {
 "graph_offset": Vector2( 2200, 2200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -245,7 +244,6 @@ story = {
 5: {
 "graph_offset": Vector2( 800, 800 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -308,7 +306,6 @@ story = {
 3: {
 "graph_offset": Vector2( 800, 600 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -363,7 +360,6 @@ story = {
 7: {
 "graph_offset": Vector2( 1400, 0 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -373,7 +369,6 @@ story = {
 8: {
 "graph_offset": Vector2( 2000, 200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -397,7 +392,6 @@ story = {
 10: {
 "graph_offset": Vector2( 1400, 400 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -425,7 +419,6 @@ story = {
 2: {
 "graph_offset": Vector2( 1020, 200 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -529,7 +522,6 @@ story = {
 7: {
 "graph_offset": Vector2( 1580, -420 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -590,7 +582,6 @@ story = {
 3: {
 "graph_offset": Vector2( 2980, -60 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -1009,7 +1000,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "{
-\"actor\": \"Player\",
+\"actor\": \"Rocberto\",
 \"line\": \"¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levanteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie.\"
 }",
 "type": "line"
@@ -1090,7 +1081,6 @@ story = {
 6: {
 "graph_offset": Vector2( 1060, 220 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -1222,7 +1212,6 @@ story = {
 9: {
 "graph_offset": Vector2( 1320, -20 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,

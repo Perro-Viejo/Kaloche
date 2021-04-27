@@ -1,14 +1,17 @@
 class_name DialogMenu
 extends VBoxContainer
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 export(PackedScene) var option
 
 var current_options := []
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	hide()
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func create_options(options := [], autoshow := false) -> void:
 	if options.empty():
 		if not current_options.empty():
@@ -77,6 +80,7 @@ func show_options() -> void:
 	show()
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _on_option_clicked(opt: Dictionary) -> void:
 	SectionEvent.dialog = false
 	hide()

@@ -86,7 +86,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/CeremonialAltar")
+dev_entry_point = NodePath("Zones/ZonePositions/PathOfTheEffort")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -167,7 +167,7 @@ scale = Vector2( 1.25, 1.25 )
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 11
+frame = 47
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -242,6 +242,9 @@ position = Vector2( 10.5, -423 )
 [node name="TempleEntrance" parent="Zones" instance=ExtResource( 5 )]
 position = Vector2( 10.5, -816 )
 
+[node name="BrokenBridge" parent="Zones" instance=ExtResource( 10 )]
+position = Vector2( 597.06, 1096.12 )
+
 [node name="ZonePositions" type="Node2D" parent="Zones"]
 
 [node name="BirthBridge" type="Position2D" parent="Zones/ZonePositions"]
@@ -275,13 +278,10 @@ position = Vector2( 409, -128 )
 position = Vector2( 397, -274 )
 
 [node name="PathOfTheEffort" type="Position2D" parent="Zones/ZonePositions"]
-position = Vector2( 10, -213 )
+position = Vector2( 10, -160 )
 
 [node name="TempleEntrance" type="Position2D" parent="Zones/ZonePositions"]
 position = Vector2( 12, -781 )
-
-[node name="BrokenBridge" parent="Zones" instance=ExtResource( 10 )]
-position = Vector2( 597.06, 1096.12 )
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 0, -4 )

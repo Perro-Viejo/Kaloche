@@ -6,6 +6,7 @@ const HOOK_WAVE = preload('res://src/Particles/WaterWave.tscn')
 export var surface_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
 export var overlap := false
+export var speed_multiplier := 1.0
 
 # FIX: Esto no debería estar aquí sino en las clases que hereden de Surface
 # y vayan a tener en cuenta el hook pa' algo.
@@ -29,7 +30,7 @@ func _ready() -> void:
 	connect('body_entered', self, '_assign_sfx')
 	connect('body_exited', self, '_stop_sfx')
 	connect('area_entered', self, '_on_area_entered')
-	
+
 	add_to_group('Surface')
 
 
@@ -60,4 +61,5 @@ func _stop_sfx(body: Node) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	pass
+	if area.name == 'FootArea':
+		(area.get_parent() as Actor).movement_speed_multiplier = speed_multiplier

@@ -21,7 +21,6 @@ var _ignore_toggle := false
 
 onready var _story_reader: EXP_StoryReader = _story_reader_class.new()
 onready var _dialog_menu: DialogMenu = find_node('DialogMenu')
-#onready var _autofill: Autofill = find_node('Autofill')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
@@ -78,8 +77,6 @@ func _continue_dialog(slot := 0) -> void:
 		_close_dialog()
 		return
 	# --------------------------------------------------------------------------
-
-#	if _autofill.is_visible(): return
 
 	if _selected_slot < 0 and _nid == _options_nid:
 		# Para mostrar el menú de opciones de diálogo al final de la línea
@@ -198,7 +195,6 @@ func _read_dialog_line() -> void:
 		_dialog_menu.update_options(cfg)
 
 	# Lo último que se hace es disparar la línea de diálogo
-	
 	if line:
 		DialogEvent.emit_signal(
 			'line_triggered',
@@ -214,11 +210,6 @@ func _read_dialog_line() -> void:
 func _show_dialog_line(
 		character: Node2D = null, message :String = '', time_to_disappear := 0.0
 	):
-#	if _autofill.typing:
-#		_autofill.stop()
-#		if not is_inside_tree(): return
-#		yield(get_tree().create_timer(.3), 'timeout')
-
 	# Definir el color del texto
 	var text_color: Color = Color('#ffffeb')
 	if character and character.get('dialog_color'):
@@ -232,16 +223,12 @@ func _show_dialog_line(
 
 	if message != '':
 		_current_character = character
-
-#		_autofill.set_text(message)
-#		_autofill.set_disappear_time(time_to_disappear)
-#		_autofill.show()
 		
 		$AnimatedRichText.play_text(message, text_color)
-		
 		HudEvent.emit_signal('talking_bubble_requested', _current_character)
 	else:
 		_current_character = null
+
 		$AnimatedRichText.stop()
 		HudEvent.emit_signal('talking_bubble_requested')
 
@@ -253,7 +240,7 @@ func _option_clicked(opt: Dictionary) -> void:
 		DialogEvent.emit_signal(
 			'line_triggered',
 			(opt.actor as String).to_lower(),
-			opt.line as String,
+			tr(opt.tr_code.to_upper()),
 			opt.time,
 			opt.emotion as String
 		)

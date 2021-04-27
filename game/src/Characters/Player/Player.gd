@@ -25,11 +25,11 @@ var current_tool: int = Tools.NONE setget _set_current_tool
 var rod_tip_pos := Vector2(-5, -4)
 var rod_tip_offset := Vector2(11, -2)
 var in_cutscene := false
+var current_cam_offset
 
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
 var _shake_timer := 0.0
-var current_cam_offset
 
 onready var cam: Camera2D = $Camera2D
 onready var fishing_spot: ColorRect = $FishingSpot

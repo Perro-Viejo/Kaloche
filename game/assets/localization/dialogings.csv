@@ -1,104 +1,111 @@
-keys,es,en
-DLG_1_2_DEMON,"La luna es oscura, Teotriste.","La luna es oscura, Teotriste."
+keys,es,en,es_CO
+DLG_1_2_DEMON,"La luna es oscura, Teotriste.","La luna es oscura, Teotriste.",
 DLG_1_3_PLAYER,"Nuestros cultivos ya no florecen, los animales
 mueren en la soledad. Por favor, oh Dios Kuarevachú,
 ayúdame a volver la luz al mundo.","Nuestros cultivos ya no florecen, los animales
 mueren en la soledad. Por favor, oh Dios Kuarevachú,
-ayúdame a volver la luz al mundo."
+ayúdame a volver la luz al mundo.",
 DLG_1_4_DEMON,"Estoy al borde de la muerte y sin embargo,
 te atreves a pedirme algo casi imposible.","Estoy al borde de la muerte y sin embargo,
-te atreves a pedirme algo casi imposible."
+te atreves a pedirme algo casi imposible.",
 DLG_1_5_PLAYER,"Mantendré tu fuego vivo, cueste lo que cueste.
 Cruzaré esta Sierra si es necesario.","Mantendré tu fuego vivo, cueste lo que cueste.
-Cruzaré esta Sierra si es necesario."
+Cruzaré esta Sierra si es necesario.",
 DLG_1_6_DEMON,"No será tan fácil, Teotriste,
 Tendrás que superar mis acertijos y
 traer como ofrenda la encomienda que te pido.","No será tan fácil, Teotriste,
 Tendrás que superar mis acertijos y
-traer como ofrenda la encomienda que te pido."
-DLG_1_7_PLAYER,Así será.,Así será.
+traer como ofrenda la encomienda que te pido.",
+DLG_1_7_PLAYER,Así será.,Así será.,
 DLG_1_8_DEMON,"Pero me lastimarás hasta mi fuego extinguir
 si arrojas a mis llamas un objeto prohibido
 ... y no podré cumplir tu petición.","Pero me lastimarás hasta mi fuego extinguir
 si arrojas a mis llamas un objeto prohibido
-... y no podré cumplir tu petición."
-DLG_1_9_PLAYER,...,...
+... y no podré cumplir tu petición.",
+DLG_1_9_PLAYER,...,...,
 DLG_1_10_DEMON,"¿Ves ese pequeño tucán?
 Puedes levantarlo con la tecla Z.
 Para arrojarlo a mi presiona la tecla X.","¿Ves ese pequeño tucán?
 Puedes levantarlo con la tecla Z.
-Para arrojarlo a mi presiona la tecla X."
+Para arrojarlo a mi presiona la tecla X.",
 DLG_1_11_DEMON,"Perfecto. Resuelve el primer acertijo
 y camina por la Sierra hasta encontrarlo.","Perfecto. Resuelve el primer acertijo
-y camina por la Sierra hasta encontrarlo."
-DLG_2_2_DEMON,Hola Teotriste,Hola Teotriste
-DLG_2_3_DEMON,Siente la emoción de conocer mi nombre...,Siente la emoción de conocer mi nombre...
-DLG_2_4_DEMON,^^^Kaloches^^^,^^^Kaloches^^^
-DLG_3_2_CRICKET,Hola humano,Hola humano
-DLG_3_2_CRICKET_OPT_0,Hola...tú,Hola...tú
-DLG_3_2_CRICKET_OPT_1,¿Cómo putas es que está hablando?,¿Cómo putas es que está hablando?
-DLG_3_2_CRICKET_OPT_2,¿Qué quieres que haga?,¿Qué quieres que haga?
-DLG_3_2_CRICKET_OPT_3,No vuelvo a meter esa mierda. Chao.,No vuelvo a meter esa mierda. Chao.
-DLG_3_4_CRICKET,Soy el dios del sexo,Soy el dios del sexo
-DLG_3_5_CRICKET,"No hablo, imbécil. Se llama telepatita.","No hablo, imbécil. Se llama telepatita."
-DLG_3_6_PLAYER,Pobre hijueputa,Pobre hijueputa
-DLG_3_9_CRICKET,Que me entregues tu amor \ . )3 ) /,Que me entregues tu amor \ . )3 ) /
-DLG_4_3_ROCBERTO,A la orden,A la orden
-DLG_4_3_ROCBERTO_OPT_0,Deme la caña corta,Deme la caña corta
-DLG_4_3_ROCBERTO_OPT_1,Deme la caña medianga,Deme la caña medianga
-DLG_4_3_ROCBERTO_OPT_2,Deme la caña grandota,Deme la caña grandota
-DLG_4_3_ROCBERTO_OPT_3,Mejor ya nada. Chao.,Mejor ya nada. Chao.
-DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita
-DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana
-DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea
-DLG_5_2_ROCBERTO,[shake]¡pssssssst![/shake],[shake]¡pssssssst![/shake]
-DLG_5_2_ROCBERTO_OPT_0,¡Uy jueputa! La roca me está hablando.,¡Uy jueputa! La roca me está hablando.
-DLG_5_2_ROCBERTO_OPT_1,¡¿Eh?! ¿Qué fue ese ruido?,¡¿Eh?! ¿Qué fue ese ruido?
-DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá.,Mejor me voy de acá.
-DLG_5_4_PLAYER,Creí que estába solo... Quiubo ¿qué hace aquí?,Creí que estába solo... Quiubo ¿qué hace aquí?
-DLG_5_5_PLAYER,Como que escucho algo. Creo que es esa cosa de allá.,Como que escucho algo. Creo que es esa cosa de allá.
-DLG_5_6_PLAYER,¿Por qué lo dice? ¿qué no ha visto pasar a nadie más?,¿Por qué lo dice? ¿qué no ha visto pasar a nadie más?
-DLG_5_7_ROCBERTO,"No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte.","No mucho, esperando a ver si pasa alguien. Parece que hoy es mi día de suerte."
-DLG_5_7_ROCBERTO_OPT_0,¿Suerte? ¿cómo así?,¿Suerte? ¿cómo así?
-DLG_5_7_ROCBERTO_OPT_1,¿Y a quién más ha visto pasar?,¿Y a quién más ha visto pasar?
-DLG_5_8_PLAYER,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.,¿Soy el primero que pasa por aquí? Vea que yo tenía ganas como de encontrarme con unas muchachonas.
-DLG_5_9_ROCBERTO,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.,¿Cosa? ¡Soy una roca! Mire que usted tampoco tendrá muy buena pinta.
-DLG_5_9_ROCBERTO_OPT_0,"Bueno, bueno. No es para tanto, no se enoje.","Bueno, bueno. No es para tanto, no se enoje."
-DLG_5_9_ROCBERTO_OPT_1," Tranquilo, no se guíe por la pinta."," Tranquilo, no se guíe por la pinta."
-DLG_5_10_PLAYER,"No se me enoje, que ahí donde me ve, este cuerpito todavía levanta algo.","No se me enoje, que ahí donde me ve, este cuerpito todavía levanta algo."
-DLG_5_11_PLAYER,Es que estaba explorando por ahí y quedé bien cochino.,Es que estaba explorando por ahí y quedé bien cochino.
-DLG_5_12_PLAYER,"Seguiré explorando por allá, creo que aquí no hay nada.","Seguiré explorando por allá, creo que aquí no hay nada."
-DLG_5_13_ROCBERTO,"¡Espera! ¡no te vayas, por favor!","¡Espera! ¡no te vayas, por favor!"
-DLG_5_13_ROCBERTO_OPT_0,"Vale, no tiene que gritar que no me he ido.","Vale, no tiene que gritar que no me he ido."
-DLG_5_13_ROCBERTO_OPT_1," Ya, pero sin ponerse a llorar que aquí sigo."," Ya, pero sin ponerse a llorar que aquí sigo."
-DLG_5_14_PLAYER,¡Leve la nieve que aquí sigo! ¿qué más? ¿qué hace?,¡Leve la nieve que aquí sigo! ¿qué más? ¿qué hace?
-DLG_5_15_PLAYER,"Parce, no me ponga esa cara que me dan ganas de llorar también y luego no hay quién nos calme. ¿Está solito aquí?","Parce, no me ponga esa cara que me dan ganas de llorar también y luego no hay quién nos calme. ¿Está solito aquí?"
-DLG_5_16_ROCBERTO,"No, llevo un rato aquí y es la primer persona que veo.","No, llevo un rato aquí y es la primer persona que veo."
-DLG_5_17_PLAYER,D:,D:
-DLG_5_17_PLAYER_OPT_0,"Uy parce, ¿cómo así?","Uy parce, ¿cómo así?"
-DLG_5_17_PLAYER_OPT_1,"No'mbre, no me diga eso, compadre.","No'mbre, no me diga eso, compadre."
-DLG_5_17_PLAYER_OPT_2,"Ya, ¿y entonces pa' dónde?","Ya, ¿y entonces pa' dónde?"
-DLG_5_18_ROCBERTO,"No, llevo un rato aquí y es la primer persona que veo.","No, llevo un rato aquí y es la primer persona que veo."
-DLG_5_19_ROCBERTO,Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato.,Pues no sé qué podría levantar por aquí. Usted es la primer persona que veo pasar en un rato.
-DLG_5_20_ROCBERTO,¿Ah sí? Yo llevo un rato aquí y no he visto a nadie más.,¿Ah sí? Yo llevo un rato aquí y no he visto a nadie más.
-DLG_5_21_ROCBERTO,"Nada, aquí echando sol. Mire que ya llevo ya un rato aquí y no he visto pasar a nadie más.","Nada, aquí echando sol. Mire que ya llevo ya un rato aquí y no he visto pasar a nadie más."
-DLG_5_22_ROCBERTO,"¡Ay qué pena molestar al señor! Sí, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima.","¡Ay qué pena molestar al señor! Sí, estoy solo. Llevo un rato aquí y nada que pasa alguien, solo animales que me hacen pipí encima."
-DLG_5_23_PLAYER,¿Y entonces para dónde es que jala uno aquí?,¿Y entonces para dónde es que jala uno aquí?
-DLG_5_24_PLAYER,Ya llevo un rato dando  vueltas y nada.,Ya llevo un rato dando  vueltas y nada.
-DLG_5_25_PLAYER,No me diga que esto es todo.,No me diga que esto es todo.
-DLG_5_26_ROCBERTO,Estamos en la Sierra de la Macarena así que seguro algo encontramos.,Estamos en la Sierra de la Macarena así que seguro algo encontramos.
-DLG_5_27_PLAYER,¿Encontramos?,¿Encontramos?
-DLG_5_28_ROCBERTO,¡Claro! Lléveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.,¡Claro! Lléveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.
-DLG_5_29_ROCBERTO,Usted no se me preocupe que esto es la Sierra de la Macarena y yo me la conozco mejor que cualquiera. Lléveme con usted y ya verá.,Usted no se me preocupe que esto es la Sierra de la Macarena y yo me la conozco mejor que cualquiera. Lléveme con usted y ya verá.
-DLG_5_30_PLAYER,"¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levánteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie.","¿Cómo va a ser todo? ¡Si estamos en la Sierra de la Macarena! Venga, mejor levánteme que yo lo puedo ayudar. Me conozco este lugar mejor que nadie."
-DLG_6_2_PLAYER,Mamarrachos extraños...,Weird stuff...
-DLG_6_3_PLAYER,No entiendos...,No understando...
-DLG_6_4_PLAYER,Se ve pispo pero ni idea...,Cute but no idea what it means...
-DLG_6_5_PLAYER,Una roca grabada ^-^,An engraved rock ^-^
-DLG_7_2_ROCBERTO,"Sierra del Heliodoro, favor no alimentar las aves.","Heliodoro Sierra, please do not feed the birds."
-DLG_7_3_ROCBERTO,No hablen con los prisioneros,Do not talk to the prisoner.
-DLG_7_4_ROCBERTO,"Templo del SacaPayara, es como una mano pero más útil.","Sacapayara temple, is like a hand but better."
-DLG_7_5_ROCBERTO,-Este santuario fue erigido por los ahogados seguidores del dios Kuarevachu-,-This sanctuary was built by the drowned followers of god Kuarevachu-
-DLG_7_6_ROCBERTO,"Quien traiga consigo el susodicho, llenará el tanque de las aguas del río.","The one who brings the other one, will filled the tank with the river tide."
-DLG_7_7_ROCBERTO,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs."
-DLG_7_8_ROCBERTO,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead."
+y camina por la Sierra hasta encontrarlo.",
+DLG_2_2_DEMON,Hola Teotriste,Hola Teotriste,
+DLG_2_3_DEMON,Siente la emoción de conocer mi nombre...,Siente la emoción de conocer mi nombre...,
+DLG_2_4_DEMON,^^^Kaloches^^^,^^^Kaloches^^^,
+DLG_3_2_CRICKET,Hola humano,Hola humano,
+DLG_3_2_CRICKET_OPT_0,Hola...tú,Hola...tú,
+DLG_3_2_CRICKET_OPT_1,¿Cómo putas es que está hablando?,¿Cómo putas es que está hablando?,
+DLG_3_2_CRICKET_OPT_2,¿Qué quieres que haga?,¿Qué quieres que haga?,
+DLG_3_2_CRICKET_OPT_3,No vuelvo a meter esa mierda. Chao.,No vuelvo a meter esa mierda. Chao.,
+DLG_3_4_CRICKET,Soy el dios del sexo,Soy el dios del sexo,
+DLG_3_5_CRICKET,"No hablo, imbécil. Se llama telepatita.","No hablo, imbécil. Se llama telepatita.",
+DLG_3_6_PLAYER,Pobre hijueputa,Pobre hijueputa,
+DLG_3_9_CRICKET,Que me entregues tu amor \ . )3 ) /,Que me entregues tu amor \ . )3 ) /,
+DLG_4_3_ROCBERTO,A la orden,A la orden,
+DLG_4_3_ROCBERTO_OPT_0,Deme la caña corta,Deme la caña corta,
+DLG_4_3_ROCBERTO_OPT_1,Deme la caña medianga,Deme la caña medianga,
+DLG_4_3_ROCBERTO_OPT_2,Deme la caña grandota,Deme la caña grandota,
+DLG_4_3_ROCBERTO_OPT_3,Mejor ya nada. Chao.,Mejor ya nada. Chao.,
+DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita,
+DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana,
+DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea,
+,,,
+DLG_5_2_ROCBERTO,[shake]¡pssssssst![/shake],[shake]¡pssssssst![/shake],
+DLG_5_2_ROCBERTO_OPT_0,"¡Uy jueputa, una roca que habla!",Oh my! Whos talking.,
+DLG_5_4_PLAYER,Creí que estaba solo... ¿qué hace aquí?,I thought I was alone... what are you doing here?,
+DLG_5_7_ROCBERTO,"No mucho, estaba esperando a que apareciera alguien y hoy estoy como debuenas.",Not much. Was waiting for someone to come by. Looks today is my luck day.,
+DLG_5_7_ROCBERTO_OPT_0,Esperando a alguien para qué o qué.,Waiting someone for what.,
+DLG_5_6_PLAYER,Esperando a alguien para qué o qué.,Waiting someone for what.,
+DLG_5_16_ROCBERTO,Pa' que me ayude a hacer unas vueltas.,To help me.,
+DLG_5_7_ROCBERTO_OPT_1,¿Y es que no anda mucha gente por aquí?,Isn't that a lot of people around here?,
+DLG_5_8_PLAYER,Porque en lo que he andado no he visto ni un gato.,I haven't seen a soul during my walk.,
+DLG_5_18_ROCBERTO,Dígamelo a mí...,I do not doubt it,Podría llevar algo más
+,,,
+DLG_5_2_ROCBERTO_OPT_1,Otra vez estoy escuchando voces.,Oh no! The voices... again.,Hablar sobre la maldición
+DLG_5_5_PLAYER,Este guayabo no es normal.,This hangover is not normal.,
+DLG_5_9_ROCBERTO,"¡Noooooo, camarita! Aquí abajo.",Down here!,
+DLG_5_9_ROCBERTO_OPT_0,¿De cuándo acá las piedras hablan?,Since when do rocks talk?,
+DLG_5_10_PLAYER,¿O será que el guaro estaba pasao?,Maybe I drank something expired.,
+DLG_5_19_ROCBERTO,Pues siempre hemos hablado pero no cualquiera puede escucharnos.,"We have been talking for ages, but not anyone can here us.","Podría ser que Rocberto insinúe que algo pasó y ahora las piedras pueden ser escuchadas, o que algo cambió en el mundo... desde ayer al medio día."
+DLG_5_9_ROCBERTO_OPT_1,Vea pues.,I see.,
+DLG_5_11_PLAYER,. . . . . . . . .,. . . . . . . . .,
+DLG_5_20_ROCBERTO,. . . . . . . . . . . . . . . . .,. . . . . . . . . . . . . . . . .,
+,,,
+DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá.,I better leave.,
+DLG_5_12_PLAYER,Aquí como que asustan.,This place gives me the creeps.,
+DLG_5_13_ROCBERTO,"¡Pere pere pere! No se vaya, yo no asusto.","Wa-wa-wait! Don't go, I'm good.",
+DLG_5_13_ROCBERTO_OPT_0,Todobien. Aquí estoy.,"Ooook, I'll stay.",
+DLG_5_14_PLAYER,Es que pensé que era la Bolefuego o algoasí.,I thought it was the devil.,
+DLG_5_21_ROCBERTO,"Ah no, todobien. Sólo soy una roca mal parada.",Don't worries. I'm a misplaced rock.,
+DLG_5_13_ROCBERTO_OPT_1,"Nooo, coma mierda. Casi me da un yeyo.",Holly shit! You almost kill me.,
+DLG_5_15_PLAYER,Pensé que me iba a llevar la que me trujo.,I thought you'll take my life.,
+DLG_5_22_ROCBERTO,Relaje el potro que ni siquiera puedo moverme.,Take it easy. I can't even move.,
+,,,
+DLG_5_17_PLAYER_OPT_0,¿Tiene idea de cómo puedo salir de aquí?,Do you know how I can leave this place?,
+DLG_5_23_PLAYER,El puente por donde llegué se fue a la mierda y casi me lleva con él.,The bridge I took to come here has broken.,
+DLG_5_26_ROCBERTO,Yo pensé que ese puente se había caído hace años. De todos modos no es la única salida.,"I thought that bridge had fallen years ago. Anyway, it is not the only way out.",
+DLG_5_27_PLAYER,¿Me puede decir dónde está la otra?,¿Encontramos?,
+DLG_5_28_ROCBERTO,Yo con mucho gusto le digo pero si me lleva con usted.,¡Claro! Lléveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.,
+,,,
+DLG_5_17_PLAYER_OPT_1,Necesito que me diga pa' dónde andar.,Tell where to go here.,
+DLG_5_24_PLAYER,Ya llevo un rato dando vueltas y no veo nada conocido por ahí.,Ya llevo un rato dando  vueltas y nada.,
+DLG_5_29_ROCBERTO,Yo soy buen conocedor de la zona pero me faltan las patas. Por qué no me carga y yo lo guío.,"I know this place but I can't walk. Why don't you grab me, I'll be your guide.",
+,,,
+DLG_5_17_PLAYER_OPT_2,Bueno... me voy.,I have to... go.,
+DLG_5_25_PLAYER,Tengo que seguir buscando por dónde volver a la ranchita.,I need to find the way back home.,
+DLG_5_30_ROCBERTO,No va a estar fácil salir de la [color=#10a5ea]Sierra del Heliodoro[/color] sin ayuda. Yo creo que lo mejor es que me lleve con usted.,It won't be easy to leave [color=#10a5ea]Sierra del Heliodoro[/color] without help. Better take me with you.,
+,,,
+DLG_5_17_PLAYER,D:,D:,
+DLG_6_2_PLAYER,Mamarrachos extraños...,Weird stuff...,
+DLG_6_3_PLAYER,No entiendos...,No understando...,
+DLG_6_4_PLAYER,Se ve pispo pero ni idea...,Cute but no idea what it means...,
+DLG_6_5_PLAYER,Una roca grabada ^-^,An engraved rock ^-^,
+DLG_7_2_ROCBERTO,"Sierra del Heliodoro, favor no alimentar las aves.","Heliodoro Sierra, please do not feed the birds.",
+DLG_7_3_ROCBERTO,No hablen con los prisioneros,Do not talk to the prisoner.,
+DLG_7_4_ROCBERTO,"Templo del SacaPayara, es como una mano pero más útil.","Sacapayara temple, is like a hand but better.",
+DLG_7_5_ROCBERTO,-Este santuario fue erigido por los ahogados seguidores del dios Kuarevachu-,-This sanctuary was built by the drowned followers of god Kuarevachu-,
+DLG_7_6_ROCBERTO,"Quien traiga consigo el susodicho, llenará el tanque de las aguas del río.","The one who brings the other one, will filled the tank with the river tide.",
+DLG_7_7_ROCBERTO,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs.",
+DLG_7_8_ROCBERTO,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead.",
