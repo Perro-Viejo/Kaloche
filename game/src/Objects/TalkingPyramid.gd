@@ -14,6 +14,8 @@ func _on_body_entered(body: Node)  -> void:
 		sleep()
 
 func wake_up() -> void:
+	if $Sprite/VFXHandler:
+		$Sprite/VFXHandler.start_vfx(['levitate'])
 	$Fire.show()
 	$LightSprite.show()
 	awake = true

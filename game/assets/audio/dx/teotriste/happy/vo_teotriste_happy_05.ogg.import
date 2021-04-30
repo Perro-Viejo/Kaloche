@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teotriste_happy_05.ogg-ea749d6d74ea6198883476ee96818fb2.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/teotriste/happy/vo_teotriste_happy_05.ogg"
+dest_files=[ "res://.import/vo_teotriste_happy_05.ogg-ea749d6d74ea6198883476ee96818fb2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

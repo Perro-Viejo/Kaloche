@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teotriste_sad_06.ogg-952143cb4de927d3f842e183230823b7.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/teotriste/sad/vo_teotriste_sad_06.ogg"
+dest_files=[ "res://.import/vo_teotriste_sad_06.ogg-952143cb4de927d3f842e183230823b7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
