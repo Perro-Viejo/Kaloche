@@ -86,7 +86,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/PathOfTheEffort")
+dev_entry_point = NodePath("Zones/ZonePositions/BirthBridge")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -163,11 +163,10 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 targets = [ NodePath("../../../../../Characters/Player") ]
 
 [node name="SacredFire" parent="Zones/Altar" index="6"]
-scale = Vector2( 1.25, 1.25 )
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 47
+frame = 45
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -337,7 +336,7 @@ message_id = 6
 [node name="Rocberto" parent="Characters" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-position = Vector2( -338.087, 479.698 )
+position = Vector2( -338, 480 )
 collision_layer = 5
 img = ExtResource( 9 )
 tr_code = "Rocberto"
@@ -360,6 +359,7 @@ layer = 3
 follow_viewport_enable = true
 
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
+visible = false
 material = SubResource( 6 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100

@@ -14,7 +14,6 @@ var _pressed := false
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	$Area2D.connect('area_entered', self, '_on_pressed')
-	$Area2D.connect('area_exited', self, '_on_unpressed')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
@@ -29,22 +28,32 @@ func _on_pressed(body: Area2D) -> void:
 	if not _pressed and body.name == 'FootArea':
 		var player: Player = body.get_parent()
 
-		if needs_grabbing and player.grabbing:
-			if pickable_needed == '' or player.picked_item.name == pickable_needed:
-				_pressed = true
-		elif needs_grabbing and not player.grabbing:
-			AudioEvent.emit_signal('play_requested','Button','Block', position)
-		elif not needs_grabbing:
+		if needs_grabbing:
+			if player.grabbing:
+				if pickable_needed == '' or \
+					player.picked_item.name == pickable_needed:
+					_pressed = true
+			else:
+				$AnimationPlayer.play('block')
+				AudioEvent.emit_signal('play_requested','Button','Block', position)
+				$Area2D.connect('area_exited', self, '_unblock')
+				return
+		else:
 			_pressed = true
 		
 		if _pressed:
 			$Area2D.disconnect('area_entered', self, '_on_pressed')
-#			$Area2D.connect('body_entered', self, '_on_unpressed')
+			$Area2D.connect('area_exited', self, '_on_unpressed')
 
-			$AnimationPlayer.play('new_press')
+			$AnimationPlayer.stop()
+			if $AnimationPlayer.has_animation('new_press'):
+				$AnimationPlayer.play('new_press')
+			else:
+				$AnimationPlayer.play('press')
+
 			AudioEvent.emit_signal('play_requested','Button','Down', position)
 
-			yield(get_tree().create_timer(0.1), 'timeout')
+			yield(get_tree(), 'idle_frame')
 			emit_signal('button_pressed')
 
 
@@ -53,12 +62,21 @@ func _on_unpressed(body: Area2D) -> void:
 		if _pressed and body.name == 'FootArea':
 			_pressed = false
 
-			$Area2D.connect('body_entered', self, '_on_pressed')
+			$Area2D.connect('area_entered', self, '_on_pressed')
 			$Area2D.disconnect('area_exited', self, '_on_unpressed')
 
-			$AnimationPlayer.play_backwards('press')
+			$AnimationPlayer.stop()
+			if $AnimationPlayer.has_animation('new_press'):
+				$AnimationPlayer.play_backwards('new_press')
+			else:
+				$AnimationPlayer.play_backwards('press')
 
 			AudioEvent.emit_signal('play_requested','Button','Up', position)
 
-			yield(get_tree().create_timer(0.1), 'timeout')
+			yield(get_tree(), 'idle_frame')
 			emit_signal('button_unpressed')
+
+
+func _unblock(_body: Area2D) -> void:
+	$AnimationPlayer.play_backwards('block')
+	$Area2D.disconnect('area_exited', self, '_unblock')	

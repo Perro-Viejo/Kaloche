@@ -1,5 +1,5 @@
 class_name FishingSurface
-extends 'res://src/Levels/Surface.gd'
+extends Surface
 
 const HOOK_SPLASH = preload('res://src/Particles/HookSplash.tscn')
 const FISH_SPLASH = preload('res://src/Particles/FishSplash.tscn')
@@ -39,22 +39,27 @@ onready var _tween := Tween.new()
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready():
-	_shadows.name = 'Shadows'
 	type = Data.SurfaceType.WATER
 	add_to_group('FishingSurface')
 	
-	_timer = Timer.new()
-	_timer.wait_time = spawn_cooldown
-	_timer.one_shot = true
-	_timer.connect('timeout', self, '_spawn_fishes')
+	if has_fishes:
+		_shadows.name = 'Shadows'
 
-	add_child(_timer)
-	add_child(_shadows)
-	add_child(_tween)
-	if visible:
-		_spawn_fishes()
+		_timer = Timer.new()
+		_timer.wait_time = spawn_cooldown
+		_timer.one_shot = true
+		_timer.connect('timeout', self, '_spawn_fishes')
+
+		add_child(_timer)
+		add_child(_shadows)
+		add_child(_tween)
+
+		if visible:
+			_spawn_fishes()
 	
-	PlayerEvent.connect('fish_caught', self, '_on_fish_caught')
+		PlayerEvent.connect('fish_caught', self, '_on_fish_caught')
+	else:
+		set_process(false)
 
 func _process(delta):
 	if _fish_examininig and _fish_examine_wait > 0.0:
@@ -308,14 +313,13 @@ func _reset_bait() -> void:
 
 
 func _on_area_entered(other: Area2D) -> void:
-	# Se llama al método del padre para que funcionen las alteraciones de la
-	# superficie a la velocidad de movimiento del Actor que entra.
-	._on_area_entered(other)
 	if _can_receive and other is Pickable:
 		var splash = HOOK_SPLASH.instance()
 		add_child(splash)
-		splash.position = other.position
+		splash.position = to_local(other.position)
 		if other.is_in_group('Sacred'):
+			other.hide()
+			yield(get_tree().create_timer(1.5), 'timeout')
 			other.respawn()
 			if other.name == 'Rocberto':
 				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Respawn')

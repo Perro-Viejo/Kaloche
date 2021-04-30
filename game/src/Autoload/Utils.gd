@@ -17,6 +17,10 @@ func get_random_array_idx(arr: Array) -> int:
 	return randi() % arr.size()
 
 
+func get_global_index(node: Node2D) -> int:
+	return node.get_index() + node.get_parent().get_index()
+
+
 # Mejora la lectura de entradas del control. Gracias a:
 # https://github.com/godotengine/godot/pull/30890#issuecomment-542823398
 static func is_pressed(action, as_float := false):

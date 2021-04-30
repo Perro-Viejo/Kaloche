@@ -5,6 +5,8 @@ extends Node2D
 
 signal activated
 
+export var zoom_on_enter := true
+
 onready var door_button: SpriteButton = find_node('DoorButton')
 onready var _main_collider: Area2D = $MainCollider
 
@@ -46,7 +48,7 @@ func _open_door() -> void:
 
 
 func _check_entered(body: Area2D, entered: bool) -> void:
-	if body.name == 'FootArea':
+	if zoom_on_enter and body.name == 'FootArea':
 		var player_cam: Camera2D = (body.get_parent() as Player).cam
 		
 		$Tween.interpolate_property(

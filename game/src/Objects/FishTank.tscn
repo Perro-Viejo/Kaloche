@@ -228,16 +228,6 @@ polygon = PoolVector2Array( -93, -70.5, -90, -70.5, -90, -76, -93, -76 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
-affect_involved_on = 0
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
-disable_lights_on_ready = false
-pause_z_changers_on_enter = [  ]
-lights_to_enable = [  ]
-lights_to_enable_case = 0
 
 [node name="TopColumns" type="CollisionPolygon2D" parent="Columns/ZIndexChanger"]
 position = Vector2( 0, 14.5 )
@@ -256,16 +246,6 @@ texture = ExtResource( 7 )
 visible = false
 modulate = Color( 0, 1, 1, 1 )
 script = ExtResource( 10 )
-zindex_on_entered = 0
-zindex_on_exited = 4
-involved_nodes = [  ]
-affect_involved_on = 0
-disable_lights_on_enter = [  ]
-disable_lights_on_exit = [  ]
-disable_lights_on_ready = false
-pause_z_changers_on_enter = [  ]
-lights_to_enable = [  ]
-lights_to_enable_case = 0
 
 [node name="Arch" type="CollisionPolygon2D" parent="Arch/ZIndexChanger"]
 position = Vector2( 0, 111 )

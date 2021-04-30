@@ -20,12 +20,18 @@ func _ready():
 		surface.monitoring = false
 		surface.monitorable = false
 	
+	# Desconectar escuchadores de los hijos
+	_tank_surface.disconnect_area_listener()
+	
 	# Conectarse a señales de los hijastros
-	AudioEvent.emit_signal('change_volume', 'Spot', 'FishTank', -80)
+	_animation.connect('animation_finished', self, '_on_animation_finished')
 	_tank_surface.connect('area_entered', self, '_on_area_entered')
 	$TempleDoorButton.connect('button_pressed', self, 'fill_tank')
 	$TempleDoorButton.connect('button_unpressed', self, 'empty_tank')
-	_animation.connect('animation_finished', self, '_on_animation_finished')
+	
+	# Conectarse a señales del universo de las señales
+	AudioEvent.emit_signal('change_volume', 'Spot', 'FishTank', -80)
+
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func fill_tank():

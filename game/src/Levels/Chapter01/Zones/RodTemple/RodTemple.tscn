@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=2]
+[gd_scene load_steps=154 format=2]
 
 [ext_resource path="res://src/Inventory/Rod.tres" type="Resource" id=1]
 [ext_resource path="res://src/Pickables/Pickup.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_gutters.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_gutters_mask.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_dust_01.png" type="Texture" id=23]
+[ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Emerge"
@@ -1003,7 +1004,7 @@ z_index = -1
 texture = ExtResource( 19 )
 
 [node name="PilarUnderwaterMask" type="Light2D" parent="."]
-position = Vector2( 0.5, 31.32 )
+position = Vector2( 0.5, 15 )
 z_index = -1
 texture = ExtResource( 20 )
 mode = 2
@@ -1181,13 +1182,22 @@ range_item_cull_mask = 32
 
 [node name="Surfaces" type="Node2D" parent="."]
 
+[node name="RockFloor" type="Area2D" parent="Surfaces"]
+visible = false
+priority = 1.0
+script = ExtResource( 17 )
+surface_name = "Rock"
+type = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/RockFloor"]
+polygon = PoolVector2Array( -34.9224, 40.4416, 34.6026, 40.0391, 29.1026, 28.8903, 53.0354, 16.9982, 77.1168, -0.691208, 75.6303, -6.93454, 68.495, -8.867, 40.1027, -35.4756, 38.0216, -44.5433, 20.6294, -46.1785, 18.3997, -41.273, -22.3307, -42.1649, -30.9524, -48.4082, -39.4255, -43.9487, -37.1957, -33.2458, -55.7692, -23.5593, -76.283, -2.59953, -74.3505, 2.90055, -67.9585, 3.79246, -33.5173, 29.284 )
+
 [node name="BrokenFloor" type="Area2D" parent="Surfaces"]
 visible = false
 priority = 1.0
 script = ExtResource( 17 )
 surface_name = "Rod_Temple"
 type = 2
-overlap = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/BrokenFloor"]
 polygon = PoolVector2Array( -47.0394, 13.7276, -14.0342, 24.8695, -9.61948, 10.364, 10.3518, 10.364, 14.5563, 24.2388, 57.442, 3.00616, 54.9193, -18.0163, 18.5506, -34.624, -28.9601, -32.1013, -50.4029, -22.6412, -57.1301, -6.2437 )
@@ -1197,27 +1207,16 @@ visible = false
 priority = 1.0
 monitoring = false
 monitorable = false
-script = ExtResource( 17 )
+script = ExtResource( 24 )
 surface_name = "Water"
 type = 1
-overlap = true
+has_fishes = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Water"]
 polygon = PoolVector2Array( -53.3188, 6.42883, -38.523, 17.2915, -13.6136, 23.8466, -11.1789, 12.6093, -32.3425, 6.05425, -39.834, -7.99238, -34.7772, -18.1059, -16.7975, -28.0322, -16.0484, -32.7144, -47.5128, -22.6009, -55.7535, -5.93221 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Surfaces/Water"]
 polygon = PoolVector2Array( 15.625, 23.75, 29.625, 21.125, 39.625, 16.125, 51.625, 8.5, 56.25, -3.625, 52.3119, -16.6076, 34.894, -27.0958, 15.9779, -33.2763, 15.2288, -30.2797, 36.2051, -16.7949, 41.0746, -4.4339, 31, 8.375, 12.75, 12.625 )
-
-[node name="RockFloor" type="Area2D" parent="Surfaces"]
-visible = false
-priority = 1.0
-script = ExtResource( 17 )
-surface_name = "Rock"
-type = 2
-overlap = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/RockFloor"]
-polygon = PoolVector2Array( -34.9224, 40.4416, 34.6026, 40.0391, 29.1026, 28.8903, 53.0354, 16.9982, 77.1168, -0.691208, 75.6303, -6.93454, 68.495, -8.867, 40.1027, -35.4756, 38.0216, -44.5433, 20.6294, -46.1785, 18.3997, -41.273, -22.3307, -42.1649, -30.9524, -48.4082, -39.4255, -43.9487, -37.1957, -33.2458, -55.7692, -23.5593, -76.283, -2.59953, -74.3505, 2.90055, -67.9585, 3.79246, -33.5173, 29.284 )
 
 [node name="Dust01" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )

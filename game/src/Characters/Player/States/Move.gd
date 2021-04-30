@@ -73,11 +73,11 @@ func _physics_process(delta) -> void:
 		_last_dir.x = 0
 		_last_dir.y = dir.y
 	
-	var speed: Vector2 = dir * _calc_speed * owner.movement_speed_multiplier * delta
+	var _speed: Vector2 = dir * _calc_speed * owner.movement_speed_multiplier * delta
 	if not owner.is_out:
-		owner.move_and_collide(speed)
+		owner.move_and_collide(_speed)
 	else:
-		owner.move_and_collide(speed * 2)
+		owner.move_and_collide(_speed * 2)
 		
 	if dir != Vector2(0,0) and not owner.is_moving:
 		_state_machine.transition_to_state(_state_machine.STATES.WALK)

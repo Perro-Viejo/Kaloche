@@ -1,7 +1,36 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/world/temple_button.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/TempleDoorButton.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "block"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 21, 13 ), Rect2( 21, 0, 21, 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 0.5 ), Vector2( -0.5, 0.5 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -34,6 +63,7 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/block = SubResource( 2 )
 anims/press = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

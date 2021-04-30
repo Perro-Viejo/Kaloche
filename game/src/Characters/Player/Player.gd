@@ -1,5 +1,5 @@
 class_name Player
-extends "res://src/Characters/Actor.gd"
+extends Actor
 
 enum Tools {
 	NONE,
@@ -25,7 +25,7 @@ var current_tool: int = Tools.NONE setget _set_current_tool
 var rod_tip_pos := Vector2(-5, -4)
 var rod_tip_offset := Vector2(11, -2)
 var in_cutscene := false
-var current_cam_offset
+var current_cam_offset := Vector2.ZERO
 
 var _is_camera_shaking := false
 var _camera_shake_amount := 15.0
@@ -152,19 +152,37 @@ func fishing_zoom(zooming: bool, start: bool = false):
 
 func toggle_on_ground(body: Node2D, on: = false) -> void:
 	if body.is_in_group('Surface'):
+		var assigned_surface: Surface = null
+		
 		if on:
-			if body.overlap:
+			var do_append := true
+			if not surfaces_queue.empty():
+				var last: Surface = surfaces_queue.back()
+				
+				if Utils.get_global_index(body) < Utils.get_global_index(last):
+					do_append = false
+					surfaces_queue.insert(surfaces_queue.size() - 1, body)
+					assigned_surface = last
+			
+			if do_append:
 				surfaces_queue.append(body)
-			self.surface = body.surface_name
+				assigned_surface = body
 		else:
-			if surfaces_queue \
-				and surfaces_queue.back().get_instance_id() == body.get_instance_id():
-				surfaces_queue.pop_back()
+			if not surfaces_queue.empty():
+				if surfaces_queue.back().get_instance_id() == body.get_instance_id():
+					surfaces_queue.pop_back()
+				else:
+					surfaces_queue.erase(body)
 
 			if surfaces_queue.empty():
 				self.surface = ''
+				movement_speed_multiplier = 1.0
 			else:
-				self.surface = surfaces_queue.back().surface_name
+				assigned_surface = surfaces_queue.back()
+		
+		if is_instance_valid(assigned_surface):
+			self.surface = assigned_surface.surface_name
+			movement_speed_multiplier = assigned_surface.speed_multiplier
 
 
 func has_equiped() -> bool:

@@ -105,7 +105,10 @@ func next_target(_object, key) -> void:
 		_tween.start()
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 		queue_free()
+		return
+
 	_prev_position = _current_target._target.global_position
+
 	if _targets.empty():
 		_tween.interpolate_property(
 			_camera, 'zoom',

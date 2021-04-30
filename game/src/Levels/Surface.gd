@@ -5,7 +5,6 @@ const HOOK_WAVE = preload('res://src/Particles/WaterWave.tscn')
 
 export var surface_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
-export var overlap := false
 export var speed_multiplier := 1.0
 
 # FIX: Esto no debería estar aquí sino en las clases que hereden de Surface
@@ -34,6 +33,7 @@ func _ready() -> void:
 	add_to_group('Surface')
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func is_point_inside_polygon(point: Vector2) -> bool:
 	for v in _vertices:
 		if Geometry.is_point_in_polygon(point, v):
@@ -51,6 +51,12 @@ func show_wave(wave, speed = 1.0):
 	water_wave.play_animation(wave, speed)
 
 
+# Se usa por si quiere controlarse lo que pasa en el evento 'area_entered' desde
+# fuera de este nodo.
+func disconnect_area_listener() -> void:
+	disconnect('area_entered', self, '_on_area_entered')
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
 func _assign_sfx(body: Node) -> void:
 	pass
@@ -61,5 +67,4 @@ func _stop_sfx(body: Node) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.name == 'FootArea':
-		(area.get_parent() as Actor).movement_speed_multiplier = speed_multiplier
+	pass
