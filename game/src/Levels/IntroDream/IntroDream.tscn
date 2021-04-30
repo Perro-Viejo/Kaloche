@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/intintro_dream_grass.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_back.png" type="Texture" id=2]
@@ -14,6 +14,15 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_rock.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/world/chapter_0.1/intro_dream_water.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/world/chapter_0.1/light_circle_mask.png" type="Texture" id=14]
+[ext_resource path="res://src/Nodes/VFX/VFXLevitate/VFXLevitate.gd" type="Script" id=15]
+[ext_resource path="res://src/Nodes/VFX/VFXHandler.gd" type="Script" id=16]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 15 )
+speed = 1.0
+repeat = -1
+start_delay = 0.0
+distance = 5.0
 
 [node name="IntroDream" type="Node2D"]
 script = ExtResource( 11 )
@@ -107,6 +116,13 @@ position = Vector2( 0.821899, -282.766 )
 awake = true
 light_color = Color( 0.921569, 0.337255, 0.294118, 0.666667 )
 
+[node name="Fire" parent="TalkingPyramidA" index="1"]
+frame = 37
+
+[node name="VFXHandler" type="Node2D" parent="TalkingPyramidA/Sprite" index="0"]
+script = ExtResource( 16 )
+vfxs = [ SubResource( 1 ) ]
+
 [node name="TalkingPyramidB" parent="." instance=ExtResource( 9 )]
 position = Vector2( -287.263, 219.752 )
 awake = true
@@ -116,3 +132,5 @@ light_color = Color( 1, 0.894118, 0.470588, 0.666667 )
 position = Vector2( 291.711, 236.63 )
 awake = true
 light_color = Color( 0.364706, 0.870588, 0.529412, 0.666667 )
+
+[editable path="TalkingPyramidA"]

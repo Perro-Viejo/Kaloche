@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teotriste_surprised_10.ogg-004a6b474d3b64d1b28f4655f8b4522d.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/teotriste/surprised/vo_teotriste_surprised_10.ogg"
+dest_files=[ "res://.import/vo_teotriste_surprised_10.ogg-004a6b474d3b64d1b28f4655f8b4522d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

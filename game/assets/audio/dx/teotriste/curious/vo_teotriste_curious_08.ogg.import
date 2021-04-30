@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teotriste_curious_08.ogg-96557b196fc11386b998b68fbae98e2c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/teotriste/curious/vo_teotriste_curious_08.ogg"
+dest_files=[ "res://.import/vo_teotriste_curious_08.ogg-96557b196fc11386b998b68fbae98e2c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

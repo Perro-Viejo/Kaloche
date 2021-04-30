@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vo_teotriste_angry_10.ogg-236c634971e40263a845eb28b726f40f.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dx/teotriste/angry/vo_teotriste_angry_10.ogg"
+dest_files=[ "res://.import/vo_teotriste_angry_10.ogg-236c634971e40263a845eb28b726f40f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
