@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Levels/CollisionEnabler.gd"
 }, {
-"base": "Node2D",
+"base": "KinematicBody2D",
 "class": "Demon",
 "language": "GDScript",
 "path": "res://src/Characters/Demon/Demon.gd"

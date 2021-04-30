@@ -166,7 +166,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 45
+frame = 20
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )

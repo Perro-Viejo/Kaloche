@@ -16,6 +16,7 @@ export var bite_freq := Vector2(15.0, 30.0)
 export var spawn_specific := false setget _set_spawn_specific
 export(Array, FishData.Type) var specifics = []
 export var has_sacred := false
+export var respawn_position: NodePath = ''
 
 var _timer: Timer = null
 var _fishes := []
@@ -320,7 +321,12 @@ func _on_area_entered(other: Area2D) -> void:
 		if other.is_in_group('Sacred'):
 			other.hide()
 			yield(get_tree().create_timer(1.5), 'timeout')
-			other.respawn()
+			
+			if is_instance_valid(get_node(respawn_position)):
+				other.respawn(get_node(respawn_position).global_position)
+			else:
+				other.respawn()
+
 			if other.name == 'Rocberto':
 				AudioEvent.emit_signal('play_requested', 'Rocberto', 'Respawn')
 		else:
