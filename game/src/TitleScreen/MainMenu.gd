@@ -43,7 +43,7 @@ func _ready()->void:
 
 	retranslate()
 	
-	if Engine.editor_hint:
+	if not OS.has_feature('editor'):
 		# Si el juego no está corriendo en el editor, sí o sí que muestre los
 		# controles
 		show_controls = true
@@ -73,7 +73,7 @@ func _on_NewGame_pressed()->void:
 	GuiEvent.emit_signal('NewGame')
 	if show_controls:
 		GuiEvent.emit_signal('ChangeScene', controls_scn)
-	if show_intro:
+	elif show_intro:
 		GuiEvent.emit_signal('ChangeScene', intro_scn)
 	else:
 		GuiEvent.emit_signal('ChangeScene', First_Level)

@@ -172,6 +172,7 @@ __meta__ = {
 }
 First_Level = "res://src/Levels/World.tscn"
 controls_scn = "res://src/GUI/ControlsLayer/ControlsLayer.tscn"
+show_controls = false
 
 [node name="BG" type="Panel" parent="."]
 pause_mode = 2
@@ -313,7 +314,6 @@ __meta__ = {
 [node name="Fuego" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( -19, 3 )
 frames = SubResource( 34 )
-frame = 16
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )
@@ -324,7 +324,7 @@ __meta__ = {
 [node name="Fuego2" type="AnimatedSprite" parent="BG/CreditsContainer/InMemory"]
 position = Vector2( 145, 3 )
 frames = SubResource( 34 )
-frame = 10
+frame = 22
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -6 )

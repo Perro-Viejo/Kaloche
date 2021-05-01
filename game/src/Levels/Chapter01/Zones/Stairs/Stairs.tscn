@@ -54,7 +54,6 @@ polygon = PoolVector2Array( -22.5, -64, 22.5, -64, 22.5, -139, -22.5, -139 )
 polygon = PoolVector2Array( -22.5, -159, 22.5, -159, 22.5, -189, -22.5, -189 )
 
 [node name="Columns" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0.5, 1 )
 z_index = 4
 texture = ExtResource( 4 )
