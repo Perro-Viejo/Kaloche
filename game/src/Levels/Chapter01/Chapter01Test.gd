@@ -1,6 +1,19 @@
 
 extends Node2D
-# ⠿⠿⠿⠿ Variables ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+# Contiene la lógica para algunas cosas generales del Capítulo 0.1.
+# Nombres de las zonas:
+# - Pórtico espanta Heliodoro (colibrí pequeño)
+# - Camino del regender (esfuerzo)
+# - Altar Ceremonial 
+# - Jardín de los Arrayanes
+# - Jardín de los Curubos
+# - Estanque del Payara (pez endémico)
+# - Cámara de conjuros
+# - Santuario de los ahogados
+# - Pozo de los cantos ahogados
+# - Templo del SacaPayara (caña de pescar)
+# - Sendero de la iniciación
+# - Puente del nacimiento/renacimiento
 
 export var dev_entry_point: NodePath
 

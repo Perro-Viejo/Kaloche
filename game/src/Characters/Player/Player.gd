@@ -176,7 +176,7 @@ func toggle_on_ground(body: Node2D, on: = false) -> void:
 
 			if surfaces_queue.empty():
 				self.surface = ''
-				movement_speed_multiplier = 1.0
+				movement_speed_multiplier = Vector2.ONE
 			else:
 				assigned_surface = surfaces_queue.back()
 		
