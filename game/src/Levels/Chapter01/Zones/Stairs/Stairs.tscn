@@ -15,6 +15,7 @@ position = Vector2( 0.5, 225 )
 texture = ExtResource( 1 )
 
 [node name="Surface" type="Area2D" parent="Floor"]
+visible = false
 script = ExtResource( 5 )
 surface_name = "Rock"
 
@@ -23,10 +24,11 @@ rotation = -0.000833973
 polygon = PoolVector2Array( -40, 27, 39, 27, 68.0025, -2.94328, 68.0117, -13.9433, 43.0325, -38.9641, -43.9675, -39.0367, -67.9883, -14.0567, -67.9975, -3.05672 )
 
 [node name="Main" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )
+position = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="SurfaceLandings" type="Area2D" parent="Main"]
+visible = false
 script = ExtResource( 5 )
 surface_name = "Rock"
 
@@ -34,6 +36,7 @@ surface_name = "Rock"
 polygon = PoolVector2Array( -22.5, 170, 22.5, 170, 22.5, -205, -22.5, -205 )
 
 [node name="SurfaceTreads" type="Area2D" parent="Main"]
+visible = false
 script = ExtResource( 5 )
 surface_name = "Rock"
 speed_multiplier = Vector2( 1, 0.6 )
@@ -54,7 +57,7 @@ polygon = PoolVector2Array( -22.5, -64, 22.5, -64, 22.5, -139, -22.5, -139 )
 polygon = PoolVector2Array( -22.5, -159, 22.5, -159, 22.5, -189, -22.5, -189 )
 
 [node name="Columns" type="Sprite" parent="."]
-position = Vector2( 0.5, 1 )
+position = Vector2( 0.5, -1 )
 z_index = 4
 texture = ExtResource( 4 )
 
