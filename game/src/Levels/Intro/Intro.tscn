@@ -83,7 +83,7 @@ in_intro = true
 visible = false
 
 [node name="AnimatedSprite" parent="Demon/StateMachine/Idle" index="0"]
-frame = 1
+frame = 27
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 
@@ -135,5 +135,4 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [editable path="Player"]
-
 [editable path="Demon"]

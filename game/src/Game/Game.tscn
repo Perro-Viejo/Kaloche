@@ -22,7 +22,6 @@ layer = -1
 First_Level = "res://src/Levels/Chapter01/Chapter01Test.tscn"
 intro_scn = "res://src/Levels/IntroDream/IntroDream.tscn"
 show_intro = false
-show_controls = false
 
 [node name="HUDLayer" parent="." instance=ExtResource( 3 )]
 layer = 99
