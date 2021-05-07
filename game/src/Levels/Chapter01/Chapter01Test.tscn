@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Objects/BrokenBridge/BrokenBridge.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Levels/Chapter01/Chapter01Test.gd" type="Script" id=11]
 [ext_resource path="res://assets/images/world/chapter_0.1/campfire.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/world/chapter_0.1/stairs_fg.png" type="Texture" id=13]
 [ext_resource path="res://src/Audio/AUDIO_Cap_01.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/Shaders/clouds_noise1.tres" type="Texture" id=18]
@@ -86,7 +87,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/BirthBridge")
+dev_entry_point = NodePath("Zones/ZonePositions/PathOfTheEffort")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -166,7 +167,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 20
+frame = 53
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -427,6 +428,13 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/RodTemple"]
 position = Vector2( 121, 810 )
 texture = ExtResource( 43 )
+
+[node name="Stairs" type="ParallaxLayer" parent="ParallaxForeground"]
+position = Vector2( -24, -104 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxForeground/Stairs"]
+position = Vector2( 21, -454 )
+texture = ExtResource( 13 )
 
 [node name="Masks" type="Node2D" parent="."]
 __meta__ = {

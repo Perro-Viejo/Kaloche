@@ -5,7 +5,7 @@ const HOOK_WAVE = preload('res://src/Particles/WaterWave.tscn')
 
 export var surface_name := ''
 export(Data.SurfaceType) var type = Data.SurfaceType.GROUND
-export var speed_multiplier := 1.0
+export var speed_multiplier := Vector2.ONE
 
 # FIX: Esto no debería estar aquí sino en las clases que hereden de Surface
 # y vayan a tener en cuenta el hook pa' algo.

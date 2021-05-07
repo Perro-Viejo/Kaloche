@@ -9,7 +9,7 @@ export(bool) var immortal = false
 export(Resource) var inventory
 export(int) var max_health = 0
 
-var movement_speed_multiplier := 1.0
+var movement_speed_multiplier := Vector2.ONE
 
 var _in_dialog := false
 
