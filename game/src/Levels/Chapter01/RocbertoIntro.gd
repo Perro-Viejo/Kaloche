@@ -23,15 +23,19 @@ func _ready() -> void:
 func focus_rocberto() -> void:
 	_camera.global_position = get_node(rocberto).global_position
 
+
 func focus_player() -> void:
 	_player_cam.zoom = _camera.zoom
 	_camera.global_position = _player_cam.get_camera_screen_center()
 	yield(get_tree().create_timer(0.05), 'timeout')
 	PlayerEvent.emit_signal('camera_disabled', false)
 
+
 func say_hi() -> void:
-	DialogEvent.emit_signal('dialog_requested', 'RocbertoIntro')
+#	DialogEvent.emit_signal('dialog_requested', 'RocbertoIntro')
+	DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SayHello', 'say_adios')
 	DialogEvent.connect('dialog_finished', self, 'focus_player')
+
 
 func _rocberto_found(body: Node) -> void:
 	if _was_played: return
@@ -61,3 +65,15 @@ func _player_leaves(body: Node) -> void:
 			0.4, Tween.TRANS_EXPO, Tween.EASE_OUT
 		)
 		$Tween.start()
+
+
+
+# SenderoIniciación.tres
+# func despertar() -> void:
+# DialogEvent.run(['Player: asdjaldkjas	'], 'completed')
+#
+# func derrumbe() -> void:
+# DialogEvent.run(['Player(sad): Uy... que sueño tan raro'], 'completed')
+
+# func reacción() -> void:
+# DialogEvent.run([reacciones[rnd]], 'completed')

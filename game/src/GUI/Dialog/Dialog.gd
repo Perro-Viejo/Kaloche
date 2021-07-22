@@ -41,34 +41,40 @@ func _ready() -> void:
 
 	# Conectarse a eventos de la vida real
 	DialogEvent.connect('dialog_requested', self, '_play_dialog')
-	DialogEvent.connect('dialog_continued', self, '_continue_dialog')
+#	DialogEvent.connect('dialog_continued', self, '_continue_dialog')
 	DialogEvent.connect('character_spoke', self, '_show_dialog_line')
 	DialogEvent.connect('dialog_option_clicked', self, '_option_clicked')
 	DialogEvent.connect('forced_close_requested', self, '_on_forced_closed')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _play_dialog(dialog_name: String, selected_slot = -1) -> void:
-	_did = _story_reader.get_did_via_record_name(dialog_name)
-	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
-	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
-	_ignore_toggle = false
-
-	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
-		_in_dialog_with_options = true
-		PlayerEvent.emit_signal('control_toggled', { disable = true })
+#func _play_dialog(dialog_name: String, selected_slot = -1) -> void:
+#	_did = _story_reader.get_did_via_record_name(dialog_name)
+#	_nid = _story_reader.get_nid_via_exact_text(_did, 'start')
+#	_final_nid = _story_reader.get_nid_via_exact_text(_did, 'end')
+#	_ignore_toggle = false
+#
+#	if _story_reader.get_nid_via_exact_text(_did, 'return') > 0:
+#		_in_dialog_with_options = true
+#		PlayerEvent.emit_signal('control_toggled', { disable = true })
+#
+#	var slot := 0
+#	if selected_slot >= 0:
+#		slot = selected_slot
+#		_ignore_toggle = true
+#	else:
+#		var start_slots := _story_reader.get_slot_count(_did, _nid)
+#		if start_slots > 1:
+#			randomize()
+#			slot = randi() % start_slots
+#			_ignore_toggle = true
+#
+#	_continue_dialog(slot)
+func _play_dialog(dialog_tree_name: String, dialog_name: String) -> void:
+	var dialog_tree: Resource = load('res://src/DialogTrees/%s.gd' % dialog_tree_name)
 	
-	var slot := 0
-	if selected_slot >= 0:
-		slot = selected_slot
-		_ignore_toggle = true
-	else:
-		var start_slots := _story_reader.get_slot_count(_did, _nid)
-		if start_slots > 1:
-			randomize()
-			slot = randi() % start_slots
-			_ignore_toggle = true
-	_continue_dialog(slot)
+	if dialog_tree:
+		(dialog_tree.new() as DialogTree).play(dialog_name)
 
 
 func _continue_dialog(slot := 0) -> void:
@@ -268,9 +274,11 @@ func _dialog_line_finished() -> void:
 		return
 
 	if not _in_dialog_with_options:
-		_continue_dialog(_selected_slot)
+		DialogEvent.emit_signal('dialog_continued')
+#		_continue_dialog(_selected_slot)
 	elif not _dialog_menu.visible:
-		_continue_dialog(_selected_slot)
+		pass
+#		_continue_dialog(_selected_slot)
 
 
 func _close_dialog() -> void:

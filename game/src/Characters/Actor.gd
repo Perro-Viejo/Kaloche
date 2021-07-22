@@ -21,13 +21,16 @@ onready var state_machine = $StateMachine
 func speak(text := '', time_to_disappear := 0):
 	DialogEvent.emit_signal('character_spoke', self, text, time_to_disappear)
 
+
 func spoke():
 	if _in_dialog:
 		DialogEvent.emit_signal('dialog_continued')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _should_speak(character_name, text, time, emotion) -> void:
+func _should_speak(
+	character_name: String, text: String, time: float, emotion: String
+) -> void:
 	if name.to_lower() == character_name:
 		speak(text, time)
 		AudioEvent.emit_signal('dx_requested' , character_name, emotion)

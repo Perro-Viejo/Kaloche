@@ -240,6 +240,7 @@ func toggle_behind(ref_z_index: int) -> void:
 func _toggle_control(props: Dictionary = {}) -> void:
 	$StateMachine.transition_to_state($StateMachine.STATES.IDLE)
 	is_paused = !is_paused
+	WorldEvent.player_blocked = is_paused
 	
 	if props.has('disable'):
 		is_paused = props.disable
