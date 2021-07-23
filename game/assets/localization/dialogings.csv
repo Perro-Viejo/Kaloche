@@ -109,3 +109,75 @@ DLG_7_5_ROCBERTO,-Este santuario fue erigido por los ahogados seguidores del dio
 DLG_7_6_ROCBERTO,"Quien traiga consigo el susodicho, llenará el tanque de las aguas del río.","The one who brings the other one, will filled the tank with the river tide.",
 DLG_7_7_ROCBERTO,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs.",
 DLG_7_8_ROCBERTO,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead.",
+,,,
+SI_Teotriste_01,Uy... que sueño tan raro,,Teotriste se despierta del sueño
+SI_Teotriste_02,Me di garra jartando...,,
+,,,
+SI_Teotriste_03,Ay jueputa... ¿Y ahora? ,,Teotriste dice cuando se derrumba
+,,,
+SI_Teotriste_04,Si tumbo esto tal vez pueda pasar por ahí,,Teotriste encuentra los escombros
+,,,
+SI_Teotriste_05,La puedo hacer caer si sigo quitando estos escombros,,Teotriste agarra la primera roca
+SI_Teotriste_06,Pero me toca tener cuidado de que no se me venga encima,,
+,,,
+RT_Teotriste_01,"Uy, parece que esto está como hueco...",,Teotriste camina sobre la tapa del templo
+RT_Teotriste_02,ojalá no se caiga a pedazos mientras le camino encima,,
+,,,
+RT_Rocberto_01,¿Ya agarró la caña? venga le digo.,,Rocberto cuando el jugador agarra la caña (se enfoca donde esté)
+,,,
+Rocberto,¡Oiga! de verdad no le conviene irse sin mí...,,Rocberto reacciona si uno trata de irse sin el
+,¡Oe! no me deje que igual me va a necesitar...,,
+,Está bien... seguire aquí solo en mi soledad eterna :(,,
+,,,
+Rocberto,"Aaaah, es el majestuoso [color=#10a5ea]Estanque del Payara[/color]...",,Rocberto llega con Teotriste al estanque vacío
+,pero está más seco que lengua de loro,,
+,sé que se puede llenar pero no sé cómo...,,
+,,,
+Rocberto,¡Ya ve! le dije que le sería útil.,,Rocberto reacciona cuando se llena el estanque antes de la animación del templo Sacapayara
+,,,
+Teotriste,"¡Vea, se llenó de peces! ",,Ambos reaccionan cuando termina la animación del templo Sacapayara
+Rocberto,"Si tuviera una caña podríamos agarrar algunos, yo le muestro cómo.",,
+,,,
+Rocberto,Vamos al estanque y le explico cómo es la vuelta,,Rocberto cuando el jugador lo encuentra despues de agarrar la caña (lejos del estanque)
+,Primero equipe la caña con [color=#eb564b]C[/color],,(en el estanque)
+,Ahora presione [color=#eb564b]Z[/color] para preparase pa' lanzar,,
+,El gancho caerá donde indica la cruz roja,,
+,Cuando esté listo presione [color=#eb564b]Z[/color] para lanzarla,,
+,Si se re arrepiente presione [color=#eb564b]C[/color] para cancelar,,
+,Una vez lanzada solo queda esperar y [wave]ser paciente[/wave] ,,
+,¡Mordió! ora jale esa vuelta como loco presionando [color=#eb564b]Z[/color] repetidamente,,cuando el pez muerda
+,¡Bien! ¿Y'ora qué hacemos con esto?,,
+Teotriste,Pues lo asamos y no lo echamos al buche,,
+,,,
+Teotriste,Podemos cocinarlo en el fuego del altar.,,si ya encontró el altar
+,,,
+Teotriste,Esta vaina esta bien rara...,,Teotriste llega al altar solo
+,¿Y ese fuego? ¿cómo hará para mantenerse encendido?,,
+,,,
+Rocberto,Este altar me trae malos recuerdos...,,Teotriste llega al altar con Rocberto
+,Quién sabe cuánto bicho echaron a las llamas sagradas.,,
+,,,
+Rocberto,¡Eso dolió perro!,,Rocberto es echado al fuego
+,El fuego sagrado odia a los seres malditos. Como yo :(,,
+,,,
+Teotriste,Jum... no pasó nada.,,Algo que no es el pez sagrado es echado al fuego
+,,,
+Rocberto,Epa... nunca había sentido la sierra temblar así de juerte.,,El templo es activado por el altar
+Teotriste,Ay jueputa... ¿qué hice?,,
+Rocberto,"Ni idea, camine y lo averiguamos.",,
+,,,
+Teotriste,¡Ushhh! Que vuelta tan gigantesca...,,Llegada al templo desactivado
+,¿Qué querrán decir esos mamarrachos?,,
+,,,
+Rocberto,Este lugar se ve muy distinto...,,Llegada al templo desactivado con Rocberto
+Teotriste,¿Ah sí?,,
+Rocberto,Sí. Tenía más columnas y una plataforma en el medio...,,
+,¿qué habrá pasao?,,
+,,,
+Rocberto,¿Escuchó eso?,,Cuando la puerta del templo se abre
+Teotriste,Escuché muchas cosas ¿De qué habla?,,
+Rocberto,El templo... apenas se abrío dijo su nombre,,
+Teotriste,¿El nombre del templo o el nombre mío?,,
+Rocberto,El suyo guevón...,,
+,...,,
+,¿Vamos a ver qué fue o se le hace así?,,

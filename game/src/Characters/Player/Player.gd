@@ -211,8 +211,16 @@ func pickup_item() -> void:
 	grabbing = false
 	picked_item.queue_free()
 	AudioEvent.emit_signal('play_requested','Player','Item_Disappear', global_position)
-	picked_item = null
 	is_paused = false
+	
+	#No estoy seguro si aquí es el mejor lugar para esto
+	if picked_item.item.name_code == 'I_ROD':
+		yield(get_tree().create_timer(1), 'timeout')
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SacapayaraTemple', 'rod_grabbed')
+	
+	picked_item = null
+	
+	
 
 
 func change_zindex(new_value: int) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://src/Inventory/Rod.tres" type="Resource" id=1]
 [ext_resource path="res://src/Pickables/Pickup.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_gutters_mask.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/rod_temple_dust_01.png" type="Texture" id=23]
 [ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=24]
+[ext_resource path="res://src/Levels/Chapter01/DialogTrigger.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Emerge"
@@ -442,31 +443,31 @@ light_mode = 2
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 21 )
-region = Rect2( 61, 0, 61, 128 )
+region = Rect2( 0, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 21 )
-region = Rect2( 122, 0, 61, 128 )
+region = Rect2( 61, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 21 )
-region = Rect2( 183, 0, 61, 128 )
+region = Rect2( 122, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 61, 128 )
+region = Rect2( 183, 0, 61, 128 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "on",
-"speed": 6.0
-}, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "off",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "on",
+"speed": 6.0
 } ]
 
 [sub_resource type="AtlasTexture" id=8]
@@ -1225,6 +1226,16 @@ position = Vector2( 0, -34 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 10
 frames = SubResource( 129 )
+
+[node name="DialogTrigger" type="Area2D" parent="."]
+priority = 1.0
+script = ExtResource( 25 )
+delay = 0.4
+_path = "Chapter0.1/SacapayaraTemple"
+_dialog_key = "step_floor"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogTrigger"]
+polygon = PoolVector2Array( -47.0394, 13.7276, -14.0342, 24.8695, -9.61948, 10.364, 10.3518, 10.364, 14.5563, 24.2388, 57.442, 3.00616, 54.9193, -18.0163, 18.5506, -34.624, -28.9601, -32.1013, -50.4029, -22.6412, -57.1301, -6.2437 )
 
 [node name="RespawnPosition" type="Position2D" parent="."]
 position = Vector2( -92, -24 )

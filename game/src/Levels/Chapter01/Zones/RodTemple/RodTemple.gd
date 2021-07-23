@@ -17,6 +17,8 @@ func emerge():
 	_animation.play('Emerge')
 	yield(get_tree().create_timer(_animation.get_animation('Emerge').length - 0.2), 'timeout')
 	AudioEvent.emit_signal('play_requested', 'Spot', 'RodTemple', global_position)
+	if $DialogTrigger:
+		$DialogTrigger.queue_free()
 
 
 func get_emerge_animation_length() -> float:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://src/Levels/Chapter01/DialogTrigger.gd" type="Script" id=1]
 [ext_resource path="res://src/Pickables/Pickable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Levels/Chapter01/Zones/EntranceRuins/EntranceRuins.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/world/rock3.png" type="Texture" id=4]
@@ -23,6 +24,9 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31.6116, 33.9701 )
 
 [node name="EntranceRuins" type="Node2D"]
 script = ExtResource( 3 )
@@ -85,3 +89,12 @@ position = Vector2( -12.3336, 6.27856 )
 is_good = false
 can_burn = false
 img = ExtResource( 6 )
+
+[node name="DialogTrigger" type="Area2D" parent="."]
+script = ExtResource( 1 )
+_path = "Chapter0.1/SenderoIniciacion"
+_dialog_key = "find_ruins"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTrigger"]
+position = Vector2( -4.77048, -6.17355 )
+shape = SubResource( 4 )

@@ -933,6 +933,7 @@ stream = ExtResource( 45 )
 
 [node name="Surprised" type="Node2D" parent="DX/player"]
 script = ExtResource( 26 )
+volume = -5.0
 
 [node name="surprised_01" type="AudioStreamPlayer" parent="DX/player/Surprised"]
 stream = ExtResource( 40 )
@@ -975,6 +976,7 @@ volume_db = -3.0
 
 [node name="Curious" type="Node2D" parent="DX/player"]
 script = ExtResource( 26 )
+volume = -5.0
 
 [node name="curious_01" type="AudioStreamPlayer" parent="DX/player/Curious"]
 stream = ExtResource( 53 )
