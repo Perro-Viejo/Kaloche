@@ -8,30 +8,32 @@ var current_options := []
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
+	DialogEvent.connect('dialog_menu_requested', self, 'create_options', [true])
+	
 	hide()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func create_options(options := [], autoshow := false) -> void:
+	remove_options()
+	
 	if options.empty():
 		if not current_options.empty():
 			show_options()
 		return
 
-	current_options = options
+	current_options = options.duplicate()
 	for opt in options:
 		var btn: Button = option.instance() as Button
-		# btn.text = opt.line
-		btn.text = tr(opt.tr_code.to_upper())
+		var do: DialogOption = opt
+
+		btn.text = tr(do.text)
 		btn.connect('pressed', self, '_on_option_clicked', [opt])
 
 		add_child(btn)
 
-		if opt.has('show') and not opt.show:
-			opt.show = false
+		if not do.visible:
 			btn.hide()
-		else:
-			opt.show = true
 
 	if autoshow: show_options()
 
@@ -81,7 +83,7 @@ func show_options() -> void:
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
-func _on_option_clicked(opt: Dictionary) -> void:
+func _on_option_clicked(opt: DialogOption) -> void:
 	SectionEvent.dialog = false
 	hide()
-	DialogEvent.emit_signal('dialog_option_clicked', opt)
+	DialogEvent.emit_signal('option_selected', opt)

@@ -11,11 +11,13 @@ signal dialog_paused
 signal forced_close_requested
 signal line_triggered(character_name, text, time, emotion)
 signal dialog_menu_requested(options)
-signal dialog_option_clicked(option_dic)
+signal dialog_option_clicked(option_dic) # Esto ya no se va a usar
 signal dialog_menu_updated(cfg)
 signal dialog
+signal option_selected(option_dic)
 
 var cutscene_skipped := false
+var in_conversation := false
 
 var _running := false
 
@@ -53,7 +55,9 @@ func run(instructions: Array, show_gi := true) -> void:
 			yield(instruction, 'completed')
 
 	_running = false
-	PlayerEvent.emit_signal('control_toggled')
+	
+	if not in_conversation:
+		PlayerEvent.emit_signal('control_toggled')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░

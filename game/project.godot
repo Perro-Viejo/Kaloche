@@ -70,6 +70,11 @@ _global_script_classes=[ {
 "path": "res://src/GUI/Dialog/DialogMenu.gd"
 }, {
 "base": "Resource",
+"class": "DialogOption",
+"language": "GDScript",
+"path": "res://src/DialogTrees/DialogOption.gd"
+}, {
+"base": "Resource",
 "class": "DialogTree",
 "language": "GDScript",
 "path": "res://src/DialogTrees/DialogTree.gd"
@@ -252,6 +257,7 @@ _global_script_class_icons={
 "Demon": "",
 "Dialog": "",
 "DialogMenu": "",
+"DialogOption": "",
 "DialogTree": "",
 "EXP_StoryReader": "",
 "EditorTheme": "",

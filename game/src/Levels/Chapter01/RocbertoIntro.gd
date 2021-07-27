@@ -34,7 +34,10 @@ func focus_player() -> void:
 
 func say_hi() -> void:
 #	DialogEvent.emit_signal('dialog_requested', 'RocbertoIntro')
-	DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SayHello', 'say_adios')
+	DialogEvent.emit_signal(
+		'dialog_requested', 'Chapter0.1/DRocbertoIntro', 'start_conversation'
+	)
+
 	DialogEvent.connect('dialog_finished', self, 'focus_player')
 
 

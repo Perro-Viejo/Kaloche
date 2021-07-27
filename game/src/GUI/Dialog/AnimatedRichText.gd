@@ -95,12 +95,12 @@ func stop(forced = false) ->void:
 			_notify_completion()
 		else:
 			# Saltarse las animaciones
-			_tween.stop_all()
+			_tween.remove_all()
 			percent_visible = 1.0
 			rect_size = _target_size
 			_wait_input()
 	else:
-		_tween.stop_all()
+		_tween.remove_all()
 		percent_visible = 1.0
 		rect_size = _target_size
 		_is_waiting_input = false

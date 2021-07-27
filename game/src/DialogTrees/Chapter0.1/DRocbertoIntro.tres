@@ -1,0 +1,104 @@
+[gd_resource type="Resource" load_steps=15 format=2]
+
+[ext_resource path="res://src/DialogTrees/Chapter0.1/DRocbertoIntro.gd" type="Script" id=1]
+[ext_resource path="res://src/DialogTrees/DialogOption.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Opt1"
+script = ExtResource( 2 )
+id = "Opt1"
+text = "ROCBINTR_Teotriste_Op1"
+visible = true
+group = ""
+
+[sub_resource type="Resource" id=2]
+resource_name = "Opt2"
+script = ExtResource( 2 )
+id = "Opt2"
+text = "ROCBINTR_Teotriste_Op2"
+visible = true
+group = ""
+
+[sub_resource type="Resource" id=3]
+resource_name = "Opt3"
+script = ExtResource( 2 )
+id = "Opt3"
+text = "ROCBINTR_Teotriste_Op3"
+visible = true
+group = ""
+
+[sub_resource type="Resource" id=4]
+resource_name = "Opt1A(A)"
+script = ExtResource( 2 )
+id = "Opt1A"
+text = "ROCBINTR_Teotriste_Op1A"
+visible = false
+group = "A"
+
+[sub_resource type="Resource" id=5]
+resource_name = "Opt1B(A)"
+script = ExtResource( 2 )
+id = "Opt1B"
+text = "ROCBINTR_Teotriste_Op1B"
+visible = false
+group = "A"
+
+[sub_resource type="Resource" id=6]
+resource_name = "Opt2A(B)"
+script = ExtResource( 2 )
+id = "Opt2A"
+text = "ROCBINTR_Teotriste_Op2A"
+visible = false
+group = "B"
+
+[sub_resource type="Resource" id=7]
+resource_name = "Opt2B(B)"
+script = ExtResource( 2 )
+id = "Opt2B"
+text = "ROCBINTR_Teotriste_Op2B"
+visible = false
+group = "B"
+
+[sub_resource type="Resource" id=8]
+resource_name = "Opt3A(C)"
+script = ExtResource( 2 )
+id = "Opt3A"
+text = "ROCBINTR_Teotriste_Op3A"
+visible = false
+group = "C"
+
+[sub_resource type="Resource" id=9]
+resource_name = "Opt3B(C)"
+script = ExtResource( 2 )
+id = "Opt3B"
+text = "ROCBINTR_Teotriste_Op3B"
+visible = false
+group = "C"
+
+[sub_resource type="Resource" id=10]
+resource_name = "Opt4(D)"
+script = ExtResource( 2 )
+id = "Opt4"
+text = "ROCBINTR_Teotriste_Op4"
+visible = false
+group = "D"
+
+[sub_resource type="Resource" id=11]
+resource_name = "Opt5(D)"
+script = ExtResource( 2 )
+id = "Opt5"
+text = "ROCBINTR_Teotriste_Op5"
+visible = false
+group = "D"
+
+[sub_resource type="Resource" id=12]
+resource_name = "Opt6(D)"
+script = ExtResource( 2 )
+id = "Opt6"
+text = "ROCBINTR_Teotriste_Op6"
+visible = false
+group = "D"
+
+[resource]
+script = ExtResource( 1 )
+options = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ]

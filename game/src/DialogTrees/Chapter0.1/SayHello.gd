@@ -1,5 +1,14 @@
 extends "res://src/DialogTrees/DialogTree.gd"
 
+var options := [
+	{
+		id = '',
+		text = '',
+		visible = true
+	}
+]
+
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Diálogos ░░░░
 func _say_hello() -> void:
 	yield(DialogEvent.run([

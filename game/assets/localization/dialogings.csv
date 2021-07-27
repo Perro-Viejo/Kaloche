@@ -52,50 +52,49 @@ DLG_4_4_ROCBERTO,Tenga la caña chiquita,Tenga la caña chiquita,
 DLG_4_5_ROCBERTO,Tenga la caña mediana,Tenga la caña mediana,
 DLG_4_6_ROCBERTO,Tenga la cañanorrea,Tenga la cañanorrea,
 ,,,
-DLG_5_2_ROCBERTO,[shake]¡pssssssst![/shake],[shake]¡pssssssst![/shake],
-DLG_5_2_ROCBERTO_OPT_0,"¡Uy jueputa, una roca que habla!",Oh my! Whos talking.,
-DLG_5_4_PLAYER,Creí que estaba solo... ¿qué hace aquí?,I thought I was alone... what are you doing here?,
-DLG_5_7_ROCBERTO,"No mucho, estaba esperando a que apareciera alguien y hoy estoy como debuenas.",Not much. Was waiting for someone to come by. Looks today is my luck day.,
-DLG_5_7_ROCBERTO_OPT_0,Esperando a alguien para qué o qué.,Waiting someone for what.,
-DLG_5_6_PLAYER,Esperando a alguien para qué o qué.,Waiting someone for what.,
-DLG_5_16_ROCBERTO,Pa' que me ayude a hacer unas vueltas.,To help me.,
-DLG_5_7_ROCBERTO_OPT_1,¿Y es que no anda mucha gente por aquí?,Isn't that a lot of people around here?,
-DLG_5_8_PLAYER,Porque en lo que he andado no he visto ni un gato.,I haven't seen a soul during my walk.,
-DLG_5_18_ROCBERTO,Dígamelo a mí...,I do not doubt it,Podría llevar algo más
+ROCBINTR_Rocberto_01,[shake]¡pssssssst![/shake],[shake]¡pssssssst![/shake],
+ROCBINTR_Teotriste_Op1,"¡Uy jueputa, una roca que habla!",Oh my! Whos talking.,
+ROCBINTR_Teotriste_Op1_01,Creí que estaba solo... ¿qué hace aquí?,I thought I was alone... what are you doing here?,
+ROCBINTR_Rocberto_Op1_02,"No mucho, estaba esperando a que apareciera alguien y hoy estoy como debuenas.",Not much. Was waiting for someone to come by. Looks today is my luck day.,
+ROCBINTR_Teotriste_Op1A,Esperando a alguien para qué o qué.,Waiting someone for what.,
+ROCBINTR_Rocberto_Op1A_01,Pa' que me ayude a hacer unas vueltas.,To help me.,
+ROCBINTR_Teotriste_Op1B,¿Y es que no anda mucha gente por aquí?,Isn't that a lot of people around here?,
+ROCBINTR_Teotriste_Op1B_01,Porque en lo que he andado no he visto ni un gato.,I haven't seen a soul during my walk.,
+ROCBINTR_Rocberto_Op1B_02,Dígamelo a mí...,I do not doubt it,Podría llevar algo más
 ,,,
-DLG_5_2_ROCBERTO_OPT_1,Otra vez estoy escuchando voces.,Oh no! The voices... again.,Hablar sobre la maldición
-DLG_5_5_PLAYER,Este guayabo no es normal.,This hangover is not normal.,
-DLG_5_9_ROCBERTO,"¡Noooooo, camarita! Aquí abajo.",Down here!,
-DLG_5_9_ROCBERTO_OPT_0,¿De cuándo acá las piedras hablan?,Since when do rocks talk?,
-DLG_5_10_PLAYER,¿O será que el guaro estaba pasao?,Maybe I drank something expired.,
-DLG_5_19_ROCBERTO,Pues siempre hemos hablado pero no cualquiera puede escucharnos.,"We have been talking for ages, but not anyone can here us.","Podría ser que Rocberto insinúe que algo pasó y ahora las piedras pueden ser escuchadas, o que algo cambió en el mundo... desde ayer al medio día."
-DLG_5_9_ROCBERTO_OPT_1,Vea pues.,I see.,
-DLG_5_11_PLAYER,. . . . . . . . .,. . . . . . . . .,
-DLG_5_20_ROCBERTO,. . . . . . . . . . . . . . . . .,. . . . . . . . . . . . . . . . .,
+ROCBINTR_Teotriste_Op2,Otra vez estoy escuchando voces.,Oh no! The voices... again.,Hablar sobre la maldición
+ROCBINTR_Teotriste_Op2_01,Este guayabo no es normal.,This hangover is not normal.,
+ROCBINTR_Rocberto_Op2_02,"¡Noooooo, camarita! Aquí abajo.",Down here!,
+ROCBINTR_Teotriste_Op2A,¿De cuándo acá las piedras hablan?,Since when do rocks talk?,
+ROCBINTR_Teotriste_Op2A_01,¿O será que el guaro estaba pasao?,Maybe I drank something expired.,
+ROCBINTR_Rocberto_Op2A_02,Pues siempre hemos hablado pero no cualquiera puede escucharnos.,"We have been talking for ages, but not anyone can here us.","Podría ser que Rocberto insinúe que algo pasó y ahora las piedras pueden ser escuchadas, o que algo cambió en el mundo... desde ayer al medio día."
+ROCBINTR_Teotriste_Op2B,Vea pues.,I see.,
+ROCBINTR_Teotriste_Op2B_01,. . . . . . . . .,. . . . . . . . .,
+ROCBINTR_Rocberto_Op2B_01,. . . . . . . . . . . . . . . . .,. . . . . . . . . . . . . . . . .,
 ,,,
-DLG_5_2_ROCBERTO_OPT_2,Mejor me voy de acá.,I better leave.,
-DLG_5_12_PLAYER,Aquí como que asustan.,This place gives me the creeps.,
-DLG_5_13_ROCBERTO,"¡Pere pere pere! No se vaya, yo no asusto.","Wa-wa-wait! Don't go, I'm good.",
-DLG_5_13_ROCBERTO_OPT_0,Todobien. Aquí estoy.,"Ooook, I'll stay.",
-DLG_5_14_PLAYER,Es que pensé que era la Bolefuego o algoasí.,I thought it was the devil.,
-DLG_5_21_ROCBERTO,"Ah no, todobien. Sólo soy una roca mal parada.",Don't worries. I'm a misplaced rock.,
-DLG_5_13_ROCBERTO_OPT_1,"Nooo, coma mierda. Casi me da un yeyo.",Holly shit! You almost kill me.,
-DLG_5_15_PLAYER,Pensé que me iba a llevar la que me trujo.,I thought you'll take my life.,
-DLG_5_22_ROCBERTO,Relaje el potro que ni siquiera puedo moverme.,Take it easy. I can't even move.,
+ROCBINTR_Teotriste_Op3,Mejor me voy de acá.,I better leave.,
+ROCBINTR_Teotriste_Op3_01,Aquí como que asustan.,This place gives me the creeps.,
+ROCBINTR_Rocberto_Op3_02,"¡Pere pere pere! No se vaya, yo no asusto.","Wa-wa-wait! Don't go, I'm good.",
+ROCBINTR_Teotriste_Op3_03,Todobien. Aquí estoy.,"Ooook, I'll stay.",
+ROCBINTR_Teotriste_Op3A,Es que pensé que era la Bolefuego o algoasí.,I thought it was the devil.,
+ROCBINTR_Rocberto_Op3A_01,"Ah no, todobien. Sólo soy una roca mal parada.",Don't worries. I'm a misplaced rock.,
+ROCBINTR_Rocberto_Op3A_02,"Nooo, coma mierda. Casi me da un yeyo.",Holly shit! You almost kill me.,
+ROCBINTR_Teotriste_Op3B,Pensé que me iba a llevar la que me trujo.,I thought you'll take my life.,
+ROCBINTR_Rocberto_Op3B_01,Relaje el potro que ni siquiera puedo moverme.,Take it easy. I can't even move.,
 ,,,
-DLG_5_17_PLAYER_OPT_0,¿Tiene idea de cómo puedo salir de aquí?,Do you know how I can leave this place?,
-DLG_5_23_PLAYER,El puente por donde llegué se fue a la mierda y casi me lleva con él.,The bridge I took to come here has broken.,
-DLG_5_26_ROCBERTO,Yo pensé que ese puente se había caído hace años. De todos modos no es la única salida.,"I thought that bridge had fallen years ago. Anyway, it is not the only way out.",
-DLG_5_27_PLAYER,¿Me puede decir dónde está la otra?,¿Encontramos?,
-DLG_5_28_ROCBERTO,Yo con mucho gusto le digo pero si me lleva con usted.,¡Claro! Lléveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.,
+ROCBINTR_Teotriste_Op4,¿Tiene idea de cómo puedo salir de aquí?,Do you know how I can leave this place?,
+ROCBINTR_Teotriste_Op4_01,El puente por donde llegué se fue a la mierda y casi me lleva con él.,The bridge I took to come here has broken.,
+ROCBINTR_Rocberto_Op4_02,Yo pensé que ese puente se había caído hace años. De todos modos no es la única salida.,"I thought that bridge had fallen years ago. Anyway, it is not the only way out.",
+ROCBINTR_Teotriste_Op4_03,¿Me puede decir dónde está la otra?,¿Encontramos?,
+ROCBINTR_Rocberto_Op4_04,Yo con mucho gusto le digo pero si me lleva con usted.,¡Claro! Lléveme con usted y verá que yo lo voy a ayudar. Mire que soy el mejor compañero de aventuras de toda la Sierra.,
 ,,,
-DLG_5_17_PLAYER_OPT_1,Necesito que me diga pa' dónde andar.,Tell where to go here.,
-DLG_5_24_PLAYER,Ya llevo un rato dando vueltas y no veo nada conocido por ahí.,Ya llevo un rato dando  vueltas y nada.,
-DLG_5_29_ROCBERTO,Yo soy buen conocedor de la zona pero me faltan las patas. Por qué no me carga y yo lo guío.,"I know this place but I can't walk. Why don't you grab me, I'll be your guide.",
+ROCBINTR_Teotriste_Op5,Necesito que me diga pa' dónde andar.,Tell where to go here.,
+ROCBINTR_Teotriste_Op5_01,Ya llevo un rato dando vueltas y no veo nada conocido por ahí.,Ya llevo un rato dando  vueltas y nada.,
+ROCBINTR_Rocberto_Op5_02,Yo soy buen conocedor de la zona pero me faltan las patas. Por qué no me carga y yo lo guío.,"I know this place but I can't walk. Why don't you grab me, I'll be your guide.",
 ,,,
-DLG_5_17_PLAYER_OPT_2,Bueno... me voy.,I have to... go.,
-DLG_5_25_PLAYER,Tengo que seguir buscando por dónde volver a la ranchita.,I need to find the way back home.,
-DLG_5_30_ROCBERTO,No va a estar fácil salir de la [color=#10a5ea]Sierra del Heliodoro[/color] sin ayuda. Yo creo que lo mejor es que me lleve con usted.,It won't be easy to leave [color=#10a5ea]Sierra del Heliodoro[/color] without help. Better take me with you.,
+ROCBINTR_Teotriste_Op6,Bueno... me voy.,I have to... go.,
+ROCBINTR_Teotriste_Op6_01,Tengo que seguir buscando por dónde volver a la ranchita.,I need to find the way back home.,
+ROCBINTR_Rocberto_Op6_02,No va a estar fácil salir de la [color=#10a5ea]Sierra del Heliodoro[/color] sin ayuda. Yo creo que lo mejor es que me lleve con usted.,It won't be easy to leave [color=#10a5ea]Sierra del Heliodoro[/color] without help. Better take me with you.,
 ,,,
 DLG_5_17_PLAYER,D:,D:,
 DLG_6_2_PLAYER,Mamarrachos extraños...,Weird stuff...,
@@ -110,49 +109,49 @@ DLG_7_6_ROCBERTO,"Quien traiga consigo el susodicho, llenará el tanque de las a
 DLG_7_7_ROCBERTO,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs.",
 DLG_7_8_ROCBERTO,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead.",
 ,,,
-SI_Teotriste_01,Uy... que sueño tan raro,,Teotriste se despierta del sueño
-SI_Teotriste_02,Me di garra jartando...,,
+INITPATH_Teotriste_01,Uy... que sueño tan raro,,Teotriste se despierta del sueño
+INITPATH_Teotriste_02,Me di garra jartando...,,
 ,,,
-SI_Teotriste_03,Ay jueputa... ¿Y ahora? ,,Teotriste dice cuando se derrumba
+INITPATH_Teotriste_03,Ay jueputa... ¿Y ahora? ,,Teotriste dice cuando se derrumba
 ,,,
-SI_Teotriste_04,Si tumbo esto tal vez pueda pasar por ahí,,Teotriste encuentra los escombros
+INITPATH_Teotriste_04,Si tumbo esto tal vez pueda pasar por ahí,,Teotriste encuentra los escombros
 ,,,
-SI_Teotriste_05,La puedo hacer caer si sigo quitando estos escombros,,Teotriste agarra la primera roca
-SI_Teotriste_06,Pero me toca tener cuidado de que no se me venga encima,,
+INITPATH_Teotriste_05,La puedo hacer caer si sigo quitando estos escombros,,Teotriste agarra la primera roca
+INITPATH_Teotriste_06,Pero me toca tener cuidado de que no se me venga encima,,
 ,,,
-RT_Teotriste_01,"Uy, parece que esto está como hueco...",,Teotriste camina sobre la tapa del templo
-RT_Teotriste_02,ojalá no se caiga a pedazos mientras le camino encima,,
+SACATMPL_Teotriste_01,"Uy, parece que esto está como hueco...",,Teotriste camina sobre la tapa del templo
+SACATMPL_Teotriste_02,ojalá no se caiga a pedazos mientras le camino encima,,
 ,,,
-RT_Rocberto_01,¿Ya agarró la caña? venga le digo.,,Rocberto cuando el jugador agarra la caña (se enfoca donde esté)
+SACATMPL_Rocberto_01,¿Ya agarró la caña? venga le digo.,,Rocberto cuando el jugador agarra la caña (se enfoca donde esté)
 ,,,
-Rocberto,¡Oiga! de verdad no le conviene irse sin mí...,,Rocberto reacciona si uno trata de irse sin el
-,¡Oe! no me deje que igual me va a necesitar...,,
-,Está bien... seguire aquí solo en mi soledad eterna :(,,
+CHAMSPLS_Rocberto_01,¡Oiga! de verdad no le conviene irse sin mí...,,Rocberto reacciona si uno trata de irse sin el
+CHAMSPLS_Rocberto_02,¡Oe! no me deje que igual me va a necesitar...,,
+CHAMSPLS_Rocberto_03,Está bien... seguire aquí solo en mi soledad eterna :(,,
 ,,,
-Rocberto,"Aaaah, es el majestuoso [color=#10a5ea]Estanque del Payara[/color]...",,Rocberto llega con Teotriste al estanque vacío
-,pero está más seco que lengua de loro,,
-,sé que se puede llenar pero no sé cómo...,,
+PAYAPOND_Rocberto_01,"Aaaah, es el majestuoso [color=#10a5ea]Estanque del Payara[/color]...",,Rocberto llega con Teotriste al estanque vacío
+PAYAPOND_Rocberto_02,pero está más seco que lengua de loro,,
+PAYAPOND_Rocberto_03,sé que se puede llenar pero no sé cómo...,,
 ,,,
-Rocberto,¡Ya ve! le dije que le sería útil.,,Rocberto reacciona cuando se llena el estanque antes de la animación del templo Sacapayara
+PAYAPOND_Rocberto_04,¡Ya ve! le dije que le sería útil.,,Rocberto reacciona cuando se llena el estanque antes de la animación del templo Sacapayara
 ,,,
-Teotriste,"¡Vea, se llenó de peces! ",,Ambos reaccionan cuando termina la animación del templo Sacapayara
-Rocberto,"Si tuviera una caña podríamos agarrar algunos, yo le muestro cómo.",,
+PAYAPOND_Teotriste_01,"¡Vea, se llenó de peces! ",,Ambos reaccionan cuando termina la animación del templo Sacapayara
+PAYAPOND_Rocberto_05,"Si tuviera una caña podríamos agarrar algunos, yo le muestro cómo.",,
 ,,,
-Rocberto,Vamos al estanque y le explico cómo es la vuelta,,Rocberto cuando el jugador lo encuentra despues de agarrar la caña (lejos del estanque)
-,Primero equipe la caña con [color=#eb564b]C[/color],,(en el estanque)
-,Ahora presione [color=#eb564b]Z[/color] para preparase pa' lanzar,,
-,El gancho caerá donde indica la cruz roja,,
-,Cuando esté listo presione [color=#eb564b]Z[/color] para lanzarla,,
-,Si se re arrepiente presione [color=#eb564b]C[/color] para cancelar,,
-,Una vez lanzada solo queda esperar y [wave]ser paciente[/wave] ,,
-,¡Mordió! ora jale esa vuelta como loco presionando [color=#eb564b]Z[/color] repetidamente,,cuando el pez muerda
-,¡Bien! ¿Y'ora qué hacemos con esto?,,
-Teotriste,Pues lo asamos y no lo echamos al buche,,
+PAYAPOND_Rocberto_06,Vamos al estanque y le explico cómo es la vuelta,,Rocberto cuando el jugador lo encuentra despues de agarrar la caña (lejos del estanque)
+PAYAPOND_Rocberto_07,Primero equipe la caña con [color=#eb564b]C[/color],,(en el estanque)
+PAYAPOND_Rocberto_08,Ahora presione [color=#eb564b]Z[/color] para preparase pa' lanzar,,
+PAYAPOND_Rocberto_09,El gancho caerá donde indica la cruz roja,,
+PAYAPOND_Rocberto_10,Cuando esté listo presione [color=#eb564b]Z[/color] para lanzarla,,
+PAYAPOND_Rocberto_11,Si se re arrepiente presione [color=#eb564b]C[/color] para cancelar,,
+PAYAPOND_Rocberto_12,Una vez lanzada solo queda esperar y [wave]ser paciente[/wave] ,,
+PAYAPOND_Rocberto_13,¡Mordió! ora jale esa vuelta como loco presionando [color=#eb564b]Z[/color] repetidamente,,cuando el pez muerda
+PAYAPOND_Rocberto_14,¡Bien! ¿Y'ora qué hacemos con esto?,,
+PAYAPOND_Teotriste_02,Pues lo asamos y no lo echamos al buche,,
 ,,,
-Teotriste,Podemos cocinarlo en el fuego del altar.,,si ya encontró el altar
+PAYAPOND_Teotriste_03,Podemos cocinarlo en el fuego del altar.,,si ya encontró el altar
 ,,,
-Teotriste,Esta vaina esta bien rara...,,Teotriste llega al altar solo
-,¿Y ese fuego? ¿cómo hará para mantenerse encendido?,,
+SCRFALTR_Teotriste_01,Esta vaina esta bien rara...,,Teotriste llega al altar solo
+SCRFALTR_Teotriste_02,¿Y ese fuego? ¿cómo hará para mantenerse encendido?,,
 ,,,
 Rocberto,Este altar me trae malos recuerdos...,,Teotriste llega al altar con Rocberto
 ,Quién sabe cuánto bicho echaron a las llamas sagradas.,,

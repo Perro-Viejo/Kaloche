@@ -13,10 +13,12 @@ func _bridge_broke() -> void:
 		'Player(Surprised): INITPATH_Teotriste_03',
 	]), 'completed')
 
+
 func _find_ruins() -> void:
 	yield(DialogEvent.run([
 		'Player(Curious): INITPATH_Teotriste_04',
 	]), 'completed')
+
 
 func _grab_debris() -> void:
 	yield(DialogEvent.run([

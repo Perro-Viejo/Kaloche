@@ -71,10 +71,19 @@ func _ready() -> void:
 #
 #	_continue_dialog(slot)
 func _play_dialog(dialog_tree_name: String, dialog_name: String) -> void:
-	var dialog_tree: Resource = load('res://src/DialogTrees/%s.gd' % dialog_tree_name)
+	var dialog_tree: Resource
 	
-	if dialog_tree:
-		(dialog_tree.new() as DialogTree).play(dialog_name)
+	if dialog_name == 'start_conversation':
+		dialog_tree = load('res://src/DialogTrees/%s.tres' % dialog_tree_name)
+
+		if dialog_tree:
+			(dialog_tree as DialogTree).start_conversation()
+	else:
+		dialog_tree = load('res://src/DialogTrees/%s.gd' % dialog_tree_name)
+		
+		if dialog_tree:
+			(dialog_tree.new() as DialogTree).play(dialog_name)
+
 
 
 func _continue_dialog(slot := 0) -> void:

@@ -1,3 +1,4 @@
+tool
 extends "res://src/DialogTrees/DialogTree.gd"
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Diálogos ░░░░
