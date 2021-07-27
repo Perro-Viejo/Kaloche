@@ -10,4 +10,5 @@ func _on_body_entered(body: Node):
 		AudioEvent.emit_signal('play_requested', 'Bridge', 'Break', global_position)
 		$AnimationPlayer.play('Break')
 		$Area2D.set_deferred('monitoring', false)
-		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SenderoIniciacion', 'bridge_broke')
+		yield(get_tree().create_timer(0.6), 'timeout')
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DInitiationPath', 'bridge_broke')

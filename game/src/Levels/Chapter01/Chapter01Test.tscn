@@ -51,28 +51,28 @@ glow_strength = 1.04
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 60.0115, 38.579 )
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 0.564706, 0.686275, 1.41176, 0.905882 )
 shader_param/line_thickness = 2.0
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = ExtResource( 35 )
 shader_param/line_color = Color( 1.74118, 1, 1.92941, 0.678431 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.376106, 0.384956, 1 )
 colors = PoolColorArray( 0.133333, 0.137255, 0.137255, 1, 0.760784, 0.760784, 0.819608, 1, 0.133333, 0.137255, 0.137255, 1, 1, 1, 0.921569, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 21 )
 shader_param/tint = Color( 0.47451, 0.462745, 0.552941, 0.564706 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
@@ -82,7 +82,7 @@ shader_param/scroll_direction2 = Vector2( 1, 0.25 )
 shader_param/time_scale2 = 0.001
 shader_param/tile_factor2 = 0.1
 shader_param/noise_texture2 = ExtResource( 22 )
-shader_param/gradient_texture = SubResource( 5 )
+shader_param/gradient_texture = SubResource( 7 )
 
 [node name="Chapter01" type="Node2D"]
 script = ExtResource( 11 )
@@ -105,7 +105,6 @@ __meta__ = {
 }
 
 [node name="StaticCollisions" type="StaticBody2D" parent="Map"]
-visible = false
 collision_layer = 2
 
 [node name="Limits" type="CollisionPolygon2D" parent="Map/StaticCollisions"]
@@ -157,16 +156,6 @@ texture = ExtResource( 12 )
 hframes = 2
 frame = 1
 
-[node name="WakeUp" type="Node2D" parent="Zones/Campfire"]
-
-[node name="DialogTrigger" type="Area2D" parent="Zones/Campfire/WakeUp"]
-script = ExtResource( 14 )
-_path = "Chapter0.1/SenderoIniciacion"
-_dialog_key = "awake"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/Campfire/WakeUp/DialogTrigger"]
-shape = SubResource( 7 )
-
 [node name="Altar" parent="Zones" instance=ExtResource( 32 )]
 position = Vector2( -350, -316 )
 
@@ -180,7 +169,13 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 35
+frame = 32
+
+[node name="WakeUp" type="Node2D" parent="Zones/Altar/SacredFire/FeedArea/CollisionShape2D" index="0"]
+position = Vector2( 642.08, 1235.77 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Tween" type="Tween" parent="Zones/Altar/SacredFire/FeedArea/CollisionShape2D/WakeUp"]
 
 [node name="AltarActivation" parent="Zones" instance=ExtResource( 39 )]
 position = Vector2( -350, -316 )
@@ -220,6 +215,15 @@ position = Vector2( 156, 796 )
 
 [node name="FishTank" parent="Zones" instance=ExtResource( 24 )]
 position = Vector2( -16, 116 )
+
+[node name="DialogTrigger" type="Area2D" parent="Zones/FishTank/Tank/StaticBody2D" index="0"]
+position = Vector2( 468.403, 1089.5 )
+script = ExtResource( 14 )
+_path = "Chapter0.1/DInitiationPath"
+_dialog_key = "awake"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/FishTank/Tank/StaticBody2D/DialogTrigger"]
+shape = SubResource( 3 )
 
 [node name="FishingSurfaceL1" parent="Zones/FishTank/FishingSurfaces" index="0"]
 specifics = [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 ]
@@ -302,7 +306,8 @@ __meta__ = {
 [node name="Pickable3" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 8 )]
-material = SubResource( 2 )
+visible = false
+material = SubResource( 4 )
 position = Vector2( 479, -30 )
 is_good = false
 carbs = 5
@@ -311,7 +316,7 @@ img = ExtResource( 1 )
 [node name="Fish" parent="Objects" groups=[
 "Sacred",
 ] instance=ExtResource( 40 )]
-material = SubResource( 3 )
+material = SubResource( 5 )
 position = Vector2( -309, -255 )
 carbs = 10
 
@@ -371,7 +376,7 @@ follow_viewport_enable = true
 
 [node name="Clouds" type="Sprite" parent="CloudsLayer"]
 visible = false
-material = SubResource( 6 )
+material = SubResource( 8 )
 position = Vector2( -3.62032, 106.465 )
 z_index = 100
 texture = ExtResource( 18 )
@@ -484,3 +489,4 @@ __meta__ = {
 [editable path="Zones/AltarActivation"]
 [editable path="Zones/FishTank"]
 [editable path="Zones/FishTankAnimation"]
+[editable path="Characters/RocbertoIntro"]

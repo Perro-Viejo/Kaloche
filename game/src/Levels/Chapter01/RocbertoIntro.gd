@@ -10,6 +10,7 @@ var _player_cam_cfg := {
 var _player_cam: Camera2D
 
 onready var _trigger: Area2D = find_node('RocbertoTrigger')
+onready var _rocberto_block: Area2D = find_node('RocbertoBlock')
 onready var _animations: AnimationPlayer = find_node('RocbertoAnimations')
 onready var _camera: Camera2D = find_node('RocbertoCamera')
 
@@ -42,6 +43,7 @@ func _rocberto_found(body: Node) -> void:
 	
 	if body.name == 'Player':
 		_was_played = true
+		_rocberto_block.active = true
 
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 		_player_cam = body.get_node('Camera2D')

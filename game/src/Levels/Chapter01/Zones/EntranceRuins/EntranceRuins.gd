@@ -14,7 +14,7 @@ func _ready():
 
 func _rock_grabbed(state, rock):
 	if _first:
-		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SenderoIniciacion', 'grab_debris')
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DInitiationPath', 'grab_debris')
 		_first = false
 	if state == false:
 		current_rocks.erase(rock)

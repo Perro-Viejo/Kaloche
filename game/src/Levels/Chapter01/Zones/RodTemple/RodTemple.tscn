@@ -443,31 +443,31 @@ light_mode = 2
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 61, 128 )
+region = Rect2( 61, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 21 )
-region = Rect2( 61, 0, 61, 128 )
+region = Rect2( 122, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 21 )
-region = Rect2( 122, 0, 61, 128 )
+region = Rect2( 183, 0, 61, 128 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 21 )
-region = Rect2( 183, 0, 61, 128 )
+region = Rect2( 0, 0, 61, 128 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "off",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "on",
 "speed": 6.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=8]
@@ -1231,7 +1231,7 @@ frames = SubResource( 129 )
 priority = 1.0
 script = ExtResource( 25 )
 delay = 0.4
-_path = "Chapter0.1/SacapayaraTemple"
+_path = "Chapter0.1/DSacapayaraTemple"
 _dialog_key = "step_floor"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DialogTrigger"]

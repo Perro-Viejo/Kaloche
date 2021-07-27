@@ -216,7 +216,7 @@ func pickup_item() -> void:
 	#No estoy seguro si aquí es el mejor lugar para esto
 	if picked_item.item.name_code == 'I_ROD':
 		yield(get_tree().create_timer(1), 'timeout')
-		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/SacapayaraTemple', 'rod_grabbed')
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DSacapayaraTemple', 'rod_grabbed')
 	
 	picked_item = null
 	
