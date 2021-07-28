@@ -18,8 +18,6 @@ func _ready():
 	$InteractionArea.connect('area_exited', self, '_on_area_exited')
 	$FeedArea.connect('area_entered', self, '_check_food')
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
-	# Conectarse a eventos del universo
-	DialogEvent.connect('line_triggered', self, '_should_speak')
 
 	max_health = health
 

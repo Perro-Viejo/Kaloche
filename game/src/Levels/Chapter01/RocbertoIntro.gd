@@ -33,7 +33,6 @@ func focus_player() -> void:
 
 
 func say_hi() -> void:
-#	DialogEvent.emit_signal('dialog_requested', 'RocbertoIntro')
 	DialogEvent.emit_signal(
 		'dialog_requested', 'Chapter0.1/DRocbertoIntro', 'start_conversation'
 	)

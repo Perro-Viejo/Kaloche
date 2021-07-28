@@ -620,6 +620,7 @@ collision_mask = 4
 script = ExtResource( 2 )
 dialog_color = Color( 0.729412, 0.380392, 0.337255, 1 )
 inventory = ExtResource( 18 )
+is_player = true
 
 [node name="Exclamation" type="AnimatedSprite" parent="."]
 visible = false

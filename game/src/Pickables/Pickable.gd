@@ -2,7 +2,7 @@ tool
 class_name Pickable
 extends Area2D
 signal grabbed_changed(state)
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Variables ░░░░
+
 export var is_good := true
 export var can_burn := true
 export var carbs := 2
@@ -17,7 +17,9 @@ var being_grabbed := false setget set_being_grabbed
 var _hides: Area2D
 var _respawn_position: Vector2
 var _original_position: Vector2
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos de Godot ░░░░
 func _ready() -> void:
 	if is_in_group('Sacred'):
 		_original_position = global_position
@@ -25,7 +27,7 @@ func _ready() -> void:
 	connect('area_exited', self, '_check_collision')
 	
 	if character:
-		DialogEvent.connect('line_triggered', self, '_should_speak')
+		WorldEvent.add_character(self)
 
 	# Si el objeto tiene otro Pickable por dentro, ocultarlo. La idea es que ese
 	# que es el hijo sólo se haga visible cuando el jugador agarre el contenedor
@@ -39,6 +41,7 @@ func _ready() -> void:
 	hide_interaction()
 
 
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func set_sprite_texture(tex: Texture) -> void:
 	img = tex
 	if has_node('Sprite'): $Sprite.texture = img
@@ -80,32 +83,6 @@ func toggle_collision(enable: bool = true) -> void:
 	$CollisionShape2D.disabled = !enable
 
 
-func _check_collision(area: Node2D, grab: bool = false) -> void:
-	if area.name != 'PlayerArea': return
-
-	var player = area.get_parent()
-
-	if player.grabbing: return
-
-	if grab:
-		player.node_to_interact = self
-	else:
-		player.node_to_interact = null
-
-
-func _should_speak(character_name, text, time, emotion) -> void:
-	if character.to_lower() == character_name:
-		DialogEvent.emit_signal('character_spoke', self, text, time)
-		AudioEvent.emit_signal('dx_requested' , character_name, emotion)
-
-
-func _hidden_in_tree(dup: Pickable) -> void:
-	if dup.character != '':
-		pass
-	if dup.on_free != '':
-		DialogEvent.emit_signal('dialog_requested', dup.on_free)
-
-
 func hide_interaction() -> void:
 	HudEvent.emit_signal('name_bubble_requested')
 	$Outline.hide()
@@ -121,8 +98,10 @@ func show_interaction() -> void:
 	)
 	$Outline.show()
 
+
 func get_class() -> String:
 	return "Pickable"
+
 
 func respawn(_position = null) -> void:
 	if _position:
@@ -131,4 +110,29 @@ func respawn(_position = null) -> void:
 		_respawn_position = _original_position
 	show()
 	position = _respawn_position
- 
+
+
+func speak(text: String, time = 0.0, emotion = '') -> void:
+	DialogEvent.emit_signal('character_spoke', self, text, time)
+	AudioEvent.emit_signal('dx_requested' , name, emotion)
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░
+func _check_collision(area: Node2D, grab: bool = false) -> void:
+	if area.name != 'PlayerArea': return
+
+	var player = area.get_parent()
+
+	if player.grabbing: return
+
+	if grab:
+		player.node_to_interact = self
+	else:
+		player.node_to_interact = null
+
+
+func _hidden_in_tree(dup: Pickable) -> void:
+	if dup.character != '':
+		pass
+	if dup.on_free != '':
+		DialogEvent.emit_signal('dialog_requested', dup.on_free)

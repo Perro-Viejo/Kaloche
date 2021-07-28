@@ -1,4 +1,4 @@
-class_name Player
+ class_name Player
 extends Actor
 
 enum Tools {
@@ -55,7 +55,6 @@ func _ready() -> void:
 	hook_target.connect('area_entered', self, '_set_hook_drop_surface')
 
 	# Conectarse a eventos del universo
-	DialogEvent.connect('line_triggered', self, '_should_speak')
 	PlayerEvent.connect('control_toggled', self, '_toggle_control')
 	PlayerEvent.connect('camera_shook', self, '_shake_camera')
 	PlayerEvent.connect('camera_moved', self, '_move_camera')
@@ -219,14 +218,13 @@ func pickup_item() -> void:
 		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DSacapayaraTemple', 'rod_grabbed')
 	
 	picked_item = null
-	
-	
 
 
 func change_zindex(new_value: int) -> void:
 	z_index = new_value
 	if picked_item:
 		picked_item.z_index = new_value
+
 
 func react():
 	speak('')
@@ -237,11 +235,28 @@ func react():
 	$Exclamation.hide()
 	$Exclamation.stop()
 
+
 func toggle_behind(ref_z_index: int) -> void:
 	if ref_z_index <= self.z_index:
 		behind.hide()
 	else:
 		behind.show()
+
+
+func focus_camera_to(target: Node2D = null, is_in_queue = true) -> void:
+	if is_in_queue: yield()
+	
+	cam.global_position = target.global_position
+	yield(get_tree().create_timer(1.0), 'timeout')
+
+
+func reset_camera(is_in_queue = true) -> void:
+	if is_in_queue: yield()
+
+	cam.position = Vector2.ZERO
+	cam.zoom = Vector2.ONE
+
+	yield(get_tree(), 'idle_frame')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos privados ░░░░

@@ -89,6 +89,7 @@ _path = "Chapter0.1/DChamberOfSpells"
 _dialog_key = "rocberto_block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTrigger"]
+position = Vector2( -17, -26 )
 rotation = -0.67876
 shape = SubResource( 4 )
 __meta__ = {

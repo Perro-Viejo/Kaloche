@@ -79,7 +79,12 @@ func _eval_string(text: String) -> void:
 				if emotion_idx > 0:
 					emotion = char_and_emotion.substr(emotion_idx + 1).rstrip(')')
 				var char_line: String = text.substr(char_talk + 1).trim_prefix(' ')
-				emit_signal('line_triggered', char_name, tr(char_line), 0, emotion)
+				
+				if is_instance_valid(WorldEvent.get_character(char_name)):
+					WorldEvent.get_character(char_name).speak(
+						tr(char_line), 0, emotion
+					)
+
 				yield(self, 'dialog_continued')
 			else:
 				yield(get_tree(), 'idle_frame')

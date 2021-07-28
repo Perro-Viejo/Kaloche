@@ -169,7 +169,7 @@ targets = [ NodePath("../../../../../Characters/Player") ]
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 45
+frame = 46
 
 [node name="WakeUp" type="Node2D" parent="Zones/Altar/SacredFire/FeedArea/CollisionShape2D" index="0"]
 position = Vector2( 642.08, 1235.77 )
