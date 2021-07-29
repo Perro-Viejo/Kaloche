@@ -10,5 +10,7 @@ func _step_floor() -> void:
 
 func _rod_grabbed() -> void:
 	yield(DialogEvent.run([
+		WorldEvent.player.focus_camera_to(WorldEvent.get_character('Rocberto')),
 		'Rocberto(Surprised): SACATMPL_Rocberto_01',
+		WorldEvent.player.reset_camera()
 	]), 'completed')

@@ -11,6 +11,7 @@ var _player_cam: Camera2D
 
 onready var _trigger: Area2D = find_node('RocbertoTrigger')
 onready var _rocberto_block: Area2D = find_node('RocbertoBlock')
+onready var _dialog_trigger: Area2D = find_node('DialogTrigger')
 onready var _animations: AnimationPlayer = find_node('RocbertoAnimations')
 onready var _camera: Camera2D = find_node('RocbertoCamera')
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 	# Conectarse a señales de los hijos
 	_trigger.connect('body_entered', self, '_rocberto_found')
 	_trigger.connect('body_exited', self, '_player_leaves')
+	_dialog_trigger.connect('body_entered', self, '_on_block_pass')
 
 func focus_rocberto() -> void:
 	_camera.global_position = get_node(rocberto).global_position
@@ -46,6 +48,7 @@ func _rocberto_found(body: Node) -> void:
 	if body.name == 'Player':
 		_was_played = true
 		_rocberto_block.active = true
+		_dialog_trigger.active = true
 
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
 		_player_cam = body.get_node('Camera2D')
@@ -71,7 +74,12 @@ func _player_leaves(body: Node) -> void:
 		$Tween.start()
 
 
-
+func _on_block_pass(body: Node) -> void:
+	if body.name == 'Player':
+		var _body_dir = body.dir
+		if body.grabbing and body.picked_item.name == _rocberto_block.pickable_needed:
+			_dialog_trigger.active = false
+			_rocberto_block.active = false
 # SenderoIniciación.tres
 # func despertar() -> void:
 # DialogEvent.run(['Player: asdjaldkjas	'], 'completed')

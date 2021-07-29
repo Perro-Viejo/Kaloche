@@ -11,8 +11,8 @@ func _ready():
 	connect('body_exited', self, '_on_body_exited')
 
 func _on_body_entered(body: Node):
-	if body.name == 'Player':
-		if active:
+	if active:
+		if body.name == 'Player':
 			var _body_dir = body.dir
 			if body.grabbing and body.picked_item.name == pickable_needed:
 				pass
@@ -28,6 +28,6 @@ func _on_body_entered(body: Node):
 				# TODO: Aquí debería sonar un sonido mágico y rechazador
 
 func _on_body_exited(body: Node):
-	if body.name == 'Player':
-		if active:
+	if active:
+		if body.name == 'Player':
 			pass

@@ -85,6 +85,7 @@ shape = SubResource( 3 )
 position = Vector2( 90, 125 )
 script = ExtResource( 3 )
 self_destroy = false
+active = false
 _path = "Chapter0.1/DChamberOfSpells"
 _dialog_key = "rocberto_block"
 
