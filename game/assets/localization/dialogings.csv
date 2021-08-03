@@ -96,18 +96,18 @@ ROCBINTR_Teotriste_Op6,Bueno... me voy.,I have to... go.,
 ROCBINTR_Teotriste_Op6_01,Tengo que seguir buscando por dónde volver a la ranchita.,I need to find the way back home.,
 ROCBINTR_Rocberto_Op6_02,No va a estar fácil salir de la [color=#10a5ea]Sierra del Heliodoro[/color] sin ayuda. Yo creo que lo mejor es que me lleve con usted.,It won't be easy to leave [color=#10a5ea]Sierra del Heliodoro[/color] without help. Better take me with you.,
 ,,,
-DLG_5_17_PLAYER,D:,D:,
-DLG_6_2_PLAYER,Mamarrachos extraños...,Weird stuff...,
-DLG_6_3_PLAYER,No entiendos...,No understando...,
-DLG_6_4_PLAYER,Se ve pispo pero ni idea...,Cute but no idea what it means...,
-DLG_6_5_PLAYER,Una roca grabada ^-^,An engraved rock ^-^,
-DLG_7_2_ROCBERTO,"Sierra del Heliodoro, favor no alimentar las aves.","Heliodoro Sierra, please do not feed the birds.",
-DLG_7_3_ROCBERTO,No hablen con los prisioneros,Do not talk to the prisoner.,
-DLG_7_4_ROCBERTO,"Templo del SacaPayara, es como una mano pero más útil.","Sacapayara temple, is like a hand but better.",
-DLG_7_5_ROCBERTO,-Este santuario fue erigido por los ahogados seguidores del dios Kuarevachu-,-This sanctuary was built by the drowned followers of god Kuarevachu-,
-DLG_7_6_ROCBERTO,"Quien traiga consigo el susodicho, llenará el tanque de las aguas del río.","The one who brings the other one, will filled the tank with the river tide.",
-DLG_7_7_ROCBERTO,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs.",
-DLG_7_8_ROCBERTO,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead.",
+SIGNS_Teotriste_01,D:,D:,
+SIGNS_Teotriste_02,Mamarrachos extraños...,Weird stuff...,
+SIGNS_Teotriste_03,No entiendos...,No understando...,
+SIGNS_Teotriste_04,Se ve pispo pero ni idea...,Cute but no idea what it means...,
+SIGNS_Teotriste_05,Una roca grabada ^-^,An engraved rock ^-^,
+SIGNS_Rocberto_01,"Sierra del Heliodoro, favor no alimentar las aves.","Heliodoro Sierra, please do not feed the birds.",
+SIGNS_Rocberto_02,No hablen con los prisioneros,Do not talk to the prisoner.,
+SIGNS_Rocberto_03,"Templo del SacaPayara, es como una mano pero más útil.","Sacapayara temple, is like a hand but better.",
+SIGNS_Rocberto_04,-Este santuario fue erigido por los ahogados seguidores del dios Kuarevachu-,-This sanctuary was built by the drowned followers of god Kuarevachu-,
+SIGNS_Rocberto_05,"Quien traiga consigo el susodicho, llenará el tanque de las aguas del río.","The one who brings the other one, will filled the tank with the river tide.",
+SIGNS_Rocberto_06,"Sacrificios a la izquierda, Templo hacia arriba.","Sacrifices to the left, Temple upstairs.",
+SIGNS_Rocberto_07,"Jardines a la derecha, el Esfuerzo hacia adelante.","Gardens to the right, the effort up ahead.",
 ,,,
 INITPATH_Teotriste_01,Uy... que sueño tan raro,,Teotriste se despierta del sueño
 INITPATH_Teotriste_02,Me di garra jartando...,,
@@ -132,9 +132,11 @@ PAYAPOND_Rocberto_01,"Aaaah, es el majestuoso [color=#10a5ea]Estanque del Payara
 PAYAPOND_Rocberto_02,pero está más seco que lengua de loro,,
 PAYAPOND_Rocberto_03,sé que se puede llenar pero no sé cómo...,,
 ,,,
+PAYAPOND_Teotriste_01,¡Uuuu! ¿Qué será esta vuelta? ,,Llega Teotriste solo
+,,,
 PAYAPOND_Rocberto_04,¡Ya ve! le dije que le sería útil.,,Rocberto reacciona cuando se llena el estanque antes de la animación del templo Sacapayara
 ,,,
-PAYAPOND_Teotriste_01,"¡Vea, se llenó de peces! ",,Ambos reaccionan cuando termina la animación del templo Sacapayara
+PAYAPOND_Teotriste_02,"¡Vea, se llenó de peces! ",,Ambos reaccionan cuando termina la animación del templo Sacapayara
 PAYAPOND_Rocberto_05,"Si tuviera una caña podríamos agarrar algunos, yo le muestro cómo.",,
 ,,,
 PAYAPOND_Rocberto_06,Vamos al estanque y le explico cómo es la vuelta,,Rocberto cuando el jugador lo encuentra despues de agarrar la caña (lejos del estanque)
@@ -146,24 +148,24 @@ PAYAPOND_Rocberto_11,Si se re arrepiente presione [color=#eb564b]C[/color] para 
 PAYAPOND_Rocberto_12,Una vez lanzada solo queda esperar y [wave]ser paciente[/wave] ,,
 PAYAPOND_Rocberto_13,¡Mordió! ora jale esa vuelta como loco presionando [color=#eb564b]Z[/color] repetidamente,,cuando el pez muerda
 PAYAPOND_Rocberto_14,¡Bien! ¿Y'ora qué hacemos con esto?,,
-PAYAPOND_Teotriste_02,Pues lo asamos y no lo echamos al buche,,
+PAYAPOND_Teotriste_03,Pues lo asamos y no lo echamos al buche,,
 ,,,
-PAYAPOND_Teotriste_03,Podemos cocinarlo en el fuego del altar.,,si ya encontró el altar
+PAYAPOND_Teotriste_04,Podemos cocinarlo en el fuego del altar.,,si ya encontró el altar
 ,,,
-SCRFALTR_Teotriste_01,Esta vaina esta bien rara...,,Teotriste llega al altar solo
-SCRFALTR_Teotriste_02,¿Y ese fuego? ¿cómo hará para mantenerse encendido?,,
+CEREALTR_Teotriste_01,Esta vaina esta bien rara...,,Teotriste llega al altar solo
+CEREALTR_Teotriste_02,¿Y ese fuego? ¿cómo hará para mantenerse encendido?,,
 ,,,
-Rocberto,Este altar me trae malos recuerdos...,,Teotriste llega al altar con Rocberto
-,Quién sabe cuánto bicho echaron a las llamas sagradas.,,
+CEREALTR_Rocberto_01,Este altar me trae malos recuerdos...,,Teotriste llega al altar con Rocberto
+CEREALTR_Rocberto_02,Quién sabe cuánto bicho echaron a las llamas sagradas.,,
 ,,,
-Rocberto,¡Eso dolió perro!,,Rocberto es echado al fuego
-,El fuego sagrado odia a los seres malditos. Como yo :(,,
+CEREALTR_Rocberto_03,¡Eso dolió perro!,,Rocberto es echado al fuego
+CEREALTR_Rocberto_04,El fuego sagrado odia a los seres malditos. Como yo :(,,
 ,,,
-Teotriste,Jum... no pasó nada.,,Algo que no es el pez sagrado es echado al fuego
+CEREALTR_Teotriste_03,Jum... no pasó nada.,,Algo que no es el pez sagrado es echado al fuego
 ,,,
-Rocberto,Epa... nunca había sentido la sierra temblar así de juerte.,,El templo es activado por el altar
-Teotriste,Ay jueputa... ¿qué hice?,,
-Rocberto,"Ni idea, camine y lo averiguamos.",,
+CEREALTR_Rocberto_05,Epa... nunca había sentido la sierra temblar así de juerte.,,El templo es activado por el altar
+CEREALTR_Teotriste_04,Ay jueputa... ¿qué hice?,,
+CEREALTR_Rocberto_06,"Ni idea, camine y lo averiguamos.",,
 ,,,
 Teotriste,¡Ushhh! Que vuelta tan gigantesca...,,Llegada al templo desactivado
 ,¿Qué querrán decir esos mamarrachos?,,

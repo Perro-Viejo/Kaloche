@@ -28,7 +28,8 @@ func _ready() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func speak(text: String, time = 0.0, emotion = '') -> void:
 	DialogEvent.emit_signal('character_spoke', self, text, time)
-	AudioEvent.emit_signal('dx_requested' , name, emotion)
+	if not text == '':
+		AudioEvent.emit_signal('dx_requested' , name, emotion)
 
 
 func spoke():

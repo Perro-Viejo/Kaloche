@@ -14,6 +14,7 @@ func _ready():
 
 func _rock_grabbed(state, rock):
 	if _first:
+		yield(get_tree().create_timer(0.2), 'timeout')
 		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DInitiationPath', 'grab_debris')
 		_first = false
 	if state == false:

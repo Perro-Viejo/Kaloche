@@ -102,6 +102,7 @@ func next_target(_object: Object, _key: NodePath) -> void:
 		_player_cam.make_current()
 		
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DCeremonialAltar', 'activate_temple')
 		queue_free()
 
 		return

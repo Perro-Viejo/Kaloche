@@ -88,6 +88,7 @@ func play_text(value: String, color: Color = Color('#ffffeb')) -> void:
 func stop(forced = false) ->void:
 	if modulate.a == 0.0:
 		return
+	get_tree().set_input_as_handled()
 	
 	if not forced:
 		if _is_waiting_input:

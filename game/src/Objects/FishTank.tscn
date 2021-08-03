@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_holes.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=9]
 [ext_resource path="res://src/Levels/ZIndexChanger.gd" type="Script" id=10]
 [ext_resource path="res://assets/images/world/chapter_0.1/fish_tank_water_mask.png" type="Texture" id=11]
+[ext_resource path="res://src/Levels/Chapter01/DialogTrigger.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 8.0
@@ -81,6 +82,9 @@ animations = [ {
 
 [sub_resource type="CanvasItemMaterial" id=5]
 light_mode = 2
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 150.118, 25.8865 )
 
 [node name="FishTank" type="Node2D"]
 script = ExtResource( 4 )
@@ -321,3 +325,15 @@ polygon = PoolVector2Array( -119, -89, -119, -64, -16, -64, -16, -6, 16, -6, 16,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Surfaces/TankFloor"]
 polygon = PoolVector2Array( -134, -89, -134, 89, 134, 89, 134, -89, 119, -89, 119, 72, -119, 72, -119, -89 )
+
+[node name="DialogTrigger" type="Area2D" parent="."]
+position = Vector2( -0.828186, 64.8719 )
+script = ExtResource( 12 )
+play_once = true
+pickable_needed = "Rocberto"
+_path = "Chapter0.1/DPayaraPond"
+_dialog_key = "arrive"
+_condition_dialog_key = "rocberto_arrive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTrigger"]
+shape = SubResource( 6 )

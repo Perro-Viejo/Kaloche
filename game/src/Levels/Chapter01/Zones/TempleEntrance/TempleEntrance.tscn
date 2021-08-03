@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=138 format=2]
 
 [ext_resource path="res://assets/images/world/chapter_0.1/temple_entrance_floor.png" type="Texture" id=1]
 [ext_resource path="res://src/Levels/Surface.gd" type="Script" id=2]
@@ -64,6 +64,7 @@
 [ext_resource path="res://assets/resources/sprite_frames/small_fire.tres" type="SpriteFrames" id=62]
 [ext_resource path="res://assets/resources/sprite_frames/small_fire-24fps.tres" type="SpriteFrames" id=63]
 [ext_resource path="res://assets/resources/sprite_frames/sacred_fire-24fps.tres" type="SpriteFrames" id=64]
+[ext_resource path="res://src/Levels/Chapter01/DialogTrigger.gd" type="Script" id=65]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -1886,6 +1887,9 @@ repeat = 0
 start_delay = 0.0
 scale_to = Vector2( 1, 1 )
 
+[sub_resource type="RectangleShape2D" id=72]
+extents = Vector2( 56.0342, 20.8061 )
+
 [node name="TempleEntrance" type="Node2D"]
 script = ExtResource( 22 )
 __meta__ = {
@@ -2841,5 +2845,17 @@ frame = 0
 playing = false
 offset = Vector2( 0, -18 )
 vfxs = [ SubResource( 71 ) ]
+
+[node name="DialogTrigger" type="Area2D" parent="."]
+position = Vector2( 0, 28 )
+script = ExtResource( 65 )
+play_once = true
+pickable_needed = "Rocberto"
+_path = "Chapter0.1/DTempleEntrance"
+_dialog_key = "arrive"
+_condition_dialog_key = "arrive_rocberto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTrigger"]
+shape = SubResource( 72 )
 
 [editable path="Platform/DoorButton"]

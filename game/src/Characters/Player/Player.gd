@@ -268,7 +268,7 @@ func _toggle_control(props: Dictionary = {}) -> void:
 	if props.has('disable'):
 		is_paused = props.disable
 	
-	if props.has('is_cutscene') or in_cutscene:
+	if (props.has('is_cutscene') and props.is_cutscene) or in_cutscene:
 		in_cutscene = is_paused
 		HudEvent.emit_signal('cutscene_started' if is_paused else 'cutscene_ended')
 

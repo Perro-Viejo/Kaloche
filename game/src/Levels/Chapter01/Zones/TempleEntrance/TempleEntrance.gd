@@ -45,6 +45,7 @@ func _open_door() -> void:
 	$AnimationPlayer.play('OpenDoor')
 	yield($AnimationPlayer, 'animation_finished')
 	PlayerEvent.emit_signal('control_toggled')
+	DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DTempleEntrance', 'door_open')
 
 
 func _check_entered(body: Area2D, entered: bool) -> void:

@@ -776,266 +776,266 @@ __meta__ = {
 
 [node name="DX" type="Node2D" parent="."]
 
-[node name="player" type="Node2D" parent="DX"]
+[node name="Player" type="Node2D" parent="DX"]
 
-[node name="Gen" type="Node2D" parent="DX/player"]
+[node name="Gen" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 
-[node name="gen_01" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_01" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 251 )
 
-[node name="gen_02" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_02" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 43 )
 
-[node name="gen_03" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_03" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 234 )
 
-[node name="gen_04" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_04" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 252 )
 
-[node name="gen_05" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_05" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 241 )
 
-[node name="gen_06" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_06" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 249 )
 
-[node name="gen_07" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_07" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 227 )
 
-[node name="gen_08" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_08" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 253 )
 
-[node name="gen_09" type="AudioStreamPlayer" parent="DX/player/Gen"]
+[node name="gen_09" type="AudioStreamPlayer" parent="DX/Player/Gen"]
 stream = ExtResource( 235 )
 
-[node name="Sad" type="Node2D" parent="DX/player"]
+[node name="Sad" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 
-[node name="sad_01" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_01" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 55 )
 volume_db = -4.0
 
-[node name="sad_02" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_02" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 230 )
 
-[node name="sad_03" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_03" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 236 )
 volume_db = -6.0
 
-[node name="sad_04" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_04" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 46 )
 volume_db = -8.0
 
-[node name="sad_05" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_05" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 250 )
 volume_db = -8.0
 
-[node name="sad_06" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_06" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 56 )
 volume_db = -8.0
 
-[node name="sad_07" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_07" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 259 )
 volume_db = -8.0
 
-[node name="sad_08" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_08" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 221 )
 volume_db = -8.0
 
-[node name="sad_09" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_09" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 237 )
 volume_db = -8.0
 
-[node name="sad_10" type="AudioStreamPlayer" parent="DX/player/Sad"]
+[node name="sad_10" type="AudioStreamPlayer" parent="DX/Player/Sad"]
 stream = ExtResource( 44 )
 volume_db = -8.0
 
-[node name="Happy" type="Node2D" parent="DX/player"]
+[node name="Happy" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 
-[node name="happy_01" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_01" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 256 )
 
-[node name="happy_02" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_02" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 39 )
 
-[node name="happy_03" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_03" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 226 )
 
-[node name="happy_04" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_04" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 228 )
 
-[node name="happy_05" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_05" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 229 )
 
-[node name="happy_06" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_06" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 257 )
 
-[node name="happy_07" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_07" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 58 )
 
-[node name="happy_08" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_08" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 258 )
 
-[node name="happy_09" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_09" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 51 )
 
-[node name="happy_10" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_10" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 244 )
 
-[node name="happy_11" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_11" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 248 )
 
-[node name="happy_12" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_12" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 232 )
 
-[node name="happy_13" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_13" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 54 )
 
-[node name="happy_14" type="AudioStreamPlayer" parent="DX/player/Happy"]
+[node name="happy_14" type="AudioStreamPlayer" parent="DX/Player/Happy"]
 stream = ExtResource( 233 )
 
-[node name="Angry" type="Node2D" parent="DX/player"]
+[node name="Angry" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 
-[node name="angry_01" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_01" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 31 )
 
-[node name="angry_02" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_02" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 36 )
 
-[node name="angry_03" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_03" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 38 )
 
-[node name="angry_04" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_04" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 30 )
 
-[node name="angry_05" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_05" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 32 )
 
-[node name="angry_06" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_06" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 33 )
 
-[node name="angry_07" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_07" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 34 )
 
-[node name="angry_08" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_08" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 29 )
 
-[node name="angry_09" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_09" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 35 )
 
-[node name="angry_10" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_10" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 243 )
 
-[node name="angry_11" type="AudioStreamPlayer" parent="DX/player/Angry"]
+[node name="angry_11" type="AudioStreamPlayer" parent="DX/Player/Angry"]
 stream = ExtResource( 45 )
 
-[node name="Surprised" type="Node2D" parent="DX/player"]
+[node name="Surprised" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 volume = -5.0
 
-[node name="surprised_01" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_01" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 40 )
 
-[node name="surprised_02" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_02" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 222 )
 volume_db = -3.0
 
-[node name="surprised_03" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_03" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 245 )
 volume_db = -3.0
 
-[node name="surprised_04" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_04" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 223 )
 volume_db = -3.0
 
-[node name="surprised_05" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_05" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 41 )
 volume_db = -3.0
 
-[node name="surprised_06" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_06" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 224 )
 volume_db = -3.0
 
-[node name="surprised_07" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_07" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 47 )
 volume_db = -3.0
 
-[node name="surprised_08" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_08" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 225 )
 volume_db = -3.0
 
-[node name="surprised_09" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_09" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 246 )
 volume_db = -3.0
 
-[node name="surprised_10" type="AudioStreamPlayer" parent="DX/player/Surprised"]
+[node name="surprised_10" type="AudioStreamPlayer" parent="DX/Player/Surprised"]
 stream = ExtResource( 247 )
 volume_db = -3.0
 
-[node name="Curious" type="Node2D" parent="DX/player"]
+[node name="Curious" type="Node2D" parent="DX/Player"]
 script = ExtResource( 26 )
 volume = -5.0
 
-[node name="curious_01" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_01" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 53 )
 
-[node name="curious_02" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_02" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 254 )
 
-[node name="curious_03" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_03" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 231 )
 
-[node name="curious_04" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_04" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 57 )
 
-[node name="curious_05" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_05" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 238 )
 
-[node name="curious_06" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_06" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 240 )
 
-[node name="curious_07" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_07" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 242 )
 
-[node name="curious_08" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_08" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 239 )
 
-[node name="curious_09" type="AudioStreamPlayer" parent="DX/player/Curious"]
+[node name="curious_09" type="AudioStreamPlayer" parent="DX/Player/Curious"]
 stream = ExtResource( 255 )
 
-[node name="rocberto" type="Node2D" parent="DX"]
+[node name="Rocberto" type="Node2D" parent="DX"]
 
-[node name="Gen" type="Node2D" parent="DX/rocberto"]
+[node name="Gen" type="Node2D" parent="DX/Rocberto"]
 script = ExtResource( 26 )
 
-[node name="gen_01" type="AudioStreamPlayer" parent="DX/rocberto/Gen"]
+[node name="gen_01" type="AudioStreamPlayer" parent="DX/Rocberto/Gen"]
 stream = ExtResource( 52 )
 pitch_scale = 0.58
 
-[node name="gen_02" type="AudioStreamPlayer" parent="DX/rocberto/Gen"]
+[node name="gen_02" type="AudioStreamPlayer" parent="DX/Rocberto/Gen"]
 stream = ExtResource( 37 )
 pitch_scale = 0.5
 
-[node name="Happy" type="Node2D" parent="DX/rocberto"]
+[node name="Happy" type="Node2D" parent="DX/Rocberto"]
 script = ExtResource( 26 )
 
-[node name="happy_01" type="AudioStreamPlayer" parent="DX/rocberto/Happy"]
+[node name="happy_01" type="AudioStreamPlayer" parent="DX/Rocberto/Happy"]
 stream = ExtResource( 42 )
 volume_db = 3.0
 
-[node name="happy_02" type="AudioStreamPlayer" parent="DX/rocberto/Happy"]
+[node name="happy_02" type="AudioStreamPlayer" parent="DX/Rocberto/Happy"]
 stream = ExtResource( 48 )
 volume_db = 3.0
 
-[node name="Sad" type="Node2D" parent="DX/rocberto"]
+[node name="Sad" type="Node2D" parent="DX/Rocberto"]
 script = ExtResource( 26 )
 
-[node name="sad_01" type="AudioStreamPlayer" parent="DX/rocberto/Sad"]
+[node name="sad_01" type="AudioStreamPlayer" parent="DX/Rocberto/Sad"]
 stream = ExtResource( 49 )
 
-[node name="sad_02" type="AudioStreamPlayer" parent="DX/rocberto/Sad"]
+[node name="sad_02" type="AudioStreamPlayer" parent="DX/Rocberto/Sad"]
 stream = ExtResource( 50 )
 
 [node name="demon" type="Node2D" parent="DX"]

@@ -71,6 +71,7 @@ func activate_tank():
 	AudioEvent.emit_signal('change_volume', 'Spot', 'FishTank', 10)
 	AudioEvent.emit_signal('play_requested', 'Tank', 'Fill_End')
 	_is_active = true
+	DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DPayaraPond', 'tank_filled')
 	emit_signal('tank_activated')
 	$TempleDoorButton.is_toggle = true
 	for s in _fishing_surfaces.get_children():

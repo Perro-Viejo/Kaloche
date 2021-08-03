@@ -56,6 +56,7 @@ func eat_sacred():
 			var rocberto = pickable
 			pickable = null
 			rocberto.set_z_index(0)
+			WorldEvent.player._zoom_camera(Vector2(1.7, 1.7))
 			tween.interpolate_property(
 				rocberto, 'global_position',
 				rocberto.global_position, global_position + Vector2(0, -200), 0.2,
@@ -73,6 +74,7 @@ func eat_sacred():
 				Tween.TRANS_EXPO, Tween.TRANS_LINEAR)
 			tween.start()
 			yield(tween, 'tween_completed')
+			DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DCeremonialAltar', 'rocberto_fall')
 			PlayerEvent.emit_signal('camera_shook', 
 			{
 				strength = 1.6,
@@ -98,7 +100,10 @@ func _on_area_entered(other) -> void:
 				$StateMachine.transition_to_state($StateMachine.STATES.BURN)
 				
 				if toggle_player_on_burn:
-					PlayerEvent.emit_signal('control_toggled', {is_cutscene = true})
+					if 'Fish' in pickable.name and pickable.is_in_group('Sacred'):
+						PlayerEvent.emit_signal('control_toggled', {is_cutscene = true})
+					else:
+						PlayerEvent.emit_signal('control_toggled', {is_cutscene = false})
 
 
 func _on_area_exited(other) -> void:

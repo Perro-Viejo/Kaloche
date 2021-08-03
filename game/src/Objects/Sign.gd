@@ -12,10 +12,13 @@ func _on_body_entered(body: Node)  -> void:
 	if body.name == 'Player':
 		if needs_grabbing and body.grabbing:
 			if pickable_needed == '' or body.picked_item.name == pickable_needed:
-				DialogEvent.emit_signal('dialog_requested', '01Signs', message_id)
+				#TODO: revisar si puedo mandar el parámetro del id en vez de
+				#	hacer tantos métodos
+				Data.read_sign_id = message_id
+				DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DSigns', 'read_sign')
 		else:
 			#lo lee Teotriste
-			DialogEvent.emit_signal('dialog_requested', 'TeotristeSignReaction')
+			DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DSigns', 'teotriste_reaction')
 
 func _on_body_exited(body: Node)  -> void:
 	if body.name == 'Player':

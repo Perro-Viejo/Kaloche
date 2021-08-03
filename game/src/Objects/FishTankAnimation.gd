@@ -104,6 +104,7 @@ func next_target(_object, key) -> void:
 		_player_cam.make_current()
 		_tween.start()
 		PlayerEvent.emit_signal('control_toggled', { disable_camera = true })
+		DialogEvent.emit_signal('dialog_requested', 'Chapter0.1/DPayaraPond', 'activation_finished')
 		queue_free()
 		return
 

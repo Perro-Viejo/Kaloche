@@ -9,6 +9,8 @@ const HIDE_TELETRANSPORT_IN_EDITOR := 'HIDE_TELETRANSPORT_IN_EDITOR'
 enum BAITS {NADA, GUSANO, SANGRE}
 enum SurfaceType {GROUND, WATER, ROCK, GRASS, MUD}
 
+var read_sign_id = 0
+
 var _data := {}
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func get_data(key: String):
