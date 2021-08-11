@@ -28,6 +28,7 @@ func activate() -> void:
 
 
 func temple_activated() -> void:
+	Data.temple_active = true
 	emit_signal('activated')
 
 

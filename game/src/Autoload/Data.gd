@@ -11,6 +11,8 @@ enum SurfaceType {GROUND, WATER, ROCK, GRASS, MUD}
 
 var read_sign_id = 0
 
+var temple_active = false
+
 var _data := {}
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Funciones ░░░░
 func get_data(key: String):
