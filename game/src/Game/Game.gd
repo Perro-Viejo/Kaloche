@@ -54,6 +54,7 @@ func _ready()->void:
 
 	AudioEvent.emit_signal("play_requested", "MX", "Menu")
 
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░
 func on_Options(options) -> void:
 	guiBrain.gui_collect_focusgroup()
