@@ -321,6 +321,7 @@ SwitchEvent="*res://src/Autoload/Events/SwitchEvent.gd"
 WorldEvent="*res://src/Autoload/Events/WorldEvent.gd"
 FishingDatabase="*res://src/Autoload/FishingDatabase.tscn"
 DebugOverlay="*res://addons/debug-overlay/DebugOverlay.tscn"
+Console="*res://addons/quentincaffeino/console/src/Console.tscn"
 
 [debug]
 
@@ -343,7 +344,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "EXP-System-Dialog", "aseprite_importer", "codeandweb.texturepacker" )
+enabled=PoolStringArray( "res://addons/EXP-System-Dialog/plugin.cfg", "res://addons/aseprite_importer/plugin.cfg", "res://addons/codeandweb.texturepacker/plugin.cfg", "res://addons/quentincaffeino/console/plugin.cfg" )
 
 [global]
 
@@ -489,6 +490,26 @@ Equip={
 Testiar={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+quentincaffeino_console_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+quentincaffeino_console_autocomplete={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+quentincaffeino_console_history_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+quentincaffeino_console_history_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -60,6 +60,10 @@ func _ready() -> void:
 	PlayerEvent.connect('camera_moved', self, '_move_camera')
 	PlayerEvent.connect('camera_moved_to', self, '_move_camera_to')
 	PlayerEvent.connect('camera_disabled', self, '_disable_camera')
+	
+	Console.add_command('change_zoom', self)\
+			.add_argument('out', TYPE_BOOL)\
+			.register()
 
 
 func _process(delta) -> void:
@@ -89,7 +93,7 @@ func change_zoom(out: bool = true) -> void:
 		cam,
 		'zoom',
 		cam.zoom,
-		Vector2.ONE * 2 if out else Vector2.ONE / 2,
+		Vector2.ONE * 2 if out else Vector2.ONE,
 		1.0 if out else 0.5,
 		Tween.TRANS_QUINT,
 		Tween.EASE_OUT
