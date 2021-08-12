@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://assets/images/world/iguana.png" type="Texture" id=1]
 [ext_resource path="res://src/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -15,8 +15,10 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/stairs_fg.png" type="Texture" id=13]
 [ext_resource path="res://src/Levels/Chapter01/DialogTrigger.gd" type="Script" id=14]
 [ext_resource path="res://src/Audio/AUDIO_Cap_01.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/images/world/chapter_0.1/map_grass.png" type="Texture" id=16]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/Shaders/clouds_noise1.tres" type="Texture" id=18]
+[ext_resource path="res://assets/images/world/chapter_0.1/map_fg.png" type="Texture" id=19]
 [ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=20]
 [ext_resource path="res://src/Shaders/clouds2D.shader" type="Shader" id=21]
 [ext_resource path="res://src/Shaders/clouds_noise2.tres" type="Texture" id=22]
@@ -90,7 +92,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 477.0 ],
 "_edit_vertical_guides_": [ -24.5 ]
 }
-dev_entry_point = NodePath("Zones/ZonePositions/BirthBridge")
+dev_entry_point = NodePath("Zones/ZonePositions/PathOfInitiation")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -141,6 +143,9 @@ texture = ExtResource( 29 )
 [node name="Bushes" type="Sprite" parent="Map"]
 texture = ExtResource( 28 )
 
+[node name="Grass" type="Sprite" parent="Map"]
+texture = ExtResource( 16 )
+
 [node name="Zones" type="Node2D" parent="."]
 script = ExtResource( 4 )
 __meta__ = {
@@ -170,7 +175,7 @@ scale = Vector2( 1.25, 1.25 )
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 54
+frame = 51
 
 [node name="WakeUp" type="Node2D" parent="Zones/Altar/SacredFire/FeedArea/CollisionShape2D" index="0"]
 position = Vector2( 642.08, 1235.77 )
@@ -389,6 +394,7 @@ __meta__ = {
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 2
 scroll_base_scale = Vector2( 1.2, 1.2 )
+scroll_ignore_camera_zoom = true
 
 [node name="Start" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_offset = Vector2( 60, 220 )
@@ -452,6 +458,12 @@ position = Vector2( -24, -104 )
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/Stairs"]
 position = Vector2( 21, -454 )
 texture = ExtResource( 13 )
+
+[node name="Map" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_offset = Vector2( -128, 196 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxForeground/Map"]
+texture = ExtResource( 19 )
 
 [node name="Masks" type="Node2D" parent="."]
 __meta__ = {

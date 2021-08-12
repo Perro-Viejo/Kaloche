@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map_palms.png-8a576b1d2886ee7695d09df759342156.stex"
+path="res://.import/map_grass.png-b6c61e65ffa4fada8b0e9ca89fe14f55.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/chapter_0.1/map_palms.png"
-dest_files=[ "res://.import/map_palms.png-8a576b1d2886ee7695d09df759342156.stex" ]
+source_file="res://assets/images/world/chapter_0.1/map_grass.png"
+dest_files=[ "res://.import/map_grass.png-b6c61e65ffa4fada8b0e9ca89fe14f55.stex" ]
 
 [params]
 
