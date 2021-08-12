@@ -11,7 +11,7 @@ func _on_body_entered(body: Node):
 	if body.name == 'Player':
 		var _body_dir = body.dir
 		if body.grabbing and body.picked_item.name == pickable_needed:
-			# Aquí va a hacer algo para el fin del DEMO
+			# Aquí va a hacer algo para el fin del DEMO, Cambia de escena
 			print('Éxito en tu vida y próspero 2022')
 		else:
 			$Tween.interpolate_property(
