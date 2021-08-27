@@ -53,6 +53,11 @@ func _ready()->void:
 	AudioEvent.connect('music_stoped', $Music, 'stop')
 
 	AudioEvent.emit_signal("play_requested", "MX", "Menu")
+	
+	# Agregar comandos a la consola de comandos
+	Console.add_command('on_top', OS, 'set_window_always_on_top')\
+			.add_argument('enabled', TYPE_BOOL)\
+			.register()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ métodos públicos ░░░░

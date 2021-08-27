@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fg_start.png-690d0a2b883249caf29f66923dd92491.stex"
+path="res://.import/map_fg_01.png-7ee4c5023e9dbe93d0724abc0ea12161.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/world/chapter_0.1/fg_start.png"
-dest_files=[ "res://.import/fg_start.png-690d0a2b883249caf29f66923dd92491.stex" ]
+source_file="res://assets/images/world/chapter_0.1/map_fg_01.png"
+dest_files=[ "res://.import/map_fg_01.png-7ee4c5023e9dbe93d0724abc0ea12161.stex" ]
 
 [params]
 

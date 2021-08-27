@@ -18,12 +18,12 @@
 [ext_resource path="res://assets/images/world/chapter_0.1/map_grass.png" type="Texture" id=16]
 [ext_resource path="res://src/Levels/Chapter01/RocbertoIntro.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/Shaders/clouds_noise1.tres" type="Texture" id=18]
-[ext_resource path="res://assets/images/world/chapter_0.1/map_fg.png" type="Texture" id=19]
 [ext_resource path="res://src/Levels/FishingSurface.gd" type="Script" id=20]
 [ext_resource path="res://src/Shaders/clouds2D.shader" type="Shader" id=21]
 [ext_resource path="res://src/Shaders/clouds_noise2.tres" type="Texture" id=22]
 [ext_resource path="res://assets/images/world/chapter_0.1/lake_mask.png" type="Texture" id=23]
 [ext_resource path="res://src/Objects/FishTank.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/images/world/chapter_0.1/map_fg_01.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/world/chapter_0.1/map.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_bushes.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/world/chapter_0.1/map_palms.png" type="Texture" id=29]
@@ -175,7 +175,7 @@ scale = Vector2( 1.25, 1.25 )
 toggle_player_on_burn = true
 
 [node name="Sprite" parent="Zones/Altar/SacredFire" index="0"]
-frame = 10
+frame = 38
 
 [node name="WakeUp" type="Node2D" parent="Zones/Altar/SacredFire/FeedArea/CollisionShape2D" index="0"]
 position = Vector2( 642.08, 1235.77 )
@@ -396,14 +396,14 @@ layer = 2
 scroll_base_scale = Vector2( 1.2, 1.2 )
 
 [node name="Start" type="ParallaxLayer" parent="ParallaxForeground"]
-motion_offset = Vector2( 60, 220 )
+motion_offset = Vector2( 66, 224 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="ParallaxForeground/Start"]
-position = Vector2( 384, 1217 )
+[node name="Start" type="Sprite" parent="ParallaxForeground/Start"]
+position = Vector2( 349, 1211 )
 texture = ExtResource( 3 )
 
 [node name="Rocberto" type="ParallaxLayer" parent="ParallaxForeground"]
@@ -459,10 +459,11 @@ position = Vector2( 21, -454 )
 texture = ExtResource( 13 )
 
 [node name="Map" type="ParallaxLayer" parent="ParallaxForeground"]
-motion_offset = Vector2( -128, 196 )
+motion_offset = Vector2( 128, 196 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxForeground/Map"]
-texture = ExtResource( 19 )
+[node name="01" type="Sprite" parent="ParallaxForeground/Map"]
+position = Vector2( -480, 884 )
+texture = ExtResource( 25 )
 
 [node name="Masks" type="Node2D" parent="."]
 __meta__ = {
